@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="og-title">
+  <title id="og-title">Howe Sound DJ  Squamish Wedding DJ</title>
+  <defs>
+    <linearGradient id="og-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0a" />
+      <stop offset="100%" stop-color="#171717" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#og-bg)" />
+  <rect x="120" y="280" width="960" height="3" rx="1.5" fill="#fcd34d" opacity="0.75" />
+  <text
+    x="600"
+    y="360"
+    text-anchor="middle"
+    fill="#fafafa"
+    font-family="system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="48"
+    font-weight="600"
+  >
+    Howe Sound DJ
+  </text>
+  <text
+    x="600"
+    y="420"
+    text-anchor="middle"
+    fill="#a3a3a3"
+    font-family="system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+  >
+    Squamish Wedding DJ · Sea-to-Sky weddings
+  </text>
+</svg>

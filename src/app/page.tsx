@@ -1,65 +1,362 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import { ImageSlot } from "@/components/image-slot";
+import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: { absolute: "Howe Sound DJ | Squamish Wedding DJ" },
+  description:
+    "Squamish wedding DJ for the Sea-to-Sky corridor and beyond — unforgettable experiences, Bangers Only (no autopilot playlists), seamless planning, and real connection. Whistler & Vancouver.",
+  openGraph: {
+    title: "Howe Sound DJ | Squamish Wedding DJ",
+    description:
+      "Creating unforgettable wedding experiences in Squamish, Whistler, and the Sea-to-Sky — rooted locally, trusted at top venues, dancefloor-packing tracks.",
+    url: "https://www.howesounddj.com",
+  },
+  alternates: {
+    canonical: "https://www.howesounddj.com",
+  },
+};
+
+export default function HoweSoundDJHomepage() {
+  const testimonials = [
+    {
+      quote:
+        "Patrick kept the dance floor packed and the energy high all night long.",
+      name: "Vanessa Pocock",
+      venue: "Squamish"
+    },
+    {
+      quote:
+        "Patrick is incredible. His calm, professional, yet personable communication made our day stress-free.",
+      name: "Matthew Bundala",
+      venue: "Sea to Sky"
+    },
+    {
+      quote:
+        "We would get married all over again just so we could hangout and work with Patrick again. He’s a talented DJ and a truly caring person.",
+      name: "Stephen Henry",
+      venue: "Whistler"
+    }
+  ];
+
+  const features = [
+    {
+      title: "Bangers Only",
+      text: "No overplayed wedding fluff, no autopilot playlists — just dancefloor-packing tracks."
+    },
+    {
+      title: "Rooted in Squamish",
+      text: "Local life: I know the venues, the vendors, and the vibe across the Sea-to-Sky corridor."
+    },
+    {
+      title: "Seamless planning",
+      text: "Fast replies, clear communication, and zero guesswork from first message to last song."
+    },
+    {
+      title: "Trusted by local venues",
+      text: "Preferred status with many of the region’s most popular venues — the craft earns its place."
+    },
+    {
+      title: "Client backed",
+      text: "Real couples, real parties, real reviews — the results speak for themselves."
+    },
+    {
+      title: "Connection",
+      text: "Real connection creates real results. You’re not just another booking."
+    }
+  ];
+
+  const services = [
+    "Ceremony audio",
+    "Cocktail hour + dinner music",
+    "Reception DJing",
+    "MC support",
+    "Timeline coordination",
+    "Music planning guidance"
+  ];
+
+  const faqs = [
+    {
+      q: "Can we request songs and create a do-not-play list?",
+      a: "Yes. The planning process is designed to help shape the soundtrack around your taste while protecting the energy of the room."
+    },
+    {
+      q: "Do you provide ceremony audio and microphones?",
+      a: "Yes. Ceremony coverage can include speaker setup and microphones for the officiant, vows, and key announcements."
+    },
+    {
+      q: "Do you travel beyond Squamish?",
+      a: "Yes. Weddings in Whistler, Vancouver, and across the Sea-to-Sky corridor can be accommodated depending on date and logistics."
+    },
+    {
+      q: "Can you help with the flow of the evening?",
+      a: "Yes. DJ support is not just about music. It also includes helping the night feel smooth, well-paced, and stress-reduced."
+    }
+  ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className="min-h-screen bg-neutral-950 text-white">
+        <section className="relative overflow-hidden border-b border-white/10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.18),transparent_45%)]" />
+          <div className="mx-auto grid max-w-6xl gap-16 px-6 py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
+            <div className="relative z-10">
+              <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
+                Squamish Wedding DJ · Sea-to-Sky
+              </div>
+              <h1 className="max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+                Creating unforgettable wedding experiences.
+              </h1>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-white/70">
+                Serving Squamish, Whistler, Vancouver, and the corridor with passion — polished sound, seamless planning, and nights that feel elegant, emotional, or wild (often all three).
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+                <a
+                  href="/contact"
+                  className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                >
+                  Check Availability
+                </a>
+                <a
+                  href="/reviews"
+                  className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                >
+                  Read Reviews
+                </a>
+                <a
+                  href="/packages"
+                  className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                >
+                  View Packages
+                </a>
+              </div>
+              <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/45">
+                <a href="/weddings" className="text-white/55 transition hover:text-amber-200/90">
+                  Wedding DJ services
+                </a>
+                <span className="mx-2.5 text-white/20" aria-hidden="true">
+                  ·
+                </span>
+                <a href="/about" className="text-white/55 transition hover:text-amber-200/90">
+                  About Patrick
+                </a>
+              </p>
+              <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 text-sm text-white/70 sm:mt-9 sm:grid-cols-3 sm:gap-4">
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div className="text-xl font-semibold text-white">Bangers Only</div>
+                  <div className="mt-1">No fluff, no autopilot — packed floors</div>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div className="text-xl font-semibold text-white">Rooted here</div>
+                  <div className="mt-1">Squamish — venues, vendors, vibe</div>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div className="text-xl font-semibold text-white">Real connection</div>
+                  <div className="mt-1">You’re not just another booking</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative z-10">
+              <div className="rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/30">
+                <ImageSlot
+                  src={SITE_IMAGES.homeHero}
+                  alt={SITE_IMAGE_ALT.homeHero}
+                  aspect="4/5"
+                  label="Homepage hero"
+                  reservedHint="Reception energy, your venue, or a moment that matches the tone of your day — full-bleed photography works best here."
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
+                <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-5">
+                  <div className="text-sm text-white/60">A True Experience</div>
+                  <div className="mt-2 text-lg font-medium text-white">
+                    Your story, your crowd — a reason to stay on the floor.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="why" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+          <div className="max-w-2xl">
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Why Howe Sound DJ</div>
+            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Sea-to-Sky passion — connection, craft, and packed floors.</h2>
+            <p className="mt-4 text-lg leading-8 text-white/70">
+              It’s not generic wedding filler. It’s deliberate music, local know-how, and a night that moves with your people — from ceremony through the last song.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {features.map((feature) => (
+              <div key={feature.title} className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+                <h3 className="text-xl font-semibold">{feature.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-white/65">{feature.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="reviews" className="border-y border-white/10 bg-white/5">
+          <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div className="max-w-2xl">
+                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Reviews</div>
+                <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Client backed — real couples, real parties.</h2>
+              </div>
+              <div className="flex flex-wrap items-center gap-4">
+                <a href="/reviews" className="text-sm font-semibold text-amber-300 hover:text-amber-200">
+                  All reviews →
+                </a>
+                <a
+                  href="/contact"
+                  className="rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                >
+                  Check Availability
+                </a>
+              </div>
+            </div>
+            <div className="mt-12 grid gap-6 lg:grid-cols-3">
+              {testimonials.map((item) => (
+                <div key={item.name} className="rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
+                  <p className="text-base leading-8 text-white/80">“{item.quote}”</p>
+                  <div className="mt-6 text-sm text-white/50">
+                    {item.name} • {item.venue}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="services" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Services</div>
+              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Support for the full wedding-day experience.</h2>
+              <p className="mt-4 max-w-2xl text-lg leading-8 text-white/70">
+                From ceremony through reception, the service is designed to help the day sound right, feel smooth, and stay aligned with the vibe you want.
+              </p>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {services.map((service) => (
+                  <div key={service} className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm text-white/80">
+                    {service}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Planning process</div>
+              <div className="mt-8 space-y-6">
+                {[
+                  ["01", "Intro call", "Connect on your wedding, your music, and what matters most."],
+                  ["02", "Planning", "Work through key moments, must-plays, do-not-plays, and logistics."],
+                  ["03", "Final coordination", "Confirm the timeline, venue details, and execution plan."],
+                  ["04", "Wedding day", "Deliver polished audio support and a reception people remember."]
+                ].map(([num, title, text]) => (
+                  <div key={num} className="flex gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-300 font-semibold text-neutral-950">
+                      {num}
+                    </div>
+                    <div>
+                      <div className="text-lg font-semibold text-white">{title}</div>
+                      <div className="mt-1 text-sm leading-7 text-white/65">{text}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" className="border-y border-white/10 bg-white/5">
+          <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-2 lg:px-8">
+            <div className="rounded-[2rem] border border-white/10 bg-neutral-950/60 p-6">
+              <ImageSlot
+                src={SITE_IMAGES.homeAboutPreview}
+                alt={SITE_IMAGE_ALT.homeAboutPreview}
+                aspect="4/5"
+                label="Portrait"
+                reservedHint="Calm, approachable presence — the same energy couples get on the wedding day."
+                sizes="(max-width: 1024px) 100vw, 42vw"
+              />
+            </div>
+            <div className="flex flex-col justify-center">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">About</div>
+              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Meet Patrick</h2>
+              <p className="mt-5 text-lg leading-8 text-white/70">
+                Weddings are the focus — not cookie-cutter DJing. The approach is simple: show up prepared, read the room, and treat your wedding like it matters — because it does.
+              </p>
+              <p className="mt-4 text-lg leading-8 text-white/70">
+                Rooted in Squamish with an ear for atmosphere and calm, professional planning support, Patrick helps you feel covered before the day and free to enjoy it when the music hits.
+              </p>
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                <a
+                  href="/contact"
+                  className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                >
+                  Check Availability
+                </a>
+                <a
+                  href="/about"
+                  className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                >
+                  Learn More About Patrick
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-2xl">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">FAQ</div>
+              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Clear answers before you ask.</h2>
+            </div>
+            <a href="/faq" className="shrink-0 text-sm font-semibold text-amber-300 hover:text-amber-200">
+              Full FAQ →
+            </a>
+          </div>
+          <div className="mt-10 space-y-4">
+            {faqs.map((item) => (
+              <div key={item.q} className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6">
+                <h3 className="text-lg font-semibold">{item.q}</h3>
+                <p className="mt-3 max-w-4xl text-sm leading-7 text-white/65">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="contact" className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent">
+          <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+            <div className="rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
+              <div className="max-w-3xl">
+                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Contact</div>
+                <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Let’s talk about your wedding.</h2>
+                <p className="mt-4 max-w-xl text-lg leading-8 text-white/70">
+                  Reach out with your date, venue, and wedding vision. The goal is to make the process feel simple, clear, and straightforward from the start — starting with a consultation when the fit makes sense.
+                </p>
+                <p className="mt-4 max-w-xl text-sm leading-7 text-white/55">
+                  The full inquiry form lives on the contact page — name, partner, email, date, venue, guest count, services, and how you want the night to feel.
+                </p>
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                  <a
+                    href="/contact#inquiry"
+                    className="inline-flex rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                  >
+                    Check Availability
+                  </a>
+                  <a
+                    href="/weddings"
+                    className="inline-flex rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                  >
+                    Wedding services
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </main>
   );
 }

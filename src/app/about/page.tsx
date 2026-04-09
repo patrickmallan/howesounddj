@@ -1,0 +1,238 @@
+import type { Metadata } from "next";
+import { ImageSlot } from "@/components/image-slot";
+import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
+
+export const metadata: Metadata = {
+  title: "About Patrick",
+  description:
+    "Meet Patrick of Howe Sound DJ — Squamish wedding DJ with 15+ years in music, OIART-trained audio background, and a planning-forward approach for Sea-to-Sky weddings.",
+  openGraph: {
+    title: "About Patrick | Howe Sound DJ",
+    description:
+      "Story, approach, and credibility: production-minded sound, local venue familiarity, and wedding dance floors built with intention.",
+    url: "/about",
+  },
+  alternates: { canonical: "/about" },
+};
+
+export default function AboutPage() {
+  const credibility = [
+    {
+      label: "Formal training",
+      title: "Certified in sound",
+      text:
+        "I graduated from the Ontario Institute of Audio Recording Technology — a foundation that runs from recording orchestras to sound design. That background also fed into post work on productions for Netflix and Disney. For your wedding, it means the music sits in a mix that is built, not guessed."
+    },
+    {
+      label: "Wedding-day reliability",
+      title: "Audio you can trust",
+      text:
+        "When something goes wrong with sound, the whole celebration can stall. I troubleshoot and solve problems before they reach your guests — so vows stay clear, speeches land, and the night keeps moving."
+    },
+    {
+      label: "Beyond the playlist",
+      title: "Reading the room",
+      text:
+        "This is not only about picking songs. It is transitions, pacing, and building energy — blending genres, handling requests on the fly, and keeping the floor connected from first dance to last song."
+    },
+    {
+      label: "How couples describe it",
+      title: "Calm, detail-driven, present",
+      text:
+        "People often say the day felt effortless — that I was the steady hand behind the scenes. I take that seriously: professional, adaptable, and focused on the small things that make the music feel magical instead of mechanical."
+    }
+  ];
+
+  return (
+    <main className="min-h-screen bg-neutral-950 text-white">
+      <section className="relative overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.14),transparent_50%)]" />
+        <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
+          <div className="max-w-3xl">
+            <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
+              About Howe Sound DJ
+            </div>
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
+              Meet Patrick
+            </div>
+            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
+              Music is how I connect — weddings are where that connection matters most.
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
+              I am Patrick, the person behind Howe Sound DJ. More than fifteen years in music have taught me that the best nights are not loud for the sake of loud — they are honest to the couple, true to the room, and built with care long before the first guest arrives.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-start">
+          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 lg:sticky lg:top-24">
+            <ImageSlot
+              src={SITE_IMAGES.aboutPortrait}
+              alt={SITE_IMAGE_ALT.aboutPortrait}
+              aspect="4/5"
+              label="Portrait"
+              reservedHint="Calm, professional — at home in the mountains and the Sea-to-Sky corridor."
+              sizes="(max-width: 1024px) 100vw, 45vw"
+            />
+          </div>
+          <div>
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
+              The story
+            </div>
+            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+              From a love of music to a focus on weddings.
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-white/70">
+              This started with a simple love of music. Over time it became something more specific: crafting high-energy, personal experiences where every celebration feels intentional. I have worked with countless couples, each with their own story — from quiet ceremonies to full-scale receptions — and that range is what keeps the work sharp.
+            </p>
+            <p className="mt-4 text-lg leading-8 text-white/70">
+              What has not changed is the through-line: your day should sound like you, not like a template. I show up ready to listen, plan with you, and execute so you can stay in the moment while I handle the flow behind the mixer.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-white/10 bg-white/5">
+        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+          <div className="max-w-3xl">
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
+              The approach
+            </div>
+            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+              Tailored to your taste — and to the room.
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-white/70">
+              I take time to understand your musical world: what you love, what you cannot stand, and the atmosphere you want guests to carry home. Whether you are leaning into classic romance or a packed dance floor, we shape a soundtrack that reflects your vision and keeps people engaged from the first moment to the last.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: "Your style, front and center",
+                text: "Must-plays, do-not-plays, and the in-between — aligned so the night feels personal, not performative."
+              },
+              {
+                title: "Energy with judgment",
+                text: "I build and release tension on the floor so peaks feel earned and quieter moments still feel full."
+              },
+              {
+                title: "Rooted in Squamish",
+                text: "I live and work in this corridor. Local venues and Sea-to-Sky logistics are part of how I plan — not an afterthought."
+              }
+            ].map((item) => (
+              <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
+                <h3 className="text-xl font-semibold">{item.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-white/65">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <div className="max-w-3xl">
+          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
+            Credibility
+          </div>
+          <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+            Production background. Wedding-day instincts.
+          </h2>
+          <p className="mt-4 text-lg leading-8 text-white/70">
+            Couples book me for how the night feels — but the feel holds up because the technical side is solid. Here is what that looks like in practice.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          {credibility.map((item) => (
+            <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/90">{item.label}</div>
+              <h3 className="mt-3 text-xl font-semibold">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-y border-white/10 bg-white/5">
+        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div>
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
+                Experience
+              </div>
+              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+                Specializing in wedding dance floors that feel alive — not forced.
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-white/70">
+                I have been across intimate gatherings and big receptions. That range matters: you get someone who can adapt when the timeline shifts, when the crowd surprises you, or when a speech runs long and the night needs to recover its stride.
+              </p>
+              <p className="mt-4 text-lg leading-8 text-white/70">
+                My job is to make the celebration feel extraordinary in a way that still sounds and feels like you. If that resonates, the next step is a conversation about your date, your venue, and the kind of night you want to build together.
+              </p>
+            </div>
+            <div className="rounded-[2rem] border border-white/10 bg-neutral-950/70 p-8">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
+                At a glance
+              </div>
+              <ul className="mt-8 space-y-4 text-sm leading-7 text-white/75">
+                <li className="flex gap-3">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
+                  <span>15+ years working in music and live events</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
+                  <span>OIART-trained audio foundation + real-world production experience</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
+                  <span>Weddings across the Sea-to-Sky — Squamish, Whistler, and beyond</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
+                  <span>Planning-forward process: clarity before the day, calm during it</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
+          <div className="max-w-3xl">
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
+              Next step
+            </div>
+            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+              If the fit feels right, let’s talk about your wedding.
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-white/70">
+              Send your date, venue, and how you want the night to feel. I will follow up with availability and a clear path to a consultation — no pressure, no generic pitch.
+            </p>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+              <a
+                href="/contact"
+                className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+              >
+                Check Availability
+              </a>
+              <a
+                href="/reviews"
+                className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+              >
+                Read Reviews
+              </a>
+              <a
+                href="/packages"
+                className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+              >
+                View Packages
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
