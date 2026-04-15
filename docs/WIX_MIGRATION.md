@@ -18,13 +18,13 @@ Do these in order to reduce downtime and bad redirects:
 
 1. **Deploy** the new site to Vercel and confirm the latest production deployment is healthy.
 2. **Verify production routes** — spot-check `/`, `/contact`, `/packages`, `/weddings`, `/faq`, `/reviews`, `/about`.
-3. **Verify the contact form** — send a test inquiry; confirm email at `patrick@howesounddj.com` and Reply-To (see **`docs/LAUNCH_CHECKLIST.md`**).
+3. **Verify `/contact`** — date check, booked vs available paths, inquiry email, Calendly link, mobile layout (see **`docs/LAUNCH_CHECKLIST.md`** §6).
 4. **Verify metadata / OG** — share a URL in a private message or [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) if you use social previews; confirm `layout.tsx` / page metadata and `og-default` (or replacement asset).
 5. **Map redirects** — list legacy Wix URLs that still get traffic; add **301** rules to the new paths above (host/CDN or Wix domain forwarding, depending on where DNS points).
 6. **Update DNS / domain** — point `howesounddj.com` / `www` to Vercel per Vercel’s docs; wait for DNS propagation; confirm HTTPS.
 7. **Retest key pages** — home, contact, packages, mobile layout.
 
-Detailed env, Resend, and rollback: **`docs/LAUNCH_CHECKLIST.md`**.
+Detailed env, contact QA, and rollback: **`docs/LAUNCH_CHECKLIST.md`**.
 
 **Notes**
 
@@ -36,6 +36,6 @@ Detailed env, Resend, and rollback: **`docs/LAUNCH_CHECKLIST.md`**.
 
 - [ ] Add final photography to `public/images/` and set paths in `src/config/site-images.ts`.
 - [ ] Optionally replace `public/og-default.svg` with a **1200×630** JPG or PNG for broadest social preview support; update `layout.tsx` `openGraph.images` if the filename changes.
-- [ ] Inquiry email: Resend + Vercel env vars (`docs/LAUNCH_CHECKLIST.md`).
+- [ ] `/contact`: availability + inquiry + Resend (`docs/LAUNCH_CHECKLIST.md` §6); **`booked-dates.ts`** for your real calendar.
 - [ ] Configure **301 redirects** from legacy Wix URLs at the host / CDN.
 - [ ] Deploy on Vercel, assign production domain, verify HTTPS.

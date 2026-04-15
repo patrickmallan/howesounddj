@@ -1,147 +1,165 @@
-import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { NextResponse } from "next/server";
+import { checkContactRateLimit, getClientIp } from "@/lib/contact-rate-limit";
 import {
   formatInquiryHtml,
   formatInquiryPlainText,
   formatInquirySubject,
   type InquiryPayload,
 } from "@/lib/inquiry-email";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 import type { ContactApiResponse } from "@/types/contact-api";
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+export const runtime = "nodejs";
 
 function trimValue(v: unknown): string {
   return typeof v === "string" ? v.trim() : "";
 }
 
-function getRequiredEnv(): { apiKey: string; to: string; from: string } | null {
-  const apiKey = process.env.RESEND_API_KEY?.trim();
-  const to = process.env.CONTACT_TO_EMAIL?.trim();
-  const from = process.env.CONTACT_FROM_EMAIL?.trim();
-  if (!apiKey || !to || !from) {
-    return null;
-  }
-  return { apiKey, to, from };
+function getResend(): Resend | null {
+  const key = process.env.RESEND_API_KEY?.trim();
+  if (!key) return null;
+  return new Resend(key);
 }
 
-export async function POST(request: Request): Promise<NextResponse<ContactApiResponse>> {
+function getMailConfig(): { to: string; from: string } | null {
+  const to = process.env.CONTACT_TO_EMAIL?.trim();
+  const from = process.env.CONTACT_FROM_EMAIL?.trim();
+  if (!to || !from) return null;
+  return { to, from };
+}
+
+function getTurnstileSecret(): string | undefined {
+  return process.env.TURNSTILE_SECRET_KEY?.trim();
+}
+
+export async function POST(request: Request) {
+  const ip = getClientIp(request);
+  const { ok: rateOk } = checkContactRateLimit(ip);
+  if (!rateOk) {
+    return NextResponse.json<ContactApiResponse>(
+      {
+        success: false,
+        message: "Too many attempts from this connection. Please wait a minute and try again.",
+      },
+      { status: 429 }
+    );
+  }
+
+  let data: Record<string, unknown>;
   try {
-    let raw: unknown;
-    try {
-      raw = await request.json();
-    } catch {
-      return NextResponse.json(
-        { success: false, message: "Something went wrong reading your message. Please try again." },
-        { status: 400 }
-      );
-    }
+    data = (await request.json()) as Record<string, unknown>;
+  } catch {
+    return NextResponse.json<ContactApiResponse>(
+      { success: false, message: "Something went wrong — please refresh and try again." },
+      { status: 400 }
+    );
+  }
 
-    if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
-      return NextResponse.json({ success: false, message: "Invalid request." }, { status: 400 });
-    }
+  const company = trimValue(data.company);
+  if (company) {
+    return NextResponse.json<ContactApiResponse>({
+      success: true,
+      message: "Thanks — we will be in touch shortly.",
+    });
+  }
 
-    const data = raw as Record<string, unknown>;
+  const name = trimValue(data.name);
+  const partnerName = trimValue(data.partnerName);
+  const email = trimValue(data.email);
+  const phone = trimValue(data.phone);
+  const weddingDate = trimValue(data.weddingDate);
+  const venue = trimValue(data.venue);
+  const guestCount = trimValue(data.guestCount);
+  const servicesNeeded = trimValue(data.servicesNeeded);
+  const message = trimValue(data.message);
+  const turnstileToken = trimValue(data.turnstileToken);
 
-    const name = trimValue(data.name);
-    const partnerName = trimValue(data.partnerName);
-    const email = trimValue(data.email);
-    const phone = trimValue(data.phone);
-    const weddingDate = trimValue(data.weddingDate);
-    const venue = trimValue(data.venue);
-    const guestCount = trimValue(data.guestCount);
-    const servicesNeeded = trimValue(data.servicesNeeded);
-    const message = trimValue(data.message);
+  const fieldErrors: Record<string, string> = {};
+  if (!name) fieldErrors.name = "Please add your name.";
+  if (!email) fieldErrors.email = "Please add your email.";
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) fieldErrors.email = "Please check your email address.";
+  if (!weddingDate) fieldErrors.weddingDate = "Please add your wedding date.";
+  if (!venue) fieldErrors.venue = "Please add your venue or location.";
+  if (!message) fieldErrors.message = "Please add a short message.";
 
-    const fieldErrors: Record<string, string> = {};
+  if (Object.keys(fieldErrors).length > 0) {
+    return NextResponse.json<ContactApiResponse>(
+      { success: false, message: "Please check the highlighted fields.", fieldErrors },
+      { status: 400 }
+    );
+  }
 
-    if (!name) {
-      fieldErrors.name = "Please add your name.";
-    }
-    if (!email) {
-      fieldErrors.email = "Please add an email address.";
-    } else if (!EMAIL_RE.test(email)) {
-      fieldErrors.email = "Please double-check the email format.";
-    }
-    if (!weddingDate) {
-      fieldErrors.weddingDate = "Please share your wedding date or season.";
-    }
-    if (!venue) {
-      fieldErrors.venue = "Please add a venue or general location.";
-    }
-    if (!message) {
-      fieldErrors.message = "Please share a bit about your wedding or vision.";
-    }
+  const mail = getMailConfig();
+  const resend = getResend();
+  const turnstileSecret = getTurnstileSecret();
 
-    if (Object.keys(fieldErrors).length > 0) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "A few details need attention before we can send this through.",
-          fieldErrors,
-        },
-        { status: 400 }
-      );
-    }
+  if (!mail || !resend) {
+    return NextResponse.json<ContactApiResponse>(
+      {
+        success: false,
+        message: "Delivery is not fully configured yet. Please try again later or use Book a Consult.",
+      },
+      { status: 503 }
+    );
+  }
 
-    const env = getRequiredEnv();
-    if (!env) {
-      return NextResponse.json(
-        {
-          success: false,
-          message:
-            "Inquiry delivery is not configured on the server right now. Please try again later or reach out directly.",
-        },
-        { status: 503 }
-      );
-    }
+  if (!turnstileSecret) {
+    return NextResponse.json<ContactApiResponse>(
+      {
+        success: false,
+        message: "Security check is not configured. Please try again later.",
+      },
+      { status: 503 }
+    );
+  }
 
-    const payload: InquiryPayload = {
-      name,
-      partnerName,
-      email,
-      phone,
-      weddingDate,
-      venue,
-      guestCount,
-      servicesNeeded,
-      message,
-      receivedAt: new Date().toISOString(),
-    };
+  const turnstileOk = await verifyTurnstileToken(turnstileSecret, turnstileToken);
+  if (!turnstileOk) {
+    return NextResponse.json<ContactApiResponse>(
+      {
+        success: false,
+        message: "Security check did not complete. Please refresh and try again.",
+      },
+      { status: 400 }
+    );
+  }
 
-    const resend = new Resend(env.apiKey);
+  const receivedAt = new Date().toISOString();
+  const payload: InquiryPayload = {
+    name,
+    partnerName,
+    email,
+    phone,
+    weddingDate,
+    venue,
+    guestCount,
+    servicesNeeded,
+    message,
+    receivedAt,
+  };
 
-    const sendResult = await resend.emails.send({
-      from: env.from,
-      to: env.to,
+  try {
+    await resend.emails.send({
+      from: mail.from,
+      to: mail.to,
       replyTo: email,
       subject: formatInquirySubject(payload),
       text: formatInquiryPlainText(payload),
       html: formatInquiryHtml(payload),
     });
-
-    if (sendResult.error || !sendResult.data) {
-      return NextResponse.json(
-        {
-          success: false,
-          message:
-            "We could not deliver your note right now. Please try again in a moment, or reach out directly.",
-        },
-        { status: 502 }
-      );
-    }
-
-    return NextResponse.json({
-      success: true,
-      message:
-        "Your note was sent — Patrick will follow up with availability and next steps.",
-    });
   } catch {
-    return NextResponse.json(
+    return NextResponse.json<ContactApiResponse>(
       {
         success: false,
-        message: "Something went wrong on our side. Please try again in a moment.",
+        message: "The message could not be sent. Please try again in a moment.",
       },
-      { status: 500 }
+      { status: 502 }
     );
   }
+
+  return NextResponse.json<ContactApiResponse>({
+    success: true,
+    message: "Thanks — your message is on its way. Patrick will follow up when he can.",
+  });
 }

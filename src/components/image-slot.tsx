@@ -11,15 +11,18 @@ const aspectClass: Record<AspectKey, string> = {
 
 type ImageSlotProps = {
   src: string | null;
+  /** Required for real images — describe the subject for accessibility when `src` is set. */
   alt: string;
   aspect: AspectKey;
-  /** Short label for the reserved zone (e.g. “Hero image”). */
+  /** Short eyebrow when empty — visitor-facing (e.g. “Reception”, “The corridor”). */
   label: string;
-  /** One line describing what belongs here when `src` is null. */
+  /** Empty-state copy: mood and intent, not file instructions (operators use `public/images/README.md`). */
   reservedHint: string;
   priority?: boolean;
   sizes?: string;
-  /** Optional caption or callout below or inside the slot. */
+  /** Merged with `object-cover` for fine-tuning focal point (e.g. landscape in a portrait frame). */
+  imageClassName?: string;
+  /** Optional caption below the image (or below the empty state). */
   children?: ReactNode;
   className?: string;
 };
@@ -32,6 +35,7 @@ export function ImageSlot({
   reservedHint,
   priority,
   sizes = "(max-width: 1024px) 100vw, 50vw",
+  imageClassName,
   children,
   className = "",
 }: ImageSlotProps) {
@@ -48,7 +52,7 @@ export function ImageSlot({
             fill
             priority={priority}
             sizes={sizes}
-            className="object-cover"
+            className={imageClassName ? `object-cover ${imageClassName}` : "object-cover"}
             unoptimized={isSvg}
           />
         </div>
@@ -60,16 +64,21 @@ export function ImageSlot({
   return (
     <figure className={`space-y-4 ${className}`}>
       <div
-        className={`flex flex-col justify-between rounded-[1.5rem] border border-white/10 bg-gradient-to-b from-neutral-900/90 to-neutral-950 p-6 ${aspectClass[aspect]}`}
+        className={`relative flex flex-col justify-center overflow-hidden rounded-[1.5rem] border border-white/10 bg-gradient-to-b from-neutral-900/95 to-neutral-950 p-8 shadow-inner shadow-black/30 ${aspectClass[aspect]}`}
         role="presentation"
       >
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-300/85">{label}</p>
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/50">{reservedHint}</p>
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(251,191,36,0.06),transparent_55%)]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.28] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[length:22px_22px]"
+          aria-hidden
+        />
+        <div className="relative mx-auto max-w-sm text-center">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-amber-300/75">{label}</p>
+          <p className="mt-4 text-sm leading-relaxed text-white/55">{reservedHint}</p>
         </div>
-        <p className="mt-auto max-w-xs text-xs leading-relaxed text-white/40">
-          Reserved for photography — ready when your assets are.
-        </p>
       </div>
       {children ? <figcaption className="text-sm text-white/55">{children}</figcaption> : null}
     </figure>

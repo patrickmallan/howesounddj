@@ -145,6 +145,25 @@ export default function ReviewsPage() {
         </div>
       </section>
 
+      <section className="border-b border-white/10 bg-white/[0.03]">
+        <div className="mx-auto max-w-6xl px-6 py-10 lg:px-8">
+          <div className="flex flex-col gap-6 rounded-[1.75rem] border border-white/10 bg-white/5 px-6 py-6 md:flex-row md:items-center md:justify-between md:gap-8 lg:px-8 lg:py-7">
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/90">Proof-first</p>
+              <p className="mt-2 text-base leading-relaxed text-white/75">
+                This page leads with named couples and verbatim quotes — not lifestyle stock or anonymous five-star blurbs. Read the cards below, then check availability if the fit feels right.
+              </p>
+            </div>
+            <a
+              href="/contact"
+              className="shrink-0 rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+            >
+              Check Availability
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">

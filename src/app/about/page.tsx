@@ -72,8 +72,9 @@ export default function AboutPage() {
               src={SITE_IMAGES.aboutPortrait}
               alt={SITE_IMAGE_ALT.aboutPortrait}
               aspect="4/5"
-              label="Portrait"
-              reservedHint="Calm, professional — at home in the mountains and the Sea-to-Sky corridor."
+              imageClassName="object-[center_28%]"
+              label="Patrick"
+              reservedHint="Headshot or candid — the face couples recognize from first call to last song."
               sizes="(max-width: 1024px) 100vw, 45vw"
             />
           </div>

@@ -114,6 +114,12 @@ export default function WeddingsPage() {
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
               Not the average wedding-DJ package: personalized music and planning around your tastes — whether you want classic romance, a full-throttle dance party, or both in one night.
             </p>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/50">
+              Planning from Vancouver for Squamish, Whistler, or the corridor?{" "}
+              <a href="/vancouver-wedding-dj" className="font-medium text-amber-300/90 transition hover:text-amber-200">
+                Vancouver couples & Sea-to-Sky weddings →
+              </a>
+            </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <a
                 href="/contact"
@@ -138,14 +144,18 @@ export default function WeddingsPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-white/5">
+      <section className="border-y border-white/10 bg-white/5" aria-labelledby="weddings-proof-heading">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+          <h2 id="weddings-proof-heading" className="sr-only">
+            Wedding celebration
+          </h2>
           <ImageSlot
-            src={SITE_IMAGES.weddingsSupport}
-            alt={SITE_IMAGE_ALT.weddingsSupport}
+            src={SITE_IMAGES.weddingsCrowd}
+            alt={SITE_IMAGE_ALT.weddingsCrowd}
             aspect="16/9"
-            label="Wedding day"
-            reservedHint="Ceremony, reception, or venue detail — a wide visual anchor for the wedding story."
+            imageClassName="object-[center_44%]"
+            label="Your people"
+            reservedHint="Candid crowd energy — the people who travel with you and fill the floor."
             sizes="(max-width: 1024px) 100vw, 72rem"
           />
         </div>

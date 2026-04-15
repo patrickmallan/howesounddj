@@ -89,6 +89,11 @@ export function SiteFooter() {
             </Link>
           ))}
         </div>
+        <p className="text-sm text-white/40">
+          <Link href="/vancouver-wedding-dj" className="transition hover:text-white/65">
+            Vancouver couples · Sea-to-Sky and Squamish weddings
+          </Link>
+        </p>
         <div className="flex flex-col gap-3 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
           <div className="text-white/40">© {year} Howe Sound DJ. Squamish Wedding DJ.</div>
           <div className="text-white/40">Serving Squamish, Whistler, Vancouver, and the Sea-to-Sky corridor.</div>

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { faqPageJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -186,8 +188,11 @@ export default function FaqPage() {
     }
   ];
 
+  const faqStructuredData = groups.flatMap((g) => g.items);
+
   return (
     <main className="min-h-screen bg-neutral-950 text-white">
+      <JsonLd data={faqPageJsonLd(faqStructuredData)} />
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.14),transparent_50%)]" />
         <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">

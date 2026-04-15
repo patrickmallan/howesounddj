@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { HomeVideoProof } from "@/components/home-video-proof";
 import { ImageSlot } from "@/components/image-slot";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
+import { VENUES } from "@/config/venues";
 
 export const metadata: Metadata = {
   title: { absolute: "Howe Sound DJ | Squamish Wedding DJ" },
@@ -140,6 +142,12 @@ export default function HoweSoundDJHomepage() {
                   About Patrick
                 </a>
               </p>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/45">
+                <span className="text-white/35">Live in Vancouver but marrying in Squamish or along the Sea-to-Sky?</span>{" "}
+                <a href="/vancouver-wedding-dj" className="text-white/55 transition hover:text-amber-200/90">
+                  Read how local fit works for your wedding →
+                </a>
+              </p>
               <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 text-sm text-white/70 sm:mt-9 sm:grid-cols-3 sm:gap-4">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                   <div className="text-xl font-semibold text-white">Bangers Only</div>
@@ -162,8 +170,9 @@ export default function HoweSoundDJHomepage() {
                   src={SITE_IMAGES.homeHero}
                   alt={SITE_IMAGE_ALT.homeHero}
                   aspect="4/5"
-                  label="Homepage hero"
-                  reservedHint="Reception energy, your venue, or a moment that matches the tone of your day — full-bleed photography works best here."
+                  imageClassName="object-[center_34%]"
+                  label="Reception"
+                  reservedHint="Dance floor energy, your venue, or the room ready for the party — the first impression of the night you are planning."
                   priority
                   sizes="(max-width: 1024px) 100vw, 45vw"
                 />
@@ -177,6 +186,8 @@ export default function HoweSoundDJHomepage() {
             </div>
           </div>
         </section>
+
+        <HomeVideoProof />
 
         <section id="why" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="max-w-2xl">
@@ -193,6 +204,29 @@ export default function HoweSoundDJHomepage() {
                 <p className="mt-3 text-sm leading-7 text-white/65">{feature.text}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="border-y border-white/10 bg-neutral-950" aria-labelledby="home-proof-heading">
+          <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8 lg:py-20">
+            <div className="mb-10 max-w-2xl">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Proof</div>
+              <h2 id="home-proof-heading" className="mt-4 text-3xl font-semibold sm:text-4xl">
+                The kind of night guests talk about after.
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-white/70">
+                A wide shot that shows the energy Howe Sound DJ builds — the floor, the room, or the Sea-to-Sky setting around you.
+              </p>
+            </div>
+            <ImageSlot
+              src={SITE_IMAGES.homeProof}
+              alt={SITE_IMAGE_ALT.homeProof}
+              aspect="16/9"
+              imageClassName="object-[center_41%]"
+              label="The corridor"
+              reservedHint="Mountain backdrop, tent line, or full room — Sea-to-Sky weddings in one frame."
+              sizes="(max-width: 1024px) 100vw, 72rem"
+            />
           </div>
         </section>
 
@@ -223,6 +257,48 @@ export default function HoweSoundDJHomepage() {
                     {item.name} • {item.venue}
                   </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="venues"
+          className="border-t border-white/10 bg-neutral-950"
+          aria-labelledby="home-venues-heading"
+        >
+          <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+            <div className="max-w-2xl">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
+                Venue familiarity
+              </div>
+              <h2 id="home-venues-heading" className="mt-4 text-3xl font-semibold sm:text-4xl">
+                Venues we’ve worked at across Squamish & Sea-to-Sky
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-white/70">
+                From mountaintop receptions to brewery celebrations and restored local spaces, these are some of the
+                venues and businesses where Howe Sound DJ has helped shape wedding days and packed dance floors.
+              </p>
+            </div>
+            <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {VENUES.map((venue) => (
+                <article
+                  key={venue.name}
+                  className="flex flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6"
+                >
+                  <h3 className="text-xl font-semibold leading-snug text-white">
+                    <a
+                      href={venue.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-md text-white transition hover:text-amber-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+                    >
+                      {venue.name}
+                      <span className="sr-only"> (opens in new tab)</span>
+                    </a>
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-white/65">{venue.description}</p>
+                </article>
               ))}
             </div>
           </div>
@@ -275,8 +351,9 @@ export default function HoweSoundDJHomepage() {
                 src={SITE_IMAGES.homeAboutPreview}
                 alt={SITE_IMAGE_ALT.homeAboutPreview}
                 aspect="4/5"
-                label="Portrait"
-                reservedHint="Calm, approachable presence — the same energy couples get on the wedding day."
+                imageClassName="object-[center_30%]"
+                label="Patrick"
+                reservedHint="At the decks or in planning — calm, professional, the presence couples get on the day."
                 sizes="(max-width: 1024px) 100vw, 42vw"
               />
             </div>
@@ -337,11 +414,11 @@ export default function HoweSoundDJHomepage() {
                   Reach out with your date, venue, and wedding vision. The goal is to make the process feel simple, clear, and straightforward from the start — starting with a consultation when the fit makes sense.
                 </p>
                 <p className="mt-4 max-w-xl text-sm leading-7 text-white/55">
-                  The full inquiry form lives on the contact page — name, partner, email, date, venue, guest count, services, and how you want the night to feel.
+                  The contact page is where you check availability and share your wedding details — date, venue, and how you want the night to feel.
                 </p>
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
                   <a
-                    href="/contact#inquiry"
+                    href="/contact#availability"
                     className="inline-flex rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
                   >
                     Check Availability

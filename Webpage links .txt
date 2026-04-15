@@ -1,0 +1,20 @@
+cd ~/Desktop/howesounddj
+npm run dev
+
+🔗 Direct page links for audit
+
+Use these:
+	•	Home
+👉 http://localhost:3000/
+	•	Weddings
+👉 http://localhost:3000/weddings
+	•	Vancouver page
+👉 http://localhost:3000/vancouver-wedding-dj
+	•	About
+👉 http://localhost:3000/about
+	•	Reviews
+👉 http://localhost:3000/reviews
+	•	FAQ
+👉 http://localhost:3000/faq
+	•	Contact
+👉 http://localhost:3000/contact

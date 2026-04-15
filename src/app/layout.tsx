@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@/components/google-analytics";
+import { JsonLd } from "@/components/json-ld";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
+import { organizationJsonLd } from "@/lib/json-ld";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -31,10 +34,10 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: "/og-default.svg",
+        url: "/og-share.jpg",
         width: 1200,
         height: 630,
-        alt: "Howe Sound DJ — Squamish Wedding DJ",
+        alt: "Howe Sound Event DJ wedding dance floor",
       },
     ],
   },
@@ -42,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Howe Sound DJ | Squamish Wedding DJ",
     description: siteDescription,
-    images: ["/og-default.svg"],
+    images: ["/og-share.jpg"],
   },
   robots: {
     index: true,
@@ -61,6 +64,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-neutral-950 text-white">
+        <JsonLd data={organizationJsonLd()} />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-amber-300 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-neutral-950"
@@ -72,6 +76,7 @@ export default function RootLayout({
           {children}
         </div>
         <SiteFooter />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
       </body>
     </html>
   );

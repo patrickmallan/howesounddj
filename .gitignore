@@ -30,8 +30,16 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files — `.env.local` and other secret env files (never commit real secrets)
 .env*
+# keep committed env templates
+!env.example
+!.env.example
+
+# Google Cloud service account key JSON (never commit; use env vars for GOOGLE_PRIVATE_KEY instead)
+*-service-account*.json
+*service-account*.json
+google-credentials.local.json
 
 # vercel
 .vercel
