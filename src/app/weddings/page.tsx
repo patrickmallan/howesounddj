@@ -5,11 +5,11 @@ import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 export const metadata: Metadata = {
   title: "Sea-to-Sky Wedding DJ Services",
   description:
-    "Personalized wedding DJ for Squamish & the corridor — musical tastes to atmosphere you want, ceremony through reception, first dance to last song. Classic romance or a full dance party.",
+    "Personalized wedding DJ for Squamish & the corridor: musical tastes to atmosphere you want, ceremony through reception, first dance to last song. Classic romance or a full dance party.",
   openGraph: {
     title: "Sea-to-Sky Wedding DJ Services | Howe Sound DJ",
     description:
-      "Tailored music for your story — elegant and emotional or wild and unforgettable. Polished, high-energy nights from Howe Sound DJ.",
+      "Tailored music for your story: elegant and emotional or wild and unforgettable. Polished, high-energy nights from Howe Sound DJ.",
     url: "/weddings",
   },
   alternates: { canonical: "/weddings" },
@@ -19,7 +19,7 @@ export default function WeddingsPage() {
   const highlights = [
     {
       title: "Music shaped around you",
-      text: "Your tastes, the atmosphere you want to create, and the crowd in front of you — not a one-size-fits-all wedding playlist."
+      text: "Your tastes, the atmosphere you want to create, and the crowd in front of you, not a one-size-fits-all wedding playlist."
     },
     {
       title: "From first dance to last song",
@@ -27,7 +27,7 @@ export default function WeddingsPage() {
     },
     {
       title: "Calm, professional planning",
-      text: "Fast replies, clear communication, and zero guesswork — the seamless planning side couples actually feel on the day."
+      text: "Fast replies, clear communication, and zero guesswork, the seamless planning side couples actually feel on the day."
     }
   ];
 
@@ -37,7 +37,7 @@ export default function WeddingsPage() {
       items: [
         "Music tailored to the tone you want for arrival and processional moments",
         "Audio for vows, officiant, and what the setting demands",
-        "Setup that respects the space — indoors, tent, or mountain backdrop"
+        "Setup that respects the space: indoors, tent, or mountain backdrop"
       ]
     },
     {
@@ -45,15 +45,15 @@ export default function WeddingsPage() {
       items: [
         "Atmosphere that matches classic romance or sets up the party to come",
         "Smooth handoffs between cocktail, dinner, and speeches",
-        "Volume and vibe that fit conversation — then build when you’re ready"
+        "Volume and vibe that fit conversation, then build when you’re ready"
       ]
     },
     {
       title: "Reception + dance floor",
       items: [
-        "Reading the room — right vibe for the crowd, moment to moment",
+        "Reading the room: right vibe for the crowd, moment to moment",
         "Energy that climbs naturally; no forced “wedding cheese”",
-        "A floor your guests want to stay on — the goal is unforgettable, not filler"
+        "A floor your guests want to stay on. The goal is unforgettable, not filler"
       ]
     }
   ];
@@ -62,12 +62,12 @@ export default function WeddingsPage() {
     {
       step: "01",
       title: "Initial consultation",
-      text: "Your wedding, your venue, and the experience you want guests to talk about — so the fit is real before anything is locked in."
+      text: "Your wedding, your venue, and the experience you want guests to talk about, so the fit is real before anything is locked in."
     },
     {
       step: "02",
       title: "Planning + music direction",
-      text: "Must-plays, do-not-plays, and the arc of the night — classic romance, full dance party, or both — mapped with intention."
+      text: "Must-plays, do-not-plays, and the arc of the night, classic romance, full dance party, or both, mapped with intention."
     },
     {
       step: "03",
@@ -109,10 +109,10 @@ export default function WeddingsPage() {
               Weddings
             </div>
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              Wedding DJ for Squamish, Whistler and the Sea-to-Sky — tailored to you.
+              Wedding DJ for Squamish, Whistler and the Sea-to-Sky, tailored to you.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              Not the average wedding-DJ package: personalized music and planning around your tastes — whether you want classic romance, a full-throttle dance party, or both in one night.
+              Not the average wedding-DJ package: personalized music and planning around your tastes, whether you want classic romance, a full-throttle dance party, or both in one night.
             </p>
             <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/50">
               Planning from Vancouver for Squamish, Whistler, or the corridor?{" "}
@@ -155,7 +155,7 @@ export default function WeddingsPage() {
             aspect="16/9"
             imageClassName="object-[center_44%]"
             label="Your people"
-            reservedHint="Candid crowd energy — the people who travel with you and fill the floor."
+            reservedHint="Candid crowd energy: the people who travel with you and fill the floor."
             sizes="(max-width: 1024px) 100vw, 72rem"
           />
         </div>
@@ -179,10 +179,10 @@ export default function WeddingsPage() {
               What’s included
             </div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              Ceremony through reception — one cohesive sound and flow.
+              Ceremony through reception: one cohesive sound and flow.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              The job is bigger than playlists: it’s helping the day sound right, move well, and match the atmosphere you’re after — polished when it matters, high-energy when it’s time.
+              The job is bigger than playlists: it’s helping the day sound right, move well, and match the atmosphere you’re after, polished when it matters, high-energy when it’s time.
             </p>
           </div>
 
@@ -216,10 +216,10 @@ export default function WeddingsPage() {
               Your story, your energy, your people.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Whether your day leans elegant and emotional or wild and unforgettable (or both), the music is built around you — wide enough range to match the crowd, focused enough to feel personal.
+              Whether your day leans elegant and emotional or wild and unforgettable (or both), the music is built around you, wide enough range to match the crowd, focused enough to feel personal.
             </p>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              That means reading the room, respecting the venue, supporting the timeline, and giving your guests a reason to stay on the floor — from first dance to last song.
+              That means reading the room, respecting the venue, supporting the timeline, and giving your guests a reason to stay on the floor, from first dance to last song.
             </p>
           </div>
 

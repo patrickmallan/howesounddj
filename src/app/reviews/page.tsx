@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Couple Reviews",
   description:
-    "Real couple reviews for Howe Sound DJ — Squamish and Sea-to-Sky weddings, with feedback on planning, music, professionalism, and dance floor energy.",
+    "Real couple reviews for Howe Sound DJ: Squamish and Sea-to-Sky weddings, with feedback on planning, music, professionalism, and dance floor energy.",
   openGraph: {
     title: "Couple Reviews | Howe Sound DJ",
     description:
@@ -66,7 +66,7 @@ export default function ReviewsPage() {
     },
     {
       quote:
-        "Patrick was great at our wedding — the song transitions were perfect, and there was never a lull in music throughout the entire night! The group was dancing, and everyone really enjoyed the music! Thanks Patrick for making our wedding unforgettable!",
+        "Patrick was great at our wedding. The song transitions were perfect, and there was never a lull in music throughout the entire night! The group was dancing, and everyone really enjoyed the music! Thanks Patrick for making our wedding unforgettable!",
       name: "Ellen Selby"
     },
     {
@@ -80,32 +80,32 @@ export default function ReviewsPage() {
     {
       title: "Communication that lowers stress",
       text:
-        "Couples often point to calm, professional, yet personable communication — the kind that makes the day feel manageable, not chaotic."
+        "Couples often point to calm, professional, yet personable communication, the kind that makes the day feel manageable, not chaotic."
     },
     {
       title: "Planning and day-of execution",
       text:
-        "From prep and planning through ceremony, cocktail hour, and reception — reviews call out seamless flow, friendly execution, and a team mindset when things need to run smoothly."
+        "From prep and planning through ceremony, cocktail hour, and reception, reviews call out seamless flow, friendly execution, and a team mindset when things need to run smoothly."
     },
     {
       title: "Music that keeps the floor alive",
       text:
-        "Couples describe packed dance floors, strong transitions, and energy that holds all night — the kind of dancefloor-packing approach Patrick leads with, not a generic wedding formula."
+        "Couples describe packed dance floors, strong transitions, and energy that holds all night, the kind of dancefloor-packing approach Patrick leads with, not a generic wedding formula."
     },
     {
       title: "Local and venue-ready",
       text:
-        "Squamish-based and easy to coordinate with pre-wedding meetings at your venue — the kind of practical, local familiarity that shows up in real couple feedback, alongside Patrick’s “Rooted in Squamish” positioning."
+        "Squamish-based and easy to coordinate with pre-wedding meetings at your venue, the kind of practical, local familiarity that shows up in real couple feedback, alongside Patrick’s “Rooted in Squamish” positioning."
     },
     {
       title: "More than a playlist",
       text:
-        "Patrick’s own framing matches what couples say: reading the room, managing transitions, building energy — not just pressing play."
+        "Patrick’s own framing matches what couples say: reading the room, managing transitions, building energy, not just pressing play."
     },
     {
       title: "Trust and connection",
       text:
-        "Talented DJing plus someone couples genuinely want in their corner — reviews come back to that mix of skill and care again and again."
+        "Talented DJing plus someone couples genuinely want in their corner. Reviews come back to that mix of skill and care again and again."
     }
   ];
 
@@ -125,7 +125,7 @@ export default function ReviewsPage() {
               Proof from weddings across Squamish, Whistler, Vancouver, and the Sea-to-Sky corridor.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              The results speak for themselves — real couples, real parties, real reviews. Fast replies, clear communication, and a Squamish-rooted approach where local venues and vendors are part of how the day comes together.
+              The results speak for themselves: real couples, real parties, real reviews. Fast replies, clear communication, and a Squamish-rooted approach where local venues and vendors are part of how the day comes together.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
@@ -151,7 +151,7 @@ export default function ReviewsPage() {
             <div className="max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/90">Proof-first</p>
               <p className="mt-2 text-base leading-relaxed text-white/75">
-                This page leads with named couples and verbatim quotes — not lifestyle stock or anonymous five-star blurbs. Read the cards below, then check availability if the fit feels right.
+                This page leads with named couples and verbatim quotes, not lifestyle stock or anonymous five-star blurbs. Read the cards below, then check availability if the fit feels right.
               </p>
             </div>
             <a
@@ -173,7 +173,7 @@ export default function ReviewsPage() {
             Words from couples who booked Howe Sound DJ.
           </h2>
           <p className="mt-4 text-lg leading-8 text-white/70">
-            Real words from named couples and clients — the same language you will find on the live site, with only light spelling or grammar fixes where needed.
+            Real words from named couples and clients, the same language you will find on the live site, with only light spelling or grammar fixes where needed.
           </p>
         </div>
 
@@ -185,7 +185,7 @@ export default function ReviewsPage() {
             >
               <blockquote className="flex-1 text-base leading-8 text-white/85">“{item.quote}”</blockquote>
               <figcaption className="mt-6 border-t border-white/10 pt-4 text-sm font-medium text-amber-300/95">
-                — {item.name}
+                {item.name}
               </figcaption>
             </figure>
           ))}
@@ -202,7 +202,7 @@ export default function ReviewsPage() {
               Themes that show up again and again in real feedback.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              These are not invented selling points — they are patterns from the testimonials above and the trust language Howe Sound DJ uses on the live site.
+              These are not invented selling points. They are patterns from the testimonials above and the trust language Howe Sound DJ uses on the live site.
             </p>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -226,10 +226,10 @@ export default function ReviewsPage() {
               Rooted in Squamish. Trusted where it matters.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Howe Sound DJ is built around being authentically local: knowing the venues, the vendors, and the vibe of the Sea-to-Sky corridor. The live site describes preferred status with popular regional venues — the kind of repeat trust that comes from showing up professionally, night after night.
+              Howe Sound DJ is built around being authentically local: knowing the venues, the vendors, and the vibe of the Sea-to-Sky corridor. The live site describes preferred status with popular regional venues, the kind of repeat trust that comes from showing up professionally, night after night.
             </p>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Couples also describe Patrick as the go-to for a reason — seamless and stress-free, a vital part of the team, and someone who goes above and beyond so the celebration stays on track.
+              Couples also describe Patrick as the go-to for a reason: seamless and stress-free, a vital part of the team, and someone who goes above and beyond so the celebration stays on track.
             </p>
           </div>
           <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8">
@@ -240,7 +240,7 @@ export default function ReviewsPage() {
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
                 <span>
-                  <span className="text-white/90">Serving the Sea-to-Sky corridor with passion</span> — weddings are the focus, with a musical range that meets real crowds where they are.
+                  <span className="text-white/90">Serving the Sea-to-Sky corridor with passion.</span> Weddings are the focus, with a musical range that meets real crowds where they are.
                 </span>
               </li>
               <li className="flex gap-3">
@@ -252,7 +252,7 @@ export default function ReviewsPage() {
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
                 <span>
-                  <span className="text-white/90">Client backed:</span> the results speak for themselves — real couples, real parties, real reviews.
+                  <span className="text-white/90">Client backed:</span> the results speak for themselves: real couples, real parties, real reviews.
                 </span>
               </li>
               <li className="flex gap-3">
@@ -273,25 +273,25 @@ export default function ReviewsPage() {
               The experience
             </div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              What working together often feels like — in Patrick’s words.
+              What working together often feels like, in Patrick’s words.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Patrick describes wedding days as feeling effortless when the work behind them is not — professional, adaptable, detail-driven. Clients often call him the “unsung hero” of the event: the music feels magical because it is backed by experience, not luck.
+              Patrick describes wedding days as feeling effortless, even though the work behind them is professional, adaptable, and detail-driven. Clients often call him the “unsung hero” of the event: the music feels magical because it is backed by experience, not luck.
             </p>
           </div>
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {[
               {
                 title: "Before the day",
-                text: "I take the time to get to know you, understand your musical tastes, and learn about the atmosphere you want to create — whether you are dreaming of classic romance or an energetic dance party."
+                text: "I take the time to get to know you, understand your musical tastes, and learn about the atmosphere you want to create, whether you are dreaming of classic romance or an energetic dance party."
               },
               {
                 title: "During the celebration",
-                text: "My job is not just to play music — it is to read the room, manage transitions, and build energy, from blending genres to handling special requests on the fly."
+                text: "My job is not just to play music. It is to read the room, manage transitions, and build energy, from blending genres to handling special requests on the fly."
               },
               {
                 title: "Why it lands",
-                text: "Whether your wedding is elegant and emotional or wild and unforgettable (or both), the goal is a musical journey that is about your story, your energy, and your people — and a dance floor your guests do not want to leave."
+                text: "Whether your wedding is elegant and emotional or wild and unforgettable (or both), the goal is a musical journey that is about your story, your energy, and your people, and a dance floor your guests do not want to leave."
               }
             ].map((block) => (
               <div key={block.title} className="rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
@@ -313,7 +313,7 @@ export default function ReviewsPage() {
               Ready to see if your date is open?
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Send your date, venue, and wedding vision — the next step is a conversation about fit and availability.
+              Send your date, venue, and wedding vision. The next step is a conversation about fit and availability.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a

@@ -2,7 +2,7 @@
 export const SITE_ORIGIN = "https://www.howesounddj.com";
 
 const ORG_DESCRIPTION =
-  "Squamish wedding DJ for Sea-to-Sky weddings. Personalized music, professional planning, and polished ceremony-to-reception support — Whistler, Vancouver, and the corridor.";
+  "Squamish wedding DJ for Sea-to-Sky weddings. Personalized music, professional planning, and polished ceremony-to-reception support, across Whistler, Vancouver, and the corridor.";
 
 /**
  * Sitewide Organization (Squamish-rooted, service-area). No street address on site.

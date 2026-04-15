@@ -12,16 +12,16 @@ export type InquiryPayload = {
 };
 
 function orDash(v: string): string {
-  return v.trim() ? v : "—";
+  return v.trim() ? v : "Not provided";
 }
 
 export function formatInquirySubject(payload: InquiryPayload): string {
-  return `[Howe Sound DJ] New inquiry — ${payload.name}`;
+  return `[Howe Sound DJ] New inquiry: ${payload.name}`;
 }
 
 export function formatInquiryPlainText(payload: InquiryPayload): string {
   const lines = [
-    "New inquiry — Howe Sound DJ",
+    "New inquiry: Howe Sound DJ",
     `Received: ${payload.receivedAt}`,
     "",
     `Name: ${payload.name}`,
@@ -50,7 +50,7 @@ export function formatInquiryHtml(payload: InquiryPayload): string {
 <head><meta charset="utf-8" /></head>
 <body style="margin:0;padding:24px;font-family:system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.5;color:#171717;background:#fafafa;">
   <div style="max-width:560px;margin:0 auto;background:#fff;border:1px solid #e5e5e5;border-radius:8px;padding:24px;">
-    <p style="margin:0 0 16px;font-size:15px;font-weight:600;">New inquiry — Howe Sound DJ</p>
+    <p style="margin:0 0 16px;font-size:15px;font-weight:600;">New inquiry: Howe Sound DJ</p>
     <p style="margin:0 0 20px;font-size:13px;color:#737373;">Received: ${escapeHtml(payload.receivedAt)}</p>
     <table style="width:100%;border-collapse:collapse;margin-bottom:20px;">${row("Name", payload.name)}${row(
   "Partner",

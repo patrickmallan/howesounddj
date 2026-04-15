@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 const VIDEO_PUBLIC_PATH = "videos/home-proof.mp4";
-const POSTER_PUBLIC_PATH = "images/home/home-video-poster.webp";
+/** Uses the same still as the home proof strip (`SITE_IMAGES.homeProof`); no separate poster asset shipped. */
+const POSTER_PUBLIC_PATH = "images/home/home-proof.webp";
 
 const VIDEO_SRC = `/${VIDEO_PUBLIC_PATH}`;
 const POSTER_SRC = `/${POSTER_PUBLIC_PATH}`;
@@ -47,7 +48,7 @@ export function HomeVideoProof() {
               preload="auto"
               controls
               poster={hasPoster ? POSTER_SRC : undefined}
-              aria-label="Illustrative dance floor and celebration atmosphere — plays muted on a loop; use controls to pause or unmute"
+              aria-label="Illustrative dance floor and celebration atmosphere. Plays muted on a loop; use controls to pause or unmute"
             >
               <source src={VIDEO_SRC} type="video/mp4" />
             </video>
@@ -55,7 +56,7 @@ export function HomeVideoProof() {
         ) : null}
 
         <p className={`text-sm leading-relaxed text-white/50 ${hasVideo ? "mt-4" : "mt-10"}`}>
-          The goal is always the same: connection, flow, and Sea-to-Sky celebration energy — with a floor that stays with you.
+          The goal is always the same: connection, flow, and Sea-to-Sky celebration energy, with a floor that stays with you.
         </p>
         <div className="mt-8">
           <a

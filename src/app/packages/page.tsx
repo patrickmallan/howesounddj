@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Packages & Enhancements",
   description:
-    "Wedding DJ packages and optional enhancements for Squamish and Sea-to-Sky weddings — celebration through full-day coverage, plus lighting, audio zones, and custom mixes.",
+    "Wedding DJ packages and optional enhancements for Squamish and Sea-to-Sky weddings: celebration through full-day coverage, plus lighting, audio zones, and custom mixes.",
   openGraph: {
     title: "Packages & Enhancements | Howe Sound DJ",
     description:
-      "Clear package tiers, what every booking includes, and add-ons when you want more — pricing confirmed after your date and venue.",
+      "Clear package tiers, what every booking includes, and add-ons when you want more. Pricing confirmed after your date and venue.",
     url: "/packages",
   },
   alternates: { canonical: "/packages" },
@@ -21,11 +21,11 @@ export default function PackagesPage() {
     },
     {
       title: "Sound chosen for clarity",
-      text: "Equipment selected for clean, balanced audio — from soft moments to full dance-floor energy — with careful setup and level management throughout."
+      text: "Equipment selected for clean, balanced audio, from soft moments to full dance-floor energy, with careful setup and level management throughout."
     },
     {
       title: "Playlists built around you",
-      text: "Custom playlist design shaped by your taste, your crowd, and the atmosphere you want — not a generic wedding formula."
+      text: "Custom playlist design shaped by your taste, your crowd, and the atmosphere you want, not a generic wedding formula."
     },
     {
       title: "Professional execution",
@@ -53,7 +53,7 @@ export default function PackagesPage() {
       name: "Complete Wedding",
       tag: "Most couples start here",
       position:
-        "From the walk down the aisle to the last song — one cohesive soundtrack for ceremony, cocktails, dinner, and the dance floor.",
+        "From the walk down the aisle to the last song: one cohesive soundtrack for ceremony, cocktails, dinner, and the dance floor.",
       highlight: true,
       features: [
         "Full-day DJ service covering ceremony and reception",
@@ -61,14 +61,14 @@ export default function PackagesPage() {
         "Premium sound and lighting package for each phase of the day",
         "Wireless microphones for vows, officiant, and speeches",
         "MC support: introductions, transitions, and a smooth flow for guests",
-        "Pre-event planning — calls, venue coordination when needed, and a shared timeline"
+        "Pre-event planning: calls, venue coordination when needed, and a shared timeline"
       ]
     },
     {
       name: "Signature",
       tag: "Elevated production",
       position:
-        "Everything in Complete Wedding, with room to layer in enhancements when you want the night to feel even more custom — extra lighting, expanded audio, and bespoke music moments.",
+        "Everything in Complete Wedding, with room to layer in enhancements when you want the night to feel even more custom: extra lighting, expanded audio, and bespoke music moments.",
       highlight: false,
       features: [
         "Everything included in Complete Wedding",
@@ -76,7 +76,7 @@ export default function PackagesPage() {
         "Additional speaker setups or zones for complex venues or layouts",
         "Custom-mixed tracks for grand entrance and formal dances",
         "Priority planning for bespoke moments (e.g. specialty entrances, staged reveals)",
-        "Access to the full enhancement menu — silent disco, photo booth coordination, and more"
+        "Access to the full enhancement menu: silent disco, photo booth coordination, and more"
       ]
     }
   ];
@@ -107,7 +107,7 @@ export default function PackagesPage() {
               Clear options. One standard of care.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              Howe Sound DJ is built around customized service — not cookie-cutter blocks of time. Whether you are planning a focused celebration or a full wedding day, these packages describe what you are booking: professional sound, thoughtful music direction, and a host who can steer the room without stealing the spotlight.
+              Howe Sound DJ is built around customized service, not cookie-cutter blocks of time. Whether you are planning a focused celebration or a full wedding day, these packages describe what you are booking: professional sound, thoughtful music direction, and a host who can steer the room without stealing the spotlight.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
@@ -133,7 +133,7 @@ export default function PackagesPage() {
             How to read this page
           </div>
           <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-            Start with the shape of your day — then we align details.
+            Start with the shape of your day, then we align details.
           </h2>
           <p className="mt-4 text-lg leading-8 text-white/70">
             Every booking includes the same commitment to clarity and sound quality. The tiers differ by scope: hours, whether ceremony is in the mix, and how much production layering you want on top of a strong musical foundation.
@@ -181,7 +181,7 @@ export default function PackagesPage() {
             Pricing & availability
           </div>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-white/65">
-            Investment depends on date, location, hours, and any add-ons. Exact pricing is confirmed after a conversation about your venue and timeline — no surprise fees baked into a generic online number. Reach out with your date and vision; I will respond with availability and a clear quote.
+            Investment depends on date, location, hours, and any add-ons. Exact pricing is confirmed after a conversation about your venue and timeline. No surprise fees baked into a generic online number. Reach out with your date and vision; I will respond with availability and a clear quote.
           </p>
         </div>
       </section>
@@ -196,7 +196,7 @@ export default function PackagesPage() {
               The baseline you should expect from Howe Sound DJ.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Tiers change scope — not standards. From soft ballads to peak dance-floor moments, the gear and the approach are built so your event sounds balanced, immersive, and true to what you planned.
+              Tiers change scope, not standards. From soft ballads to peak dance-floor moments, the gear and the approach are built so your event sounds balanced, immersive, and true to what you planned.
             </p>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -220,7 +220,7 @@ export default function PackagesPage() {
               When you want to push the experience further.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Many couples land on Complete Wedding and add one or two enhancements. Signature is for when you already know you want layered lighting, expanded audio, or bespoke music moments — we map it in planning instead of improvising on the day.
+              Many couples land on Complete Wedding and add one or two enhancements. Signature is for when you already know you want layered lighting, expanded audio, or bespoke music moments. We map it in planning instead of improvising on the day.
             </p>
           </div>
           <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8">
@@ -233,7 +233,7 @@ export default function PackagesPage() {
               ))}
             </ul>
             <p className="mt-6 text-sm leading-7 text-white/50">
-              Not sure what you need? That is what the consultation is for — we match enhancements to your venue, guest count, and how you want the night to feel.
+              Not sure what you need? That is what the consultation is for. We match enhancements to your venue, guest count, and how you want the night to feel.
             </p>
           </div>
         </div>
@@ -249,7 +249,7 @@ export default function PackagesPage() {
               Send your date, venue, and the package that closest matches your plan.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              If something sits between tiers, we can shape it — the goal is a quote that reflects your real day, not a label on a spreadsheet.
+              If something sits between tiers, we can shape it. The goal is a quote that reflects your real day, not a label on a spreadsheet.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a

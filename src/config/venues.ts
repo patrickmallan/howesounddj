@@ -89,7 +89,7 @@ export const VENUES: readonly VenueEntry[] = [
     href: "https://www.wcra.org/"
   },
   {
-    name: "Capilano University — Squamish campus",
+    name: "Capilano University, Squamish campus",
     description: "Downtown Squamish campus with bright, flexible rooms for receptions and community gatherings.",
     href: "https://www.capilanou.ca/about-capu/get-to-know-us/our-locations/capu-squamish-campus/"
   }

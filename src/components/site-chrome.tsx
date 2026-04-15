@@ -16,7 +16,7 @@ export function SiteHeader() {
         <Link
           href="/"
           className="min-w-0 text-left transition hover:opacity-90"
-          aria-label="Howe Sound DJ — home"
+          aria-label="Howe Sound DJ home"
         >
           <div className="text-lg font-semibold tracking-[0.2em] uppercase text-amber-300">Howe Sound DJ</div>
           <div className="text-xs text-white/60">Squamish Wedding DJ</div>
@@ -72,7 +72,7 @@ export function SiteFooter() {
           <div>
             <div className="text-base font-semibold text-white/90">Howe Sound DJ</div>
             <p className="mt-1 max-w-md text-sm leading-relaxed text-white/50">
-              Personalized music and professional planning for Sea-to-Sky weddings — ceremony through reception.
+              Personalized music and professional planning for Sea-to-Sky weddings, from ceremony through reception.
             </p>
           </div>
           <Link

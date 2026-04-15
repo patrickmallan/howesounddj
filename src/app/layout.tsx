@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 const siteDescription =
-  "Squamish wedding DJ for Sea-to-Sky weddings. Personalized music, professional planning, and polished ceremony-to-reception support — Whistler, Vancouver, and the corridor.";
+  "Squamish wedding DJ for Sea-to-Sky weddings. Personalized music, professional planning, and polished ceremony-to-reception support, across Whistler, Vancouver, and the corridor.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.howesounddj.com"),

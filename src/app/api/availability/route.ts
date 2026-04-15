@@ -57,7 +57,7 @@ export async function POST(request: Request) {
       success: true,
       available: false,
       message:
-        "That date is already held for another celebration. You can still connect — book a consult to talk options, or send a note if your plans are flexible.",
+        "That date is already held for another celebration. You can still connect. Book a consult to talk options, or send a note if your plans are flexible.",
     });
   }
 

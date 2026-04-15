@@ -11,10 +11,10 @@ const aspectClass: Record<AspectKey, string> = {
 
 type ImageSlotProps = {
   src: string | null;
-  /** Required for real images — describe the subject for accessibility when `src` is set. */
+  /** Required for real images: describe the subject for accessibility when `src` is set. */
   alt: string;
   aspect: AspectKey;
-  /** Short eyebrow when empty — visitor-facing (e.g. “Reception”, “The corridor”). */
+  /** Short eyebrow when empty, visitor-facing (e.g. “Reception”, “The corridor”). */
   label: string;
   /** Empty-state copy: mood and intent, not file instructions (operators use `public/images/README.md`). */
   reservedHint: string;

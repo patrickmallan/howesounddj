@@ -51,7 +51,7 @@ export async function POST(request: Request) {
     data = (await request.json()) as Record<string, unknown>;
   } catch {
     return NextResponse.json<ContactApiResponse>(
-      { success: false, message: "Something went wrong — please refresh and try again." },
+      { success: false, message: "Something went wrong. Please refresh and try again." },
       { status: 400 }
     );
   }
@@ -60,7 +60,7 @@ export async function POST(request: Request) {
   if (company) {
     return NextResponse.json<ContactApiResponse>({
       success: true,
-      message: "Thanks — we will be in touch shortly.",
+      message: "Thanks. We will be in touch shortly.",
     });
   }
 
@@ -160,6 +160,6 @@ export async function POST(request: Request) {
 
   return NextResponse.json<ContactApiResponse>({
     success: true,
-    message: "Thanks — your message is on its way. Patrick will follow up when he can.",
+    message: "Thanks. Your message is on its way. Patrick will follow up when he can.",
   });
 }

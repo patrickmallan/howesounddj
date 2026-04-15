@@ -5,7 +5,7 @@ import { faqPageJsonLd } from "@/lib/json-ld";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Wedding DJ FAQ for Howe Sound DJ — music and playlists, planning and consultation, ceremony and reception support, travel, venues, and optional enhancements.",
+    "Wedding DJ FAQ for Howe Sound DJ: music and playlists, planning and consultation, ceremony and reception support, travel, venues, and optional enhancements.",
   openGraph: {
     title: "FAQ | Howe Sound DJ",
     description:
@@ -65,42 +65,42 @@ export default function FaqPage() {
     {
       id: "music",
       eyebrow: "Music + Personalization",
-      title: "Your taste, your crowd — not a generic wedding formula.",
+      title: "Your taste, your crowd, not a generic wedding formula.",
       intro:
-        "Customized playlists shaped around your story — not a generic wedding formula.",
+        "Customized playlists shaped around your story, not a generic wedding formula.",
       items: [
         {
           q: "Can we request songs and create a do-not-play list?",
-          a: "Yes. The planning process is designed to help shape the soundtrack around your taste while protecting the energy of the room — reflecting what you love while still creating a great experience for the room as a whole."
+          a: "Yes. The planning process is designed to help shape the soundtrack around your taste while protecting the energy of the room, reflecting what you love while still creating a great experience for the room as a whole."
         },
         {
           q: "Is this going to feel like every other wedding playlist?",
-          a: "Patrick leads with a clear point of view: no overplayed wedding fluff, no autopilot playlists — just dancefloor-packing tracks. The work is tailored to your style and preferences: your musical tastes and the atmosphere you want, not a generic formula."
+          a: "Patrick leads with a clear point of view: no overplayed wedding fluff, no autopilot playlists, just dancefloor-packing tracks. The work is tailored to your style and preferences: your musical tastes and the atmosphere you want, not a generic formula."
         },
         {
           q: "What kind of music can you actually cover?",
-          a: "Weddings are the focus, but the range runs from Top 40 to Soca and Dancehall, Country, Latin and Global Fusion, ecstatic dance, House and EDM, and family-friendly dance floors. That breadth is part of reading different crowds — especially yours."
+          a: "Weddings are the focus, but the range runs from Top 40 to Soca and Dancehall, Country, Latin and Global Fusion, ecstatic dance, House and EDM, and family-friendly dance floors. That breadth is part of reading different crowds, especially yours."
         }
       ]
     },
     {
       id: "planning",
       eyebrow: "Planning + Process",
-      title: "Clear communication before the day — less guesswork when it counts.",
+      title: "Clear communication before the day, less guesswork when it counts.",
       intro:
-        "Seamless planning means fast replies, clear communication, and zero guesswork — the same rhythm couples describe when they talk about calm, professional, yet personable communication that made the day stress-free.",
+        "Seamless planning means fast replies, clear communication, and zero guesswork, the same rhythm couples describe when they talk about calm, professional, yet personable communication that made the day stress-free.",
       items: [
         {
           q: "How does planning work before the wedding?",
-          a: "Depending on your package, pre-event planning can include consultation, Zoom calls, venue walkthroughs, and a custom event timeline — so the day is mapped before you step into the venue."
+          a: "Depending on your package, pre-event planning can include consultation, Zoom calls, venue walkthroughs, and a custom event timeline, so the day is mapped before you step into the venue."
         },
         {
           q: "Can you help with the flow of the evening?",
-          a: "Yes. DJ support is not just about music — it also includes helping the night feel smooth, well-paced, and stress-reduced. That sits alongside reading the room, managing transitions, and building energy — not only song selection."
+          a: "Yes. DJ support is not just about music. It also includes helping the night feel smooth, well-paced, and stress-reduced. That sits alongside reading the room, managing transitions, and building energy, not only song selection."
         },
         {
           q: "What happens in the first consultation?",
-          a: "It is the entry point before locking in date and logistics: a chance to talk through the wedding, the sound plan, and how the musical experience should feel — the same “free DJ chat” or consultation Patrick invites couples to on the live site."
+          a: "It is the entry point before locking in date and logistics: a chance to talk through the wedding, the sound plan, and how the musical experience should feel, the same “free DJ chat” or consultation Patrick invites couples to on the live site."
         }
       ]
     },
@@ -109,28 +109,28 @@ export default function FaqPage() {
       eyebrow: "Ceremony + Reception Support",
       title: "From the walk down the aisle to the last song.",
         intro:
-        "Full-day wedding coverage is ceremony plus reception, with premium sound and lighting for each phase — and couples often mention seamless handling of ceremony, cocktail hour, and reception in reviews.",
+        "Full-day wedding coverage is ceremony plus reception, with premium sound and lighting for each phase, and couples often mention seamless handling of ceremony, cocktail hour, and reception in reviews.",
       items: [
         {
           q: "Do you provide ceremony audio and microphones?",
-          a: "Yes. Ceremony coverage can include speaker setup and microphones for the officiant, vows, and key announcements — scaled to what your day actually requires."
+          a: "Yes. Ceremony coverage can include speaker setup and microphones for the officiant, vows, and key announcements, scaled to what your day actually requires."
         },
         {
-          q: "Do you cover cocktail hour and dinner — not only the dance floor?",
-          a: "Full wedding coverage runs from the walk down the aisle to the last dance — ceremony, cocktail hour, dinner, and dance floor — one cohesive arc rather than a reception-only bolt-on."
+          q: "Do you cover cocktail hour and dinner, not only the dance floor?",
+          a: "Full wedding coverage runs from the walk down the aisle to the last dance: ceremony, cocktail hour, dinner, and dance floor, one cohesive arc rather than a reception-only bolt-on."
         },
         {
           q: "Do you MC as well?",
-          a: "MC support can be included where needed to help the evening feel smooth, clear, and professionally guided — including transitions, introductions, and announcements when your run-of-show calls for it."
+          a: "MC support can be included where needed to help the evening feel smooth, clear, and professionally guided, including transitions, introductions, and announcements when your run-of-show calls for it."
         }
       ]
     },
     {
       id: "travel",
       eyebrow: "Travel + Venue + Logistics",
-      title: "Sea-to-Sky roots — and familiarity where you are getting married.",
+      title: "Sea-to-Sky roots, and familiarity where you are getting married.",
         intro:
-        "Patrick describes being rooted in Squamish: knowing the venues, the vendors, and the vibe — with preferred relationships at popular regional venues and repeat experience at top Squamish wedding locations.",
+        "Patrick describes being rooted in Squamish: knowing the venues, the vendors, and the vibe, with preferred relationships at popular regional venues and repeat experience at top Squamish wedding locations.",
       items: [
         {
           q: "Do you travel beyond Squamish?",
@@ -138,11 +138,11 @@ export default function FaqPage() {
         },
         {
           q: "Do you know our venue already?",
-          a: "Couples often book for local familiarity — including pre-wedding meetings at the venue when logistics make sense. Patrick describes being rooted in Squamish: knowing the venues, the vendors, and the vibe of the corridor."
+          a: "Couples often book for local familiarity, including pre-wedding meetings at the venue when logistics make sense. Patrick describes being rooted in Squamish: knowing the venues, the vendors, and the vibe of the corridor."
         },
         {
           q: "How is sound handled on the day?",
-          a: "Equipment is chosen for clarity and dynamic range — from soft ballads to full dance tracks — with meticulous setup, speaker positioning, calibration, and level management so ceremony, speeches, and the party sound balanced and immersive."
+          a: "Equipment is chosen for clarity and dynamic range, from soft ballads to full dance tracks, with meticulous setup, speaker positioning, calibration, and level management so ceremony, speeches, and the party sound balanced and immersive."
         }
       ]
     },
@@ -151,11 +151,11 @@ export default function FaqPage() {
       eyebrow: "Enhancements + Add-ons",
       title: "Optional layers when you want more than the core package.",
         intro:
-        "Custom services are framed as event enhancements — additional lighting, extra sound equipment, or personalized touches that elevate the celebration.",
+        "Custom services are framed as event enhancements: additional lighting, extra sound equipment, or personalized touches that elevate the celebration.",
       items: [
         {
           q: "What add-ons or enhancements are available?",
-          a: "Options include additional dance floor lighting, extra speaker setups, video edits, photo booth add-on, silent disco setup, audio messages from absent loved ones, and custom-mixed tracks for grand entrances and formal dances — discussed during planning so they fit your timeline and vendors."
+          a: "Options include additional dance floor lighting, extra speaker setups, video edits, photo booth add-on, silent disco setup, audio messages from absent loved ones, and custom-mixed tracks for grand entrances and formal dances, discussed during planning so they fit your timeline and vendors."
         },
         {
           q: "Is lighting or extra gear always required?",
@@ -167,24 +167,24 @@ export default function FaqPage() {
 
   const differentiators = [
     {
-      title: "Bangers only — no autopilot",
+      title: "Bangers only, no autopilot",
       text: "No overplayed wedding fluff, no autopilot playlists. Just dancefloor-packing tracks."
     },
     {
       title: "Personalized, not prefab",
-      text: "Tailoring every aspect of the DJ service to fit the vibe of your wedding and the music you love — from elegant ceremonies to high-energy receptions."
+      text: "Tailoring every aspect of the DJ service to fit the vibe of your wedding and the music you love, from elegant ceremonies to high-energy receptions."
     },
     {
       title: "Sound treated like production",
-      text: "Patrick’s background includes formal audio training (Ontario Institute of Audio Recording Technology) and real-world production experience — so the job is not only song selection but managing clarity, transitions, and problems before they derail the moment."
+      text: "Patrick’s background includes formal audio training (Ontario Institute of Audio Recording Technology) and real-world production experience, so the job is not only song selection but managing clarity, transitions, and problems before they derail the moment."
     },
     {
       title: "More than a playlist",
-      text: "Reading the room, managing transitions, building energy — blending genres and handling requests on the fly so the celebration keeps flowing."
+      text: "Reading the room, managing transitions, building energy: blending genres and handling requests on the fly so the celebration keeps flowing."
     },
     {
       title: "Communication you can feel on the day",
-      text: "Reviews consistently name calm, professional, personable communication — the kind that pairs with fast replies and clear planning before you ever step into the venue."
+      text: "Reviews consistently name calm, professional, personable communication, the kind that pairs with fast replies and clear planning before you ever step into the venue."
     }
   ];
 
@@ -204,10 +204,10 @@ export default function FaqPage() {
               Answers before you ask
             </div>
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              Straight answers — so you can book with confidence.
+              Straight answers, so you can book with confidence.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              Most hesitation comes from not knowing how the process works. These answers mirror what Patrick emphasizes in his own words: personalized music, clear planning, professional sound, and a Sea-to-Sky approach rooted in real venues and real weddings — not a generic DJ script.
+              Most hesitation comes from not knowing how the process works. These answers mirror what Patrick emphasizes in his own words: personalized music, clear planning, professional sound, and a Sea-to-Sky approach rooted in real venues and real weddings, not a generic DJ script.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
@@ -234,11 +234,11 @@ export default function FaqPage() {
               Why these questions matter
             </div>
             <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">
-              A great wedding DJ is not only music — it is planning, communication, and execution.
+              A great wedding DJ is not only music. It is planning, communication, and execution.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
               The through-line is consistent: DJ support includes helping the night feel smooth and well-paced; sound is managed from positioning speakers through the last dance; and couples book Patrick because the experience feels{" "}
-              <span className="text-white/85">personalized, local, and dialed-in</span> — not like a one-size-fits-all playlist.
+              <span className="text-white/85">personalized, local, and dialed-in</span>, not like a one-size-fits-all playlist.
             </p>
           </div>
         </div>
@@ -275,10 +275,10 @@ export default function FaqPage() {
             What makes Howe Sound DJ different
           </div>
           <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-            Not your average wedding DJ — on purpose.
+            Not your average wedding DJ, on purpose.
           </h2>
           <p className="mt-4 text-lg leading-8 text-white/70">
-            These themes come straight from how Patrick describes the work — tightened for scanning, not rewritten into bland filler.
+            These themes come straight from how Patrick describes the work, tightened for scanning, not rewritten into bland filler.
           </p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -301,7 +301,7 @@ export default function FaqPage() {
               You do not need a perfect plan to start the conversation.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Reach out with your date, your venue, and a rough sense of how you want the night to feel. The first conversation is there to turn that into a clear path — not to pressure you into a snap decision.
+              Reach out with your date, your venue, and a rough sense of how you want the night to feel. The first conversation is there to turn that into a clear path, not to pressure you into a snap decision.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a

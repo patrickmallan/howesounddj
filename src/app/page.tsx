@@ -7,11 +7,11 @@ import { VENUES } from "@/config/venues";
 export const metadata: Metadata = {
   title: { absolute: "Howe Sound DJ | Squamish Wedding DJ" },
   description:
-    "Squamish wedding DJ for the Sea-to-Sky corridor and beyond — unforgettable experiences, Bangers Only (no autopilot playlists), seamless planning, and real connection. Whistler & Vancouver.",
+    "Squamish wedding DJ for the Sea-to-Sky corridor and beyond: unforgettable experiences, Bangers Only (no autopilot playlists), seamless planning, and real connection. Whistler & Vancouver.",
   openGraph: {
     title: "Howe Sound DJ | Squamish Wedding DJ",
     description:
-      "Creating unforgettable wedding experiences in Squamish, Whistler, and the Sea-to-Sky — rooted locally, trusted at top venues, dancefloor-packing tracks.",
+      "Creating unforgettable wedding experiences in Squamish, Whistler, and the Sea-to-Sky: rooted locally, trusted at top venues, dancefloor-packing tracks.",
     url: "https://www.howesounddj.com",
   },
   alternates: {
@@ -44,7 +44,7 @@ export default function HoweSoundDJHomepage() {
   const features = [
     {
       title: "Bangers Only",
-      text: "No overplayed wedding fluff, no autopilot playlists — just dancefloor-packing tracks."
+      text: "No overplayed wedding fluff, no autopilot playlists, just dancefloor-packing tracks."
     },
     {
       title: "Rooted in Squamish",
@@ -56,11 +56,11 @@ export default function HoweSoundDJHomepage() {
     },
     {
       title: "Trusted by local venues",
-      text: "Preferred status with many of the region’s most popular venues — the craft earns its place."
+      text: "Preferred status with many of the region’s most popular venues. The craft earns its place."
     },
     {
       title: "Client backed",
-      text: "Real couples, real parties, real reviews — the results speak for themselves."
+      text: "Real couples, real parties, real reviews. The results speak for themselves."
     },
     {
       title: "Connection",
@@ -109,7 +109,7 @@ export default function HoweSoundDJHomepage() {
                 Creating unforgettable wedding experiences.
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-8 text-white/70">
-                Serving Squamish, Whistler, Vancouver, and the corridor with passion — polished sound, seamless planning, and nights that feel elegant, emotional, or wild (often all three).
+                Serving Squamish, Whistler, Vancouver, and the corridor with passion: polished sound, seamless planning, and nights that feel elegant, emotional, or wild (often all three).
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
                 <a
@@ -151,11 +151,11 @@ export default function HoweSoundDJHomepage() {
               <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 text-sm text-white/70 sm:mt-9 sm:grid-cols-3 sm:gap-4">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                   <div className="text-xl font-semibold text-white">Bangers Only</div>
-                  <div className="mt-1">No fluff, no autopilot — packed floors</div>
+                  <div className="mt-1">No fluff, no autopilot, packed floors</div>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                   <div className="text-xl font-semibold text-white">Rooted here</div>
-                  <div className="mt-1">Squamish — venues, vendors, vibe</div>
+                  <div className="mt-1">Squamish: venues, vendors, vibe</div>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                   <div className="text-xl font-semibold text-white">Real connection</div>
@@ -172,14 +172,14 @@ export default function HoweSoundDJHomepage() {
                   aspect="4/5"
                   imageClassName="object-[center_34%]"
                   label="Reception"
-                  reservedHint="Dance floor energy, your venue, or the room ready for the party — the first impression of the night you are planning."
+                  reservedHint="Dance floor energy, your venue, or the room ready for the party. The first impression of the night you are planning."
                   priority
                   sizes="(max-width: 1024px) 100vw, 45vw"
                 />
                 <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-5">
                   <div className="text-sm text-white/60">A True Experience</div>
                   <div className="mt-2 text-lg font-medium text-white">
-                    Your story, your crowd — a reason to stay on the floor.
+                    Your story, your crowd, a reason to stay on the floor.
                   </div>
                 </div>
               </div>
@@ -192,9 +192,9 @@ export default function HoweSoundDJHomepage() {
         <section id="why" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="max-w-2xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Why Howe Sound DJ</div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Sea-to-Sky passion — connection, craft, and packed floors.</h2>
+            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Sea-to-Sky passion: connection, craft, and packed floors.</h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              It’s not generic wedding filler. It’s deliberate music, local know-how, and a night that moves with your people — from ceremony through the last song.
+              It’s not generic wedding filler. It’s deliberate music, local know-how, and a night that moves with your people, from ceremony through the last song.
             </p>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -215,7 +215,7 @@ export default function HoweSoundDJHomepage() {
                 The kind of night guests talk about after.
               </h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
-                A wide shot that shows the energy Howe Sound DJ builds — the floor, the room, or the Sea-to-Sky setting around you.
+                A wide shot that shows the energy Howe Sound DJ builds: the floor, the room, or the Sea-to-Sky setting around you.
               </p>
             </div>
             <ImageSlot
@@ -224,7 +224,7 @@ export default function HoweSoundDJHomepage() {
               aspect="16/9"
               imageClassName="object-[center_41%]"
               label="The corridor"
-              reservedHint="Mountain backdrop, tent line, or full room — Sea-to-Sky weddings in one frame."
+              reservedHint="Mountain backdrop, tent line, or full room. Sea-to-Sky weddings in one frame."
               sizes="(max-width: 1024px) 100vw, 72rem"
             />
           </div>
@@ -235,7 +235,7 @@ export default function HoweSoundDJHomepage() {
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div className="max-w-2xl">
                 <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Reviews</div>
-                <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Client backed — real couples, real parties.</h2>
+                <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Client backed: real couples, real parties.</h2>
               </div>
               <div className="flex flex-wrap items-center gap-4">
                 <a href="/reviews" className="text-sm font-semibold text-amber-300 hover:text-amber-200">
@@ -353,7 +353,7 @@ export default function HoweSoundDJHomepage() {
                 aspect="4/5"
                 imageClassName="object-[center_30%]"
                 label="Patrick"
-                reservedHint="At the decks or in planning — calm, professional, the presence couples get on the day."
+                reservedHint="At the decks or in planning: calm, professional, the presence couples get on the day."
                 sizes="(max-width: 1024px) 100vw, 42vw"
               />
             </div>
@@ -361,7 +361,7 @@ export default function HoweSoundDJHomepage() {
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">About</div>
               <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Meet Patrick</h2>
               <p className="mt-5 text-lg leading-8 text-white/70">
-                Weddings are the focus — not cookie-cutter DJing. The approach is simple: show up prepared, read the room, and treat your wedding like it matters — because it does.
+                Weddings are the focus, not cookie-cutter DJing. The approach is simple: show up prepared, read the room, and treat your wedding like it matters, because it does.
               </p>
               <p className="mt-4 text-lg leading-8 text-white/70">
                 Rooted in Squamish with an ear for atmosphere and calm, professional planning support, Patrick helps you feel covered before the day and free to enjoy it when the music hits.
@@ -411,10 +411,10 @@ export default function HoweSoundDJHomepage() {
                 <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Contact</div>
                 <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Let’s talk about your wedding.</h2>
                 <p className="mt-4 max-w-xl text-lg leading-8 text-white/70">
-                  Reach out with your date, venue, and wedding vision. The goal is to make the process feel simple, clear, and straightforward from the start — starting with a consultation when the fit makes sense.
+                  Reach out with your date, venue, and wedding vision. The goal is to make the process feel simple, clear, and straightforward from the start, starting with a consultation when the fit makes sense.
                 </p>
                 <p className="mt-4 max-w-xl text-sm leading-7 text-white/55">
-                  The contact page is where you check availability and share your wedding details — date, venue, and how you want the night to feel.
+                  The contact page is where you check availability and share your wedding details: date, venue, and how you want the night to feel.
                 </p>
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
                   <a

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Script from "next/script";
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
 import type { ContactApiResponse } from "@/types/contact-api";
@@ -16,6 +16,13 @@ type AvailabilityPhase =
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey: string }) {
+  /** Server prop first; then build-time `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (common on Vercel if only the public key was set). */
+  const turnstileSiteKeyResolved = useMemo(() => {
+    const fromServer = turnstileSiteKey.trim();
+    if (fromServer) return fromServer;
+    return (process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "").trim();
+  }, [turnstileSiteKey]);
+
   const [weddingDate, setWeddingDate] = useState("");
   const [dateError, setDateError] = useState("");
   const [availability, setAvailability] = useState<AvailabilityPhase>({ kind: "idle" });
@@ -47,13 +54,13 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
   }, []);
 
   useLayoutEffect(() => {
-    if (!showInquiry || !turnstileSiteKey || !turnstileReady || !turnstileContainerRef.current) return;
+    if (!showInquiry || !turnstileSiteKeyResolved || !turnstileReady || !turnstileContainerRef.current) return;
     const el = turnstileContainerRef.current;
     const api = window.turnstile;
     if (!api?.render) return;
     if (turnstileWidgetIdRef.current) return;
     const id = api.render(el, {
-      sitekey: turnstileSiteKey,
+      sitekey: turnstileSiteKeyResolved,
       callback: (token: string) => setTurnstileToken(token),
       "expired-callback": () => setTurnstileToken(""),
       "error-callback": () => setTurnstileToken(""),
@@ -63,7 +70,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       if (id && window.turnstile?.remove) window.turnstile.remove(id);
       turnstileWidgetIdRef.current = null;
     };
-  }, [showInquiry, turnstileSiteKey, turnstileReady]);
+  }, [showInquiry, turnstileSiteKeyResolved, turnstileReady]);
 
   async function checkAvailability() {
     if (!weddingDate) {
@@ -110,7 +117,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
   async function submitInquiry(e: React.FormEvent) {
     e.preventDefault();
     setFieldErrors({});
-    if (!turnstileSiteKey || !turnstileToken) {
+    if (!turnstileSiteKeyResolved || !turnstileToken) {
       trackEvent(ANALYTICS_EVENTS.contactFormSubmitError, { reason: "turnstile_pending" });
       setFormMessage("Please complete the security check below.");
       setFormStatus("error");
@@ -143,7 +150,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       } catch {
         trackEvent(ANALYTICS_EVENTS.contactFormSubmitError, { reason: "invalid_response" });
         setFormStatus("error");
-        setFormMessage("Something went wrong — please refresh and try again.");
+        setFormMessage("Something went wrong. Please refresh and try again.");
         return;
       }
       if (!data.success) {
@@ -160,7 +167,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
     } catch {
       trackEvent(ANALYTICS_EVENTS.contactFormSubmitError, { reason: "network" });
       setFormStatus("error");
-      setFormMessage("Network error — please check your connection and try again.");
+      setFormMessage("Network error. Please check your connection and try again.");
       resetTurnstile();
     }
   }
@@ -182,7 +189,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         <label className="block text-sm font-medium text-white/80" htmlFor="wedding-date">
           Wedding date
         </label>
-        <p className="mt-1 text-sm text-white/45">Pick your day — we will check it against Patrick&apos;s calendar.</p>
+        <p className="mt-1 text-sm text-white/45">Pick your day. We will check it against Patrick&apos;s calendar.</p>
         <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end">
           <input
             id="wedding-date"
@@ -379,11 +386,14 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
             />
           </div>
 
-          {turnstileSiteKey ? (
+          {turnstileSiteKeyResolved ? (
             <div ref={turnstileContainerRef} className="min-h-[65px]" />
           ) : (
             <p className="text-sm text-amber-200/80">
-              Inquiry delivery is not fully configured on this server yet — use Book a Consult, or try again later.
+              Turnstile (spam protection) is not configured for this deployment. Add{" "}
+              <code className="rounded bg-white/10 px-1 py-0.5 text-xs text-white/90">TURNSTILE_SITE_KEY</code> or{" "}
+              <code className="rounded bg-white/10 px-1 py-0.5 text-xs text-white/90">NEXT_PUBLIC_TURNSTILE_SITE_KEY</code> in
+              your host env, redeploy, or use Book a Consult below.
             </p>
           )}
 
@@ -400,7 +410,11 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
 
           <button
             type="submit"
-            disabled={formStatus === "submitting" || !turnstileSiteKey || (turnstileSiteKey ? !turnstileToken : false)}
+            disabled={
+              formStatus === "submitting" ||
+              !turnstileSiteKeyResolved ||
+              (turnstileSiteKeyResolved ? !turnstileToken : false)
+            }
             className="rounded-full bg-amber-300 px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {formStatus === "submitting" ? "Sending…" : "Send inquiry"}

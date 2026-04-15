@@ -57,9 +57,9 @@ export const SITE_IMAGE_FILES: Record<SiteImageKey, string> = {
  * `openGraph.images` and `twitter.images` in `src/app/layout.tsx` here — the site ships with
  * `/og-default.svg` until you swap.
  */
-/** Target URL once `public/images/social/og-share.jpg` exists — wire into `src/app/layout.tsx` (+ Vancouver `metadata.twitter.images` if you keep an override). */
+/** Matches `openGraph.images` / `twitter.images` in `src/app/layout.tsx` — file lives at `public/og-share.jpg`. */
 export const SITE_SOCIAL_IMAGE_FILES = {
-  ogShare: "/images/social/og-share.jpg",
+  ogShare: "/og-share.jpg",
 } as const;
 
 /**
