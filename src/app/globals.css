@@ -89,19 +89,19 @@ body {
 /* Amplitude on <path>; gentle translateX on nested .hero-sound-flow <g> (continuous stroke). */
 @media (prefers-reduced-motion: no-preference) {
   .hero-sound-identity-svg {
-    opacity: 0.72;
+    opacity: 0.78;
   }
 
   .hero-sound-wave--back {
-    opacity: 0.42;
+    opacity: 0.48;
   }
 
   .hero-sound-wave--mid {
-    opacity: 0.55;
+    opacity: 0.6;
   }
 
   .hero-sound-wave--primary {
-    opacity: 0.86;
+    opacity: 0.9;
   }
 
   .hero-sound-flow {
@@ -194,39 +194,39 @@ body {
 @keyframes hero-sound-amp-bass {
   0%,
   100% {
-    transform: translateX(0) scaleY(0.93);
+    transform: translateX(0) scaleY(0.88);
   }
 
   5% {
-    transform: translateX(0.15px) scaleY(1.07);
+    transform: translateX(0.35px) scaleY(1.12);
   }
 
   12% {
-    transform: translateX(0) scaleY(0.9);
+    transform: translateX(0) scaleY(0.84);
   }
 
   25% {
-    transform: translateX(-0.1px) scaleY(1.02);
+    transform: translateX(-0.22px) scaleY(1.06);
   }
 
   30% {
-    transform: translateX(0) scaleY(0.91);
+    transform: translateX(0) scaleY(0.86);
   }
 
   50% {
-    transform: translateX(0.12px) scaleY(1.05);
+    transform: translateX(0.28px) scaleY(1.1);
   }
 
   56% {
-    transform: translateX(0) scaleY(0.9);
+    transform: translateX(0) scaleY(0.84);
   }
 
   75% {
-    transform: translateX(-0.08px) scaleY(1.01);
+    transform: translateX(-0.2px) scaleY(1.04);
   }
 
   88% {
-    transform: translateX(0) scaleY(0.92);
+    transform: translateX(0) scaleY(0.87);
   }
 }
 
@@ -234,35 +234,35 @@ body {
 @keyframes hero-sound-amp-harmonics {
   0%,
   100% {
-    transform: translateX(0) scaleY(0.91);
+    transform: translateX(0) scaleY(0.87);
   }
 
   12.5% {
-    transform: translateX(0.35px) scaleY(1.04);
+    transform: translateX(0.55px) scaleY(1.08);
   }
 
   25% {
-    transform: translateX(0) scaleY(0.9);
+    transform: translateX(0) scaleY(0.84);
   }
 
   37.5% {
-    transform: translateX(-0.3px) scaleY(1.03);
+    transform: translateX(-0.48px) scaleY(1.06);
   }
 
   50% {
-    transform: translateX(0) scaleY(0.92);
+    transform: translateX(0) scaleY(0.88);
   }
 
   62.5% {
-    transform: translateX(0.28px) scaleY(1.035);
+    transform: translateX(0.45px) scaleY(1.07);
   }
 
   75% {
-    transform: translateX(0) scaleY(0.89);
+    transform: translateX(0) scaleY(0.83);
   }
 
   87.5% {
-    transform: translateX(-0.25px) scaleY(1.025);
+    transform: translateX(-0.42px) scaleY(1.05);
   }
 }
 
@@ -270,34 +270,34 @@ body {
 @keyframes hero-sound-amp-pad {
   0%,
   100% {
-    transform: translateX(0) scaleY(0.86);
+    transform: translateX(0) scaleY(0.8);
   }
 
   50% {
-    transform: translateX(0) scaleY(1.06);
+    transform: translateX(0) scaleY(1.1);
   }
 }
 
-/* Subtle horizontal sway — whole continuous stroke moves, no dashed “segments”. */
+/* Horizontal sway — whole continuous stroke moves (scaled up vs earlier pass). */
 @keyframes hero-sound-flow-sway {
   0%,
   100% {
-    transform: translateX(-0.55px);
+    transform: translateX(-1.35px);
   }
 
   50% {
-    transform: translateX(0.55px);
+    transform: translateX(1.35px);
   }
 }
 
 @keyframes hero-sound-flow-sway-slow {
   0%,
   100% {
-    transform: translateX(-0.35px);
+    transform: translateX(-0.9px);
   }
 
   50% {
-    transform: translateX(0.35px);
+    transform: translateX(0.9px);
   }
 }
 

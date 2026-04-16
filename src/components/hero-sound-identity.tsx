@@ -15,7 +15,7 @@ export function HeroSoundIdentity() {
 
   return (
     <div
-      className="hero-sound-identity mt-5 max-w-[min(100%,20rem)]"
+      className="hero-sound-identity mt-5 max-w-[min(100%,28rem)]"
       aria-hidden
     >
       <svg
@@ -31,7 +31,7 @@ export function HeroSoundIdentity() {
             <path
               d={waveBack}
               stroke="currentColor"
-              strokeWidth="0.55"
+              strokeWidth="0.7"
               strokeLinecap="round"
               vectorEffect="non-scaling-stroke"
             />
@@ -43,7 +43,7 @@ export function HeroSoundIdentity() {
             <path
               d={waveMid}
               stroke="currentColor"
-              strokeWidth="0.85"
+              strokeWidth="1.05"
               strokeLinecap="round"
               vectorEffect="non-scaling-stroke"
             />
@@ -55,7 +55,7 @@ export function HeroSoundIdentity() {
             <path
               d={wavePrimary}
               stroke="currentColor"
-              strokeWidth="1.25"
+              strokeWidth="1.5"
               strokeLinecap="round"
               vectorEffect="non-scaling-stroke"
             />
