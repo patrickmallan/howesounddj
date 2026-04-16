@@ -169,37 +169,37 @@ body {
   }
 
   .hero-sound-identity--anchor .hero-sound-flow--primary {
-    animation: hero-sound-flow-sway-anchor var(--hsdj-phrase) ease-in-out infinite;
+    /* One bar = 4 quarter-note steps — matches kick grid */
+    animation: hero-sound-flow-kick-grid var(--hsdj-bar) cubic-bezier(0.45, 0, 0.55, 1)
+      infinite;
     animation-delay: calc(var(--hsdj-beat) * -5.5);
   }
 
   .hero-sound-identity--anchor .hero-sound-flow--mid {
-    animation: hero-sound-flow-sway-anchor var(--hsdj-phrase) ease-in-out infinite
-      reverse;
+    animation: hero-sound-flow-kick-grid var(--hsdj-bar) cubic-bezier(0.45, 0, 0.55, 1)
+      infinite reverse;
     animation-delay: calc(var(--hsdj-beat) * -3.5);
   }
 
   .hero-sound-identity--anchor .hero-sound-flow--back {
-    animation: hero-sound-flow-sway-slow-anchor calc(var(--hsdj-phrase) * 2)
-      ease-in-out infinite;
+    animation: hero-sound-flow-sway-slow-anchor var(--hsdj-2bar)
+      cubic-bezier(0.45, 0, 0.55, 1) infinite;
     animation-delay: calc(var(--hsdj-beat) * -6.5);
   }
 
   .hero-sound-identity--anchor .hero-sound-wave--back path {
-    animation: hero-sound-amp-pad-anchor var(--hsdj-2bar) cubic-bezier(0.38, 0, 0.45, 1)
-      infinite;
+    animation: hero-sound-amp-pad-anchor var(--hsdj-bar) linear infinite;
     animation-delay: calc(var(--hsdj-beat) * -2.5);
   }
 
   .hero-sound-identity--anchor .hero-sound-wave--mid path {
-    animation: hero-sound-amp-harmonics-anchor var(--hsdj-bar)
-      cubic-bezier(0.3, 0.05, 0.26, 1) infinite;
+    animation: hero-sound-amp-harmonics-anchor var(--hsdj-bar) linear infinite;
     animation-delay: calc(var(--hsdj-beat) * -4);
   }
 
   .hero-sound-identity--anchor .hero-sound-wave--primary path {
-    animation: hero-sound-amp-bass-anchor var(--hsdj-bar)
-      cubic-bezier(0.14, 0.98, 0.28, 0.98) infinite;
+    /* Four equal kicks per bar @ 128 BPM (one cycle = --hsdj-bar) */
+    animation: hero-sound-amp-bass-anchor var(--hsdj-bar) linear infinite;
     animation-delay: calc(var(--hsdj-beat) * -3);
   }
 }
@@ -353,111 +353,132 @@ body {
   }
 }
 
-/* —— Brand anchor only: big sub/bass energy (hero uses milder keyframes above) —— */
+/* —— Brand anchor only: four-on-the-floor @ 128 BPM (equal quarter notes per bar) —— */
 @keyframes hero-sound-amp-bass-anchor {
+  /* Kick on each quarter: 0%, 25%, 50%, 75%; valleys halfway between each beat */
   0%,
   100% {
-    transform: translateX(0) scaleY(0.78);
+    transform: translateX(0) scaleY(1.48);
   }
 
-  6% {
-    transform: translateX(0.65px) scaleY(1.26);
+  3% {
+    transform: translateX(0.28px) scaleY(0.88);
   }
 
-  13% {
-    transform: translateX(0) scaleY(0.72);
+  12.5% {
+    transform: translateX(0) scaleY(0.54);
   }
 
   25% {
-    transform: translateX(-0.4px) scaleY(1.12);
+    transform: translateX(0) scaleY(1.48);
   }
 
-  32% {
-    transform: translateX(0) scaleY(0.76);
+  28% {
+    transform: translateX(-0.22px) scaleY(0.88);
+  }
+
+  37.5% {
+    transform: translateX(0) scaleY(0.54);
   }
 
   50% {
-    transform: translateX(0.55px) scaleY(1.22);
+    transform: translateX(0) scaleY(1.48);
   }
 
-  58% {
-    transform: translateX(0) scaleY(0.74);
+  53% {
+    transform: translateX(0.22px) scaleY(0.88);
+  }
+
+  62.5% {
+    transform: translateX(0) scaleY(0.54);
   }
 
   75% {
-    transform: translateX(-0.38px) scaleY(1.1);
+    transform: translateX(0) scaleY(1.48);
   }
 
-  88% {
-    transform: translateX(0) scaleY(0.8);
+  78% {
+    transform: translateX(-0.28px) scaleY(0.88);
+  }
+
+  87.5% {
+    transform: translateX(0) scaleY(0.54);
   }
 }
 
 @keyframes hero-sound-amp-harmonics-anchor {
+  /* Offbeats (8th notes between kick hits) — same bar length, interleaved */
   0%,
+  25%,
+  50%,
+  75%,
   100% {
-    transform: translateX(0) scaleY(0.78);
+    transform: translateX(0) scaleY(0.58);
   }
 
   12.5% {
-    transform: translateX(0.75px) scaleY(1.16);
-  }
-
-  25% {
-    transform: translateX(0) scaleY(0.74);
+    transform: translateX(0.95px) scaleY(1.34);
   }
 
   37.5% {
-    transform: translateX(-0.65px) scaleY(1.14);
-  }
-
-  50% {
-    transform: translateX(0) scaleY(0.8);
+    transform: translateX(-0.82px) scaleY(1.34);
   }
 
   62.5% {
-    transform: translateX(0.62px) scaleY(1.15);
-  }
-
-  75% {
-    transform: translateX(0) scaleY(0.72);
+    transform: translateX(0.82px) scaleY(1.34);
   }
 
   87.5% {
-    transform: translateX(-0.58px) scaleY(1.12);
+    transform: translateX(-0.95px) scaleY(1.34);
   }
 }
 
 @keyframes hero-sound-amp-pad-anchor {
+  /* Same 4/4 grid, softer — room energy */
   0%,
+  25%,
+  50%,
+  75%,
   100% {
-    transform: translateX(0) scaleY(0.72);
+    transform: translateX(0) scaleY(1.22);
   }
 
-  50% {
-    transform: translateX(0) scaleY(1.14);
+  12.5%,
+  37.5%,
+  62.5%,
+  87.5% {
+    transform: translateX(0) scaleY(0.62);
   }
 }
 
-@keyframes hero-sound-flow-sway-anchor {
+/* Lateral nudge on quarter notes (one bar = one loop) */
+@keyframes hero-sound-flow-kick-grid {
   0%,
   100% {
-    transform: translateX(-2.75px);
+    transform: translateX(-4.25px);
+  }
+
+  25% {
+    transform: translateX(4.25px);
   }
 
   50% {
-    transform: translateX(2.75px);
+    transform: translateX(-4.25px);
+  }
+
+  75% {
+    transform: translateX(4.25px);
   }
 }
 
 @keyframes hero-sound-flow-sway-slow-anchor {
   0%,
   100% {
-    transform: translateX(-1.85px);
+    transform: translateX(-2.6px);
   }
 
   50% {
-    transform: translateX(1.85px);
+    transform: translateX(2.6px);
   }
 }
 
