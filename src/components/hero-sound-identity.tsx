@@ -1,9 +1,11 @@
 /**
  * Visual-only “sound identity” for the hero: a soft waveform motif.
  * No audio, no autoplay — artistic hint of musicality only.
+ *
+ * Layering suggests bass-led groove + lighter harmonic motion; motion is 128 BPM–locked in CSS.
  */
 export function HeroSoundIdentity() {
-  /* Primary: main contour. Back: same phase, gentler amplitude (reads as depth; avoids double-stroke when static). */
+  /* Primary: main contour. Back: damped parallel (avoids double-stroke when static). Mid: offset body / “harmonics”. */
   const wavePrimary =
     "M0 18c16-12 32-12 48 0s32 12 48 0 32-12 48 0 32 12 48 0 32-12 48 0 32 12 48 0 32-12 48 0";
   const waveBack =

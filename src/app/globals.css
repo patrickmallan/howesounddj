@@ -76,57 +76,66 @@ body {
   }
 }
 
-/* Hero sound identity — visual waveform only; no audio */
-/* Amplitude transforms run on <path> with transform-box: view-box — fill-box on
-   stroke-only <g> can yield a degenerate reference box in WebKit/Blink, hiding the wave. */
+/* Hero sound identity — visual waveform only; no audio
+   Timing locked to 128 BPM: beat = 60/128 s, bar = 4 beats, phrase drift = 8 bars. */
+.hero-sound-identity {
+  --hsdj-beat: 0.46875s; /* 128 BPM */
+  --hsdj-bar: 1.875s; /* 4/4 bar */
+  --hsdj-2bar: 3.75s;
+  --hsdj-phrase: 15s; /* 8 bars — slow “track moving” drift */
+}
+
+/* Amplitude on <path> + transform-box: view-box — avoids degenerate fill-box on <g>. */
 @media (prefers-reduced-motion: no-preference) {
   .hero-sound-identity-svg {
     opacity: 0.72;
   }
 
   .hero-sound-wave--back {
-    opacity: 0.45;
+    opacity: 0.42;
   }
 
   .hero-sound-wave--mid {
-    opacity: 0.58;
+    opacity: 0.55;
   }
 
   .hero-sound-wave--primary {
-    opacity: 0.88;
+    opacity: 0.86;
   }
 
   .hero-sound-wave--back path {
     transform-box: view-box;
     transform-origin: 160px 19px;
-    stroke-dasharray: 16 18;
+    stroke-dasharray: 22 26;
     stroke-dashoffset: 0;
     animation:
-      hero-sound-amp-back 6.8s cubic-bezier(0.45, 0, 0.55, 1) infinite,
-      hero-sound-dash-slow 14s linear infinite;
-    animation-delay: -1.4s, 0s;
+      hero-sound-amp-pad var(--hsdj-2bar) cubic-bezier(0.42, 0, 0.58, 1) infinite,
+      hero-sound-dash-pad calc(var(--hsdj-phrase) * 2) linear infinite;
+    animation-delay: calc(var(--hsdj-beat) * -1.5), 0s;
   }
 
   .hero-sound-wave--mid path {
     transform-box: view-box;
     transform-origin: 160px 22px;
-    stroke-dasharray: 11 21;
+    stroke-dasharray: 14 22;
     stroke-dashoffset: 0;
     animation:
-      hero-sound-amp-mid 5.2s cubic-bezier(0.45, 0, 0.55, 1) infinite,
-      hero-sound-dash-rev 11s linear infinite;
-    animation-delay: -0.65s, -2s;
+      hero-sound-amp-harmonics var(--hsdj-bar)
+        cubic-bezier(0.38, 0.12, 0.32, 1) infinite,
+      hero-sound-dash-harmonics var(--hsdj-phrase) linear infinite;
+    animation-delay: calc(var(--hsdj-beat) * -0.5), calc(var(--hsdj-beat) * -2);
   }
 
   .hero-sound-wave--primary path {
     transform-box: view-box;
     transform-origin: 160px 18px;
-    stroke-dasharray: 13 19;
+    stroke-dasharray: 18 22;
     stroke-dashoffset: 0;
     animation:
-      hero-sound-amp-primary 4.1s cubic-bezier(0.45, 0, 0.55, 1) infinite,
-      hero-sound-dash 8.5s linear infinite;
-    animation-delay: -0.2s, -0.8s;
+      hero-sound-amp-bass var(--hsdj-bar) cubic-bezier(0.33, 0.06, 0.28, 1)
+        infinite,
+      hero-sound-dash-bass var(--hsdj-phrase) linear infinite;
+    animation-delay: 0s, calc(var(--hsdj-beat) * -1);
   }
 }
 
@@ -163,91 +172,109 @@ body {
   }
 }
 
-@keyframes hero-sound-amp-primary {
-  0% {
-    transform: translateX(0) scaleY(0.9);
-  }
-
-  18% {
-    transform: translateX(0.6px) scaleY(1.07);
-  }
-
-  38% {
-    transform: translateX(-0.35px) scaleY(0.96);
-  }
-
-  58% {
-    transform: translateX(0.45px) scaleY(1.1);
-  }
-
-  78% {
-    transform: translateX(-0.2px) scaleY(1.02);
-  }
-
+/* Bass line: four-on-the-floor — beats 1 & 3 slightly stronger (128 BPM bar). */
+@keyframes hero-sound-amp-bass {
+  0%,
   100% {
+    transform: translateX(0) scaleY(0.93);
+  }
+
+  5% {
+    transform: translateX(0.15px) scaleY(1.07);
+  }
+
+  12% {
     transform: translateX(0) scaleY(0.9);
-  }
-}
-
-@keyframes hero-sound-amp-mid {
-  0% {
-    transform: translateX(0) scaleY(0.88);
-  }
-
-  22% {
-    transform: translateX(-0.55px) scaleY(1.05);
-  }
-
-  45% {
-    transform: translateX(0.4px) scaleY(0.94);
-  }
-
-  68% {
-    transform: translateX(-0.25px) scaleY(1.08);
-  }
-
-  100% {
-    transform: translateX(0) scaleY(0.88);
-  }
-}
-
-@keyframes hero-sound-amp-back {
-  0% {
-    transform: translateX(0) scaleY(0.85);
   }
 
   25% {
-    transform: translateX(0.35px) scaleY(1.04);
+    transform: translateX(-0.1px) scaleY(1.02);
+  }
+
+  30% {
+    transform: translateX(0) scaleY(0.91);
   }
 
   50% {
-    transform: translateX(-0.45px) scaleY(0.92);
+    transform: translateX(0.12px) scaleY(1.05);
+  }
+
+  56% {
+    transform: translateX(0) scaleY(0.9);
   }
 
   75% {
-    transform: translateX(0.2px) scaleY(1.06);
+    transform: translateX(-0.08px) scaleY(1.01);
   }
 
+  88% {
+    transform: translateX(0) scaleY(0.92);
+  }
+}
+
+/* Harmonics / mid: eighth-note shimmer, half-beat offset via animation-delay. */
+@keyframes hero-sound-amp-harmonics {
+  0%,
   100% {
-    transform: translateX(0) scaleY(0.85);
+    transform: translateX(0) scaleY(0.91);
+  }
+
+  12.5% {
+    transform: translateX(0.35px) scaleY(1.04);
+  }
+
+  25% {
+    transform: translateX(0) scaleY(0.9);
+  }
+
+  37.5% {
+    transform: translateX(-0.3px) scaleY(1.03);
+  }
+
+  50% {
+    transform: translateX(0) scaleY(0.92);
+  }
+
+  62.5% {
+    transform: translateX(0.28px) scaleY(1.035);
+  }
+
+  75% {
+    transform: translateX(0) scaleY(0.89);
+  }
+
+  87.5% {
+    transform: translateX(-0.25px) scaleY(1.025);
   }
 }
 
-@keyframes hero-sound-dash {
-  to {
-    stroke-dashoffset: -40;
+/* Pad / back: slow two-bar breathe — “room” without competing with the bass. */
+@keyframes hero-sound-amp-pad {
+  0%,
+  100% {
+    transform: translateX(0) scaleY(0.86);
+  }
+
+  50% {
+    transform: translateX(0) scaleY(1.06);
   }
 }
 
-@keyframes hero-sound-dash-rev {
+@keyframes hero-sound-dash-bass {
   to {
-    stroke-dashoffset: 36;
+    stroke-dashoffset: -44;
   }
 }
 
-@keyframes hero-sound-dash-slow {
+@keyframes hero-sound-dash-harmonics {
   to {
-    stroke-dashoffset: -32;
+    stroke-dashoffset: 38;
+  }
+}
+
+@keyframes hero-sound-dash-pad {
+  to {
+    stroke-dashoffset: -36;
   }
 }
 
