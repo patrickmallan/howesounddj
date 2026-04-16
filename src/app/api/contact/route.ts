@@ -33,7 +33,17 @@ function getTurnstileSecret(): string | undefined {
   return process.env.TURNSTILE_SECRET_KEY?.trim();
 }
 
+/** Safe server logs for delivery debugging — never log secrets, tokens, or full PII. */
+function logContact(stage: string, data?: Record<string, unknown>) {
+  if (data && Object.keys(data).length > 0) {
+    console.log(`[contact] ${stage}`, data);
+  } else {
+    console.log(`[contact] ${stage}`);
+  }
+}
+
 export async function POST(request: Request) {
+  logContact("request_received");
   const ip = getClientIp(request);
   const { ok: rateOk } = checkContactRateLimit(ip);
   if (!rateOk) {
@@ -103,7 +113,15 @@ export async function POST(request: Request) {
   const resend = getResend();
   const turnstileSecret = getTurnstileSecret();
 
+  logContact("config_check", {
+    has_resend_client: Boolean(resend),
+    has_mail_env: Boolean(mail),
+    has_turnstile_secret: Boolean(turnstileSecret),
+    form_type: formType || "availability_inquiry",
+  });
+
   if (!mail || !resend) {
+    logContact("reject_missing_mail_or_resend");
     return NextResponse.json<ContactApiResponse>(
       {
         success: false,
@@ -114,6 +132,7 @@ export async function POST(request: Request) {
   }
 
   if (!turnstileSecret) {
+    logContact("reject_missing_turnstile_secret");
     return NextResponse.json<ContactApiResponse>(
       {
         success: false,
@@ -125,6 +144,7 @@ export async function POST(request: Request) {
 
   const turnstileOk = await verifyTurnstileToken(turnstileSecret, turnstileToken);
   if (!turnstileOk) {
+    logContact("reject_turnstile_failed");
     return NextResponse.json<ContactApiResponse>(
       {
         success: false,
@@ -133,6 +153,7 @@ export async function POST(request: Request) {
       { status: 400 }
     );
   }
+  logContact("turnstile_verified");
 
   const receivedAt = new Date().toISOString();
   const payload: InquiryPayload = {
@@ -149,8 +170,11 @@ export async function POST(request: Request) {
     inquirySource: isSecondaryInquiry ? "secondary_question" : "availability_led",
   };
 
+  logContact("resend_send_start", { inquiry_source: payload.inquirySource ?? "availability_led" });
+
   try {
-    await resend.emails.send({
+    /** Resend v6 returns `{ data, error }` — it does not throw on API errors; must check `error`. */
+    const sendResult = await resend.emails.send({
       from: mail.from,
       to: mail.to,
       replyTo: email,
@@ -158,7 +182,31 @@ export async function POST(request: Request) {
       text: formatInquiryPlainText(payload),
       html: formatInquiryHtml(payload),
     });
-  } catch {
+
+    if (sendResult.error) {
+      console.error("[contact] resend_send_error", {
+        name: sendResult.error.name,
+        statusCode: sendResult.error.statusCode,
+        message: sendResult.error.message,
+      });
+      return NextResponse.json<ContactApiResponse>(
+        {
+          success: false,
+          message: "The message could not be sent. Please try again in a moment.",
+        },
+        { status: 502 }
+      );
+    }
+
+    const emailId =
+      sendResult.data && typeof sendResult.data === "object" && "id" in sendResult.data
+        ? String((sendResult.data as { id: string }).id)
+        : null;
+    logContact("resend_send_ok", { resend_email_id: emailId });
+  } catch (err) {
+    console.error("[contact] resend_send_exception", {
+      message: err instanceof Error ? err.message : "unknown",
+    });
     return NextResponse.json<ContactApiResponse>(
       {
         success: false,

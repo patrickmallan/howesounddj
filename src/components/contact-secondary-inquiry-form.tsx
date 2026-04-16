@@ -33,6 +33,7 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
   const [turnstileToken, setTurnstileToken] = useState("");
   const turnstileContainerRef = useRef<HTMLDivElement>(null);
   const turnstileWidgetIdRef = useRef<string | null>(null);
+  const weddingDateInputRef = useRef<HTMLInputElement>(null);
   const startedRef = useRef(false);
 
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -65,6 +66,20 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
       turnstileWidgetIdRef.current = null;
     };
   }, [turnstileSiteKeyResolved, turnstileReady]);
+
+  const openWeddingDatePicker = useCallback(() => {
+    const el = weddingDateInputRef.current;
+    if (!el) return;
+    if (typeof el.showPicker === "function") {
+      try {
+        el.showPicker();
+      } catch {
+        el.focus();
+      }
+    } else {
+      el.focus();
+    }
+  }, []);
 
   function handleFocusCapture(e: React.FocusEvent<HTMLFormElement>) {
     if (startedRef.current) return;
@@ -167,8 +182,9 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
     }
   }
 
-  const inputClass =
-    "mt-2 w-full rounded-xl border border-white/15 bg-neutral-950 px-4 py-3 text-sm text-white outline-none focus:border-amber-300/50";
+  const inputClassBase =
+    "w-full rounded-xl border border-white/15 bg-neutral-950 px-4 py-3 text-sm text-white outline-none focus:border-amber-300/50";
+  const inputClass = `mt-2 ${inputClassBase}`;
 
   return (
     <div className="mt-8">
@@ -218,13 +234,37 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
             <label className="text-sm text-white/60" htmlFor="secondary-inquiry-date">
               Wedding date <span className="text-white/35">(optional)</span>
             </label>
-            <input
-              id="secondary-inquiry-date"
-              type="date"
-              value={weddingDateOptional}
-              onChange={(e) => setWeddingDateOptional(e.target.value)}
-              className={inputClass}
-            />
+            <div className="relative mt-2">
+              <input
+                ref={weddingDateInputRef}
+                id="secondary-inquiry-date"
+                type="date"
+                value={weddingDateOptional}
+                onChange={(e) => setWeddingDateOptional(e.target.value)}
+                className={`${inputClassBase} pr-12`}
+              />
+              <button
+                type="button"
+                onClick={openWeddingDatePicker}
+                className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-lg p-1.5 text-amber-300/75 outline-none transition hover:bg-white/10 hover:text-amber-200/90 focus-visible:ring-2 focus-visible:ring-amber-400/45"
+                aria-label="Open calendar to choose wedding date"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                  aria-hidden
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <path d="M16 2v4M8 2v4M3 10h18" />
+                </svg>
+              </button>
+            </div>
           </div>
           <div>
             <label className="text-sm text-white/60" htmlFor="secondary-inquiry-venue">
