@@ -1,6 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
+import Image from "next/image";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+
+const LOGO_SRC = "/images/logo/howe-sound-logo.webp";
 
 const VIDEO_PUBLIC_PATH = "videos/home-proof.mp4";
 /** Uses the same still as the home proof strip (`SITE_IMAGES.homeProof`); no separate poster asset shipped. */
@@ -41,7 +44,7 @@ export function HomeVideoProof() {
         {hasVideo ? (
           <div className="relative mt-10 aspect-video w-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-neutral-900 shadow-2xl shadow-black/40">
             <video
-              className="h-full w-full object-cover"
+              className="relative z-0 h-full w-full object-cover"
               autoPlay
               loop
               muted
@@ -53,6 +56,30 @@ export function HomeVideoProof() {
             >
               <source src={VIDEO_SRC} type="video/mp4" />
             </video>
+            {/* Softening layers: reduce harsh motion detail; pointer-events-none keeps video controls clickable */}
+            <div
+              className="pointer-events-none absolute inset-0 z-[1] bg-black/20"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-black/25 via-transparent to-black/35"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/25 via-transparent to-transparent"
+              aria-hidden
+            />
+            <div className="pointer-events-none absolute inset-0 z-[2] flex items-center justify-center px-4">
+              <Image
+                src={LOGO_SRC}
+                alt=""
+                width={2000}
+                height={2000}
+                className="h-auto w-[40%] max-w-[320px] object-contain opacity-[0.82] md:w-[30%]"
+                sizes="(max-width: 768px) 40vw, 320px"
+                priority={false}
+              />
+            </div>
           </div>
         ) : null}
 
