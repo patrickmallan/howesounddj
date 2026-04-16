@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
 const navLinks = [
@@ -10,7 +13,15 @@ const navLinks = [
   { href: "/contact", label: "Contact" }
 ] as const;
 
+/** True when this nav item’s route is the current page or a nested segment (e.g. /contact/...), without false positives like /faq vs /faq-extra. */
+function isActiveNavHref(pathname: string, href: string): boolean {
+  if (pathname === href) return true;
+  return pathname.startsWith(`${href}/`);
+}
+
 export function SiteHeader() {
+  const pathname = usePathname() ?? "";
+
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-6 py-4 lg:px-8">
@@ -27,11 +38,23 @@ export function SiteHeader() {
             className="hidden flex-wrap items-center justify-end gap-x-5 gap-y-2 text-sm text-white/80 md:flex"
             aria-label="Primary"
           >
-            {navLinks.map((item) => (
-              <Link key={item.href} href={item.href} className="transition hover:text-white">
-                {item.label}
-              </Link>
-            ))}
+            {navLinks.map((item) => {
+              const active = isActiveNavHref(pathname, item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={
+                    active
+                      ? "text-amber-300 transition hover:text-amber-200"
+                      : "text-white/80 transition hover:text-white"
+                  }
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
           <details className="relative md:hidden">
             <summary className="flex min-h-[44px] min-w-[44px] cursor-pointer list-none items-center justify-center rounded-full border border-white/15 px-3 text-sm text-white/85 outline-none transition hover:border-white/25 [&::-webkit-details-marker]:hidden">
@@ -41,15 +64,23 @@ export function SiteHeader() {
               className="absolute right-0 z-50 mt-2 flex w-52 flex-col divide-y divide-white/10 overflow-hidden rounded-xl border border-white/10 bg-neutral-950/95 shadow-xl shadow-black/40 backdrop-blur"
               aria-label="Mobile primary"
             >
-              {navLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block px-4 py-3 text-sm text-white/85 transition hover:bg-white/5 hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {navLinks.map((item) => {
+                const active = isActiveNavHref(pathname, item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    className={
+                      active
+                        ? "block px-4 py-3 text-sm text-amber-300 transition hover:bg-white/5 hover:text-amber-200"
+                        : "block px-4 py-3 text-sm text-white/85 transition hover:bg-white/5 hover:text-white"
+                    }
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </nav>
           </details>
           <CheckAvailabilityTrackedLink
