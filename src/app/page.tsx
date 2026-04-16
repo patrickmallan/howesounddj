@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import { BrandAnchorStatement } from "@/components/brand-anchor-statement";
+import { HeroSoundIdentity } from "@/components/hero-sound-identity";
 import { HomepageHeroHeadline } from "@/components/homepage-hero-headline";
 import { HomeVideoProof } from "@/components/home-video-proof";
 import { ImageSlot } from "@/components/image-slot";
@@ -117,6 +119,7 @@ export default function HoweSoundDJHomepage() {
                 Squamish Wedding DJ · Sea-to-Sky
               </div>
               <HomepageHeroHeadline headlines={HEADLINE_VARIANTS} />
+              <HeroSoundIdentity />
               <p className="mt-6 max-w-xl text-lg leading-8 text-white/70">
                 Serving Squamish, Whistler, Vancouver, and the corridor with passion: polished sound, seamless planning, and nights that feel elegant, emotional, or wild (often all three).
               </p>
@@ -197,6 +200,8 @@ export default function HoweSoundDJHomepage() {
         <SectionReveal>
           <HomeVideoProof />
         </SectionReveal>
+
+        <BrandAnchorStatement />
 
         <SectionReveal as="section" id="why" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="max-w-2xl">

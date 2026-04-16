@@ -76,6 +76,31 @@ body {
   }
 }
 
+/* Hero sound identity — visual waveform only; no audio */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-sound-identity-svg {
+    opacity: 0.62;
+    animation: hero-sound-breathe 5s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-sound-identity-svg {
+    opacity: 0.5;
+  }
+}
+
+@keyframes hero-sound-breathe {
+  0%,
+  100% {
+    opacity: 0.48;
+  }
+
+  50% {
+    opacity: 0.78;
+  }
+}
+
 /* Subtle film grain on featured panels — very low contrast */
 .atmosphere-grain {
   position: relative;
