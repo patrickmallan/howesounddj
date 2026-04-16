@@ -150,6 +150,47 @@ body {
     animation: hero-sound-amp-bass var(--hsdj-bar) cubic-bezier(0.33, 0.06, 0.28, 1)
       infinite;
   }
+
+  /* Secondary waveform (e.g. brand anchor): a touch quieter + phase-shifted vs hero */
+  .hero-sound-identity--anchor .hero-sound-identity-svg {
+    opacity: 0.68;
+  }
+
+  .hero-sound-identity--anchor .hero-sound-wave--back {
+    opacity: 0.4;
+  }
+
+  .hero-sound-identity--anchor .hero-sound-wave--mid {
+    opacity: 0.52;
+  }
+
+  .hero-sound-identity--anchor .hero-sound-wave--primary {
+    opacity: 0.82;
+  }
+
+  .hero-sound-identity--anchor .hero-sound-flow--primary {
+    animation-delay: calc(var(--hsdj-beat) * -5.5);
+  }
+
+  .hero-sound-identity--anchor .hero-sound-flow--mid {
+    animation-delay: calc(var(--hsdj-beat) * -3.5);
+  }
+
+  .hero-sound-identity--anchor .hero-sound-flow--back {
+    animation-delay: calc(var(--hsdj-beat) * -6.5);
+  }
+
+  .hero-sound-identity--anchor .hero-sound-wave--back path {
+    animation-delay: calc(var(--hsdj-beat) * -2.5);
+  }
+
+  .hero-sound-identity--anchor .hero-sound-wave--mid path {
+    animation-delay: calc(var(--hsdj-beat) * -4);
+  }
+
+  .hero-sound-identity--anchor .hero-sound-wave--primary path {
+    animation-delay: calc(var(--hsdj-beat) * -3);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

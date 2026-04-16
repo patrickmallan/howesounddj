@@ -4,7 +4,16 @@
  *
  * Layering suggests bass-led groove + lighter harmonic motion; motion is 128 BPM–locked in CSS.
  */
-export function HeroSoundIdentity() {
+type HeroSoundIdentityProps = {
+  /** Secondary placement (e.g. brand anchor): slightly smaller, centered, de-synced motion. */
+  variant?: "default" | "anchor";
+  className?: string;
+};
+
+export function HeroSoundIdentity({
+  variant = "default",
+  className = "",
+}: HeroSoundIdentityProps) {
   /* Primary: main contour. Back: damped parallel (avoids double-stroke when static). Mid: offset body / “harmonics”. */
   const wavePrimary =
     "M0 18c16-12 32-12 48 0s32 12 48 0 32-12 48 0 32 12 48 0 32-12 48 0 32 12 48 0 32-12 48 0";
@@ -13,11 +22,13 @@ export function HeroSoundIdentity() {
   const waveMid =
     "M0 22c20 8 40 8 60 0s40-8 60 0 40 8 60 0 40-8 60 0 40 8 60 0 40-8 60 0";
 
+  const rootClass =
+    variant === "anchor"
+      ? `hero-sound-identity hero-sound-identity--anchor mt-6 max-w-[min(100%,24rem)] mx-auto ${className}`.trim()
+      : `hero-sound-identity mt-5 max-w-[min(100%,28rem)] ${className}`.trim();
+
   return (
-    <div
-      className="hero-sound-identity mt-5 max-w-[min(100%,28rem)]"
-      aria-hidden
-    >
+    <div className={rootClass} aria-hidden>
       <svg
         viewBox="0 0 320 36"
         fill="none"

@@ -1,3 +1,4 @@
+import { HeroSoundIdentity } from "@/components/hero-sound-identity";
 import { SectionReveal } from "@/components/motion";
 
 /**
@@ -26,7 +27,8 @@ export function BrandAnchorStatement() {
           Packed dance floors.
           <span className="block mt-2 text-amber-200/95 md:mt-3">Every time.</span>
         </h2>
-        <p className="mx-auto mt-10 max-w-xl text-base leading-relaxed text-white/45 md:text-lg">
+        <HeroSoundIdentity variant="anchor" />
+        <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-white/45 md:mt-10 md:text-lg">
           Music, room, and crowd—read with intention, not left to chance.
         </p>
       </div>
