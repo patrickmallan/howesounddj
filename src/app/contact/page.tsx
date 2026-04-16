@@ -47,7 +47,7 @@ export default function ContactPage() {
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <CheckAvailabilityTrackedLink
-                href="#availability"
+                href="/contact#availability"
                 surface="page_cta"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
               />
@@ -188,7 +188,7 @@ export default function ContactPage() {
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <CheckAvailabilityTrackedLink
-                href="#availability"
+                href="/contact#availability"
                 surface="page_cta"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
               />
