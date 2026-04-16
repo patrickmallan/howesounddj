@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
 export const metadata: Metadata = {
   title: "Couple Reviews",
@@ -128,12 +129,10 @@ export default function ReviewsPage() {
               The results speak for themselves: real couples, real parties, real reviews. Fast replies, clear communication, and a Squamish-rooted approach where local venues and vendors are part of how the day comes together.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="/contact"
+              <CheckAvailabilityTrackedLink
+                surface="hero"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              >
-                Check Availability
-              </a>
+              />
               <a
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -154,12 +153,10 @@ export default function ReviewsPage() {
                 This page leads with named couples and verbatim quotes, not lifestyle stock or anonymous five-star blurbs. Read the cards below, then check availability if the fit feels right.
               </p>
             </div>
-            <a
-              href="/contact"
+            <CheckAvailabilityTrackedLink
+              surface="inline"
               className="shrink-0 rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-            >
-              Check Availability
-            </a>
+            />
           </div>
         </div>
       </section>
@@ -316,12 +313,10 @@ export default function ReviewsPage() {
               Send your date, venue, and wedding vision. The next step is a conversation about fit and availability.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="/contact"
+              <CheckAvailabilityTrackedLink
+                surface="page_cta"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              >
-                Check Availability
-              </a>
+              />
               <a
                 href="/about"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

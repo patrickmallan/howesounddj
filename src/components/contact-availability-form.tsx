@@ -7,6 +7,16 @@ import type { ContactApiResponse } from "@/types/contact-api";
 
 const CALENDLY_URL = "https://calendly.com/patrick-howesounddj";
 
+function clientPagePath(): string | undefined {
+  if (typeof window === "undefined") return undefined;
+  return window.location.pathname;
+}
+
+const FORM_ANALYTICS = {
+  surface: "contact_form",
+  form_type: "inquiry",
+} as const;
+
 type AvailabilityPhase =
   | { kind: "idle" }
   | { kind: "checking" }
@@ -32,6 +42,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
   const [turnstileToken, setTurnstileToken] = useState("");
   const turnstileContainerRef = useRef<HTMLDivElement>(null);
   const turnstileWidgetIdRef = useRef<string | null>(null);
+  const inquiryFormEngagementRef = useRef(false);
 
   const [name, setName] = useState("");
   const [partnerName, setPartnerName] = useState("");
@@ -78,6 +89,12 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       return;
     }
     setDateError("");
+    trackEvent(ANALYTICS_EVENTS.availabilityCheckStart, {
+      surface: "contact_form",
+      form_type: "availability",
+      status: "start",
+      page_path: clientPagePath(),
+    });
     setAvailability({ kind: "checking" });
     setShowInquiry(false);
     setFormStatus("idle");
@@ -94,6 +111,13 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         message?: string;
       };
       if (!res.ok || data.success === false) {
+        trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+          surface: "contact_form",
+          form_type: "availability",
+          status: "success",
+          result: "unavailable",
+          page_path: clientPagePath(),
+        });
         setAvailability({
           kind: "unavailable",
           message: data.message ?? "That date could not be checked. Try again in a moment.",
@@ -101,12 +125,33 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         return;
       }
       if (data.available === false) {
+        trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+          surface: "contact_form",
+          form_type: "availability",
+          status: "success",
+          result: "unavailable",
+          page_path: clientPagePath(),
+        });
         setAvailability({ kind: "unavailable", message: data.message ?? "That date is not available." });
         return;
       }
+      trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+        surface: "contact_form",
+        form_type: "availability",
+        status: "success",
+        result: "available",
+        page_path: clientPagePath(),
+      });
       setAvailability({ kind: "available", message: data.message ?? "That date looks open." });
       setShowInquiry(false);
     } catch {
+      trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+        surface: "contact_form",
+        form_type: "availability",
+        status: "success",
+        result: "unavailable",
+        page_path: clientPagePath(),
+      });
       setAvailability({
         kind: "unavailable",
         message: "Something went wrong checking the date. Please try again.",
@@ -114,16 +159,41 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
     }
   }
 
+  function trackCalendlyClick() {
+    trackEvent(ANALYTICS_EVENTS.calendlyClick, { surface: FORM_ANALYTICS.surface });
+  }
+
+  function handleInquiryFormFocusCapture(e: React.FocusEvent<HTMLFormElement>) {
+    if (inquiryFormEngagementRef.current) return;
+    const t = e.target;
+    if (!(t instanceof HTMLInputElement) && !(t instanceof HTMLTextAreaElement)) return;
+    if (t.id === "inquiry-company") return;
+    inquiryFormEngagementRef.current = true;
+    trackEvent(ANALYTICS_EVENTS.contactFormStart, {
+      surface: "contact_form",
+      form_type: "inquiry",
+      status: "start",
+      page_path: clientPagePath(),
+    });
+  }
+
   async function submitInquiry(e: React.FormEvent) {
     e.preventDefault();
     setFieldErrors({});
+    trackEvent(ANALYTICS_EVENTS.contactFormSubmitAttempt, {
+      ...FORM_ANALYTICS,
+      status: "attempt",
+    });
     if (!turnstileSiteKeyResolved || !turnstileToken) {
-      trackEvent(ANALYTICS_EVENTS.contactFormSubmitError, { reason: "turnstile_pending" });
+      trackEvent(ANALYTICS_EVENTS.contactFormSubmitError, {
+        ...FORM_ANALYTICS,
+        status: "error",
+        reason: "turnstile_pending",
+      });
       setFormMessage("Please complete the security check below.");
       setFormStatus("error");
       return;
     }
-    trackEvent(ANALYTICS_EVENTS.contactFormSubmitAttempt);
     setFormStatus("submitting");
     setFormMessage("");
     try {
@@ -148,24 +218,39 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       try {
         data = (await res.json()) as ContactApiResponse;
       } catch {
-        trackEvent(ANALYTICS_EVENTS.contactFormSubmitError, { reason: "invalid_response" });
+        trackEvent(ANALYTICS_EVENTS.contactFormSubmitError, {
+          ...FORM_ANALYTICS,
+          status: "error",
+          reason: "invalid_response",
+        });
         setFormStatus("error");
         setFormMessage("Something went wrong. Please refresh and try again.");
         return;
       }
       if (!data.success) {
         if (data.fieldErrors) setFieldErrors(data.fieldErrors);
-        trackEvent(ANALYTICS_EVENTS.contactFormSubmitError, { reason: "validation_or_server" });
+        trackEvent(ANALYTICS_EVENTS.contactFormSubmitError, {
+          ...FORM_ANALYTICS,
+          status: "error",
+          reason: "validation_or_server",
+        });
         setFormStatus("error");
         setFormMessage(data.message);
         resetTurnstile();
         return;
       }
-      trackEvent(ANALYTICS_EVENTS.contactFormSubmitSuccess);
+      trackEvent(ANALYTICS_EVENTS.contactFormSubmitSuccess, {
+        ...FORM_ANALYTICS,
+        status: "success",
+      });
       setFormStatus("success");
       setFormMessage(data.message);
     } catch {
-      trackEvent(ANALYTICS_EVENTS.contactFormSubmitError, { reason: "network" });
+      trackEvent(ANALYTICS_EVENTS.contactFormSubmitError, {
+        ...FORM_ANALYTICS,
+        status: "error",
+        reason: "network",
+      });
       setFormStatus("error");
       setFormMessage("Network error. Please check your connection and try again.");
       resetTurnstile();
@@ -219,7 +304,13 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6 lg:p-8">
           <p className="text-lg leading-relaxed text-white/85">{availability.message}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className={consultButtonPrimaryOutline}>
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={consultButtonPrimaryOutline}
+              onClick={trackCalendlyClick}
+            >
               Book a Consult
             </a>
             <button
@@ -247,7 +338,13 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
             >
               Continue with Inquiry
             </button>
-            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className={consultButtonClass}>
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={consultButtonClass}
+              onClick={trackCalendlyClick}
+            >
               Book a Consult
             </a>
           </div>
@@ -257,6 +354,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       {availability.kind === "available" && showInquiry && (
         <form
           onSubmit={submitInquiry}
+          onFocusCapture={handleInquiryFormFocusCapture}
           className="relative space-y-5 rounded-[1.5rem] border border-white/10 bg-neutral-950/40 p-6 lg:p-8"
           noValidate
         >

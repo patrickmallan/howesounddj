@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { JsonLd } from "@/components/json-ld";
 import { faqPageJsonLd } from "@/lib/json-ld";
 
@@ -210,12 +212,10 @@ export default function FaqPage() {
               Most hesitation comes from not knowing how the process works. These answers mirror what Patrick emphasizes in his own words: personalized music, clear planning, professional sound, and a Sea-to-Sky approach rooted in real venues and real weddings, not a generic DJ script.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="/contact"
+              <CheckAvailabilityTrackedLink
+                surface="hero"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              >
-                Check Availability
-              </a>
+              />
               <a
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -303,13 +303,18 @@ export default function FaqPage() {
             <p className="mt-4 text-lg leading-8 text-white/70">
               Reach out with your date, your venue, and a rough sense of how you want the night to feel. The first conversation is there to turn that into a clear path, not to pressure you into a snap decision.
             </p>
+            <p className="mt-4 text-sm leading-7 text-white/55">
+              If you already know your venue,{" "}
+              <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                venue guides
+              </Link>{" "}
+              outline planning context for named Sea-to-Sky and Squamish settings—without replacing a real conversation about your day.
+            </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="/contact"
+              <CheckAvailabilityTrackedLink
+                surface="page_cta"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              >
-                Check Availability
-              </a>
+              />
               <a
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

@@ -1,0 +1,232 @@
+1. SEARCH VISIBILITY (Can people even find you?)
+
+What I’m grading
+	•	Keyword alignment (e.g. “Squamish wedding DJ”)
+	•	Page targeting (1 intent = 1 page)
+	•	Title tags + meta descriptions (CTR quality, not just keywords)
+	•	Local SEO signals
+	•	Internal linking structure
+
+What “high score” looks like
+	•	You clearly win one primary keyword per page
+	•	Homepage = broad intent (“Squamish Wedding DJ”)
+	•	Supporting pages = deeper intent (packages, venues, FAQs)
+	•	Google instantly understands:
+	•	what you do
+	•	where you do it
+	•	who you serve
+
+What kills scores
+	•	Generic titles like “Home”
+	•	Trying to rank one page for everything
+	•	No local modifiers (Squamish / Sea-to-Sky)
+
+⸻
+
+2. MESSAGE CLARITY (Do people understand you in 3 seconds?)
+
+What I’m grading
+	•	Hero section (above the fold)
+	•	Immediate value proposition
+	•	Differentiation
+	•	Audience specificity
+
+What “high score” looks like
+
+Within 3 seconds, a bride/groom knows:
+	•	“This is for weddings”
+	•	“This is in my area”
+	•	“This feels premium / fun / reliable”
+	•	“This is different from the others”
+
+Example structure:
+	•	Headline: outcome
+	•	Subheadline: who + where + vibe
+	•	CTA: obvious next step
+
+What kills scores
+	•	Vague copy (“creating unforgettable moments”)
+	•	No location clarity
+	•	No personality
+
+⸻
+
+3. TRUST & AUTHORITY (Do I believe you’re the right choice?)
+
+What I’m grading
+	•	Reviews / testimonials
+	•	Social proof density and placement
+	•	Visual credibility (photos, real weddings)
+	•	Authority signals (experience, venues, partnerships)
+
+What “high score” looks like
+	•	Reviews appear early (above the fold or shortly after)
+	•	Real names, real couples, real photos
+	•	Proof that:
+	•	you’ve done this many times
+	•	people loved it
+	•	you handle weddings specifically
+
+What kills scores
+	•	Reviews buried at the bottom
+	•	No photos of actual events
+	•	Generic testimonials
+
+⸻
+
+4. CONVERSION ENGINE (Do people take action?)
+
+What I’m grading
+	•	CTA clarity and frequency
+	•	Friction in the inquiry process
+	•	Form UX
+	•	Emotional momentum toward action
+
+What “high score” looks like
+	•	Clear primary CTA: “Check Availability”
+	•	Repeated at key scroll points
+	•	Form is:
+	•	short
+	•	clear
+	•	mobile-friendly
+	•	“What happens next” is explained
+
+What kills scores
+	•	Too many CTAs competing
+	•	Long forms
+	•	No reassurance after submission
+	•	Weak CTA language (“Contact us”)
+
+⸻
+
+5. USER EXPERIENCE (Does it feel smooth and premium?)
+
+What I’m grading
+	•	Mobile experience (this is huge for weddings)
+	•	Load speed (especially hero)
+	•	Layout flow and readability
+	•	Visual hierarchy
+
+What “high score” looks like
+	•	Fast load, especially above-the-fold
+	•	Clean spacing, easy scanning
+	•	Buttons easy to tap on mobile
+	•	No friction or confusion
+
+What kills scores
+	•	Slow hero images
+	•	Cluttered layout
+	•	Tiny buttons / bad mobile UX
+
+⸻
+
+6. BRAND POSITIONING (Why YOU?)
+
+What I’m grading
+	•	Differentiation vs other DJs
+	•	Emotional resonance
+	•	Tone consistency
+
+What “high score” looks like
+
+You are not interchangeable.
+
+Examples:
+	•	“Bangers only”
+	•	“No cheesy MC energy”
+	•	“Packed dance floors, every time”
+
+What kills scores
+	•	Sounding like every other DJ
+	•	Playing it safe
+	•	No clear personality
+
+⸻
+
+7. CONTENT DEPTH (Do you answer real questions?)
+
+What I’m grading
+	•	FAQ quality
+	•	Objection handling
+	•	Decision-stage content
+
+What “high score” looks like
+
+You answer:
+	•	“What does a wedding DJ actually do?”
+	•	“How do you read the room?”
+	•	“What happens if something goes wrong?”
+	•	“How do we plan music?”
+
+What kills scores
+	•	Surface-level FAQs
+	•	No objection handling
+
+⸻
+
+8. ANALYTICS & FEEDBACK LOOP (Are you learning?)
+
+What I’m grading
+	•	Event tracking
+	•	Conversion tracking
+	•	Data clarity
+
+What “high score” looks like
+
+You know:
+	•	where users drop off
+	•	which pages convert
+	•	which CTAs work
+
+What kills scores
+	•	No tracking
+	•	Guessing instead of measuring
+
+⸻
+
+9. OFFER STRUCTURE (Is it easy to say yes?)
+
+What I’m grading
+	•	Package clarity
+	•	Pricing transparency (or intentional opacity)
+	•	Perceived value
+
+What “high score” looks like
+	•	Simple, clear options
+	•	Value is obvious
+	•	No confusion about what you get
+
+What kills scores
+	•	Overcomplicated packages
+	•	Hidden or unclear value
+
+⸻
+
+10. LOCAL DOMINANCE (Do you “own” your area?)
+
+What I’m grading
+	•	Location authority signals
+	•	Venue familiarity
+	•	Regional language
+
+What “high score” looks like
+	•	Mentions of:
+	•	Squamish
+	•	Sea-to-Sky
+	•	specific venues
+	•	Feels local, not generic
+
+What kills scores
+	•	Generic “we serve everywhere”
+	•	No local proof
+
+⸻
+
+The Scoring Reality (What actually matters most)
+
+If I compress this to what actually drives bookings, it’s this:
+	1.	Clarity (what you do + who for + where)
+	2.	Trust (reviews + proof)
+	3.	CTA + form friction
+	4.	Mobile UX
+	5.	Local SEO

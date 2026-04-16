@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactAvailabilityForm } from "@/components/contact-availability-form";
+import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
 /** Read Turnstile site key at request time (avoids empty props if env was missing at build / prefers runtime env on Vercel). */
 function turnstileSiteKey(): string {
@@ -45,12 +46,11 @@ export default function ContactPage() {
               Pick your wedding date below to check the calendar, then share what you’re planning. You can book a consult anytime, or send an inquiry when your date is open.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <a
+              <CheckAvailabilityTrackedLink
                 href="#availability"
+                surface="page_cta"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              >
-                Check Availability
-              </a>
+              />
               <a
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -187,12 +187,11 @@ export default function ContactPage() {
               Skim packages if helpful, then pick your date in the section above. The goal is a clear path from availability to conversation to a wedding day that sounds and feels like you.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <a
+              <CheckAvailabilityTrackedLink
                 href="#availability"
+                surface="page_cta"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              >
-                Check Availability
-              </a>
+              />
               <a
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { ImageSlot } from "@/components/image-slot";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 
@@ -121,12 +123,10 @@ export default function WeddingsPage() {
               </a>
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <a
-                href="/contact"
+              <CheckAvailabilityTrackedLink
+                surface="hero"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              >
-                Check Availability
-              </a>
+              />
               <a
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -170,6 +170,19 @@ export default function WeddingsPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-12 lg:px-8">
+        <p className="max-w-3xl text-sm leading-7 text-white/55">
+          Planning around a specific Squamish or Sea-to-Sky venue?{" "}
+          <Link
+            href="/venues"
+            className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 hover:decoration-amber-200/60"
+          >
+            Browse wedding venue guides
+          </Link>{" "}
+          for planning context tied to named settings—then use Check Availability when your date is ready.
+        </p>
       </section>
 
       <section className="border-y border-white/10 bg-white/5">
@@ -284,12 +297,10 @@ export default function WeddingsPage() {
               If the fit feels right, the next step is a consultation and availability check.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="/contact"
+              <CheckAvailabilityTrackedLink
+                surface="page_cta"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              >
-                Check Availability
-              </a>
+              />
               <a
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

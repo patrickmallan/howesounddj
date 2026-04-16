@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { ImageSlot } from "@/components/image-slot";
 import { JsonLd } from "@/components/json-ld";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
@@ -21,8 +22,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vancouver Wedding DJ for Squamish & Sea-to-Sky Weddings | Howe Sound DJ",
     description: ogDesc,
-    /** Keep in sync with root `layout.tsx` when switching the site-wide OG raster. */
-    images: ["/og-default.svg"],
+    /** Keep in sync with root `layout.tsx` (`/og-share.jpg`). */
+    images: ["/og-share.jpg"],
   },
   alternates: {
     canonical: "/vancouver-wedding-dj",
@@ -166,12 +167,10 @@ export default function VancouverWeddingDjPage() {
               built for the day you are actually having, not the search you typed before coffee on Monday.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <a
-                href="/contact"
+              <CheckAvailabilityTrackedLink
+                surface="hero"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              >
-                Check Availability
-              </a>
+              />
               <a
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -337,12 +336,10 @@ export default function VancouverWeddingDjPage() {
               Check availability for your Squamish, Whistler, or corridor wedding, or start with packages if you want structure before you write the first message. Either way, the goal is fit: your story, your crowd, your night.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <a
-                href="/contact"
+              <CheckAvailabilityTrackedLink
+                surface="page_cta"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              >
-                Check Availability
-              </a>
+              />
               <a
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

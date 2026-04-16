@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
 export const metadata: Metadata = {
   title: "Packages & Enhancements",
@@ -110,12 +112,10 @@ export default function PackagesPage() {
               Howe Sound DJ is built around customized service, not cookie-cutter blocks of time. Whether you are planning a focused celebration or a full wedding day, these packages describe what you are booking: professional sound, thoughtful music direction, and a host who can steer the room without stealing the spotlight.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="/contact"
+              <CheckAvailabilityTrackedLink
+                surface="hero"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              >
-                Check Availability
-              </a>
+              />
               <a
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -182,6 +182,15 @@ export default function PackagesPage() {
           </div>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-white/65">
             Investment depends on date, location, hours, and any add-ons. Exact pricing is confirmed after a conversation about your venue and timeline. No surprise fees baked into a generic online number. Reach out with your date and vision; I will respond with availability and a clear quote.
+          </p>
+          <p className="mt-4 text-sm leading-7 text-white/55">
+            <Link
+              href="/faq"
+              className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 hover:decoration-amber-200/60"
+            >
+              See our FAQ
+            </Link>{" "}
+            for common questions about planning, ceremony audio, and coverage.
           </p>
         </div>
       </section>
@@ -252,12 +261,10 @@ export default function PackagesPage() {
               If something sits between tiers, we can shape it. The goal is a quote that reflects your real day, not a label on a spreadsheet.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="/contact"
+              <CheckAvailabilityTrackedLink
+                surface="page_cta"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              >
-                Check Availability
-              </a>
+              />
               <a
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

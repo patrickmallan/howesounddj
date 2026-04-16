@@ -1,0 +1,737 @@
+================================================================================
+HOWESOUNDDJ.COM | TIER-S SCAN CONTRACT (OPUS) | REPO EXCELLENCE + IMPLEMENTATION
+================================================================================
+Last updated: aligned to repo `howesounddj` (Next.js App Router, Vercel).
+Read-only scan output (SSOT): `logs/hsdj_opus_repo_intelligence_report.md` — see
+HOW TO RUN — REPORT OUTPUT. Assurance layer: `docs/HSDJ OPUS AUTO INGEST MODE (Tier-S).txt`,
+`docs/HSDJ OPUS CONTINUATION MODE (BATCH-ENABLED).txt`.
+Companion rubric: `docs/HSDJ core layers.txt` (conceptual layer definitions; this file
+supersedes it for pass/fail, weights, and execution order).
+
+================================================================================
+TIER-S EXECUTION IDENTITY
+================================================================================
+This file is the authoritative scan contract for repo-level website excellence review
+and improvement of howesounddj.com. It is not a strategy memo. It is a deterministic
+scanning and improvement specification: rules, pass/fail, priorities, non-regression
+constraints, analytics expectations, and acceptance criteria.
+
+Authority and evidence
+  • Repo evidence overrides assumptions. If this document and the repo disagree, the
+    repo governs until the document is updated after inspection.
+  • Ambiguous items must be resolved by repo inspection (read files, grep, build), not
+    by inventing paths, events, or copy.
+  • Business priority is qualified wedding inquiries (Squamish / Sea-to-Sky and
+    corridor intent), not raw pageviews or generic traffic.
+
+How this file is used
+  • Scan runs: enumerate findings with file paths and line-level or structural evidence;
+    write the single authorized intelligence artifact (see HOW TO RUN — REPORT OUTPUT).
+  • Implementation runs: changes must satisfy this contract unless a blocker is
+    documented with evidence and an explicit exception.
+  • Assurance-layer runs (AUTO INGEST / CONTINUATION): remediation is driven by the
+    latest report at `$R` (see `docs/HSDJ OPUS AUTO INGEST MODE (Tier-S).txt`). The scan
+    spec (`docs/HSDJ OPUS SCAN.txt`) may be edited by Sage when repo evidence shows the
+    contract is incomplete, wrong, or missing a pass/fail surface — same change set must
+    cite the finding ID or report section that motivated the edit.
+
+================================================================================
+HOW TO RUN — REPORT OUTPUT (OPUS REPO INTELLIGENCE PATTERN)
+================================================================================
+Execution model (aligned to `brain/OPUS REPO INTELLIGENCE SCAN.txt` on Trading_Scripts):
+
+  • Paste this entire document into Cursor (or equivalent) as the operator message and
+    execute a read-only repo scan unless the operator explicitly requests implementation.
+  • The scanner MUST produce exactly one deterministic markdown dossier at the path below.
+  • That file is the single source of truth (SSOT) for findings, scores, and backlog for
+    howesounddj.com until superseded by a newer scan at a later commit.
+
+REPOSITORY ROOT (authoritative)
+
+  /Users/patrickmallan/Desktop/howesounddj
+
+AUTHORIZED OUTPUT FILE (only write permitted during a read-only scan)
+
+  logs/hsdj_opus_repo_intelligence_report.md
+
+  Relative to repo root: `logs/hsdj_opus_repo_intelligence_report.md`
+
+READ-ONLY SCAN RULES
+
+  During a scan-only run, the scanner must NOT edit application code, config, or assets.
+  The only permitted write is `logs/hsdj_opus_repo_intelligence_report.md` (create or
+  replace). Optional: create `logs/` if missing.
+
+  If the operator later runs an implementation phase, that phase follows Section E and
+  may touch `src/`, `public/`, etc., and may emit `logs/HSDJ_REMEDIATION_BATCH_*_STAGE_FINAL.md`
+  per `docs/HSDJ OPUS CONTINUATION MODE (BATCH-ENABLED).txt`.
+
+REPORT METADATA AND FRESHNESS (mandatory header block inside the .md)
+
+  The report MUST begin with a compact metadata block containing:
+
+  • Scan date: YYYY-MM-DD (authoritative “as of” date).
+  • Repository git identity: output of `git rev-parse HEAD` (full SHA preferred; short SHA
+    acceptable if full SHA appears in the same block).
+  • Supersession rule: Any prior `logs/hsdj_opus_repo_intelligence_report.md` produced from
+    an older commit is superseded by this report for backlog and operator decisions until
+    a newer scan re-validates at HEAD (or the stated commit).
+  • Scan spec version: reference `docs/HSDJ OPUS SCAN.txt` (this file) as the governing
+    contract revision in effect when the scan ran.
+
+Bounded commands for metadata: `git rev-parse HEAD`, `git rev-parse --short HEAD`,
+`git log -1 --oneline` (optional one line for context).
+
+DETERMINISTIC MARKDOWN STRUCTURE (## headings — fixed order)
+
+  The report MUST use Markdown `##` sections in exactly this order. Do not add top-level
+  `##` sections beyond this list. `###` subsections are allowed inside a section.
+
+  1. ## Report metadata and freshness
+  2. ## Executive summary
+  3. ## Overall score and interpretation band
+  4. ## P0 / P1 / P2 defect register
+  5. ## P3+ defect register (and intentionally deferred items)
+  6. ## Per-layer scores (layers 1–10)
+  7. ## D1–D4 mandatory checklist results
+  8. ## Page contract matrix (core routes)
+  9. ## Analytics contract audit
+  10. ## Recommended remediations (ordered by priority tier)
+  11. ## Blockers (not provable from repo alone)
+  12. ## Re-run verification commands
+  13. ## Scan spec evolution notes (optional)
+
+  If a section has no findings, state explicitly: NONE FOUND — verified via <bounded check>.
+
+TOKEN CONSERVATION
+
+  • Do not paste full source files; quote minimal proof (file path + line or one-line
+    excerpt) per finding.
+  • Summarize structure; prioritize breadth of contract coverage over prose length.
+
+COMPANION PROGRAM FILES (assurance layer — same repo)
+
+  • Cold start (findings SSOT = `$R`): `docs/HSDJ OPUS AUTO INGEST MODE (Tier-S).txt`
+  • Continuation (after Stage FINAL exists): `docs/HSDJ OPUS CONTINUATION MODE (BATCH-ENABLED).txt`
+
+================================================================================
+PRIORITY MODEL AND EXECUTION ORDER
+================================================================================
+The following stack is fixed for scan reporting and for any implementation phase that
+claims alignment with this contract. Higher tiers block treating lower tiers as primary
+output when defects exist above.
+
+P0 — CONVERSION INTEGRITY
+  What: Primary path to inquire (Check Availability → /contact → availability check →
+    inquiry form → Turnstile → submit); API success/error behavior; form UX that does
+    not block completion without business justification.
+  Why: No amount of SEO or copy fixes a broken or abandoned funnel.
+  Must not defer below P0: Any defect that prevents or materially discourages a
+    completed inquiry on supported browsers.
+  Repo context: `src/app/contact/page.tsx`, `src/components/contact-availability-form.tsx`,
+    `src/app/api/contact/route.ts`, `src/app/api/availability/route.ts`.
+
+P1 — TRUST AND PROOF
+  What: Reviews, testimonials, real imagery/video, venue familiarity, named identity,
+    proof placement relative to CTA.
+  Why: Wedding purchases are trust-first; traffic without trust does not convert.
+  Must not defer below P1: Buried or missing proof on commercial routes where proof is
+    the page’s role (e.g. reviews page); replacement of proof with generic filler.
+  Repo context: `src/app/reviews/page.tsx`, `src/config/venues.ts`, `src/config/site-images.ts`,
+    `src/components/home-video-proof.tsx`, `src/app/about/page.tsx`.
+
+P2 — MESSAGE CLARITY
+  What: Above-the-fold service, geography, differentiation; H1/H2 discipline; avoidance
+    of elegant but non-specific wedding-industry fluff on money pages.
+  Why: Clarity reduces bounce and self-qualifies leads.
+  Must not defer below P2: Homepage or primary service pages with no clear “wedding DJ +
+    geography + next step” in first screen.
+  Repo context: `src/app/page.tsx`, `src/app/weddings/page.tsx`, `src/components/site-chrome.tsx`.
+
+P3 — MOBILE UX AND FRICTION
+  What: Tap targets, readable type, hero load behavior, form ergonomics on small
+    viewports, navigation usability.
+  Why: Wedding planning is mobile-heavy.
+  Must not defer below P3: Layout or control sizing that blocks primary CTA or form on
+    common mobile widths.
+  Repo context: `site-chrome` (header CTA, mobile menu), contact form component, heavy
+    media on home.
+
+P4 — TECHNICAL SEO INTEGRITY
+  What: Canonicals, metadataBase, robots, sitemap, indexability, structured data where
+    claimed, no accidental noindex on commercial pages.
+  Why: Search visibility depends on crawl/index correctness.
+  Must not defer below P4: Wrong host in canonicals/OG, missing sitemap entries for
+    indexable routes, or conflicting www/apex signals in code.
+  Repo context: `src/app/layout.tsx`, `src/app/sitemap.ts`, `src/app/robots.ts`, per-page
+    `metadata`, `src/lib/json-ld.ts`.
+
+P5 — METADATA DIFFERENTIATION
+  What: Unique, intent-aligned title and description per indexable route; OG/Twitter
+    coherence with production URLs.
+  Why: CTR and snippet clarity; avoids duplicate-title dilution.
+  Must not defer below P5: Duplicate or boilerplate titles across core routes.
+
+P6 — ANALYTICS COMPLETENESS
+  What: GA presence when configured; contract event names; no duplicate fires; safe SSR
+    behavior; conversion events measurable.
+  Why: Without measurement, optimization is guesswork.
+  Must not defer below P6: Form success/error not tracked when GA is enabled; duplicate
+    identical events for the same user action.
+
+P7 — OPTIONAL GROWTH ENHANCEMENTS
+  What: Blog, lead magnets, extra landing pages, secondary schema, non-critical CTA
+    microcopy experiments.
+  Why: Growth after core system is sound.
+  Must not treat as primary when P0–P2 fail: Do not prioritize blog or polish while
+    conversion or trust contracts fail.
+
+Rule (non-negotiable)
+  If higher-priority defects are found, lower-priority refinements must not be treated
+  as the primary output of the scan or of a single implementation pass.
+
+================================================================================
+GLOBAL NON-REGRESSION INVARIANTS
+================================================================================
+The scan must never recommend or permit changes that:
+
+  • Weaken or remove the primary Check Availability conversion path (header, footer,
+    and contact flow) without explicit business approval documented in the scan output.
+  • Reduce the prominence of wedding-specific positioning relative to the current site
+    pattern (e.g. replacing wedding-first framing with generic “events” unless
+    contractually approved).
+  • Remove or dilute Squamish / Sea-to-Sky local relevance where already present in
+    copy or config (venues, corridor language, areaServed in schema).
+  • Remove or weaken trust signals: reviews content, proof media, venue familiarity,
+    named identity, or real testimonials in favor of placeholder or generic copy.
+  • Break production canonical host consistency: `metadataBase` and page canonicals must
+    remain aligned with the declared production host policy (see Section D1).
+  • Create ambiguity between www and apex: the repo must not encode conflicting
+    canonical bases; DNS/dashboard policy is out of repo but code must be single-host
+    consistent.
+  • Reduce analytics visibility for core conversion actions when GA is configured (form
+    attempt/success/error must remain attributable).
+  • Increase form friction (extra mandatory fields, redundant steps) without explicit
+    business justification recorded in scan output.
+  • Introduce keyword stuffing, hidden text, or tone that reads as cheap SEO rather
+    than premium operator copy.
+  • Replace real proof (images, video, named reviews) with filler or stock narrative
+    presented as specific experience.
+
+================================================================================
+SECTION A: REPO ALIGNMENT (SOURCE OF TRUTH)
+================================================================================
+
+PUBLIC ROUTES (indexable marketing pages)
+  • /                     → src/app/page.tsx
+  • /weddings             → src/app/weddings/page.tsx
+  • /vancouver-wedding-dj → src/app/vancouver-wedding-dj/page.tsx
+  • /about                → src/app/about/page.tsx
+  • /packages             → src/app/packages/page.tsx
+  • /reviews              → src/app/reviews/page.tsx
+  • /faq                  → src/app/faq/page.tsx
+  • /contact              → src/app/contact/page.tsx (dynamic; Turnstile + form)
+
+TECHNICAL SEO / DISCOVERY (code)
+  • Sitemap:              src/app/sitemap.ts  → https://www.howesounddj.com/sitemap.xml
+  • Robots:               src/app/robots.ts   → /robots.txt
+  • Global metadata:      src/app/layout.tsx (metadataBase, OG, Twitter)
+  • Canonical per page:   metadata.alternates.canonical where set; layout metadataBase
+  • JSON-LD Organization: src/lib/json-ld.ts + src/components/json-ld.tsx (layout)
+  • FAQ schema:           FAQ page uses faqPageJsonLd() in src/lib/json-ld.ts
+  • Breadcrumb JSON-LD:   Vancouver page uses vancouverWeddingDjBreadcrumbJsonLd()
+
+ANALYTICS (code)
+  • GA4 loader:           src/components/google-analytics.tsx (layout)
+  • Events API:           src/lib/analytics.ts (ANALYTICS_EVENTS, trackEvent)
+  • Form tracking:        src/components/contact-availability-form.tsx
+
+CONVERSION / LEADS
+  • Contact API:          src/app/api/contact/route.ts (Resend, Turnstile verify)
+  • Availability API:     src/app/api/availability/route.ts
+  • Rate limit:           src/lib/contact-rate-limit.ts
+  • Email templates:      src/lib/inquiry-email.ts
+
+ASSETS / TRUST
+  • Image config:         src/config/site-images.ts
+  • Venues list:          src/config/venues.ts
+  • Booked dates:         src/data/booked-dates.ts
+
+CONFIG
+  • Next config:          next.config.ts
+  • Env template:         env.example
+
+OUT OF REPO (not repo defects; secondary prioritization only)
+  • Google Business Profile, third-party reviews, NAP on directories
+  • Paid ads, manual Search Console actions
+  • Backlinks, PR, directory listings (The Knot / WeddingWire, etc.)
+
+================================================================================
+SECTION B: TEN CORE LAYERS — DETERMINISTIC SCAN CONTRACTS
+================================================================================
+Each layer: objective, evidence sources, pass conditions, fail conditions, required
+remediation direction, priority weight (see Section: SCORING MODEL). Companion text in
+`docs/HSDJ core layers.txt` is explanatory; pass/fail here governs the scan.
+
+LAYER 1 — SEARCH VISIBILITY (weight 10)
+  Objective: Indexable routes are discoverable, uniquely targeted, and internally
+    linked; local intent is explicit in copy and metadata where the page intends local
+    ranking.
+  Evidence: src/app/sitemap.ts; src/app/robots.ts; per-page metadata exports; internal
+    `<Link>` graph on core pages; on-page headings and body copy.
+  PASS only if: Sitemap lists exactly the public marketing routes (no API routes);
+    robots allows indexing of commercial pages; each core route has differentiated title
+    and meta description; at least one intentional internal link path connects home →
+    weddings/packages/contact and location page where applicable.
+  FAIL if: Any indexable route missing from sitemap; commercial page accidentally noindex;
+    duplicate default titles across routes; or no internal links from home to money pages.
+  Required remediation: Fix sitemap/robots/metadata/indexability first; then internal
+    links; document any route intentionally omitted.
+  Priority weight: 10 (P4–P5 domain).
+
+LAYER 2 — MESSAGE CLARITY (weight 12)
+  Objective: First screen on primary commercial pages states wedding DJ service,
+    geography (Squamish / Sea-to-Sky or route-specific location), and clear next step.
+  Evidence: src/app/page.tsx, src/app/weddings/page.tsx, src/components/site-chrome.tsx
+    (tagline), hero copy and H1.
+  PASS only if: Home and weddings pages present wedding DJ + corridor or local geography
+    in hero or immediate subhead; primary CTA label matches “Check Availability” pattern
+    in header; one clear H1 per page.
+  FAIL if: Hero copy is generic events language with no wedding DJ clarity; no geography
+    in first screen; competing unclear CTAs that hide Check Availability.
+  Required remediation: Rewrite hero/subhead to satisfy deterministic copy rules (see
+    DETERMINISTIC COPY / CRO RULES); preserve Tier-S invariants.
+  Priority weight: 12 (P2).
+
+LAYER 3 — TRUST AND AUTHORITY (weight 16)
+  Objective: Proof density and placement support conversion; reviews and visuals are
+    real and specific; venues and identity reinforce legitimacy.
+  Evidence: src/app/reviews/page.tsx, src/app/page.tsx (proof sections), src/config/venues.ts,
+    src/config/site-images.ts, src/components/home-video-proof.tsx, src/app/about/page.tsx.
+  PASS only if: Reviews page exists with testimonial content; home includes proof or
+    review pathway before end of page; venues config used where claimed; about page
+    supports named identity.
+  FAIL if: Reviews buried with no path from home; proof sections removed or replaced by
+    generic adjectives; venue claims with empty or inconsistent data.
+  Required remediation: Restore proof placement, specificity, and venue alignment; no
+    generic testimonials without structure.
+  Priority weight: 16 (P1).
+
+LAYER 4 — CONVERSION ENGINE (weight 18)
+  Objective: Check Availability is the primary action; contact funnel is complete,
+    understandable, and measurable.
+  Evidence: src/components/site-chrome.tsx (CTAs), src/app/contact/page.tsx,
+    src/components/contact-availability-form.tsx, APIs under src/app/api/.
+  PASS only if: Header and footer include visible Check Availability to /contact; contact
+    page implements availability gating and inquiry per current architecture; Turnstile
+    path documented in env.example; analytics events for form attempt/success/error fire
+    under conditions in ANALYTICS CONTRACT.
+  FAIL if: Primary CTA removed or demoted below secondary actions; form submit broken;
+    success path without user-visible confirmation; analytics missing for form events
+    when GA ID is set.
+  Required remediation: Restore CTA hierarchy; fix broken flow; align events with
+    contract.
+  Priority weight: 18 (P0).
+
+LAYER 5 — USER EXPERIENCE (weight 12)
+  Objective: Mobile-usable layout, acceptable hero performance, readable hierarchy.
+  Evidence: site-chrome tap targets, contact form layout, hero/video/image usage on home.
+  PASS only if: Header CTA and mobile menu controls meet min 44px touch pattern used in
+    site-chrome; contact form usable without horizontal scroll at common mobile widths;
+    no critical action hidden behind broken overflow.
+  FAIL if: Primary CTA or submit control below accessible touch size in implemented
+    pattern; form fields unusable on mobile; hero media crashes layout.
+  Required remediation: Adjust classes/layout per design system; defer asset changes that
+    violate P0–P2.
+  Priority weight: 12 (P3).
+
+LAYER 6 — BRAND POSITIONING (weight 8)
+  Objective: Differentiation from generic DJ copy; consistent tone (premium, specific,
+    non-interchangeable) without violating clarity rules.
+  Evidence: Copy across page.tsx, weddings, packages, FAQ; repeated phrases and claims.
+  PASS only if: Site uses distinct positioning lines (not only generic superlatives);
+    tone consistent across core pages; no contradictory service claims between routes.
+  FAIL if: Copy is interchangeable with any wedding vendor site; or brand claims
+    contradict packages/FAQ.
+  Required remediation: Tighten differentiation lines; align FAQ and packages with home.
+  Priority weight: 8 (P2–P3).
+
+LAYER 7 — CONTENT DEPTH (weight 6)
+  Objective: FAQ and packages answer decision-stage questions; objections addressed.
+  Evidence: src/app/faq/page.tsx, src/app/packages/page.tsx, FAQ schema in json-ld.
+  PASS only if: FAQ page has substantive Q/A coverage; packages explain tiers and
+    inclusions at a decision-useful level; FAQ schema present on FAQ page.
+  FAIL if: FAQ is token length only; packages opaque without explained consult/quote
+    narrative; FAQ schema missing where FAQ page exists.
+  Required remediation: Expand content or schema per contract; keep premium tone.
+  Priority weight: 6 (P4–P7).
+
+LAYER 8 — ANALYTICS AND FEEDBACK LOOP (weight 8)
+  Objective: Measurement available when env is set; events stable and non-duplicative;
+    conversion path observable.
+  Evidence: src/lib/analytics.ts, src/components/google-analytics.tsx,
+    contact-availability-form.tsx.
+  PASS only if: GA loads only when NEXT_PUBLIC_GA_MEASUREMENT_ID is set; form events
+    match ANALYTICS CONTRACT; trackEvent no-ops on SSR and when gtag missing.
+  FAIL if: Duplicate success events per submit; events fire server-side; or GA on without
+    form funnel events.
+  Required remediation: Align implementation with ANALYTICS CONTRACT; add deferred
+    events only with unique names and conditions.
+  Priority weight: 8 (P6).
+
+LAYER 9 — OFFER STRUCTURE (weight 5)
+  Objective: Packages communicate tiers and value; pricing stance is explicit (ranges or
+    consult quote) without confusion.
+  Evidence: src/app/packages/page.tsx.
+  PASS only if: Visitor understands what each tier represents and how to inquire;
+    intentional quote-after-consult stance is stated if used.
+  FAIL if: Tiers contradict contact flow; or packages page gives no actionable structure.
+  Required remediation: Clarify tier narrative; align CTA to contact.
+  Priority weight: 5 (P7).
+
+LAYER 10 — LOCAL DOMINANCE (weight 5)
+  Objective: Squamish, Sea-to-Sky, corridor, and Vancouver landing page reinforce
+    service area; venues and schema support local relevance.
+  Evidence: src/config/venues.ts, copy on vancouver-wedding-dj, json-ld areaServed,
+    footer and global strings.
+  PASS only if: Vancouver page targets Vancouver + corridor intent; venues data
+    consistent; organization/local schema not contradicting live service area copy.
+  FAIL if: Location page drops local specificity; venues list empty while copy claims
+    venue familiarity; generic “everywhere” without anchor geography on home.
+  Required remediation: Align venues, copy, and schema; strengthen internal links from
+    home/footer to Vancouver page where appropriate.
+  Priority weight: 5 (P4–P5).
+
+================================================================================
+SCORING MODEL
+================================================================================
+Total score: 100 points. Layer weights sum to 100 (see Section B).
+
+Per-layer score (0 to weight max)
+  For each layer L with weight W: assign a raw score 0–W based on pass proximity.
+  • Full weight: all PASS conditions met, no FAIL triggered.
+  • Partial: some PASS met or minor gaps with documented evidence.
+  • Zero: any FAIL condition triggered until remediated.
+
+Required fields per layer (in scan output)
+  • score (number, 0–W)
+  • evidence path (file(s) + short observation)
+  • issue summary (if any)
+  • business impact summary (inquiry/trust/clarity/SEO as applicable)
+  • required action (specific remediation or “none”)
+
+Interpretation bands
+  • 90–100: Excellent; implementation optional except maintenance.
+  • 75–89: Strong; upgrade-worthy; prioritize by P0–P7.
+  • 60–74: Materially limiting growth; schedule remediation.
+  • Below 60: Urgent remediation required before growth work.
+
+Heavier weights apply to: Layer 4 (conversion), Layer 3 (trust), Layer 2 (clarity),
+Layer 5 (UX), Layer 1 (search). Polish and optional layers are capped lower (8, 6, 5, 5).
+
+================================================================================
+SECTION C: INDUSTRY AND BENCHMARK INTELLIGENCE (SECONDARY ONLY)
+================================================================================
+Status: Non-binding prioritization input. Does not override repo evidence or this contract.
+
+Rules
+  • Off-site and market intelligence may influence ordering of fixes only after P0–P2
+    evidence is recorded.
+  • Repo evidence governs actual pass/fail findings.
+  • FAIL if: A recommendation is justified solely because it is common industry practice
+    with no tie to site evidence (file, behavior, or measurable gap).
+  • All implementation recommendations must tie to: (a) explicit contract clause here,
+    or (b) documented repo finding with path.
+
+Content (compressed)
+  • Local service sites often use dedicated location pages (this repo: /vancouver-wedding-dj).
+  • GBP and directories amplify local search but are out of repo.
+  • Industry underperformers: generic emotional copy without service + location; buried
+    contact; weak proof.
+  • Optional long-tail: blog or guides; P7 only.
+
+================================================================================
+SECTION D: MANDATORY AUDIT CHECKLIST — ENFORCEABLE PASS/FAIL
+================================================================================
+
+D1. TECHNICAL SEO
+  PASS only if every indexable marketing route resolves in code to metadata consistent
+    with production and emits a self-referencing canonical on the production host encoded
+    in metadataBase (currently https://www.howesounddj.com in src/app/layout.tsx).
+  FAIL if any metadata, Open Graph image URL, or canonical path references localhost,
+    preview hosts, Wix hosts, or a host inconsistent with metadataBase.
+  FAIL if robots disallows commercial routes or sitemap omits any indexable marketing route.
+  FAIL if sitemap.ts lists non-page routes (e.g. API) or omits a live marketing page.
+  REQUIRED FIX: Normalize canonical generation through metadataBase and page-level
+    alternates; align src/app/robots.ts and src/app/sitemap.ts with route list in Section A.
+  PASS only if Organization JSON-LD loads from layout; FAQ page emits FAQ schema;
+    Vancouver page emits breadcrumb JSON-LD where implemented.
+  FAIL if any commercial page sets noindex without documented business reason in output.
+  PASS only if each core page exposes exactly one clear H1 (or documented exception).
+
+D2. ANALYTICS AND CONVERSION TRACKING
+  PASS only if GoogleAnalytics receives gaId from env and does not load measurement when
+    NEXT_PUBLIC_GA_MEASUREMENT_ID is unset.
+  FAIL if gtag is invoked in SSR in a way that throws, or if form events duplicate for
+    one user submit (success counted twice).
+  PASS only if contact_form_submit_attempt, contact_form_submit_success, and
+    contact_form_submit_error fire per ANALYTICS CONTRACT when GA is configured.
+  FAIL if implementation phase adds check_availability_click or calendly_click without
+    deduplication rules and without updating this contract’s event list in the same change.
+  Non-repo: GTM container edits, GA4 UI configuration; document as follow-up, not as pass.
+
+D3. HOMEPAGE AND CONTACT FUNNEL CRO
+  PASS only if hero presents wedding DJ service + geography + differentiation in first
+    screen (deterministic copy rules).
+  FAIL if Check Availability is not present in header and footer linking to /contact.
+  PASS only if trust or proof sections appear before the final CTA block on home or
+    are one click away via obvious link (reviews path).
+  FAIL if contact flow removes availability check before inquiry without replacement
+    documented and approved in scan output.
+  PASS only if Turnstile is required only when configured; empty site key behavior must
+    match env.example and not silently break submit (documented UX).
+
+D4. PAGE-LEVEL SEO AND CRO (CORE ROUTES)
+  PASS only if each route in PAGE CONTRACTS meets its required message outcome, CTA,
+    trust, metadata differentiation, and internal linking clauses.
+  FAIL any route that duplicates another route’s title intent or omits required internal
+    links defined in PAGE CONTRACTS.
+
+================================================================================
+PAGE CONTRACTS
+================================================================================
+Rules for all: Primary conversion action for commercial intent is Check Availability →
+/contact unless exception noted. Internal links use Next.js `<Link>` where implemented.
+
+/  (src/app/page.tsx)
+  Primary intent: Broad local wedding DJ discovery; corridor positioning.
+  Required message outcome: Visitor identifies service (wedding DJ), geography (Squamish /
+    Sea-to-Sky emphasis), and differentiation vs generic DJ.
+  Required CTA behavior: Path to /contact with Check Availability visible from global
+    chrome; repeated section CTA acceptable.
+  Required trust/proof: Home must include proof strip or video/review pathway consistent
+    with repo components; must not be proof-empty above footer.
+  Metadata differentiation: Title/description must not be identical to /weddings;
+    default layout template may apply but page override must add home-specific focus.
+  Internal linking: Links to /weddings, /packages, /contact; footer already links
+    Vancouver page.
+  Failure examples: Generic hero with no “wedding DJ”; no Squamish/Sea-to-Sky in first
+    screen; no route to reviews or proof.
+
+/weddings  (src/app/weddings/page.tsx)
+  Primary intent: Wedding service depth; planning and dance-floor outcome messaging.
+  Required message outcome: Wedding-specific; reinforces corridor service area.
+  Required CTA behavior: Check Availability to /contact.
+  Trust/proof: May reference reviews or outcomes; must not contradict packages/FAQ.
+  Metadata: Unique title/description vs home; wedding-focused.
+  Internal links: To /packages, /faq, /contact at minimum via body or chrome context.
+  Failure: Page reads as generic entertainment vendor; duplicate home title.
+
+/vancouver-wedding-dj  (src/app/vancouver-wedding-dj/page.tsx)
+  Primary intent: Vancouver + Sea-to-Sky / Squamish corridor capture; long-tail local SEO.
+  Required message outcome: Explicit Vancouver relevance without erasing Squamish/corridor
+    positioning.
+  Required CTA: Check Availability.
+  Trust: Venue or corridor proof acceptable; breadcrumb JSON-LD where coded.
+  Metadata: Unique; must mention Vancouver intent in title or description.
+  Internal links: To /weddings, /contact; home/footer already reference this page.
+  Failure: Thin duplicate of /weddings with no Vancouver specificity.
+
+/packages  (src/app/packages/page.tsx)
+  Primary intent: Tier understanding and value; lead to inquiry.
+  Required message outcome: Clear packages/tiers narrative; how to get a quote.
+  Required CTA: Contact / Check Availability after comprehension.
+  Metadata: Unique; pricing stance clear (ranges or consult).
+  Internal links: To /contact, /faq.
+  Failure: Confusing tiers; no CTA path.
+
+/reviews  (src/app/reviews/page.tsx)
+  Primary intent: Social proof and objection reduction.
+  Required message outcome: Named or structured testimonials; wedding-specific where possible.
+  Required CTA: Check Availability.
+  Metadata: Unique.
+  Internal links: To /contact; from home or nav.
+  Failure: Empty or generic filler quotes; no link to inquire.
+
+/faq  (src/app/faq/page.tsx)
+  Primary intent: Long-tail questions; rich result eligibility for FAQ schema.
+  Required message outcome: Substantive Q/A; ceremony, planning, logistics where relevant.
+  Required CTA: Contact for booking questions.
+  FAQ schema: Must match implemented faqPageJsonLd pattern.
+  Metadata: Unique.
+  Internal links: To /contact, /packages as relevant.
+  Failure: Thin FAQ; missing schema on page that claims FAQ rich results.
+
+/about  (src/app/about/page.tsx)
+  Primary intent: Trust, identity, legitimacy.
+  Required message outcome: Named operator story; why weddings and corridor.
+  Required CTA: Check Availability.
+  Metadata: Unique.
+  Internal links: To /contact, optionally /reviews.
+  Failure: Anonymous vendor voice; no geographic anchor.
+
+/contact  (src/app/contact/page.tsx)
+  Primary intent: Conversion; date check and inquiry.
+  Required message outcome: Clear steps: choose date → availability → inquiry → what
+    happens next.
+  Required CTA behavior: Form submission and optional Calendly path per
+    contact-availability-form.tsx (CALENDLY_URL constant).
+  Trust: Turnstile when configured; honest error states.
+  Metadata: Unique; conversion-focused, not duplicate of home description.
+  Failure: Hidden form; broken Turnstile without documented fallback; no success state.
+
+================================================================================
+ANALYTICS CONTRACT
+================================================================================
+Naming standard
+  • Event names are lowercase snake_case stable strings. Constants live in
+    src/lib/analytics.ts (ANALYTICS_EVENTS). New events require adding to ANALYTICS_EVENTS
+    and updating this document in the same change set.
+
+Required conversion events (GA4 custom events)
+  • contact_form_submit_attempt — Fires once per intentional submit when validation and
+    Turnstile readiness are satisfied and POST is initiated.
+  • contact_form_submit_success — Fires once on successful API response handling user inquiry.
+  • contact_form_submit_error — Fires on validation failure, server error, network error,
+    or Turnstile not ready; must include disambiguating param (e.g. reason) where implemented.
+
+Event firing conditions
+  • PASS only if: attempt precedes success or error for a given submit; success fires at
+    most once per successful submission; error reasons do not duplicate success.
+  • FAIL if: Same submission produces two success events.
+
+Duplicate event prohibition
+  • FAIL if: trackEvent is wrapped in a way that double-invokes on React strict effects
+    for the same user gesture without guard.
+
+Safe no-op behavior
+  • trackEvent must return without throwing when window is undefined, when
+    NEXT_PUBLIC_GA_MEASUREMENT_ID is unset, or when gtag is not a function (current
+    implementation in src/lib/analytics.ts).
+
+Minimum payload shape (extend with reason, etc., as needed)
+  • All events: include implicit page_path via GA4 automatically; custom params should be
+    consistent when present:
+      - event_name: matches the string sent to gtag (snake_case).
+      - page_path: recommended in params when adding new instrumentation (window.location.pathname).
+      - surface: optional enum e.g. "contact_form", "header", "footer", "hero" for future CTA events.
+      - form_type: "inquiry" for contact form events when applicable.
+      - status: "success" | "error" | "attempt" when applicable.
+
+Deferred / implementation-phase events (not required for baseline pass if absent from repo)
+  • check_availability_click — If implemented: fire once per click on primary availability
+    CTAs that lead to /contact or trigger availability UI; include surface.
+  • calendly_click — Repo contains CALENDLY_URL in contact-availability-form.tsx; if
+    outbound Calendly links exist, PASS requires event when GA is on, or explicit “N/A:
+    no Calendly link rendered” from repo evidence.
+  • phone_click / email_click — PASS only if: (a) no tel:/mailto: links in src/, then N/A;
+    (b) if links are added, each must fire corresponding event or contract must be updated.
+
+================================================================================
+DETERMINISTIC COPY / CRO RULES
+================================================================================
+High-priority commercial pages (home, weddings, Vancouver landing, packages, contact)
+must communicate:
+  • Service: wedding DJ (not generic “entertainment” without DJ clarity).
+  • Geography: Squamish / Sea-to-Sky corridor; Vancouver page adds Vancouver explicitly.
+  • Differentiation: specific claims, not interchangeable platitudes.
+  • Next step: Check Availability leading to inquiry flow.
+
+FAIL patterns (any triggers layer-2/3/4 fail until fixed)
+  • Vague hero with no service clarity in first screen.
+  • Elegant language with no geography or offer anchor.
+  • Premium tone with no trust block or CTA before excessive scroll.
+  • Abstraction-heavy copy before proof on pages whose job is conversion or trust.
+
+PASS patterns
+  • Headline or H1 plus subhead that together answer what, where, and who it is for.
+  • CTA label aligned with Check Availability pattern sitewide.
+
+================================================================================
+EXECUTION OUTPUT FORMAT
+================================================================================
+Any scan run governed by this document MUST write `logs/hsdj_opus_repo_intelligence_report.md`
+using the deterministic ## heading order and metadata rules in **HOW TO RUN — REPORT OUTPUT**.
+
+In addition, the markdown dossier must contain (mapped into those sections):
+
+  1. Overall weighted score (0–100) and interpretation band.
+  2. Per-layer scores (0–weight) with evidence paths.
+  3. P0 / P1 / P2 defect lists (separate from P3+).
+  4. Exact repo evidence (file paths; grep or structural proof).
+  5. Exact recommended remediations tied to contract clauses.
+  6. Items intentionally deferred with tier justification.
+  7. Business impact summary (inquiry, trust, clarity, SEO, measurement).
+  8. Blockers: issues that cannot be proven from repo evidence (need production URL test,
+    GSC export, etc.), explicitly listed.
+
+Implementation-only runs (code changes) must still reference the latest `$R` report when
+claiming contract closure; update Stage FINAL files per CONTINUATION MODE companion.
+
+================================================================================
+SECTION E: ROLE, SCOPE, DELIVERABLES (IMPLEMENTATION PHASE)
+================================================================================
+
+ROLE
+Senior web engineer, technical SEO engineer, analytics engineer, and conversion lead for
+howesounddj.com inside the howesounddj workspace unless otherwise specified.
+
+PRIMARY OBJECTIVE
+Repo-level audit and highest-confidence improvements to:
+  1. Canonical tags, robots, sitemap, metadata, Open Graph, Twitter
+  2. Google Analytics and conversion event instrumentation per ANALYTICS CONTRACT
+  3. Homepage and contact funnel (CRO, friction)
+  4. Page-level SEO and CRO per PAGE CONTRACTS
+
+HARD SCOPE FENCE
+IN SCOPE
+  • Repo-wide audit and code changes that satisfy this contract
+  • Metadata, schema, copy, CTA hierarchy, form UX, analytics, mobile layout fixes
+  • Light structural page changes that improve SEO/CRO without rebrand
+
+OUT OF SCOPE
+  • DNS, registrar, Cloudflare, Vercel dashboard (unless code bug)
+  • Manual Search Console operations
+  • Paid ads, new CMS, major redesign
+  • Changes with no repo evidence and no contract clause
+
+OPERATING ASSUMPTIONS
+  • Production domain policy is encoded by metadataBase in layout.tsx unless changed with
+    documented migration.
+  • Primary business outcome is qualified wedding inquiries.
+
+IMPLEMENTATION STANDARDS
+  • Smallest change that satisfies pass conditions
+  • No mock GA IDs or fake domains in production paths
+  • Analytics: deterministic, typed where applicable, single fire per user action
+
+DELIVERABLES (IMPLEMENTATION PHASE)
+  1. Files changed (list)
+  2. Issues found (exact, with evidence)
+  3. Fixes implemented (exact)
+  4. Dashboard-side follow-ups (explicitly non-repo)
+  5. Validation: npm run lint, npm run build, typecheck if configured
+  6. Before/after summary against this contract
+
+VALIDATION GATES
+  npm run lint
+  npm run build
+  Targeted verification: canonicals, robots, sitemap, metadata, OG, analytics events
+
+ACCEPTANCE CRITERIA (IMPLEMENTATION PHASE — ENFORCEABLE)
+  • PASS D1: deterministic host and metadata integrity across indexable routes.
+  • PASS PAGE CONTRACTS: each core route meets Section PAGE CONTRACTS or exceptions documented.
+  • PASS ANALYTICS CONTRACT when GA ID is set; N/A documented when unset.
+  • Conversion path integrity: Check Availability and contact funnel meet Layer 4 PASS.
+  • Trust visibility: reviews/proof paths meet Layer 3 PASS.
+  • Local intent: home and Vancouver page meet Layer 10 PASS conditions in copy/schema.
+  • Validation evidence: lint/build green, or blockers listed with reproduction steps.
+  • Explicit documentation of any item unprovable from repo (production-only behavior).
+
+EXECUTION MODE
+Single deterministic pass preferred: address P0–P2 defects before P5–P7 polish unless
+explicitly scoped otherwise.
+
+================================================================================
+END OF DOCUMENT
+================================================================================

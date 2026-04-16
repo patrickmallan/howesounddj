@@ -1,0 +1,114 @@
+# HOWESOUNDDJ — HSDJ OPUS REPOSITORY INTELLIGENCE — CONTINUATION (MACRO BATCH)
+
+**PROGRAM SELECTOR (read first):**
+- **This file** = **Continuation** after at least one **`logs/HSDJ_REMEDIATION_BATCH_*_STAGE_FINAL.md`** exists for the HSDJ program.
+- **Single source of truth for what remains OPEN:** **`logs/hsdj_opus_repo_intelligence_report.md`** (**`$R`**) — all work must still trace to finding IDs and sections in **`$R`** until each item is **DONE** / **N/A** / **DEFERRED** with evidence in a Stage FINAL.
+- **Do not** re-run full discovery from scratch — **ingest** latest Stage FINAL, reconcile the **ledger** against **`$R`**, then execute the **next** batch row **`01→05`** that still has OPEN items per **`$R`**.
+
+---
+
+## Canonical paths (aligned with AUTO INGEST)
+
+| Role | Path (relative to repo root) |
+|------|-------------------------------|
+| **SSOT — findings & backlog** | `logs/hsdj_opus_repo_intelligence_report.md` |
+| **Desktop example** | `~/Desktop/howesounddj/logs/hsdj_opus_repo_intelligence_report.md` |
+
+**Evidence `$R`:**
+
+```bash
+R="$(git rev-parse --show-toplevel)/logs/hsdj_opus_repo_intelligence_report.md"
+# R="$HOME/Desktop/howesounddj/logs/hsdj_opus_repo_intelligence_report.md"
+```
+
+```bash
+test -f "$R" && echo "R_ok=1"
+ls -1 "$(git rev-parse --show-toplevel)"/logs/HSDJ_REMEDIATION_BATCH_*_STAGE_FINAL.md 2>/dev/null | tail -8
+```
+
+---
+
+## Report file (`$R`) — authority
+
+**Every continuation pass must:**
+1. Open **`$R`** and locate OPEN items by ID (**P2-1**, **P5-1**, **P6-2**, etc.) in **P0 / P1 / P2 defect register**, **P3+ defect register**, and **Recommended remediations (ordered by priority tier)**.
+2. Read the latest **`logs/HSDJ_REMEDIATION_BATCH_*_STAGE_FINAL.md`** to see which findings are already **DONE|N/A|DEFERRED**.
+3. Select the **first** batch row **01→05** where **`$R`** still lists an OPEN finding not closed in Stage FINALs.
+
+**Do not** implement fixes that are not listed in **`$R`** unless the operator updates **`$R`** or regenerates the report via a fresh scan.
+
+---
+
+## Four-file program (HSDJ assurance layer)
+
+| Role | Path |
+|------|------|
+| **SSOT (findings)** | `logs/hsdj_opus_repo_intelligence_report.md` — **all work completes against this document’s findings** |
+| **Spec (contract)** | `docs/HSDJ OPUS SCAN.txt` |
+| **Cold start** | `docs/HSDJ OPUS AUTO INGEST MODE (Tier-S).txt` |
+| **This file** | Continuation: Stage FINAL → ledger → next batch |
+
+**Alignment rule:** If **`$R`** is regenerated (new scan), re-run reconciliation: Stage FINALs from an **older** commit may still be valid evidence, but OPEN items must match the **current** **`$R`** Executive summary and defect registers.
+
+---
+
+## Macro batches (mirror AUTO INGEST — full detail there)
+
+| Batch | Pack ID | Tiers | Stage FINAL path |
+|-------|---------|-------|------------------|
+| **01** | `HSDJ_BATCH_01_P0_CONVERSION` | P0 | `logs/HSDJ_REMEDIATION_BATCH_01_P0_CONVERSION_STAGE_FINAL.md` |
+| **02** | `HSDJ_BATCH_02_P1_P2_TRUST_MESSAGE` | P1, P2 | `logs/HSDJ_REMEDIATION_BATCH_02_P1_P2_TRUST_MESSAGE_STAGE_FINAL.md` |
+| **03** | `HSDJ_BATCH_03_P3_P4_UX_TECHSEO` | P3, P4 | `logs/HSDJ_REMEDIATION_BATCH_03_P3_P4_UX_TECHSEO_STAGE_FINAL.md` |
+| **04** | `HSDJ_BATCH_04_P5_P6_META_ANALYTICS` | P5, P6 | `logs/HSDJ_REMEDIATION_BATCH_04_P5_P6_META_ANALYTICS_STAGE_FINAL.md` |
+| **05** | `HSDJ_BATCH_05_P7_GROWTH` | P7 | `logs/HSDJ_REMEDIATION_BATCH_05_P7_GROWTH_STAGE_FINAL.md` |
+
+---
+
+## Ledger reconciliation (binding)
+
+For each finding ID in **`$R`**, maintain mental or documented state:
+
+| `$R` ID | Batch | Status in latest Stage FINAL |
+|---------|-------|------------------------------|
+| (e.g. P2-1) | 02 | OPEN / DONE / N/A / DEFERRED |
+| (e.g. P5-1) | 04 | OPEN / DONE / … |
+
+**Rule:** A finding is **closed** only when a Stage FINAL lists it **DONE** (with files + proof) or **N/A** / **DEFERRED** with explicit rationale tied to **`$R`**.
+
+**Optional:** Append a short **Remediation status** subsection at the end of **`$R`** (operator-edited) listing OPEN → DONE — not required if Stage FINALs alone are sufficient.
+
+---
+
+## Maximum throughput (binding)
+
+1. **Ingest** latest `logs/HSDJ_REMEDIATION_BATCH_*_STAGE_FINAL.md`: Pack ID; each **`$R`** finding touched → **DONE|PARTIAL|N/A|DEFERRED**; files; commands.
+2. **Ledger** OPEN vs DONE against **`$R`** **Recommended remediations** and defect registers (P0 first, then P1/P2, then P3+).
+3. **Select** first **`01→05`** row with any **OPEN** item per **`$R`** (never skip an earlier OPEN row unless operator documents priority override in Stage FINAL).
+4. **Emit** either completion paragraph + proof **or** **one** fenced Cursor block **Stage 0 → Stage FINAL** for that row only.
+5. **Write** Stage FINAL with copy-paste **bash** at end (from **`$R`** **Re-run verification commands** where applicable).
+
+- **One Cursor pass = one full batch row** when implementable.
+
+---
+
+## In scope / out of scope
+
+- **In:** Remaining findings from **`$R`** via batches **01→05** only.
+- **Out:** Anything not in **`$R`**; dashboard-only work; unrelated repo sweeps.
+
+---
+
+## Scan spec updates (Sage)
+
+When a Stage FINAL or implementation pass shows the scan contract is incomplete, **edit** `docs/HSDJ OPUS SCAN.txt` in a focused diff and reference:
+- the motivating **`$R`** finding ID and section, and
+- optional note in the next regenerated **`logs/hsdj_opus_repo_intelligence_report.md`** under **Scan spec evolution notes**.
+
+---
+
+## Output
+
+- **All batches closed:** Paragraph + Stage FINAL paths + fresh verification against **`$R`** (and `npm run lint` / `npm run build` as applicable).
+- **Continue:** One fenced block — **Stage 0 → Stage FINAL** for the **single** next batch row with OPEN **`$R`** items.
+
+Proceed.

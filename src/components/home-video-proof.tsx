@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
 const VIDEO_PUBLIC_PATH = "videos/home-proof.mp4";
 /** Uses the same still as the home proof strip (`SITE_IMAGES.homeProof`); no separate poster asset shipped. */
@@ -59,12 +60,10 @@ export function HomeVideoProof() {
           The goal is always the same: connection, flow, and Sea-to-Sky celebration energy, with a floor that stays with you.
         </p>
         <div className="mt-8">
-          <a
-            href="/contact"
+          <CheckAvailabilityTrackedLink
+            surface="inline"
             className="inline-flex rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-          >
-            Check Availability
-          </a>
+          />
         </div>
       </div>
     </section>

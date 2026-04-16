@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
 const navLinks = [
   { href: "/weddings", label: "Weddings" },
@@ -51,12 +52,10 @@ export function SiteHeader() {
               ))}
             </nav>
           </details>
-          <Link
-            href="/contact"
+          <CheckAvailabilityTrackedLink
+            surface="header"
             className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-amber-300 px-4 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] sm:min-h-0 sm:px-5 sm:py-2.5"
-          >
-            Check Availability
-          </Link>
+          />
         </div>
       </div>
     </header>
@@ -75,12 +74,10 @@ export function SiteFooter() {
               Personalized music and professional planning for Sea-to-Sky weddings, from ceremony through reception.
             </p>
           </div>
-          <Link
-            href="/contact"
+          <CheckAvailabilityTrackedLink
+            surface="footer"
             className="shrink-0 self-start rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white/85 transition hover:border-white/30 hover:bg-white/5 md:self-auto"
-          >
-            Check Availability
-          </Link>
+          />
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           {navLinks.map((item) => (
@@ -88,6 +85,9 @@ export function SiteFooter() {
               {item.label}
             </Link>
           ))}
+          <Link href="/venues" className="transition hover:text-white/70">
+            Venues
+          </Link>
         </div>
         <p className="text-sm text-white/40">
           <Link href="/vancouver-wedding-dj" className="transition hover:text-white/65">

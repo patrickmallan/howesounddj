@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         url: "/og-share.jpg",
         width: 1200,
         height: 630,
-        alt: "Howe Sound Event DJ wedding dance floor",
+        alt: "Howe Sound Wedding DJ dance floor",
       },
     ],
   },

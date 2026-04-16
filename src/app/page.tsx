@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { HomeVideoProof } from "@/components/home-video-proof";
 import { ImageSlot } from "@/components/image-slot";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
@@ -106,18 +108,16 @@ export default function HoweSoundDJHomepage() {
                 Squamish Wedding DJ · Sea-to-Sky
               </div>
               <h1 className="max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-                Creating unforgettable wedding experiences.
+                Squamish wedding DJ for the Sea-to-Sky — unforgettable celebrations.
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-8 text-white/70">
                 Serving Squamish, Whistler, Vancouver, and the corridor with passion: polished sound, seamless planning, and nights that feel elegant, emotional, or wild (often all three).
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
-                <a
-                  href="/contact"
+                <CheckAvailabilityTrackedLink
+                  surface="hero"
                   className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-                >
-                  Check Availability
-                </a>
+                />
                 <a
                   href="/reviews"
                   className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -241,12 +241,10 @@ export default function HoweSoundDJHomepage() {
                 <a href="/reviews" className="text-sm font-semibold text-amber-300 hover:text-amber-200">
                   All reviews →
                 </a>
-                <a
-                  href="/contact"
+                <CheckAvailabilityTrackedLink
+                  surface="inline"
                   className="rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-                >
-                  Check Availability
-                </a>
+                />
               </div>
             </div>
             <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -279,6 +277,12 @@ export default function HoweSoundDJHomepage() {
                 From mountaintop receptions to brewery celebrations and restored local spaces, these are some of the
                 venues and businesses where Howe Sound DJ has helped shape wedding days and packed dance floors.
               </p>
+              <p className="mt-4 text-sm leading-7 text-white/50">
+                <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                  Browse wedding venue guides
+                </Link>{" "}
+                for planning-focused context on music, flow, and Sea-to-Sky logistics—then check availability when you are ready.
+              </p>
             </div>
             <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {VENUES.map((venue) => (
@@ -287,17 +291,24 @@ export default function HoweSoundDJHomepage() {
                   className="flex flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6"
                 >
                   <h3 className="text-xl font-semibold leading-snug text-white">
+                    <Link
+                      href={`/venues/${venue.slug}`}
+                      className="rounded-md text-white transition hover:text-amber-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+                    >
+                      {venue.name}
+                    </Link>
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-white/65">{venue.description}</p>
+                  <p className="mt-4 text-xs text-white/40">
                     <a
                       href={venue.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-md text-white transition hover:text-amber-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+                      className="text-amber-300/80 transition hover:text-amber-200"
                     >
-                      {venue.name}
-                      <span className="sr-only"> (opens in new tab)</span>
+                      Official website<span className="sr-only"> (opens in new tab)</span> →
                     </a>
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-white/65">{venue.description}</p>
+                  </p>
                 </article>
               ))}
             </div>
@@ -367,12 +378,10 @@ export default function HoweSoundDJHomepage() {
                 Rooted in Squamish with an ear for atmosphere and calm, professional planning support, Patrick helps you feel covered before the day and free to enjoy it when the music hits.
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <a
-                  href="/contact"
+                <CheckAvailabilityTrackedLink
+                  surface="page_cta"
                   className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-                >
-                  Check Availability
-                </a>
+                />
                 <a
                   href="/about"
                   className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -417,12 +426,11 @@ export default function HoweSoundDJHomepage() {
                   The contact page is where you check availability and share your wedding details: date, venue, and how you want the night to feel.
                 </p>
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-                  <a
+                  <CheckAvailabilityTrackedLink
                     href="/contact#availability"
+                    surface="page_cta"
                     className="inline-flex rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-                  >
-                    Check Availability
-                  </a>
+                  />
                   <a
                     href="/weddings"
                     className="inline-flex rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

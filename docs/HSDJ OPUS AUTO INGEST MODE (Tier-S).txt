@@ -1,0 +1,149 @@
+# HOWESOUNDDJ — HSDJ OPUS REPOSITORY INTELLIGENCE — AUTO INGEST (COLD START)
+
+**PROGRAM SELECTOR (read first):**
+- **This file** = **Cold start** for remediation driven **only** by the intelligence report at **`logs/hsdj_opus_repo_intelligence_report.md`** (also referenced as **`$R`**).
+- **All implementable work** must be traceable to **`$R`**: finding IDs (e.g. P2-1, P5-1), section headings, or the **Recommended remediations** table. Do not invent scope outside **`$R`** unless the operator refreshes the scan or edits **`$R`** with an explicit addendum.
+- **Scan spec** (pass/fail, weights, page contracts, analytics contract): `docs/HSDJ OPUS SCAN.txt` — reference for taxonomy and non-regression rules; **what to fix** comes from **`$R`**, not from re-running the full scan unless the operator chooses to regenerate **`$R`**.
+- **Do not** substitute generic SEO or marketing playbooks — every change cites **`$R`** and the scan contract.
+
+---
+
+## Canonical paths (same repo, any machine)
+
+| Role | Path (relative to repo root `howesounddj`) |
+|------|--------------------------------|
+| **SSOT — findings & backlog** | `logs/hsdj_opus_repo_intelligence_report.md` |
+| **macOS Desktop clone (example)** | `~/Desktop/howesounddj/logs/hsdj_opus_repo_intelligence_report.md` |
+
+**Evidence anchor `$R`** (must exist before AUTO INGEST):
+
+```bash
+# Portable (recommended — works in any clone location)
+R="$(git rev-parse --show-toplevel)/logs/hsdj_opus_repo_intelligence_report.md"
+
+# Explicit Desktop example (when the repo lives at Desktop/howesounddj)
+# R="$HOME/Desktop/howesounddj/logs/hsdj_opus_repo_intelligence_report.md"
+```
+
+```bash
+test -f "$R" && echo "R_ok=1"
+```
+
+---
+
+## Report file (`$R`) — section index (where to read)
+
+Use these **Markdown `##` headings** inside `logs/hsdj_opus_repo_intelligence_report.md` as the authoritative map. All batches and Stage FINALs must reference finding IDs and these sections.
+
+| Section | Contents |
+|---------|----------|
+| Report metadata and freshness | Scan date, git SHA, supersession rule |
+| Executive summary | Overall posture, score band, high-level defect counts |
+| Overall score and interpretation band | Weighted total /100 |
+| P0 / P1 / P2 defect register | **Highest-priority actionable defects** |
+| P3+ defect register (and intentionally deferred items) | P5, P6, P7, deferred analytics |
+| Per-layer scores (layers 1–10) | Layer weights, evidence, required actions |
+| D1–D4 mandatory checklist results | Pass/fail by checklist |
+| Page contract matrix (core routes) | Per-route compliance |
+| Analytics contract audit | Events, gaps, N/A items |
+| Recommended remediations (ordered by priority tier) | **Consolidated fix list** — primary implementation index |
+| Blockers (not provable from repo alone) | Production-only verification; do not treat as code defects without evidence |
+| Re-run verification commands | Bounded `bash` / `rg` to prove closure |
+| Scan spec evolution notes (optional) | Contract updates after remediation |
+
+**Execution rule:** Prefer **Recommended remediations** + **P0/P1/P2** + **P3+** registers as the checklist. Use **Blockers** only for follow-ups that cannot be closed in-repo.
+
+---
+
+Sage — **Cold start** after **`logs/hsdj_opus_repo_intelligence_report.md`** exists (produced by pasting **`docs/HSDJ OPUS SCAN.txt`** into Cursor and running a read-only scan, per the scan contract).
+
+**Execution law:**
+1. **`$R`** = single source of truth for OPEN findings and remediation order.
+2. **Macro batches `01→05`** (table below) — **one Cursor pass = one full row** when implementable.
+3. **Stage FINAL** per batch: `logs/HSDJ_REMEDIATION_BATCH_<NN>_<PACK_ID>_STAGE_FINAL.md`.
+
+## Four-file program (HSDJ assurance layer)
+
+| Role | Path |
+|------|------|
+| **SSOT (findings)** | `logs/hsdj_opus_repo_intelligence_report.md` — **all work is scoped from this file** |
+| **Spec (contract)** | `docs/HSDJ OPUS SCAN.txt` — deterministic rules; Sage may **edit** when evidence shows a contract gap |
+| **This file** | Cold start: pick the **first** macro batch row **`01→05`** with any **OPEN** item |
+| **Continuation** | `docs/HSDJ OPUS CONTINUATION MODE (BATCH-ENABLED).txt` — after any `HSDJ_REMEDIATION_BATCH_*_STAGE_FINAL.md` exists |
+
+**Alignment rule:** When you regenerate **`$R`**, re-read **Executive summary** and **Recommended remediations** before selecting a batch. Remediation status is tracked in **Stage FINAL** files; reconcile OPEN vs DONE against **`$R`** finding IDs.
+
+**Scan spec evolution:** If implementation discovers a missing pass/fail surface, **Sage** updates `docs/HSDJ OPUS SCAN.txt` and records rationale in Stage FINAL or in **`$R`** section **Scan spec evolution notes** on the next scan.
+
+---
+
+## Macro batch table (maps priority tiers from the scan contract)
+
+| Batch | Pack ID | Priority tiers | Stage FINAL (write path) |
+|-------|---------|----------------|---------------------------|
+| **01** | `HSDJ_BATCH_01_P0_CONVERSION` | **P0** Conversion integrity | `logs/HSDJ_REMEDIATION_BATCH_01_P0_CONVERSION_STAGE_FINAL.md` |
+| **02** | `HSDJ_BATCH_02_P1_P2_TRUST_MESSAGE` | **P1** Trust/proof, **P2** Message clarity | `logs/HSDJ_REMEDIATION_BATCH_02_P1_P2_TRUST_MESSAGE_STAGE_FINAL.md` |
+| **03** | `HSDJ_BATCH_03_P3_P4_UX_TECHSEO` | **P3** Mobile UX, **P4** Technical SEO | `logs/HSDJ_REMEDIATION_BATCH_03_P3_P4_UX_TECHSEO_STAGE_FINAL.md` |
+| **04** | `HSDJ_BATCH_04_P5_P6_META_ANALYTICS` | **P5** Metadata differentiation, **P6** Analytics | `logs/HSDJ_REMEDIATION_BATCH_04_P5_P6_META_ANALYTICS_STAGE_FINAL.md` |
+| **05** | `HSDJ_BATCH_05_P7_GROWTH` | **P7** Optional growth / polish | `logs/HSDJ_REMEDIATION_BATCH_05_P7_GROWTH_STAGE_FINAL.md` |
+
+**Row selection:** Map each **OPEN** finding in **`$R`** to the batch that covers its tier (see Priority model in `docs/HSDJ OPUS SCAN.txt`). If a finding spans tiers, assign to the **highest** tier batch and note dependency in Stage FINAL.
+
+**N/A batches:** If **`$R`** states **NONE FOUND** for a tier (e.g. P0), write Stage FINAL for that batch as **N/A** with proof (cite **`$R`** section), then proceed to the next batch with OPEN items.
+
+---
+
+## Crosswalk: current `$R` snapshot (example — refresh when report regenerates)
+
+**When `logs/hsdj_opus_repo_intelligence_report.md` matches the scan dated 2026-04-15 at git `eab6b91`:**
+
+| Batch | Findings in `$R` | Expected Stage FINAL outcome |
+|-------|------------------|-------------------------------|
+| **01** | P0: **NONE FOUND** | **N/A** — document cite to `$R` § P0 |
+| **02** | P1: **NONE FOUND**; P2: **P2-1** OPEN | Implement P2-1 (home H1) or document deferral |
+| **03** | No P3/P4 defects listed as OPEN in `$R` | **N/A** — cite `$R` § P3+ / Executive summary |
+| **04** | **P5-1, P5-2, P5-3, P6-1, P6-2, P6-3** OPEN | Implement all in one pass if feasible; else split with operator approval |
+| **05** | P7 / deferred items only (`check_availability_click` deferred, blog optional) | **N/A** or **DEFERRED** unless operator promotes an item |
+
+**First batch with OPEN work for that snapshot:** **02** (P2-1). **First batch requiring implementation after N/A rows:** **04** (P5 + P6).
+
+Operators must re-build this crosswalk table after each new **`$R`** (or paste the Executive summary + defect tables into the operator message).
+
+---
+
+## In scope / out of scope
+
+- **In:** Closing findings named in **`$R`** via macro batches **01→05** only; changes must satisfy **`docs/HSDJ OPUS SCAN.txt`** non-regression invariants.
+- **Out:** DNS, Vercel/Cloudflare dashboards, GSC-only actions, work not traceable to **`$R`**; unbounded repo sweeps (use bounded commands from **`$R`** section **Re-run verification commands**).
+
+## Maximum throughput (binding)
+
+1. **One Cursor execution = one full macro batch row** (all items in that row) when implementable.
+2. Walk **`01→05`**; choose the **first** row with any **OPEN** item (per **`$R`**).
+3. Advance only when that row is **DONE**, **N/A**, or **DEFERRED** with evidence in its Stage FINAL.
+4. Do not skip a higher-priority batch for lower-tier polish if that batch still has OPEN items per **`$R`**.
+
+## Program complete
+
+All **01–05** Stage FINALs = **DONE** / **N/A** / **DEFERRED** with evidence; close with short paragraph + bounded proof (copy **`$R`** **Re-run verification commands** where applicable).
+
+## Hard rules
+
+- Fail-closed: no weakening **Check Availability** funnel, wedding positioning, or Squamish/Sea-to-Sky relevance unless **`$R`** documents an approved business exception.
+- `npm run lint` and `npm run build` before claiming batch DONE unless DEFERRED with reason.
+- Targeted `rg` / file reads — no wholesale rewrites unrelated to **`$R`**.
+
+## Output
+
+- **No implementable work:** One paragraph — program complete; list Stage FINAL paths + proof.
+- **Work remains:** **ONE** fenced block: Tier-S **Stage 0 → Stage FINAL** for the **single** selected batch row.
+
+### Cursor block skeleton (Stage 0 → Stage FINAL)
+
+- **Stage 0 — Scope:** Pack ID from table; surfaces = OPEN findings in that row only; cite **`$R`** sections and finding IDs (e.g. P2-1).
+- **Stage 1 — Baseline:** Bounded commands from **`$R`** **Re-run verification commands** (or `npm run lint` / `npm run build`).
+- **Stage 2 — Implement:** All OPEN items in the row; match contract clauses in `docs/HSDJ OPUS SCAN.txt`.
+- **Stage 3 — Verify:** lint, build, targeted checks from **`$R`**.
+- **Stage FINAL:** Write `logs/HSDJ_REMEDIATION_BATCH_<NN>_..._STAGE_FINAL.md`; per-finding **DONE|N/A|DEFERRED** with **`$R`** ID; files touched; end with **Re-run verification commands** (single fenced `bash`).
+
+Proceed.

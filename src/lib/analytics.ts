@@ -11,6 +11,11 @@ export const ANALYTICS_EVENTS = {
   contactFormSubmitAttempt: "contact_form_submit_attempt",
   contactFormSubmitSuccess: "contact_form_submit_success",
   contactFormSubmitError: "contact_form_submit_error",
+  calendlyClick: "calendly_click",
+  checkAvailabilityClick: "check_availability_click",
+  availabilityCheckStart: "availability_check_start",
+  availabilityCheckResult: "availability_check_result",
+  contactFormStart: "contact_form_start",
 } as const;
 
 export function trackEvent(
