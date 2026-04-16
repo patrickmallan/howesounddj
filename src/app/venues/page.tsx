@@ -122,7 +122,7 @@ export default function VenuesHubPage() {
       <section className="border-t border-white/10 bg-white/[0.03]">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
           <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
-            <div className="max-w-3xl">
+            <div className="mx-auto w-full max-w-3xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Next step</div>
               <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Check availability for your date</h2>
               <p className="mt-4 text-lg leading-8 text-white/70">

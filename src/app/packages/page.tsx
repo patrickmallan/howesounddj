@@ -250,7 +250,7 @@ export default function PackagesPage() {
 
       <section className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
         <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
-          <div className="max-w-3xl">
+          <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               Next step
             </div>

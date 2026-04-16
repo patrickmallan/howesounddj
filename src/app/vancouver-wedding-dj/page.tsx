@@ -327,7 +327,7 @@ export default function VancouverWeddingDjPage() {
 
       <section className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
         <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
-          <div className="max-w-3xl">
+          <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Lock in fit</div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
               Vancouver couples: let’s match music, date, and Sea-to-Sky logistics

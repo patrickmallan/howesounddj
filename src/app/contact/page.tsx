@@ -70,7 +70,7 @@ export default function ContactPage() {
 
       <section className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
         <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 lg:p-10">
-          <div className="max-w-3xl">
+          <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               What happens next
             </div>
@@ -89,7 +89,7 @@ export default function ContactPage() {
         className="scroll-mt-24 border-y border-white/10 bg-white/5"
       >
         <div className="mx-auto max-w-4xl px-6 py-16 lg:px-8 lg:py-20">
-          <div className="max-w-3xl">
+          <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               Availability
             </div>
@@ -176,7 +176,7 @@ export default function ContactPage() {
 
       <section className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
         <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
-          <div className="max-w-3xl">
+          <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               Ready when you are
             </div>
