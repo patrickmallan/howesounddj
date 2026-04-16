@@ -242,6 +242,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          formType: "availability_inquiry",
           name,
           partnerName,
           email,

@@ -64,6 +64,10 @@ export async function POST(request: Request) {
     });
   }
 
+  const formType = trimValue(data.formType);
+  /** Primary path: availability check → full inquiry (default when omitted). */
+  const isSecondaryInquiry = formType === "secondary_inquiry";
+
   const name = trimValue(data.name);
   const partnerName = trimValue(data.partnerName);
   const email = trimValue(data.email);
@@ -79,9 +83,14 @@ export async function POST(request: Request) {
   if (!name) fieldErrors.name = "Please add your name.";
   if (!email) fieldErrors.email = "Please add your email.";
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) fieldErrors.email = "Please check your email address.";
-  if (!weddingDate) fieldErrors.weddingDate = "Please add your wedding date.";
-  if (!venue) fieldErrors.venue = "Please add your venue or location.";
   if (!message) fieldErrors.message = "Please add a short message.";
+
+  if (isSecondaryInquiry) {
+    // Optional fields only; availability-led path still requires date + venue below.
+  } else {
+    if (!weddingDate) fieldErrors.weddingDate = "Please add your wedding date.";
+    if (!venue) fieldErrors.venue = "Please add your venue or location.";
+  }
 
   if (Object.keys(fieldErrors).length > 0) {
     return NextResponse.json<ContactApiResponse>(
@@ -131,12 +140,13 @@ export async function POST(request: Request) {
     partnerName,
     email,
     phone,
-    weddingDate,
-    venue,
+    weddingDate: isSecondaryInquiry && !weddingDate ? "Not provided yet" : weddingDate,
+    venue: isSecondaryInquiry && !venue ? "Not provided yet" : venue,
     guestCount,
     servicesNeeded,
     message,
     receivedAt,
+    inquirySource: isSecondaryInquiry ? "secondary_question" : "availability_led",
   };
 
   try {

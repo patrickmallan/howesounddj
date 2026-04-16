@@ -182,26 +182,28 @@ export const VENUE_PAGES: readonly VenuePage[] = [
   {
     slug: "glacier-valley-farm",
     name: "Glacier Valley Farm",
-    officialUrl: "https://glaciervalleyfarm.wordpress.com/",
+    /** Public presence; verify periodically — Facebook is the active page for this venue today. */
+    officialUrl: "https://www.facebook.com/glaciervalleyfarm/",
     locationLabel: "Squamish Valley, BC",
     area: "squamish",
     venueType: "Farm & outdoor-friendly venue",
-    cardDescription: "Valley farm setting with open-air country charm.",
+    cardDescription:
+      "Squamish Valley working farm and event space—open-air country charm with room to build a full wedding arc.",
     shortSummary:
-      "Valley farm charm with open-air celebration potential—music and pacing should match the scale of your guest list and the property’s flow.",
+      "A Squamish Valley farm setting where open-air daytime energy can turn into an evening reception—music and pacing should match your guest list, the season, and how guests move across the property.",
     metaDescription:
-      "Glacier Valley Farm wedding DJ: open-air Squamish Valley character with personalized music and reception pacing. Howe Sound DJ serves Sea-to-Sky weddings with clear planning support.",
+      "Glacier Valley Farm wedding DJ in the Squamish Valley: open-air farm character, personalized reception music, and clear planning support. Howe Sound DJ—Sea-to-Sky weddings with a Squamish-rooted posture.",
     whyFit: [
-      "Farm settings invite a certain romance: golden light, open space, and a reception that can feel personal. The dance floor still needs a plan when the sun goes down.",
-      "The best outcomes pair the setting’s charm with intentional transitions—so the night feels like one story, not scattered highlights.",
+      "Farm and pasture-adjacent celebrations often pair wide skies with a crowd that knows each other—great for connection, and still worth a deliberate plan for speeches, dinner energy, and when to open the floor.",
+      "The setting does part of the storytelling; the soundtrack should carry the rest without fighting the landscape or the way your guests actually behave after sunset.",
     ],
     planningFocus: [
-      "Outdoor-first timelines can shift with weather; a flexible-but-clear plan for key moments reduces stress without making the day feel overproduced.",
-      "Speech and ceremony audio needs are often the first place a plan proves itself—then dancing is the reward.",
+      "Outdoor-first timelines can shift with weather and light; a flexible-but-clear plan for key moments reduces day-of stress without turning the wedding into a rigid production.",
+      "Ceremony and speech audio are usually where planning pays off first—then dancing is the payoff when the room is ready.",
     ],
     localExpertise: [
-      "Squamish Valley weddings sit in the same local lane as the rest of the corridor: practical timing, realistic expectations, and music built for the crowd you actually invited.",
-      "Check availability and walk through your rough timeline and priorities.",
+      "Squamish Valley sits on the same corridor map as the rest of the work: realistic weekend timing, guest travel, and communication that stays ahead of the day—what couples describe in reviews.",
+      "Check availability, then walk through your rough timeline, guest count, and how you want the night to feel.",
     ],
   },
   {
@@ -228,6 +230,106 @@ export const VENUE_PAGES: readonly VenuePage[] = [
     localExpertise: [
       "Whistler and Sea-to-Sky coverage are part of the same corridor map: logistics, communication, and music shaped for real crowds—not a generic destination package.",
       "Start with availability for your date, then talk through coverage and how you want the night to feel at elevation.",
+    ],
+  },
+  {
+    slug: "nita-lake-lodge",
+    name: "Nita Lake Lodge",
+    officialUrl: "https://www.nitalakelodge.com/weddings",
+    locationLabel: "Whistler, BC",
+    area: "whistler",
+    venueType: "Boutique hotel & lakeside wedding venue",
+    cardDescription: "Creekside Whistler boutique hotel with lake-adjacent character and a relaxed mountain-luxe reception feel.",
+    shortSummary:
+      "A lakeside Creekside setting where the day can move from intimate ceremony energy to a reception that still needs a confident musical arc—without treating Whistler like a generic resort template.",
+    metaDescription:
+      "Nita Lake Lodge Whistler wedding DJ: lakeside Creekside atmosphere with personalized reception music and Sea-to-Sky planning support. Howe Sound DJ—corridor-rooted, wedding-first.",
+    whyFit: [
+      "Lake-adjacent properties often blend softness with celebration: guests arrive ready for a weekend, and the evening still needs a clear plan for speeches, dinner pacing, and when the dance floor should earn the room.",
+      "The right approach matches the lodge’s intimate-luxe tone—warm early, intentional later—so the night feels cohesive rather than like separate “modes” stitched together.",
+    ],
+    planningFocus: [
+      "Think about how guests move from outdoor-adjacent moments into dinner and dancing: transitions matter when the setting is this photogenic—music should support the flow, not compete with it.",
+      "Audio clarity for vows and speeches remains the foundation; then the set can open into celebration when you are ready.",
+    ],
+    localExpertise: [
+      "Whistler sits on the same Sea-to-Sky corridor map as the Squamish-rooted work: destination weekends, guest travel, and realistic timing—without reframing the brand as a Vancouver-first service.",
+      "Check availability, then align music and pacing to your weekend structure and how you want guests to feel from arrival to last song.",
+    ],
+  },
+  {
+    slug: "fairmont-chateau-whistler",
+    name: "Fairmont Chateau Whistler",
+    officialUrl: "https://www.chateau-whistler.com/gather/weddings/",
+    locationLabel: "Whistler, BC",
+    area: "whistler",
+    venueType: "Luxury resort & ballroom venue",
+    cardDescription: "Upper Village resort scale—grand rooms, polished service expectations, and a reception that benefits from deliberate pacing.",
+    shortSummary:
+      "Classic luxury resort energy in Whistler: high expectations for flow, clarity, and a dance floor that still feels personal—not a stock playlist with a fancy ceiling.",
+    metaDescription:
+      "Fairmont Chateau Whistler wedding DJ: polished reception pacing, speech-forward clarity, and personalized dance-floor energy. Howe Sound DJ—Sea-to-Sky wedding support with corridor experience.",
+    whyFit: [
+      "Ballroom-scale weddings amplify everything guests notice: transitions, mic moments, and whether the music matches the formality you want early—then lifts when it is time to celebrate.",
+      "The goal is elegance without stiffness: a night that feels well-run because the plan is coherent, not because the energy is restrained all evening.",
+    ],
+    planningFocus: [
+      "Large guest lists reward a simple run-of-show for what must be heard clearly versus what can breathe: speeches, special dances, and the moment you want the room to turn a corner.",
+      "Playlist direction should match your crowd’s age mix and travel energy—destination weekends often start later and still deserve a real peak.",
+    ],
+    localExpertise: [
+      "Whistler resort weekends are part of the same professional lane as corridor weddings: communication, timing, and music shaped for real crowds planning from Vancouver or flying in from elsewhere.",
+      "Start with availability and map the evening to your priorities—then build the set around your story, not a default resort arc.",
+    ],
+  },
+  {
+    slug: "squamish-lilwat-cultural-centre",
+    name: "Squamish Lil'wat Cultural Centre",
+    officialUrl: "https://slcc.ca/weddings/",
+    locationLabel: "Whistler, BC",
+    area: "whistler",
+    venueType: "Cultural centre & gathering venue",
+    cardDescription: "Distinctive Whistler cultural venue—spaces and atmosphere that reward respectful, intentional celebration design.",
+    shortSummary:
+      "A culturally significant Whistler gathering place where the setting asks for thoughtful pacing: ceremony and reception flow should feel considered, warm, and guest-forward.",
+    metaDescription:
+      "Squamish Lil'wat Cultural Centre wedding DJ support in Whistler: thoughtful sound planning and reception music for culturally rooted celebrations. Howe Sound DJ—Sea-to-Sky corridor experience.",
+    whyFit: [
+      "Spaces with strong identity reward a DJ who protects key moments: clear audio for what matters, transitions that feel calm, and a dance section that still reflects your crowd—without turning the night into a generic party template.",
+      "The through-line is respect for the arc you are building: guests should feel guided, not rushed from milestone to milestone.",
+    ],
+    planningFocus: [
+      "Clarity on ceremony-to-reception movement, speech order, and where you want emotional peaks helps the evening feel intentional in multi-space venues.",
+      "Music should support the tone you want in each chapter—then earn the celebration when you open the floor.",
+    ],
+    localExpertise: [
+      "Whistler cultural and resort-adjacent work still maps to Sea-to-Sky realities: weekend timing, guest travel, and the same wedding-first communication posture as the rest of the site.",
+      "Check availability and walk through your rough schedule, guest count, and priorities for the evening’s emotional beats.",
+    ],
+  },
+  {
+    slug: "audain-art-museum",
+    name: "Audain Art Museum",
+    officialUrl: "https://audainartmuseum.com/rentalspack/",
+    locationLabel: "Whistler, BC",
+    area: "whistler",
+    venueType: "Art museum & private event venue",
+    cardDescription: "Architectural Whistler museum setting—modern, gallery-forward energy for couples who want a design-led celebration backdrop.",
+    shortSummary:
+      "A contemporary museum backdrop where visual discipline meets wedding celebration: pacing and sound choices should match a refined room without feeling cold or overly restrained.",
+    metaDescription:
+      "Audain Art Museum Whistler wedding DJ: museum event atmosphere with tailored reception music and professional planning support. Howe Sound DJ—Sea-to-Sky weddings with corridor expertise.",
+    whyFit: [
+      "Gallery-forward venues often pair clean aesthetics with guests who love details—great for intentional moments, and still deserving of a dance plan that matches your people when the time is right.",
+      "The music should complement the architecture: warm where it should be, celebratory when you choose to turn the corner—without fighting the room’s natural tone.",
+    ],
+    planningFocus: [
+      "Event layouts in museum settings reward coordination between cocktail, seated moments, and dancing—so announcements and transitions feel calm rather than abrupt.",
+      "Speech clarity and special-dance tone matter in refined spaces; then the set can open with confidence when you are ready.",
+    ],
+    localExpertise: [
+      "Whistler museum and resort-adjacent celebrations sit alongside the broader Sea-to-Sky map: destination weekends, guest expectations, and music built for real crowds—not a generic “big city vendor” posture.",
+      "Start with availability, then align the plan to your timeline and how you want the night to feel in the space.",
     ],
   },
   {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactAvailabilityForm } from "@/components/contact-availability-form";
+import { ContactSecondaryInquiryForm } from "@/components/contact-secondary-inquiry-form";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
 /** Read Turnstile site key at request time (avoids empty props if env was missing at build / prefers runtime env on Vercel). */
@@ -127,6 +128,21 @@ export default function ContactPage() {
 
           <div className="mt-10">
             <ContactAvailabilityForm turnstileSiteKey={turnstileSiteKey()} />
+          </div>
+
+          <div className="mt-16 border-t border-white/10 pt-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/40">Question before the next step</p>
+            <h2 className="mt-2 text-xl font-semibold text-white/90 sm:text-2xl">
+              Not ready to check a date or book a consult?
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/50">
+              Send a short note and Patrick will reply when he can. For calendar checks and a full planning intake, use{" "}
+              <a href="#availability" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                availability above
+              </a>
+              .
+            </p>
+            <ContactSecondaryInquiryForm turnstileSiteKey={turnstileSiteKey()} />
           </div>
         </div>
       </section>
