@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import { HomepageHeroHeadline } from "@/components/homepage-hero-headline";
 import { HomeVideoProof } from "@/components/home-video-proof";
 import { ImageSlot } from "@/components/image-slot";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { VENUES } from "@/config/venues";
+
+/** Homepage H1 A/B/C — all include “Squamish wedding DJ” + “Sea to Sky”. Server HTML uses A; client may swap after resolve. */
+export const HEADLINE_VARIANTS = {
+  A: "Squamish wedding DJ for the Sea to Sky, packed dance floors every time.",
+  B: "Squamish wedding DJ for the Sea to Sky, high energy dance floors.",
+  C: "Squamish wedding DJ for the Sea to Sky, the right music at the right moment.",
+} as const;
 
 export const metadata: Metadata = {
   title: { absolute: "Howe Sound DJ | Squamish Wedding DJ" },
@@ -107,9 +115,7 @@ export default function HoweSoundDJHomepage() {
               <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
                 Squamish Wedding DJ · Sea-to-Sky
               </div>
-              <h1 className="max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-                Squamish wedding DJ for the Sea-to-Sky — unforgettable celebrations.
-              </h1>
+              <HomepageHeroHeadline headlines={HEADLINE_VARIANTS} />
               <p className="mt-6 max-w-xl text-lg leading-8 text-white/70">
                 Serving Squamish, Whistler, Vancouver, and the corridor with passion: polished sound, seamless planning, and nights that feel elegant, emotional, or wild (often all three).
               </p>

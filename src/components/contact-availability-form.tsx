@@ -3,6 +3,7 @@
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Script from "next/script";
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
+import { headlineVariantPayload } from "@/lib/experiment";
 import type { ContactApiResponse } from "@/types/contact-api";
 
 const CALENDLY_URL = "https://calendly.com/patrick-howesounddj";
@@ -174,6 +175,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       form_type: "inquiry",
       status: "start",
       page_path: clientPagePath(),
+      ...headlineVariantPayload(),
     });
   }
 
@@ -183,12 +185,14 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
     trackEvent(ANALYTICS_EVENTS.contactFormSubmitAttempt, {
       ...FORM_ANALYTICS,
       status: "attempt",
+      ...headlineVariantPayload(),
     });
     if (!turnstileSiteKeyResolved || !turnstileToken) {
       trackEvent(ANALYTICS_EVENTS.contactFormSubmitError, {
         ...FORM_ANALYTICS,
         status: "error",
         reason: "turnstile_pending",
+        ...headlineVariantPayload(),
       });
       setFormMessage("Please complete the security check below.");
       setFormStatus("error");
@@ -222,6 +226,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
           ...FORM_ANALYTICS,
           status: "error",
           reason: "invalid_response",
+          ...headlineVariantPayload(),
         });
         setFormStatus("error");
         setFormMessage("Something went wrong. Please refresh and try again.");
@@ -233,6 +238,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
           ...FORM_ANALYTICS,
           status: "error",
           reason: "validation_or_server",
+          ...headlineVariantPayload(),
         });
         setFormStatus("error");
         setFormMessage(data.message);
@@ -242,6 +248,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       trackEvent(ANALYTICS_EVENTS.contactFormSubmitSuccess, {
         ...FORM_ANALYTICS,
         status: "success",
+        ...headlineVariantPayload(),
       });
       setFormStatus("success");
       setFormMessage(data.message);
@@ -250,6 +257,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         ...FORM_ANALYTICS,
         status: "error",
         reason: "network",
+        ...headlineVariantPayload(),
       });
       setFormStatus("error");
       setFormMessage("Network error. Please check your connection and try again.");

@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
+import { headlineVariantPayload } from "@/lib/experiment";
 
 export type CheckAvailabilitySurface =
   | "header"
@@ -34,6 +35,7 @@ export function CheckAvailabilityTrackedLink({ surface, className, children, hre
           surface,
           destination: DEFAULT_DESTINATION,
           page_path: typeof window !== "undefined" ? window.location.pathname : undefined,
+          ...headlineVariantPayload(),
         });
       }}
     >
