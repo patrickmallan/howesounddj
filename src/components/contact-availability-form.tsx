@@ -26,6 +26,34 @@ type AvailabilityPhase =
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
+function digitsOnly(value: string, maxLen: number): string {
+  return value.replace(/\D/g, "").slice(0, maxLen);
+}
+
+/** Returns YYYY-MM-DD when all segments are complete and calendar-valid; otherwise "". */
+function composedWeddingDate(yearStr: string, monthStr: string, dayStr: string): string {
+  if (yearStr.length !== 4 || monthStr.length !== 2 || dayStr.length !== 2) return "";
+  const yi = Number(yearStr);
+  const mi = Number(monthStr);
+  const di = Number(dayStr);
+  if (yi < 2000 || yi > 2100) return "";
+  if (mi < 1 || mi > 12) return "";
+  if (di < 1 || di > 31) return "";
+  const dt = new Date(yi, mi - 1, di);
+  if (dt.getFullYear() !== yi || dt.getMonth() !== mi - 1 || dt.getDate() !== di) return "";
+  return `${yearStr}-${monthStr}-${dayStr}`;
+}
+
+function isForwardInput(e: React.ChangeEvent<HTMLInputElement>): boolean {
+  const ie = e.nativeEvent as InputEvent;
+  if (!ie.inputType) return true;
+  return (
+    ie.inputType !== "deleteContentBackward" &&
+    ie.inputType !== "deleteContentForward" &&
+    ie.inputType !== "deleteByCut"
+  );
+}
+
 export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey: string }) {
   /** Server prop first; then build-time `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (common on Vercel if only the public key was set). */
   const turnstileSiteKeyResolved = useMemo(() => {
@@ -34,7 +62,13 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
     return (process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "").trim();
   }, [turnstileSiteKey]);
 
-  const [weddingDate, setWeddingDate] = useState("");
+  const [yearStr, setYearStr] = useState("");
+  const [monthStr, setMonthStr] = useState("");
+  const [dayStr, setDayStr] = useState("");
+  const weddingDate = useMemo(
+    () => composedWeddingDate(yearStr, monthStr, dayStr),
+    [yearStr, monthStr, dayStr]
+  );
   const [dateError, setDateError] = useState("");
   const [availability, setAvailability] = useState<AvailabilityPhase>({ kind: "idle" });
   const [showInquiry, setShowInquiry] = useState(false);
@@ -44,6 +78,9 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
   const turnstileContainerRef = useRef<HTMLDivElement>(null);
   const turnstileWidgetIdRef = useRef<string | null>(null);
   const inquiryFormEngagementRef = useRef(false);
+  const yearRef = useRef<HTMLInputElement | null>(null);
+  const monthRef = useRef<HTMLInputElement | null>(null);
+  const dayRef = useRef<HTMLInputElement | null>(null);
 
   const [name, setName] = useState("");
   const [partnerName, setPartnerName] = useState("");
@@ -270,6 +307,46 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
   const consultButtonPrimaryOutline =
     "inline-flex items-center justify-center rounded-full border border-amber-300/50 bg-amber-300/10 px-6 py-3 text-center text-sm font-semibold text-amber-200 transition hover:border-amber-300 hover:bg-amber-300/15";
 
+  const dateInputClass =
+    "rounded-xl border border-white/15 bg-neutral-950 px-3 py-3 text-center text-white outline-none focus:border-amber-300/50 tabular-nums";
+
+  function clearDateFields() {
+    setYearStr("");
+    setMonthStr("");
+    setDayStr("");
+  }
+
+  function handleYearChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const v = digitsOnly(e.target.value, 4);
+    setYearStr(v);
+    setDateError("");
+    setAvailability({ kind: "idle" });
+    if (v.length !== 4 || !isForwardInput(e)) return;
+    const yn = Number(v);
+    if (yn >= 2000 && yn <= 2100) {
+      requestAnimationFrame(() => monthRef.current?.focus());
+    }
+  }
+
+  function handleMonthChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const v = digitsOnly(e.target.value, 2);
+    setMonthStr(v);
+    setDateError("");
+    setAvailability({ kind: "idle" });
+    if (v.length !== 2 || !isForwardInput(e)) return;
+    const mn = Number(v);
+    if (mn >= 1 && mn <= 12) {
+      requestAnimationFrame(() => dayRef.current?.focus());
+    }
+  }
+
+  function handleDayChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const v = digitsOnly(e.target.value, 2);
+    setDayStr(v);
+    setDateError("");
+    setAvailability({ kind: "idle" });
+  }
+
   return (
     <div className="space-y-8">
       <Script
@@ -279,23 +356,61 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       />
 
       <div className="rounded-[1.5rem] border border-white/10 bg-neutral-950/60 p-6 lg:p-8">
-        <label className="block text-sm font-medium text-white/80" htmlFor="wedding-date">
+        <label className="block text-sm font-medium text-white/80" htmlFor="wedding-date-year">
           Wedding date
         </label>
         <p className="mt-1 text-sm text-white/45">Pick your day. We will check it against Patrick&apos;s calendar.</p>
         <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end">
-          <input
-            id="wedding-date"
-            name="weddingDate"
-            type="date"
-            value={weddingDate}
-            onChange={(e) => {
-              setWeddingDate(e.target.value);
-              setDateError("");
-              setAvailability({ kind: "idle" });
-            }}
-            className="w-full max-w-xs rounded-xl border border-white/15 bg-neutral-950 px-4 py-3 text-white outline-none focus:border-amber-300/50 sm:w-auto"
-          />
+          <div className="flex max-w-md flex-wrap items-center gap-2 sm:gap-3">
+            <input
+              ref={yearRef}
+              id="wedding-date-year"
+              name="weddingDateYear"
+              type="text"
+              inputMode="numeric"
+              autoComplete="off"
+              placeholder="YYYY"
+              aria-label="Year (YYYY)"
+              value={yearStr}
+              onChange={handleYearChange}
+              maxLength={4}
+              className={`${dateInputClass} w-[4.75rem] sm:w-[5.25rem]`}
+            />
+            <span className="text-white/35 select-none" aria-hidden>
+              /
+            </span>
+            <input
+              ref={monthRef}
+              id="wedding-date-month"
+              name="weddingDateMonth"
+              type="text"
+              inputMode="numeric"
+              autoComplete="off"
+              placeholder="MM"
+              aria-label="Month (MM)"
+              value={monthStr}
+              onChange={handleMonthChange}
+              maxLength={2}
+              className={`${dateInputClass} w-[3.25rem]`}
+            />
+            <span className="text-white/35 select-none" aria-hidden>
+              /
+            </span>
+            <input
+              ref={dayRef}
+              id="wedding-date-day"
+              name="weddingDateDay"
+              type="text"
+              inputMode="numeric"
+              autoComplete="off"
+              placeholder="DD"
+              aria-label="Day (DD)"
+              value={dayStr}
+              onChange={handleDayChange}
+              maxLength={2}
+              className={`${dateInputClass} w-[3.25rem]`}
+            />
+          </div>
           <button
             type="button"
             onClick={checkAvailability}
@@ -325,7 +440,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               type="button"
               onClick={() => {
                 setAvailability({ kind: "idle" });
-                setWeddingDate("");
+                clearDateFields();
               }}
               className={consultButtonClass}
             >
