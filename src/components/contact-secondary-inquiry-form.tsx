@@ -16,6 +16,34 @@ function clientPagePath(): string | undefined {
   return window.location.pathname;
 }
 
+function digitsOnly(value: string, maxLen: number): string {
+  return value.replace(/\D/g, "").slice(0, maxLen);
+}
+
+/** Returns YYYY-MM-DD when all segments are complete and calendar-valid; otherwise "". */
+function composedWeddingDate(yearStr: string, monthStr: string, dayStr: string): string {
+  if (yearStr.length !== 4 || monthStr.length !== 2 || dayStr.length !== 2) return "";
+  const yi = Number(yearStr);
+  const mi = Number(monthStr);
+  const di = Number(dayStr);
+  if (yi < 2000 || yi > 2100) return "";
+  if (mi < 1 || mi > 12) return "";
+  if (di < 1 || di > 31) return "";
+  const dt = new Date(yi, mi - 1, di);
+  if (dt.getFullYear() !== yi || dt.getMonth() !== mi - 1 || dt.getDate() !== di) return "";
+  return `${yearStr}-${monthStr}-${dayStr}`;
+}
+
+function isForwardInput(e: React.ChangeEvent<HTMLInputElement>): boolean {
+  const ie = e.nativeEvent as InputEvent;
+  if (!ie.inputType) return true;
+  return (
+    ie.inputType !== "deleteContentBackward" &&
+    ie.inputType !== "deleteContentForward" &&
+    ie.inputType !== "deleteByCut"
+  );
+}
+
 export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSiteKey: string }) {
   const turnstileSiteKeyResolved = useMemo(() => {
     const fromServer = turnstileSiteKey.trim();
@@ -25,7 +53,13 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [weddingDateOptional, setWeddingDateOptional] = useState("");
+  const [yearStr, setYearStr] = useState("");
+  const [monthStr, setMonthStr] = useState("");
+  const [dayStr, setDayStr] = useState("");
+  const weddingDatePayload = useMemo(
+    () => composedWeddingDate(yearStr, monthStr, dayStr),
+    [yearStr, monthStr, dayStr]
+  );
   const [venueOptional, setVenueOptional] = useState("");
   const [message, setMessage] = useState("");
   const [honeypot, setHoneypot] = useState("");
@@ -33,7 +67,9 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
   const [turnstileToken, setTurnstileToken] = useState("");
   const turnstileContainerRef = useRef<HTMLDivElement>(null);
   const turnstileWidgetIdRef = useRef<string | null>(null);
-  const weddingDateInputRef = useRef<HTMLInputElement>(null);
+  const yearRef = useRef<HTMLInputElement | null>(null);
+  const monthRef = useRef<HTMLInputElement | null>(null);
+  const dayRef = useRef<HTMLInputElement | null>(null);
   const startedRef = useRef(false);
 
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -67,19 +103,42 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
     };
   }, [turnstileSiteKeyResolved, turnstileReady]);
 
-  const openWeddingDatePicker = useCallback(() => {
-    const el = weddingDateInputRef.current;
-    if (!el) return;
-    if (typeof el.showPicker === "function") {
-      try {
-        el.showPicker();
-      } catch {
-        el.focus();
-      }
-    } else {
-      el.focus();
+  function handleYearChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const v = digitsOnly(e.target.value, 4);
+    setYearStr(v);
+    if (v.length !== 4 || !isForwardInput(e)) return;
+    const yn = Number(v);
+    if (yn >= 2000 && yn <= 2100) {
+      requestAnimationFrame(() => monthRef.current?.focus());
     }
-  }, []);
+  }
+
+  function handleMonthChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const v = digitsOnly(e.target.value, 2);
+    setMonthStr(v);
+    if (v.length !== 2 || !isForwardInput(e)) return;
+    const mn = Number(v);
+    if (mn >= 1 && mn <= 12) {
+      requestAnimationFrame(() => dayRef.current?.focus());
+    }
+  }
+
+  function handleDayChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const v = digitsOnly(e.target.value, 2);
+    setDayStr(v);
+  }
+
+  function handleMonthKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key !== "Backspace" || monthStr !== "") return;
+    e.preventDefault();
+    yearRef.current?.focus();
+  }
+
+  function handleDayKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key !== "Backspace" || dayStr !== "") return;
+    e.preventDefault();
+    monthRef.current?.focus();
+  }
 
   function handleFocusCapture(e: React.FocusEvent<HTMLFormElement>) {
     if (startedRef.current) return;
@@ -126,7 +185,7 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
           email,
           partnerName: "",
           phone: "",
-          weddingDate: weddingDateOptional.trim(),
+          weddingDate: weddingDatePayload,
           venue: venueOptional.trim(),
           guestCount: "",
           servicesNeeded: "",
@@ -185,6 +244,8 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
   const inputClassBase =
     "w-full rounded-xl border border-white/15 bg-neutral-950 px-4 py-3 text-sm text-white outline-none focus:border-amber-300/50";
   const inputClass = `mt-2 ${inputClassBase}`;
+  const dateSegmentClass =
+    "rounded-xl border border-white/15 bg-neutral-950 px-3 py-3 text-center text-sm text-white outline-none focus:border-amber-300/50 tabular-nums";
 
   return (
     <div className="mt-8">
@@ -231,39 +292,60 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <label className="text-sm text-white/60" htmlFor="secondary-inquiry-date">
+            <label className="text-sm text-white/60" htmlFor="secondary-inquiry-date-year">
               Wedding date <span className="text-white/35">(optional)</span>
             </label>
-            <div className="relative mt-2">
+            <div className="mt-2 flex flex-wrap items-center gap-2 sm:gap-3">
               <input
-                ref={weddingDateInputRef}
-                id="secondary-inquiry-date"
-                type="date"
-                value={weddingDateOptional}
-                onChange={(e) => setWeddingDateOptional(e.target.value)}
-                className={`${inputClassBase} pr-12`}
+                ref={yearRef}
+                id="secondary-inquiry-date-year"
+                name="secondaryInquiryWeddingDateYear"
+                type="text"
+                inputMode="numeric"
+                autoComplete="off"
+                placeholder="YYYY"
+                aria-label="Wedding date year (YYYY), optional"
+                value={yearStr}
+                onChange={handleYearChange}
+                maxLength={4}
+                className={`${dateSegmentClass} w-[4.75rem] sm:w-[5.25rem]`}
               />
-              <button
-                type="button"
-                onClick={openWeddingDatePicker}
-                className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-lg p-1.5 text-amber-300/75 outline-none transition hover:bg-white/10 hover:text-amber-200/90 focus-visible:ring-2 focus-visible:ring-amber-400/45"
-                aria-label="Open calendar to choose wedding date"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-5 w-5"
-                  aria-hidden
-                >
-                  <rect x="3" y="4" width="18" height="18" rx="2" />
-                  <path d="M16 2v4M8 2v4M3 10h18" />
-                </svg>
-              </button>
+              <span className="text-white/35 select-none" aria-hidden>
+                /
+              </span>
+              <input
+                ref={monthRef}
+                id="secondary-inquiry-date-month"
+                name="secondaryInquiryWeddingDateMonth"
+                type="text"
+                inputMode="numeric"
+                autoComplete="off"
+                placeholder="MM"
+                aria-label="Wedding date month (MM), optional"
+                value={monthStr}
+                onChange={handleMonthChange}
+                onKeyDown={handleMonthKeyDown}
+                maxLength={2}
+                className={`${dateSegmentClass} w-[3.25rem]`}
+              />
+              <span className="text-white/35 select-none" aria-hidden>
+                /
+              </span>
+              <input
+                ref={dayRef}
+                id="secondary-inquiry-date-day"
+                name="secondaryInquiryWeddingDateDay"
+                type="text"
+                inputMode="numeric"
+                autoComplete="off"
+                placeholder="DD"
+                aria-label="Wedding date day (DD), optional"
+                value={dayStr}
+                onChange={handleDayChange}
+                onKeyDown={handleDayKeyDown}
+                maxLength={2}
+                className={`${dateSegmentClass} w-[3.25rem]`}
+              />
             </div>
           </div>
           <div>
