@@ -119,7 +119,7 @@ export default function HoweSoundDJHomepage() {
                 Squamish Wedding DJ · Sea-to-Sky
               </div>
               <HomepageHeroHeadline headlines={HEADLINE_VARIANTS} />
-              <HeroSoundIdentity />
+              <HeroSoundIdentity variant="groove" />
               <p className="mt-6 max-w-xl text-lg leading-8 text-white/70">
                 Serving Squamish, Whistler, Vancouver, and the corridor with passion: polished sound, seamless planning, and nights that feel elegant, emotional, or wild (often all three).
               </p>

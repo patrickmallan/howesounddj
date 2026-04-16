@@ -151,53 +151,53 @@ body {
       infinite;
   }
 
-  /* Brand-anchor waveform: heavier bass-hit motion; phase-shifted vs hero */
-  .hero-sound-identity--anchor .hero-sound-identity-svg {
+  /* Groove motion (hero + brand anchor): shared four-on-the-floor animation */
+  .hero-sound-identity--groove .hero-sound-identity-svg {
     opacity: 0.78;
   }
 
-  .hero-sound-identity--anchor .hero-sound-wave--back {
+  .hero-sound-identity--groove .hero-sound-wave--back {
     opacity: 0.48;
   }
 
-  .hero-sound-identity--anchor .hero-sound-wave--mid {
+  .hero-sound-identity--groove .hero-sound-wave--mid {
     opacity: 0.62;
   }
 
-  .hero-sound-identity--anchor .hero-sound-wave--primary {
+  .hero-sound-identity--groove .hero-sound-wave--primary {
     opacity: 0.9;
   }
 
-  .hero-sound-identity--anchor .hero-sound-flow--primary {
+  .hero-sound-identity--groove .hero-sound-flow--primary {
     /* One bar = 4 quarter-note steps — matches kick grid */
     animation: hero-sound-flow-kick-grid var(--hsdj-bar) cubic-bezier(0.45, 0, 0.55, 1)
       infinite;
     animation-delay: calc(var(--hsdj-beat) * -5.5);
   }
 
-  .hero-sound-identity--anchor .hero-sound-flow--mid {
+  .hero-sound-identity--groove .hero-sound-flow--mid {
     animation: hero-sound-flow-kick-grid var(--hsdj-bar) cubic-bezier(0.45, 0, 0.55, 1)
       infinite reverse;
     animation-delay: calc(var(--hsdj-beat) * -3.5);
   }
 
-  .hero-sound-identity--anchor .hero-sound-flow--back {
+  .hero-sound-identity--groove .hero-sound-flow--back {
     animation: hero-sound-flow-sway-slow-anchor var(--hsdj-2bar)
       cubic-bezier(0.45, 0, 0.55, 1) infinite;
     animation-delay: calc(var(--hsdj-beat) * -6.5);
   }
 
-  .hero-sound-identity--anchor .hero-sound-wave--back path {
+  .hero-sound-identity--groove .hero-sound-wave--back path {
     animation: hero-sound-amp-pad-anchor var(--hsdj-bar) linear infinite;
     animation-delay: calc(var(--hsdj-beat) * -2.5);
   }
 
-  .hero-sound-identity--anchor .hero-sound-wave--mid path {
+  .hero-sound-identity--groove .hero-sound-wave--mid path {
     animation: hero-sound-amp-harmonics-anchor var(--hsdj-bar) linear infinite;
     animation-delay: calc(var(--hsdj-beat) * -4);
   }
 
-  .hero-sound-identity--anchor .hero-sound-wave--primary path {
+  .hero-sound-identity--groove .hero-sound-wave--primary path {
     /* Four equal kicks per bar @ 128 BPM (one cycle = --hsdj-bar) */
     animation: hero-sound-amp-bass-anchor var(--hsdj-bar) linear infinite;
     animation-delay: calc(var(--hsdj-beat) * -3);

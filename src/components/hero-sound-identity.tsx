@@ -5,8 +5,11 @@
  * Layering suggests bass-led groove + lighter harmonic motion; motion is 128 BPM–locked in CSS.
  */
 type HeroSoundIdentityProps = {
-  /** Secondary placement (e.g. brand anchor): slightly smaller, centered, de-synced motion. */
-  variant?: "default" | "anchor";
+  /**
+   * `groove` / `anchor` — four-on-the-floor motion (128 BPM), shared between hero + brand sections.
+   * `anchor` only changes layout (narrower, centered under “Every time.”).
+   */
+  variant?: "default" | "groove" | "anchor";
   className?: string;
 };
 
@@ -24,8 +27,10 @@ export function HeroSoundIdentity({
 
   const rootClass =
     variant === "anchor"
-      ? `hero-sound-identity hero-sound-identity--anchor mt-6 max-w-[min(100%,24rem)] mx-auto ${className}`.trim()
-      : `hero-sound-identity mt-5 max-w-[min(100%,28rem)] ${className}`.trim();
+      ? `hero-sound-identity hero-sound-identity--groove mt-6 max-w-[min(100%,24rem)] mx-auto ${className}`.trim()
+      : variant === "groove"
+        ? `hero-sound-identity hero-sound-identity--groove mt-5 max-w-[min(100%,28rem)] ${className}`.trim()
+        : `hero-sound-identity mt-5 max-w-[min(100%,28rem)] ${className}`.trim();
 
   return (
     <div className={rootClass} aria-hidden>
