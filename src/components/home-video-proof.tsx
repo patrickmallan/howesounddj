@@ -69,14 +69,14 @@ export function HomeVideoProof() {
               className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/25 via-transparent to-transparent"
               aria-hidden
             />
-            <div className="pointer-events-none absolute inset-0 z-[2] flex items-center justify-center px-3 sm:px-4">
+            <div className="pointer-events-none absolute inset-0 z-[2] flex items-center justify-center px-4 sm:px-5">
               <Image
                 src={LOGO_SRC}
                 alt=""
                 width={2000}
                 height={2000}
-                className="h-auto w-[78%] max-w-[600px] object-contain opacity-[0.76] md:w-[62%]"
-                sizes="(max-width: 768px) 80vw, 600px"
+                className="h-auto w-auto max-h-[76%] max-w-[78%] object-contain opacity-[0.76] sm:max-h-[72%] sm:max-w-[72%] md:max-h-none md:max-w-[600px] md:w-[62%]"
+                sizes="(max-width: 768px) 72vw, 600px"
                 priority={false}
               />
             </div>
