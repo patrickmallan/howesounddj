@@ -77,15 +77,16 @@ body {
 }
 
 /* Hero sound identity — visual waveform only; no audio
-   Timing locked to 128 BPM: beat = 60/128 s, bar = 4 beats, phrase drift = 8 bars. */
+   Timing locked to 128 BPM: beat = 60/128 s, bar = 4 beats.
+   No stroke-dash animation — dashed strokes read as “broken” on a smooth sine-like line. */
 .hero-sound-identity {
   --hsdj-beat: 0.46875s; /* 128 BPM */
   --hsdj-bar: 1.875s; /* 4/4 bar */
   --hsdj-2bar: 3.75s;
-  --hsdj-phrase: 15s; /* 8 bars — slow “track moving” drift */
+  --hsdj-phrase: 15s; /* 8 bars — slow horizontal sway on inner <g> */
 }
 
-/* Amplitude on <path> + transform-box: view-box — avoids degenerate fill-box on <g>. */
+/* Amplitude on <path>; gentle translateX on nested .hero-sound-flow <g> (continuous stroke). */
 @media (prefers-reduced-motion: no-preference) {
   .hero-sound-identity-svg {
     opacity: 0.72;
@@ -103,39 +104,51 @@ body {
     opacity: 0.86;
   }
 
+  .hero-sound-flow {
+    transform-box: view-box;
+  }
+
+  .hero-sound-flow--primary {
+    transform-origin: 160px 18px;
+    animation: hero-sound-flow-sway var(--hsdj-phrase) ease-in-out infinite;
+    animation-delay: calc(var(--hsdj-beat) * -1);
+  }
+
+  .hero-sound-flow--mid {
+    transform-origin: 160px 22px;
+    animation: hero-sound-flow-sway var(--hsdj-phrase) ease-in-out infinite
+      reverse;
+    animation-delay: calc(var(--hsdj-beat) * -2);
+  }
+
+  .hero-sound-flow--back {
+    transform-origin: 160px 19px;
+    animation: hero-sound-flow-sway-slow calc(var(--hsdj-phrase) * 2)
+      ease-in-out infinite;
+    animation-delay: calc(var(--hsdj-beat) * -3);
+  }
+
   .hero-sound-wave--back path {
     transform-box: view-box;
     transform-origin: 160px 19px;
-    stroke-dasharray: 22 26;
-    stroke-dashoffset: 0;
-    animation:
-      hero-sound-amp-pad var(--hsdj-2bar) cubic-bezier(0.42, 0, 0.58, 1) infinite,
-      hero-sound-dash-pad calc(var(--hsdj-phrase) * 2) linear infinite;
-    animation-delay: calc(var(--hsdj-beat) * -1.5), 0s;
+    animation: hero-sound-amp-pad var(--hsdj-2bar) cubic-bezier(0.42, 0, 0.58, 1)
+      infinite;
+    animation-delay: calc(var(--hsdj-beat) * -1.5);
   }
 
   .hero-sound-wave--mid path {
     transform-box: view-box;
     transform-origin: 160px 22px;
-    stroke-dasharray: 14 22;
-    stroke-dashoffset: 0;
-    animation:
-      hero-sound-amp-harmonics var(--hsdj-bar)
-        cubic-bezier(0.38, 0.12, 0.32, 1) infinite,
-      hero-sound-dash-harmonics var(--hsdj-phrase) linear infinite;
-    animation-delay: calc(var(--hsdj-beat) * -0.5), calc(var(--hsdj-beat) * -2);
+    animation: hero-sound-amp-harmonics var(--hsdj-bar)
+      cubic-bezier(0.38, 0.12, 0.32, 1) infinite;
+    animation-delay: calc(var(--hsdj-beat) * -0.5);
   }
 
   .hero-sound-wave--primary path {
     transform-box: view-box;
     transform-origin: 160px 18px;
-    stroke-dasharray: 18 22;
-    stroke-dashoffset: 0;
-    animation:
-      hero-sound-amp-bass var(--hsdj-bar) cubic-bezier(0.33, 0.06, 0.28, 1)
-        infinite,
-      hero-sound-dash-bass var(--hsdj-phrase) linear infinite;
-    animation-delay: 0s, calc(var(--hsdj-beat) * -1);
+    animation: hero-sound-amp-bass var(--hsdj-bar) cubic-bezier(0.33, 0.06, 0.28, 1)
+      infinite;
   }
 }
 
@@ -162,13 +175,18 @@ body {
     opacity: 0.65;
   }
 
+  .hero-sound-flow--back,
+  .hero-sound-flow--mid,
+  .hero-sound-flow--primary {
+    animation: none;
+    transform: none;
+  }
+
   .hero-sound-wave--back path,
   .hero-sound-wave--mid path,
   .hero-sound-wave--primary path {
     animation: none;
     transform: none;
-    stroke-dasharray: none;
-    stroke-dashoffset: 0;
   }
 }
 
@@ -260,21 +278,26 @@ body {
   }
 }
 
-@keyframes hero-sound-dash-bass {
-  to {
-    stroke-dashoffset: -44;
+/* Subtle horizontal sway — whole continuous stroke moves, no dashed “segments”. */
+@keyframes hero-sound-flow-sway {
+  0%,
+  100% {
+    transform: translateX(-0.55px);
+  }
+
+  50% {
+    transform: translateX(0.55px);
   }
 }
 
-@keyframes hero-sound-dash-harmonics {
-  to {
-    stroke-dashoffset: 38;
+@keyframes hero-sound-flow-sway-slow {
+  0%,
+  100% {
+    transform: translateX(-0.35px);
   }
-}
 
-@keyframes hero-sound-dash-pad {
-  to {
-    stroke-dashoffset: -36;
+  50% {
+    transform: translateX(0.35px);
   }
 }
 

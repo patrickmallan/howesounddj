@@ -27,33 +27,39 @@ export function HeroSoundIdentity() {
       >
         {/* Back: soft echo — damped contour, thinnest */}
         <g className="hero-sound-wave hero-sound-wave--back">
-          <path
-            d={waveBack}
-            stroke="currentColor"
-            strokeWidth="0.55"
-            strokeLinecap="round"
-            vectorEffect="non-scaling-stroke"
-          />
+          <g className="hero-sound-flow hero-sound-flow--back">
+            <path
+              d={waveBack}
+              stroke="currentColor"
+              strokeWidth="0.55"
+              strokeLinecap="round"
+              vectorEffect="non-scaling-stroke"
+            />
+          </g>
         </g>
         {/* Mid: counter-phase body */}
         <g className="hero-sound-wave hero-sound-wave--mid">
-          <path
-            d={waveMid}
-            stroke="currentColor"
-            strokeWidth="0.85"
-            strokeLinecap="round"
-            vectorEffect="non-scaling-stroke"
-          />
+          <g className="hero-sound-flow hero-sound-flow--mid">
+            <path
+              d={waveMid}
+              stroke="currentColor"
+              strokeWidth="0.85"
+              strokeLinecap="round"
+              vectorEffect="non-scaling-stroke"
+            />
+          </g>
         </g>
         {/* Front: clearest line */}
         <g className="hero-sound-wave hero-sound-wave--primary">
-          <path
-            d={wavePrimary}
-            stroke="currentColor"
-            strokeWidth="1.25"
-            strokeLinecap="round"
-            vectorEffect="non-scaling-stroke"
-          />
+          <g className="hero-sound-flow hero-sound-flow--primary">
+            <path
+              d={wavePrimary}
+              stroke="currentColor"
+              strokeWidth="1.25"
+              strokeLinecap="round"
+              vectorEffect="non-scaling-stroke"
+            />
+          </g>
         </g>
       </svg>
     </div>
