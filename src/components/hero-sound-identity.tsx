@@ -20,7 +20,7 @@ export function HeroSoundIdentity() {
         viewBox="0 0 320 36"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="hero-sound-identity-svg w-full text-amber-300/40"
+        className="hero-sound-identity-svg w-full text-amber-300/50"
         preserveAspectRatio="xMidYMid meet"
       >
         {/* Back: soft echo — damped contour, thinnest */}

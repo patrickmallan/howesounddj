@@ -77,55 +77,56 @@ body {
 }
 
 /* Hero sound identity — visual waveform only; no audio */
+/* Amplitude transforms run on <path> with transform-box: view-box — fill-box on
+   stroke-only <g> can yield a degenerate reference box in WebKit/Blink, hiding the wave. */
 @media (prefers-reduced-motion: no-preference) {
   .hero-sound-identity-svg {
-    opacity: 0.58;
-  }
-
-  .hero-sound-wave {
-    transform-box: fill-box;
+    opacity: 0.72;
   }
 
   .hero-sound-wave--back {
-    transform-origin: 160px 18px;
-    opacity: 0.38;
-    animation: hero-sound-amp-back 6.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-    animation-delay: -1.4s;
+    opacity: 0.45;
   }
 
   .hero-sound-wave--mid {
-    transform-origin: 160px 22px;
-    opacity: 0.52;
-    animation: hero-sound-amp-mid 5.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-    animation-delay: -0.65s;
+    opacity: 0.58;
   }
 
   .hero-sound-wave--primary {
-    transform-origin: 160px 18px;
-    opacity: 0.78;
-    animation: hero-sound-amp-primary 4.1s cubic-bezier(0.45, 0, 0.55, 1)
-      infinite;
-    animation-delay: -0.2s;
+    opacity: 0.88;
   }
 
   .hero-sound-wave--back path {
+    transform-box: view-box;
+    transform-origin: 160px 19px;
     stroke-dasharray: 16 18;
     stroke-dashoffset: 0;
-    animation: hero-sound-dash-slow 14s linear infinite;
+    animation:
+      hero-sound-amp-back 6.8s cubic-bezier(0.45, 0, 0.55, 1) infinite,
+      hero-sound-dash-slow 14s linear infinite;
+    animation-delay: -1.4s, 0s;
   }
 
   .hero-sound-wave--mid path {
+    transform-box: view-box;
+    transform-origin: 160px 22px;
     stroke-dasharray: 11 21;
     stroke-dashoffset: 0;
-    animation: hero-sound-dash-rev 11s linear infinite;
-    animation-delay: -2s;
+    animation:
+      hero-sound-amp-mid 5.2s cubic-bezier(0.45, 0, 0.55, 1) infinite,
+      hero-sound-dash-rev 11s linear infinite;
+    animation-delay: -0.65s, -2s;
   }
 
   .hero-sound-wave--primary path {
+    transform-box: view-box;
+    transform-origin: 160px 18px;
     stroke-dasharray: 13 19;
     stroke-dashoffset: 0;
-    animation: hero-sound-dash 8.5s linear infinite;
-    animation-delay: -0.8s;
+    animation:
+      hero-sound-amp-primary 4.1s cubic-bezier(0.45, 0, 0.55, 1) infinite,
+      hero-sound-dash 8.5s linear infinite;
+    animation-delay: -0.2s, -0.8s;
   }
 }
 
@@ -137,7 +138,6 @@ body {
   .hero-sound-wave--back,
   .hero-sound-wave--mid,
   .hero-sound-wave--primary {
-    animation: none;
     opacity: 1;
   }
 
@@ -157,6 +157,7 @@ body {
   .hero-sound-wave--mid path,
   .hero-sound-wave--primary path {
     animation: none;
+    transform: none;
     stroke-dasharray: none;
     stroke-dashoffset: 0;
   }
