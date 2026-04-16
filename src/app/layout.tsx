@@ -26,6 +26,11 @@ export const metadata: Metadata = {
     template: "%s | Howe Sound DJ",
   },
   description: siteDescription,
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_CA",
