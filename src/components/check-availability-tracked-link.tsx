@@ -62,8 +62,10 @@ export function CheckAvailabilityTrackedLink({ surface, className, children, hre
     window.history.replaceState(null, "", `${window.location.pathname}#${hashId}`);
   };
 
+  const mergedClass = className ? `${className} motion-interactive` : "motion-interactive";
+
   return (
-    <Link href={href} className={className} onClick={handleClick}>
+    <Link href={href} className={mergedClass} onClick={handleClick}>
       {children ?? "Check Availability"}
     </Link>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Couple Reviews",
@@ -144,9 +145,9 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      <section className="border-b border-white/10 bg-white/[0.03]">
+      <SectionReveal as="section" className="border-b border-white/10 bg-white/[0.03]">
         <div className="mx-auto max-w-6xl px-6 py-10 lg:px-8">
-          <div className="flex flex-col gap-6 rounded-[1.75rem] border border-white/10 bg-white/5 px-6 py-6 md:flex-row md:items-center md:justify-between md:gap-8 lg:px-8 lg:py-7">
+          <div className="premium-surface flex flex-col gap-6 rounded-[1.75rem] border border-white/10 bg-white/5 px-6 py-6 md:flex-row md:items-center md:justify-between md:gap-8 lg:px-8 lg:py-7">
             <div className="max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/90">Proof-first</p>
               <p className="mt-2 text-base leading-relaxed text-white/75">
@@ -159,9 +160,9 @@ export default function ReviewsPage() {
             />
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
             Featured testimonials
@@ -174,22 +175,21 @@ export default function ReviewsPage() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {featuredTestimonials.map((item, index) => (
-            <figure
-              key={`${item.name}-${index}`}
-              className="flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6"
-            >
-              <blockquote className="flex-1 text-base leading-8 text-white/85">“{item.quote}”</blockquote>
-              <figcaption className="mt-6 border-t border-white/10 pt-4 text-sm font-medium text-amber-300/95">
-                {item.name}
-              </figcaption>
-            </figure>
+            <StaggerItem key={`${item.name}-${index}`}>
+              <figure className="premium-surface flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+                <blockquote className="flex-1 text-base leading-8 text-white/85">“{item.quote}”</blockquote>
+                <figcaption className="mt-6 border-t border-white/10 pt-4 text-sm font-medium text-amber-300/95">
+                  {item.name}
+                </figcaption>
+              </figure>
+            </StaggerItem>
           ))}
-        </div>
-      </section>
+        </StaggerGroup>
+      </SectionReveal>
 
-      <section className="border-y border-white/10 bg-white/5">
+      <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
@@ -202,18 +202,20 @@ export default function ReviewsPage() {
               These are not invented selling points. They are patterns from the testimonials above and the trust language Howe Sound DJ uses on the live site.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2">
             {valueThemes.map((item) => (
-              <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
-              </div>
+              <StaggerItem key={item.title}>
+                <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
+                  <h3 className="text-xl font-semibold">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
@@ -229,7 +231,7 @@ export default function ReviewsPage() {
               Couples also describe Patrick as the go-to for a reason: seamless and stress-free, a vital part of the team, and someone who goes above and beyond so the celebration stays on track.
             </p>
           </div>
-          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+          <div className="premium-surface rounded-[2rem] border border-white/10 bg-white/5 p-8">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               From the brand
             </div>
@@ -261,9 +263,9 @@ export default function ReviewsPage() {
             </ul>
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="border-y border-white/10 bg-white/5">
+      <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
@@ -291,17 +293,17 @@ export default function ReviewsPage() {
                 text: "Whether your wedding is elegant and emotional or wild and unforgettable (or both), the goal is a musical journey that is about your story, your energy, and your people, and a dance floor your guests do not want to leave."
               }
             ].map((block) => (
-              <div key={block.title} className="rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
+              <div key={block.title} className="premium-surface rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
                 <h3 className="text-lg font-semibold text-amber-300/95">{block.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-white/65">{block.text}</p>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
-        <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
+        <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               Next step
@@ -326,7 +328,7 @@ export default function ReviewsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionReveal>
     </main>
   );
 }

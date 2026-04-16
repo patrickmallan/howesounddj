@@ -4,6 +4,7 @@ import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tr
 import { HomepageHeroHeadline } from "@/components/homepage-hero-headline";
 import { HomeVideoProof } from "@/components/home-video-proof";
 import { ImageSlot } from "@/components/image-slot";
+import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { VENUES } from "@/config/venues";
 
@@ -155,15 +156,15 @@ export default function HoweSoundDJHomepage() {
                 </a>
               </p>
               <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 text-sm text-white/70 sm:mt-9 sm:grid-cols-3 sm:gap-4">
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div className="premium-surface rounded-2xl border border-white/10 bg-white/5 p-4">
                   <div className="text-xl font-semibold text-white">Bangers Only</div>
                   <div className="mt-1">No fluff, no autopilot, packed floors</div>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div className="premium-surface rounded-2xl border border-white/10 bg-white/5 p-4">
                   <div className="text-xl font-semibold text-white">Rooted here</div>
                   <div className="mt-1">Squamish: venues, vendors, vibe</div>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div className="premium-surface rounded-2xl border border-white/10 bg-white/5 p-4">
                   <div className="text-xl font-semibold text-white">Real connection</div>
                   <div className="mt-1">You’re not just another booking</div>
                 </div>
@@ -171,7 +172,7 @@ export default function HoweSoundDJHomepage() {
             </div>
 
             <div className="relative z-10">
-              <div className="rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/30">
+              <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/30">
                 <ImageSlot
                   src={SITE_IMAGES.homeHero}
                   alt={SITE_IMAGE_ALT.homeHero}
@@ -193,9 +194,11 @@ export default function HoweSoundDJHomepage() {
           </div>
         </section>
 
-        <HomeVideoProof />
+        <SectionReveal>
+          <HomeVideoProof />
+        </SectionReveal>
 
-        <section id="why" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <SectionReveal as="section" id="why" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="max-w-2xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Why Howe Sound DJ</div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Sea-to-Sky passion: connection, craft, and packed floors.</h2>
@@ -203,17 +206,23 @@ export default function HoweSoundDJHomepage() {
               It’s not generic wedding filler. It’s deliberate music, local know-how, and a night that moves with your people, from ceremony through the last song.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {features.map((feature) => (
-              <div key={feature.title} className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
-                <h3 className="text-xl font-semibold">{feature.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-white/65">{feature.text}</p>
-              </div>
+              <StaggerItem key={feature.title}>
+                <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+                  <h3 className="text-xl font-semibold">{feature.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-white/65">{feature.text}</p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
-        </section>
+          </StaggerGroup>
+        </SectionReveal>
 
-        <section className="border-y border-white/10 bg-neutral-950" aria-labelledby="home-proof-heading">
+        <SectionReveal
+          as="section"
+          className="border-y border-white/10 bg-neutral-950"
+          aria-labelledby="home-proof-heading"
+        >
           <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8 lg:py-20">
             <div className="mb-10 max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Proof</div>
@@ -234,9 +243,9 @@ export default function HoweSoundDJHomepage() {
               sizes="(max-width: 1024px) 100vw, 72rem"
             />
           </div>
-        </section>
+        </SectionReveal>
 
-        <section id="reviews" className="border-y border-white/10 bg-white/5">
+        <SectionReveal as="section" id="reviews" className="border-y border-white/10 bg-white/5">
           <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div className="max-w-2xl">
@@ -244,7 +253,7 @@ export default function HoweSoundDJHomepage() {
                 <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Client backed: real couples, real parties.</h2>
               </div>
               <div className="flex flex-wrap items-center gap-4">
-                <a href="/reviews" className="text-sm font-semibold text-amber-300 hover:text-amber-200">
+                <a href="/reviews" className="motion-interactive text-sm font-semibold text-amber-300 hover:text-amber-200">
                   All reviews →
                 </a>
                 <CheckAvailabilityTrackedLink
@@ -253,20 +262,23 @@ export default function HoweSoundDJHomepage() {
                 />
               </div>
             </div>
-            <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            <StaggerGroup className="mt-12 grid gap-6 lg:grid-cols-3">
               {testimonials.map((item) => (
-                <div key={item.name} className="rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
-                  <p className="text-base leading-8 text-white/80">“{item.quote}”</p>
-                  <div className="mt-6 text-sm text-white/50">
-                    {item.name} • {item.venue}
+                <StaggerItem key={item.name}>
+                  <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
+                    <p className="text-base leading-8 text-white/80">“{item.quote}”</p>
+                    <div className="mt-6 text-sm text-white/50">
+                      {item.name} • {item.venue}
+                    </div>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerGroup>
           </div>
-        </section>
+        </SectionReveal>
 
-        <section
+        <SectionReveal
+          as="section"
           id="venues"
           className="border-t border-white/10 bg-neutral-950"
           aria-labelledby="home-venues-heading"
@@ -290,38 +302,37 @@ export default function HoweSoundDJHomepage() {
                 for planning-focused context on music, flow, and Sea-to-Sky logistics—then check availability when you are ready.
               </p>
             </div>
-            <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {VENUES.map((venue) => (
-                <article
-                  key={venue.name}
-                  className="flex flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6"
-                >
-                  <h3 className="text-xl font-semibold leading-snug text-white">
-                    <Link
-                      href={`/venues/${venue.slug}`}
-                      className="rounded-md text-white transition hover:text-amber-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
-                    >
-                      {venue.name}
-                    </Link>
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-white/65">{venue.description}</p>
-                  <p className="mt-4 text-xs text-white/40">
-                    <a
-                      href={venue.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-amber-300/80 transition hover:text-amber-200"
-                    >
-                      Official website<span className="sr-only"> (opens in new tab)</span> →
-                    </a>
-                  </p>
-                </article>
+                <StaggerItem key={venue.name}>
+                  <article className="premium-surface flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+                    <h3 className="text-xl font-semibold leading-snug text-white">
+                      <Link
+                        href={`/venues/${venue.slug}`}
+                        className="rounded-md text-white transition hover:text-amber-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+                      >
+                        {venue.name}
+                      </Link>
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-white/65">{venue.description}</p>
+                    <p className="mt-4 text-xs text-white/40">
+                      <a
+                        href={venue.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-amber-300/80 transition hover:text-amber-200"
+                      >
+                        Official website<span className="sr-only"> (opens in new tab)</span> →
+                      </a>
+                    </p>
+                  </article>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerGroup>
           </div>
-        </section>
+        </SectionReveal>
 
-        <section id="services" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <SectionReveal as="section" id="services" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Services</div>
@@ -331,13 +342,13 @@ export default function HoweSoundDJHomepage() {
               </p>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {services.map((service) => (
-                  <div key={service} className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm text-white/80">
+                  <div key={service} className="premium-surface rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm text-white/80">
                     {service}
                   </div>
                 ))}
               </div>
             </div>
-            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+            <div className="premium-surface rounded-[2rem] border border-white/10 bg-white/5 p-8">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Planning process</div>
               <div className="mt-8 space-y-6">
                 {[
@@ -359,11 +370,11 @@ export default function HoweSoundDJHomepage() {
               </div>
             </div>
           </div>
-        </section>
+        </SectionReveal>
 
-        <section id="about" className="border-y border-white/10 bg-white/5">
+        <SectionReveal as="section" id="about" className="border-y border-white/10 bg-white/5">
           <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-2 lg:px-8">
-            <div className="rounded-[2rem] border border-white/10 bg-neutral-950/60 p-6">
+            <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/60 p-6">
               <ImageSlot
                 src={SITE_IMAGES.homeAboutPreview}
                 alt={SITE_IMAGE_ALT.homeAboutPreview}
@@ -390,38 +401,38 @@ export default function HoweSoundDJHomepage() {
                 />
                 <a
                   href="/about"
-                  className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                  className="motion-interactive rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
                 >
                   Learn More About Patrick
                 </a>
               </div>
             </div>
           </div>
-        </section>
+        </SectionReveal>
 
-        <section id="faq" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <SectionReveal as="section" id="faq" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">FAQ</div>
               <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Clear answers before you ask.</h2>
             </div>
-            <a href="/faq" className="shrink-0 text-sm font-semibold text-amber-300 hover:text-amber-200">
+            <a href="/faq" className="motion-interactive shrink-0 text-sm font-semibold text-amber-300 hover:text-amber-200">
               Full FAQ →
             </a>
           </div>
           <div className="mt-10 space-y-4">
             {faqs.map((item) => (
-              <div key={item.q} className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6">
+              <div key={item.q} className="premium-surface rounded-[1.5rem] border border-white/10 bg-white/5 p-6">
                 <h3 className="text-lg font-semibold">{item.q}</h3>
                 <p className="mt-3 max-w-4xl text-sm leading-7 text-white/65">{item.a}</p>
               </div>
             ))}
           </div>
-        </section>
+        </SectionReveal>
 
-        <section id="contact" className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent">
+        <SectionReveal as="section" id="contact" className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent">
           <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-            <div className="rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
+            <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
               <div className="mx-auto w-full max-w-3xl">
                 <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Contact</div>
                 <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Let’s talk about your wedding.</h2>
@@ -439,7 +450,7 @@ export default function HoweSoundDJHomepage() {
                   />
                   <a
                     href="/weddings"
-                    className="inline-flex rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                    className="motion-interactive inline-flex rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
                   >
                     Wedding services
                   </a>
@@ -447,7 +458,7 @@ export default function HoweSoundDJHomepage() {
               </div>
             </div>
           </div>
-        </section>
+        </SectionReveal>
     </main>
   );
 }

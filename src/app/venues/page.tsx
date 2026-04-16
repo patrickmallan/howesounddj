@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { JsonLd } from "@/components/json-ld";
 import { VENUE_PAGES } from "@/config/venue-pages";
 import { venuesHubBreadcrumbJsonLd } from "@/lib/json-ld";
@@ -69,7 +70,7 @@ export default function VenuesHubPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Browse by venue</div>
           <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Corridor venues and Squamish favourites</h2>
@@ -82,10 +83,10 @@ export default function VenuesHubPage() {
           </p>
         </div>
 
-        <ul className="mt-12 grid list-none gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <StaggerGroup className="mt-12 grid list-none gap-6 md:grid-cols-2 xl:grid-cols-3">
           {VENUE_PAGES.map((v) => (
-            <li key={v.slug}>
-              <article className="flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6 transition hover:border-white/20">
+            <StaggerItem key={v.slug}>
+              <article className="premium-surface flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
                 <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/85">{v.locationLabel}</div>
                 <div className="mt-1 text-xs text-white/45">{v.venueType}</div>
                 <h3 className="mt-4 text-xl font-semibold leading-snug text-white">
@@ -114,14 +115,14 @@ export default function VenuesHubPage() {
                   </a>
                 </div>
               </article>
-            </li>
+            </StaggerItem>
           ))}
-        </ul>
-      </section>
+        </StaggerGroup>
+      </SectionReveal>
 
-      <section className="border-t border-white/10 bg-white/[0.03]">
+      <SectionReveal as="section" className="border-t border-white/10 bg-white/[0.03]">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-          <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
+          <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
             <div className="mx-auto w-full max-w-3xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Next step</div>
               <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Check availability for your date</h2>
@@ -144,7 +145,7 @@ export default function VenuesHubPage() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionReveal>
     </main>
   );
 }

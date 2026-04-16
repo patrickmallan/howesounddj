@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Packages & Enhancements",
@@ -127,7 +128,7 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
             How to read this page
@@ -140,16 +141,16 @@ export default function PackagesPage() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <StaggerGroup className="mt-14 grid gap-6 lg:grid-cols-3">
           {tiers.map((tier) => (
-            <div
-              key={tier.name}
-              className={`flex flex-col rounded-[1.75rem] border p-6 lg:p-8 ${
-                tier.highlight
-                  ? "border-amber-300/35 bg-gradient-to-b from-amber-300/10 to-white/[0.03] shadow-lg shadow-black/20"
-                  : "border-white/10 bg-white/5"
-              }`}
-            >
+            <StaggerItem key={tier.name}>
+              <div
+                className={`premium-surface flex h-full flex-col rounded-[1.75rem] border p-6 lg:p-8 ${
+                  tier.highlight
+                    ? "border-amber-300/35 bg-gradient-to-b from-amber-300/10 to-white/[0.03] shadow-lg shadow-black/20"
+                    : "border-white/10 bg-white/5"
+                }`}
+              >
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <h3 className="text-2xl font-semibold">{tier.name}</h3>
@@ -172,9 +173,10 @@ export default function PackagesPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
 
         <div className="mt-10 rounded-[1.5rem] border border-white/10 bg-white/5 p-6 lg:p-8">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
@@ -193,9 +195,9 @@ export default function PackagesPage() {
             for common questions about planning, ceremony audio, and coverage.
           </p>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="border-y border-white/10 bg-white/5">
+      <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
@@ -208,18 +210,20 @@ export default function PackagesPage() {
               Tiers change scope, not standards. From soft ballads to peak dance-floor moments, the gear and the approach are built so your event sounds balanced, immersive, and true to what you planned.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2">
             {everyPackageIncludes.map((item) => (
-              <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
-              </div>
+              <StaggerItem key={item.title}>
+                <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
+                  <h3 className="text-xl font-semibold">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
@@ -232,7 +236,7 @@ export default function PackagesPage() {
               Many couples land on Complete Wedding and add one or two enhancements. Signature is for when you already know you want layered lighting, expanded audio, or bespoke music moments. We map it in planning instead of improvising on the day.
             </p>
           </div>
-          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+          <div className="premium-surface rounded-[2rem] border border-white/10 bg-white/5 p-8">
             <ul className="space-y-4">
               {addOns.map((item) => (
                 <li key={item} className="flex gap-3 text-sm leading-7 text-white/75">
@@ -246,10 +250,10 @@ export default function PackagesPage() {
             </p>
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
-        <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
+        <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               Next step
@@ -274,7 +278,7 @@ export default function PackagesPage() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionReveal>
     </main>
   );
 }

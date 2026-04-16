@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import { SectionReveal } from "@/components/motion";
 import { JsonLd } from "@/components/json-ld";
 import { getVenueBySlug, getAllVenueSlugs } from "@/config/venue-pages";
 import { venueDetailBreadcrumbJsonLd, venueWeddingDjServiceJsonLd } from "@/lib/json-ld";
@@ -104,7 +105,7 @@ export default async function VenueDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Why this guide exists</div>
           <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Fit, flow, and atmosphere—before the playlist talk</h2>
@@ -114,9 +115,9 @@ export default async function VenueDetailPage({ params }: Props) {
             ))}
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="border-y border-white/10 bg-white/[0.03]">
+      <SectionReveal as="section" className="border-y border-white/10 bg-white/[0.03]">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
           <div className="max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Planning & experience</div>
@@ -128,9 +129,9 @@ export default async function VenueDetailPage({ params }: Props) {
             </div>
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Local expertise</div>
           <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Sea-to-Sky weddings, Squamish-rooted planning</h2>
@@ -140,10 +141,10 @@ export default async function VenueDetailPage({ params }: Props) {
             ))}
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 pb-16 lg:px-8">
-        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 lg:p-10">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 pb-16 lg:px-8">
+        <div className="premium-surface rounded-[2rem] border border-white/10 bg-white/5 p-8 lg:p-10">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Also useful</div>
             <ul className="mt-4 list-none space-y-3 text-sm leading-7 text-white/70">
@@ -170,11 +171,11 @@ export default async function VenueDetailPage({ params }: Props) {
             </ul>
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent">
+      <SectionReveal as="section" className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-          <div className="rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
+          <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
             <div className="mx-auto w-full max-w-3xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Check availability</div>
               <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Start with your date—then talk fit and coverage</h2>
@@ -197,7 +198,7 @@ export default async function VenueDetailPage({ params }: Props) {
             </div>
           </div>
         </div>
-      </section>
+      </SectionReveal>
     </main>
   );
 }

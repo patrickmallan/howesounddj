@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactAvailabilityForm } from "@/components/contact-availability-form";
 import { ContactSecondaryInquiryForm } from "@/components/contact-secondary-inquiry-form";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import { SectionReveal } from "@/components/motion";
 
 /** Read Turnstile site key at request time (avoids empty props if env was missing at build / prefers runtime env on Vercel). */
 function turnstileSiteKey(): string {
@@ -69,8 +70,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 lg:p-10">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+        <div className="premium-surface rounded-[2rem] border border-white/10 bg-white/5 p-8 lg:p-10">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               What happens next
@@ -83,7 +84,7 @@ export default function ContactPage() {
             </p>
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
       <section
         id="availability"
@@ -147,7 +148,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
             You do not need a perfect brief
@@ -159,9 +160,9 @@ export default function ContactPage() {
             The work is built around tailoring the event to the couple, not forcing you to have every timeline detail locked before you reach out. If you are early in planning, say so. If you already know your venue and rough headcount, that helps too.
           </p>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="border-y border-white/10 bg-white/5">
+      <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
@@ -178,7 +179,7 @@ export default function ContactPage() {
                 If Howe Sound DJ is the right fit, the next step is the same one the site has always pointed to: connect, talk it through, and build a plan that matches your wedding, not a generic package grid.
               </p>
             </div>
-            <div className="rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-8">
+            <div className="premium-surface rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-8">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
                 Squamish wedding DJ
               </div>
@@ -188,10 +189,10 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-        <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               Ready when you are
@@ -223,7 +224,7 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionReveal>
     </main>
   );
 }

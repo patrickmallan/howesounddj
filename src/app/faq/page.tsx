@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { JsonLd } from "@/components/json-ld";
 import { faqPageJsonLd } from "@/lib/json-ld";
 
@@ -227,7 +228,7 @@ export default function FaqPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
         <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 lg:p-10">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
@@ -242,12 +243,13 @@ export default function FaqPage() {
             </p>
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
       <div className="space-y-0">
         {groups.map((group, groupIndex) => (
-          <section
+          <SectionReveal
             key={group.id}
+            as="section"
             id={group.id}
             className={
               groupIndex % 2 === 0
@@ -265,11 +267,11 @@ export default function FaqPage() {
                 <FaqAccordion items={group.items} />
               </div>
             </div>
-          </section>
+          </SectionReveal>
         ))}
       </div>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
             What makes Howe Sound DJ different
@@ -281,18 +283,20 @@ export default function FaqPage() {
             These themes come straight from how Patrick describes the work, tightened for scanning, not rewritten into bland filler.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {differentiators.map((item) => (
-            <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
-              <h3 className="text-lg font-semibold">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
-            </div>
+            <StaggerItem key={item.title}>
+              <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+                <h3 className="text-lg font-semibold">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
-      </section>
+        </StaggerGroup>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
-        <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
+        <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               Still deciding?
@@ -324,7 +328,7 @@ export default function FaqPage() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionReveal>
     </main>
   );
 }

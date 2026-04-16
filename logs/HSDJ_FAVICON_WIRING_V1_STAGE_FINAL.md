@@ -1,7 +1,7 @@
 # HSDJ_FAVICON_WIRING_V1 — Stage FINAL
 
 **Pack ID:** HSDJ_FAVICON_WIRING_V1  
-**Commit (at verification):** `5ab2acd905feecb4af1f01ecbdd9840d36657384` (update after your commit if needed)
+**Commit (at verification):** `390fef8e2259491e89684e3edb8508c465d82377`
 
 ## 1. Favicon issue description (IH fallback)
 

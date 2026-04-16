@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { ImageSlot } from "@/components/image-slot";
+import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 
 export const metadata: Metadata = {
@@ -66,9 +67,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-start">
-          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 lg:sticky lg:top-24">
+          <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-white/5 p-6 lg:sticky lg:top-24">
             <ImageSlot
               src={SITE_IMAGES.aboutPortrait}
               alt={SITE_IMAGE_ALT.aboutPortrait}
@@ -94,9 +95,9 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="border-y border-white/10 bg-white/5">
+      <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
@@ -109,7 +110,7 @@ export default function AboutPage() {
               I take time to understand your musical world: what you love, what you cannot stand, and the atmosphere you want guests to carry home. Whether you are leaning into classic romance or a packed dance floor, we shape a soundtrack that reflects your vision and keeps people engaged from the first moment to the last.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-3">
             {[
               {
                 title: "Your style, front and center",
@@ -124,16 +125,18 @@ export default function AboutPage() {
                 text: "I live and work in this corridor. Local venues and Sea-to-Sky logistics are part of how I plan, not an afterthought."
               }
             ].map((item) => (
-              <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-white/65">{item.text}</p>
-              </div>
+              <StaggerItem key={item.title}>
+                <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
+                  <h3 className="text-xl font-semibold">{item.title}</h3>
+                  <p className="mt-4 text-sm leading-7 text-white/65">{item.text}</p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
             Credibility
@@ -145,18 +148,20 @@ export default function AboutPage() {
             Couples book me for how the night feels, but the feel holds up because the technical side is solid. Here is what that looks like in practice.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <StaggerGroup className="mt-12 grid gap-6 lg:grid-cols-2">
           {credibility.map((item) => (
-            <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/90">{item.label}</div>
-              <h3 className="mt-3 text-xl font-semibold">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
-            </div>
+            <StaggerItem key={item.title}>
+              <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/90">{item.label}</div>
+                <h3 className="mt-3 text-xl font-semibold">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
-      </section>
+        </StaggerGroup>
+      </SectionReveal>
 
-      <section className="border-y border-white/10 bg-white/5">
+      <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div>
@@ -173,7 +178,7 @@ export default function AboutPage() {
                 My job is to make the celebration feel extraordinary in a way that still sounds and feels like you. If that resonates, the next step is a conversation about your date, your venue, and the kind of night you want to build together.
               </p>
             </div>
-            <div className="rounded-[2rem] border border-white/10 bg-neutral-950/70 p-8">
+            <div className="premium-surface rounded-[2rem] border border-white/10 bg-neutral-950/70 p-8">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
                 At a glance
               </div>
@@ -198,10 +203,10 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-        <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               Next step
@@ -232,7 +237,7 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionReveal>
     </main>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { ImageSlot } from "@/components/image-slot";
+import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 
 export const metadata: Metadata = {
@@ -144,7 +145,7 @@ export default function WeddingsPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-white/5" aria-labelledby="weddings-proof-heading">
+      <SectionReveal as="section" className="border-y border-white/10 bg-white/5" aria-labelledby="weddings-proof-heading">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
           <h2 id="weddings-proof-heading" className="sr-only">
             Wedding celebration
@@ -159,20 +160,22 @@ export default function WeddingsPage() {
             sizes="(max-width: 1024px) 100vw, 72rem"
           />
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-        <div className="grid gap-6 md:grid-cols-3">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <StaggerGroup className="grid gap-6 md:grid-cols-3">
           {highlights.map((item) => (
-            <div key={item.title} className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
-              <h2 className="text-xl font-semibold">{item.title}</h2>
-              <p className="mt-4 text-sm leading-7 text-white/65">{item.text}</p>
-            </div>
+            <StaggerItem key={item.title}>
+              <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+                <h2 className="text-xl font-semibold">{item.title}</h2>
+                <p className="mt-4 text-sm leading-7 text-white/65">{item.text}</p>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
-      </section>
+        </StaggerGroup>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 pb-12 lg:px-8">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 pb-12 lg:px-8">
         <p className="max-w-3xl text-sm leading-7 text-white/55">
           Planning around a specific Squamish or Sea-to-Sky venue?{" "}
           <Link
@@ -183,9 +186,9 @@ export default function WeddingsPage() {
           </Link>{" "}
           for planning context tied to named settings—then use Check Availability when your date is ready.
         </p>
-      </section>
+      </SectionReveal>
 
-      <section className="border-y border-white/10 bg-white/5">
+      <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
@@ -199,27 +202,29 @@ export default function WeddingsPage() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <StaggerGroup className="mt-12 grid gap-6 lg:grid-cols-3">
             {serviceBlocks.map((block) => (
-              <div key={block.title} className="rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
-                <h3 className="text-xl font-semibold">{block.title}</h3>
-                <div className="mt-5 space-y-3">
-                  {block.items.map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/75"
-                    >
-                      {item}
-                    </div>
-                  ))}
+              <StaggerItem key={block.title}>
+                <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
+                  <h3 className="text-xl font-semibold">{block.title}</h3>
+                  <div className="mt-5 space-y-3">
+                    {block.items.map((item) => (
+                      <div
+                        key={item}
+                        className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/75"
+                      >
+                        {item}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
@@ -236,7 +241,7 @@ export default function WeddingsPage() {
             </p>
           </div>
 
-          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+          <div className="premium-surface rounded-[2rem] border border-white/10 bg-white/5 p-8">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               Planning process
             </div>
@@ -255,9 +260,9 @@ export default function WeddingsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="border-y border-white/10 bg-white/5">
+      <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
@@ -268,24 +273,24 @@ export default function WeddingsPage() {
                 A few of the questions couples often ask.
               </h2>
             </div>
-            <a href="/faq" className="shrink-0 text-sm font-semibold text-amber-300 hover:text-amber-200">
+            <a href="/faq" className="motion-interactive shrink-0 text-sm font-semibold text-amber-300 hover:text-amber-200">
               Full FAQ →
             </a>
           </div>
 
           <div className="mt-10 space-y-4">
             {faqs.map((item) => (
-              <div key={item.q} className="rounded-[1.5rem] border border-white/10 bg-neutral-950/70 p-6">
+              <div key={item.q} className="premium-surface rounded-[1.5rem] border border-white/10 bg-neutral-950/70 p-6">
                 <h3 className="text-lg font-semibold">{item.q}</h3>
                 <p className="mt-3 text-sm leading-7 text-white/65">{item.a}</p>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </SectionReveal>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-        <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
+      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               Next step
@@ -310,7 +315,7 @@ export default function WeddingsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionReveal>
     </main>
   );
 }
