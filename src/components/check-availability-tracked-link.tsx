@@ -34,6 +34,10 @@ function hashIdForSamePageScroll(href: string, pathname: string): string | null 
   if (m && pathname === "/contact") {
     return m[1];
   }
+  // Default `/contact` links (header/footer) on the contact page: same-route navigation is a no-op — scroll to availability.
+  if (href === "/contact" && pathname === "/contact") {
+    return "availability";
+  }
   return null;
 }
 
