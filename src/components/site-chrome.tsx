@@ -67,33 +67,39 @@ export function SiteHeader() {
               );
             })}
           </nav>
-          <details ref={mobileMenuDetailsRef} className="relative md:hidden">
+          <details ref={mobileMenuDetailsRef} className="md:hidden">
             <summary className="flex min-h-[44px] min-w-[44px] cursor-pointer list-none items-center justify-center rounded-full border border-white/15 px-3 text-sm text-white/85 outline-none transition hover:border-white/25 [&::-webkit-details-marker]:hidden">
               Menu
             </summary>
-            <nav
-              className="absolute right-0 z-50 mt-2 flex w-[min(100vw-2rem,18rem)] max-w-[18rem] flex-col divide-y divide-white/10 overflow-hidden rounded-xl border border-white/10 bg-neutral-950/95 shadow-xl shadow-black/40 backdrop-blur"
-              aria-label="Mobile primary"
-            >
-              {navLinks.map((item) => {
-                const active = isActiveNavHref(pathname, item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={closeMobileMenu}
-                    aria-current={active ? "page" : undefined}
-                    className={
-                      active
-                        ? "block px-4 py-3 text-sm text-amber-300 transition hover:bg-white/5 hover:text-amber-200"
-                        : "block px-4 py-3 text-sm text-white/85 transition hover:bg-white/5 hover:text-white"
-                    }
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </nav>
+            {/*
+              Panel uses fixed + full-width flex row so it stays within the viewport.
+              absolute right-0 on a narrow <details> box made a wide (~18rem) panel extend past the left edge on phones.
+            */}
+            <div className="fixed inset-x-0 top-0 z-[60] flex justify-end px-4 pt-[max(4.75rem,calc(env(safe-area-inset-top,0px)+3.25rem))] pb-8 pointer-events-none">
+              <nav
+                className="pointer-events-auto mt-2 flex w-[min(calc(100vw-2rem),18rem)] max-w-[18rem] flex-col divide-y divide-white/10 overflow-hidden rounded-xl border border-white/10 bg-neutral-950/95 shadow-xl shadow-black/40 backdrop-blur"
+                aria-label="Mobile primary"
+              >
+                {navLinks.map((item) => {
+                  const active = isActiveNavHref(pathname, item.href);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={closeMobileMenu}
+                      aria-current={active ? "page" : undefined}
+                      className={
+                        active
+                          ? "block px-4 py-3 text-sm text-amber-300 transition hover:bg-white/5 hover:text-amber-200"
+                          : "block px-4 py-3 text-sm text-white/85 transition hover:bg-white/5 hover:text-white"
+                      }
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </nav>
+            </div>
           </details>
           <CheckAvailabilityTrackedLink
             surface="header"
