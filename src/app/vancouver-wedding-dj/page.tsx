@@ -162,7 +162,7 @@ export default function VancouverWeddingDjPage() {
             <p className="mt-4 max-w-xl text-lg leading-8 text-white/70">
               Howe Sound DJ is rooted in Squamish with real corridor experience: personalized music, seamless planning, and connection through{" "}
               <a href="/weddings" className="text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 hover:decoration-amber-200/60">
-                wedding DJ services
+                Wedding DJ Services
               </a>{" "}
               built for the day you are actually having, not the search you typed before coffee on Monday.
             </p>
@@ -175,12 +175,12 @@ export default function VancouverWeddingDjPage() {
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                Read Reviews
+                Wedding DJ Reviews
               </a>
             </div>
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/45">
               <a href="/packages" className="text-white/55 transition hover:text-amber-200/90">
-                View Packages
+                Wedding DJ Packages
               </a>
               <span className="mx-2 text-white/25" aria-hidden="true">
                 ·
@@ -262,7 +262,7 @@ export default function VancouverWeddingDjPage() {
             <p className="mt-4 text-lg leading-8 text-white/70">
               Explore the full story on the{" "}
               <a href="/weddings" className="text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                weddings
+                Wedding DJ Services
               </a>{" "}
               page. The same service, framed here for couples who find us while planning from Vancouver.
             </p>
@@ -310,7 +310,7 @@ export default function VancouverWeddingDjPage() {
             </p>
           </div>
           <a href="/reviews" className="shrink-0 text-sm font-semibold text-amber-300 hover:text-amber-200">
-            All reviews →
+            Wedding DJ Reviews →
           </a>
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -344,7 +344,7 @@ export default function VancouverWeddingDjPage() {
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                View Packages
+                Wedding DJ Packages
               </a>
             </div>
           </div>

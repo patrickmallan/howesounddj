@@ -57,13 +57,13 @@ export default function VenuesHubPage() {
                 href="/weddings"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                Wedding services
+                Wedding DJ Services
               </Link>
               <Link
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                Packages
+                Wedding DJ Packages
               </Link>
             </div>
           </div>

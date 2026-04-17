@@ -221,7 +221,7 @@ export default function FaqPage() {
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                View Packages
+                Wedding DJ Packages
               </a>
             </div>
           </div>
@@ -323,7 +323,7 @@ export default function FaqPage() {
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                Read Reviews
+                Wedding DJ Reviews
               </a>
             </div>
           </div>

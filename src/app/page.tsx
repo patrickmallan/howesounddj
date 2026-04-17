@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { BrandAnchorStatement } from "@/components/brand-anchor-statement";
+import { HomepageExploreSection } from "@/components/explore-site-links";
 import { HeroSoundIdentity } from "@/components/hero-sound-identity";
 import { HomepageHeroHeadline } from "@/components/homepage-hero-headline";
 import { HomeVideoProof } from "@/components/home-video-proof";
@@ -132,30 +133,30 @@ export default function HoweSoundDJHomepage() {
                   href="/reviews"
                   className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
                 >
-                  Read Reviews
+                  Wedding DJ Reviews
                 </a>
                 <a
                   href="/packages"
                   className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
                 >
-                  View Packages
+                  Wedding DJ Packages
                 </a>
               </div>
               <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/45">
                 <a href="/weddings" className="text-white/55 transition hover:text-amber-200/90">
-                  Wedding DJ services
+                  Wedding DJ Services
                 </a>
                 <span className="mx-2.5 text-white/20" aria-hidden="true">
                   ·
                 </span>
                 <a href="/about" className="text-white/55 transition hover:text-amber-200/90">
-                  About Patrick
+                  About Howe Sound DJ
                 </a>
               </p>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/45">
                 <span className="text-white/35">Live in Vancouver but marrying in Squamish or along the Sea-to-Sky?</span>{" "}
                 <a href="/vancouver-wedding-dj" className="text-white/55 transition hover:text-amber-200/90">
-                  Read how local fit works for your wedding →
+                  Whistler &amp; Vancouver Weddings — how local fit works for your day →
                 </a>
               </p>
               <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 text-sm text-white/70 sm:mt-9 sm:grid-cols-3 sm:gap-4">
@@ -196,6 +197,8 @@ export default function HoweSoundDJHomepage() {
             </div>
           </div>
         </section>
+
+        <HomepageExploreSection />
 
         <SectionReveal>
           <HomeVideoProof />
@@ -259,7 +262,7 @@ export default function HoweSoundDJHomepage() {
               </div>
               <div className="flex flex-wrap items-center gap-4">
                 <a href="/reviews" className="motion-interactive text-sm font-semibold text-amber-300 hover:text-amber-200">
-                  All reviews →
+                  Wedding DJ Reviews →
                 </a>
                 <CheckAvailabilityTrackedLink
                   surface="inline"
@@ -408,7 +411,7 @@ export default function HoweSoundDJHomepage() {
                   href="/about"
                   className="motion-interactive rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
                 >
-                  Learn More About Patrick
+                  About Howe Sound DJ
                 </a>
               </div>
             </div>
@@ -457,7 +460,7 @@ export default function HoweSoundDJHomepage() {
                     href="/weddings"
                     className="motion-interactive inline-flex rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
                   >
-                    Wedding services
+                    Wedding DJ Services
                   </a>
                 </div>
               </div>

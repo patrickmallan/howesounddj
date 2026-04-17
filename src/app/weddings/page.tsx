@@ -6,11 +6,11 @@ import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 
 export const metadata: Metadata = {
-  title: "Sea-to-Sky Wedding DJ Services",
+  title: "Squamish Wedding DJ Services",
   description:
     "Personalized wedding DJ for Squamish & the corridor: musical tastes to atmosphere you want, ceremony through reception, first dance to last song. Classic romance or a full dance party.",
   openGraph: {
-    title: "Sea-to-Sky Wedding DJ Services | Howe Sound DJ",
+    title: "Squamish Wedding DJ Services | Howe Sound DJ",
     description:
       "Tailored music for your story: elegant and emotional or wild and unforgettable. Polished, high-energy nights from Howe Sound DJ.",
     url: "/weddings",
@@ -132,13 +132,13 @@ export default function WeddingsPage() {
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                Read Reviews
+                Wedding DJ Reviews
               </a>
               <a
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                View Packages
+                Wedding DJ Packages
               </a>
             </div>
           </div>
@@ -310,7 +310,7 @@ export default function WeddingsPage() {
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                View Packages
+                Wedding DJ Packages
               </a>
             </div>
           </div>

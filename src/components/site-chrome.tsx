@@ -5,12 +5,12 @@ import { usePathname } from "next/navigation";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
 const navLinks = [
-  { href: "/weddings", label: "Weddings" },
-  { href: "/packages", label: "Packages" },
-  { href: "/about", label: "About" },
-  { href: "/reviews", label: "Reviews" },
+  { href: "/weddings", label: "Wedding DJ Services" },
+  { href: "/packages", label: "Wedding DJ Packages" },
+  { href: "/reviews", label: "Wedding DJ Reviews" },
+  { href: "/about", label: "About Howe Sound DJ" },
   { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" }
+  { href: "/contact", label: "Check Availability" },
 ] as const;
 
 /** True when this nav item’s route is the current page or a nested segment (e.g. /contact/...), without false positives like /faq vs /faq-extra. */
@@ -61,7 +61,7 @@ export function SiteHeader() {
               Menu
             </summary>
             <nav
-              className="absolute right-0 z-50 mt-2 flex w-52 flex-col divide-y divide-white/10 overflow-hidden rounded-xl border border-white/10 bg-neutral-950/95 shadow-xl shadow-black/40 backdrop-blur"
+              className="absolute right-0 z-50 mt-2 flex w-[min(100vw-2rem,18rem)] max-w-[18rem] flex-col divide-y divide-white/10 overflow-hidden rounded-xl border border-white/10 bg-neutral-950/95 shadow-xl shadow-black/40 backdrop-blur"
               aria-label="Mobile primary"
             >
               {navLinks.map((item) => {

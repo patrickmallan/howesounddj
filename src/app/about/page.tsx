@@ -5,11 +5,11 @@ import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 
 export const metadata: Metadata = {
-  title: "About Patrick",
+  title: { absolute: "About Howe Sound DJ | Squamish Wedding DJ" },
   description:
     "Meet Patrick of Howe Sound DJ: Squamish wedding DJ with 15+ years in music, OIART-trained audio background, and a planning-forward approach for Sea-to-Sky weddings.",
   openGraph: {
-    title: "About Patrick | Howe Sound DJ",
+    title: "About Howe Sound DJ | Squamish Wedding DJ",
     description:
       "Story, approach, and credibility: production-minded sound, local venue familiarity, and wedding dance floors built with intention.",
     url: "/about",
@@ -226,13 +226,13 @@ export default function AboutPage() {
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                Read Reviews
+                Wedding DJ Reviews
               </a>
               <a
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                View Packages
+                Wedding DJ Packages
               </a>
             </div>
           </div>

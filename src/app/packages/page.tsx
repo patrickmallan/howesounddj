@@ -4,11 +4,11 @@ import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tr
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 
 export const metadata: Metadata = {
-  title: "Packages & Enhancements",
+  title: "Wedding DJ Packages",
   description:
     "Wedding DJ packages and optional enhancements for Squamish and Sea-to-Sky weddings: celebration through full-day coverage, plus lighting, audio zones, and custom mixes.",
   openGraph: {
-    title: "Packages & Enhancements | Howe Sound DJ",
+    title: "Wedding DJ Packages | Howe Sound DJ",
     description:
       "Clear package tiers, what every booking includes, and add-ons when you want more. Pricing confirmed after your date and venue.",
     url: "/packages",
@@ -121,7 +121,7 @@ export default function PackagesPage() {
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                Read Reviews
+                Wedding DJ Reviews
               </a>
             </div>
           </div>
@@ -273,7 +273,7 @@ export default function PackagesPage() {
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                Read Reviews
+                Wedding DJ Reviews
               </a>
             </div>
           </div>

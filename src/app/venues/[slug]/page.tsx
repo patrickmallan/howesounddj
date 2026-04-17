@@ -150,12 +150,12 @@ export default async function VenueDetailPage({ params }: Props) {
             <ul className="mt-4 list-none space-y-3 text-sm leading-7 text-white/70">
               <li>
                 <Link href="/weddings" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                  Wedding DJ services overview
+                  Wedding DJ Services
                 </Link>
               </li>
               <li>
                 <Link href="/packages" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                  Packages & enhancements
+                  Wedding DJ Packages
                 </Link>
               </li>
               <li>
@@ -192,7 +192,7 @@ export default async function VenueDetailPage({ params }: Props) {
                   href="/reviews"
                   className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
                 >
-                  Read reviews
+                  Wedding DJ Reviews
                 </Link>
               </div>
             </div>

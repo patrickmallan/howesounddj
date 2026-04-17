@@ -16,11 +16,11 @@ function turnstileSiteKey(): string {
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Contact & Availability",
+  title: { absolute: "Check Availability | Howe Sound DJ" },
   description:
     "Check availability for your Squamish or Sea-to-Sky wedding: pick your date, then share your venue and vision. Book a consult or send an inquiry when the fit feels right.",
   openGraph: {
-    title: "Contact & Availability | Howe Sound DJ",
+    title: "Check Availability | Howe Sound DJ",
     description:
       "Check availability and share your wedding details: date, venue, and how you want the day to feel.",
     url: "/contact",
@@ -57,13 +57,13 @@ export default function ContactPage() {
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                Read Reviews
+                Wedding DJ Reviews
               </a>
               <a
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                View Packages
+                Wedding DJ Packages
               </a>
             </div>
           </div>
@@ -213,13 +213,13 @@ export default function ContactPage() {
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                View Packages
+                Wedding DJ Packages
               </a>
               <a
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                Read Reviews
+                Wedding DJ Reviews
               </a>
             </div>
           </div>
