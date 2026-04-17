@@ -50,6 +50,36 @@ const nextConfig: NextConfig = {
         destination: "/weddings",
         permanent: true,
       },
+      {
+        source: "/about-howe-sound-wedding-dj",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/about-howe-sound-wedding-dj/",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/dj-packages",
+        destination: "/packages",
+        permanent: true,
+      },
+      {
+        source: "/dj-packages/",
+        destination: "/packages",
+        permanent: true,
+      },
+      {
+        source: "/whistler-dj-services",
+        destination: "/weddings",
+        permanent: true,
+      },
+      {
+        source: "/whistler-dj-services/",
+        destination: "/weddings",
+        permanent: true,
+      },
     ];
   },
 };
