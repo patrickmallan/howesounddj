@@ -20,6 +20,36 @@ const nextConfig: NextConfig = {
         destination: "/weddings",
         permanent: true,
       },
+      {
+        source: "/a-little-about-me",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/a-little-about-me/",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/wedding-dj-packages-in-squamish",
+        destination: "/packages",
+        permanent: true,
+      },
+      {
+        source: "/wedding-dj-packages-in-squamish/",
+        destination: "/packages",
+        permanent: true,
+      },
+      {
+        source: "/whistler-wedding-dj-services",
+        destination: "/weddings",
+        permanent: true,
+      },
+      {
+        source: "/whistler-wedding-dj-services/",
+        destination: "/weddings",
+        permanent: true,
+      },
     ];
   },
 };
