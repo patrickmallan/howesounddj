@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useCallback, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
@@ -21,6 +22,16 @@ function isActiveNavHref(pathname: string, href: string): boolean {
 
 export function SiteHeader() {
   const pathname = usePathname() ?? "";
+  const mobileMenuDetailsRef = useRef<HTMLDetailsElement>(null);
+
+  const closeMobileMenu = useCallback(() => {
+    const el = mobileMenuDetailsRef.current;
+    if (el) el.open = false;
+  }, []);
+
+  useEffect(() => {
+    closeMobileMenu();
+  }, [pathname, closeMobileMenu]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/90 backdrop-blur">
@@ -56,7 +67,7 @@ export function SiteHeader() {
               );
             })}
           </nav>
-          <details className="relative md:hidden">
+          <details ref={mobileMenuDetailsRef} className="relative md:hidden">
             <summary className="flex min-h-[44px] min-w-[44px] cursor-pointer list-none items-center justify-center rounded-full border border-white/15 px-3 text-sm text-white/85 outline-none transition hover:border-white/25 [&::-webkit-details-marker]:hidden">
               Menu
             </summary>
@@ -70,6 +81,7 @@ export function SiteHeader() {
                   <Link
                     key={item.href}
                     href={item.href}
+                    onClick={closeMobileMenu}
                     aria-current={active ? "page" : undefined}
                     className={
                       active
