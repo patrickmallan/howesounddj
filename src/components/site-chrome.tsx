@@ -11,7 +11,6 @@ const navLinks = [
   { href: "/reviews", label: "Wedding DJ Reviews" },
   { href: "/about", label: "About Howe Sound DJ" },
   { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Check Availability" },
 ] as const;
 
 /** True when this nav item’s route is the current page or a nested segment (e.g. /contact/...), without false positives like /faq vs /faq-extra. */
@@ -46,7 +45,7 @@ export function SiteHeader() {
         </Link>
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <nav
-            className="hidden flex-wrap items-center justify-end gap-x-5 gap-y-2 text-sm text-white/80 md:flex"
+            className="hidden flex-wrap items-center justify-end gap-x-6 gap-y-2 text-sm text-white/80 md:flex"
             aria-label="Primary"
           >
             {navLinks.map((item) => {
