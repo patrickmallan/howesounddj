@@ -36,7 +36,7 @@ function getTurnstileSecret(): string | undefined {
 const AUTO_REPLY_CONTACT_URL = "https://www.howesounddj.com/contact";
 
 function getAutoReplySubject(): string {
-  return "Got your message — I'll be in touch shortly";
+  return "Message received, I'll be in touch shortly";
 }
 
 function getAutoReplyPlainText(): string {
