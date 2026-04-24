@@ -33,6 +33,43 @@ function getTurnstileSecret(): string | undefined {
   return process.env.TURNSTILE_SECRET_KEY?.trim();
 }
 
+const AUTO_REPLY_CONTACT_URL = "https://www.howesounddj.com/contact";
+
+function getAutoReplySubject(): string {
+  return "Got your message — I'll be in touch shortly";
+}
+
+function getAutoReplyPlainText(): string {
+  return [
+    "Hey, thanks for reaching out. I've got your message and will be in touch soon.",
+    "",
+    "In the meantime, you can check availability and book a quick consult here:",
+    "",
+    AUTO_REPLY_CONTACT_URL,
+    "",
+    "Excited to hear more about your plans.",
+    "",
+    "Howe Sound DJ",
+  ].join("\n");
+}
+
+function getAutoReplyHtml(): string {
+  const url = AUTO_REPLY_CONTACT_URL;
+  return `<html><body>
+<p>Hey, thanks for reaching out. I've got your message and will be in touch soon.</p>
+<p>In the meantime, you can check availability and book a quick consult here:</p>
+<p><a href="${url}">${url}</a></p>
+<p>Excited to hear more about your plans.</p>
+<p>Howe Sound DJ</p>
+</body></html>`;
+}
+
+function resendEmailId(data: unknown): string | null {
+  return data && typeof data === "object" && "id" in data
+    ? String((data as { id: string }).id)
+    : null;
+}
+
 /** Safe server logs for delivery debugging — never log secrets, tokens, or full PII. */
 function logContact(stage: string, data?: Record<string, unknown>) {
   if (data && Object.keys(data).length > 0) {
@@ -198,11 +235,35 @@ export async function POST(request: Request) {
       );
     }
 
-    const emailId =
-      sendResult.data && typeof sendResult.data === "object" && "id" in sendResult.data
-        ? String((sendResult.data as { id: string }).id)
-        : null;
+    const emailId = resendEmailId(sendResult.data);
     logContact("resend_send_ok", { resend_email_id: emailId });
+
+    logContact("client_auto_reply_send_start");
+    try {
+      const autoReplyResult = await resend.emails.send({
+        from: mail.from,
+        to: email,
+        replyTo: mail.to,
+        subject: getAutoReplySubject(),
+        text: getAutoReplyPlainText(),
+        html: getAutoReplyHtml(),
+      });
+
+      if (autoReplyResult.error) {
+        console.error("[contact] client_auto_reply_send_error", {
+          name: autoReplyResult.error.name,
+          statusCode: autoReplyResult.error.statusCode,
+          message: autoReplyResult.error.message,
+        });
+      } else {
+        const autoReplyId = resendEmailId(autoReplyResult.data);
+        logContact("client_auto_reply_send_ok", { resend_email_id: autoReplyId });
+      }
+    } catch (autoReplyErr) {
+      console.error("[contact] client_auto_reply_send_error", {
+        message: autoReplyErr instanceof Error ? autoReplyErr.message : "unknown",
+      });
+    }
   } catch (err) {
     console.error("[contact] resend_send_exception", {
       message: err instanceof Error ? err.message : "unknown",
