@@ -9,6 +9,7 @@
  */
 export const ANALYTICS_EVENTS = {
   homepageHeadlineView: "homepage_headline_view",
+  bookConsultClick: "book_consult_click",
   contactFormSubmitAttempt: "contact_form_submit_attempt",
   contactFormSubmitSuccess: "contact_form_submit_success",
   contactFormSubmitError: "contact_form_submit_error",

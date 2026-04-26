@@ -3,10 +3,9 @@
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Script from "next/script";
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
+import { CONSULT_CALENDLY_URL } from "@/lib/consult-calendly";
 import { headlineVariantPayload } from "@/lib/experiment";
 import type { ContactApiResponse } from "@/types/contact-api";
-
-const CALENDLY_URL = "https://calendly.com/patrick-howesounddj";
 
 function clientPagePath(): string | undefined {
   if (typeof window === "undefined") return undefined;
@@ -429,7 +428,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
           <p className="text-lg leading-relaxed text-white/85">{availability.message}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
-              href={CALENDLY_URL}
+              href={CONSULT_CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
               className={consultButtonPrimaryOutline}
@@ -463,7 +462,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               Continue with Inquiry
             </button>
             <a
-              href={CALENDLY_URL}
+              href={CONSULT_CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
               className={consultButtonClass}
