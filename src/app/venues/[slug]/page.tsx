@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { BookConsultTrackedLink, bookConsultOutlineButtonClassName } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal } from "@/components/motion";
 import { JsonLd } from "@/components/json-ld";
@@ -92,6 +93,9 @@ export default async function VenueDetailPage({ params }: Props) {
                 surface="venue_hero"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
               />
+              <BookConsultTrackedLink surface="venue_hero" className={bookConsultOutlineButtonClassName}>
+                Book a Consult
+              </BookConsultTrackedLink>
               <a
                 href={venue.officialUrl}
                 target="_blank"
@@ -188,6 +192,9 @@ export default async function VenueDetailPage({ params }: Props) {
                   surface="venue_page_cta"
                   className="inline-flex rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
                 />
+                <BookConsultTrackedLink surface="venue_page_cta" className={bookConsultOutlineButtonClassName}>
+                  Book a Consult
+                </BookConsultTrackedLink>
                 <Link
                   href="/reviews"
                   className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

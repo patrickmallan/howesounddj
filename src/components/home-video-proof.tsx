@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
+import { BookConsultTrackedLink, bookConsultOutlineButtonClassName } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
 const LOGO_SRC = "/images/logo/howe-sound-logo.webp";
@@ -86,11 +87,14 @@ export function HomeVideoProof() {
         <p className={`text-sm leading-relaxed text-white/50 ${hasVideo ? "mt-4" : "mt-10"}`}>
           The goal is always the same: connection, flow, and Sea-to-Sky celebration energy, with a floor that stays with you.
         </p>
-        <div className="mt-8">
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <CheckAvailabilityTrackedLink
             surface="inline"
             className="inline-flex rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
           />
+          <BookConsultTrackedLink surface="inline" className={bookConsultOutlineButtonClassName}>
+            Book a Consult
+          </BookConsultTrackedLink>
         </div>
       </div>
     </section>

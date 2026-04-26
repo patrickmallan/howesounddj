@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BookConsultTrackedLink, bookConsultOutlineButtonClassName } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { BrandAnchorStatement } from "@/components/brand-anchor-statement";
 import { HomepageExploreSection } from "@/components/explore-site-links";
@@ -129,6 +130,9 @@ export default function HoweSoundDJHomepage() {
                   surface="hero"
                   className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
                 />
+                <BookConsultTrackedLink surface="hero" className={bookConsultOutlineButtonClassName}>
+                  Book a Consult
+                </BookConsultTrackedLink>
                 <a
                   href="/reviews"
                   className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -260,14 +264,17 @@ export default function HoweSoundDJHomepage() {
                 <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Reviews</div>
                 <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Client backed: real couples, real parties.</h2>
               </div>
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex flex-wrap items-center gap-3">
+                <CheckAvailabilityTrackedLink
+                  surface="inline"
+                  className="rounded-full bg-amber-300 px-4 py-2 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                />
+                <BookConsultTrackedLink surface="inline" className={bookConsultOutlineButtonClassName}>
+                  Book a Consult
+                </BookConsultTrackedLink>
                 <a href="/reviews" className="motion-interactive text-sm font-semibold text-amber-300 hover:text-amber-200">
                   Wedding DJ Reviews →
                 </a>
-                <CheckAvailabilityTrackedLink
-                  surface="inline"
-                  className="rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-                />
               </div>
             </div>
             <StaggerGroup className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -402,11 +409,14 @@ export default function HoweSoundDJHomepage() {
               <p className="mt-4 text-lg leading-8 text-white/70">
                 Rooted in Squamish with an ear for atmosphere and calm, professional planning support, Patrick helps you feel covered before the day and free to enjoy it when the music hits.
               </p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
                 <CheckAvailabilityTrackedLink
                   surface="page_cta"
                   className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
                 />
+                <BookConsultTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName}>
+                  Book a Consult
+                </BookConsultTrackedLink>
                 <a
                   href="/about"
                   className="motion-interactive rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -456,6 +466,9 @@ export default function HoweSoundDJHomepage() {
                     surface="page_cta"
                     className="inline-flex rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
                   />
+                  <BookConsultTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName}>
+                    Book a Consult
+                  </BookConsultTrackedLink>
                   <a
                     href="/weddings"
                     className="motion-interactive inline-flex rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

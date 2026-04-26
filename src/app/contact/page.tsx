@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactAvailabilityForm } from "@/components/contact-availability-form";
 import { ContactBookConsultSection } from "@/components/contact-book-consult-section";
 import { ContactSecondaryInquiryForm } from "@/components/contact-secondary-inquiry-form";
+import { BookConsultTrackedLink, bookConsultOutlineButtonClassName } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal } from "@/components/motion";
 
@@ -48,12 +49,18 @@ export default function ContactPage() {
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
               Pick your wedding date below to check the calendar, then share what you’re planning. You can book a consult anytime, or send an inquiry when your date is open.
             </p>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/45">
+              Already reached out or ready to talk? Book a consult directly—no need to run the date check first.
+            </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <CheckAvailabilityTrackedLink
                 href="/contact#availability"
                 surface="page_cta"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
               />
+              <BookConsultTrackedLink surface="contact_page" className={bookConsultOutlineButtonClassName}>
+                Book a Consult
+              </BookConsultTrackedLink>
               <a
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -217,6 +224,9 @@ export default function ContactPage() {
                 surface="page_cta"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
               />
+              <BookConsultTrackedLink surface="contact_page" className={bookConsultOutlineButtonClassName}>
+                Book a Consult
+              </BookConsultTrackedLink>
               <a
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

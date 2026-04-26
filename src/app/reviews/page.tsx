@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookConsultTrackedLink, bookConsultOutlineButtonClassName } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 
@@ -129,11 +130,14 @@ export default function ReviewsPage() {
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
               The results speak for themselves: real couples, real parties, real reviews. Fast replies, clear communication, and a Squamish-rooted approach where local venues and vendors are part of how the day comes together.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <CheckAvailabilityTrackedLink
                 surface="hero"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
               />
+              <BookConsultTrackedLink surface="hero" className={bookConsultOutlineButtonClassName}>
+                Book a Consult
+              </BookConsultTrackedLink>
               <a
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -154,10 +158,15 @@ export default function ReviewsPage() {
                 This page leads with named couples and verbatim quotes, not lifestyle stock or anonymous five-star blurbs. Read the cards below, then check availability if the fit feels right.
               </p>
             </div>
-            <CheckAvailabilityTrackedLink
-              surface="inline"
-              className="shrink-0 rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-            />
+            <div className="flex shrink-0 flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-end">
+              <CheckAvailabilityTrackedLink
+                surface="inline"
+                className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+              />
+              <BookConsultTrackedLink surface="inline" className={bookConsultOutlineButtonClassName}>
+                Book a Consult
+              </BookConsultTrackedLink>
+            </div>
           </div>
         </div>
       </SectionReveal>
@@ -314,11 +323,14 @@ export default function ReviewsPage() {
             <p className="mt-4 text-lg leading-8 text-white/70">
               Send your date, venue, and wedding vision. The next step is a conversation about fit and availability.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <CheckAvailabilityTrackedLink
                 surface="page_cta"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
               />
+              <BookConsultTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName}>
+                Book a Consult
+              </BookConsultTrackedLink>
               <a
                 href="/about"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

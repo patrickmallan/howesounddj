@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BookConsultTrackedLink, bookConsultOutlineButtonClassName } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { JsonLd } from "@/components/json-ld";
@@ -212,11 +213,14 @@ export default function FaqPage() {
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
               Most hesitation comes from not knowing how the process works. These answers mirror what Patrick emphasizes in his own words: personalized music, clear planning, professional sound, and a Sea-to-Sky approach rooted in real venues and real weddings, not a generic DJ script.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <CheckAvailabilityTrackedLink
                 surface="hero"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
               />
+              <BookConsultTrackedLink surface="hero" className={bookConsultOutlineButtonClassName}>
+                Book a Consult
+              </BookConsultTrackedLink>
               <a
                 href="/packages"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -314,11 +318,14 @@ export default function FaqPage() {
               </Link>{" "}
               outline planning context for named Sea-to-Sky and Squamish settings—without replacing a real conversation about your day.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <CheckAvailabilityTrackedLink
                 surface="page_cta"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
               />
+              <BookConsultTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName}>
+                Book a Consult
+              </BookConsultTrackedLink>
               <a
                 href="/reviews"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

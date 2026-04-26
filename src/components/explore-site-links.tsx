@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BookConsultTrackedLink } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
 /** Primary sitelink targets — consistent anchor text site-wide. */
@@ -53,6 +54,14 @@ export function HomepageExploreSection() {
             </CheckAvailabilityTrackedLink>
           </li>
           <li>
+            <BookConsultTrackedLink
+              surface="explore_card"
+              className="premium-surface flex h-full min-h-[5.5rem] flex-col justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-base font-semibold text-white transition hover:border-amber-300/25 hover:bg-white/[0.07]"
+            >
+              Book a Consult
+            </BookConsultTrackedLink>
+          </li>
+          <li>
             <Link
               href="/vancouver-wedding-dj"
               className="premium-surface flex h-full min-h-[5.5rem] flex-col justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-base font-semibold text-white transition hover:border-amber-300/25 hover:bg-white/[0.07]"
@@ -93,6 +102,9 @@ export function ExploreSiteLinksStrip() {
           >
             Check Availability
           </CheckAvailabilityTrackedLink>
+          <BookConsultTrackedLink surface="footer" className="transition hover:text-amber-200/95">
+            Book a Consult
+          </BookConsultTrackedLink>
           {exploreSecondaryLinks.map((item) => (
             <Link
               key={item.href}

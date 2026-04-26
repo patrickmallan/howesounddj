@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BookConsultTrackedLink, bookConsultOutlineButtonClassName } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { JsonLd } from "@/components/json-ld";
@@ -53,6 +54,9 @@ export default function VenuesHubPage() {
                 surface="venues_hub"
                 className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
               />
+              <BookConsultTrackedLink surface="venues_hub" className={bookConsultOutlineButtonClassName}>
+                Book a Consult
+              </BookConsultTrackedLink>
               <Link
                 href="/weddings"
                 className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -135,6 +139,9 @@ export default function VenuesHubPage() {
                   surface="venues_hub"
                   className="inline-flex rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
                 />
+                <BookConsultTrackedLink surface="venues_hub" className={bookConsultOutlineButtonClassName}>
+                  Book a Consult
+                </BookConsultTrackedLink>
                 <Link
                   href="/faq"
                   className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

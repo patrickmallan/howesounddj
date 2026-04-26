@@ -1,19 +1,11 @@
 "use client";
 
-import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
-import { CONSULT_CALENDLY_URL } from "@/lib/consult-calendly";
+import { BookConsultTrackedLink } from "@/components/book-consult-tracked-link";
 
 const consultCtaClass =
   "inline-flex min-h-[44px] items-center justify-center rounded-full border border-amber-300/50 bg-amber-300/10 px-6 py-3 text-center text-sm font-semibold text-amber-200 transition hover:border-amber-300 hover:bg-amber-300/15";
 
 export function ContactBookConsultSection() {
-  function handleConsultClick() {
-    trackEvent(ANALYTICS_EVENTS.bookConsultClick, {
-      surface: "contact_page",
-      intent: "direct_consult",
-    });
-  }
-
   return (
     <div
       id="book-consult"
@@ -29,15 +21,9 @@ export function ContactBookConsultSection() {
         If your wedding is already booked, use this option for your final planning call.
       </p>
       <div className="mt-6">
-        <a
-          href={CONSULT_CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={consultCtaClass}
-          onClick={handleConsultClick}
-        >
+        <BookConsultTrackedLink surface="contact_page" className={consultCtaClass}>
           Book a Consult
-        </a>
+        </BookConsultTrackedLink>
       </div>
     </div>
   );
