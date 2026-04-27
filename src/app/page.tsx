@@ -163,20 +163,6 @@ export default function HoweSoundDJHomepage() {
                   Whistler &amp; Vancouver Weddings — how local fit works for your day →
                 </a>
               </p>
-              <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 text-sm text-white/70 sm:mt-9 sm:grid-cols-3 sm:gap-4">
-                <div className="premium-surface rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <div className="text-xl font-semibold text-white">Bangers Only</div>
-                  <div className="mt-1">No fluff, no autopilot, packed floors</div>
-                </div>
-                <div className="premium-surface rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <div className="text-xl font-semibold text-white">Rooted here</div>
-                  <div className="mt-1">Squamish: venues, vendors, vibe</div>
-                </div>
-                <div className="premium-surface rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <div className="text-xl font-semibold text-white">Real connection</div>
-                  <div className="mt-1">You’re not just another booking</div>
-                </div>
-              </div>
             </div>
 
             <div className="relative z-10">
