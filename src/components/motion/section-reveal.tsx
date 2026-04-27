@@ -41,7 +41,11 @@ export function SectionReveal({
     "aria-label": ariaLabel,
     initial: { opacity: reduce ? 1 : 0, y: reduce ? 0 : 20 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-48px" as const, amount: 0.12 },
+    /**
+     * Use a near-zero `amount` so tall sections (e.g. homepage venue grid on mobile) still
+     * intersect: max visible ratio is ~viewportHeight/sectionHeight, which can stay below 0.12.
+     */
+    viewport: { once: true, margin: "0px 0px 80px 0px" as const, amount: 0.01 },
     transition: {
       duration: reduce ? 0 : MOTION_DURATION.section,
       ease: MOTION_EASE,

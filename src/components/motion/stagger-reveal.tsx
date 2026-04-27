@@ -39,7 +39,7 @@ export function StaggerGroup({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-40px", amount: 0.08 }}
+      viewport={{ once: true, margin: "0px 0px 80px 0px", amount: 0.01 }}
       variants={containerVariants(stagger)}
     >
       {children}
