@@ -52,20 +52,20 @@ export default function VenuesHubPage() {
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <CheckAvailabilityTrackedLink
                 surface="venues_hub"
-                className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
               />
               <BookConsultTrackedLink surface="venues_hub" className={bookConsultOutlineButtonClassName}>
                 Book a Consult
               </BookConsultTrackedLink>
               <Link
                 href="/weddings"
-                className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
                 Wedding DJ Services
               </Link>
               <Link
                 href="/packages"
-                className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
                 Wedding DJ Packages
               </Link>
@@ -137,14 +137,14 @@ export default function VenuesHubPage() {
                 <CheckAvailabilityTrackedLink
                   href="/contact#availability"
                   surface="venues_hub"
-                  className="inline-flex rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
                 />
                 <BookConsultTrackedLink surface="venues_hub" className={bookConsultOutlineButtonClassName}>
                   Book a Consult
                 </BookConsultTrackedLink>
                 <Link
                   href="/faq"
-                  className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                  className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
                 >
                   FAQ
                 </Link>

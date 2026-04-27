@@ -90,7 +90,7 @@ export function HomeVideoProof() {
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <CheckAvailabilityTrackedLink
             surface="inline"
-            className="inline-flex rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+            className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
           />
           <BookConsultTrackedLink surface="inline" className={bookConsultOutlineButtonClassName}>
             Book a Consult

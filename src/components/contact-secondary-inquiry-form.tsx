@@ -416,7 +416,7 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
             !turnstileSiteKeyResolved ||
             (turnstileSiteKeyResolved ? !turnstileToken : false)
           }
-          className="rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white/90 transition hover:border-white/35 hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-center text-sm font-semibold text-white/90 transition hover:border-white/35 hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {formStatus === "submitting" ? "Sending…" : "Send message"}
         </button>

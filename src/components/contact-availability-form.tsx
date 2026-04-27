@@ -415,7 +415,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
             type="button"
             onClick={checkAvailability}
             disabled={availability.kind === "checking"}
-            className="rounded-full bg-amber-300 px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {availability.kind === "checking" ? "Checking…" : "Check Availability"}
           </button>
@@ -457,7 +457,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
             <button
               type="button"
               onClick={() => setShowInquiry(true)}
-              className="rounded-full bg-amber-300 px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+              className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
             >
               Continue with Inquiry
             </button>
@@ -636,7 +636,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               !turnstileSiteKeyResolved ||
               (turnstileSiteKeyResolved ? !turnstileToken : false)
             }
-            className="rounded-full bg-amber-300 px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {formStatus === "submitting" ? "Sending…" : "Send inquiry"}
           </button>

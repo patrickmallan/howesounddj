@@ -3,6 +3,7 @@
 import type { MouseEvent, ReactNode } from "react";
 import Link from "next/link";
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
+import { CTA_PILL_FLEX_CENTER } from "@/lib/cta-alignment";
 import { headlineVariantPayload } from "@/lib/experiment";
 
 export type CheckAvailabilitySurface =
@@ -62,7 +63,7 @@ export function CheckAvailabilityTrackedLink({ surface, className, children, hre
     window.history.replaceState(null, "", `${window.location.pathname}#${hashId}`);
   };
 
-  const mergedClass = className ? `${className} motion-interactive` : "motion-interactive";
+  const mergedClass = [className, CTA_PILL_FLEX_CENTER, "motion-interactive"].filter(Boolean).join(" ");
 
   return (
     <Link href={href} className={mergedClass} onClick={handleClick}>

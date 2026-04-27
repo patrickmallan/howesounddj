@@ -102,7 +102,7 @@ export function SiteHeader() {
           </details>
           <CheckAvailabilityTrackedLink
             surface="header"
-            className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-amber-300 px-4 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] sm:min-h-0 sm:px-5 sm:py-2.5"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-amber-300 px-4 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] sm:min-h-0 sm:px-5 sm:py-2.5"
           />
         </div>
       </div>
@@ -124,7 +124,7 @@ export function SiteFooter() {
           </div>
           <CheckAvailabilityTrackedLink
             surface="footer"
-            className="shrink-0 self-start rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white/85 transition hover:border-white/30 hover:bg-white/5 md:self-auto"
+            className="shrink-0 self-start inline-flex items-center justify-center text-center rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white/85 transition hover:border-white/30 hover:bg-white/5 md:self-auto"
           />
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2">

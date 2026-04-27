@@ -128,20 +128,20 @@ export default function HoweSoundDJHomepage() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
                 <CheckAvailabilityTrackedLink
                   surface="hero"
-                  className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
                 />
                 <BookConsultTrackedLink surface="hero" className={bookConsultOutlineButtonClassName}>
                   Book a Consult
                 </BookConsultTrackedLink>
                 <a
                   href="/reviews"
-                  className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                  className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
                 >
                   Wedding DJ Reviews
                 </a>
                 <a
                   href="/packages"
-                  className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                  className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
                 >
                   Wedding DJ Packages
                 </a>
@@ -267,7 +267,7 @@ export default function HoweSoundDJHomepage() {
               <div className="flex flex-wrap items-center gap-3">
                 <CheckAvailabilityTrackedLink
                   surface="inline"
-                  className="rounded-full bg-amber-300 px-4 py-2 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center rounded-full bg-amber-300 px-4 py-2 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
                 />
                 <BookConsultTrackedLink surface="inline" className={bookConsultOutlineButtonClassName}>
                   Book a Consult
@@ -412,14 +412,14 @@ export default function HoweSoundDJHomepage() {
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
                 <CheckAvailabilityTrackedLink
                   surface="page_cta"
-                  className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
                 />
                 <BookConsultTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName}>
                   Book a Consult
                 </BookConsultTrackedLink>
                 <a
                   href="/about"
-                  className="motion-interactive rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                  className="motion-interactive inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
                 >
                   About Howe Sound DJ
                 </a>
@@ -464,14 +464,14 @@ export default function HoweSoundDJHomepage() {
                   <CheckAvailabilityTrackedLink
                     href="/contact#availability"
                     surface="page_cta"
-                    className="inline-flex rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                    className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
                   />
                   <BookConsultTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName}>
                     Book a Consult
                   </BookConsultTrackedLink>
                   <a
                     href="/weddings"
-                    className="motion-interactive inline-flex rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                    className="motion-interactive inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
                   >
                     Wedding DJ Services
                   </a>

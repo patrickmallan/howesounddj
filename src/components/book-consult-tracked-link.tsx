@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
+import { CTA_PILL_FLEX_CENTER } from "@/lib/cta-alignment";
 import { CONSULT_CALENDLY_URL } from "@/lib/consult-calendly";
 
 export type BookConsultSurface =
@@ -17,7 +18,7 @@ export type BookConsultSurface =
 
 /** Secondary CTA — matches outline pills used next to primary Check Availability across the site. */
 export const bookConsultOutlineButtonClassName =
-  "inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5";
+  `${CTA_PILL_FLEX_CENTER} min-h-[44px] rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5`;
 
 type Props = {
   surface: BookConsultSurface;
@@ -34,7 +35,7 @@ export function BookConsultTrackedLink({ surface, className, children }: Props) 
     });
   }
 
-  const merged = className ? `${className} motion-interactive` : "motion-interactive";
+  const merged = [className, CTA_PILL_FLEX_CENTER, "motion-interactive"].filter(Boolean).join(" ");
 
   return (
     <a

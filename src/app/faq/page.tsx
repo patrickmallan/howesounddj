@@ -216,14 +216,14 @@ export default function FaqPage() {
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <CheckAvailabilityTrackedLink
                 surface="hero"
-                className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
               />
               <BookConsultTrackedLink surface="hero" className={bookConsultOutlineButtonClassName}>
                 Book a Consult
               </BookConsultTrackedLink>
               <a
                 href="/packages"
-                className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
                 Wedding DJ Packages
               </a>
@@ -321,14 +321,14 @@ export default function FaqPage() {
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <CheckAvailabilityTrackedLink
                 surface="page_cta"
-                className="rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
               />
               <BookConsultTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName}>
                 Book a Consult
               </BookConsultTrackedLink>
               <a
                 href="/reviews"
-                className="rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
                 Wedding DJ Reviews
               </a>
