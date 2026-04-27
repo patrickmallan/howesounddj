@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/reviews", label: "Wedding DJ Reviews" },
   { href: "/about", label: "About Howe Sound DJ" },
   { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact HSDJ" },
 ] as const;
 
 /** True when this nav item’s route is the current page or a nested segment (e.g. /contact/...), without false positives like /faq vs /faq-extra. */

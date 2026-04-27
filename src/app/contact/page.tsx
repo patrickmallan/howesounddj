@@ -158,6 +158,15 @@ export default function ContactPage() {
               </a>
               .
             </p>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/50">
+              For vendor, planner, or non-date-specific inquiries, you can also email:{" "}
+              <a
+                href="mailto:patrick@howesounddj.com"
+                className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+              >
+                patrick@howesounddj.com
+              </a>
+            </p>
             <ContactSecondaryInquiryForm turnstileSiteKey={turnstileSiteKey()} />
           </div>
         </div>
