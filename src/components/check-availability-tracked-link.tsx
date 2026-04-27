@@ -24,7 +24,7 @@ type Props = {
   href?: string;
   /**
    * `pill` (default): inline-flex centering for rounded CTAs.
-   * `card`: full-width explore-style cards — omit inline-flex so `flex flex-col` from className wins.
+   * `card`: full-width explore tiles — omit inline-flex; use `text-left` with caller `flex flex-col`.
    */
   visualLayout?: "pill" | "card";
 };
@@ -74,7 +74,7 @@ export function CheckAvailabilityTrackedLink({
     window.history.replaceState(null, "", `${window.location.pathname}#${hashId}`);
   };
 
-  const alignClass = visualLayout === "card" ? "text-center" : CTA_PILL_FLEX_CENTER;
+  const alignClass = visualLayout === "card" ? "text-left" : CTA_PILL_FLEX_CENTER;
   const mergedClass = [className, alignClass, "motion-interactive"].filter(Boolean).join(" ");
 
   return (

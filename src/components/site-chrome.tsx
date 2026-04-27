@@ -79,6 +79,18 @@ export function SiteHeader() {
                 className="pointer-events-auto mt-2 flex w-[min(calc(100vw-2rem),18rem)] max-w-[18rem] flex-col divide-y divide-white/10 overflow-hidden rounded-xl border border-white/10 bg-neutral-950/95 shadow-xl shadow-black/40 backdrop-blur"
                 aria-label="Mobile primary"
               >
+                <Link
+                  href="/"
+                  onClick={closeMobileMenu}
+                  aria-current={pathname === "/" ? "page" : undefined}
+                  className={
+                    pathname === "/"
+                      ? "block px-4 py-3 text-left text-sm text-amber-300 transition hover:bg-white/5 hover:text-amber-200"
+                      : "block px-4 py-3 text-left text-sm text-white/85 transition hover:bg-white/5 hover:text-white"
+                  }
+                >
+                  Home
+                </Link>
                 {navLinks.map((item) => {
                   const active = isActiveNavHref(pathname, item.href);
                   return (
@@ -89,8 +101,8 @@ export function SiteHeader() {
                       aria-current={active ? "page" : undefined}
                       className={
                         active
-                          ? "block px-4 py-3 text-sm text-amber-300 transition hover:bg-white/5 hover:text-amber-200"
-                          : "block px-4 py-3 text-sm text-white/85 transition hover:bg-white/5 hover:text-white"
+                          ? "block px-4 py-3 text-left text-sm text-amber-300 transition hover:bg-white/5 hover:text-amber-200"
+                          : "block px-4 py-3 text-left text-sm text-white/85 transition hover:bg-white/5 hover:text-white"
                       }
                     >
                       {item.label}

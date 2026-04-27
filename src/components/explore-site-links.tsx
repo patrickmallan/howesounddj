@@ -15,6 +15,10 @@ export const exploreSecondaryLinks = [
   { href: "/venues", label: "Venue guides" },
 ] as const;
 
+/** Shared layout for homepage Explore tiles — left-aligned labels, full-width cells. */
+const exploreCardBase =
+  "premium-surface flex h-full min-h-[5.5rem] w-full min-w-0 flex-col justify-center rounded-2xl px-6 py-5 text-left text-base font-semibold transition";
+
 /** Homepage: prominent cards directly below hero (sitelink structural signal). */
 export function HomepageExploreSection() {
   return (
@@ -39,7 +43,7 @@ export function HomepageExploreSection() {
             <li key={item.href} className="min-w-0">
               <Link
                 href={item.href}
-                className="premium-surface flex h-full min-h-[5.5rem] w-full min-w-0 flex-col justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-base font-semibold text-white transition hover:border-amber-300/25 hover:bg-white/[0.07]"
+                className={`${exploreCardBase} border border-white/10 bg-white/5 text-white hover:border-amber-300/25 hover:bg-white/[0.07]`}
               >
                 {item.label}
               </Link>
@@ -49,7 +53,7 @@ export function HomepageExploreSection() {
             <CheckAvailabilityTrackedLink
               surface="inline"
               visualLayout="card"
-              className="premium-surface flex h-full min-h-[5.5rem] w-full min-w-0 flex-col justify-center rounded-2xl border border-amber-300/25 bg-amber-300/10 px-6 py-5 text-base font-semibold text-amber-100 transition hover:border-amber-300/40 hover:bg-amber-300/15"
+              className={`${exploreCardBase} border border-amber-300/25 bg-amber-300/10 text-amber-100 hover:border-amber-300/40 hover:bg-amber-300/15`}
             >
               Check Availability
             </CheckAvailabilityTrackedLink>
@@ -58,7 +62,7 @@ export function HomepageExploreSection() {
             <BookConsultTrackedLink
               surface="explore_card"
               visualLayout="card"
-              className="premium-surface flex h-full min-h-[5.5rem] w-full min-w-0 flex-col justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-base font-semibold text-white transition hover:border-amber-300/25 hover:bg-white/[0.07]"
+              className={`${exploreCardBase} border border-white/10 bg-white/5 text-white hover:border-amber-300/25 hover:bg-white/[0.07]`}
             >
               Book a Consult
             </BookConsultTrackedLink>
@@ -66,7 +70,7 @@ export function HomepageExploreSection() {
           <li className="min-w-0">
             <Link
               href="/vancouver-wedding-dj"
-              className="premium-surface flex h-full min-h-[5.5rem] w-full min-w-0 flex-col justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-base font-semibold text-white transition hover:border-amber-300/25 hover:bg-white/[0.07]"
+              className={`${exploreCardBase} border border-white/10 bg-white/5 text-white hover:border-amber-300/25 hover:bg-white/[0.07]`}
             >
               Whistler &amp; Vancouver Weddings
             </Link>

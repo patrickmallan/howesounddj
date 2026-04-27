@@ -37,7 +37,7 @@ export function BookConsultTrackedLink({ surface, className, children, visualLay
     });
   }
 
-  const alignClass = visualLayout === "card" ? "text-center" : CTA_PILL_FLEX_CENTER;
+  const alignClass = visualLayout === "card" ? "text-left" : CTA_PILL_FLEX_CENTER;
   const merged = [className, alignClass, "motion-interactive"].filter(Boolean).join(" ");
 
   return (
