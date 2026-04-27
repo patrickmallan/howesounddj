@@ -36,35 +36,37 @@ export function HomepageExploreSection() {
         </div>
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {explorePrimaryLinks.map((item) => (
-            <li key={item.href}>
+            <li key={item.href} className="min-w-0">
               <Link
                 href={item.href}
-                className="premium-surface flex h-full min-h-[5.5rem] flex-col justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-base font-semibold text-white transition hover:border-amber-300/25 hover:bg-white/[0.07]"
+                className="premium-surface flex h-full min-h-[5.5rem] w-full min-w-0 flex-col justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-base font-semibold text-white transition hover:border-amber-300/25 hover:bg-white/[0.07]"
               >
                 {item.label}
               </Link>
             </li>
           ))}
-          <li>
+          <li className="min-w-0">
             <CheckAvailabilityTrackedLink
               surface="inline"
-              className="premium-surface flex h-full min-h-[5.5rem] flex-col justify-center rounded-2xl border border-amber-300/25 bg-amber-300/10 px-6 py-5 text-base font-semibold text-amber-100 transition hover:border-amber-300/40 hover:bg-amber-300/15"
+              visualLayout="card"
+              className="premium-surface flex h-full min-h-[5.5rem] w-full min-w-0 flex-col justify-center rounded-2xl border border-amber-300/25 bg-amber-300/10 px-6 py-5 text-base font-semibold text-amber-100 transition hover:border-amber-300/40 hover:bg-amber-300/15"
             >
               Check Availability
             </CheckAvailabilityTrackedLink>
           </li>
-          <li>
+          <li className="min-w-0">
             <BookConsultTrackedLink
               surface="explore_card"
-              className="premium-surface flex h-full min-h-[5.5rem] flex-col justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-base font-semibold text-white transition hover:border-amber-300/25 hover:bg-white/[0.07]"
+              visualLayout="card"
+              className="premium-surface flex h-full min-h-[5.5rem] w-full min-w-0 flex-col justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-base font-semibold text-white transition hover:border-amber-300/25 hover:bg-white/[0.07]"
             >
               Book a Consult
             </BookConsultTrackedLink>
           </li>
-          <li>
+          <li className="min-w-0">
             <Link
               href="/vancouver-wedding-dj"
-              className="premium-surface flex h-full min-h-[5.5rem] flex-col justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-base font-semibold text-white transition hover:border-amber-300/25 hover:bg-white/[0.07]"
+              className="premium-surface flex h-full min-h-[5.5rem] w-full min-w-0 flex-col justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-base font-semibold text-white transition hover:border-amber-300/25 hover:bg-white/[0.07]"
             >
               Whistler &amp; Vancouver Weddings
             </Link>

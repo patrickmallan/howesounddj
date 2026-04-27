@@ -24,9 +24,11 @@ type Props = {
   surface: BookConsultSurface;
   className?: string;
   children?: ReactNode;
+  /** See `CheckAvailabilityTrackedLink` — use `card` for homepage Explore tiles. */
+  visualLayout?: "pill" | "card";
 };
 
-export function BookConsultTrackedLink({ surface, className, children }: Props) {
+export function BookConsultTrackedLink({ surface, className, children, visualLayout = "pill" }: Props) {
   function handleClick() {
     trackEvent(ANALYTICS_EVENTS.bookConsultClick, {
       surface,
@@ -35,7 +37,8 @@ export function BookConsultTrackedLink({ surface, className, children }: Props) 
     });
   }
 
-  const merged = [className, CTA_PILL_FLEX_CENTER, "motion-interactive"].filter(Boolean).join(" ");
+  const alignClass = visualLayout === "card" ? "text-center" : CTA_PILL_FLEX_CENTER;
+  const merged = [className, alignClass, "motion-interactive"].filter(Boolean).join(" ");
 
   return (
     <a

@@ -22,6 +22,11 @@ type Props = {
   children?: ReactNode;
   /** Defaults to `/contact`. Use `/contact#availability` or `#availability` where the UX requires it. */
   href?: string;
+  /**
+   * `pill` (default): inline-flex centering for rounded CTAs.
+   * `card`: full-width explore-style cards — omit inline-flex so `flex flex-col` from className wins.
+   */
+  visualLayout?: "pill" | "card";
 };
 
 const DEFAULT_DESTINATION = "/contact";
@@ -42,7 +47,13 @@ function hashIdForSamePageScroll(href: string, pathname: string): string | null 
   return null;
 }
 
-export function CheckAvailabilityTrackedLink({ surface, className, children, href = "/contact" }: Props) {
+export function CheckAvailabilityTrackedLink({
+  surface,
+  className,
+  children,
+  href = "/contact",
+  visualLayout = "pill",
+}: Props) {
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     trackEvent(ANALYTICS_EVENTS.checkAvailabilityClick, {
       surface,
@@ -63,7 +74,8 @@ export function CheckAvailabilityTrackedLink({ surface, className, children, hre
     window.history.replaceState(null, "", `${window.location.pathname}#${hashId}`);
   };
 
-  const mergedClass = [className, CTA_PILL_FLEX_CENTER, "motion-interactive"].filter(Boolean).join(" ");
+  const alignClass = visualLayout === "card" ? "text-center" : CTA_PILL_FLEX_CENTER;
+  const mergedClass = [className, alignClass, "motion-interactive"].filter(Boolean).join(" ");
 
   return (
     <Link href={href} className={mergedClass} onClick={handleClick}>

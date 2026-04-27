@@ -210,7 +210,7 @@ export default function HoweSoundDJHomepage() {
 
         <BrandAnchorStatement />
 
-        <SectionReveal as="section" id="why" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <SectionReveal as="section" id="why" className="mx-auto max-w-6xl px-6 py-14 md:py-20 lg:px-8">
           <div className="max-w-2xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Why Howe Sound DJ</div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Sea-to-Sky passion: connection, craft, and packed floors.</h2>
@@ -235,7 +235,7 @@ export default function HoweSoundDJHomepage() {
           className="border-y border-white/10 bg-neutral-950"
           aria-labelledby="home-proof-heading"
         >
-          <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-6xl px-6 py-14 md:py-16 lg:px-8 lg:py-20">
             <div className="mb-10 max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Proof</div>
               <h2 id="home-proof-heading" className="mt-4 text-3xl font-semibold sm:text-4xl">
@@ -258,7 +258,7 @@ export default function HoweSoundDJHomepage() {
         </SectionReveal>
 
         <SectionReveal as="section" id="reviews" className="border-y border-white/10 bg-white/5">
-          <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+          <div className="mx-auto max-w-6xl px-6 py-14 md:py-20 lg:px-8">
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div className="max-w-2xl">
                 <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Reviews</div>
@@ -298,7 +298,7 @@ export default function HoweSoundDJHomepage() {
           className="border-t border-white/10 bg-neutral-950"
           aria-labelledby="home-venues-heading"
         >
-          <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+          <div className="mx-auto max-w-6xl px-6 py-14 md:py-20 lg:px-8">
             <div className="max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
                 Venue familiarity
@@ -347,7 +347,7 @@ export default function HoweSoundDJHomepage() {
           </div>
         </SectionReveal>
 
-        <SectionReveal as="section" id="services" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <SectionReveal as="section" id="services" className="mx-auto max-w-6xl px-6 py-14 md:py-20 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Services</div>
@@ -388,7 +388,7 @@ export default function HoweSoundDJHomepage() {
         </SectionReveal>
 
         <SectionReveal as="section" id="about" className="border-y border-white/10 bg-white/5">
-          <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-2 lg:px-8">
+          <div className="mx-auto grid max-w-6xl gap-12 px-6 py-14 md:py-20 lg:grid-cols-2 lg:px-8">
             <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/60 p-6">
               <ImageSlot
                 src={SITE_IMAGES.homeAboutPreview}
@@ -428,7 +428,7 @@ export default function HoweSoundDJHomepage() {
           </div>
         </SectionReveal>
 
-        <SectionReveal as="section" id="faq" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <SectionReveal as="section" id="faq" className="mx-auto max-w-6xl px-6 py-14 md:py-20 lg:px-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">FAQ</div>
@@ -449,7 +449,7 @@ export default function HoweSoundDJHomepage() {
         </SectionReveal>
 
         <SectionReveal as="section" id="contact" className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent">
-          <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+          <div className="mx-auto max-w-6xl px-6 py-14 md:py-20 lg:px-8">
             <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
               <div className="mx-auto w-full max-w-3xl">
                 <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Contact</div>
