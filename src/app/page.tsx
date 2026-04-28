@@ -405,8 +405,8 @@ export default function HoweSoundDJHomepage() {
           <div className="mx-auto grid max-w-6xl gap-12 px-6 py-14 md:py-20 lg:grid-cols-2 lg:px-8">
             <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/60 p-6">
               <ImageSlot
-                src={SITE_IMAGES.homeAboutPreview}
-                alt={SITE_IMAGE_ALT.homeAboutPreview}
+                src={SITE_IMAGES.aboutPatrickAction}
+                alt={SITE_IMAGE_ALT.aboutPatrickAction}
                 aspect="4/5"
                 premiumPhotoTreatment
                 imageClassName="object-[52%_45%]"

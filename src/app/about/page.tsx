@@ -74,10 +74,10 @@ export default function AboutPage() {
             <div className="min-w-0 w-full lg:max-w-none lg:justify-self-end">
               <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] p-3 shadow-2xl shadow-black/40 lg:mx-0 lg:max-w-none">
                 <ImageSlot
-                  src={SITE_IMAGES.aboutPatrickAction}
-                  alt={SITE_IMAGE_ALT.aboutPatrickAction}
+                  src={SITE_IMAGES.aboutPatrickConversation}
+                  alt={SITE_IMAGE_ALT.aboutPatrickConversation}
                   aspect="4/5"
-                  imageClassName="object-[50%_20%]"
+                  imageClassName="object-[55%_45%]"
                   subtleBottomGradient
                   label="Patrick"
                   reservedHint="At the decks: calm, professional energy couples recognize on the day."
