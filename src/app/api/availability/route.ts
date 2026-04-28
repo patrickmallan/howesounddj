@@ -57,7 +57,7 @@ export async function POST(request: Request) {
       success: true,
       available: false,
       message:
-        "That date is already held for another celebration. You can still connect. Book a consult to talk options, or send a note if your plans are flexible.",
+        "That date is already held for another celebration. Check My Date & Fit (15 min) is usually the fastest way to explore options—you can send a note from the contact page if your plans are flexible.",
     });
   }
 
@@ -65,6 +65,6 @@ export async function POST(request: Request) {
     success: true,
     available: true,
     message:
-      "That date is open on the calendar. Share a few details below, or book a consult when you are ready for a proper conversation.",
+      "That date is open on the calendar. Share a few details below—or Check My Date & Fit (15 min) first when you want a clear, calm read on fit before you reply.",
   });
 }
