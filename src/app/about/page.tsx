@@ -77,7 +77,7 @@ export default function AboutPage() {
                   src={SITE_IMAGES.aboutPatrickConversation}
                   alt={SITE_IMAGE_ALT.aboutPatrickConversation}
                   aspect="4/5"
-                  imageClassName="object-[55%_45%]"
+                  imageClassName="object-[62%_45%] md:object-[68%_45%]"
                   subtleBottomGradient
                   label="Patrick"
                   reservedHint="At the decks: calm, professional energy couples recognize on the day."
