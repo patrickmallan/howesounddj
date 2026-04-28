@@ -80,7 +80,8 @@ export default function AboutPage() {
               src={SITE_IMAGES.aboutPortrait}
               alt={SITE_IMAGE_ALT.aboutPortrait}
               aspect="4/5"
-              imageClassName="object-[center_28%]"
+              imageClassName="object-center"
+              subtleBottomGradient
               label="Patrick"
               reservedHint="Headshot or candid: the face couples recognize from first call to last song."
               sizes="(max-width: 1024px) 100vw, 45vw"

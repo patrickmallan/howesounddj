@@ -408,7 +408,8 @@ export default function HoweSoundDJHomepage() {
                 src={SITE_IMAGES.homeAboutPreview}
                 alt={SITE_IMAGE_ALT.homeAboutPreview}
                 aspect="4/5"
-                imageClassName="object-[center_30%]"
+                premiumPhotoTreatment
+                imageClassName="object-[52%_45%]"
                 label="Patrick"
                 reservedHint="At the decks or in planning: calm, professional, the presence couples get on the day."
                 sizes="(max-width: 1024px) 100vw, 42vw"

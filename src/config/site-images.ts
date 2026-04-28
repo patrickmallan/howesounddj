@@ -9,13 +9,13 @@
  * 1. `homeHero`, first impression beside the homepage headline (4:5).
  * 2. `homeProof`, wide proof strip; strongest “this is real” moment after the fold (16:9).
  * 3. `weddingsSupport`, Vancouver wedding page + other layouts (16:9 or crop for 4:5); not the main `/weddings` hero band.
- * 4. `homeAboutPreview` / `aboutPortrait`, Patrick’s face; color on home, B&W on About when both exist.
+ * 4. `homeAboutPreview` / `aboutPortrait`, Patrick on home (action or portrait); About keeps its own lead image.
  * 5. `weddingsCrowd`, single wide proof image on `/weddings` (16:9).
  *
  * Slot purposes:
  * - **homeHero**, Reception / dance floor / venue atmosphere (not generic DJ stock).
  * - **homeProof**, Sea-to-Sky or mountain wedding context, or full-room energy (16:9).
- * - **homeAboutPreview**, Patrick on the home “Meet” strip (portrait or at work).
+ * - **homeAboutPreview**, Patrick on the home “Meet” strip (action at the decks / reception context).
  * - **aboutPortrait**, About page lead (can match `homeAboutPreview`).
  * - **weddingsSupport**, Vancouver page / sidebars: ceremony, reception, or corridor context (wide).
  * - **weddingsCrowd**, Weddings page proof strip: candid crowd / celebration energy (wide).
@@ -30,8 +30,8 @@ const WEDDINGS_SUPPORT_CACHE = "2";
 export const SITE_IMAGES = {
   homeHero: "/images/home/home-hero.webp",
   homeProof: "/images/home/home-proof.webp",
-  homeAboutPreview: "/images/about/patrick-portrait.webp",
-  aboutPortrait: "/images/about/patrick-portrait-bw.webp",
+  homeAboutPreview: "/images/patrick-dj-action.webp",
+  aboutPortrait: "/images/patrick-wedding-conversation.webp",
   weddingsSupport: `/images/weddings/weddings-support.webp?v=${WEDDINGS_SUPPORT_CACHE}`,
   weddingsCrowd: "/images/weddings/weddings-crowd.webp",
 } as const;
@@ -46,8 +46,8 @@ export type SiteImageKey = keyof typeof SITE_IMAGES;
 export const SITE_IMAGE_FILES: Record<SiteImageKey, string> = {
   homeHero: "/images/home/home-hero.webp",
   homeProof: "/images/home/home-proof.webp",
-  homeAboutPreview: "/images/about/patrick-portrait.webp",
-  aboutPortrait: "/images/about/patrick-portrait-bw.webp",
+  homeAboutPreview: "/images/patrick-dj-action.webp",
+  aboutPortrait: "/images/patrick-wedding-conversation.webp",
   weddingsSupport: `/images/weddings/weddings-support.webp?v=${WEDDINGS_SUPPORT_CACHE}`,
   weddingsCrowd: "/images/weddings/weddings-crowd.webp",
 };
@@ -72,9 +72,9 @@ export const SITE_IMAGE_ALT: Record<SiteImageKey, string> = {
   homeProof:
     "Wedding guests lifting the groom above the dance floor during the reception",
   homeAboutPreview:
-    "Portrait of Patrick Mallan smiling against a dark backdrop",
+    "Patrick from Howe Sound DJ performing at a wedding reception in Squamish.",
   aboutPortrait:
-    "Black and white portrait of Patrick Mallan standing against a brick wall",
+    "Patrick from Howe Sound DJ talking with guests at a wedding.",
   weddingsSupport:
     "Wedding guests celebrating with hands in the air beneath string lights",
   weddingsCrowd:

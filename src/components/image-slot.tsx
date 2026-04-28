@@ -22,6 +22,16 @@ type ImageSlotProps = {
   sizes?: string;
   /** Merged with `object-cover` for fine-tuning focal point (e.g. landscape in a portrait frame). */
   imageClassName?: string;
+  /**
+   * Subtle gradient, warmth, and inset ring for action / flash-heavy photos on dark UI
+   * (homepage proof-style slots without heavy filters).
+   */
+  premiumPhotoTreatment?: boolean;
+  /**
+   * Light bottom-anchored gradient for warm editorial photos (About story, indoor context).
+   * Do not combine with `premiumPhotoTreatment`.
+   */
+  subtleBottomGradient?: boolean;
   /** Optional caption below the image (or below the empty state). */
   children?: ReactNode;
   className?: string;
@@ -36,10 +46,13 @@ export function ImageSlot({
   priority,
   sizes = "(max-width: 1024px) 100vw, 50vw",
   imageClassName,
+  premiumPhotoTreatment = false,
+  subtleBottomGradient = false,
   children,
   className = "",
 }: ImageSlotProps) {
-  const frame = `relative w-full overflow-hidden rounded-[1.5rem] border border-white/10 bg-neutral-900 ${aspectClass[aspect]}`;
+  const frameBg = premiumPhotoTreatment ? "bg-black" : "bg-neutral-900";
+  const frame = `relative w-full overflow-hidden rounded-[1.5rem] border border-white/10 ${frameBg} ${aspectClass[aspect]}`;
 
   if (src) {
     const isSvg = src.endsWith(".svg");
@@ -59,6 +72,27 @@ export function ImageSlot({
             }
             unoptimized={isSvg}
           />
+          {premiumPhotoTreatment ? (
+            <>
+              <div
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-black/5"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute inset-0 bg-amber-950/10 mix-blend-soft-light"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10"
+                aria-hidden
+              />
+            </>
+          ) : subtleBottomGradient ? (
+            <div
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-black/5 to-transparent"
+              aria-hidden
+            />
+          ) : null}
         </div>
         {children ? <figcaption className="text-sm text-white/55">{children}</figcaption> : null}
       </figure>
