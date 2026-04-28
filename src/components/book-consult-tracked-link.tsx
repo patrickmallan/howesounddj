@@ -54,7 +54,7 @@ export function BookConsultTrackedLink({ surface, className, children, visualLay
       className={merged}
       onClick={handleClick}
     >
-      {children ?? "Book a Consult"}
+      {children ?? "Check My Date & Fit"}
     </a>
   );
 }

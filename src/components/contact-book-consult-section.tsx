@@ -24,42 +24,69 @@ export function ContactBookConsultSection() {
           actually flow.
         </p>
 
-        <ul className="mt-8 max-w-xl space-y-3 text-base leading-relaxed text-white/70">
-          <li className="flex gap-3">
-            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300/90" aria-hidden />
-            Get clear on your timeline and flow
-          </li>
-          <li className="flex gap-3">
-            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300/90" aria-hidden />
-            Talk through your vision for the dance floor
-          </li>
-          <li className="flex gap-3">
-            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300/90" aria-hidden />
-            Ask anything — no pressure, no commitment
-          </li>
-        </ul>
-
-        <p className="mt-8 max-w-2xl text-sm leading-relaxed text-white/55">
-          No pressure — just a quick conversation to see if it&apos;s a fit.
-        </p>
-
-        <div className="mt-8 flex w-full flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+        <div className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <BookConsultTrackedLink
             surface="contact_page_primary"
             className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
           >
-            Book a Consult
+            Check My Date &amp; Fit (15 min)
           </BookConsultTrackedLink>
         </div>
-        <p className="mt-5 max-w-xl text-xs leading-relaxed text-white/40">
-          Prefer to confirm your date on the calendar first? Use{" "}
+        <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/60">
+          15 minutes &bull; No pressure &bull; No commitment
+        </p>
+
+        <ul className="mt-8 max-w-xl space-y-3 text-base leading-relaxed text-white/70">
+          <li className="flex gap-3">
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300/90" aria-hidden />
+            No pressure — this is just a conversation
+          </li>
+          <li className="flex gap-3">
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300/90" aria-hidden />
+            No commitment — decide after the call
+          </li>
+          <li className="flex gap-3">
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300/90" aria-hidden />
+            No awkward sales pitch — just clarity
+          </li>
+        </ul>
+
+        <div className="mt-8 max-w-xl rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-200/90">
+            We&apos;ll cover
+          </div>
+          <ul className="mt-3 space-y-2 text-sm leading-7 text-white/70">
+            <li className="flex gap-3">
+              <span className="text-amber-300/80">•</span>
+              Your date &amp; availability
+            </li>
+            <li className="flex gap-3">
+              <span className="text-amber-300/80">•</span>
+              Your venue + vibe
+            </li>
+            <li className="flex gap-3">
+              <span className="text-amber-300/80">•</span>
+              Whether we&apos;re a great fit
+            </li>
+          </ul>
+        </div>
+
+        <p className="mt-6 max-w-xl text-xs leading-relaxed text-white/40">
+          Prefer not to chat yet?{" "}
+          <a
+            href="#send-message"
+            className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+          >
+            Send a message instead
+          </a>
+          , or use{" "}
           <a
             href="#availability"
             className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
           >
-            Check Availability
+            Check Availability First
           </a>{" "}
-          below — consult and availability check cover different jobs, and you can do either order.
+          to confirm your date on the calendar.
         </p>
       </div>
     </div>

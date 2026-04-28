@@ -129,26 +129,44 @@ export default function HoweSoundDJHomepage() {
               <p className="mt-6 max-w-xl text-lg leading-8 text-white/70">
                 Serving Squamish, Whistler, Vancouver, and the corridor with passion: polished sound, seamless planning, and nights that feel elegant, emotional, or wild (often all three).
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
-                <CheckAvailabilityTrackedLink
-                  surface="hero"
-                  className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-                />
-                <BookConsultTrackedLink surface="hero" className={bookConsultOutlineButtonClassName}>
-                  Book a Consult
-                </BookConsultTrackedLink>
-                <a
-                  href="/reviews"
-                  className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-                >
-                  Wedding DJ Reviews
-                </a>
-                <a
-                  href="/packages"
-                  className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-                >
-                  Wedding DJ Packages
-                </a>
+              <div className="mt-8 max-w-xl space-y-5">
+                <div>
+                  <BookConsultTrackedLink
+                    surface="hero"
+                    className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
+                  >
+                    Check My Date &amp; Fit
+                  </BookConsultTrackedLink>
+                  <p className="mt-3 text-sm leading-relaxed text-white/60">
+                    15 minutes &bull; No pressure &bull; Just clarity
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-white/55">
+                    Most couples start with a quick call — it&apos;s the fastest way to confirm everything.
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
+                    Not ready to chat yet?
+                  </p>
+                  <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+                    <CheckAvailabilityTrackedLink
+                      surface="hero"
+                      className={bookConsultOutlineButtonClassName}
+                    />
+                    <a
+                      href="/reviews"
+                      className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                    >
+                      Wedding DJ Reviews
+                    </a>
+                    <a
+                      href="/packages"
+                      className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                    >
+                      Wedding DJ Packages
+                    </a>
+                  </div>
+                </div>
               </div>
               <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/45">
                 <a href="/weddings" className="text-white/55 transition hover:text-amber-200/90">
@@ -254,17 +272,22 @@ export default function HoweSoundDJHomepage() {
                 <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Reviews</div>
                 <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Client backed: real couples, real parties.</h2>
               </div>
-              <div className="flex flex-wrap items-center gap-3">
-                <CheckAvailabilityTrackedLink
-                  surface="inline"
-                  className="inline-flex items-center justify-center rounded-full bg-amber-300 px-4 py-2 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-                />
-                <BookConsultTrackedLink surface="inline" className={bookConsultOutlineButtonClassName}>
-                  Book a Consult
-                </BookConsultTrackedLink>
-                <a href="/reviews" className="motion-interactive text-sm font-semibold text-amber-300 hover:text-amber-200">
-                  Wedding DJ Reviews →
-                </a>
+              <div className="flex flex-col items-start gap-2">
+                <div className="flex flex-wrap items-center gap-3">
+                  <BookConsultTrackedLink surface="inline" className={bookConsultPrimaryButtonClassName}>
+                    Check My Date &amp; Fit
+                  </BookConsultTrackedLink>
+                  <CheckAvailabilityTrackedLink
+                    surface="inline"
+                    className={bookConsultOutlineButtonClassName}
+                  />
+                  <a href="/reviews" className="motion-interactive text-sm font-semibold text-amber-300 hover:text-amber-200">
+                    Wedding DJ Reviews →
+                  </a>
+                </div>
+                <p className="text-xs leading-relaxed text-white/55">
+                  15 minutes &bull; No pressure &bull; Just clarity
+                </p>
               </div>
             </div>
             <StaggerGroup className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -399,20 +422,27 @@ export default function HoweSoundDJHomepage() {
               <p className="mt-4 text-lg leading-8 text-white/70">
                 Rooted in Squamish with an ear for atmosphere and calm, professional planning support, Patrick helps you feel covered before the day and free to enjoy it when the music hits.
               </p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-                <CheckAvailabilityTrackedLink
-                  surface="page_cta"
-                  className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-                />
-                <BookConsultTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName}>
-                  Book a Consult
-                </BookConsultTrackedLink>
-                <a
-                  href="/about"
-                  className="motion-interactive inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-                >
-                  About Howe Sound DJ
-                </a>
+              <div className="mt-8 max-w-xl space-y-4">
+                <div>
+                  <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
+                    Check My Date &amp; Fit
+                  </BookConsultTrackedLink>
+                  <p className="mt-3 text-sm leading-relaxed text-white/60">
+                    15 minutes &bull; No pressure &bull; Just clarity
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <CheckAvailabilityTrackedLink
+                    surface="page_cta"
+                    className={bookConsultOutlineButtonClassName}
+                  />
+                  <a
+                    href="/about"
+                    className="motion-interactive inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                  >
+                    About Howe Sound DJ
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -448,24 +478,45 @@ export default function HoweSoundDJHomepage() {
                   Reach out with your date, venue, and wedding vision. The goal is to make the process feel simple, clear, and straightforward from the start, starting with a consultation when the fit makes sense.
                 </p>
                 <p className="mt-4 max-w-xl text-sm leading-7 text-white/55">
-                  On the contact page, Book a Consult is upfront when you&apos;re ready to talk; Check Availability is there
-                  when you want to confirm your date first — same wedding details either way.
+                  Most couples start with a quick call — it&apos;s the fastest way to confirm everything.
+                  Prefer not to chat yet? Send a message instead, or check availability first.
                 </p>
-                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-                  <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
-                    Book a Consult
-                  </BookConsultTrackedLink>
-                  <CheckAvailabilityTrackedLink
-                    href="/contact#availability"
-                    surface="page_cta"
-                    className={bookConsultOutlineButtonClassName}
-                  />
-                  <a
-                    href="/weddings"
-                    className="motion-interactive inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-                  >
-                    Wedding DJ Services
-                  </a>
+                <div className="mt-8 max-w-xl space-y-5">
+                  <div>
+                    <BookConsultTrackedLink
+                      surface="page_cta"
+                      className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
+                    >
+                      Check My Date &amp; Fit
+                    </BookConsultTrackedLink>
+                    <p className="mt-3 text-sm leading-relaxed text-white/60">
+                      15 minutes &bull; No pressure &bull; Just clarity
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
+                      Not ready to chat yet?
+                    </p>
+                    <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                      <CheckAvailabilityTrackedLink
+                        href="/contact#availability"
+                        surface="page_cta"
+                        className={bookConsultOutlineButtonClassName}
+                      />
+                      <a
+                        href="/contact#send-message"
+                        className="motion-interactive inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                      >
+                        Send a Message Instead
+                      </a>
+                      <a
+                        href="/weddings"
+                        className="motion-interactive inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                      >
+                        Wedding DJ Services
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

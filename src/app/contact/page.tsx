@@ -46,33 +46,59 @@ export default function ContactPage() {
             </div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Contact</div>
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              Plan your wedding night with warmth and clarity.
+              Let&apos;s Make Sure We&apos;re the Right Fit
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              When you&apos;re serious about sound, pacing, and how the dance floor should feel, start with a consult —
-              or confirm your date first if that&apos;s what you need next.
+              A quick 15-minute call to confirm your date, your vision, and make sure everything feels right —
+              no pressure, no commitment.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <BookConsultTrackedLink surface="contact_page_primary" className={bookConsultPrimaryButtonClassName}>
-                Book a Consult
-              </BookConsultTrackedLink>
-              <CheckAvailabilityTrackedLink
-                href="/contact#availability"
-                surface="page_cta"
-                className={bookConsultOutlineButtonClassName}
-              />
-              <a
-                href="/reviews"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-              >
-                Wedding DJ Reviews
-              </a>
-              <a
-                href="/packages"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-              >
-                Wedding DJ Packages
-              </a>
+
+            <div className="mt-8 max-w-xl space-y-6">
+              <div>
+                <BookConsultTrackedLink
+                  surface="contact_page_primary"
+                  className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
+                >
+                  Check My Date &amp; Fit (15 min)
+                </BookConsultTrackedLink>
+                <p className="mt-3 text-sm leading-relaxed text-white/60">
+                  15 minutes &bull; No pressure &bull; No commitment
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-white/55">
+                  Most couples start here — it&apos;s the fastest way to lock in your date and get clarity.
+                </p>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
+                  Not ready to chat yet?
+                </p>
+                <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <CheckAvailabilityTrackedLink
+                    href="/contact#availability"
+                    surface="page_cta"
+                    className={bookConsultOutlineButtonClassName}
+                  />
+                  <a
+                    href="#send-message"
+                    className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                  >
+                    Send a Message Instead
+                  </a>
+                  <a
+                    href="/reviews"
+                    className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                  >
+                    Wedding DJ Reviews
+                  </a>
+                  <a
+                    href="/packages"
+                    className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                  >
+                    Wedding DJ Packages
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -146,9 +172,12 @@ export default function ContactPage() {
 
       <section id="send-message" className="scroll-mt-24 border-b border-white/10 bg-neutral-950">
         <div className="mx-auto max-w-4xl px-6 py-16 lg:px-8 lg:py-20">
-          <h2 className="text-2xl font-semibold text-white sm:text-3xl">Prefer email?</h2>
+          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
+            Tertiary path
+          </div>
+          <h2 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">Not ready to chat yet?</h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/65">
-            If you&apos;d rather start with a message, send a note here and I&apos;ll get back to you.
+            Send a quick message and I&apos;ll personally follow up.
           </p>
           <p className="mt-6 max-w-2xl text-sm leading-relaxed text-white/55">
             Planner, venue, or vendor inquiry? You can email directly at{" "}
@@ -226,27 +255,48 @@ export default function ContactPage() {
               Pick what fits where you are in planning: book a conversation, skim packages if helpful, or run your date
               through the calendar above.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <BookConsultTrackedLink surface="contact_page_primary" className={bookConsultPrimaryButtonClassName}>
-                Book a Consult
-              </BookConsultTrackedLink>
-              <CheckAvailabilityTrackedLink
-                href="/contact#availability"
-                surface="page_cta"
-                className={bookConsultOutlineButtonClassName}
-              />
-              <a
-                href="/packages"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-              >
-                Wedding DJ Packages
-              </a>
-              <a
-                href="/reviews"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-              >
-                Wedding DJ Reviews
-              </a>
+            <div className="mt-8 max-w-xl space-y-5">
+              <div>
+                <BookConsultTrackedLink
+                  surface="contact_page_primary"
+                  className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
+                >
+                  Check My Date &amp; Fit (15 min)
+                </BookConsultTrackedLink>
+                <p className="mt-3 text-sm leading-relaxed text-white/60">
+                  15 minutes &bull; No pressure &bull; No commitment
+                </p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
+                  Not ready to chat yet?
+                </p>
+                <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <CheckAvailabilityTrackedLink
+                    href="/contact#availability"
+                    surface="page_cta"
+                    className={bookConsultOutlineButtonClassName}
+                  />
+                  <a
+                    href="#send-message"
+                    className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                  >
+                    Send a Message Instead
+                  </a>
+                  <a
+                    href="/packages"
+                    className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                  >
+                    Wedding DJ Packages
+                  </a>
+                  <a
+                    href="/reviews"
+                    className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                  >
+                    Wedding DJ Reviews
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
