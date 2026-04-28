@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookConsultTrackedLink, bookConsultOutlineButtonClassName } from "@/components/book-consult-tracked-link";
+import {
+  BookConsultTrackedLink,
+  bookConsultOutlineButtonClassName,
+  bookConsultPrimaryButtonClassName,
+} from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { JsonLd } from "@/components/json-ld";
@@ -49,26 +53,30 @@ export default function VenuesHubPage() {
               Howe Sound DJ is wedding-focused and Squamish-rooted. Venue guides use confident local language and planning intelligence, not invented operational claims about private venue
               relationships.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <CheckAvailabilityTrackedLink
-                surface="venues_hub"
-                className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              />
-              <BookConsultTrackedLink surface="venues_hub" className={bookConsultOutlineButtonClassName}>
-                Book a Consult
-              </BookConsultTrackedLink>
-              <Link
-                href="/weddings"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-              >
-                Wedding DJ Services
-              </Link>
-              <Link
-                href="/packages"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-              >
-                Wedding DJ Packages
-              </Link>
+            <div className="mt-8 max-w-xl space-y-4">
+              <div>
+                <BookConsultTrackedLink surface="venues_hub" className={bookConsultPrimaryButtonClassName}>
+                  Check My Date & Fit
+                </BookConsultTrackedLink>
+                <p className="mt-3 text-sm leading-relaxed text-white/60">
+                  15 minutes &bull; No pressure &bull; No commitment
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-3 gap-y-3">
+                <CheckAvailabilityTrackedLink surface="venues_hub" className={bookConsultOutlineButtonClassName} />
+                <Link
+                  href="/weddings"
+                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                >
+                  Wedding DJ Services
+                </Link>
+                <Link
+                  href="/packages"
+                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                >
+                  Wedding DJ Packages
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -79,7 +87,7 @@ export default function VenuesHubPage() {
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Browse by venue</div>
           <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Corridor venues and Squamish favourites</h2>
           <p className="mt-4 text-lg leading-8 text-white/70">
-            Open a guide for planning context tailored to the setting—then check availability when you are ready. For questions that apply across venues, the{" "}
+            Open a guide for planning context tailored to the setting—then check your date first when you are ready. For questions that apply across venues, the{" "}
             <Link href="/faq" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               FAQ
             </Link>{" "}
@@ -129,25 +137,32 @@ export default function VenuesHubPage() {
           <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
             <div className="mx-auto w-full max-w-3xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Next step</div>
-              <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Check availability for your date</h2>
+              <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Your next move: fit, your date, or both</h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
                 Venue guides help you think in advance; the contact flow is where date check, fit, and coverage come together—the same path used across the site.
               </p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-                <CheckAvailabilityTrackedLink
-                  href="/contact#availability"
-                  surface="venues_hub"
-                  className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-                />
-                <BookConsultTrackedLink surface="venues_hub" className={bookConsultOutlineButtonClassName}>
-                  Book a Consult
-                </BookConsultTrackedLink>
-                <Link
-                  href="/faq"
-                  className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-                >
-                  FAQ
-                </Link>
+              <div className="mt-8 max-w-xl space-y-4">
+                <div>
+                  <BookConsultTrackedLink surface="venues_hub" className={bookConsultPrimaryButtonClassName}>
+                    Check My Date & Fit
+                  </BookConsultTrackedLink>
+                  <p className="mt-3 text-sm leading-relaxed text-white/60">
+                    15 minutes &bull; No pressure &bull; No commitment
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-3 gap-y-3">
+                  <CheckAvailabilityTrackedLink
+                    href="/contact#availability"
+                    surface="venues_hub"
+                    className={bookConsultOutlineButtonClassName}
+                  />
+                  <Link
+                    href="/faq"
+                    className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                  >
+                    FAQ
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookConsultTrackedLink, bookConsultOutlineButtonClassName } from "@/components/book-consult-tracked-link";
+import {
+  BookConsultTrackedLink,
+  bookConsultOutlineButtonClassName,
+  bookConsultPrimaryButtonClassName,
+} from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal } from "@/components/motion";
 import { JsonLd } from "@/components/json-ld";
@@ -88,22 +92,26 @@ export default async function VenueDetailPage({ params }: Props) {
               Wedding DJ planning for {displayName}
             </h1>
             <p className="mt-6 text-lg leading-8 text-white/70">{venue.shortSummary}</p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <CheckAvailabilityTrackedLink
-                surface="venue_hero"
-                className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              />
-              <BookConsultTrackedLink surface="venue_hero" className={bookConsultOutlineButtonClassName}>
-                Book a Consult
-              </BookConsultTrackedLink>
-              <a
-                href={venue.officialUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-              >
-                Official venue website<span className="sr-only"> (opens in new tab)</span>
-              </a>
+            <div className="mt-8 max-w-xl space-y-4">
+              <div>
+                <BookConsultTrackedLink surface="venue_hero" className={bookConsultPrimaryButtonClassName}>
+                  Check My Date & Fit
+                </BookConsultTrackedLink>
+                <p className="mt-3 text-sm leading-relaxed text-white/60">
+                  15 minutes &bull; No pressure &bull; No commitment
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-3 gap-y-3">
+                <CheckAvailabilityTrackedLink surface="venue_hero" className={bookConsultOutlineButtonClassName} />
+                <a
+                  href={venue.officialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                >
+                  Official venue website<span className="sr-only"> (opens in new tab)</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -181,26 +189,33 @@ export default async function VenueDetailPage({ params }: Props) {
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
             <div className="mx-auto w-full max-w-3xl">
-              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Check availability</div>
-              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Start with your date—then talk fit and coverage</h2>
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Next step</div>
+              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Check fit, check your date, or do both—in whatever order suits you</h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
-                The same contact flow powers every venue guide: pick your date, check the calendar, then continue when you are ready to share details.
+                The same contact flow powers every venue guide: calendar check when you want it first, clarity on fit when you&apos;re ready—and your details whenever you prefer to send them.
               </p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-                <CheckAvailabilityTrackedLink
-                  href="/contact#availability"
-                  surface="venue_page_cta"
-                  className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-                />
-                <BookConsultTrackedLink surface="venue_page_cta" className={bookConsultOutlineButtonClassName}>
-                  Book a Consult
-                </BookConsultTrackedLink>
-                <Link
-                  href="/reviews"
-                  className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-                >
-                  Wedding DJ Reviews
-                </Link>
+              <div className="mt-8 max-w-xl space-y-4">
+                <div>
+                  <BookConsultTrackedLink surface="venue_page_cta" className={bookConsultPrimaryButtonClassName}>
+                    Check My Date & Fit
+                  </BookConsultTrackedLink>
+                  <p className="mt-3 text-sm leading-relaxed text-white/60">
+                    15 minutes &bull; No pressure &bull; No commitment
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-3 gap-y-3">
+                  <CheckAvailabilityTrackedLink
+                    href="/contact#availability"
+                    surface="venue_page_cta"
+                    className={bookConsultOutlineButtonClassName}
+                  />
+                  <Link
+                    href="/reviews"
+                    className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                  >
+                    Wedding DJ Reviews
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

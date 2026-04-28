@@ -22,13 +22,13 @@ function turnstileSiteKey(): string {
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: { absolute: "Contact — Book a consult | Howe Sound DJ" },
+  title: { absolute: "Check Your Date & Fit | Howe Sound DJ" },
   description:
-    "Book a quick wedding DJ consult for timeline, music direction, and flow — or check availability for your Sea-to-Sky date first. Prefer email? Send a message or reach Patrick directly.",
+    "Start with a quick 15-minute, no-pressure call to confirm your wedding date, your vision, and whether Howe Sound DJ is the right fit.",
   openGraph: {
-    title: "Contact — Book a consult | Howe Sound DJ",
+    title: "Check Your Date & Fit | Howe Sound DJ",
     description:
-      "Serious about DJ fit? Start with a consult. Exploring dates first? Check availability — then share your venue and vision.",
+      "Start with a quick 15-minute, no-pressure call to confirm your wedding date, your vision, and whether Howe Sound DJ is the right fit.",
     url: "/contact",
   },
   alternates: { canonical: "/contact" },

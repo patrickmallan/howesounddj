@@ -50,22 +50,22 @@ export function HomepageExploreSection() {
             </li>
           ))}
           <li className="min-w-0">
-            <CheckAvailabilityTrackedLink
-              surface="inline"
-              visualLayout="card"
-              className={`${exploreCardBase} border border-amber-300/25 bg-amber-300/10 text-amber-100 hover:border-amber-300/40 hover:bg-amber-300/15`}
-            >
-              Check Availability
-            </CheckAvailabilityTrackedLink>
-          </li>
-          <li className="min-w-0">
             <BookConsultTrackedLink
               surface="explore_card"
               visualLayout="card"
+              className={`${exploreCardBase} border border-amber-300/25 bg-amber-300/10 text-amber-100 hover:border-amber-300/40 hover:bg-amber-300/15`}
+            >
+              Check My Date & Fit
+            </BookConsultTrackedLink>
+          </li>
+          <li className="min-w-0">
+            <CheckAvailabilityTrackedLink
+              surface="inline"
+              visualLayout="card"
               className={`${exploreCardBase} border border-white/10 bg-white/5 text-white hover:border-amber-300/25 hover:bg-white/[0.07]`}
             >
-              Book a Consult
-            </BookConsultTrackedLink>
+              Check Availability First
+            </CheckAvailabilityTrackedLink>
           </li>
           <li className="min-w-0">
             <Link
@@ -102,15 +102,15 @@ export function ExploreSiteLinksStrip() {
               {item.label}
             </Link>
           ))}
+          <BookConsultTrackedLink surface="footer" className="transition hover:text-amber-200/95">
+            Check My Date & Fit
+          </BookConsultTrackedLink>
           <CheckAvailabilityTrackedLink
             surface="footer"
             className="transition hover:text-amber-200/95"
           >
-            Check Availability
+            Check Availability First
           </CheckAvailabilityTrackedLink>
-          <BookConsultTrackedLink surface="footer" className="transition hover:text-amber-200/95">
-            Book a Consult
-          </BookConsultTrackedLink>
           {exploreSecondaryLinks.map((item) => (
             <Link
               key={item.href}

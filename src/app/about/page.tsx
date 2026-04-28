@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { BookConsultTrackedLink, bookConsultOutlineButtonClassName } from "@/components/book-consult-tracked-link";
+import {
+  BookConsultTrackedLink,
+  bookConsultOutlineButtonClassName,
+  bookConsultPrimaryButtonClassName,
+} from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { ImageSlot } from "@/components/image-slot";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
@@ -218,26 +222,33 @@ export default function AboutPage() {
             <p className="mt-4 text-lg leading-8 text-white/70">
               Send your date, venue, and how you want the night to feel. I will follow up with availability and a clear path to a consultation, no pressure, no generic pitch.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <CheckAvailabilityTrackedLink
-                surface="page_cta"
-                className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              />
-              <BookConsultTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName}>
-                Book a Consult
-              </BookConsultTrackedLink>
-              <a
-                href="/reviews"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-              >
-                Wedding DJ Reviews
-              </a>
-              <a
-                href="/packages"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-              >
-                Wedding DJ Packages
-              </a>
+            <div className="mt-8 max-w-xl space-y-4">
+              <div>
+                <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
+                  Check My Date & Fit
+                </BookConsultTrackedLink>
+                <p className="mt-3 text-sm leading-relaxed text-white/60">
+                  15 minutes &bull; No pressure &bull; No commitment
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-3 gap-y-3">
+                <CheckAvailabilityTrackedLink
+                  surface="page_cta"
+                  className={bookConsultOutlineButtonClassName}
+                />
+                <a
+                  href="/reviews"
+                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                >
+                  Wedding DJ Reviews
+                </a>
+                <a
+                  href="/packages"
+                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                >
+                  Wedding DJ Packages
+                </a>
+              </div>
             </div>
           </div>
         </div>

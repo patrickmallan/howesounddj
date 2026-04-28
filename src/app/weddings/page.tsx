@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookConsultTrackedLink, bookConsultOutlineButtonClassName } from "@/components/book-consult-tracked-link";
+import {
+  BookConsultTrackedLink,
+  bookConsultOutlineButtonClassName,
+  bookConsultPrimaryButtonClassName,
+} from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { ImageSlot } from "@/components/image-slot";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
@@ -124,26 +128,30 @@ export default function WeddingsPage() {
                 Vancouver couples & Sea-to-Sky weddings →
               </a>
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <CheckAvailabilityTrackedLink
-                surface="hero"
-                className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              />
-              <BookConsultTrackedLink surface="hero" className={bookConsultOutlineButtonClassName}>
-                Book a Consult
-              </BookConsultTrackedLink>
-              <a
-                href="/reviews"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-              >
-                Wedding DJ Reviews
-              </a>
-              <a
-                href="/packages"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-              >
-                Wedding DJ Packages
-              </a>
+            <div className="mt-8 max-w-xl space-y-4">
+              <div>
+                <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName}>
+                  Check My Date & Fit
+                </BookConsultTrackedLink>
+                <p className="mt-3 text-sm leading-relaxed text-white/60">
+                  15 minutes &bull; No pressure &bull; No commitment
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-3 gap-y-3">
+                <CheckAvailabilityTrackedLink surface="hero" className={bookConsultOutlineButtonClassName} />
+                <a
+                  href="/reviews"
+                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                >
+                  Wedding DJ Reviews
+                </a>
+                <a
+                  href="/packages"
+                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                >
+                  Wedding DJ Packages
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -188,7 +196,7 @@ export default function WeddingsPage() {
           >
             Browse wedding venue guides
           </Link>{" "}
-          for planning context tied to named settings—then use Check Availability when your date is ready.
+          for planning context tied to named settings—then check your date first when you&apos;re ready.
         </p>
       </SectionReveal>
 
@@ -303,22 +311,26 @@ export default function WeddingsPage() {
               Let’s talk about your date, your venue, and the kind of night you want to create.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              If the fit feels right, the next step is a consultation and availability check.
+              If the fit feels right, most couples lock in clarity with Check My Date & Fit (15 min); you can confirm your calendar date alongside or next.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <CheckAvailabilityTrackedLink
-                surface="page_cta"
-                className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-              />
-              <BookConsultTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName}>
-                Book a Consult
-              </BookConsultTrackedLink>
-              <a
-                href="/packages"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-              >
-                Wedding DJ Packages
-              </a>
+            <div className="mt-8 max-w-xl space-y-4">
+              <div>
+                <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
+                  Check My Date & Fit
+                </BookConsultTrackedLink>
+                <p className="mt-3 text-sm leading-relaxed text-white/60">
+                  15 minutes &bull; No pressure &bull; No commitment
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-3 gap-y-3">
+                <CheckAvailabilityTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName} />
+                <a
+                  href="/packages"
+                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                >
+                  Wedding DJ Packages
+                </a>
+              </div>
             </div>
           </div>
         </div>
