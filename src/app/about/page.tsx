@@ -55,8 +55,8 @@ export default function AboutPage() {
     <main className="min-h-screen bg-neutral-950 text-white">
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.14),transparent_50%)]" />
-        <div className={`relative mx-auto max-w-6xl px-6 lg:px-8 ${MAIN_SECTION_Y}`}>
-          <div className="grid min-w-0 gap-10 lg:grid-cols-2 lg:items-start lg:gap-x-12 lg:gap-y-0">
+        <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-20 lg:px-8 lg:py-24">
+          <div className="grid min-w-0 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:items-start lg:gap-x-10 lg:gap-y-0">
             <div className="min-w-0 lg:max-w-xl xl:max-w-none">
               <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
                 About Howe Sound DJ
@@ -80,13 +80,11 @@ export default function AboutPage() {
                   imageClassName="object-[50%_20%]"
                   subtleBottomGradient
                   label="Patrick"
-                  reservedHint="Headshot or candid: the face couples recognize from first call to last song."
-                  sizes="(max-width: 1024px) 100vw, 44vw"
+                  reservedHint="At the decks: calm, professional energy couples recognize on the day."
+                  sizes="(max-width: 1024px) 100vw, 42vw"
                   className="space-y-3"
                 >
-                  <span className="block text-center text-xs font-medium tracking-[0.08em] text-white/55">
-                    Patrick Mallan, Howe Sound DJ
-                  </span>
+                  <span className="block text-center text-sm text-white/55">Patrick Mallan, Howe Sound DJ</span>
                 </ImageSlot>
               </div>
             </div>
