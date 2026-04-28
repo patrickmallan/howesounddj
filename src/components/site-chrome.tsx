@@ -68,7 +68,7 @@ export function SiteHeader() {
             })}
           </nav>
           <details ref={mobileMenuDetailsRef} className="xl:hidden">
-            <summary className="flex min-h-[44px] min-w-[44px] cursor-pointer list-none items-center justify-center rounded-full border border-white/15 px-3 text-sm text-white/85 outline-none transition hover:border-white/25 [&::-webkit-details-marker]:hidden">
+            <summary className="inline-flex min-h-[44px] min-w-[44px] cursor-pointer list-none items-center justify-center rounded-full border border-white/15 px-3 text-sm text-white/85 outline-none transition hover:border-white/25 [&::-webkit-details-marker]:hidden">
               Menu
             </summary>
             {/*
@@ -125,7 +125,7 @@ export function SiteHeader() {
           </details>
           <CheckAvailabilityTrackedLink
             surface="header"
-            className="hidden min-h-[44px] items-center justify-center rounded-full bg-amber-300 px-4 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] md:inline-flex sm:min-h-0 sm:px-5 sm:py-2.5"
+            className="hidden min-h-[44px] items-center justify-center rounded-full bg-amber-300 px-4 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] xl:inline-flex xl:min-h-0 xl:px-5 xl:py-2.5"
           />
         </div>
       </div>
