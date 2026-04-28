@@ -8,7 +8,7 @@ import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tr
 import { ImageSlot } from "@/components/image-slot";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
-import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
+import { CTA_FINALE_SECTION_TOP, MAIN_SECTION_Y } from "@/lib/cta-section-spacing";
 
 export const metadata: Metadata = {
   title: { absolute: "About Howe Sound DJ | Squamish Wedding DJ" },
@@ -73,9 +73,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-start">
-          <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-white/5 p-6 lg:sticky lg:top-24">
+      <SectionReveal as="section" className={`${MAIN_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}>
+        <div className="grid min-w-0 gap-12 lg:grid-cols-2 lg:items-start lg:gap-x-12 lg:gap-y-0">
+          <div className="atmosphere-grain min-w-0 overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6">
             <ImageSlot
               src={SITE_IMAGES.aboutPortrait}
               alt={SITE_IMAGE_ALT.aboutPortrait}
@@ -86,7 +86,7 @@ export default function AboutPage() {
               sizes="(max-width: 1024px) 100vw, 45vw"
             />
           </div>
-          <div>
+          <div className="min-w-0">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               The story
             </div>
@@ -104,7 +104,7 @@ export default function AboutPage() {
       </SectionReveal>
 
       <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <div className={`mx-auto max-w-6xl px-6 lg:px-8 ${MAIN_SECTION_Y}`}>
           <div className="max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               The approach
@@ -142,7 +142,7 @@ export default function AboutPage() {
         </div>
       </SectionReveal>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal as="section" className={`${MAIN_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}>
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
             Credibility
@@ -168,14 +168,14 @@ export default function AboutPage() {
       </SectionReveal>
 
       <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <div className={`mx-auto max-w-6xl px-6 lg:px-8 ${MAIN_SECTION_Y}`}>
           <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div>
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
                 Experience
               </div>
               <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-                Specializing in wedding dance floors that feel alive, not forced.
+                Specializing in wedding dance floors that feel authentic, lively, and personal.
               </h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
                 I have been across intimate gatherings and big receptions. That range matters: you get someone who can adapt when the timeline shifts, when the crowd surprises you, or when a speech runs long and the night needs to recover its stride.
@@ -213,7 +213,7 @@ export default function AboutPage() {
 
       <SectionReveal
         as="section"
-        className={`${CTA_FINALE_SECTION_TOP} mx-auto max-w-6xl px-6 py-20 lg:px-8`}
+        className={`${CTA_FINALE_SECTION_TOP} mx-auto max-w-6xl px-6 pb-24 lg:px-8 lg:pb-28`}
       >
         <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">

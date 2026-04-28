@@ -7,7 +7,7 @@ import {
 } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
-import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
+import { CTA_FINALE_SECTION_TOP, MAIN_SECTION_Y } from "@/lib/cta-section-spacing";
 
 export const metadata: Metadata = {
   title: "Wedding DJ Packages",
@@ -141,7 +141,7 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal as="section" className={`${MAIN_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}>
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
             How to read this page
@@ -211,7 +211,7 @@ export default function PackagesPage() {
       </SectionReveal>
 
       <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <div className={`mx-auto max-w-6xl px-6 lg:px-8 ${MAIN_SECTION_Y}`}>
           <div className="max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               Every package includes
@@ -236,7 +236,7 @@ export default function PackagesPage() {
         </div>
       </SectionReveal>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal as="section" className={`${MAIN_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}>
         <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
@@ -267,7 +267,7 @@ export default function PackagesPage() {
 
       <SectionReveal
         as="section"
-        className={`${CTA_FINALE_SECTION_TOP} mx-auto max-w-6xl px-6 pb-20 lg:px-8`}
+        className={`${CTA_FINALE_SECTION_TOP} mx-auto max-w-6xl px-6 pb-24 lg:px-8 lg:pb-28`}
       >
         <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">

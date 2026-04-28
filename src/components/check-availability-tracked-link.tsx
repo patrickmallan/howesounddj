@@ -79,7 +79,7 @@ export function CheckAvailabilityTrackedLink({
 
   return (
     <Link href={href} className={mergedClass} onClick={handleClick}>
-      {children ?? "Check Availability First"}
+      {children ?? "Check Availability"}
     </Link>
   );
 }

@@ -64,7 +64,7 @@ export function HomepageExploreSection() {
               visualLayout="card"
               className={`${exploreCardBase} border border-white/10 bg-white/5 text-white hover:border-amber-300/25 hover:bg-white/[0.07]`}
             >
-              Check Availability First
+              Check Availability
             </CheckAvailabilityTrackedLink>
           </li>
           <li className="min-w-0">
@@ -109,7 +109,7 @@ export function ExploreSiteLinksStrip() {
             surface="footer"
             className="transition hover:text-amber-200/95"
           >
-            Check Availability First
+            Check Availability
           </CheckAvailabilityTrackedLink>
           {exploreSecondaryLinks.map((item) => (
             <Link

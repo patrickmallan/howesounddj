@@ -437,7 +437,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
             disabled={availability.kind === "checking"}
             className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {availability.kind === "checking" ? "Checking…" : "Check Availability First"}
+            {availability.kind === "checking" ? "Checking…" : "Check Availability"}
           </button>
         </div>
         {dateError ? <p className="mt-3 text-sm text-rose-300/90">{dateError}</p> : null}

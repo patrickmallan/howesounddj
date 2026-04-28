@@ -84,7 +84,7 @@ export function ContactBookConsultSection() {
             href="#availability"
             className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
           >
-            Check Availability First
+            Check Availability
           </a>{" "}
           to confirm your date on the calendar.
         </p>

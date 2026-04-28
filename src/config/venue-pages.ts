@@ -383,78 +383,31 @@ export const VENUE_PAGES: readonly VenuePage[] = [
     ],
   },
   {
-    slug: "match-eatery-squamish",
-    name: "Match Eatery & Public House (Squamish)",
-    officialUrl: "https://matchpub.com/locations/squamish/",
-    locationLabel: "Squamish, BC",
+    slug: "evans-lake",
+    name: "Evans Lake",
+    officialUrl: "https://evanslake.com/venue-booking/weddings/",
+    locationLabel: "~15 km north of Squamish, BC",
     area: "squamish",
-    venueType: "Restaurant & event dining",
-    cardDescription: "Lively dining room and social energy in the heart of Squamish.",
+    venueType: "Forest & lakeside camp venue",
+    cardDescription:
+      "Forest-canopy and lakeside outdoor settings with hall fallback, onsite stays, and a weekend-style flow rather than a single ballroom block.",
     shortSummary:
-      "Central Squamish dining-room energy, great for receptions that lean social, speech-forward, and celebration-ready.",
+      "Evans Lake Forest Education Society offers a natural forest-and-lake setting north of Squamish: outdoor ceremony options, covered spaces when weather shifts, onsite meals and stays, and room for a celebration that unfolds across a full weekend.",
     metaDescription:
-      "Match Eatery Squamish wedding DJ: lively reception music and pacing in the heart of town. Howe Sound DJ, personalized playlists and professional Sea-to-Sky support.",
+      "Evans Lake wedding DJ and Squamish forest wedding DJ: Sea-to-Sky sound planning for forest, lake, and hall spaces, weekend flow, and reception pacing with Howe Sound DJ.",
     whyFit: [
-      "Restaurant-style receptions can move quickly from dinner to party because the room already feels like a night out. The DJ’s job is to protect special moments while still building momentum.",
-      "Speech-heavy sections need clarity; dance-heavy sections need a set that matches your crowd’s age mix and energy.",
+      "This is a local destination weekend: guests move between lake, trails, cabins, dining or recreation hall, and the dance floor. Music and announcements work best when they follow that rhythm instead of treating the night like one isolated party block.",
+      "Forest and shoreline settings mean outdoor ceremony sound, wind and weather reality, and a plan B that still feels intentional when you move under cover.",
+      "Guest experience often blends recreation and celebration: time at the lake, on trails, or with camp activities can sit alongside ceremony, meals, and dancing, so music and announcements stay coordinated with a whole-weekend flow rather than a single-evening bolt-on.",
     ],
     planningFocus: [
-      "Timeline coordination matters when service, speeches, and dancing share one space, small planning wins prevent awkward gaps.",
-      "Music should support conversation when it should, then step forward when you open the floor.",
+      "Exclusive rental windows are often geared to multi-night stays in season (with off-season flexibility). Build the audio and timeline plan around how your crowd actually experiences the property: arrivals, speeches, dinner, and dancing across those days.",
+      "Ceremony and reception may span canopy, lakefront field, swim dock, or indoor dining and recreation hall when conditions change. Clear handoffs between outdoor and covered spaces keep vow audio, speeches, and dancing on track.",
+      "Onsite meals, cabins, and shared accommodation change how the evening breathes: pacing should match a relaxed retreat weekend while still hitting the moments that matter.",
     ],
     localExpertise: [
-      "Squamish central venues are part of the same local wedding map as larger mountain properties, different scale, same standards.",
-      "Check availability and talk through your evening structure and must-play priorities.",
-    ],
-  },
-  {
-    slug: "the-broken-seal",
-    name: "The Broken Seal",
-    officialUrl: "https://www.thebrokenseal.ca/",
-    locationLabel: "Squamish, BC",
-    area: "squamish",
-    venueType: "Taproom & kitchen events",
-    cardDescription: "Squamish taproom and kitchen with group-event options and a laid-back craft-beer atmosphere.",
-    shortSummary:
-      "Laid-back Squamish taproom energy, when you want a reception that feels approachable, social, and easy for guests to enjoy.",
-    metaDescription:
-      "The Broken Seal Squamish wedding DJ: laid-back craft atmosphere with tailored reception music and clear communication. Howe Sound DJ for Sea-to-Sky weddings.",
-    whyFit: [
-      "Casual venues can produce some of the most honest dance floors, because guests already feel comfortable. The music still needs structure: special moments first, then celebration.",
-      "The tone can be fun without feeling sloppy when transitions are handled cleanly.",
-    ],
-    planningFocus: [
-      "Group-event layouts reward a simple, clear run-of-show: what matters most, what can flex, and when you want the night to peak.",
-      "Audio for speeches in lively rooms is a planning point worth deciding early.",
-    ],
-    localExpertise: [
-      "Squamish taproom culture is part of the town’s texture, local context still matters for timing, noise realities, and guest expectations.",
-      "Availability first, then build the soundtrack around your story and your crowd.",
-    ],
-  },
-  {
-    slug: "tricksters-hideout",
-    name: "Trickster's Hideout",
-    officialUrl: "https://trickstershideout.ca/",
-    locationLabel: "Squamish, BC",
-    area: "squamish",
-    venueType: "Restaurant & gathering space",
-    cardDescription: "Squamish gathering spot with a casual, party-ready vibe.",
-    shortSummary:
-      "Casual Squamish gathering energy, when you want the reception to feel like a great night out with your people.",
-    metaDescription:
-      "Trickster’s Hideout Squamish wedding DJ: casual reception energy with personalized music and professional support. Howe Sound DJ, Squamish wedding DJ services.",
-    whyFit: [
-      "Party-ready venues can accelerate the social curve, guests may be ready to dance earlier, or they may need a warm, well-paced dinner section first.",
-      "Reading the room matters more than any playlist title.",
-    ],
-    planningFocus: [
-      "A clear plan for speeches, games (if any), and special dances keeps a casual venue from feeling chaotic.",
-      "Then the set can lean into celebration with confidence.",
-    ],
-    localExpertise: [
-      "Local Squamish nights are part of the same professional lane as larger weddings. Planning and communication come first.",
-      "Check availability and talk through your guest count and how you want the night to peak.",
+      "Remote forest-lake logistics are part of the same Sea-to-Sky planning conversation as corridor venues: realistic timing, guest movement, and sound scaled to each space.",
+      "Check availability and walk through your weekend shape, outdoors vs. hall contingencies, and how you want the night to peak.",
     ],
   },
   {
