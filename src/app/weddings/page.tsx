@@ -3,7 +3,6 @@ import Link from "next/link";
 import {
   BookConsultTrackedLink,
   bookConsultOutlineButtonClassName,
-  bookConsultPrimaryButtonClassName,
 } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { ImageSlot } from "@/components/image-slot";
@@ -131,7 +130,7 @@ export default function WeddingsPage() {
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName} />
+                <BookConsultTrackedLink surface="hero" />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; Just clarity
                 </p>
@@ -317,7 +316,7 @@ export default function WeddingsPage() {
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName} />
+                <BookConsultTrackedLink surface="page_cta" />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; Just clarity
                 </p>

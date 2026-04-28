@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import {
   BookConsultTrackedLink,
   bookConsultOutlineButtonClassName,
-  bookConsultPrimaryButtonClassName,
 } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
@@ -137,7 +136,7 @@ export default function ReviewsPage() {
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName} />
+                <BookConsultTrackedLink surface="hero" />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; Just clarity
                 </p>
@@ -166,7 +165,7 @@ export default function ReviewsPage() {
               </p>
             </div>
             <div className="flex shrink-0 flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
-              <BookConsultTrackedLink surface="inline" className={bookConsultPrimaryButtonClassName} />
+              <BookConsultTrackedLink surface="inline" />
               <CheckAvailabilityTrackedLink surface="inline" className={bookConsultOutlineButtonClassName} />
               <p className="w-full basis-full text-xs leading-relaxed text-white/50 sm:w-auto sm:basis-auto sm:text-right">
                 15 minutes &bull; No pressure &bull; Just clarity
@@ -333,7 +332,7 @@ export default function ReviewsPage() {
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName} />
+                <BookConsultTrackedLink surface="page_cta" />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; Just clarity
                 </p>

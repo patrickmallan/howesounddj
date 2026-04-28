@@ -3,7 +3,6 @@ import Link from "next/link";
 import {
   BookConsultTrackedLink,
   bookConsultOutlineButtonClassName,
-  bookConsultPrimaryButtonClassName,
 } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
@@ -56,7 +55,7 @@ export default function VenuesHubPage() {
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="venues_hub" className={bookConsultPrimaryButtonClassName} />
+                <BookConsultTrackedLink surface="venues_hub" />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; Just clarity
                 </p>
@@ -145,7 +144,7 @@ export default function VenuesHubPage() {
               </p>
               <div className="mt-8 max-w-xl space-y-4">
                 <div>
-                  <BookConsultTrackedLink surface="venues_hub" className={bookConsultPrimaryButtonClassName} />
+                  <BookConsultTrackedLink surface="venues_hub" />
                   <p className="mt-3 text-sm leading-relaxed text-white/60">
                     15 minutes &bull; No pressure &bull; Just clarity
                   </p>

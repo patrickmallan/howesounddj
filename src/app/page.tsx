@@ -3,7 +3,6 @@ import Link from "next/link";
 import {
   BookConsultTrackedLink,
   bookConsultOutlineButtonClassName,
-  bookConsultPrimaryButtonClassName,
 } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { BrandAnchorStatement } from "@/components/brand-anchor-statement";
@@ -132,10 +131,7 @@ export default function HoweSoundDJHomepage() {
               </p>
               <div className="mt-8 max-w-xl space-y-5">
                 <div>
-                  <BookConsultTrackedLink
-                    surface="hero"
-                    className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
-                  />
+                  <BookConsultTrackedLink surface="hero" className="w-full sm:w-auto" />
                   <p className="mt-3 text-sm leading-relaxed text-white/60">
                     15 minutes &bull; No pressure &bull; Just clarity
                   </p>
@@ -273,7 +269,7 @@ export default function HoweSoundDJHomepage() {
               </div>
               <div className="flex flex-col items-start gap-2">
                 <div className="flex flex-wrap items-center gap-3">
-                  <BookConsultTrackedLink surface="inline" className={bookConsultPrimaryButtonClassName} />
+                  <BookConsultTrackedLink surface="inline" />
                   <CheckAvailabilityTrackedLink
                     surface="inline"
                     className={bookConsultOutlineButtonClassName}
@@ -422,7 +418,7 @@ export default function HoweSoundDJHomepage() {
               </p>
               <div className="mt-8 max-w-xl space-y-4">
                 <div>
-                  <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName} />
+                  <BookConsultTrackedLink surface="page_cta" />
                   <p className="mt-3 text-sm leading-relaxed text-white/60">
                     15 minutes &bull; No pressure &bull; Just clarity
                   </p>
@@ -483,10 +479,7 @@ export default function HoweSoundDJHomepage() {
                 </p>
                 <div className="mt-8 max-w-xl space-y-5">
                   <div>
-                    <BookConsultTrackedLink
-                      surface="page_cta"
-                      className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
-                    />
+                    <BookConsultTrackedLink surface="page_cta" className="w-full sm:w-auto" />
                     <p className="mt-3 text-sm leading-relaxed text-white/60">
                       15 minutes &bull; No pressure &bull; Just clarity
                     </p>

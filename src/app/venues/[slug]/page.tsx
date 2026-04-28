@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import {
   BookConsultTrackedLink,
   bookConsultOutlineButtonClassName,
-  bookConsultPrimaryButtonClassName,
 } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal } from "@/components/motion";
@@ -95,7 +94,7 @@ export default async function VenueDetailPage({ params }: Props) {
             <p className="mt-6 text-lg leading-8 text-white/70">{venue.shortSummary}</p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="venue_hero" className={bookConsultPrimaryButtonClassName} />
+                <BookConsultTrackedLink surface="venue_hero" />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; Just clarity
                 </p>
@@ -198,7 +197,7 @@ export default async function VenueDetailPage({ params }: Props) {
               </p>
               <div className="mt-8 max-w-xl space-y-4">
                 <div>
-                  <BookConsultTrackedLink surface="venue_page_cta" className={bookConsultPrimaryButtonClassName} />
+                  <BookConsultTrackedLink surface="venue_page_cta" />
                   <p className="mt-3 text-sm leading-relaxed text-white/60">
                     15 minutes &bull; No pressure &bull; Just clarity
                   </p>

@@ -5,7 +5,6 @@ import { ContactSecondaryInquiryForm } from "@/components/contact-secondary-inqu
 import {
   BookConsultTrackedLink,
   bookConsultOutlineButtonClassName,
-  bookConsultPrimaryButtonClassName,
 } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal } from "@/components/motion";
@@ -56,10 +55,7 @@ export default function ContactPage() {
 
             <div className="mt-8 max-w-xl space-y-6">
               <div>
-                <BookConsultTrackedLink
-                  surface="contact_page_primary"
-                  className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
-                />
+                <BookConsultTrackedLink surface="contact_page_primary" className="w-full sm:w-auto" />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; Just clarity
                 </p>
@@ -260,10 +256,7 @@ export default function ContactPage() {
             </p>
             <div className="mt-8 max-w-xl space-y-5">
               <div>
-                <BookConsultTrackedLink
-                  surface="contact_page_primary"
-                  className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
-                />
+                <BookConsultTrackedLink surface="contact_page_primary" className="w-full sm:w-auto" />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; Just clarity
                 </p>

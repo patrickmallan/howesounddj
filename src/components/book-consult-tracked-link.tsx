@@ -18,9 +18,12 @@ export type BookConsultSurface =
   /** Primary Book a Consult CTAs on `/contact` (hero and consult-first panel). */
   | "contact_page_primary";
 
-/** Primary CTA, amber pill aligned with Check Availability styling across the site. */
-export const bookConsultPrimaryButtonClassName =
-  `${CTA_PILL_FLEX_CENTER} min-h-[44px] rounded-full bg-amber-300 px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]`;
+/** Default Calendly primary pill — always applied first on `BookConsultTrackedLink`; use for raw Calendly anchors too. */
+const BOOK_CONSULT_PRIMARY_PILL_BASE =
+  "inline-flex items-center justify-center min-h-[44px] rounded-full bg-amber-300 px-6 py-3 text-sm font-semibold text-black shadow-[0_18px_45px_rgba(250,204,21,0.2)] transition hover:bg-amber-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-200 focus-visible:ring-offset-2 focus-visible:ring-offset-black";
+
+/** Re-export for `<a href={CONSULT_CALENDLY_URL}>` (e.g. availability form) so Calendly matches the tracked link. */
+export const bookConsultPrimaryButtonClassName = BOOK_CONSULT_PRIMARY_PILL_BASE;
 
 /** Secondary CTA, matches outline pills used next to primary Check Availability across the site. */
 export const bookConsultOutlineButtonClassName =
@@ -28,13 +31,12 @@ export const bookConsultOutlineButtonClassName =
 
 type Props = {
   surface: BookConsultSurface;
+  /** Appended after mandatory primary pill classes (width, sizing, grid cell stretch, etc.). */
   className?: string;
   children?: ReactNode;
-  /** See `CheckAvailabilityTrackedLink`, use `card` for homepage Explore tiles. */
-  visualLayout?: "pill" | "card";
 };
 
-export function BookConsultTrackedLink({ surface, className, children, visualLayout = "pill" }: Props) {
+export function BookConsultTrackedLink({ surface, className, children }: Props) {
   function handleClick() {
     trackEvent(ANALYTICS_EVENTS.bookConsultClick, {
       surface,
@@ -43,8 +45,7 @@ export function BookConsultTrackedLink({ surface, className, children, visualLay
     });
   }
 
-  const alignClass = visualLayout === "card" ? "text-left" : CTA_PILL_FLEX_CENTER;
-  const merged = [alignClass, "motion-interactive", className].filter(Boolean).join(" ");
+  const merged = [BOOK_CONSULT_PRIMARY_PILL_BASE, "motion-interactive", className].filter(Boolean).join(" ");
 
   return (
     <a

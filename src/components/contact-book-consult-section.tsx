@@ -1,6 +1,6 @@
 "use client";
 
-import { BookConsultTrackedLink, bookConsultPrimaryButtonClassName } from "@/components/book-consult-tracked-link";
+import { BookConsultTrackedLink } from "@/components/book-consult-tracked-link";
 
 export function ContactBookConsultSection() {
   return (
@@ -25,10 +25,7 @@ export function ContactBookConsultSection() {
         </p>
 
         <div className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-          <BookConsultTrackedLink
-            surface="contact_page_primary"
-            className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
-          />
+          <BookConsultTrackedLink surface="contact_page_primary" className="w-full sm:w-auto" />
         </div>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/60">
           15 minutes &bull; No pressure &bull; Just clarity
