@@ -123,10 +123,17 @@ export function SiteHeader() {
               </nav>
             </div>
           </details>
-          <CheckAvailabilityTrackedLink
-            surface="header"
-            className="hidden min-h-[44px] items-center justify-center rounded-full bg-amber-300 px-4 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] xl:inline-flex xl:min-h-0 xl:px-5 xl:py-2.5"
-          />
+          {/*
+            Wrapper hides the bar CTA below xl without relying on `hidden` on the link:
+            CheckAvailabilityTrackedLink always appends `inline-flex`, which overrides `hidden`
+            in Tailwind’s cascade and caused the clipped yellow button on mobile.
+          */}
+          <div className="hidden xl:contents">
+            <CheckAvailabilityTrackedLink
+              surface="header"
+              className="min-h-[44px] items-center justify-center rounded-full bg-amber-300 px-4 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] xl:min-h-0 xl:px-5 xl:py-2.5"
+            />
+          </div>
         </div>
       </div>
     </header>

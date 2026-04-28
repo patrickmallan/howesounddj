@@ -75,7 +75,8 @@ export function CheckAvailabilityTrackedLink({
   };
 
   const alignClass = visualLayout === "card" ? "text-left" : CTA_PILL_FLEX_CENTER;
-  const mergedClass = [className, alignClass, "motion-interactive"].filter(Boolean).join(" ");
+  /** `className` last so callers can override layout/display (e.g. responsive `hidden`) without losing to `inline-flex` from `alignClass`. */
+  const mergedClass = [alignClass, "motion-interactive", className].filter(Boolean).join(" ");
 
   return (
     <Link href={href} className={mergedClass} onClick={handleClick}>
