@@ -14,7 +14,13 @@ export type BookConsultSurface =
   | "venue_page_cta"
   | "footer"
   | "explore_card"
-  | "contact_page";
+  | "contact_page"
+  /** Primary Book a Consult CTAs on `/contact` (hero and consult-first panel). */
+  | "contact_page_primary";
+
+/** Primary CTA — amber pill aligned with Check Availability styling across the site. */
+export const bookConsultPrimaryButtonClassName =
+  `${CTA_PILL_FLEX_CENTER} min-h-[44px] rounded-full bg-amber-300 px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]`;
 
 /** Secondary CTA — matches outline pills used next to primary Check Availability across the site. */
 export const bookConsultOutlineButtonClassName =

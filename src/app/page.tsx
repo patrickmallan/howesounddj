@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookConsultTrackedLink, bookConsultOutlineButtonClassName } from "@/components/book-consult-tracked-link";
+import {
+  BookConsultTrackedLink,
+  bookConsultOutlineButtonClassName,
+  bookConsultPrimaryButtonClassName,
+} from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { BrandAnchorStatement } from "@/components/brand-anchor-statement";
 import { HomepageExploreSection } from "@/components/explore-site-links";
@@ -444,17 +448,18 @@ export default function HoweSoundDJHomepage() {
                   Reach out with your date, venue, and wedding vision. The goal is to make the process feel simple, clear, and straightforward from the start, starting with a consultation when the fit makes sense.
                 </p>
                 <p className="mt-4 max-w-xl text-sm leading-7 text-white/55">
-                  The contact page is where you check availability and share your wedding details: date, venue, and how you want the night to feel.
+                  On the contact page, Book a Consult is upfront when you&apos;re ready to talk; Check Availability is there
+                  when you want to confirm your date first — same wedding details either way.
                 </p>
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                  <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
+                    Book a Consult
+                  </BookConsultTrackedLink>
                   <CheckAvailabilityTrackedLink
                     href="/contact#availability"
                     surface="page_cta"
-                    className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                    className={bookConsultOutlineButtonClassName}
                   />
-                  <BookConsultTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName}>
-                    Book a Consult
-                  </BookConsultTrackedLink>
                   <a
                     href="/weddings"
                     className="motion-interactive inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
