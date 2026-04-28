@@ -35,16 +35,18 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-6 py-4 lg:px-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-4 sm:gap-3 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="mr-4 min-w-[10rem] shrink-0 text-left transition hover:opacity-90 md:min-w-[12rem]"
+          className="mr-2 min-w-0 shrink text-left transition hover:opacity-90 sm:mr-4 md:min-w-[12rem]"
           aria-label="Howe Sound DJ home"
         >
-          <div className="text-lg font-semibold tracking-[0.2em] uppercase text-amber-300">Howe Sound DJ</div>
-          <div className="text-xs text-white/60">Squamish Wedding DJ</div>
+          <div className="text-base font-semibold tracking-[0.12em] uppercase text-amber-300 sm:text-lg sm:tracking-[0.2em]">
+            Howe Sound DJ
+          </div>
+          <div className="text-[0.65rem] text-white/60 sm:text-xs">Squamish Wedding DJ</div>
         </Link>
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+        <div className="flex min-w-0 shrink-0 items-center gap-1.5 sm:gap-3">
           <nav
             className="hidden max-w-none flex-wrap items-center justify-end gap-x-5 gap-y-2 text-sm text-white/80 xl:flex xl:gap-x-6"
             aria-label="Primary"
@@ -68,7 +70,7 @@ export function SiteHeader() {
             })}
           </nav>
           <details ref={mobileMenuDetailsRef} className="xl:hidden">
-            <summary className="inline-flex min-h-[44px] min-w-[44px] cursor-pointer list-none items-center justify-center rounded-full border border-white/15 px-3 text-sm text-white/85 outline-none transition hover:border-white/25 [&::-webkit-details-marker]:hidden">
+            <summary className="inline-flex min-h-[44px] min-w-[44px] cursor-pointer list-none items-center justify-center rounded-full border border-white/15 px-2.5 text-sm text-white/85 outline-none transition hover:border-white/25 sm:px-3 [&::-webkit-details-marker]:hidden">
               Menu
             </summary>
             {/*
@@ -123,17 +125,10 @@ export function SiteHeader() {
               </nav>
             </div>
           </details>
-          {/*
-            Wrapper hides the bar CTA below xl without relying on `hidden` on the link:
-            CheckAvailabilityTrackedLink always appends `inline-flex`, which overrides `hidden`
-            in Tailwind’s cascade and caused the clipped yellow button on mobile.
-          */}
-          <div className="hidden xl:contents">
-            <CheckAvailabilityTrackedLink
-              surface="header"
-              className="min-h-[44px] items-center justify-center rounded-full bg-amber-300 px-4 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] xl:min-h-0 xl:px-5 xl:py-2.5"
-            />
-          </div>
+          <CheckAvailabilityTrackedLink
+            surface="header"
+            className="min-h-[44px] shrink-0 items-center justify-center rounded-full bg-amber-300 px-2.5 text-center text-xs font-semibold leading-tight text-neutral-950 transition hover:scale-[1.02] sm:min-h-0 sm:px-4 sm:py-2.5 sm:text-sm xl:px-5"
+          />
         </div>
       </div>
     </header>
