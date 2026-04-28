@@ -57,7 +57,7 @@ export async function POST(request: Request) {
       success: true,
       available: false,
       message:
-        "That date is already held for another celebration. Book a Consult is usually the clearest next step to explore options. You can send a note from the contact page if your plans are flexible.",
+        "That date appears to be unavailable. Try another date, or send a message if your plans are flexible.",
     });
   }
 

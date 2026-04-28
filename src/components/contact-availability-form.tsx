@@ -490,25 +490,22 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6 lg:p-8">
           <p className="text-lg leading-relaxed text-white/85">{availability.message}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a
-              href={CONSULT_CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={bookConsultPrimaryButtonClassName}
-              onClick={trackCalendlyClick}
-            >
-              Book a Consult
-            </a>
             <button
               type="button"
               onClick={() => {
                 setAvailability({ kind: "idle" });
                 clearDateFields();
               }}
+              className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+            >
+              Try Another Date
+            </button>
+            <a
+              href="/contact#send-message"
               className={consultButtonClass}
             >
-              Try another date
-            </button>
+              Send a Message
+            </a>
           </div>
         </div>
       )}
@@ -517,13 +514,6 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         <div className="rounded-[1.5rem] border border-amber-400/25 bg-amber-950/25 p-6 lg:p-8">
           <p className="text-lg leading-relaxed text-white/90">{availability.message}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <button
-              type="button"
-              onClick={() => setShowInquiry(true)}
-              className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-            >
-              Continue with Inquiry
-            </button>
             <a
               href={CONSULT_CALENDLY_URL}
               target="_blank"
@@ -533,6 +523,13 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
             >
               Book a Consult
             </a>
+            <button
+              type="button"
+              onClick={() => setShowInquiry(true)}
+              className={consultButtonClass}
+            >
+              Continue with Inquiry
+            </button>
           </div>
         </div>
       )}
