@@ -5,6 +5,7 @@
 import { google } from "googleapis";
 
 const READONLY_SCOPE = "https://www.googleapis.com/auth/calendar.readonly";
+const VANCOUVER_TZ = "America/Vancouver";
 
 function isEnabled(): boolean {
   const v = process.env.GOOGLE_CALENDAR_ENABLED?.trim().toLowerCase();
@@ -19,6 +20,157 @@ function loadCredentials(): { clientEmail: string; privateKey: string; calendarI
   const privateKey = rawKey.replace(/\\n/g, "\n");
   if (!privateKey) return null;
   return { clientEmail, privateKey, calendarId };
+}
+
+function dayKeyParts(y: number, m: number, d: number): number {
+  return y * 10000 + m * 100 + d;
+}
+
+/** Wall-clock parts for `utcMs` in America/Vancouver (handles PST/PDT via ICU). */
+function vancouverWallParts(utcMs: number): {
+  y: number;
+  m: number;
+  d: number;
+  h: number;
+  mi: number;
+  s: number;
+} {
+  const dtf = new Intl.DateTimeFormat("en-US", {
+    timeZone: VANCOUVER_TZ,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hourCycle: "h23",
+  });
+  const parts = Object.fromEntries(
+    dtf.formatToParts(new Date(utcMs)).map((p) => [p.type, p.value])
+  ) as Record<string, string>;
+  return {
+    y: Number(parts.year),
+    m: Number(parts.month),
+    d: Number(parts.day),
+    h: Number(parts.hour),
+    mi: Number(parts.minute),
+    s: Number(parts.second),
+  };
+}
+
+function vancouverDayKeyAt(utcMs: number): number {
+  const w = vancouverWallParts(utcMs);
+  return dayKeyParts(w.y, w.m, w.d);
+}
+
+/**
+ * UTC millisecond for the first `00:00:00` on the given calendar day in America/Vancouver.
+ */
+function findVancouverMidnightUtc(year: number, month: number, day: number): number {
+  const target = dayKeyParts(year, month, day);
+
+  let lo = Date.UTC(year, month - 1, day) - 2 * 86400000;
+  let hi = Date.UTC(year, month - 1, day) + 2 * 86400000;
+
+  while (vancouverDayKeyAt(lo) >= target) lo -= 86400000;
+  while (vancouverDayKeyAt(hi) < target) hi += 86400000;
+
+  while (lo < hi - 1) {
+    const mid = Math.floor((lo + hi) / 2);
+    if (vancouverDayKeyAt(mid) < target) lo = mid;
+    else hi = mid;
+  }
+
+  let t = hi;
+  while (t > lo) {
+    const w = vancouverWallParts(t);
+    if (vancouverDayKeyAt(t) < target) break;
+    if (w.y === year && w.m === month && w.d === day && w.h === 0 && w.mi === 0 && w.s === 0) {
+      return t;
+    }
+    t -= 1;
+  }
+
+  t = hi;
+  const limit = hi + 24 * 3600000;
+  while (t < limit) {
+    const w = vancouverWallParts(t);
+    if (w.y === year && w.m === month && w.d === day && w.h === 0 && w.mi === 0 && w.s === 0) {
+      return t;
+    }
+    t += 1;
+  }
+
+  throw new RangeError(`findVancouverMidnightUtc: could not resolve midnight for ${year}-${month}-${day}`);
+}
+
+/** Next calendar day (Gregorian) after `y-m-d` using UTC date arithmetic. */
+function nextGregorianDay(y: number, m: number, d: number): [number, number, number] {
+  const dt = new Date(Date.UTC(y, m - 1, d + 1));
+  return [dt.getUTCFullYear(), dt.getUTCMonth() + 1, dt.getUTCDate()];
+}
+
+/**
+ * America/Vancouver local calendar day as RFC3339 UTC bounds for Google Calendar `events.list`.
+ * `timeMin` is inclusive (local midnight). `timeMax` is exclusive (first instant of the next Vancouver day),
+ * which matches API semantics and covers the full local day through 23:59:59.999.
+ *
+ * @param date `YYYY-MM-DD` (that calendar day in America/Vancouver).
+ */
+export function getVancouverDayUtcBounds(date: string): { timeMin: string; timeMax: string } {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    throw new RangeError(`getVancouverDayUtcBounds: expected YYYY-MM-DD, got ${JSON.stringify(date)}`);
+  }
+  const [ys, ms, ds] = date.split("-");
+  const year = Number(ys);
+  const month = Number(ms);
+  const day = Number(ds);
+  if (
+    !Number.isFinite(year) ||
+    !Number.isFinite(month) ||
+    !Number.isFinite(day) ||
+    month < 1 ||
+    month > 12 ||
+    day < 1 ||
+    day > 31
+  ) {
+    throw new RangeError(`getVancouverDayUtcBounds: invalid date parts for ${JSON.stringify(date)}`);
+  }
+
+  const startMs = findVancouverMidnightUtc(year, month, day);
+  const [ny, nm, nd] = nextGregorianDay(year, month, day);
+  const nextStartMs = findVancouverMidnightUtc(ny, nm, nd);
+
+  return {
+    timeMin: new Date(startMs).toISOString(),
+    timeMax: new Date(nextStartMs).toISOString(),
+  };
+}
+
+function logGoogleLookupFailure(date: string, err: unknown): void {
+  const name = err instanceof Error ? err.name : "non_error_throw";
+  const message = err instanceof Error ? err.message : String(err);
+  let errorCode: string | number | undefined;
+  let httpStatus: number | undefined;
+
+  if (err && typeof err === "object") {
+    const o = err as Record<string, unknown>;
+    if ("code" in o && (typeof o.code === "string" || typeof o.code === "number")) {
+      errorCode = o.code as string | number;
+    }
+    const resp = o.response as { status?: number } | undefined;
+    if (resp && typeof resp.status === "number") {
+      httpStatus = resp.status;
+    }
+  }
+
+  console.error("[availability] google_lookup_failed", {
+    error_name: name,
+    error_message: message,
+    error_code: errorCode,
+    http_status: httpStatus,
+    date_queried: date,
+  });
 }
 
 /**
@@ -45,8 +197,7 @@ export async function isDateBookedInGoogleCalendar(date: string): Promise<boolea
 
     const calendar = google.calendar({ version: "v3", auth });
 
-    const timeMin = `${date}T00:00:00.000Z`;
-    const timeMax = `${date}T23:59:59.999Z`;
+    const { timeMin, timeMax } = getVancouverDayUtcBounds(date);
 
     const res = await calendar.events.list({
       calendarId: creds.calendarId,
@@ -59,7 +210,8 @@ export async function isDateBookedInGoogleCalendar(date: string): Promise<boolea
     const items = res.data.items ?? [];
     const active = items.filter((ev) => ev.status !== "cancelled");
     return active.length > 0;
-  } catch {
+  } catch (err) {
+    logGoogleLookupFailure(date, err);
     return null;
   }
 }

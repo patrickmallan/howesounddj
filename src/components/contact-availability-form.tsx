@@ -142,26 +142,70 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ date: weddingDate }),
       });
-      const data = (await res.json()) as {
-        success?: boolean;
-        available?: boolean;
-        message?: string;
-      };
-      if (!res.ok || data.success === false) {
+
+      let data: unknown;
+      try {
+        data = await res.json();
+      } catch {
         trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
           surface: "contact_form",
           form_type: "availability",
-          status: "success",
-          result: "unavailable",
+          status: "error",
           page_path: clientPagePath(),
         });
         setAvailability({
           kind: "unavailable",
-          message: data.message ?? "That date could not be checked. Try again in a moment.",
+          message: "That date could not be checked. Try again in a moment.",
         });
         return;
       }
-      if (data.available === false) {
+
+      if (typeof data !== "object" || data === null) {
+        trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+          surface: "contact_form",
+          form_type: "availability",
+          status: "error",
+          page_path: clientPagePath(),
+        });
+        setAvailability({
+          kind: "unavailable",
+          message: "That date could not be checked. Try again in a moment.",
+        });
+        return;
+      }
+
+      const body = data as { success?: boolean; available?: boolean; message?: string };
+
+      if (!res.ok || body.success === false) {
+        trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+          surface: "contact_form",
+          form_type: "availability",
+          status: "error",
+          http_status: res.status,
+          page_path: clientPagePath(),
+        });
+        setAvailability({
+          kind: "unavailable",
+          message: body.message ?? "That date could not be checked. Try again in a moment.",
+        });
+        return;
+      }
+
+      if (typeof body.available !== "boolean") {
+        trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+          surface: "contact_form",
+          form_type: "availability",
+          status: "error",
+          page_path: clientPagePath(),
+        });
+        setAvailability({
+          kind: "unavailable",
+          message: "That date could not be checked. Try again in a moment.",
+        });
+        return;
+      }
+
+      if (body.available === false) {
         trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
           surface: "contact_form",
           form_type: "availability",
@@ -169,9 +213,10 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
           result: "unavailable",
           page_path: clientPagePath(),
         });
-        setAvailability({ kind: "unavailable", message: data.message ?? "That date is not available." });
+        setAvailability({ kind: "unavailable", message: body.message ?? "That date is not available." });
         return;
       }
+
       trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
         surface: "contact_form",
         form_type: "availability",
@@ -179,14 +224,13 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         result: "available",
         page_path: clientPagePath(),
       });
-      setAvailability({ kind: "available", message: data.message ?? "That date looks open." });
+      setAvailability({ kind: "available", message: body.message ?? "That date looks open." });
       setShowInquiry(false);
     } catch {
       trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
         surface: "contact_form",
         form_type: "availability",
-        status: "success",
-        result: "unavailable",
+        status: "network_error",
         page_path: clientPagePath(),
       });
       setAvailability({

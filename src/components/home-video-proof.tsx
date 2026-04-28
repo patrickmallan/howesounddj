@@ -54,7 +54,7 @@ export function HomeVideoProof() {
               loop
               muted
               playsInline
-              preload="auto"
+              preload="metadata"
               controls
               poster={hasPoster ? POSTER_SRC : undefined}
               aria-label="Illustrative dance floor and celebration atmosphere. Plays muted on a loop; use controls to pause or unmute"

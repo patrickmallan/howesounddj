@@ -55,52 +55,65 @@ export default function AboutPage() {
     <main className="min-h-screen bg-neutral-950 text-white">
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.14),transparent_50%)]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
-          <div className="max-w-3xl">
-            <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
-              About Howe Sound DJ
+        <div className={`relative mx-auto max-w-6xl px-6 lg:px-8 ${MAIN_SECTION_Y}`}>
+          <div className="grid min-w-0 gap-10 lg:grid-cols-2 lg:items-start lg:gap-x-12 lg:gap-y-0">
+            <div className="min-w-0 lg:max-w-xl xl:max-w-none">
+              <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
+                About Howe Sound DJ
+              </div>
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Meet Patrick</div>
+              <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
+                Music is how I connect. Weddings are where that connection matters most.
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70 lg:max-w-none">
+                I am Patrick, the person behind Howe Sound DJ. More than fifteen years in music have taught me that the
+                best nights are not loud for the sake of loud. They are honest to the couple, true to the room, and
+                built with care long before the first guest arrives.
+              </p>
             </div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Meet Patrick
+            <div className="min-w-0 w-full lg:max-w-none lg:justify-self-end">
+              <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] p-3 shadow-2xl shadow-black/40 lg:mx-0 lg:max-w-none">
+                <ImageSlot
+                  src={SITE_IMAGES.aboutPatrickAction}
+                  alt={SITE_IMAGE_ALT.aboutPatrickAction}
+                  aspect="4/5"
+                  imageClassName="object-[50%_20%]"
+                  subtleBottomGradient
+                  label="Patrick"
+                  reservedHint="Headshot or candid: the face couples recognize from first call to last song."
+                  sizes="(max-width: 1024px) 100vw, 44vw"
+                  className="space-y-3"
+                >
+                  <span className="block text-center text-xs font-medium tracking-[0.08em] text-white/55">
+                    Patrick Mallan, Howe Sound DJ
+                  </span>
+                </ImageSlot>
+              </div>
             </div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              Music is how I connect. Weddings are where that connection matters most.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              I am Patrick, the person behind Howe Sound DJ. More than fifteen years in music have taught me that the best nights are not loud for the sake of loud. They are honest to the couple, true to the room, and built with care long before the first guest arrives.
-            </p>
           </div>
         </div>
       </section>
 
-      <SectionReveal as="section" className={`${MAIN_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}>
-        <div className="grid min-w-0 gap-12 lg:grid-cols-2 lg:items-start lg:gap-x-12 lg:gap-y-0">
-          <div className="atmosphere-grain min-w-0 overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6">
-            <ImageSlot
-              src={SITE_IMAGES.aboutPortrait}
-              alt={SITE_IMAGE_ALT.aboutPortrait}
-              aspect="4/5"
-              imageClassName="object-center"
-              subtleBottomGradient
-              label="Patrick"
-              reservedHint="Headshot or candid: the face couples recognize from first call to last song."
-              sizes="(max-width: 1024px) 100vw, 45vw"
-            />
-          </div>
-          <div className="min-w-0">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              The story
-            </div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              From a love of music to a focus on weddings.
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              This started with a simple love of music. Over time it became something more specific: crafting high-energy, personal experiences where every celebration feels intentional. I have worked with countless couples, each with their own story, from quiet ceremonies to full-scale receptions, and that range is what keeps the work sharp.
-            </p>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              What has not changed is the through-line: your day should sound like you, not like a template. I show up ready to listen, plan with you, and execute so you can stay in the moment while I handle the flow behind the mixer.
-            </p>
-          </div>
+      <SectionReveal
+        as="section"
+        className={`${MAIN_SECTION_Y} mx-auto max-w-6xl border-t border-white/10 px-6 lg:px-8`}
+      >
+        <div className="max-w-3xl">
+          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">The story</div>
+          <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+            From a love of music to a focus on weddings.
+          </h2>
+          <p className="mt-4 text-lg leading-8 text-white/70">
+            This started with a simple love of music. Over time it became something more specific: crafting high-energy,
+            personal experiences where every celebration feels intentional. I have worked with countless couples, each
+            with their own story, from quiet ceremonies to full-scale receptions, and that range is what keeps the work
+            sharp.
+          </p>
+          <p className="mt-4 text-lg leading-8 text-white/70">
+            What has not changed is the through-line: your day should sound like you, not like a template. I show up ready
+            to listen, plan with you, and execute so you can stay in the moment while I handle the flow behind the
+            mixer.
+          </p>
         </div>
       </SectionReveal>
 
