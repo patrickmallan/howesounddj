@@ -350,14 +350,14 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
   return (
     <div className="space-y-8">
       <p className="text-sm leading-relaxed text-white/55">
-        <span className="text-white/45">Prefer fit first?</span>{" "}
+        <span className="text-white/45">Prefer to talk first?</span>{" "}
         <a
           href="#book-consult"
           className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
         >
-          Check My Date & Fit (15 min)
+          Check My Date
         </a>
-        <span className="text-white/45"> — or check your date first below.</span>{" "}
+        <span className="text-white/45">, or check your date first below.</span>{" "}
         <span className="text-white/45">
           Prefer not to chat yet?{" "}
           <a
@@ -454,7 +454,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               className={consultButtonPrimaryOutline}
               onClick={trackCalendlyClick}
             >
-              Check My Date & Fit (15 min)
+              Check My Date
             </a>
             <button
               type="button"
@@ -488,7 +488,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               className={consultButtonClass}
               onClick={trackCalendlyClick}
             >
-              Check My Date & Fit (15 min)
+              Check My Date
             </a>
           </div>
         </div>
@@ -634,7 +634,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               Turnstile (spam protection) is not configured for this deployment. Add{" "}
               <code className="rounded bg-white/10 px-1 py-0.5 text-xs text-white/90">TURNSTILE_SITE_KEY</code> or{" "}
               <code className="rounded bg-white/10 px-1 py-0.5 text-xs text-white/90">NEXT_PUBLIC_TURNSTILE_SITE_KEY</code> in
-              your host env, redeploy, or schedule Check My Date & Fit (15 min) from the consult section below.
+              your host env, redeploy, or schedule Check My Date from the consult section below.
             </p>
           )}
 

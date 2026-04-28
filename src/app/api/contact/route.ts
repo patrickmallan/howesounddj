@@ -43,7 +43,7 @@ function getAutoReplyPlainText(): string {
   return [
     "Hey, thanks for reaching out. I've got your message and will be in touch soon.",
     "",
-    "In the meantime, you can Check My Date & Fit (15 min) or Check Availability First from the same page here:",
+    "In the meantime, you can Check My Date or Check Availability First from the same page here:",
     "",
     AUTO_REPLY_CONTACT_URL,
     "",
@@ -57,7 +57,7 @@ function getAutoReplyHtml(): string {
   const url = AUTO_REPLY_CONTACT_URL;
   return `<html><body>
 <p>Hey, thanks for reaching out. I've got your message and will be in touch soon.</p>
-<p>In the meantime, you can Check My Date &amp; Fit (15 min) or Check Availability First from the same page here:</p>
+<p>In the meantime, you can Check My Date or Check Availability First from the same page here:</p>
 <p><a href="${url}">${url}</a></p>
 <p>Excited to hear more about your plans.</p>
 <p>Howe Sound DJ</p>
@@ -70,7 +70,7 @@ function resendEmailId(data: unknown): string | null {
     : null;
 }
 
-/** Safe server logs for delivery debugging — never log secrets, tokens, or full PII. */
+/** Safe server logs for delivery debugging, never log secrets, tokens, or full PII. */
 function logContact(stage: string, data?: Record<string, unknown>) {
   if (data && Object.keys(data).length > 0) {
     console.log(`[contact] ${stage}`, data);
@@ -163,7 +163,7 @@ export async function POST(request: Request) {
       {
         success: false,
         message:
-          "Delivery is not fully configured yet. Please try again later—you can still use Check My Date & Fit (15 min) on howesounddj.com/contact.",
+          "Delivery is not fully configured yet. Please try again later. You can still use Check My Date on howesounddj.com/contact.",
       },
       { status: 503 }
     );
@@ -211,7 +211,7 @@ export async function POST(request: Request) {
   logContact("resend_send_start", { inquiry_source: payload.inquirySource ?? "availability_led" });
 
   try {
-    /** Resend v6 returns `{ data, error }` — it does not throw on API errors; must check `error`. */
+    /** Resend v6 returns `{ data, error }`, it does not throw on API errors; must check `error`. */
     const sendResult = await resend.emails.send({
       from: mail.from,
       to: mail.to,
@@ -280,6 +280,6 @@ export async function POST(request: Request) {
 
   return NextResponse.json<ContactApiResponse>({
     success: true,
-    message: "Thanks. Your message is on its way—Patrick will personally follow up when he can.",
+    message: "Thanks. Your message is on its way. Patrick will personally follow up when he can.",
   });
 }

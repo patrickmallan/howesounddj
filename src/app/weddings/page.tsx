@@ -8,6 +8,7 @@ import {
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { ImageSlot } from "@/components/image-slot";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ export default function WeddingsPage() {
   const highlights = [
     {
       title: "Music shaped around you",
-      text: "Your tastes, the atmosphere you want to create, and the crowd in front of you, not a one-size-fits-all wedding playlist."
+      text: "Your tastes, the atmosphere you want to create, and the crowd in front of you, not a generic wedding playlist."
     },
     {
       title: "From first dance to last song",
@@ -53,7 +54,7 @@ export default function WeddingsPage() {
       items: [
         "Atmosphere that matches classic romance or sets up the party to come",
         "Smooth handoffs between cocktail, dinner, and speeches",
-        "Volume and vibe that fit conversation, then build when you’re ready"
+        "Volume and vibe that support conversation, then build when you’re ready"
       ]
     },
     {
@@ -70,7 +71,7 @@ export default function WeddingsPage() {
     {
       step: "01",
       title: "Initial consultation",
-      text: "Your wedding, your venue, and the experience you want guests to talk about, so the fit is real before anything is locked in."
+      text: "Your wedding, your venue, and the experience you want guests to talk about, so the direction feels clear before anything is locked in."
     },
     {
       step: "02",
@@ -131,7 +132,7 @@ export default function WeddingsPage() {
             <div className="mt-8 max-w-xl space-y-4">
               <div>
                 <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date & Fit
+                  Check My Date
                 </BookConsultTrackedLink>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; No commitment
@@ -196,7 +197,7 @@ export default function WeddingsPage() {
           >
             Browse wedding venue guides
           </Link>{" "}
-          for planning context tied to named settings—then check your date first when you&apos;re ready.
+          for planning context tied to named settings, then check your date first when you&apos;re ready.
         </p>
       </SectionReveal>
 
@@ -301,7 +302,10 @@ export default function WeddingsPage() {
         </div>
       </SectionReveal>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal
+        as="section"
+        className={`${CTA_FINALE_SECTION_TOP} mx-auto max-w-6xl px-6 py-20 lg:px-8`}
+      >
         <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
@@ -311,12 +315,12 @@ export default function WeddingsPage() {
               Let’s talk about your date, your venue, and the kind of night you want to create.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              If the fit feels right, most couples lock in clarity with Check My Date & Fit (15 min); you can confirm your calendar date alongside or next.
+              When the direction feels aligned, most couples start with Check My Date. You can confirm your calendar date alongside or right after.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
                 <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date & Fit
+                  Check My Date
                 </BookConsultTrackedLink>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; No commitment

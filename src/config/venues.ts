@@ -1,5 +1,5 @@
 /**
- * Curated venues and businesses where Howe Sound DJ has worked — used for homepage trust
+ * Curated venues and businesses where Howe Sound DJ has worked, used for homepage trust
  * and /venues landing pages. External URLs should be verified periodically.
  *
  * Full page content lives in `venue-pages.ts`; `VENUES` preserves the legacy card shape for the homepage grid.
@@ -13,7 +13,7 @@ export type VenueEntry = {
   name: string;
   description: string;
   href: string;
-  /** Internal guide URL — `/venues/[slug]` */
+  /** Internal guide URL, `/venues/[slug]` */
   slug: string;
   imageSrc?: string;
   imageAlt?: string;

@@ -9,6 +9,7 @@ import {
 } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal } from "@/components/motion";
+import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
 /** Read Turnstile site key at request time (avoids empty props if env was missing at build / prefers runtime env on Vercel). */
 function turnstileSiteKey(): string {
@@ -22,13 +23,13 @@ function turnstileSiteKey(): string {
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: { absolute: "Check Your Date & Fit | Howe Sound DJ" },
+  title: { absolute: "Check Your Date | Howe Sound DJ" },
   description:
-    "Start with a quick 15-minute, no-pressure call to confirm your wedding date, your vision, and whether Howe Sound DJ is the right fit.",
+    "Start with a quick 15-minute, no-pressure call to confirm your wedding date, your vision, and whether Howe Sound DJ is the right direction for your day.",
   openGraph: {
-    title: "Check Your Date & Fit | Howe Sound DJ",
+    title: "Check Your Date | Howe Sound DJ",
     description:
-      "Start with a quick 15-minute, no-pressure call to confirm your wedding date, your vision, and whether Howe Sound DJ is the right fit.",
+      "Start with a quick 15-minute, no-pressure call to confirm your wedding date, your vision, and whether Howe Sound DJ is the right direction for your day.",
     url: "/contact",
   },
   alternates: { canonical: "/contact" },
@@ -46,11 +47,11 @@ export default function ContactPage() {
             </div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Contact</div>
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              Let&apos;s Make Sure We&apos;re the Right Fit
+              Let&apos;s Make Sure We&apos;re Aligned
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              A quick 15-minute call to confirm your date, your vision, and make sure everything feels right —
-              no pressure, no commitment.
+              A quick 15-minute call to confirm your date, your vision, and make sure everything feels right. No
+              pressure, no commitment.
             </p>
 
             <div className="mt-8 max-w-xl space-y-6">
@@ -59,13 +60,13 @@ export default function ContactPage() {
                   surface="contact_page_primary"
                   className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
                 >
-                  Check My Date &amp; Fit (15 min)
+                  Check My Date
                 </BookConsultTrackedLink>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; No commitment
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-white/55">
-                  Most couples start here — it&apos;s the fastest way to lock in your date and get clarity.
+                  Most couples start here: it&apos;s the fastest way to lock in your date and get clarity.
                 </p>
               </div>
 
@@ -117,7 +118,7 @@ export default function ContactPage() {
             <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">A conversation first, not a hard sell.</h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
               Patrick invites couples to talk through the wedding, the vision, and the kind of experience you want guests
-              to remember — whether you begin with a consult or check availability first. Planning stays built around fast
+              to remember, whether you begin with a consult or check availability first. Planning stays built around fast
               replies and clear communication, the same calm, supported feeling couples name in reviews.
             </p>
           </div>
@@ -215,17 +216,18 @@ export default function ContactPage() {
                 Why reach out now
               </div>
               <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-                Dates, fit, and planning room, not manufactured urgency.
+                Clarity now makes the planning easier.
               </h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
                 Popular weekends in Squamish, Whistler, and along the Sea-to-Sky can book in advance. Checking
-                availability early is practical, not hype. A consultation also gives you space to ask about ceremony
-                versus reception coverage, MC support, sound in your specific venue, and how personalized playlists come
+                availability early is practical, not hype. A consultation gives you space to ask about ceremony versus
+                reception coverage, MC support, sound in your specific venue, and how personalized playlists come
                 together before the day.
               </p>
               <p className="mt-4 text-lg leading-8 text-white/70">
-                If Howe Sound DJ is the right fit, the next step is the same one the site has always pointed to: connect,
-                talk it through, and build a plan that matches your wedding, not a generic package grid.
+                If Howe Sound DJ feels like the right direction, the next step is the same one the site has always
+                pointed to: connect, talk it through, and build a plan that matches your wedding, not a generic package
+                grid.
               </p>
             </div>
             <div className="premium-surface rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-8">
@@ -242,18 +244,21 @@ export default function ContactPage() {
         </div>
       </SectionReveal>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 pb-24 lg:px-8">
+      <SectionReveal
+        as="section"
+        className={`${CTA_FINALE_SECTION_TOP} mx-auto max-w-6xl px-6 pb-24 lg:px-8`}
+      >
         <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               Ready when you are
             </div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              Consult first when you&apos;re ready to talk — or check your date first.
+              Consult first when you&apos;re ready to talk, or check your date first.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Pick what fits where you are in planning: book a conversation, skim packages if helpful, or run your date
-              through the calendar above.
+              Pick what matches where you are in planning: book a conversation, skim packages if helpful, or run your
+              date through the calendar above.
             </p>
             <div className="mt-8 max-w-xl space-y-5">
               <div>
@@ -261,7 +266,7 @@ export default function ContactPage() {
                   surface="contact_page_primary"
                   className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
                 >
-                  Check My Date &amp; Fit (15 min)
+                  Check My Date
                 </BookConsultTrackedLink>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; No commitment

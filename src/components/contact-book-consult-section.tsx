@@ -29,7 +29,7 @@ export function ContactBookConsultSection() {
             surface="contact_page_primary"
             className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
           >
-            Check My Date &amp; Fit (15 min)
+            Check My Date
           </BookConsultTrackedLink>
         </div>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/60">
@@ -39,15 +39,15 @@ export function ContactBookConsultSection() {
         <ul className="mt-8 max-w-xl space-y-3 text-base leading-relaxed text-white/70">
           <li className="flex gap-3">
             <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300/90" aria-hidden />
-            No pressure — this is just a conversation
+            No pressure, this is just a conversation
           </li>
           <li className="flex gap-3">
             <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300/90" aria-hidden />
-            No commitment — decide after the call
+            No commitment, decide after the call
           </li>
           <li className="flex gap-3">
             <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300/90" aria-hidden />
-            No awkward sales pitch — just clarity
+            No awkward sales pitch, just clarity
           </li>
         </ul>
 
@@ -66,7 +66,7 @@ export function ContactBookConsultSection() {
             </li>
             <li className="flex gap-3">
               <span className="text-amber-300/80">•</span>
-              Whether we&apos;re a great fit
+              Whether we&apos;re pointing in the same direction for your wedding vision
             </li>
           </ul>
         </div>

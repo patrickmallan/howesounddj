@@ -9,6 +9,7 @@ import { ImageSlot } from "@/components/image-slot";
 import { JsonLd } from "@/components/json-ld";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { vancouverWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
+import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
 const ogDesc =
   "For Vancouver couples marrying in Squamish, Whistler, or the Sea-to-Sky: rooted in Squamish, corridor-savvy logistics, personalized music, and planning that stays ahead of the day.";
@@ -55,7 +56,7 @@ export default function VancouverWeddingDjPage() {
     },
     {
       title: "Connection, not just another booking",
-      text: "Fit matters when details stack fast: your story, your energy, your people, especially for mountain weddings where the guest list often travels together."
+      text: "Connection matters when details stack fast: your story, your energy, your people, especially for mountain weddings where the guest list often travels together."
     },
     {
       title: "One cohesive arc",
@@ -70,7 +71,7 @@ export default function VancouverWeddingDjPage() {
     },
     {
       title: "Whistler & the Sea-to-Sky",
-      text: "From corridor celebrations to Whistler receptions: sound and pacing that fit mountain venues and guests who made the drive together."
+      text: "From corridor celebrations to Whistler receptions: sound and pacing tuned to mountain venues and guests who made the drive together."
     },
     {
       title: "Close-to-home destination",
@@ -104,7 +105,7 @@ export default function VancouverWeddingDjPage() {
     },
     {
       q: "Is it better to hire a local Squamish wedding DJ or a Vancouver wedding DJ for a Squamish wedding?",
-      a: "It depends on fit and experience, not the address on a business card. What matters is whether your DJ knows mountain venues, communicates clearly, and builds music around your crowd. Howe Sound DJ is rooted in Squamish with corridor-wide experience, which is why couples planning Sea-to-Sky weddings often lead with local familiarity and fewer logistics unknowns."
+      a: "It depends on experience and communication style, not the address on a business card. What matters is whether your DJ knows mountain venues, communicates clearly, and builds music around your crowd. Howe Sound DJ is rooted in Squamish with corridor-wide experience, which is why couples planning Sea-to-Sky weddings often lead with local familiarity and fewer logistics unknowns."
     },
     {
       q: "Do you provide ceremony and reception DJ services?",
@@ -120,7 +121,7 @@ export default function VancouverWeddingDjPage() {
     },
     {
       q: "How do we check availability and pricing?",
-      a: "Packages outline what each tier includes; exact pricing is confirmed after your date, venue, and coverage are clear, the same transparent path as any Sea-to-Sky booking. Comparing quotes? Weigh total fit: travel, experience in your venue type, and whether the music plan is truly yours. Start with an inquiry and, if the fit is right, a consultation."
+      a: "Packages outline what each tier includes; exact pricing is confirmed after your date, venue, and coverage are clear, the same transparent path as any Sea-to-Sky booking. Comparing quotes? Weigh travel, experience in your venue type, and whether the music plan is truly yours. Start with an inquiry and add a consultation when the direction feels clear."
     }
   ];
 
@@ -174,7 +175,7 @@ export default function VancouverWeddingDjPage() {
             <div className="mt-8 max-w-xl space-y-4">
               <div>
                 <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date & Fit
+                  Check My Date
                 </BookConsultTrackedLink>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; No commitment
@@ -249,7 +250,7 @@ export default function VancouverWeddingDjPage() {
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Where this lands</div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Squamish, Whistler, and the Sea-to-Sky, not a Vancouver storefront</h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Howe Sound DJ is based in Squamish and works across the corridor. You do not need a fake Vancouver address to get a better fit. You need someone who knows how these weddings actually run. That is the through-line whether your guests are mostly local or flying in from across the country.
+              Howe Sound DJ is based in Squamish and works across the corridor. You do not need a fake Vancouver address to feel like you hired the right corridor specialist. You need someone who knows how these weddings actually run. That is the through-line whether your guests are mostly local or flying in from across the country.
             </p>
           </div>
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -337,20 +338,20 @@ export default function VancouverWeddingDjPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
+      <section className={`${CTA_FINALE_SECTION_TOP} mx-auto max-w-6xl px-6 pb-20 lg:px-8`}>
         <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Lock in fit</div>
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Lock in the plan</div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
               Vancouver couples: let’s match music, date, and Sea-to-Sky logistics
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Check your date first for your Squamish, Whistler, or corridor wedding, layer in packages when you want structure, or lead with Check My Date & Fit (15 min). Either way, the goal is fit: your story, your crowd, your night.
+              Check your date first for your Squamish, Whistler, or corridor wedding, layer in packages when you want structure, or lead with Check My Date. Either way, the goal is your story, your crowd, your night.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
                 <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date & Fit
+                  Check My Date
                 </BookConsultTrackedLink>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; No commitment

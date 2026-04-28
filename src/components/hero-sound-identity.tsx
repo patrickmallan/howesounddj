@@ -1,12 +1,12 @@
 /**
  * Visual-only “sound identity” for the hero: a soft waveform motif.
- * No audio, no autoplay — artistic hint of musicality only.
+ * No audio, no autoplay, artistic hint of musicality only.
  *
  * Layering suggests bass-led groove + lighter harmonic motion; motion is 128 BPM–locked in CSS.
  */
 type HeroSoundIdentityProps = {
   /**
-   * `groove` / `anchor` — four-on-the-floor motion (128 BPM), shared between hero + brand sections.
+   * `groove` / `anchor`, four-on-the-floor motion (128 BPM), shared between hero + brand sections.
    * `anchor` only changes layout (narrower, centered under “Every time.”).
    */
   variant?: "default" | "groove" | "anchor";
@@ -41,7 +41,7 @@ export function HeroSoundIdentity({
         className="hero-sound-identity-svg w-full text-amber-300/50"
         preserveAspectRatio="xMidYMid meet"
       >
-        {/* Back: soft echo — damped contour, thinnest */}
+        {/* Back: soft echo, damped contour, thinnest */}
         <g className="hero-sound-wave hero-sound-wave--back">
           <g className="hero-sound-flow hero-sound-flow--back">
             <path

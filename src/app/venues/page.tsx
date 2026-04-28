@@ -7,12 +7,13 @@ import {
 } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 import { JsonLd } from "@/components/json-ld";
 import { VENUE_PAGES } from "@/config/venue-pages";
 import { venuesHubBreadcrumbJsonLd } from "@/lib/json-ld";
 
 const hubDesc =
-  "Sea-to-Sky and Squamish wedding venue guides: planning-focused DJ context for mountain, farm, brewery, and corridor celebrations—without generic filler. Howe Sound DJ.";
+  "Sea-to-Sky and Squamish wedding venue guides: planning-focused DJ context for mountain, farm, brewery, and corridor celebrations, without generic filler. Howe Sound DJ.";
 
 export const metadata: Metadata = {
   title: "Wedding Venues · Sea-to-Sky & Squamish DJ Planning",
@@ -46,8 +47,8 @@ export default function VenuesHubPage() {
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Sea-to-Sky & Squamish</div>
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">Wedding venue guides built for real planning decisions</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              These pages are not generic “SEO shells.” Each guide connects a named venue to the kinds of music, pacing, and sound-thinking questions that matter for Sea-to-Sky weddings—from
-              mountaintop receptions to downtown Squamish gatherings—then routes you into the same availability and inquiry flow as the rest of the site.
+              These pages are not generic “SEO shells.” Each guide connects a named venue to the kinds of music, pacing, and sound-thinking questions that matter for Sea-to-Sky weddings, from
+              mountaintop receptions to downtown Squamish gatherings, then routes you into the same availability and inquiry flow as the rest of the site.
             </p>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
               Howe Sound DJ is wedding-focused and Squamish-rooted. Venue guides use confident local language and planning intelligence, not invented operational claims about private venue
@@ -56,7 +57,7 @@ export default function VenuesHubPage() {
             <div className="mt-8 max-w-xl space-y-4">
               <div>
                 <BookConsultTrackedLink surface="venues_hub" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date & Fit
+                  Check My Date
                 </BookConsultTrackedLink>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; No commitment
@@ -87,7 +88,7 @@ export default function VenuesHubPage() {
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Browse by venue</div>
           <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Corridor venues and Squamish favourites</h2>
           <p className="mt-4 text-lg leading-8 text-white/70">
-            Open a guide for planning context tailored to the setting—then check your date first when you are ready. For questions that apply across venues, the{" "}
+            Open a guide for planning context tailored to the setting, then check your date first when you are ready. For questions that apply across venues, the{" "}
             <Link href="/faq" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               FAQ
             </Link>{" "}
@@ -132,19 +133,22 @@ export default function VenuesHubPage() {
         </StaggerGroup>
       </SectionReveal>
 
-      <SectionReveal as="section" className="border-t border-white/10 bg-white/[0.03]">
+      <SectionReveal
+        as="section"
+        className={`${CTA_FINALE_SECTION_TOP} border-t border-white/10 bg-white/[0.03]`}
+      >
         <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
           <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
             <div className="mx-auto w-full max-w-3xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Next step</div>
-              <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Your next move: fit, your date, or both</h2>
+              <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Your next move: your date, your details, or both</h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
-                Venue guides help you think in advance; the contact flow is where date check, fit, and coverage come together—the same path used across the site.
+                Venue guides help you think in advance; the contact flow is where availability, your plans, and coverage come together, the same path used across the site.
               </p>
               <div className="mt-8 max-w-xl space-y-4">
                 <div>
                   <BookConsultTrackedLink surface="venues_hub" className={bookConsultPrimaryButtonClassName}>
-                    Check My Date & Fit
+                    Check My Date
                   </BookConsultTrackedLink>
                   <p className="mt-3 text-sm leading-relaxed text-white/60">
                     15 minutes &bull; No pressure &bull; No commitment

@@ -38,7 +38,7 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-6 py-4 lg:px-8">
         <Link
           href="/"
-          className="min-w-0 text-left transition hover:opacity-90"
+          className="mr-4 min-w-[10rem] shrink-0 text-left transition hover:opacity-90 md:min-w-[12rem]"
           aria-label="Howe Sound DJ home"
         >
           <div className="text-lg font-semibold tracking-[0.2em] uppercase text-amber-300">Howe Sound DJ</div>
@@ -46,7 +46,7 @@ export function SiteHeader() {
         </Link>
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <nav
-            className="hidden flex-wrap items-center justify-end gap-x-6 gap-y-2 text-sm text-white/80 md:flex"
+            className="hidden max-w-none flex-wrap items-center justify-end gap-x-5 gap-y-2 text-sm text-white/80 xl:flex xl:gap-x-6"
             aria-label="Primary"
           >
             {navLinks.map((item) => {
@@ -67,7 +67,7 @@ export function SiteHeader() {
               );
             })}
           </nav>
-          <details ref={mobileMenuDetailsRef} className="md:hidden">
+          <details ref={mobileMenuDetailsRef} className="xl:hidden">
             <summary className="flex min-h-[44px] min-w-[44px] cursor-pointer list-none items-center justify-center rounded-full border border-white/15 px-3 text-sm text-white/85 outline-none transition hover:border-white/25 [&::-webkit-details-marker]:hidden">
               Menu
             </summary>

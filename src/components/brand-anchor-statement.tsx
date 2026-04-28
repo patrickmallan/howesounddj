@@ -2,7 +2,7 @@ import { HeroSoundIdentity } from "@/components/hero-sound-identity";
 import { SectionReveal } from "@/components/motion";
 
 /**
- * Single high-confidence brand anchor — memorable midpoint on the homepage.
+ * Single high-confidence brand anchor, memorable midpoint on the homepage.
  */
 export function BrandAnchorStatement() {
   return (
@@ -29,7 +29,7 @@ export function BrandAnchorStatement() {
         </h2>
         <HeroSoundIdentity variant="anchor" />
         <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-white/45 md:mt-10 md:text-lg">
-          Music, room, and crowd—read with intention, not left to chance.
+          Music, room, and crowd, read with intention, not left to chance.
         </p>
       </div>
     </SectionReveal>

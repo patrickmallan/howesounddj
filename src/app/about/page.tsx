@@ -8,6 +8,7 @@ import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tr
 import { ImageSlot } from "@/components/image-slot";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
+import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
 export const metadata: Metadata = {
   title: { absolute: "About Howe Sound DJ | Squamish Wedding DJ" },
@@ -210,14 +211,17 @@ export default function AboutPage() {
         </div>
       </SectionReveal>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+      <SectionReveal
+        as="section"
+        className={`${CTA_FINALE_SECTION_TOP} mx-auto max-w-6xl px-6 py-20 lg:px-8`}
+      >
         <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               Next step
             </div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              If the fit feels right, let’s talk about your wedding.
+              If it feels aligned, let&apos;s talk about your wedding.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
               Send your date, venue, and how you want the night to feel. I will follow up with availability and a clear path to a consultation, no pressure, no generic pitch.
@@ -225,7 +229,7 @@ export default function AboutPage() {
             <div className="mt-8 max-w-xl space-y-4">
               <div>
                 <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date & Fit
+                  Check My Date
                 </BookConsultTrackedLink>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; No commitment

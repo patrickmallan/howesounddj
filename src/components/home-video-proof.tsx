@@ -94,7 +94,7 @@ export function HomeVideoProof() {
         <div className="mt-8 max-w-xl space-y-4">
           <div>
             <BookConsultTrackedLink surface="inline" className={bookConsultPrimaryButtonClassName}>
-              Check My Date & Fit
+              Check My Date
             </BookConsultTrackedLink>
             <p className="mt-3 text-sm leading-relaxed text-white/60">
               15 minutes &bull; No pressure &bull; No commitment

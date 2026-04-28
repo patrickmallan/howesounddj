@@ -1,5 +1,5 @@
 /**
- * GA4 custom events — only fire when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set and gtag is loaded.
+ * GA4 custom events, only fire when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set and gtag is loaded.
  * Event names are stable for reports and explorations.
  */
 

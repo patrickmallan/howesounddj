@@ -18,7 +18,7 @@ type SectionRevealProps = {
 
 /**
  * Section-level reveal: subtle fade + short upward travel. Respects reduced motion.
- * Use for major blocks below the fold — not for hero first paint.
+ * Use for major blocks below the fold, not for hero first paint.
  */
 export function SectionReveal({
   as = "div",

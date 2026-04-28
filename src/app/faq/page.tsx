@@ -7,6 +7,7 @@ import {
 } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 import { JsonLd } from "@/components/json-ld";
 import { faqPageJsonLd } from "@/lib/json-ld";
 
@@ -159,11 +160,11 @@ export default function FaqPage() {
       eyebrow: "Enhancements + Add-ons",
       title: "Optional layers when you want more than the core package.",
         intro:
-        "Custom services are framed as event enhancements: additional lighting, extra sound equipment, or personalized touches that elevate the celebration.",
+        "Custom services include event enhancements such as extra lighting or sound tailored to how you want guests to hear and remember the celebration.",
       items: [
         {
           q: "What add-ons or enhancements are available?",
-          a: "Options include additional dance floor lighting, extra speaker setups, video edits, photo booth add-on, silent disco setup, audio messages from absent loved ones, and custom-mixed tracks for grand entrances and formal dances, discussed during planning so they fit your timeline and vendors."
+          a: "Options include additional dance floor lighting, extra speaker setups, video edits, photo booth add-on, silent disco setup, audio messages from absent loved ones, and custom-mixed tracks for grand entrances and formal dances, discussed during planning so they align with your timeline and vendors."
         },
         {
           q: "Is lighting or extra gear always required?",
@@ -180,7 +181,7 @@ export default function FaqPage() {
     },
     {
       title: "Personalized, not prefab",
-      text: "Tailoring every aspect of the DJ service to fit the vibe of your wedding and the music you love, from elegant ceremonies to high-energy receptions."
+      text: "Tailoring every aspect of the DJ service to match the vibe of your wedding and the music you love, from elegant ceremonies to high-energy receptions."
     },
     {
       title: "Sound treated like production",
@@ -220,7 +221,7 @@ export default function FaqPage() {
             <div className="mt-8 max-w-xl space-y-4">
               <div>
                 <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date & Fit
+                  Check My Date
                 </BookConsultTrackedLink>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; No commitment
@@ -251,7 +252,7 @@ export default function FaqPage() {
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
               The through-line is consistent: DJ support includes helping the night feel smooth and well-paced; sound is managed from positioning speakers through the last dance; and couples book Patrick because the experience feels{" "}
-              <span className="text-white/85">personalized, local, and dialed-in</span>, not like a one-size-fits-all playlist.
+              <span className="text-white/85">personalized, local, and dialed-in</span>, not like a generic playlist.
             </p>
           </div>
         </div>
@@ -307,7 +308,10 @@ export default function FaqPage() {
         </StaggerGroup>
       </SectionReveal>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
+      <SectionReveal
+        as="section"
+        className={`${CTA_FINALE_SECTION_TOP} mx-auto max-w-6xl px-6 pb-20 lg:px-8`}
+      >
         <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
@@ -324,12 +328,12 @@ export default function FaqPage() {
               <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 venue guides
               </Link>{" "}
-              outline planning context for named Sea-to-Sky and Squamish settings—without replacing a real conversation about your day.
+              outline planning context for named Sea-to-Sky and Squamish settings, without replacing a real conversation about your day.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
                 <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date & Fit
+                  Check My Date
                 </BookConsultTrackedLink>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; No commitment

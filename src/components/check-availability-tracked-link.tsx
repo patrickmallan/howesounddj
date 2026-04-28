@@ -24,14 +24,14 @@ type Props = {
   href?: string;
   /**
    * `pill` (default): inline-flex centering for rounded CTAs.
-   * `card`: full-width explore tiles — omit inline-flex; use `text-left` with caller `flex flex-col`.
+   * `card`: full-width explore tiles, omit inline-flex; use `text-left` with caller `flex flex-col`.
    */
   visualLayout?: "pill" | "card";
 };
 
 const DEFAULT_DESTINATION = "/contact";
 
-/** When already on `/contact`, Next.js client navigation often does not scroll to the hash — handle explicitly. */
+/** When already on `/contact`, Next.js client navigation often does not scroll to the hash, handle explicitly. */
 function hashIdForSamePageScroll(href: string, pathname: string): string | null {
   if (href.startsWith("#") && href.length > 1) {
     return href.slice(1);
@@ -40,7 +40,7 @@ function hashIdForSamePageScroll(href: string, pathname: string): string | null 
   if (m && pathname === "/contact") {
     return m[1];
   }
-  // Default `/contact` links (header/footer) on the contact page: same-route navigation is a no-op — scroll to availability.
+  // Default `/contact` links (header/footer) on the contact page: same-route navigation is a no-op, scroll to availability.
   if (href === "/contact" && pathname === "/contact") {
     return "availability";
   }

@@ -6,6 +6,7 @@ import {
 } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
 export const metadata: Metadata = {
   title: "Wedding DJ Reviews",
@@ -137,7 +138,7 @@ export default function ReviewsPage() {
             <div className="mt-8 max-w-xl space-y-4">
               <div>
                 <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date & Fit
+                  Check My Date
                 </BookConsultTrackedLink>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; No commitment
@@ -163,12 +164,12 @@ export default function ReviewsPage() {
             <div className="max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/90">Proof-first</p>
               <p className="mt-2 text-base leading-relaxed text-white/75">
-                This page leads with named couples and verbatim quotes, not lifestyle stock or anonymous five-star blurbs. Read the cards below, then check your date first—or start with Check My Date & Fit (15 min) if you want clarity on fit sooner.
+                This page leads with named couples and verbatim quotes, not lifestyle stock or anonymous five-star blurbs. Read the cards below, then check your date first, or start with Check My Date if you want clarity on direction sooner.
               </p>
             </div>
             <div className="flex shrink-0 flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
               <BookConsultTrackedLink surface="inline" className={bookConsultPrimaryButtonClassName}>
-                Check My Date & Fit
+                Check My Date
               </BookConsultTrackedLink>
               <CheckAvailabilityTrackedLink surface="inline" className={bookConsultOutlineButtonClassName} />
               <p className="w-full basis-full text-xs leading-relaxed text-white/50 sm:w-auto sm:basis-auto sm:text-right">
@@ -319,7 +320,10 @@ export default function ReviewsPage() {
         </div>
       </SectionReveal>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
+      <SectionReveal
+        as="section"
+        className={`${CTA_FINALE_SECTION_TOP} mx-auto max-w-6xl px-6 pb-20 lg:px-8`}
+      >
         <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
@@ -329,12 +333,12 @@ export default function ReviewsPage() {
               Ready to see if your date is open?
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Send your date, venue, and wedding vision. The next step is a conversation about fit and availability.
+              Send your date, venue, and wedding vision. The next step is a conversation about availability and planning.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
                 <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date & Fit
+                  Check My Date
                 </BookConsultTrackedLink>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; No commitment

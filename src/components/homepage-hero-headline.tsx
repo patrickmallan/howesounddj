@@ -28,7 +28,7 @@ export function HomepageHeroHeadline({ headlines }: Props) {
       if (sessionStorage.getItem(dedupeKey)) return;
       sessionStorage.setItem(dedupeKey, "1");
     } catch {
-      /* private mode / blocked storage — still track once below */
+      /* private mode / blocked storage, still track once below */
     }
 
     trackEvent(ANALYTICS_EVENTS.homepageHeadlineView, {

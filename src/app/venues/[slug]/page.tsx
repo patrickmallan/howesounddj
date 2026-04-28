@@ -8,6 +8,7 @@ import {
 } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { SectionReveal } from "@/components/motion";
+import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 import { JsonLd } from "@/components/json-ld";
 import { getVenueBySlug, getAllVenueSlugs } from "@/config/venue-pages";
 import { venueDetailBreadcrumbJsonLd, venueWeddingDjServiceJsonLd } from "@/lib/json-ld";
@@ -52,7 +53,7 @@ export default async function VenueDetailPage({ params }: Props) {
 
   const displayName = venue.name;
 
-  const serviceDescription = `Wedding DJ support for ceremonies and receptions when you are planning around ${venue.name} (${venue.locationLabel}). Music, pacing, and planning communication focused on Sea-to-Sky weddings—without claiming venue exclusivity.`;
+  const serviceDescription = `Wedding DJ support for ceremonies and receptions when you are planning around ${venue.name} (${venue.locationLabel}). Music, pacing, and planning communication focused on Sea-to-Sky weddings, without claiming venue exclusivity.`;
 
   return (
     <main className="min-h-screen bg-neutral-950 text-white">
@@ -95,7 +96,7 @@ export default async function VenueDetailPage({ params }: Props) {
             <div className="mt-8 max-w-xl space-y-4">
               <div>
                 <BookConsultTrackedLink surface="venue_hero" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date & Fit
+                  Check My Date
                 </BookConsultTrackedLink>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; No commitment
@@ -120,7 +121,7 @@ export default async function VenueDetailPage({ params }: Props) {
       <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Why this guide exists</div>
-          <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Fit, flow, and atmosphere—before the playlist talk</h2>
+          <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Flow, atmosphere, and pacing before the playlist talk</h2>
           <div className="mt-6 space-y-4 text-lg leading-8 text-white/70">
             {venue.whyFit.map((p, i) => (
               <p key={i}>{p}</p>
@@ -185,19 +186,22 @@ export default async function VenueDetailPage({ params }: Props) {
         </div>
       </SectionReveal>
 
-      <SectionReveal as="section" className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent">
+      <SectionReveal
+        as="section"
+        className={`${CTA_FINALE_SECTION_TOP} border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent`}
+      >
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
             <div className="mx-auto w-full max-w-3xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Next step</div>
-              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Check fit, check your date, or do both—in whatever order suits you</h2>
+              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Check your date, plan the conversation, or do both in whatever order suits you</h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
-                The same contact flow powers every venue guide: calendar check when you want it first, clarity on fit when you&apos;re ready—and your details whenever you prefer to send them.
+                The same contact flow powers every venue guide: calendar check when you want it first, alignment on availability and planning when you&apos;re ready, and your details whenever you prefer to send them.
               </p>
               <div className="mt-8 max-w-xl space-y-4">
                 <div>
                   <BookConsultTrackedLink surface="venue_page_cta" className={bookConsultPrimaryButtonClassName}>
-                    Check My Date & Fit
+                    Check My Date
                   </BookConsultTrackedLink>
                   <p className="mt-3 text-sm leading-relaxed text-white/60">
                     15 minutes &bull; No pressure &bull; No commitment

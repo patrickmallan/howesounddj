@@ -1,4 +1,4 @@
-/** Homepage headline A/B/C experiment — client-only (localStorage). */
+/** Homepage headline A/B/C experiment, client-only (localStorage). */
 
 export const HOMEPAGE_VARIANT_STORAGE_KEY = "hsdj_home_variant";
 
@@ -23,7 +23,7 @@ export function getHomepageVariant(): HeadlineVariant {
 }
 
 /**
- * Reads assigned variant without creating one — for analytics on /contact etc.
+ * Reads assigned variant without creating one, for analytics on /contact etc.
  * If the user never hit the homepage experiment, returns `undefined`.
  */
 export function getStoredHeadlineVariant(): HeadlineVariant | undefined {
@@ -37,7 +37,7 @@ export function getStoredHeadlineVariant(): HeadlineVariant | undefined {
   }
 }
 
-/** Merge into GA event params — omits key when no variant stored. */
+/** Merge into GA event params, omits key when no variant stored. */
 export function headlineVariantPayload(): { headline_variant?: string } {
   const v = getStoredHeadlineVariant();
   return v ? { headline_variant: v } : {};

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { BookConsultTrackedLink } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
-/** Primary sitelink targets — consistent anchor text site-wide. */
+/** Primary sitelink targets, consistent anchor text site-wide. */
 export const explorePrimaryLinks = [
   { href: "/weddings", label: "Wedding DJ Services" },
   { href: "/packages", label: "Wedding DJ Packages" },
@@ -15,7 +15,7 @@ export const exploreSecondaryLinks = [
   { href: "/venues", label: "Venue guides" },
 ] as const;
 
-/** Shared layout for homepage Explore tiles — left-aligned labels, full-width cells. */
+/** Shared layout for homepage Explore tiles, left-aligned labels, full-width cells. */
 const exploreCardBase =
   "premium-surface flex h-full min-h-[5.5rem] w-full min-w-0 flex-col justify-center rounded-2xl px-6 py-5 text-left text-base font-semibold transition";
 
@@ -55,7 +55,7 @@ export function HomepageExploreSection() {
               visualLayout="card"
               className={`${exploreCardBase} border border-amber-300/25 bg-amber-300/10 text-amber-100 hover:border-amber-300/40 hover:bg-amber-300/15`}
             >
-              Check My Date & Fit
+              Check My Date
             </BookConsultTrackedLink>
           </li>
           <li className="min-w-0">
@@ -81,7 +81,7 @@ export function HomepageExploreSection() {
   );
 }
 
-/** Site-wide strip above footer — reinforces internal link importance on every page. */
+/** Site-wide strip above footer, reinforces internal link importance on every page. */
 export function ExploreSiteLinksStrip() {
   return (
     <div className="border-t border-white/10 bg-neutral-950/95">
@@ -103,7 +103,7 @@ export function ExploreSiteLinksStrip() {
             </Link>
           ))}
           <BookConsultTrackedLink surface="footer" className="transition hover:text-amber-200/95">
-            Check My Date & Fit
+            Check My Date
           </BookConsultTrackedLink>
           <CheckAvailabilityTrackedLink
             surface="footer"

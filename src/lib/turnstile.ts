@@ -1,4 +1,4 @@
-/** Cloudflare Turnstile siteverify — https://developers.cloudflare.com/turnstile/get-started/server-side-validation/ */
+/** Cloudflare Turnstile siteverify, https://developers.cloudflare.com/turnstile/get-started/server-side-validation/ */
 export async function verifyTurnstileToken(secret: string, token: string): Promise<boolean> {
   if (!token.trim()) return false;
   const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {

@@ -18,11 +18,11 @@ export type BookConsultSurface =
   /** Primary Book a Consult CTAs on `/contact` (hero and consult-first panel). */
   | "contact_page_primary";
 
-/** Primary CTA — amber pill aligned with Check Availability styling across the site. */
+/** Primary CTA, amber pill aligned with Check Availability styling across the site. */
 export const bookConsultPrimaryButtonClassName =
   `${CTA_PILL_FLEX_CENTER} min-h-[44px] rounded-full bg-amber-300 px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]`;
 
-/** Secondary CTA — matches outline pills used next to primary Check Availability across the site. */
+/** Secondary CTA, matches outline pills used next to primary Check Availability across the site. */
 export const bookConsultOutlineButtonClassName =
   `${CTA_PILL_FLEX_CENTER} min-h-[44px] rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5`;
 
@@ -30,7 +30,7 @@ type Props = {
   surface: BookConsultSurface;
   className?: string;
   children?: ReactNode;
-  /** See `CheckAvailabilityTrackedLink` — use `card` for homepage Explore tiles. */
+  /** See `CheckAvailabilityTrackedLink`, use `card` for homepage Explore tiles. */
   visualLayout?: "pill" | "card";
 };
 
@@ -54,7 +54,7 @@ export function BookConsultTrackedLink({ surface, className, children, visualLay
       className={merged}
       onClick={handleClick}
     >
-      {children ?? "Check My Date & Fit"}
+      {children ?? "Check My Date"}
     </a>
   );
 }

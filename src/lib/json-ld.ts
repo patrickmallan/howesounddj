@@ -1,4 +1,4 @@
-/** Canonical site origin — keep in sync with `metadataBase` in `src/app/layout.tsx`. */
+/** Canonical site origin, keep in sync with `metadataBase` in `src/app/layout.tsx`. */
 export const SITE_ORIGIN = "https://www.howesounddj.com";
 
 const ORG_DESCRIPTION =
@@ -6,7 +6,7 @@ const ORG_DESCRIPTION =
 
 /**
  * Sitewide Organization (Squamish-rooted, service-area). No street address on site.
- * No sameAs — no verified social profile URLs in the codebase. No ratings or awards.
+ * No sameAs, no verified social profile URLs in the codebase. No ratings or awards.
  */
 export function organizationJsonLd(): Record<string, unknown> {
   return {
