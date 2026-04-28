@@ -174,11 +174,9 @@ export default function VancouverWeddingDjPage() {
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date
-                </BookConsultTrackedLink>
+                <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName} />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; No commitment
+                  15 minutes &bull; No pressure &bull; Just clarity
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
@@ -346,15 +344,13 @@ export default function VancouverWeddingDjPage() {
               Vancouver couples: let’s match music, date, and Sea-to-Sky logistics
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Check your date first for your Squamish, Whistler, or corridor wedding, layer in packages when you want structure, or lead with Check My Date. Either way, the goal is your story, your crowd, your night.
+              Check your date first for your Squamish, Whistler, or corridor wedding, layer in packages when you want structure, or start with Book a Consult. Either way, the goal is your story, your crowd, your night.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date
-                </BookConsultTrackedLink>
+                <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName} />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; No commitment
+                  15 minutes &bull; No pressure &bull; Just clarity
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">

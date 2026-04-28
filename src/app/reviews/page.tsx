@@ -137,11 +137,9 @@ export default function ReviewsPage() {
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date
-                </BookConsultTrackedLink>
+                <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName} />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; No commitment
+                  15 minutes &bull; No pressure &bull; Just clarity
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
@@ -164,16 +162,14 @@ export default function ReviewsPage() {
             <div className="max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/90">Proof-first</p>
               <p className="mt-2 text-base leading-relaxed text-white/75">
-                This page leads with named couples and verbatim quotes, not lifestyle stock or anonymous five-star blurbs. Read the cards below, then check your date first, or start with Check My Date if you want clarity on direction sooner.
+                This page leads with named couples and verbatim quotes, not lifestyle stock or anonymous five-star blurbs. Read the cards below, then check your date first, or start with Book a Consult if you want clarity on direction sooner.
               </p>
             </div>
             <div className="flex shrink-0 flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
-              <BookConsultTrackedLink surface="inline" className={bookConsultPrimaryButtonClassName}>
-                Check My Date
-              </BookConsultTrackedLink>
+              <BookConsultTrackedLink surface="inline" className={bookConsultPrimaryButtonClassName} />
               <CheckAvailabilityTrackedLink surface="inline" className={bookConsultOutlineButtonClassName} />
               <p className="w-full basis-full text-xs leading-relaxed text-white/50 sm:w-auto sm:basis-auto sm:text-right">
-                15 minutes &bull; No pressure &bull; No commitment
+                15 minutes &bull; No pressure &bull; Just clarity
               </p>
             </div>
           </div>
@@ -337,11 +333,9 @@ export default function ReviewsPage() {
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date
-                </BookConsultTrackedLink>
+                <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName} />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; No commitment
+                  15 minutes &bull; No pressure &bull; Just clarity
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">

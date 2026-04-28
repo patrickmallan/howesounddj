@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookConsultTrackedLink } from "@/components/book-consult-tracked-link";
+import { BookConsultTrackedLink, bookConsultPrimaryButtonClassName } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
 /** Primary sitelink targets, consistent anchor text site-wide. */
@@ -55,7 +55,7 @@ export function HomepageExploreSection() {
               visualLayout="card"
               className={`${exploreCardBase} border border-amber-300/25 bg-amber-300/10 text-amber-100 hover:border-amber-300/40 hover:bg-amber-300/15`}
             >
-              Check My Date
+              Book a Consult
             </BookConsultTrackedLink>
           </li>
           <li className="min-w-0">
@@ -102,9 +102,10 @@ export function ExploreSiteLinksStrip() {
               {item.label}
             </Link>
           ))}
-          <BookConsultTrackedLink surface="footer" className="transition hover:text-amber-200/95">
-            Check My Date
-          </BookConsultTrackedLink>
+          <BookConsultTrackedLink
+            surface="footer"
+            className={`${bookConsultPrimaryButtonClassName} shrink-0 text-xs sm:text-sm`}
+          />
           <CheckAvailabilityTrackedLink
             surface="footer"
             className="transition hover:text-amber-200/95"

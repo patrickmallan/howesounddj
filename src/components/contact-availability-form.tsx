@@ -3,6 +3,7 @@
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Script from "next/script";
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
+import { bookConsultPrimaryButtonClassName } from "@/components/book-consult-tracked-link";
 import { CONSULT_CALENDLY_URL } from "@/lib/consult-calendly";
 import { headlineVariantPayload } from "@/lib/experiment";
 import type { ContactApiResponse } from "@/types/contact-api";
@@ -348,8 +349,6 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
 
   const consultButtonClass =
     "inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-amber-300/40 hover:bg-white/5";
-  const consultButtonPrimaryOutline =
-    "inline-flex items-center justify-center rounded-full border border-amber-300/50 bg-amber-300/10 px-6 py-3 text-center text-sm font-semibold text-amber-200 transition hover:border-amber-300 hover:bg-amber-300/15";
 
   const dateInputClass =
     "rounded-xl border border-white/15 bg-neutral-950 px-3 py-3 text-center text-white outline-none focus:border-amber-300/50 tabular-nums";
@@ -399,7 +398,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
           href="#book-consult"
           className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
         >
-          Check My Date
+          Book a Consult
         </a>
         <span className="text-white/45">, or check your date first below.</span>{" "}
         <span className="text-white/45">
@@ -495,10 +494,10 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               href={CONSULT_CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={consultButtonPrimaryOutline}
+              className={bookConsultPrimaryButtonClassName}
               onClick={trackCalendlyClick}
             >
-              Check My Date
+              Book a Consult
             </a>
             <button
               type="button"
@@ -529,10 +528,10 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               href={CONSULT_CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={consultButtonClass}
+              className={bookConsultPrimaryButtonClassName}
               onClick={trackCalendlyClick}
             >
-              Check My Date
+              Book a Consult
             </a>
           </div>
         </div>
@@ -678,7 +677,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               Turnstile (spam protection) is not configured for this deployment. Add{" "}
               <code className="rounded bg-white/10 px-1 py-0.5 text-xs text-white/90">TURNSTILE_SITE_KEY</code> or{" "}
               <code className="rounded bg-white/10 px-1 py-0.5 text-xs text-white/90">NEXT_PUBLIC_TURNSTILE_SITE_KEY</code> in
-              your host env, redeploy, or schedule Check My Date from the consult section below.
+              your host env, redeploy, or book a consult from the consult section below.
             </p>
           )}
 

@@ -398,7 +398,7 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
           <div ref={turnstileContainerRef} className="min-h-[65px]" />
         ) : (
           <p className="text-sm text-white/45">
-            Spam protection is not configured. Use the availability section above or schedule Check My Date
+            Spam protection is not configured. Use the availability section above or book a consult
             from the consult section higher on this page.
           </p>
         )}

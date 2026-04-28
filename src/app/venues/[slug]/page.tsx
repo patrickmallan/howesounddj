@@ -95,11 +95,9 @@ export default async function VenueDetailPage({ params }: Props) {
             <p className="mt-6 text-lg leading-8 text-white/70">{venue.shortSummary}</p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="venue_hero" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date
-                </BookConsultTrackedLink>
+                <BookConsultTrackedLink surface="venue_hero" className={bookConsultPrimaryButtonClassName} />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; No commitment
+                  15 minutes &bull; No pressure &bull; Just clarity
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
@@ -200,11 +198,9 @@ export default async function VenueDetailPage({ params }: Props) {
               </p>
               <div className="mt-8 max-w-xl space-y-4">
                 <div>
-                  <BookConsultTrackedLink surface="venue_page_cta" className={bookConsultPrimaryButtonClassName}>
-                    Check My Date
-                  </BookConsultTrackedLink>
+                  <BookConsultTrackedLink surface="venue_page_cta" className={bookConsultPrimaryButtonClassName} />
                   <p className="mt-3 text-sm leading-relaxed text-white/60">
-                    15 minutes &bull; No pressure &bull; No commitment
+                    15 minutes &bull; No pressure &bull; Just clarity
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-3 gap-y-3">

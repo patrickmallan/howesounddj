@@ -131,11 +131,9 @@ export default function WeddingsPage() {
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date
-                </BookConsultTrackedLink>
+                <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName} />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; No commitment
+                  15 minutes &bull; No pressure &bull; Just clarity
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
@@ -315,15 +313,13 @@ export default function WeddingsPage() {
               Let’s talk about your date, your venue, and the kind of night you want to create.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              When the direction feels aligned, most couples start with Check My Date. You can confirm your calendar date alongside or right after.
+              When the direction feels aligned, most couples start with Book a Consult. You can confirm your calendar date alongside or right after.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date
-                </BookConsultTrackedLink>
+                <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName} />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; No commitment
+                  15 minutes &bull; No pressure &bull; Just clarity
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">

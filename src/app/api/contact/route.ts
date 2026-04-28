@@ -43,7 +43,7 @@ function getAutoReplyPlainText(): string {
   return [
     "Hey, thanks for reaching out. I've got your message and will be in touch soon.",
     "",
-    "In the meantime, you can Check My Date or Check Availability from the same page here:",
+    "In the meantime, you can Book a Consult or Check Availability from the same page here:",
     "",
     AUTO_REPLY_CONTACT_URL,
     "",
@@ -57,7 +57,7 @@ function getAutoReplyHtml(): string {
   const url = AUTO_REPLY_CONTACT_URL;
   return `<html><body>
 <p>Hey, thanks for reaching out. I've got your message and will be in touch soon.</p>
-<p>In the meantime, you can Check My Date or Check Availability from the same page here:</p>
+<p>In the meantime, you can Book a Consult or Check Availability from the same page here:</p>
 <p><a href="${url}">${url}</a></p>
 <p>Excited to hear more about your plans.</p>
 <p>Howe Sound DJ</p>
@@ -163,7 +163,7 @@ export async function POST(request: Request) {
       {
         success: false,
         message:
-          "Delivery is not fully configured yet. Please try again later. You can still use Check My Date on howesounddj.com/contact.",
+          "Delivery is not fully configured yet. Please try again later. You can still book a consult on howesounddj.com/contact.",
       },
       { status: 503 }
     );

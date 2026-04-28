@@ -44,7 +44,7 @@ export function BookConsultTrackedLink({ surface, className, children, visualLay
   }
 
   const alignClass = visualLayout === "card" ? "text-left" : CTA_PILL_FLEX_CENTER;
-  const merged = [className, alignClass, "motion-interactive"].filter(Boolean).join(" ");
+  const merged = [alignClass, "motion-interactive", className].filter(Boolean).join(" ");
 
   return (
     <a
@@ -54,7 +54,7 @@ export function BookConsultTrackedLink({ surface, className, children, visualLay
       className={merged}
       onClick={handleClick}
     >
-      {children ?? "Check My Date"}
+      {children ?? "Book a Consult"}
     </a>
   );
 }

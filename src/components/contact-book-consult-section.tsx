@@ -28,12 +28,10 @@ export function ContactBookConsultSection() {
           <BookConsultTrackedLink
             surface="contact_page_primary"
             className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
-          >
-            Check My Date
-          </BookConsultTrackedLink>
+          />
         </div>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/60">
-          15 minutes &bull; No pressure &bull; No commitment
+          15 minutes &bull; No pressure &bull; Just clarity
         </p>
 
         <ul className="mt-8 max-w-xl space-y-3 text-base leading-relaxed text-white/70">

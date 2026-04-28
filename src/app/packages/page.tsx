@@ -120,11 +120,9 @@ export default function PackagesPage() {
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date
-                </BookConsultTrackedLink>
+                <BookConsultTrackedLink surface="hero" className={bookConsultPrimaryButtonClassName} />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; No commitment
+                  15 minutes &bull; No pressure &bull; Just clarity
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
@@ -259,7 +257,7 @@ export default function PackagesPage() {
               ))}
             </ul>
             <p className="mt-6 text-sm leading-7 text-white/50">
-              Not sure what you need? That is what Check My Date is for. We match enhancements to your venue, guest count, and how you want the night to feel.
+              Not sure what you need? That is what Book a Consult is for. We match enhancements to your venue, guest count, and how you want the night to feel.
             </p>
           </div>
         </div>
@@ -282,11 +280,9 @@ export default function PackagesPage() {
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <div>
-                <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
-                  Check My Date
-                </BookConsultTrackedLink>
+                <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName} />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; No commitment
+                  15 minutes &bull; No pressure &bull; Just clarity
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">

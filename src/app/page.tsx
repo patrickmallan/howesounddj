@@ -135,9 +135,7 @@ export default function HoweSoundDJHomepage() {
                   <BookConsultTrackedLink
                     surface="hero"
                     className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
-                  >
-                    Check My Date
-                  </BookConsultTrackedLink>
+                  />
                   <p className="mt-3 text-sm leading-relaxed text-white/60">
                     15 minutes &bull; No pressure &bull; Just clarity
                   </p>
@@ -275,9 +273,7 @@ export default function HoweSoundDJHomepage() {
               </div>
               <div className="flex flex-col items-start gap-2">
                 <div className="flex flex-wrap items-center gap-3">
-                  <BookConsultTrackedLink surface="inline" className={bookConsultPrimaryButtonClassName}>
-                    Check My Date
-                  </BookConsultTrackedLink>
+                  <BookConsultTrackedLink surface="inline" className={bookConsultPrimaryButtonClassName} />
                   <CheckAvailabilityTrackedLink
                     surface="inline"
                     className={bookConsultOutlineButtonClassName}
@@ -426,9 +422,7 @@ export default function HoweSoundDJHomepage() {
               </p>
               <div className="mt-8 max-w-xl space-y-4">
                 <div>
-                  <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName}>
-                    Check My Date
-                  </BookConsultTrackedLink>
+                  <BookConsultTrackedLink surface="page_cta" className={bookConsultPrimaryButtonClassName} />
                   <p className="mt-3 text-sm leading-relaxed text-white/60">
                     15 minutes &bull; No pressure &bull; Just clarity
                   </p>
@@ -492,9 +486,7 @@ export default function HoweSoundDJHomepage() {
                     <BookConsultTrackedLink
                       surface="page_cta"
                       className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
-                    >
-                      Check My Date
-                    </BookConsultTrackedLink>
+                    />
                     <p className="mt-3 text-sm leading-relaxed text-white/60">
                       15 minutes &bull; No pressure &bull; Just clarity
                     </p>

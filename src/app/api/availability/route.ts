@@ -57,7 +57,7 @@ export async function POST(request: Request) {
       success: true,
       available: false,
       message:
-        "That date is already held for another celebration. Check My Date is usually the clearest next step to explore options. You can send a note from the contact page if your plans are flexible.",
+        "That date is already held for another celebration. Book a Consult is usually the clearest next step to explore options. You can send a note from the contact page if your plans are flexible.",
     });
   }
 
@@ -65,6 +65,6 @@ export async function POST(request: Request) {
     success: true,
     available: true,
     message:
-      "That date is open on the calendar. Share a few details below, or book Check My Date first when you want a calm, straightforward conversation before you reply.",
+      "That date is open on the calendar. Share a few details below, or book a consult first when you want a calm, straightforward conversation before you reply.",
   });
 }

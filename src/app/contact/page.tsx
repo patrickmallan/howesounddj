@@ -23,13 +23,13 @@ function turnstileSiteKey(): string {
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: { absolute: "Check Your Date | Howe Sound DJ" },
+  title: { absolute: "Contact | Howe Sound DJ" },
   description:
-    "Start with a quick 15-minute, no-pressure call to confirm your wedding date, your vision, and whether Howe Sound DJ is the right direction for your day.",
+    "Book a quick 15-minute consult to confirm your wedding date, your vision, and whether Howe Sound DJ is the right direction for your day. Or check availability first.",
   openGraph: {
-    title: "Check Your Date | Howe Sound DJ",
+    title: "Contact | Howe Sound DJ",
     description:
-      "Start with a quick 15-minute, no-pressure call to confirm your wedding date, your vision, and whether Howe Sound DJ is the right direction for your day.",
+      "Book a quick 15-minute consult to confirm your wedding date, your vision, and whether Howe Sound DJ is the right direction for your day. Or check availability first.",
     url: "/contact",
   },
   alternates: { canonical: "/contact" },
@@ -59,11 +59,9 @@ export default function ContactPage() {
                 <BookConsultTrackedLink
                   surface="contact_page_primary"
                   className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
-                >
-                  Check My Date
-                </BookConsultTrackedLink>
+                />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; No commitment
+                  15 minutes &bull; No pressure &bull; Just clarity
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-white/55">
                   Most couples start here: it&apos;s the fastest way to lock in your date and get clarity.
@@ -265,11 +263,9 @@ export default function ContactPage() {
                 <BookConsultTrackedLink
                   surface="contact_page_primary"
                   className={`${bookConsultPrimaryButtonClassName} w-full sm:w-auto`}
-                >
-                  Check My Date
-                </BookConsultTrackedLink>
+                />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; No commitment
+                  15 minutes &bull; No pressure &bull; Just clarity
                 </p>
               </div>
               <div>
