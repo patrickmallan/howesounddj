@@ -110,12 +110,22 @@ export function SiteHeader() {
                     </Link>
                   );
                 })}
+                <div
+                  className="border-t border-white/10 p-3"
+                  onClick={closeMobileMenu}
+                  role="presentation"
+                >
+                  <CheckAvailabilityTrackedLink
+                    surface="header"
+                    className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full bg-amber-300 px-4 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                  />
+                </div>
               </nav>
             </div>
           </details>
           <CheckAvailabilityTrackedLink
             surface="header"
-            className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-amber-300 px-4 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] sm:min-h-0 sm:px-5 sm:py-2.5"
+            className="hidden min-h-[44px] items-center justify-center rounded-full bg-amber-300 px-4 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] md:inline-flex sm:min-h-0 sm:px-5 sm:py-2.5"
           />
         </div>
       </div>
