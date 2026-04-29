@@ -1,4 +1,5 @@
 /** Availability: Google Calendar when enabled; always merges `BOOKED_DATES` when Google returns a definitive result. */
+import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { BOOKED_DATES } from "@/data/booked-dates";
 import { isDateBookedInGoogleCalendar } from "@/lib/google-calendar";
@@ -6,6 +7,66 @@ import { isDateBookedInGoogleCalendar } from "@/lib/google-calendar";
 export const runtime = "nodejs";
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+function getResend(): Resend | null {
+  const key = process.env.RESEND_API_KEY?.trim();
+  if (!key) return null;
+  return new Resend(key);
+}
+
+/** Same destination as `/api/contact` (Patrick's inbox). */
+function getMailConfig(): { to: string; from: string } | null {
+  const to = process.env.CONTACT_TO_EMAIL?.trim();
+  const from = process.env.CONTACT_FROM_EMAIL?.trim();
+  if (!to || !from) return null;
+  return { to, from };
+}
+
+/**
+ * Fail-soft internal ping: logs on Resend error / exception; never throws.
+ * Omits send when mail is not configured (same env as contact).
+ */
+async function sendAvailabilityCheckNotification(params: {
+  date: string;
+  available: boolean;
+  timestampUtc: string;
+}): Promise<void> {
+  const resend = getResend();
+  const mail = getMailConfig();
+  if (!resend || !mail) return;
+
+  const resultLabel = params.available ? "available" : "unavailable";
+  const subject = `[Howe Sound DJ] Availability checked: ${params.date} ${resultLabel}`;
+  const textBody = [
+    `Date checked: ${params.date}`,
+    `Result: ${resultLabel}`,
+    `Timestamp (UTC): ${params.timestampUtc}`,
+    "Source: Check Availability form",
+    "",
+    "Note: No contact info collected at this step.",
+  ].join("\n");
+
+  try {
+    const sendResult = await resend.emails.send({
+      from: mail.from,
+      to: mail.to,
+      subject,
+      text: textBody,
+    });
+
+    if (sendResult.error) {
+      console.error("[availability] notification_failed", {
+        name: sendResult.error.name,
+        statusCode: sendResult.error.statusCode,
+        message: sendResult.error.message,
+      });
+    }
+  } catch (err) {
+    console.error("[availability] notification_failed", {
+      message: err instanceof Error ? err.message : "unknown",
+    });
+  }
+}
 
 function isValidCalendarDate(s: string): boolean {
   if (!ISO_DATE.test(s)) return false;
@@ -51,6 +112,16 @@ export async function POST(request: Request) {
 
   const booked =
     googleBooked === null ? manualBooked : Boolean(googleBooked) || manualBooked;
+
+  const available = !booked;
+  const timestampUtc = new Date().toISOString();
+  console.info("[availability] checked", {
+    date,
+    available,
+    timestamp: timestampUtc,
+  });
+
+  await sendAvailabilityCheckNotification({ date, available, timestampUtc });
 
   if (booked) {
     return NextResponse.json({
