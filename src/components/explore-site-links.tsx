@@ -50,21 +50,6 @@ export function HomepageExploreSection() {
             </li>
           ))}
           <li className="min-w-0">
-            <BookConsultTrackedLink
-              surface="explore_card"
-              className="h-full min-h-[5.5rem] w-full text-base font-semibold"
-            />
-          </li>
-          <li className="min-w-0">
-            <CheckAvailabilityTrackedLink
-              surface="inline"
-              visualLayout="card"
-              className={`${exploreCardBase} border border-white/10 bg-white/5 text-white hover:border-amber-300/25 hover:bg-white/[0.07]`}
-            >
-              Check Availability
-            </CheckAvailabilityTrackedLink>
-          </li>
-          <li className="min-w-0">
             <Link
               href="/vancouver-wedding-dj"
               className={`${exploreCardBase} border border-white/10 bg-white/5 text-white hover:border-amber-300/25 hover:bg-white/[0.07]`}
