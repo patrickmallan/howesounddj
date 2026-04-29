@@ -31,14 +31,6 @@ body {
     box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.55);
   }
 
-  .motion-media-zoom {
-    transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .group:hover .motion-media-zoom {
-    transform: scale(1.02);
-  }
-
   .motion-interactive {
     transition:
       transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -51,16 +43,11 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .premium-surface,
-  .motion-media-zoom,
   .motion-interactive {
     transition: border-color 200ms ease, background-color 200ms ease;
   }
 
   .premium-surface:hover {
-    transform: none;
-  }
-
-  .group:hover .motion-media-zoom {
     transform: none;
   }
 }

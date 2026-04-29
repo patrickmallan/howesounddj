@@ -10,7 +10,6 @@ import { ImageSlot } from "@/components/image-slot";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { VENUES } from "@/config/venues";
-import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
 /** Homepage H1 A/B/C, all include “Squamish wedding DJ” + “Sea to Sky”. Server HTML uses A; client may swap after resolve. */
 export const HEADLINE_VARIANTS = {
@@ -387,12 +386,12 @@ export default function HoweSoundDJHomepage() {
 
         <SectionReveal
           as="section"
-          className={`${CTA_FINALE_SECTION_TOP} border-t border-white/10 bg-neutral-950`}
+          className="border-t border-white/10 bg-neutral-950 py-14 md:py-20"
           aria-labelledby="home-final-decision-heading"
         >
-          <div className="mx-auto max-w-6xl px-6 pb-20 lg:px-8 lg:pb-24">
-            <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
-              <div className="mx-auto max-w-2xl">
+          <div className="mx-auto max-w-6xl px-6 lg:px-8">
+            <div className="mx-auto w-full max-w-3xl atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
+              <div className="mx-auto max-w-2xl text-center">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300/95 sm:text-xs sm:tracking-[0.2em]">
                   Ready when you are
                 </p>
@@ -406,7 +405,7 @@ export default function HoweSoundDJHomepage() {
                   Share your date, venue, and what you want the night to feel like. I&apos;ll help you understand
                   availability, timing, and the best next step.
                 </p>
-                <div className="mt-8 max-w-xl space-y-4">
+                <div className="mt-8 mx-auto max-w-xl space-y-4">
                   <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
                   <p className="text-sm leading-relaxed text-white/60">
                     15 minutes &bull; No pressure &bull; Just clarity

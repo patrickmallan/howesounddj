@@ -60,18 +60,14 @@ export function ImageSlot({
     const isSvg = src.endsWith(".svg");
     return (
       <figure className={`space-y-4 ${className}`}>
-        <div className={`group ${frame}`}>
+        <div className={frame}>
           <Image
             src={src}
             alt={alt}
             fill
             priority={priority}
             sizes={sizes}
-            className={
-              imageClassName
-                ? `motion-media-zoom object-cover ${imageClassName}`
-                : "motion-media-zoom object-cover"
-            }
+            className={imageClassName ? `object-cover ${imageClassName}` : "object-cover"}
             unoptimized={isSvg}
           />
           {premiumPhotoTreatment ? (
