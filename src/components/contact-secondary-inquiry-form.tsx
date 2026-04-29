@@ -53,6 +53,8 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [partner, setPartner] = useState("");
+  const [phone, setPhone] = useState("");
   const [yearStr, setYearStr] = useState("");
   const [monthStr, setMonthStr] = useState("");
   const [dayStr, setDayStr] = useState("");
@@ -243,12 +245,10 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
           formType: "secondary_inquiry",
           name,
           email,
-          partnerName: "",
-          phone: "",
+          partner: partner.trim(),
+          phone: phone.trim(),
           weddingDate: weddingDatePayload,
           venue: venueOptional.trim(),
-          guestCount: "",
-          servicesNeeded: "",
           message,
           turnstileToken,
           company: honeypot,
@@ -389,6 +389,36 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
               autoComplete="email"
             />
             {fieldErrors.email ? <p className="mt-1 text-sm text-rose-300/90">{fieldErrors.email}</p> : null}
+          </div>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label className="text-sm text-white/60" htmlFor="secondary-inquiry-partner">
+              Partner / second contact <span className="text-white/35">(optional)</span>
+            </label>
+            <input
+              id="secondary-inquiry-partner"
+              name="partner"
+              value={partner}
+              onChange={(e) => setPartner(e.target.value)}
+              autoComplete="name"
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label className="text-sm text-white/60" htmlFor="secondary-inquiry-phone">
+              Phone <span className="text-white/35">(optional)</span>
+            </label>
+            <input
+              id="secondary-inquiry-phone"
+              name="phone"
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              autoComplete="tel"
+              className={inputClass}
+            />
           </div>
         </div>
 

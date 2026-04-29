@@ -116,7 +116,7 @@ export async function POST(request: Request) {
   const isSecondaryInquiry = formType === "secondary_inquiry";
 
   const name = trimValue(data.name);
-  const partnerName = trimValue(data.partnerName);
+  const partnerName = trimValue(data.partnerName) || trimValue(data.partner);
   const email = trimValue(data.email);
   const phone = trimValue(data.phone);
   const weddingDate = trimValue(data.weddingDate);
