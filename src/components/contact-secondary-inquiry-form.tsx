@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Script from "next/script";
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
 import { headlineVariantPayload } from "@/lib/experiment";
@@ -63,7 +63,10 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
   const [venueOptional, setVenueOptional] = useState("");
   const [message, setMessage] = useState("");
   const [honeypot, setHoneypot] = useState("");
-  const [turnstileReady, setTurnstileReady] = useState(false);
+  /** True when `window.turnstile.render` is available (Script onLoad or deduped load from another form). */
+  const [turnstileApiReady, setTurnstileApiReady] = useState(false);
+  const [turnstileScriptTimedOut, setTurnstileScriptTimedOut] = useState(false);
+  const [turnstileWidgetMountFailed, setTurnstileWidgetMountFailed] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState("");
   const turnstileContainerRef = useRef<HTMLDivElement>(null);
   const turnstileWidgetIdRef = useRef<string | null>(null);
@@ -84,24 +87,81 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
     setTurnstileToken("");
   }, []);
 
+  const markTurnstileApiReady = useCallback(() => {
+    if (typeof window !== "undefined" && window.turnstile?.render) {
+      setTurnstileApiReady(true);
+      setTurnstileScriptTimedOut(false);
+      return true;
+    }
+    return false;
+  }, []);
+
+  /**
+   * Next.js may dedupe multiple `<Script src="…api.js">`; the second instance’s `onLoad` may never run.
+   * Poll for `window.turnstile` so this form still mounts the widget after the availability form loads the script.
+   */
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    let cancelled = false;
+    const markIfReady = () => {
+      if (cancelled) return;
+      if (window.turnstile?.render) {
+        setTurnstileApiReady(true);
+        setTurnstileScriptTimedOut(false);
+        window.clearInterval(intervalId);
+      }
+    };
+    const t0 = window.setTimeout(markIfReady, 0);
+    const intervalId = window.setInterval(markIfReady, 100);
+    const timeout = window.setTimeout(() => {
+      if (cancelled || window.turnstile?.render) return;
+      setTurnstileScriptTimedOut(true);
+    }, 15_000);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(t0);
+      window.clearInterval(intervalId);
+      window.clearTimeout(timeout);
+    };
+  }, []);
+
   useLayoutEffect(() => {
-    if (!turnstileSiteKeyResolved || !turnstileReady || !turnstileContainerRef.current) return;
+    if (!turnstileSiteKeyResolved || !turnstileApiReady || turnstileWidgetMountFailed) return;
     const el = turnstileContainerRef.current;
     const api = window.turnstile;
-    if (!api?.render) return;
+    if (!el || !api?.render) return;
     if (turnstileWidgetIdRef.current) return;
-    const id = api.render(el, {
-      sitekey: turnstileSiteKeyResolved,
-      callback: (token: string) => setTurnstileToken(token),
-      "expired-callback": () => setTurnstileToken(""),
-      "error-callback": () => setTurnstileToken(""),
-    });
-    turnstileWidgetIdRef.current = id;
+
+    let widgetId: string;
+    try {
+      widgetId = api.render(el, {
+        sitekey: turnstileSiteKeyResolved,
+        theme: "dark",
+        callback: (token: string) => {
+          setTurnstileWidgetMountFailed(false);
+          setTurnstileToken(token);
+        },
+        "expired-callback": () => setTurnstileToken(""),
+        "error-callback": () => {
+          setTurnstileToken("");
+          setTurnstileWidgetMountFailed(true);
+          const id = turnstileWidgetIdRef.current;
+          if (id && typeof window !== "undefined" && window.turnstile?.remove) {
+            window.turnstile.remove(id);
+          }
+          turnstileWidgetIdRef.current = null;
+        },
+      });
+    } catch {
+      window.queueMicrotask(() => setTurnstileWidgetMountFailed(true));
+      return;
+    }
+    turnstileWidgetIdRef.current = widgetId;
     return () => {
-      if (id && window.turnstile?.remove) window.turnstile.remove(id);
+      if (widgetId && window.turnstile?.remove) window.turnstile.remove(widgetId);
       turnstileWidgetIdRef.current = null;
     };
-  }, [turnstileSiteKeyResolved, turnstileReady]);
+  }, [turnstileSiteKeyResolved, turnstileApiReady, turnstileWidgetMountFailed]);
 
   function handleYearChange(e: React.ChangeEvent<HTMLInputElement>) {
     const v = digitsOnly(e.target.value, 4);
@@ -247,6 +307,44 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
   const dateSegmentClass =
     "rounded-xl border border-white/15 bg-neutral-950 px-3 py-3 text-center text-sm text-white outline-none focus:border-amber-300/50 tabular-nums";
 
+  const emailOk = useMemo(() => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()), [email]);
+  const requiredFieldsComplete = useMemo(
+    () => Boolean(name.trim() && emailOk && message.trim()),
+    [name, emailOk, message]
+  );
+
+  const submitDisabledReason = useMemo((): "submitting" | "fields" | "turnstile" | null => {
+    if (formStatus === "submitting") return "submitting";
+    if (!requiredFieldsComplete) return "fields";
+    if (!turnstileSiteKeyResolved) return "turnstile";
+    if (turnstileScriptTimedOut || turnstileWidgetMountFailed) return "turnstile";
+    if (!turnstileToken) return "turnstile";
+    return null;
+  }, [
+    formStatus,
+    requiredFieldsComplete,
+    turnstileSiteKeyResolved,
+    turnstileScriptTimedOut,
+    turnstileWidgetMountFailed,
+    turnstileToken,
+  ]);
+
+  const submitButtonLabel =
+    formStatus === "submitting"
+      ? "Sending…"
+      : turnstileScriptTimedOut || turnstileWidgetMountFailed
+        ? "Send message"
+        : submitDisabledReason === "fields"
+          ? "Send message"
+          : submitDisabledReason === "turnstile" && turnstileSiteKeyResolved
+            ? "Complete security check"
+            : "Send message";
+
+  const showTurnstileLoading =
+    turnstileSiteKeyResolved && !turnstileApiReady && !turnstileScriptTimedOut;
+  const showTurnstileError =
+    turnstileSiteKeyResolved && ((turnstileScriptTimedOut && !turnstileApiReady) || turnstileWidgetMountFailed);
+
   return (
     <div className="mt-8">
       <p className="mb-6 text-sm leading-relaxed text-white/55">
@@ -255,8 +353,8 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
       </p>
       <Script
         src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-        strategy="lazyOnload"
-        onLoad={() => setTurnstileReady(true)}
+        strategy="afterInteractive"
+        onLoad={markTurnstileApiReady}
       />
       <form
         onSubmit={onSubmit}
@@ -395,7 +493,19 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
         </div>
 
         {turnstileSiteKeyResolved ? (
-          <div ref={turnstileContainerRef} className="min-h-[65px]" />
+          <div className="space-y-2">
+            {showTurnstileLoading ? (
+              <p className="text-sm text-white/55" aria-live="polite">
+                Security check loading…
+              </p>
+            ) : null}
+            {showTurnstileError ? (
+              <p className="text-sm text-rose-300/90" role="alert">
+                Security check could not load. Please refresh and try again.
+              </p>
+            ) : null}
+            <div ref={turnstileContainerRef} className="w-full max-w-full overflow-x-auto" />
+          </div>
         ) : (
           <p className="text-sm text-white/45">
             Spam protection is not configured. Use the availability section above or book a consult
@@ -416,14 +526,11 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
 
         <button
           type="submit"
-          disabled={
-            formStatus === "submitting" ||
-            !turnstileSiteKeyResolved ||
-            (turnstileSiteKeyResolved ? !turnstileToken : false)
-          }
-          className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-center text-sm font-semibold text-white/90 transition hover:border-white/35 hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-60"
+          disabled={submitDisabledReason !== null}
+          aria-busy={formStatus === "submitting"}
+          className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-center text-sm font-semibold text-white/90 transition hover:border-white/35 hover:bg-white/10 disabled:cursor-not-allowed disabled:border-white/10 disabled:bg-white/[0.03] disabled:text-white/40 disabled:hover:border-white/10 disabled:hover:bg-white/[0.03]"
         >
-          {formStatus === "submitting" ? "Sending…" : "Send message"}
+          {submitButtonLabel}
         </button>
       </form>
     </div>
