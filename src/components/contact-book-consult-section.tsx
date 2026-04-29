@@ -1,6 +1,6 @@
 "use client";
 
-import { BookConsultTrackedLink } from "@/components/book-consult-tracked-link";
+import CTADuo from "@/components/cta-duo";
 
 export function ContactBookConsultSection() {
   return (
@@ -24,8 +24,8 @@ export function ContactBookConsultSection() {
           actually flow.
         </p>
 
-        <div className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-          <BookConsultTrackedLink surface="contact_page_primary" className="w-full sm:w-auto" />
+        <div className="mt-8">
+          <CTADuo bookSurface="contact_page_primary" checkSurface="page_cta" />
         </div>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/60">
           15 minutes &bull; No pressure &bull; Just clarity

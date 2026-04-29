@@ -2,11 +2,7 @@ import type { Metadata } from "next";
 import { ContactAvailabilityForm } from "@/components/contact-availability-form";
 import { ContactBookConsultSection } from "@/components/contact-book-consult-section";
 import { ContactSecondaryInquiryForm } from "@/components/contact-secondary-inquiry-form";
-import {
-  BookConsultTrackedLink,
-  bookConsultOutlineButtonClassName,
-} from "@/components/book-consult-tracked-link";
-import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import CTADuo from "@/components/cta-duo";
 import { SectionReveal } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
@@ -55,7 +51,7 @@ export default function ContactPage() {
 
             <div className="mt-8 max-w-xl space-y-6">
               <div>
-                <BookConsultTrackedLink surface="contact_page_primary" className="w-full sm:w-auto" />
+                <CTADuo bookSurface="contact_page_primary" checkSurface="page_cta" />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; Just clarity
                 </p>
@@ -69,11 +65,6 @@ export default function ContactPage() {
                   Not ready to chat yet?
                 </p>
                 <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <CheckAvailabilityTrackedLink
-                    href="/contact#availability"
-                    surface="page_cta"
-                    className={bookConsultOutlineButtonClassName}
-                  />
                   <a
                     href="#send-message"
                     className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
@@ -256,7 +247,7 @@ export default function ContactPage() {
             </p>
             <div className="mt-8 max-w-xl space-y-5">
               <div>
-                <BookConsultTrackedLink surface="contact_page_primary" className="w-full sm:w-auto" />
+                <CTADuo bookSurface="contact_page_primary" checkSurface="page_cta" />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; Just clarity
                 </p>
@@ -266,11 +257,6 @@ export default function ContactPage() {
                   Not ready to chat yet?
                 </p>
                 <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <CheckAvailabilityTrackedLink
-                    href="/contact#availability"
-                    surface="page_cta"
-                    className={bookConsultOutlineButtonClassName}
-                  />
                   <a
                     href="#send-message"
                     className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"

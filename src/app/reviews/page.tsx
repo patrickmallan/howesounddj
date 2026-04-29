@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import {
-  BookConsultTrackedLink,
-  bookConsultOutlineButtonClassName,
-} from "@/components/book-consult-tracked-link";
-import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import CTADuo from "@/components/cta-duo";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
@@ -135,14 +131,11 @@ export default function ReviewsPage() {
               The results speak for themselves: real couples, real parties, real reviews. Fast replies, clear communication, and a Squamish-rooted approach where local venues and vendors are part of how the day comes together.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
-              <div>
-                <BookConsultTrackedLink surface="hero" />
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; Just clarity
-                </p>
-              </div>
+              <CTADuo bookSurface="hero" checkSurface="hero" />
+              <p className="text-sm leading-relaxed text-white/60">
+                15 minutes &bull; No pressure &bull; Just clarity
+              </p>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
-                <CheckAvailabilityTrackedLink surface="hero" className={bookConsultOutlineButtonClassName} />
                 <a
                   href="/packages"
                   className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
@@ -164,10 +157,9 @@ export default function ReviewsPage() {
                 This page leads with named couples and verbatim quotes, not lifestyle stock or anonymous five-star blurbs. Read the cards below, then check your date first, or start with Book a Consult if you want clarity on direction sooner.
               </p>
             </div>
-            <div className="flex shrink-0 flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
-              <BookConsultTrackedLink surface="inline" />
-              <CheckAvailabilityTrackedLink surface="inline" className={bookConsultOutlineButtonClassName} />
-              <p className="w-full basis-full text-xs leading-relaxed text-white/50 sm:w-auto sm:basis-auto sm:text-right">
+            <div className="flex w-full min-w-0 shrink-0 flex-col gap-3 md:max-w-md md:items-stretch">
+              <CTADuo bookSurface="inline" checkSurface="inline" className="w-full" />
+              <p className="text-xs leading-relaxed text-white/50 md:text-right">
                 15 minutes &bull; No pressure &bull; Just clarity
               </p>
             </div>
@@ -331,21 +323,10 @@ export default function ReviewsPage() {
               Send your date, venue, and wedding vision. The next step is a conversation about availability and planning.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
-              <div>
-                <BookConsultTrackedLink surface="page_cta" />
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; Just clarity
-                </p>
-              </div>
-              <div className="flex flex-wrap items-center gap-3 gap-y-3">
-                <CheckAvailabilityTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName} />
-                <a
-                  href="/about"
-                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                >
-                  About Howe Sound DJ
-                </a>
-              </div>
+              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
+              <p className="text-sm leading-relaxed text-white/60">
+                15 minutes &bull; No pressure &bull; Just clarity
+              </p>
             </div>
           </div>
         </div>

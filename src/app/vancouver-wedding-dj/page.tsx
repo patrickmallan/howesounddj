@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import {
-  BookConsultTrackedLink,
-  bookConsultOutlineButtonClassName,
-} from "@/components/book-consult-tracked-link";
-import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import CTADuo from "@/components/cta-duo";
 import { ImageSlot } from "@/components/image-slot";
 import { JsonLd } from "@/components/json-ld";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
@@ -172,14 +168,11 @@ export default function VancouverWeddingDjPage() {
               built for the day you are actually having, not the search you typed before coffee on Monday.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
-              <div>
-                <BookConsultTrackedLink surface="hero" />
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; Just clarity
-                </p>
-              </div>
+              <CTADuo bookSurface="hero" checkSurface="hero" />
+              <p className="text-sm leading-relaxed text-white/60">
+                15 minutes &bull; No pressure &bull; Just clarity
+              </p>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
-                <CheckAvailabilityTrackedLink surface="hero" className={bookConsultOutlineButtonClassName} />
                 <a
                   href="/reviews"
                   className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
@@ -346,14 +339,11 @@ export default function VancouverWeddingDjPage() {
               Check your date first for your Squamish, Whistler, or corridor wedding, layer in packages when you want structure, or start with Book a Consult. Either way, the goal is your story, your crowd, your night.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
-              <div>
-                <BookConsultTrackedLink surface="page_cta" />
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; Just clarity
-                </p>
-              </div>
+              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
+              <p className="text-sm leading-relaxed text-white/60">
+                15 minutes &bull; No pressure &bull; Just clarity
+              </p>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
-                <CheckAvailabilityTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName} />
                 <a
                   href="/packages"
                   className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"

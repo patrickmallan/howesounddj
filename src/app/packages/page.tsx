@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  BookConsultTrackedLink,
-  bookConsultOutlineButtonClassName,
-} from "@/components/book-consult-tracked-link";
-import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import CTADuo from "@/components/cta-duo";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP, MAIN_SECTION_Y } from "@/lib/cta-section-spacing";
 
@@ -118,14 +114,11 @@ export default function PackagesPage() {
               Howe Sound DJ is built around customized service, not cookie-cutter blocks of time. Whether you are planning a focused celebration or a full wedding day, these packages describe what you are booking: professional sound, thoughtful music direction, and a host who can steer the room without stealing the spotlight.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
-              <div>
-                <BookConsultTrackedLink surface="hero" />
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; Just clarity
-                </p>
-              </div>
+              <CTADuo bookSurface="hero" checkSurface="hero" />
+              <p className="text-sm leading-relaxed text-white/60">
+                15 minutes &bull; No pressure &bull; Just clarity
+              </p>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
-                <CheckAvailabilityTrackedLink surface="hero" className={bookConsultOutlineButtonClassName} />
                 <a
                   href="/reviews"
                   className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
@@ -278,14 +271,11 @@ export default function PackagesPage() {
               If something sits between tiers, we can shape it. The goal is a quote that reflects your real day, not a label on a spreadsheet.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
-              <div>
-                <BookConsultTrackedLink surface="page_cta" />
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; Just clarity
-                </p>
-              </div>
+              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
+              <p className="text-sm leading-relaxed text-white/60">
+                15 minutes &bull; No pressure &bull; Just clarity
+              </p>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
-                <CheckAvailabilityTrackedLink surface="page_cta" className={bookConsultOutlineButtonClassName} />
                 <a
                   href="/reviews"
                   className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"

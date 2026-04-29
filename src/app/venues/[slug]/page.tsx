@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  BookConsultTrackedLink,
-  bookConsultOutlineButtonClassName,
-} from "@/components/book-consult-tracked-link";
-import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import CTADuo from "@/components/cta-duo";
 import { SectionReveal } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 import { JsonLd } from "@/components/json-ld";
@@ -93,14 +89,11 @@ export default async function VenueDetailPage({ params }: Props) {
             </h1>
             <p className="mt-6 text-lg leading-8 text-white/70">{venue.shortSummary}</p>
             <div className="mt-8 max-w-xl space-y-4">
-              <div>
-                <BookConsultTrackedLink surface="venue_hero" />
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; Just clarity
-                </p>
-              </div>
+              <CTADuo bookSurface="venue_hero" checkSurface="venue_hero" />
+              <p className="text-sm leading-relaxed text-white/60">
+                15 minutes &bull; No pressure &bull; Just clarity
+              </p>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
-                <CheckAvailabilityTrackedLink surface="venue_hero" className={bookConsultOutlineButtonClassName} />
                 <a
                   href={venue.officialUrl}
                   target="_blank"
@@ -196,18 +189,11 @@ export default async function VenueDetailPage({ params }: Props) {
                 The same contact flow powers every venue guide: calendar check when you want it first, alignment on availability and planning when you&apos;re ready, and your details whenever you prefer to send them.
               </p>
               <div className="mt-8 max-w-xl space-y-4">
-                <div>
-                  <BookConsultTrackedLink surface="venue_page_cta" />
-                  <p className="mt-3 text-sm leading-relaxed text-white/60">
-                    15 minutes &bull; No pressure &bull; Just clarity
-                  </p>
-                </div>
+                <CTADuo bookSurface="venue_page_cta" checkSurface="venue_page_cta" />
+                <p className="text-sm leading-relaxed text-white/60">
+                  15 minutes &bull; No pressure &bull; Just clarity
+                </p>
                 <div className="flex flex-wrap items-center gap-3 gap-y-3">
-                  <CheckAvailabilityTrackedLink
-                    href="/contact#availability"
-                    surface="venue_page_cta"
-                    className={bookConsultOutlineButtonClassName}
-                  />
                   <Link
                     href="/reviews"
                     className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"

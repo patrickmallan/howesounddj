@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  BookConsultTrackedLink,
-  bookConsultOutlineButtonClassName,
-} from "@/components/book-consult-tracked-link";
-import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { BrandAnchorStatement } from "@/components/brand-anchor-statement";
+import CTADuo from "@/components/cta-duo";
 import { HomepageExploreSection } from "@/components/explore-site-links";
 import { HeroSoundIdentity } from "@/components/hero-sound-identity";
 import { HomepageHeroHeadline } from "@/components/homepage-hero-headline";
@@ -130,24 +126,18 @@ export default function HoweSoundDJHomepage() {
                 Serving Squamish, Whistler, Vancouver, and the corridor with passion: polished sound, seamless planning, and nights that feel elegant, emotional, or wild (often all three).
               </p>
               <div className="mt-8 max-w-xl space-y-5">
-                <div>
-                  <BookConsultTrackedLink surface="hero" className="w-full sm:w-auto" />
-                  <p className="mt-3 text-sm leading-relaxed text-white/60">
-                    15 minutes &bull; No pressure &bull; Just clarity
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/55">
-                    Most couples start with a quick call: it&apos;s the fastest way to confirm everything.
-                  </p>
-                </div>
+                <CTADuo bookSurface="hero" checkSurface="hero" />
+                <p className="text-sm leading-relaxed text-white/60">
+                  15 minutes &bull; No pressure &bull; Just clarity
+                </p>
+                <p className="text-sm leading-relaxed text-white/55">
+                  Most couples start with a quick call: it&apos;s the fastest way to confirm everything.
+                </p>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
                     Not ready to chat yet?
                   </p>
                   <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-                    <CheckAvailabilityTrackedLink
-                      surface="hero"
-                      className={bookConsultOutlineButtonClassName}
-                    />
                     <a
                       href="/reviews"
                       className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
@@ -267,17 +257,8 @@ export default function HoweSoundDJHomepage() {
                 <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Reviews</div>
                 <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Client backed: real couples, real parties.</h2>
               </div>
-              <div className="flex flex-col items-start gap-2">
-                <div className="flex flex-wrap items-center gap-3">
-                  <BookConsultTrackedLink surface="inline" />
-                  <CheckAvailabilityTrackedLink
-                    surface="inline"
-                    className={bookConsultOutlineButtonClassName}
-                  />
-                  <a href="/reviews" className="motion-interactive text-sm font-semibold text-amber-300 hover:text-amber-200">
-                    Wedding DJ Reviews →
-                  </a>
-                </div>
+              <div className="flex flex-col items-start gap-2 md:max-w-xl md:self-end">
+                <CTADuo bookSurface="inline" checkSurface="inline" className="w-full" />
                 <p className="text-xs leading-relaxed text-white/55">
                   15 minutes &bull; No pressure &bull; Just clarity
                 </p>
@@ -417,24 +398,10 @@ export default function HoweSoundDJHomepage() {
                 Rooted in Squamish with an ear for atmosphere and calm, professional planning support, Patrick helps you feel covered before the day and free to enjoy it when the music hits.
               </p>
               <div className="mt-8 max-w-xl space-y-4">
-                <div>
-                  <BookConsultTrackedLink surface="page_cta" />
-                  <p className="mt-3 text-sm leading-relaxed text-white/60">
-                    15 minutes &bull; No pressure &bull; Just clarity
-                  </p>
-                </div>
-                <div className="flex flex-wrap items-center gap-3">
-                  <CheckAvailabilityTrackedLink
-                    surface="page_cta"
-                    className={bookConsultOutlineButtonClassName}
-                  />
-                  <a
-                    href="/about"
-                    className="motion-interactive inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                  >
-                    About Howe Sound DJ
-                  </a>
-                </div>
+                <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
+                <p className="text-sm leading-relaxed text-white/60">
+                  15 minutes &bull; No pressure &bull; Just clarity
+                </p>
               </div>
             </div>
           </div>
@@ -478,22 +445,15 @@ export default function HoweSoundDJHomepage() {
                   Prefer not to chat yet? Send a message instead, or check availability first.
                 </p>
                 <div className="mt-8 max-w-xl space-y-5">
-                  <div>
-                    <BookConsultTrackedLink surface="page_cta" className="w-full sm:w-auto" />
-                    <p className="mt-3 text-sm leading-relaxed text-white/60">
-                      15 minutes &bull; No pressure &bull; Just clarity
-                    </p>
-                  </div>
+                  <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
+                  <p className="text-sm leading-relaxed text-white/60">
+                    15 minutes &bull; No pressure &bull; Just clarity
+                  </p>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
                       Not ready to chat yet?
                     </p>
                     <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                      <CheckAvailabilityTrackedLink
-                        href="/contact#availability"
-                        surface="page_cta"
-                        className={bookConsultOutlineButtonClassName}
-                      />
                       <a
                         href="/contact#send-message"
                         className="motion-interactive inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
