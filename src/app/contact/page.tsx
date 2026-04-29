@@ -48,18 +48,6 @@ export default function ContactPage() {
               A quick 15-minute call to confirm your date, your vision, and make sure everything feels right. No
               pressure, no commitment.
             </p>
-
-            <div className="mt-8 max-w-xl space-y-6">
-              <div>
-                <ContactPageCtaTrio />
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; Just clarity
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-white/55">
-                  Most couples start here: it&apos;s the fastest way to lock in your date and get clarity.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>

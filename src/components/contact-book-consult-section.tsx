@@ -1,6 +1,6 @@
 "use client";
 
-import CTADuo from "@/components/cta-duo";
+import { ContactPageCtaTrio } from "@/components/contact-page-cta-trio";
 
 export function ContactBookConsultSection() {
   return (
@@ -24,8 +24,8 @@ export function ContactBookConsultSection() {
           actually flow.
         </p>
 
-        <div className="mt-8">
-          <CTADuo bookSurface="contact_page_primary" checkSurface="page_cta" />
+        <div className="mt-8 max-w-xl">
+          <ContactPageCtaTrio />
         </div>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/60">
           15 minutes &bull; No pressure &bull; Just clarity
@@ -72,7 +72,7 @@ export function ContactBookConsultSection() {
             href="#send-message"
             className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
           >
-            Send a message instead
+            Send a Message
           </a>
           , or use{" "}
           <a

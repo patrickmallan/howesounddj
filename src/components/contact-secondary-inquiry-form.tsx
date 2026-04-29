@@ -348,7 +348,7 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
   return (
     <div className="mt-8">
       <p className="mb-6 text-sm leading-relaxed text-white/55">
-        Prefer not to chat yet? Send a quick message instead. Not ready yet? Send a note and I&apos;ll personally follow
+        Prefer not to chat yet? Send a quick message. Not ready yet? Send a note and I&apos;ll personally follow
         up, no pressure for a phone call unless you prefer one later.
       </p>
       <Script

@@ -407,7 +407,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
             href="#send-message"
             className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
           >
-            Send a message instead
+            Send a Message
           </a>
           .
         </span>
