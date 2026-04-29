@@ -8,11 +8,6 @@ export const explorePrimaryLinks = [
   { href: "/about", label: "About Howe Sound DJ" },
 ] as const;
 
-export const exploreSecondaryLinks = [
-  { href: "/vancouver-wedding-dj", label: "Whistler & Vancouver Weddings" },
-  { href: "/venues", label: "Venue guides" },
-] as const;
-
 /** Shared layout for homepage Explore tiles, left-aligned labels, full-width cells. */
 const exploreCardBase =
   "premium-surface flex h-full min-h-[5.5rem] w-full min-w-0 flex-col justify-center rounded-2xl px-6 py-5 text-left text-base font-semibold transition";
@@ -58,41 +53,5 @@ export function HomepageExploreSection() {
         </ul>
       </div>
     </section>
-  );
-}
-
-/** Site-wide strip above footer, reinforces internal link importance on every page. */
-export function ExploreSiteLinksStrip() {
-  return (
-    <div className="border-t border-white/10 bg-neutral-950/95">
-      <div className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/80">
-          Explore
-        </p>
-        <nav
-          className="mt-3 flex flex-wrap gap-x-6 gap-y-2.5 text-sm font-medium text-white/75"
-          aria-label="Key pages"
-        >
-          {explorePrimaryLinks.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="transition hover:text-amber-200/95"
-            >
-              {item.label}
-            </Link>
-          ))}
-          {exploreSecondaryLinks.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="transition hover:text-amber-200/95"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
-    </div>
   );
 }

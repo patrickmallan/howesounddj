@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { JsonLd } from "@/components/json-ld";
-import { ExploreSiteLinksStrip } from "@/components/explore-site-links";
-import { SiteFooter, SiteHeader } from "@/components/site-chrome";
+import { SiteFinalDecisionZone, SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { organizationJsonLd } from "@/lib/json-ld";
 import "./globals.css";
 
@@ -81,7 +80,7 @@ export default function RootLayout({
         <div id="main-content" className="flex flex-1 flex-col" tabIndex={-1}>
           {children}
         </div>
-        <ExploreSiteLinksStrip />
+        <SiteFinalDecisionZone />
         <SiteFooter />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
       </body>

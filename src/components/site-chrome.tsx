@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import CTADuo from "@/components/cta-duo";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
 const navLinks = [
@@ -135,12 +136,58 @@ export function SiteHeader() {
   );
 }
 
+export function SiteFinalDecisionZone() {
+  return (
+    <section
+      className="border-t border-white/10 bg-neutral-950"
+      aria-labelledby="site-final-decision-heading"
+    >
+      <div className="mx-auto max-w-6xl px-6 py-12 lg:px-8 lg:py-16">
+        <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
+          <div className="mx-auto max-w-2xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300/95 sm:text-xs sm:tracking-[0.2em]">
+              Ready when you are
+            </p>
+            <h2
+              id="site-final-decision-heading"
+              className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl"
+            >
+              Let&apos;s talk about your wedding.
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-white/70 sm:text-lg sm:leading-8">
+              Share your date, venue, and what you want the night to feel like. I&apos;ll help you understand
+              availability, timing, and the best next step.
+            </p>
+            <div className="mt-8 max-w-xl space-y-4">
+              <CTADuo bookSurface="footer" checkSurface="footer" />
+              <p className="text-sm leading-relaxed text-white/60">
+                15 minutes &bull; No pressure &bull; Just clarity
+              </p>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-white/45">
+                <Link href="/packages" className="transition hover:text-white/65">
+                  Wedding DJ Packages
+                </Link>
+                <span className="text-white/20" aria-hidden>
+                  ·
+                </span>
+                <Link href="/reviews" className="transition hover:text-white/65">
+                  Wedding DJ Reviews
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
     <footer className="mt-auto border-t border-white/10">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 text-sm text-white/45 lg:px-8">
-        <div className="border-b border-white/10 pb-8">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-white/45 lg:px-8">
+        <div className="border-b border-white/10 pb-6">
           <div className="text-base font-semibold text-white/90">Howe Sound DJ</div>
           <p className="mt-1 max-w-md text-sm leading-relaxed text-white/50">
             Personalized music and professional planning for Sea-to-Sky weddings, from ceremony through reception.
@@ -161,7 +208,7 @@ export function SiteFooter() {
             Vancouver couples · Sea-to-Sky and Squamish weddings
           </Link>
         </p>
-        <div className="flex flex-col gap-3 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-3 border-t border-white/10 pt-6 md:flex-row md:items-center md:justify-between">
           <div className="text-white/40">© {year} Howe Sound DJ. Squamish Wedding DJ.</div>
           <div className="text-white/40">Serving Squamish, Whistler, Vancouver, and the Sea-to-Sky corridor.</div>
         </div>
