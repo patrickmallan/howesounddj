@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { BookConsultTrackedLink } from "@/components/book-consult-tracked-link";
-import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
 /** Primary sitelink targets, consistent anchor text site-wide. */
 export const explorePrimaryLinks = [
@@ -84,13 +82,6 @@ export function ExploreSiteLinksStrip() {
               {item.label}
             </Link>
           ))}
-          <BookConsultTrackedLink surface="footer" className="shrink-0 text-xs sm:text-sm" />
-          <CheckAvailabilityTrackedLink
-            surface="footer"
-            className="transition hover:text-amber-200/95"
-          >
-            Check Availability
-          </CheckAvailabilityTrackedLink>
           {exploreSecondaryLinks.map((item) => (
             <Link
               key={item.href}

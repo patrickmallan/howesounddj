@@ -140,17 +140,11 @@ export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-white/10">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 text-sm text-white/45 lg:px-8">
-        <div className="flex flex-col gap-3 border-b border-white/10 pb-8 md:flex-row md:items-end md:justify-between">
-          <div>
-            <div className="text-base font-semibold text-white/90">Howe Sound DJ</div>
-            <p className="mt-1 max-w-md text-sm leading-relaxed text-white/50">
-              Personalized music and professional planning for Sea-to-Sky weddings, from ceremony through reception.
-            </p>
-          </div>
-          <CheckAvailabilityTrackedLink
-            surface="footer"
-            className="shrink-0 self-start inline-flex items-center justify-center text-center rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white/85 transition hover:border-white/30 hover:bg-white/5 md:self-auto"
-          />
+        <div className="border-b border-white/10 pb-8">
+          <div className="text-base font-semibold text-white/90">Howe Sound DJ</div>
+          <p className="mt-1 max-w-md text-sm leading-relaxed text-white/50">
+            Personalized music and professional planning for Sea-to-Sky weddings, from ceremony through reception.
+          </p>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           {navLinks.map((item) => (
