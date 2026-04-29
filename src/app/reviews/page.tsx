@@ -148,25 +148,6 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      <SectionReveal as="section" className="border-b border-white/10 bg-white/[0.03]">
-        <div className="mx-auto max-w-6xl px-6 py-10 lg:px-8">
-          <div className="premium-surface flex flex-col gap-6 rounded-[1.75rem] border border-white/10 bg-white/5 px-6 py-6 md:flex-row md:items-center md:justify-between md:gap-8 lg:px-8 lg:py-7">
-            <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/90">Proof-first</p>
-              <p className="mt-2 text-base leading-relaxed text-white/75">
-                This page leads with named couples and verbatim quotes, not lifestyle stock or anonymous five-star blurbs. Read the cards below, then check your date first, or start with Book a Consult if you want clarity on direction sooner.
-              </p>
-            </div>
-            <div className="flex w-full min-w-0 shrink-0 flex-col gap-3 md:max-w-md md:items-stretch">
-              <CTADuo bookSurface="inline" checkSurface="inline" className="w-full" />
-              <p className="text-xs leading-relaxed text-white/50 md:text-right">
-                15 minutes &bull; No pressure &bull; Just clarity
-              </p>
-            </div>
-          </div>
-        </div>
-      </SectionReveal>
-
       <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">

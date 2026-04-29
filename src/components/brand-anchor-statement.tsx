@@ -17,7 +17,7 @@ export function BrandAnchorStatement() {
       />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.03),transparent_45%)]" aria-hidden />
       <div className="relative mx-auto max-w-4xl px-6 py-24 text-center md:py-28 lg:py-32">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-300/75">
+        <p className="text-sm font-bold uppercase tracking-[0.32em] text-amber-300 sm:text-base sm:tracking-[0.34em]">
           Howe Sound DJ
         </p>
         <h2
