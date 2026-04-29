@@ -1,11 +1,13 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 
-type AspectKey = "4/5" | "16/9" | "3/2";
+type AspectKey = "4/5" | "16/9" | "16/10" | "4/3" | "3/2";
 
 const aspectClass: Record<AspectKey, string> = {
   "4/5": "aspect-[4/5]",
   "16/9": "aspect-video",
+  "16/10": "aspect-[16/10]",
+  "4/3": "aspect-[4/3]",
   "3/2": "aspect-[3/2]",
 };
 

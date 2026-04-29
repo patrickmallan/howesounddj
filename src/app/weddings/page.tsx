@@ -129,20 +129,6 @@ export default function WeddingsPage() {
               <p className="text-sm leading-relaxed text-white/60">
                 15 minutes &bull; No pressure &bull; Just clarity
               </p>
-              <div className="flex flex-wrap items-center gap-3 gap-y-3">
-                <a
-                  href="/reviews"
-                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                >
-                  Wedding DJ Reviews
-                </a>
-                <a
-                  href="/packages"
-                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                >
-                  Wedding DJ Packages
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -156,8 +142,8 @@ export default function WeddingsPage() {
           <ImageSlot
             src={SITE_IMAGES.weddingsCrowd}
             alt={SITE_IMAGE_ALT.weddingsCrowd}
-            aspect="16/9"
-            imageClassName="object-[center_44%]"
+            aspect="16/10"
+            imageClassName="h-full w-full object-cover object-[center_42%]"
             label="Your people"
             reservedHint="Candid crowd energy: the people who travel with you and fill the floor."
             sizes="(max-width: 1024px) 100vw, 72rem"
@@ -312,14 +298,6 @@ export default function WeddingsPage() {
               <p className="text-sm leading-relaxed text-white/60">
                 15 minutes &bull; No pressure &bull; Just clarity
               </p>
-              <div className="flex flex-wrap items-center gap-3 gap-y-3">
-                <a
-                  href="/packages"
-                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                >
-                  Wedding DJ Packages
-                </a>
-              </div>
             </div>
           </div>
         </div>
