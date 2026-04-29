@@ -218,14 +218,6 @@ export default function FaqPage() {
               <p className="text-sm leading-relaxed text-white/60">
                 15 minutes &bull; No pressure &bull; Just clarity
               </p>
-              <div className="flex flex-wrap items-center gap-3 gap-y-3">
-                <a
-                  href="/packages"
-                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                >
-                  Wedding DJ Packages
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -325,14 +317,6 @@ export default function FaqPage() {
               <p className="text-sm leading-relaxed text-white/60">
                 15 minutes &bull; No pressure &bull; Just clarity
               </p>
-              <div className="flex flex-wrap items-center gap-3 gap-y-3">
-                <a
-                  href="/reviews"
-                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                >
-                  Wedding DJ Reviews
-                </a>
-              </div>
             </div>
           </div>
         </div>

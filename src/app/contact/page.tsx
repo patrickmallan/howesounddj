@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ContactAvailabilityForm } from "@/components/contact-availability-form";
 import { ContactBookConsultSection } from "@/components/contact-book-consult-section";
 import { ContactSecondaryInquiryForm } from "@/components/contact-secondary-inquiry-form";
-import CTADuo from "@/components/cta-duo";
+import { ContactPageCtaTrio } from "@/components/contact-page-cta-trio";
 import { SectionReveal } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
@@ -51,39 +51,13 @@ export default function ContactPage() {
 
             <div className="mt-8 max-w-xl space-y-6">
               <div>
-                <CTADuo bookSurface="contact_page_primary" checkSurface="page_cta" />
+                <ContactPageCtaTrio />
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; Just clarity
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-white/55">
                   Most couples start here: it&apos;s the fastest way to lock in your date and get clarity.
                 </p>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
-                  Not ready to chat yet?
-                </p>
-                <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a
-                    href="#send-message"
-                    className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-                  >
-                    Send a Message Instead
-                  </a>
-                  <a
-                    href="/reviews"
-                    className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                  >
-                    Wedding DJ Reviews
-                  </a>
-                  <a
-                    href="/packages"
-                    className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                  >
-                    Wedding DJ Packages
-                  </a>
-                </div>
               </div>
             </div>
           </div>
@@ -245,38 +219,11 @@ export default function ContactPage() {
               Pick what matches where you are in planning: book a conversation, skim packages if helpful, or run your
               date through the calendar above.
             </p>
-            <div className="mt-8 max-w-xl space-y-5">
-              <div>
-                <CTADuo bookSurface="contact_page_primary" checkSurface="page_cta" />
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; Just clarity
-                </p>
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
-                  Not ready to chat yet?
-                </p>
-                <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a
-                    href="#send-message"
-                    className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-                  >
-                    Send a Message Instead
-                  </a>
-                  <a
-                    href="/packages"
-                    className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                  >
-                    Wedding DJ Packages
-                  </a>
-                  <a
-                    href="/reviews"
-                    className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                  >
-                    Wedding DJ Reviews
-                  </a>
-                </div>
-              </div>
+            <div className="mt-8 max-w-xl space-y-4">
+              <ContactPageCtaTrio />
+              <p className="text-sm leading-relaxed text-white/60">
+                15 minutes &bull; No pressure &bull; Just clarity
+              </p>
             </div>
           </div>
         </div>
