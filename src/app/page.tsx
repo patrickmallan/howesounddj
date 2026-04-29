@@ -10,7 +10,6 @@ import { ImageSlot } from "@/components/image-slot";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { VENUES } from "@/config/venues";
-import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
 /** Homepage H1 A/B/C, all include “Squamish wedding DJ” + “Sea to Sky”. Server HTML uses A; client may swap after resolve. */
 export const HEADLINE_VARIANTS = {
@@ -424,53 +423,6 @@ export default function HoweSoundDJHomepage() {
                 <p className="mt-3 max-w-4xl text-sm leading-7 text-white/65">{item.a}</p>
               </div>
             ))}
-          </div>
-        </SectionReveal>
-
-        <SectionReveal
-          as="section"
-          id="contact"
-          className={`${CTA_FINALE_SECTION_TOP} border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent`}
-        >
-          <div className="mx-auto max-w-6xl px-6 py-14 md:py-20 lg:px-8">
-            <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
-              <div className="mx-auto w-full max-w-3xl">
-                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Contact</div>
-                <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Let’s talk about your wedding.</h2>
-                <p className="mt-4 max-w-xl text-lg leading-8 text-white/70">
-                  Reach out with your date, venue, and wedding vision. The goal is to make the process feel simple, clear, and straightforward from the start, often beginning with a short call when that feels like the right next step.
-                </p>
-                <p className="mt-4 max-w-xl text-sm leading-7 text-white/55">
-                  Most couples start with a quick call: it&apos;s the fastest way to confirm everything.
-                  Prefer not to chat yet? Send a message instead, or check availability first.
-                </p>
-                <div className="mt-8 max-w-xl space-y-5">
-                  <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-                  <p className="text-sm leading-relaxed text-white/60">
-                    15 minutes &bull; No pressure &bull; Just clarity
-                  </p>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
-                      Not ready to chat yet?
-                    </p>
-                    <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                      <a
-                        href="/contact#send-message"
-                        className="motion-interactive inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-                      >
-                        Send a Message Instead
-                      </a>
-                      <a
-                        href="/weddings"
-                        className="motion-interactive inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                      >
-                        Wedding DJ Services
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </SectionReveal>
     </main>
