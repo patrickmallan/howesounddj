@@ -10,6 +10,7 @@ import { ImageSlot } from "@/components/image-slot";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { VENUES } from "@/config/venues";
+import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
 /** Homepage H1 A/B/C, all include “Squamish wedding DJ” + “Sea to Sky”. Server HTML uses A; client may swap after resolve. */
 export const HEADLINE_VARIANTS = {
@@ -124,7 +125,7 @@ export default function HoweSoundDJHomepage() {
               <p className="mt-6 max-w-xl text-lg leading-8 text-white/70">
                 Serving Squamish, Whistler, Vancouver, and the corridor with passion: polished sound, seamless planning, and nights that feel elegant, emotional, or wild (often all three).
               </p>
-              <div className="mt-8 max-w-xl space-y-5">
+              <div className="mt-8 max-w-xl space-y-4">
                 <CTADuo bookSurface="hero" checkSurface="hero" />
                 <p className="text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; Just clarity
@@ -132,43 +133,7 @@ export default function HoweSoundDJHomepage() {
                 <p className="text-sm leading-relaxed text-white/55">
                   Most couples start with a quick call: it&apos;s the fastest way to confirm everything.
                 </p>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
-                    Not ready to chat yet?
-                  </p>
-                  <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-                    <a
-                      href="/reviews"
-                      className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                    >
-                      Wedding DJ Reviews
-                    </a>
-                    <a
-                      href="/packages"
-                      className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                    >
-                      Wedding DJ Packages
-                    </a>
-                  </div>
-                </div>
               </div>
-              <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/45">
-                <a href="/weddings" className="text-white/55 transition hover:text-amber-200/90">
-                  Wedding DJ Services
-                </a>
-                <span className="mx-2.5 text-white/20" aria-hidden="true">
-                  ·
-                </span>
-                <a href="/about" className="text-white/55 transition hover:text-amber-200/90">
-                  About Howe Sound DJ
-                </a>
-              </p>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/45">
-                <span className="text-white/35">Live in Vancouver but marrying in Squamish or along the Sea-to-Sky?</span>{" "}
-                <a href="/vancouver-wedding-dj" className="text-white/55 transition hover:text-amber-200/90">
-                  Whistler &amp; Vancouver Weddings: how local planning works for your day →
-                </a>
-              </p>
             </div>
 
             <div className="relative z-10">
@@ -249,19 +214,13 @@ export default function HoweSoundDJHomepage() {
           </div>
         </SectionReveal>
 
-        <SectionReveal as="section" id="reviews" className="border-y border-white/10 bg-white/5">
+        <SectionReveal as="section" id="reviews" className="border-y border-white/10 bg-white/5" aria-labelledby="home-reviews-heading">
           <div className="mx-auto max-w-6xl px-6 py-14 md:py-20 lg:px-8">
-            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-              <div className="max-w-2xl">
-                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Reviews</div>
-                <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Client backed: real couples, real parties.</h2>
-              </div>
-              <div className="flex flex-col items-start gap-2 md:max-w-xl md:self-end">
-                <CTADuo bookSurface="inline" checkSurface="inline" className="w-full" />
-                <p className="text-xs leading-relaxed text-white/55">
-                  15 minutes &bull; No pressure &bull; Just clarity
-                </p>
-              </div>
+            <div className="mb-10 max-w-2xl">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Reviews</div>
+              <h2 id="home-reviews-heading" className="mt-4 text-3xl font-semibold sm:text-4xl">
+                Client backed: real couples, real parties.
+              </h2>
             </div>
             <StaggerGroup className="mt-12 grid gap-6 lg:grid-cols-3">
               {testimonials.map((item) => (
@@ -423,6 +382,38 @@ export default function HoweSoundDJHomepage() {
                 <p className="mt-3 max-w-4xl text-sm leading-7 text-white/65">{item.a}</p>
               </div>
             ))}
+          </div>
+        </SectionReveal>
+
+        <SectionReveal
+          as="section"
+          className={`${CTA_FINALE_SECTION_TOP} border-t border-white/10 bg-neutral-950`}
+          aria-labelledby="home-final-decision-heading"
+        >
+          <div className="mx-auto max-w-6xl px-6 pb-20 lg:px-8 lg:pb-24">
+            <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
+              <div className="mx-auto max-w-2xl">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300/95 sm:text-xs sm:tracking-[0.2em]">
+                  Ready when you are
+                </p>
+                <h2
+                  id="home-final-decision-heading"
+                  className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl"
+                >
+                  Let&apos;s talk about your wedding.
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-white/70 sm:text-lg sm:leading-8">
+                  Share your date, venue, and what you want the night to feel like. I&apos;ll help you understand
+                  availability, timing, and the best next step.
+                </p>
+                <div className="mt-8 max-w-xl space-y-4">
+                  <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
+                  <p className="text-sm leading-relaxed text-white/60">
+                    15 minutes &bull; No pressure &bull; Just clarity
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </SectionReveal>
     </main>
