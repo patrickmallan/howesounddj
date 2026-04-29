@@ -20,6 +20,8 @@ type Props = {
   surface: CheckAvailabilitySurface;
   className?: string;
   children?: ReactNode;
+  /** Runs first on click (e.g. close mobile menu) before analytics and navigation. */
+  onClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
   /** Defaults to `/contact`. Use `/contact#availability` or `#availability` where the UX requires it. */
   href?: string;
   /**
@@ -53,8 +55,10 @@ export function CheckAvailabilityTrackedLink({
   children,
   href = "/contact",
   visualLayout = "pill",
+  onClick,
 }: Props) {
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    onClick?.(e);
     trackEvent(ANALYTICS_EVENTS.checkAvailabilityClick, {
       surface,
       destination: DEFAULT_DESTINATION,
