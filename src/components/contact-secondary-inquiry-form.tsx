@@ -286,6 +286,12 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
         status: "success",
         ...headlineVariantPayload(),
       });
+      trackEvent(ANALYTICS_EVENTS.contactFormSubmit, {
+        ...SECONDARY_ANALYTICS,
+        status: "success",
+        page_path: clientPagePath(),
+        ...headlineVariantPayload(),
+      });
       setFormStatus("success");
       setFormMessage(data.message);
     } catch {

@@ -127,10 +127,10 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       return;
     }
     setDateError("");
-    trackEvent(ANALYTICS_EVENTS.availabilityCheckStart, {
+    trackEvent(ANALYTICS_EVENTS.checkAvailability, {
       surface: "contact_form",
       form_type: "availability",
-      status: "start",
+      date: weddingDate,
       page_path: clientPagePath(),
     });
     setAvailability({ kind: "checking" });
@@ -148,10 +148,12 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       try {
         data = await res.json();
       } catch {
-        trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+        trackEvent(ANALYTICS_EVENTS.availabilityResult, {
           surface: "contact_form",
           form_type: "availability",
           status: "error",
+          date: weddingDate,
+          result: "error",
           page_path: clientPagePath(),
         });
         setAvailability({
@@ -162,10 +164,12 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       }
 
       if (typeof data !== "object" || data === null) {
-        trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+        trackEvent(ANALYTICS_EVENTS.availabilityResult, {
           surface: "contact_form",
           form_type: "availability",
           status: "error",
+          date: weddingDate,
+          result: "error",
           page_path: clientPagePath(),
         });
         setAvailability({
@@ -178,10 +182,12 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       const body = data as { success?: boolean; available?: boolean; message?: string };
 
       if (!res.ok || body.success === false) {
-        trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+        trackEvent(ANALYTICS_EVENTS.availabilityResult, {
           surface: "contact_form",
           form_type: "availability",
           status: "error",
+          date: weddingDate,
+          result: "error",
           http_status: res.status,
           page_path: clientPagePath(),
         });
@@ -193,10 +199,12 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       }
 
       if (typeof body.available !== "boolean") {
-        trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+        trackEvent(ANALYTICS_EVENTS.availabilityResult, {
           surface: "contact_form",
           form_type: "availability",
           status: "error",
+          date: weddingDate,
+          result: "error",
           page_path: clientPagePath(),
         });
         setAvailability({
@@ -207,10 +215,11 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       }
 
       if (body.available === false) {
-        trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+        trackEvent(ANALYTICS_EVENTS.availabilityResult, {
           surface: "contact_form",
           form_type: "availability",
           status: "success",
+          date: weddingDate,
           result: "unavailable",
           page_path: clientPagePath(),
         });
@@ -218,20 +227,23 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         return;
       }
 
-      trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+      trackEvent(ANALYTICS_EVENTS.availabilityResult, {
         surface: "contact_form",
         form_type: "availability",
         status: "success",
+        date: weddingDate,
         result: "available",
         page_path: clientPagePath(),
       });
       setAvailability({ kind: "available", message: body.message ?? "That date looks open." });
       setShowInquiry(false);
     } catch {
-      trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+      trackEvent(ANALYTICS_EVENTS.availabilityResult, {
         surface: "contact_form",
         form_type: "availability",
         status: "network_error",
+        date: weddingDate,
+        result: "network_error",
         page_path: clientPagePath(),
       });
       setAvailability({
@@ -243,6 +255,11 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
 
   function trackCalendlyClick() {
     trackEvent(ANALYTICS_EVENTS.calendlyClick, { surface: FORM_ANALYTICS.surface });
+    trackEvent(ANALYTICS_EVENTS.bookConsultClick, {
+      surface: "contact_form",
+      intent: "post_availability_calendly",
+      page_path: clientPagePath(),
+    });
   }
 
   function handleInquiryFormFocusCapture(e: React.FocusEvent<HTMLFormElement>) {
@@ -330,6 +347,12 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       trackEvent(ANALYTICS_EVENTS.contactFormSubmitSuccess, {
         ...FORM_ANALYTICS,
         status: "success",
+        ...headlineVariantPayload(),
+      });
+      trackEvent(ANALYTICS_EVENTS.contactFormSubmit, {
+        ...FORM_ANALYTICS,
+        status: "success",
+        page_path: clientPagePath(),
         ...headlineVariantPayload(),
       });
       setFormStatus("success");
