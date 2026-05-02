@@ -2,7 +2,7 @@
 
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Script from "next/script";
-import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
+import { ANALYTICS_EVENTS, availabilityCheckEventParams, trackEvent } from "@/lib/analytics";
 import { bookConsultPrimaryButtonClassName } from "@/components/book-consult-tracked-link";
 import { CONSULT_CALENDLY_URL } from "@/lib/consult-calendly";
 import { headlineVariantPayload } from "@/lib/experiment";
@@ -128,9 +128,11 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
     }
     setDateError("");
     const selectedDate = weddingDate;
-    trackEvent(ANALYTICS_EVENTS.availabilityCheckStart, {
-      date_selected: selectedDate,
-    });
+    trackEvent(
+      ANALYTICS_EVENTS.availabilityCheckStart,
+      availabilityCheckEventParams(selectedDate),
+      { deferUntilGtag: true }
+    );
     setAvailability({ kind: "checking" });
     setShowInquiry(false);
     setFormStatus("idle");
@@ -180,18 +182,20 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       }
 
       if (body.available === false) {
-        trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
-          date_selected: selectedDate,
-          availability_status: "unavailable",
-        });
+        trackEvent(
+          ANALYTICS_EVENTS.availabilityCheckResult,
+          availabilityCheckEventParams(selectedDate, "unavailable"),
+          { deferUntilGtag: true }
+        );
         setAvailability({ kind: "unavailable", message: body.message ?? "That date is not available." });
         return;
       }
 
-      trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
-        date_selected: selectedDate,
-        availability_status: "available",
-      });
+      trackEvent(
+        ANALYTICS_EVENTS.availabilityCheckResult,
+        availabilityCheckEventParams(selectedDate, "available"),
+        { deferUntilGtag: true }
+      );
       setAvailability({ kind: "available", message: body.message ?? "That date looks open." });
       setShowInquiry(false);
     } catch {

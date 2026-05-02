@@ -24,16 +24,68 @@ export const ANALYTICS_EVENTS = {
   contactFormStart: "contact_form_start",
 } as const;
 
+/** Shared fields for `availability_check_start` / `availability_check_result` (client-only callers). */
+export function availabilityCheckEventParams(
+  dateSelected: string,
+  availabilityStatus?: "available" | "unavailable"
+): Record<string, string | number | boolean | undefined> {
+  const page_path = typeof window !== "undefined" ? window.location.pathname : "";
+  const debug =
+    typeof window !== "undefined" &&
+    (process.env.NODE_ENV === "development" || window.location.hostname === "localhost");
+  const out: Record<string, string | number | boolean | undefined> = {
+    date_selected: dateSelected,
+    page_path,
+    ...(debug ? { debug_mode: true } : {}),
+  };
+  if (availabilityStatus !== undefined) {
+    out.availability_status = availabilityStatus;
+  }
+  return out;
+}
+
+type TrackEventOptions = {
+  /**
+   * Wait until `window.gtag` exists (e.g. gtag.js still loading after `next/script`).
+   * Fires at most once; no-ops if GA env is unset or gtag never appears.
+   */
+  deferUntilGtag?: boolean;
+};
+
 export function trackEvent(
   eventName: string,
-  params?: Record<string, string | number | boolean | undefined>
+  params?: Record<string, string | number | boolean | undefined>,
+  options?: TrackEventOptions
 ): void {
   if (typeof window === "undefined") return;
   if (!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) return;
-  if (typeof window.gtag !== "function") return;
-  try {
-    window.gtag("event", eventName, params ?? {});
-  } catch {
-    // gtag present but threw — ignore
+
+  const send = () => {
+    if (typeof window.gtag !== "function") return;
+    try {
+      window.gtag("event", eventName, params ?? {});
+    } catch {
+      // gtag present but threw — ignore
+    }
+  };
+
+  if (options?.deferUntilGtag) {
+    let attempts = 0;
+    const maxAttempts = 80;
+    const intervalMs = 50;
+    const run = () => {
+      if (typeof window.gtag === "function") {
+        send();
+        return;
+      }
+      attempts += 1;
+      if (attempts < maxAttempts) {
+        window.setTimeout(run, intervalMs);
+      }
+    };
+    run();
+    return;
   }
+
+  send();
 }
