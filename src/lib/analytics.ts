@@ -30,13 +30,11 @@ export function availabilityCheckEventParams(
   availabilityStatus?: "available" | "unavailable"
 ): Record<string, string | number | boolean | undefined> {
   const page_path = typeof window !== "undefined" ? window.location.pathname : "";
-  const debug =
-    typeof window !== "undefined" &&
-    (process.env.NODE_ENV === "development" || window.location.hostname === "localhost");
   const out: Record<string, string | number | boolean | undefined> = {
     date_selected: dateSelected,
     page_path,
-    ...(debug ? { debug_mode: true } : {}),
+    // TEMP: always set so GA4 DebugView shows live production availability hits; revert to env/hostname-only when validated.
+    debug_mode: true,
   };
   if (availabilityStatus !== undefined) {
     out.availability_status = availabilityStatus;
@@ -62,6 +60,14 @@ export function trackEvent(
 
   const send = () => {
     if (typeof window.gtag !== "function") return;
+    if (process.env.NODE_ENV === "development") {
+      if (
+        eventName === ANALYTICS_EVENTS.availabilityCheckStart ||
+        eventName === ANALYTICS_EVENTS.availabilityCheckResult
+      ) {
+        console.info("[ga availability]", eventName, params ?? {});
+      }
+    }
     try {
       window.gtag("event", eventName, params ?? {});
     } catch {
