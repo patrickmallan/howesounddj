@@ -127,11 +127,9 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       return;
     }
     setDateError("");
-    trackEvent(ANALYTICS_EVENTS.checkAvailability, {
-      surface: "contact_form",
-      form_type: "availability",
-      date: weddingDate,
-      page_path: clientPagePath(),
+    const selectedDate = weddingDate;
+    trackEvent(ANALYTICS_EVENTS.availabilityCheckStart, {
+      date_selected: selectedDate,
     });
     setAvailability({ kind: "checking" });
     setShowInquiry(false);
@@ -148,14 +146,6 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       try {
         data = await res.json();
       } catch {
-        trackEvent(ANALYTICS_EVENTS.availabilityResult, {
-          surface: "contact_form",
-          form_type: "availability",
-          status: "error",
-          date: weddingDate,
-          result: "error",
-          page_path: clientPagePath(),
-        });
         setAvailability({
           kind: "unavailable",
           message: "That date could not be checked. Try again in a moment.",
@@ -164,14 +154,6 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       }
 
       if (typeof data !== "object" || data === null) {
-        trackEvent(ANALYTICS_EVENTS.availabilityResult, {
-          surface: "contact_form",
-          form_type: "availability",
-          status: "error",
-          date: weddingDate,
-          result: "error",
-          page_path: clientPagePath(),
-        });
         setAvailability({
           kind: "unavailable",
           message: "That date could not be checked. Try again in a moment.",
@@ -182,15 +164,6 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       const body = data as { success?: boolean; available?: boolean; message?: string };
 
       if (!res.ok || body.success === false) {
-        trackEvent(ANALYTICS_EVENTS.availabilityResult, {
-          surface: "contact_form",
-          form_type: "availability",
-          status: "error",
-          date: weddingDate,
-          result: "error",
-          http_status: res.status,
-          page_path: clientPagePath(),
-        });
         setAvailability({
           kind: "unavailable",
           message: body.message ?? "That date could not be checked. Try again in a moment.",
@@ -199,14 +172,6 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       }
 
       if (typeof body.available !== "boolean") {
-        trackEvent(ANALYTICS_EVENTS.availabilityResult, {
-          surface: "contact_form",
-          form_type: "availability",
-          status: "error",
-          date: weddingDate,
-          result: "error",
-          page_path: clientPagePath(),
-        });
         setAvailability({
           kind: "unavailable",
           message: "That date could not be checked. Try again in a moment.",
@@ -215,37 +180,21 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       }
 
       if (body.available === false) {
-        trackEvent(ANALYTICS_EVENTS.availabilityResult, {
-          surface: "contact_form",
-          form_type: "availability",
-          status: "success",
-          date: weddingDate,
-          result: "unavailable",
-          page_path: clientPagePath(),
+        trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+          date_selected: selectedDate,
+          availability_status: "unavailable",
         });
         setAvailability({ kind: "unavailable", message: body.message ?? "That date is not available." });
         return;
       }
 
-      trackEvent(ANALYTICS_EVENTS.availabilityResult, {
-        surface: "contact_form",
-        form_type: "availability",
-        status: "success",
-        date: weddingDate,
-        result: "available",
-        page_path: clientPagePath(),
+      trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, {
+        date_selected: selectedDate,
+        availability_status: "available",
       });
       setAvailability({ kind: "available", message: body.message ?? "That date looks open." });
       setShowInquiry(false);
     } catch {
-      trackEvent(ANALYTICS_EVENTS.availabilityResult, {
-        surface: "contact_form",
-        form_type: "availability",
-        status: "network_error",
-        date: weddingDate,
-        result: "network_error",
-        page_path: clientPagePath(),
-      });
       setAvailability({
         kind: "unavailable",
         message: "Something went wrong checking the date. Please try again.",

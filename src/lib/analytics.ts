@@ -17,10 +17,10 @@ export const ANALYTICS_EVENTS = {
   contactFormSubmitError: "contact_form_submit_error",
   calendlyClick: "calendly_click",
   checkAvailabilityClick: "check_availability_click",
-  /** User runs “Check Availability” in the contact form (POST to `/api/availability`). */
-  checkAvailability: "check_availability",
-  /** Outcome of an availability check; includes `date` and `result` (no PII). */
-  availabilityResult: "availability_result",
+  /** Contact form: POST to `/api/availability` begins (valid `YYYY-MM-DD` only). */
+  availabilityCheckStart: "availability_check_start",
+  /** Contact form: calendar outcome resolved (`availability_status`: available | unavailable only). */
+  availabilityCheckResult: "availability_check_result",
   contactFormStart: "contact_form_start",
 } as const;
 
