@@ -3,9 +3,37 @@
  * `GOOGLE_PROJECT_ID` may be set for operator reference; JWT auth uses client email + private key + calendar ID.
  */
 import { google } from "googleapis";
+import type { calendar_v3 } from "googleapis";
+import type { AvailabilityDiagnosticReason } from "@/lib/availability-reason";
 
 const READONLY_SCOPE = "https://www.googleapis.com/auth/calendar.readonly";
 const VANCOUVER_TZ = "America/Vancouver";
+
+/** Server-side diagnostics only (logs). Same timezone used for `timeMin` / `timeMax` as wedding-day boundaries. */
+export type GoogleCalendarDayDiagnostics = {
+  booked: boolean | null;
+  /** Why Google treated the day as busy (only meaningful when `booked === true`). */
+  googleReason: AvailabilityDiagnosticReason;
+  timezone: string;
+  calendarId: string;
+  timeMin: string;
+  timeMax: string;
+  integrationEnabled: boolean;
+  credentialsPresent: boolean;
+  matchingEvents: Array<{
+    id?: string | null;
+    summary?: string | null;
+    status?: string | null;
+    start?: { date?: string | null; dateTime?: string | null; timeZone?: string | null };
+    end?: { date?: string | null; dateTime?: string | null; timeZone?: string | null };
+    kind: "all_day" | "timed";
+  }>;
+  errorMessage?: string;
+};
+
+function eventIsAllDay(ev: calendar_v3.Schema$Event): boolean {
+  return Boolean(ev.start?.date && !ev.start?.dateTime);
+}
 
 function isEnabled(): boolean {
   const v = process.env.GOOGLE_CALENDAR_ENABLED?.trim().toLowerCase();
@@ -177,16 +205,45 @@ function logGoogleLookupFailure(date: string, err: unknown): void {
  * Dedicated **bookings-only** calendar (server-side). Requires a service account with access
  * to that calendar, and `GOOGLE_CALENDAR_ENABLED=true`.
  *
- * @param date `YYYY-MM-DD`
- * @returns `true` if at least one non-cancelled event overlaps that calendar day (all-day or timed);
- *          `false` if Google responds and shows no events;
- *          `null` if integration is off, misconfigured, or the API call failed (caller should rely on manual `BOOKED_DATES` only for that leg of the decision).
+ * Returns structured diagnostics for operator logs; classification logic matches {@link isDateBookedInGoogleCalendar}.
+ *
+ * @param date `YYYY-MM-DD` interpreted as a **wall-calendar day in America/Vancouver** (see `getVancouverDayUtcBounds`).
  */
-export async function isDateBookedInGoogleCalendar(date: string): Promise<boolean | null> {
-  if (!isEnabled()) return null;
+export async function queryGoogleCalendarDayDiagnostics(date: string): Promise<GoogleCalendarDayDiagnostics> {
+  const emptyDiag = (
+    partial: Partial<GoogleCalendarDayDiagnostics> & Pick<GoogleCalendarDayDiagnostics, "booked" | "googleReason">
+  ): GoogleCalendarDayDiagnostics => ({
+    timezone: VANCOUVER_TZ,
+    calendarId: partial.calendarId ?? "",
+    timeMin: partial.timeMin ?? "",
+    timeMax: partial.timeMax ?? "",
+    integrationEnabled: partial.integrationEnabled ?? isEnabled(),
+    credentialsPresent: partial.credentialsPresent ?? Boolean(loadCredentials()),
+    matchingEvents: partial.matchingEvents ?? [],
+    errorMessage: partial.errorMessage,
+    booked: partial.booked,
+    googleReason: partial.googleReason,
+  });
+
+  if (!isEnabled()) {
+    return emptyDiag({
+      booked: null,
+      googleReason: "UNKNOWN",
+      calendarId: "(GOOGLE_CALENDAR_ENABLED=false)",
+      integrationEnabled: false,
+      credentialsPresent: Boolean(loadCredentials()),
+    });
+  }
 
   const creds = loadCredentials();
-  if (!creds) return null;
+  if (!creds) {
+    return emptyDiag({
+      booked: null,
+      googleReason: "UNKNOWN",
+      calendarId: "(missing_GOOGLE_CALENDAR_ID_or_credentials)",
+      credentialsPresent: false,
+    });
+  }
 
   try {
     const auth = new google.auth.JWT({
@@ -209,9 +266,65 @@ export async function isDateBookedInGoogleCalendar(date: string): Promise<boolea
 
     const items = res.data.items ?? [];
     const active = items.filter((ev) => ev.status !== "cancelled");
-    return active.length > 0;
+
+    const matchingEvents = active.map((ev) => ({
+      id: ev.id,
+      summary: ev.summary,
+      status: ev.status,
+      start: ev.start,
+      end: ev.end,
+      kind: eventIsAllDay(ev) ? ("all_day" as const) : ("timed" as const),
+    }));
+
+    if (active.length === 0) {
+      return {
+        booked: false,
+        googleReason: "AVAILABLE_NO_EVENTS",
+        timezone: VANCOUVER_TZ,
+        calendarId: creds.calendarId,
+        timeMin,
+        timeMax,
+        integrationEnabled: true,
+        credentialsPresent: true,
+        matchingEvents,
+      };
+    }
+
+    const hasAllDay = active.some(eventIsAllDay);
+    const googleReason: AvailabilityDiagnosticReason = hasAllDay
+      ? "BLOCKED_BY_ALL_DAY_EVENT"
+      : "BLOCKED_BY_OVERLAP";
+
+    return {
+      booked: true,
+      googleReason,
+      timezone: VANCOUVER_TZ,
+      calendarId: creds.calendarId,
+      timeMin,
+      timeMax,
+      integrationEnabled: true,
+      credentialsPresent: true,
+      matchingEvents,
+    };
   } catch (err) {
     logGoogleLookupFailure(date, err);
-    return null;
+    return emptyDiag({
+      booked: null,
+      googleReason: "CALENDAR_QUERY_ERROR",
+      calendarId: creds.calendarId,
+      errorMessage: err instanceof Error ? err.message : String(err),
+      matchingEvents: [],
+    });
   }
+}
+
+/**
+ * @param date `YYYY-MM-DD`
+ * @returns `true` if at least one non-cancelled event overlaps that Vancouver calendar day (all-day or timed);
+ *          `false` if Google responds and shows no events;
+ *          `null` if integration is off, misconfigured, or the API call failed (caller should rely on manual `BOOKED_DATES` only for that leg of the decision).
+ */
+export async function isDateBookedInGoogleCalendar(date: string): Promise<boolean | null> {
+  const d = await queryGoogleCalendarDayDiagnostics(date);
+  return d.booked;
 }
