@@ -7,13 +7,14 @@ import CTADuo from "@/components/cta-duo";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
 const navLinks = [
-  { href: "/weddings", label: "Wedding DJ Services" },
-  { href: "/packages", label: "Wedding DJ Packages" },
-  { href: "/venues", label: "Venues" },
-  { href: "/reviews", label: "Wedding DJ Reviews" },
-  { href: "/about", label: "About Howe Sound DJ" },
+  { href: "/", label: "Home" },
+  { href: "/weddings", label: "Weddings" },
+  { href: "/packages", label: "Packages" },
+  { href: "/reviews", label: "Reviews" },
+  { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact HSDJ" },
+  { href: "/venues", label: "Venues" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 const MOBILE_PRIMARY_NAV_ID = "site-mobile-primary-nav";
@@ -129,18 +130,6 @@ export function SiteHeader() {
             className="absolute right-4 top-[max(4.75rem,calc(env(safe-area-inset-top,0px)+3.25rem))] z-50 mt-2 flex max-h-[min(calc(100dvh-5rem),32rem)] w-[min(calc(100vw-2rem),18rem)] max-w-[18rem] flex-col divide-y divide-white/10 overflow-y-auto overflow-x-hidden rounded-xl border border-white/10 bg-neutral-950/95 shadow-xl shadow-black/40 backdrop-blur"
             aria-label="Mobile primary"
           >
-            <Link
-              href="/"
-              onClick={closeMobileMenu}
-              aria-current={pathname === "/" ? "page" : undefined}
-              className={
-                pathname === "/"
-                  ? `${mobileLinkBase} text-amber-300 hover:text-amber-200`
-                  : `${mobileLinkBase} text-white/85 hover:text-white`
-              }
-            >
-              Home
-            </Link>
             {navLinks.map((item) => {
               const active = isActiveNavHref(pathname, item.href);
               return (
@@ -238,6 +227,9 @@ export function SiteFooter() {
           ))}
           <Link href="/guides" className="transition hover:text-white/70">
             Wedding Planning Guides
+          </Link>
+          <Link href="/whistler-wedding-dj" className="transition hover:text-white/70">
+            Whistler Wedding DJ
           </Link>
         </div>
         <p className="text-sm text-white/40">

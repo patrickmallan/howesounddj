@@ -2,10 +2,16 @@ import Link from "next/link";
 
 /** Primary sitelink targets, consistent anchor text site-wide. */
 export const explorePrimaryLinks = [
-  { href: "/weddings", label: "Wedding DJ Services" },
-  { href: "/packages", label: "Wedding DJ Packages" },
-  { href: "/reviews", label: "Wedding DJ Reviews" },
-  { href: "/about", label: "About Howe Sound DJ" },
+  { href: "/weddings", label: "Weddings" },
+  { href: "/packages", label: "Packages" },
+  { href: "/reviews", label: "Reviews" },
+  { href: "/about", label: "About" },
+] as const;
+
+const exploreAuthorityLinks = [
+  { href: "/guides", label: "Wedding Planning Guides" },
+  { href: "/whistler-wedding-dj", label: "Whistler Wedding DJ" },
+  { href: "/stories", label: "Featured Wedding Stories" },
 ] as const;
 
 /** Shared layout for homepage Explore tiles, left-aligned labels, full-width cells. */
@@ -28,10 +34,24 @@ export function HomepageExploreSection() {
             Explore
           </h2>
           <p className="mt-3 text-lg font-semibold text-white sm:text-xl">
-            Wedding DJ services, packages, reviews, and planning
+            Services, packages, reviews, and Sea-to-Sky planning
+          </p>
+          <p className="mt-4 text-sm leading-7 text-white/55 sm:text-base sm:leading-8">
+            Planning a Sea-to-Sky wedding? Explore venue guides, planning advice, and real dance-floor
+            atmosphere.
           </p>
         </div>
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {exploreAuthorityLinks.map((item) => (
+            <li key={item.href} className="min-w-0">
+              <Link
+                href={item.href}
+                className={`${exploreCardBase} border border-amber-300/20 bg-amber-300/[0.06] text-white hover:border-amber-300/35 hover:bg-amber-300/[0.09]`}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
           {explorePrimaryLinks.map((item) => (
             <li key={item.href} className="min-w-0">
               <Link
@@ -42,25 +62,7 @@ export function HomepageExploreSection() {
               </Link>
             </li>
           ))}
-          <li className="min-w-0">
-            <Link
-              href="/vancouver-wedding-dj"
-              className={`${exploreCardBase} border border-white/10 bg-white/5 text-white hover:border-amber-300/25 hover:bg-white/[0.07]`}
-            >
-              Whistler &amp; Vancouver Weddings
-            </Link>
-          </li>
         </ul>
-        <p className="mt-8 max-w-2xl text-sm leading-7 text-white/50">
-          Want reception flow and dance floor thinking in one place?{" "}
-          <Link
-            href="/guides"
-            className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
-          >
-            Wedding Planning Guides
-          </Link>{" "}
-          start with Sea-to-Sky atmosphere and guest momentum, not generic DJ tips.
-        </p>
       </div>
     </section>
   );
