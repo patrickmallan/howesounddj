@@ -13,9 +13,9 @@ import { VENUES } from "@/config/venues";
 
 /** Homepage H1 A/B/C, all include “Squamish wedding DJ” + “Sea to Sky”. Server HTML uses A; client may swap after resolve. */
 export const HEADLINE_VARIANTS = {
-  A: "Squamish wedding DJ for the Sea to Sky, packed dance floors every time.",
+  A: "Squamish wedding DJ for the Sea to Sky, the right music at the right moment.",
   B: "Squamish wedding DJ for the Sea to Sky, high energy dance floors.",
-  C: "Squamish wedding DJ for the Sea to Sky, the right music at the right moment.",
+  C: "Squamish wedding DJ for the Sea to Sky, packed dance floors every time.",
 } as const;
 
 export const metadata: Metadata = {
@@ -115,38 +115,41 @@ export default function HoweSoundDJHomepage() {
         <section className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.18),transparent_45%)]" />
           <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 py-20 lg:flex-row lg:items-start lg:gap-16 lg:px-8 lg:py-28">
-            <div className="relative z-10 min-w-0 lg:basis-0 lg:flex-1">
+            <div className="relative z-10 flex min-w-0 flex-col lg:basis-0 lg:flex-1">
               <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
                 Squamish Wedding DJ · Sea-to-Sky
               </div>
               <HomepageHeroHeadline headlines={HEADLINE_VARIANTS} />
               <HeroSoundIdentity variant="groove" />
-              <p className="mt-6 max-w-xl text-lg leading-8 text-white/70">
-                Serving Squamish, Whistler, Vancouver, and the corridor with passion: polished sound, seamless planning, and nights that feel elegant, emotional, or wild (often all three).
-              </p>
-              <div className="mt-8 max-w-xl space-y-4">
+              <div className="mt-6 max-w-xl space-y-4">
                 <CTADuo bookSurface="hero" checkSurface="hero" />
                 <p className="text-sm leading-relaxed text-white/60">
                   15 minutes &bull; No pressure &bull; Just clarity
                 </p>
                 <p className="text-sm leading-relaxed text-white/55">
-                  Most couples start with a quick call: it&apos;s the fastest way to confirm everything.
+                  Most couples start with a quick call; it&apos;s the fastest way to confirm everything.
                 </p>
               </div>
             </div>
 
-            <div className="relative z-10 w-full min-w-0 lg:basis-0 lg:flex-1">
-              <div className="atmosphere-grain w-full rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/30">
-                <ImageSlot
-                  src={SITE_IMAGES.brandEditorialHeroDjGlow}
-                  alt={SITE_IMAGE_ALT.brandEditorialHeroDjGlow}
-                  aspect="4/5"
-                  label="Atmosphere"
-                  reservedHint="Editorial reception atmosphere, the first impression of the night you are planning."
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 45vw"
-                  imageClassName="object-[center_35%]"
-                />
+            <div className="relative z-10 flex w-full min-w-0 flex-col lg:basis-0 lg:flex-1">
+              <div className="atmosphere-grain flex w-full flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/30">
+                <div className="w-full [&_figure]:m-0 [&_figure]:space-y-0 [&_figure>div]:rounded-2xl max-lg:[&_figure>div]:aspect-[4/3] lg:[&_figure>div]:!aspect-auto lg:[&_figure>div]:!h-[420px]">
+                  <ImageSlot
+                    src={SITE_IMAGES.brandEditorialHeroDjGlow}
+                    alt={SITE_IMAGE_ALT.brandEditorialHeroDjGlow}
+                    aspect="4/3"
+                    label="Atmosphere"
+                    reservedHint="Editorial reception atmosphere, the first impression of the night you are planning."
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                    className="!m-0 !space-y-0"
+                    imageClassName="object-[center_32%]"
+                  />
+                </div>
+                <p className="mt-4 text-lg leading-8 text-white/70">
+                  Serving Squamish, Whistler, Vancouver, and the corridor with passion: polished sound, seamless planning, and nights that feel elegant, emotional, or wild (often all three).
+                </p>
                 <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-5">
                   <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300/90">
                     Atmosphere First
