@@ -9,6 +9,7 @@ import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tr
 const navLinks = [
   { href: "/weddings", label: "Wedding DJ Services" },
   { href: "/packages", label: "Wedding DJ Packages" },
+  { href: "/venues", label: "Venues" },
   { href: "/reviews", label: "Wedding DJ Reviews" },
   { href: "/about", label: "About Howe Sound DJ" },
   { href: "/faq", label: "FAQ" },
@@ -235,8 +236,8 @@ export function SiteFooter() {
               {item.label}
             </Link>
           ))}
-          <Link href="/venues" className="transition hover:text-white/70">
-            Venues
+          <Link href="/guides" className="transition hover:text-white/70">
+            Wedding Planning Guides
           </Link>
         </div>
         <p className="text-sm text-white/40">

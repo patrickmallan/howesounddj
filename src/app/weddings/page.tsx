@@ -175,6 +175,16 @@ export default function WeddingsPage() {
           </Link>{" "}
           for planning context tied to named settings, then check your date first when you&apos;re ready.
         </p>
+        <p className="mt-4 max-w-3xl text-sm leading-7 text-white/55">
+          For how ceremony-through-reception pacing feeds the dance floor, read{" "}
+          <Link
+            href="/guides/how-to-keep-a-wedding-dance-floor-packed"
+            className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 hover:decoration-amber-200/60"
+          >
+            How to Keep a Wedding Dance Floor Packed at a Sea-to-Sky Wedding
+          </Link>
+          .
+        </p>
       </SectionReveal>
 
       <SectionReveal as="section" className="border-y border-white/10 bg-white/5">

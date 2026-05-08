@@ -15,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/faq",
     "/contact",
     "/venues",
+    "/guides",
+    "/guides/how-to-keep-a-wedding-dance-floor-packed",
     ...getAllVenueSlugs().map((slug) => `/venues/${slug}`),
   ];
   return paths.map((path) => ({

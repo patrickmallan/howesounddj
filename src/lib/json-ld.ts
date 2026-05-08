@@ -147,3 +147,82 @@ export function faqPageJsonLd(
     })),
   };
 }
+
+export function guidesHubBreadcrumbJsonLd(): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${SITE_ORIGIN}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Wedding planning guides",
+        item: `${SITE_ORIGIN}/guides`,
+      },
+    ],
+  };
+}
+
+export function guideArticleBreadcrumbJsonLd(articleTitle: string, slug: string): Record<string, unknown> {
+  const pageUrl = `${SITE_ORIGIN}/guides/${slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${SITE_ORIGIN}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Wedding planning guides",
+        item: `${SITE_ORIGIN}/guides`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: articleTitle,
+        item: pageUrl,
+      },
+    ],
+  };
+}
+
+/** Article schema for long-form planning guides; publisher references sitewide Organization. */
+export function guideArticleJsonLd(args: {
+  slug: string;
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified?: string;
+}): Record<string, unknown> {
+  const pageUrl = `${SITE_ORIGIN}/guides/${args.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: args.headline,
+    description: args.description,
+    url: pageUrl,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl,
+    },
+    datePublished: args.datePublished,
+    dateModified: args.dateModified ?? args.datePublished,
+    author: {
+      "@id": `${SITE_ORIGIN}/#organization`,
+    },
+    publisher: {
+      "@id": `${SITE_ORIGIN}/#organization`,
+    },
+  };
+}

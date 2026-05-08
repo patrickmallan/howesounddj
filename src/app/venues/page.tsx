@@ -82,7 +82,11 @@ export default function VenuesHubPage() {
             <Link href="/faq" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               FAQ
             </Link>{" "}
-            is the fastest path.
+            is the fastest path. For reception pacing and dance floor philosophy, see{" "}
+            <Link href="/guides" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              Wedding Planning Guides
+            </Link>
+            .
           </p>
         </div>
 

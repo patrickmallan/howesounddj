@@ -485,6 +485,58 @@ export const VENUE_PAGES: readonly VenuePage[] = [
       "Start with availability and align music to your schedule and space.",
     ],
   },
+  {
+    slug: "north-arm-farm",
+    name: "North Arm Farm",
+    officialUrl: "https://www.northarmfarm.com/",
+    locationLabel: "Pemberton, BC",
+    area: "sea-to-sky",
+    venueType: "Sea-to-Sky family farm & event setting",
+    cardDescription:
+      "Pemberton-area farm character with mountain-connected scenery, rustic warmth, and room for a celebration that moves from fields to reception energy.",
+    shortSummary:
+      "A farm-forward Pemberton setting framed as the Sea-to-Sky family farm experience: scenic, grounded, and built for weddings where guests move between open air and the heart of the party.",
+    metaDescription:
+      "Planning a North Arm Farm wedding in Pemberton? Howe Sound DJ brings calm sound planning, room-reading, and elegant high-energy reception flow to Sea-to-Sky farm weddings.",
+    whyFit: [
+      "Farm weddings reward a DJ who thinks in chapters: ceremony and mingling outdoors, dinner and speeches where voices need clarity, then a dance floor that grows from the room’s real chemistry, not from forcing volume against the landscape.",
+      "Mountain-connected weather and light change how guests arrive and settle. Music should support that rhythm so the night feels natural, not like a city template dropped in a field.",
+    ],
+    planningFocus: [
+      "Outdoor-forward flow means planning for where vows are heard, where cocktails breathe, and where the reception gathers when the air cools. Sound should support each handoff without stealing focus from the setting.",
+      "Speeches and special moments need warmth in the mix, then the set can open into celebration when your crowd is ready, so the dance floor feels earned rather than announced.",
+    ],
+    localExpertise: [
+      "Pemberton and the wider Sea-to-Sky corridor share the same weekend reality as Squamish-rooted work: guests often travel together, timelines flex with light and weather, and planning clarity before the day keeps everyone calm.",
+      "If North Arm Farm is your venue, start with availability and a conversation about how you want the atmosphere to build from ceremony through last song.",
+    ],
+  },
+  {
+    slug: "brew-creek",
+    name: "Brew Creek",
+    officialUrl: "https://www.thebrewcreekcentre.com/",
+    locationLabel: "Whistler area, BC",
+    area: "whistler",
+    venueType: "Forest sanctuary & intimate retreat-style venue",
+    cardDescription:
+      "Secluded forest setting minutes from Whistler: quiet sanctuary energy, nature-forward atmosphere, and space for an immersive weekend wedding.",
+    shortSummary:
+      "A forest sanctuary near Whistler pitched as removed from village bustle: intimate, nature-forward, and ideal when you want the soundtrack to respect stillness first, then grow into warm, intentional reception energy.",
+    metaDescription:
+      "Planning a Brew Creek wedding near Whistler? Howe Sound DJ supports forest-setting ceremonies, seamless reception flow, and elegant high-energy dance floors for Sea-to-Sky weddings.",
+    whyFit: [
+      "Retreat-style settings ask for restraint early: music and announcements should match the hush of trees and the emotional weight of vows before the night turns toward celebration.",
+      "When the venue sells sanctuary and immersion, the dance floor works best when it arrives as a shared decision by the room, built from trust and pacing, not from jumping straight to peak volume.",
+    ],
+    planningFocus: [
+      "Ceremony-to-reception movement in forest venues often spans outdoor and covered spaces. Clear transitions keep guests oriented and keep audio decisions aligned with each zone’s character.",
+      "Private-weekend flow can stretch across days. For the reception arc, think about when you want softness, when you want lift, and when you want the floor to feel magnetic for your specific people.",
+    ],
+    localExpertise: [
+      "Whistler-area and corridor weddings are part of the same planning map: destination guests, mountain timing, and sound that supports the setting without overpowering it.",
+      "If Brew Creek is your venue, check availability and walk through how you want the atmosphere to evolve from quiet natural beauty to the celebration you want guests to remember.",
+    ],
+  },
 ];
 
 export function getVenueBySlug(slug: string): VenuePage | undefined {

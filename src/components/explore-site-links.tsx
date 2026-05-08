@@ -51,6 +51,16 @@ export function HomepageExploreSection() {
             </Link>
           </li>
         </ul>
+        <p className="mt-8 max-w-2xl text-sm leading-7 text-white/50">
+          Want reception flow and dance floor thinking in one place?{" "}
+          <Link
+            href="/guides"
+            className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+          >
+            Wedding Planning Guides
+          </Link>{" "}
+          start with Sea-to-Sky atmosphere and guest momentum, not generic DJ tips.
+        </p>
       </div>
     </section>
   );

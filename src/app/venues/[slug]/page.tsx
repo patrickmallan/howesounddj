@@ -171,6 +171,21 @@ export default async function VenueDetailPage({ params }: Props) {
                   All venue guides
                 </Link>
               </li>
+              <li>
+                <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                  Wedding DJ Reviews
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                  Wedding planning guides
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
