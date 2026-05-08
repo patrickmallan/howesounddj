@@ -135,8 +135,8 @@ export default function HoweSoundDJHomepage() {
               </div>
             </div>
 
-            <div className="relative z-10">
-              <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/30">
+            <div className="relative z-10 flex h-full min-h-0 flex-col">
+              <div className="atmosphere-grain flex h-full min-h-0 flex-col rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/30">
                 <ImageSlot
                   src={SITE_IMAGES.brandEditorialHeroDjGlow}
                   alt={SITE_IMAGE_ALT.brandEditorialHeroDjGlow}
@@ -145,8 +145,9 @@ export default function HoweSoundDJHomepage() {
                   reservedHint="Editorial reception atmosphere, the first impression of the night you are planning."
                   priority
                   sizes="(max-width: 1024px) 100vw, 45vw"
+                  fillHeight
                 />
-                <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-5">
+                <div className="mt-4 shrink-0 rounded-2xl border border-white/10 bg-white/5 p-5">
                   <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300/90">
                     Atmosphere First
                   </div>

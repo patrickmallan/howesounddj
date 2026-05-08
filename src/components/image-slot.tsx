@@ -15,6 +15,7 @@ type ImageSlotProps = {
   src: string | null;
   /** Required for real images: describe the subject for accessibility when `src` is set. */
   alt: string;
+  /** Ignored when `fillHeight` is true (frame grows inside a flex column instead of a fixed ratio). */
   aspect: AspectKey;
   /** Short eyebrow when empty, visitor-facing (e.g. “Reception”, “The corridor”). */
   label: string;
@@ -37,6 +38,11 @@ type ImageSlotProps = {
   /** Optional caption below the image (or below the empty state). */
   children?: ReactNode;
   className?: string;
+  /**
+   * Grow to fill a flex parent height (e.g. hero beside a tall column). Ancestors should use
+   * `flex flex-col` + `h-full` / `min-h-0` so the image area can shrink and resize with the viewport.
+   */
+  fillHeight?: boolean;
 };
 
 export function ImageSlot({
@@ -52,14 +58,20 @@ export function ImageSlot({
   subtleBottomGradient = false,
   children,
   className = "",
+  fillHeight = false,
 }: ImageSlotProps) {
   const frameBg = premiumPhotoTreatment ? "bg-black" : "bg-neutral-900";
-  const frame = `relative w-full overflow-hidden rounded-[1.5rem] border border-white/10 ${frameBg} ${aspectClass[aspect]}`;
+  const frameFixed = `relative w-full overflow-hidden rounded-[1.5rem] border border-white/10 ${frameBg} ${aspectClass[aspect]}`;
+  const frameFluid = `relative min-h-[min(42vh,20rem)] w-full flex-1 overflow-hidden rounded-[1.5rem] border border-white/10 ${frameBg}`;
+  const frame = fillHeight ? frameFluid : frameFixed;
+  const figureLayout = fillHeight
+    ? `flex min-h-0 flex-1 flex-col ${className}`.trim()
+    : `space-y-4 ${className}`;
 
   if (src) {
     const isSvg = src.endsWith(".svg");
     return (
-      <figure className={`space-y-4 ${className}`}>
+      <figure className={figureLayout}>
         <div className={frame}>
           <Image
             src={src}
@@ -98,9 +110,13 @@ export function ImageSlot({
   }
 
   return (
-    <figure className={`space-y-4 ${className}`}>
+    <figure className={figureLayout}>
       <div
-        className={`relative flex flex-col justify-center overflow-hidden rounded-[1.5rem] border border-white/10 bg-gradient-to-b from-neutral-900/95 to-neutral-950 p-8 shadow-inner shadow-black/30 ${aspectClass[aspect]}`}
+        className={
+          fillHeight
+            ? "relative flex min-h-[min(42vh,20rem)] w-full flex-1 flex-col justify-center overflow-hidden rounded-[1.5rem] border border-white/10 bg-gradient-to-b from-neutral-900/95 to-neutral-950 p-8 shadow-inner shadow-black/30"
+            : `relative flex flex-col justify-center overflow-hidden rounded-[1.5rem] border border-white/10 bg-gradient-to-b from-neutral-900/95 to-neutral-950 p-8 shadow-inner shadow-black/30 ${aspectClass[aspect]}`
+        }
         role="presentation"
       >
         <div
