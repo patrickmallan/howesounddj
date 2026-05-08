@@ -138,10 +138,10 @@ export default function HoweSoundDJHomepage() {
             <div className="relative z-10">
               <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/30">
                 <ImageSlot
-                  src={SITE_IMAGES.brandEditorialPremiumDjCrowd}
-                  alt={SITE_IMAGE_ALT.brandEditorialPremiumDjCrowd}
+                  src={SITE_IMAGES.brandEditorialHeroDjGlow}
+                  alt={SITE_IMAGE_ALT.brandEditorialHeroDjGlow}
                   aspect="4/5"
-                  imageClassName="object-[72%_46%]"
+                  imageClassName="object-[center_38%]"
                   label="Atmosphere"
                   reservedHint="Editorial reception atmosphere, the first impression of the night you are planning."
                   priority
