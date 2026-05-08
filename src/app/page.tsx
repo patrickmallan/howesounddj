@@ -138,19 +138,21 @@ export default function HoweSoundDJHomepage() {
             <div className="relative z-10">
               <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/30">
                 <ImageSlot
-                  src={SITE_IMAGES.homeHero}
-                  alt={SITE_IMAGE_ALT.homeHero}
+                  src={SITE_IMAGES.brandEditorialPremiumDjCrowd}
+                  alt={SITE_IMAGE_ALT.brandEditorialPremiumDjCrowd}
                   aspect="4/5"
-                  imageClassName="object-[center_34%]"
-                  label="Reception"
-                  reservedHint="Dance floor energy, your venue, or the room ready for the party. The first impression of the night you are planning."
+                  imageClassName="object-[72%_46%]"
+                  label="Atmosphere"
+                  reservedHint="Editorial reception atmosphere, the first impression of the night you are planning."
                   priority
                   sizes="(max-width: 1024px) 100vw, 45vw"
                 />
                 <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-5">
-                  <div className="text-sm text-white/60">A True Experience</div>
-                  <div className="mt-2 text-lg font-medium text-white">
-                    Your story, your crowd, a reason to stay on the floor.
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300/90">
+                    Atmosphere First
+                  </div>
+                  <div className="mt-2 text-lg font-medium leading-snug text-white">
+                    Elegant when it matters. Wild when it should.
                   </div>
                 </div>
               </div>
