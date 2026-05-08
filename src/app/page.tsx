@@ -140,8 +140,7 @@ export default function HoweSoundDJHomepage() {
                 <ImageSlot
                   src={SITE_IMAGES.brandEditorialHeroDjGlow}
                   alt={SITE_IMAGE_ALT.brandEditorialHeroDjGlow}
-                  aspect="4/5"
-                  imageClassName="object-[center_38%]"
+                  aspect="3/2"
                   label="Atmosphere"
                   reservedHint="Editorial reception atmosphere, the first impression of the night you are planning."
                   priority
