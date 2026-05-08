@@ -199,6 +199,16 @@ export default function WeddingsPage() {
           </Link>
           .
         </p>
+        <p className="mt-4 max-w-3xl text-sm leading-7 text-white/55">
+          For a proof-style editorial on corridor dance-floor energy (not a single recap), open{" "}
+          <Link
+            href="/stories"
+            className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 hover:decoration-amber-200/60"
+          >
+            Featured Weddings &amp; Dance Floor Stories
+          </Link>
+          .
+        </p>
       </SectionReveal>
 
       <SectionReveal as="section" className="border-y border-white/10 bg-white/5">

@@ -1,0 +1,206 @@
+================================================================================
+QC PASS — HSDJ AUTHORITY FLOW + TOPOLOGICAL CLUSTERING (CURSOR / AGENT RUNBOOK)
+================================================================================
+
+Repo root (use quoted paths — filename may contain spaces):
+  /Users/patrickmallan/Desktop/howesounddj
+
+Status: REVIEWED against this repository (2026). Safe to use as a phased runbook.
+Worth running: YES, as an incremental internal-linking + context pass — but treat
+Phase 2 “required” items as VERIFY-FIRST; several are already implemented (see below).
+
+Do not treat “crawled-not-indexed” (Phase 4) as measurable inside the repo; that is
+Search Console reality. In-repo work is limited to linking, differentiation, and UX-safe copy.
+
+================================================================================
+ALREADY ALIGNED IN THIS REPO (VERIFY BEFORE DUPLICATING WORK)
+================================================================================
+
+• Homepage → /guides, /stories, /venues, /whistler-wedding-dj
+  Implemented in: src/components/explore-site-links.tsx (HomepageExploreSection).
+
+• Footer + header + mobile nav → same primary routes including Guides, Stories,
+  Venues, Whistler (/whistler-wedding-dj).
+  Implemented in: src/components/site-chrome.tsx (navLinks → SiteFooter).
+
+• Atmosphere Arc + Roomflow Method already appear in guides, Whistler pillar,
+  and the Sea-to-Sky story. Reinforcement = contextual links, not re-definitions.
+  Grep: "Atmosphere Arc" | "Roomflow Method"
+
+• Guide URL slugs (use these exact paths — not “choosing-a-dj”):
+  /guides/how-to-choose-a-wedding-dj-in-squamish
+  /guides/how-to-keep-a-wedding-dance-floor-packed
+
+• Optional geographic pillar not listed in original brief but present in site:
+  /vancouver-wedding-dj (footer line + page). Include in discovery if tightening
+  Sea-to-Sky / corridor clustering.
+
+================================================================================
+ORIGINAL MISSION (UNCHANGED INTENT)
+================================================================================
+
+Transform authority-density work into a coherent regional authority graph:
+internal authority flow, topical clustering, contextual relationships, crawl-friendly
+hierarchy — without spam, filler, or layout clutter.
+
+This tranche is NOT random new pages. It IS:
+  authority flow, semantic relationships, contextual reinforcement, crawl hierarchy,
+  topical ownership, emotional specificity, regional consolidation.
+
+================================================================================
+PHASE 1 — DISCOVERY & AUTHORITY MAP
+================================================================================
+
+cd "/Users/patrickmallan/Desktop/howesounddj"
+
+Bounded link discovery (Next.js uses <Link href="..."> or href={"... "} — adjust patterns):
+
+  rg -n 'href="/|href=\{|<Link[^>]+href=' src/app src/components \
+    --glob '!*.map' | head -400
+
+  rg -n '/guides|/stories|/venues|/whistler-wedding-dj|Atmosphere Arc|Roomflow Method' \
+    src/app src/components --glob '!*.map' | head -400
+
+List route entrypoints (App Router — prefer page.tsx inventory):
+
+  find src/app -type f \( -name 'page.tsx' -o -name 'page.ts' \) | sort
+
+(Optional deeper tree:)
+  find src/app -type f | sort | head -200
+
+Goals:
+  • orphan or weakly linked authority pages
+  • missing outbound context links (body copy, not only nav)
+  • missing inbound reinforcement from hubs (home, weddings, FAQ, Whistler, venues)
+
+================================================================================
+PHASE 2 — INTERNAL AUTHORITY FLOW PASS (VERIFY → THEN PATCH GAPS ONLY)
+================================================================================
+
+A. HOMEPAGE — MUST expose paths to: /guides, /stories, /venues, /whistler-wedding-dj
+   Status: likely SATISFIED via HomepageExploreSection. Confirm in page.tsx wiring;
+   add in-copy links only if strategy requires (avoid duplicate nav spam).
+
+B. FAQ — contextual links toward: /guides, /stories, /whistler-wedding-dj where natural.
+
+C. WEDDINGS — contextual links toward: /guides, /stories, /venues, /whistler-wedding-dj.
+
+D. WHISTLER (/whistler-wedding-dj) — venue guides, guides hub, stories, consultation CTAs.
+
+E. GUIDE PAGES (both) — stories, venues, Whistler, cross-links to the other guide.
+
+F. STORY PAGES — guides, venue ecosystem, Whistler, consultation CTA where appropriate.
+
+G. VENUE PAGES ([slug]) — Whistler when area fits; guides; stories; consult CTA.
+
+H. FOOTER — guides, stories, venues, whistler-wedding-dj
+   Status: likely SATISFIED via navLinks in site-chrome. Do not stack redundant footer links.
+
+================================================================================
+PHASE 3 — TOPOLOGICAL CLUSTER REINFORCEMENT
+================================================================================
+
+CLUSTER A — WEDDING DJ PLANNING
+  Hub: /guides
+  Supporting slugs:
+    /guides/how-to-choose-a-wedding-dj-in-squamish
+    /guides/how-to-keep-a-wedding-dance-floor-packed
+  Reinforce from FAQ, weddings, stories, venues with contextual anchors (not lists of URLs).
+
+CLUSTER B — EMOTIONAL AUTHORITY
+  Concepts: Atmosphere Arc, Roomflow Method (already in multiple pages).
+  Add short, tasteful cross-references where it helps the reader — not repetition of full definitions.
+
+CLUSTER C — GEOGRAPHIC AUTHORITY
+  Squamish, Whistler, Sea-to-Sky, Vancouver — natural mentions + internal links to
+  Whistler pillar, venues hub, and corridor stories/guides.
+
+CLUSTER D — VENUE ECOSYSTEM
+  Hub: /venues
+  Lateral venue links where same area or same planning context; link out to guides/stories.
+
+================================================================================
+PHASE 4 — “CRAWLED-NOT-INDEXED” (IN-REPO INTERPRETATION)
+================================================================================
+
+Cannot be verified from code alone. In scope: stronger differentiation via structure
+and linking; out of scope: keyword stuffing, fake narratives, word-count padding.
+
+================================================================================
+PHASE 5 — LIGHT FOUNDATIONAL PASS
+================================================================================
+
+Optional small blocks: “Related reading”, “Planning insight” — only where they improve UX.
+No new blog silos, no fabricated weddings.
+
+================================================================================
+PHASE 6 — GBP ALIGNMENT PREP
+================================================================================
+
+Terminology coherence only; no fabricated service claims or geo keyword spam.
+
+================================================================================
+IMPLEMENTATION RULES
+================================================================================
+
+Preserve: editorial tone, motion/UX patterns, conversion clarity, mobile layout.
+Avoid: link walls, duplicate footer/header echoes, generic wedding copy.
+
+================================================================================
+FILES LIKELY TO TOUCH (EDIT ONLY IF GAPS FOUND)
+================================================================================
+
+  src/app/page.tsx
+  src/app/weddings/page.tsx
+  src/app/faq/page.tsx
+  src/app/guides/page.tsx
+  src/app/guides/how-to-choose-a-wedding-dj-in-squamish/page.tsx
+  src/app/guides/how-to-keep-a-wedding-dance-floor-packed/page.tsx
+  src/app/stories/page.tsx
+  src/app/stories/sea-to-sky-wedding-dance-floor-energy/page.tsx
+  src/app/venues/page.tsx
+  src/app/venues/[slug]/page.tsx
+  src/app/whistler-wedding-dj/page.tsx
+  src/app/vancouver-wedding-dj/page.tsx   (optional cluster / corridor)
+  src/components/site-chrome.tsx          (only if nav/footer strategy changes)
+  src/components/explore-site-links.tsx   (only if homepage discovery cards change)
+
+================================================================================
+VALIDATION (RUN BEFORE HANDOFF)
+================================================================================
+
+cd "/Users/patrickmallan/Desktop/howesounddj"
+
+  npx tsc --noEmit
+
+  npx eslint .
+
+  npm run build
+
+Notes:
+  • `npm run lint` currently runs `eslint` with no paths; prefer `npx eslint .` for
+    explicit project coverage unless package.json is updated later.
+  • `npm run build` runs the Next.js pipeline including type checking per project config.
+
+================================================================================
+REQUIRED OUTPUT ARTIFACT
+================================================================================
+
+Create or update:
+  docs/handoff/authority-flow-topological-clustering-pass.md
+
+Include: topology before/after (brief), files inspected/changed, links added,
+cluster actions, validation results, intentional omissions, follow-ups.
+
+================================================================================
+ACCEPTANCE CRITERIA
+================================================================================
+
+Important pages not semantically isolated; homepage + hubs reinforce ecosystem;
+guides/stories/venues/whistler cross-support; UX stays premium; tsc + eslint + build pass.
+
+================================================================================
+GIT
+================================================================================
+
+Do not commit unless the operator explicitly requests it.

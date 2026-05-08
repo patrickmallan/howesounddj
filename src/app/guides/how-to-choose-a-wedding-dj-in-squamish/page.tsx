@@ -197,6 +197,13 @@ export default function GuideChooseWeddingDjSquamishPage() {
             </Link>{" "}
             for how mountain destination flow shows up in planning language.
           </p>
+          <p>
+            For editorial dance-floor context beyond this checklist, see{" "}
+            <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              Featured Weddings &amp; Dance Floor Stories
+            </Link>
+            .
+          </p>
         </Block>
 
         <SectionReveal

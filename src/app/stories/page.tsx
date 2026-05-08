@@ -128,7 +128,15 @@ export default function StoriesHubPage() {
             <Link href="/guides" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Wedding Planning Guides
             </Link>
-            . Couple voices in their own words stay on{" "}
+            . Named settings and flow questions map cleanly to{" "}
+            <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              wedding venue guides
+            </Link>
+            , and Whistler-wide pacing sits in the{" "}
+            <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              Whistler wedding DJ
+            </Link>{" "}
+            pillar. Couple voices in their own words stay on{" "}
             <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               reviews
             </Link>

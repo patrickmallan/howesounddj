@@ -258,16 +258,28 @@ export default function FaqPage() {
                 <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">{group.title}</h2>
                 <p className="mt-4 text-lg leading-8 text-white/70">{group.intro}</p>
                 {group.id === "planning" ? (
-                  <p className="mt-4 text-base leading-8 text-white/65">
-                    For reception energy and guest momentum at mountain weddings, read{" "}
-                    <Link
-                      href="/guides/how-to-keep-a-wedding-dance-floor-packed"
-                      className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
-                    >
-                      How to Keep a Wedding Dance Floor Packed at a Sea-to-Sky Wedding
-                    </Link>
-                    .
-                  </p>
+                  <>
+                    <p className="mt-4 text-base leading-8 text-white/65">
+                      For reception energy and guest momentum at mountain weddings, read{" "}
+                      <Link
+                        href="/guides/how-to-keep-a-wedding-dance-floor-packed"
+                        className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+                      >
+                        How to Keep a Wedding Dance Floor Packed at a Sea-to-Sky Wedding
+                      </Link>
+                      .
+                    </p>
+                    <p className="mt-4 text-base leading-8 text-white/65">
+                      For editorial proof-style context on how Sea-to-Sky floors feel in practice, see{" "}
+                      <Link
+                        href="/stories"
+                        className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+                      >
+                        Featured Weddings &amp; Dance Floor Stories
+                      </Link>
+                      .
+                    </p>
+                  </>
                 ) : null}
                 {group.id === "travel" ? (
                   <p className="mt-4 text-base leading-8 text-white/65">

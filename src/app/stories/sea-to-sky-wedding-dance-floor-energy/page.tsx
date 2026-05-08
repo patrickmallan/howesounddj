@@ -178,6 +178,17 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
             </Link>{" "}
             and then reach out when you are ready to talk dates and venues.
           </p>
+          <p>
+            Named Sea-to-Sky settings live in the{" "}
+            <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              venue guides
+            </Link>
+            ; Whistler destination weekends layer in the{" "}
+            <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              Whistler wedding DJ
+            </Link>{" "}
+            pillar.
+          </p>
         </Block>
 
         <SectionReveal

@@ -144,6 +144,17 @@ export default function GuideDanceFloorPackedPage() {
               </Link>{" "}
               are a practical companion to this article.
             </p>
+            <p>
+              Whistler receptions add destination-weekend flow; the{" "}
+              <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                Whistler wedding DJ
+              </Link>{" "}
+              pillar ties that arc to mountain planning language. For editorial proof alongside guides, see{" "}
+              <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                Featured Weddings &amp; Dance Floor Stories
+              </Link>
+              .
+            </p>
           </ProseBlock>
         </SectionReveal>
 

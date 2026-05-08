@@ -102,6 +102,10 @@ export default function WhistlerWeddingDjPage() {
               >
                 How to Keep a Wedding Dance Floor Packed at a Sea-to-Sky Wedding
               </Link>
+              . For editorial proof on how Sea-to-Sky energy reads on the floor, see{" "}
+              <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                Featured Weddings &amp; Dance Floor Stories
+              </Link>
               .
             </p>
             <div className="mt-8 max-w-xl space-y-4">
