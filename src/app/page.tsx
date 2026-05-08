@@ -114,8 +114,8 @@ export default function HoweSoundDJHomepage() {
     <main className="min-h-screen bg-neutral-950 text-white">
         <section className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.18),transparent_45%)]" />
-          <div className="mx-auto grid max-w-6xl gap-16 px-6 py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
-            <div className="relative z-10">
+          <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 py-20 lg:flex-row lg:items-stretch lg:gap-16 lg:px-8 lg:py-28">
+            <div className="relative z-10 min-w-0 lg:min-h-0 lg:basis-0 lg:flex-1">
               <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
                 Squamish Wedding DJ · Sea-to-Sky
               </div>
@@ -135,8 +135,8 @@ export default function HoweSoundDJHomepage() {
               </div>
             </div>
 
-            <div className="relative z-10 flex h-full min-h-0 flex-col">
-              <div className="atmosphere-grain flex h-full min-h-0 flex-col rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/30">
+            <div className="relative z-10 flex w-full min-w-0 flex-col lg:min-h-0 lg:basis-0 lg:flex-1">
+              <div className="atmosphere-grain flex min-h-0 w-full flex-1 flex-col rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/30">
                 <ImageSlot
                   src={SITE_IMAGES.brandEditorialHeroDjGlow}
                   alt={SITE_IMAGE_ALT.brandEditorialHeroDjGlow}

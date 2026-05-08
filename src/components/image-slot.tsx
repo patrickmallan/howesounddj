@@ -62,7 +62,7 @@ export function ImageSlot({
 }: ImageSlotProps) {
   const frameBg = premiumPhotoTreatment ? "bg-black" : "bg-neutral-900";
   const frameFixed = `relative w-full overflow-hidden rounded-[1.5rem] border border-white/10 ${frameBg} ${aspectClass[aspect]}`;
-  const frameFluid = `relative min-h-[min(42vh,20rem)] w-full flex-1 overflow-hidden rounded-[1.5rem] border border-white/10 ${frameBg}`;
+  const frameFluid = `relative min-h-[min(42vh,20rem)] w-full flex-1 overflow-hidden rounded-[1.5rem] border border-white/10 ${frameBg} lg:min-h-0`;
   const frame = fillHeight ? frameFluid : frameFixed;
   const figureLayout = fillHeight
     ? `flex min-h-0 flex-1 flex-col ${className}`.trim()
@@ -114,7 +114,7 @@ export function ImageSlot({
       <div
         className={
           fillHeight
-            ? "relative flex min-h-[min(42vh,20rem)] w-full flex-1 flex-col justify-center overflow-hidden rounded-[1.5rem] border border-white/10 bg-gradient-to-b from-neutral-900/95 to-neutral-950 p-8 shadow-inner shadow-black/30"
+            ? "relative flex min-h-[min(42vh,20rem)] w-full flex-1 flex-col justify-center overflow-hidden rounded-[1.5rem] border border-white/10 bg-gradient-to-b from-neutral-900/95 to-neutral-950 p-8 shadow-inner shadow-black/30 lg:min-h-0"
             : `relative flex flex-col justify-center overflow-hidden rounded-[1.5rem] border border-white/10 bg-gradient-to-b from-neutral-900/95 to-neutral-950 p-8 shadow-inner shadow-black/30 ${aspectClass[aspect]}`
         }
         role="presentation"
