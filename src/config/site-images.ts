@@ -42,7 +42,8 @@ export const SITE_IMAGES = {
   brandEditorialPackedDanceFloor: "/images/brand-editorial/hsdj-packed-dance-floor-editorial.webp",
   brandEditorialPremiumDjCrowd: "/images/brand-editorial/hsdj-premium-dj-crowd-editorial.webp",
   brandEditorialDocumentaryDanceFloor: "/images/brand-editorial/hsdj-documentary-dance-floor-editorial.webp",
-  brandEditorialHeroDjGlow: "/images/brand-editorial/hsdj-hero-dj-glow-editorial.webp",
+  brandEditorialHeroDjGlow:
+    "/images/brand-editorial/hsdj-hero-crowd-behind-mountains-editorial.webp",
 } as const;
 
 export type SiteImageKey = keyof typeof SITE_IMAGES;
@@ -64,7 +65,8 @@ export const SITE_IMAGE_FILES: Record<SiteImageKey, string> = {
   brandEditorialPackedDanceFloor: "/images/brand-editorial/hsdj-packed-dance-floor-editorial.webp",
   brandEditorialPremiumDjCrowd: "/images/brand-editorial/hsdj-premium-dj-crowd-editorial.webp",
   brandEditorialDocumentaryDanceFloor: "/images/brand-editorial/hsdj-documentary-dance-floor-editorial.webp",
-  brandEditorialHeroDjGlow: "/images/brand-editorial/hsdj-hero-dj-glow-editorial.webp",
+  brandEditorialHeroDjGlow:
+    "/images/brand-editorial/hsdj-hero-crowd-behind-mountains-editorial.webp",
 };
 
 /**
@@ -105,5 +107,5 @@ export const SITE_IMAGE_ALT: Record<SiteImageKey, string> = {
   brandEditorialDocumentaryDanceFloor:
     "Editorial wedding dance floor moment with guests gathered around the couple in a celebration scene",
   brandEditorialHeroDjGlow:
-    "Editorial black-and-white wedding dance floor scene with Howe Sound DJ behind the booth",
+    "Wedding guests celebrating on a packed dance floor with a mountain backdrop through large windows",
 };
