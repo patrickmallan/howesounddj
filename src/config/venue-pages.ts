@@ -546,3 +546,8 @@ export function getVenueBySlug(slug: string): VenuePage | undefined {
 export function getAllVenueSlugs(): string[] {
   return VENUE_PAGES.map((v) => v.slug);
 }
+
+/** Whistler-area guides for pillar pages and internal linking; sorted by display name. */
+export function getWhistlerVenuePages(): VenuePage[] {
+  return [...VENUE_PAGES].filter((v) => v.area === "whistler").sort((a, b) => a.name.localeCompare(b.name));
+}

@@ -15,8 +15,10 @@ const PATHS_WITHOUT_GLOBAL_FINALE = new Set([
   "/contact",
   "/faq",
   "/vancouver-wedding-dj",
+  "/whistler-wedding-dj",
   "/venues",
   "/guides",
+  "/stories",
 ]);
 
 export function ConditionalSiteFinalDecisionZone() {
@@ -24,5 +26,6 @@ export function ConditionalSiteFinalDecisionZone() {
   if (PATHS_WITHOUT_GLOBAL_FINALE.has(pathname)) return null;
   if (pathname.startsWith("/venues/")) return null;
   if (pathname.startsWith("/guides/")) return null;
+  if (pathname.startsWith("/stories/")) return null;
   return <SiteFinalDecisionZone />;
 }

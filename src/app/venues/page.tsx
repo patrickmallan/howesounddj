@@ -86,6 +86,10 @@ export default function VenuesHubPage() {
             <Link href="/guides" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Wedding Planning Guides
             </Link>
+            . For Whistler-wide context that ties these venue guides together, read the{" "}
+            <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              Whistler wedding DJ pillar
+            </Link>
             .
           </p>
         </div>

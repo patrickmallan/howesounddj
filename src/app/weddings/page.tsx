@@ -124,6 +124,20 @@ export default function WeddingsPage() {
                 Vancouver couples & Sea-to-Sky weddings →
               </a>
             </p>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/50">
+              Marrying in Whistler? Start with the{" "}
+              <Link href="/whistler-wedding-dj" className="font-medium text-amber-300/90 transition hover:text-amber-200">
+                Whistler wedding DJ pillar
+              </Link>
+              . Choosing locally in Squamish? Read{" "}
+              <Link
+                href="/guides/how-to-choose-a-wedding-dj-in-squamish"
+                className="font-medium text-amber-300/90 transition hover:text-amber-200"
+              >
+                How to Choose a Wedding DJ in Squamish
+              </Link>
+              .
+            </p>
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="hero" checkSurface="hero" />
               <p className="text-sm leading-relaxed text-white/60">

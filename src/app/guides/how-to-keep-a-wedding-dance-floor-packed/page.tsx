@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
+import { ImageSlot } from "@/components/image-slot";
 import { SectionReveal } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
+import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { JsonLd } from "@/components/json-ld";
 import { guideArticleBreadcrumbJsonLd, guideArticleJsonLd } from "@/lib/json-ld";
 
@@ -145,32 +147,57 @@ export default function GuideDanceFloorPackedPage() {
           </ProseBlock>
         </SectionReveal>
 
-        <ProseBlock eyebrow="Framework" title="The Roomflow Method">
-          <p>
-            The Roomflow Method is Howe Sound DJ&apos;s approach to building a dance floor through emotional pacing, guest trust, familiarity, transitions, timing, and reading the specific room in
-            front of you. It is not a formula printed on a spreadsheet. It is a way of listening to your people and protecting the night&apos;s emotional truth.
-          </p>
-          <ol className="list-decimal space-y-4 pl-6 text-white/75">
-            <li>
-              <strong className="text-white/90">Earn the room before asking it to move.</strong> Warmth and clarity early create permission to celebrate later.
-            </li>
-            <li>
-              <strong className="text-white/90">Build from recognition before intensity.</strong> Shared memories in music lower the social barrier to dancing.
-            </li>
-            <li>
-              <strong className="text-white/90">Protect the couple&apos;s taste without isolating guests.</strong> Your wedding should sound like you, and still invite your favorite people in.
-            </li>
-            <li>
-              <strong className="text-white/90">Use transitions as emotional bridges.</strong> The blend between songs is where trust is won or lost.
-            </li>
-            <li>
-              <strong className="text-white/90">Match the venue&apos;s atmosphere before changing its energy.</strong> Honor the setting, then open the next chapter when the room is ready.
-            </li>
-            <li>
-              <strong className="text-white/90">Keep momentum human, not mechanical.</strong> The goal is connection, not a metronome stuck on &quot;high.&quot;
-            </li>
-          </ol>
-        </ProseBlock>
+        <section className="border-y border-white/10 bg-neutral-950">
+          <div className="mx-auto max-w-3xl px-6 pt-14 lg:px-8">
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Framework</div>
+            <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">The Roomflow Method</h2>
+            <p className="mt-6 text-lg leading-8 text-white/70">
+              The Roomflow Method is Howe Sound DJ&apos;s approach to building a dance floor through emotional pacing, guest trust, familiarity, transitions, timing, and reading the specific room in
+              front of you. It is not a formula printed on a spreadsheet. It is a way of listening to your people and protecting the night&apos;s emotional truth.
+            </p>
+          </div>
+          <div className="mx-auto max-w-4xl px-6 py-10 lg:px-8">
+            <ImageSlot
+              src={SITE_IMAGES.brandEditorialPackedDanceFloor}
+              alt={SITE_IMAGE_ALT.brandEditorialPackedDanceFloor}
+              aspect="16/9"
+              label="Editorial atmosphere"
+              reservedHint="Brand atmosphere imagery for planning context."
+              sizes="(max-width: 1024px) 100vw, 56rem"
+              imageClassName="object-[center_42%]"
+              premiumPhotoTreatment
+            >
+              <span className="block text-white/60">
+                A packed dance floor is built through pacing, trust, timing, and momentum.
+              </span>
+              <span className="mt-2 block text-xs text-white/40">
+                Editorial brand atmosphere, not a recount of a single client wedding.
+              </span>
+            </ImageSlot>
+          </div>
+          <div className="mx-auto max-w-3xl space-y-4 px-6 pb-14 text-lg leading-8 lg:px-8">
+            <ol className="list-decimal space-y-4 pl-6 text-white/75">
+              <li>
+                <strong className="text-white/90">Earn the room before asking it to move.</strong> Warmth and clarity early create permission to celebrate later.
+              </li>
+              <li>
+                <strong className="text-white/90">Build from recognition before intensity.</strong> Shared memories in music lower the social barrier to dancing.
+              </li>
+              <li>
+                <strong className="text-white/90">Protect the couple&apos;s taste without isolating guests.</strong> Your wedding should sound like you, and still invite your favorite people in.
+              </li>
+              <li>
+                <strong className="text-white/90">Use transitions as emotional bridges.</strong> The blend between songs is where trust is won or lost.
+              </li>
+              <li>
+                <strong className="text-white/90">Match the venue&apos;s atmosphere before changing its energy.</strong> Honor the setting, then open the next chapter when the room is ready.
+              </li>
+              <li>
+                <strong className="text-white/90">Keep momentum human, not mechanical.</strong> The goal is connection, not a metronome stuck on &quot;high.&quot;
+              </li>
+            </ol>
+          </div>
+        </section>
 
         <SectionReveal as="div" className="border-y border-white/10 bg-white/[0.03]">
           <ProseBlock eyebrow="Arc" title="Ceremony, cocktails, dinner, speeches, and dance floor are one emotional arc">

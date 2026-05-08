@@ -1,6 +1,6 @@
 /**
  * Production image paths, files live under `public/images/` in purpose-based folders
- * (`home/`, `weddings/`, `about/`, `social/`). See `SITE_IMAGE_FILES` for the exact targets.
+ * (`home/`, `weddings/`, `about/`, `social/`, `brand-editorial/`). See `SITE_IMAGE_FILES` for the exact targets.
  *
  * For each slot, set the value to the **public URL path** (e.g. `homeHero: "/images/home/home-hero.webp"`)
  * once the file exists, or keep `null` until then. Prefer matching `SITE_IMAGE_FILES` so paths stay predictable.
@@ -38,6 +38,10 @@ export const SITE_IMAGES = {
   aboutPortrait: "/images/about/patrick-portrait-bw.webp",
   weddingsSupport: `/images/weddings/weddings-support.webp?v=${WEDDINGS_SUPPORT_CACHE}`,
   weddingsCrowd: "/images/weddings/weddings-crowd.webp",
+  /** Editorial brand atmosphere assets only; not documentary proof of a specific wedding. */
+  brandEditorialPackedDanceFloor: "/images/brand-editorial/hsdj-packed-dance-floor-editorial.webp",
+  brandEditorialPremiumDjCrowd: "/images/brand-editorial/hsdj-premium-dj-crowd-editorial.webp",
+  brandEditorialDocumentaryDanceFloor: "/images/brand-editorial/hsdj-documentary-dance-floor-editorial.webp",
 } as const;
 
 export type SiteImageKey = keyof typeof SITE_IMAGES;
@@ -56,6 +60,9 @@ export const SITE_IMAGE_FILES: Record<SiteImageKey, string> = {
   aboutPortrait: "/images/about/patrick-portrait-bw.webp",
   weddingsSupport: `/images/weddings/weddings-support.webp?v=${WEDDINGS_SUPPORT_CACHE}`,
   weddingsCrowd: "/images/weddings/weddings-crowd.webp",
+  brandEditorialPackedDanceFloor: "/images/brand-editorial/hsdj-packed-dance-floor-editorial.webp",
+  brandEditorialPremiumDjCrowd: "/images/brand-editorial/hsdj-premium-dj-crowd-editorial.webp",
+  brandEditorialDocumentaryDanceFloor: "/images/brand-editorial/hsdj-documentary-dance-floor-editorial.webp",
 };
 
 /**
@@ -89,4 +96,10 @@ export const SITE_IMAGE_ALT: Record<SiteImageKey, string> = {
     "Wedding guests celebrating with hands in the air beneath string lights",
   weddingsCrowd:
     "Wedding guests walking together in a candid outdoor group moment",
+  brandEditorialPackedDanceFloor:
+    "Editorial wedding dance floor scene with Howe Sound DJ energy and a packed reception crowd",
+  brandEditorialPremiumDjCrowd:
+    "Editorial image of a wedding DJ with a full dance floor in a mountain-style reception setting",
+  brandEditorialDocumentaryDanceFloor:
+    "Editorial wedding dance floor moment with guests gathered around the couple in a celebration scene",
 };

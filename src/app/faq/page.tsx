@@ -269,6 +269,22 @@ export default function FaqPage() {
                     .
                   </p>
                 ) : null}
+                {group.id === "travel" ? (
+                  <p className="mt-4 text-base leading-8 text-white/65">
+                    Hiring in Squamish or nearby? See{" "}
+                    <Link
+                      href="/guides/how-to-choose-a-wedding-dj-in-squamish"
+                      className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+                    >
+                      How to Choose a Wedding DJ in Squamish
+                    </Link>
+                    . Whistler celebrations:{" "}
+                    <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                      Whistler wedding DJ
+                    </Link>
+                    .
+                  </p>
+                ) : null}
               </div>
               <div className="mt-10">
                 <FaqAccordion items={group.items} />

@@ -50,6 +50,106 @@ export function vancouverWeddingDjBreadcrumbJsonLd(): Record<string, unknown> {
   };
 }
 
+export function whistlerWeddingDjBreadcrumbJsonLd(): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${SITE_ORIGIN}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Whistler Wedding DJ",
+        item: `${SITE_ORIGIN}/whistler-wedding-dj`,
+      },
+    ],
+  };
+}
+
+export function storiesHubBreadcrumbJsonLd(): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${SITE_ORIGIN}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Featured weddings & stories",
+        item: `${SITE_ORIGIN}/stories`,
+      },
+    ],
+  };
+}
+
+export function storyArticleBreadcrumbJsonLd(storyTitle: string, slug: string): Record<string, unknown> {
+  const pageUrl = `${SITE_ORIGIN}/stories/${slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${SITE_ORIGIN}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Featured weddings & stories",
+        item: `${SITE_ORIGIN}/stories`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: storyTitle,
+        item: pageUrl,
+      },
+    ],
+  };
+}
+
+/** Article under `/stories/` for editorial and proof-style pages. */
+export function storyArticleJsonLd(args: {
+  slug: string;
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified?: string;
+}): Record<string, unknown> {
+  const pageUrl = `${SITE_ORIGIN}/stories/${args.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: args.headline,
+    description: args.description,
+    url: pageUrl,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl,
+    },
+    datePublished: args.datePublished,
+    dateModified: args.dateModified ?? args.datePublished,
+    author: {
+      "@id": `${SITE_ORIGIN}/#organization`,
+    },
+    publisher: {
+      "@id": `${SITE_ORIGIN}/#organization`,
+    },
+  };
+}
+
 export function venuesHubBreadcrumbJsonLd(): Record<string, unknown> {
   return {
     "@context": "https://schema.org",

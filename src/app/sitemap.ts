@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/weddings",
     "/vancouver-wedding-dj",
+    "/whistler-wedding-dj",
     "/about",
     "/packages",
     "/reviews",
@@ -17,6 +18,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/venues",
     "/guides",
     "/guides/how-to-keep-a-wedding-dance-floor-packed",
+    "/guides/how-to-choose-a-wedding-dj-in-squamish",
+    "/stories",
+    "/stories/sea-to-sky-wedding-dance-floor-energy",
     ...getAllVenueSlugs().map((slug) => `/venues/${slug}`),
   ];
   return paths.map((path) => ({
