@@ -6,16 +6,27 @@ import { usePathname } from "next/navigation";
 import CTADuo from "@/components/cta-duo";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 
-const navLinks = [
+type SiteNavLink = {
+  href: string;
+  label: string;
+  /** Footer anchor text when it should differ from the header label (crawlable, descriptive). */
+  footerLabel?: string;
+};
+
+/** Single source for desktop nav, mobile drawer, and footer primary row. */
+const navLinks: SiteNavLink[] = [
   { href: "/", label: "Home" },
   { href: "/weddings", label: "Weddings" },
   { href: "/packages", label: "Packages" },
   { href: "/reviews", label: "Reviews" },
+  { href: "/guides", label: "Guides" },
+  { href: "/stories", label: "Stories" },
+  { href: "/venues", label: "Venues" },
+  { href: "/whistler-wedding-dj", label: "Whistler", footerLabel: "Whistler Wedding DJ" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
-  { href: "/venues", label: "Venues" },
   { href: "/contact", label: "Contact" },
-] as const;
+];
 
 const MOBILE_PRIMARY_NAV_ID = "site-mobile-primary-nav";
 
@@ -74,7 +85,7 @@ export function SiteHeader() {
         </Link>
         <div className="flex min-w-0 shrink-0 items-center gap-1.5 sm:gap-3">
           <nav
-            className="hidden max-w-none flex-wrap items-center justify-end gap-x-5 gap-y-2 text-sm text-white/80 xl:flex xl:gap-x-6"
+            className="hidden max-w-none flex-wrap items-center justify-end gap-x-3 gap-y-1.5 text-[0.8125rem] leading-snug text-white/80 xl:flex xl:gap-x-4 xl:text-sm"
             aria-label="Primary"
           >
             {navLinks.map((item) => {
@@ -222,15 +233,9 @@ export function SiteFooter() {
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           {navLinks.map((item) => (
             <Link key={item.href} href={item.href} className="transition hover:text-white/70">
-              {item.label}
+              {item.footerLabel ?? item.label}
             </Link>
           ))}
-          <Link href="/guides" className="transition hover:text-white/70">
-            Wedding Planning Guides
-          </Link>
-          <Link href="/whistler-wedding-dj" className="transition hover:text-white/70">
-            Whistler Wedding DJ
-          </Link>
         </div>
         <p className="text-sm text-white/40">
           <Link href="/vancouver-wedding-dj" className="transition hover:text-white/65">

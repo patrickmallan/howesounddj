@@ -163,8 +163,6 @@ export default function HoweSoundDJHomepage() {
           </div>
         </section>
 
-        <HomepageExploreSection />
-
         <SectionReveal>
           <HomeVideoProof />
         </SectionReveal>
@@ -420,6 +418,8 @@ export default function HoweSoundDJHomepage() {
             </div>
           </div>
         </SectionReveal>
+
+        <HomepageExploreSection />
     </main>
   );
 }
