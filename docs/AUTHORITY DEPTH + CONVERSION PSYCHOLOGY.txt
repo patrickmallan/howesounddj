@@ -1,0 +1,212 @@
+================================================================================
+HOWE SOUND DJ — AUTHORITY DEPTH + CONVERSION PSYCHOLOGY
+DESIGN & IMPLEMENTATION ROADMAP (CHIEF ARCHITECT / PM VIEW)
+================================================================================
+
+Canonical brand (this codebase): **Howe Sound DJ** — Squamish-rooted wedding DJ,
+Sea-to-Sky / Whistler / corridor coverage. (Align any “Event DJ” legal naming in
+contracts or GBP separately; the public site and this repo use **Howe Sound DJ**.)
+
+Document status: **Rewritten 2026-05-08** after alignment with the current Next.js
+app, `src/lib/json-ld.ts`, recent **authority-flow / internal linking** handoff
+(`docs/handoff/authority-flow-topological-clustering-pass.md`), and conversion surfaces.
+
+Strategic thesis (unchanged from Atlas, validated):
+  Internal authority graph is in place. **Marginal ROI now shifts to conversion
+  psychology**—turning qualified visits into consults and availability checks—while
+  **depth content** (venue-atmosphere stories) builds a harder-to-copy moat.
+
+================================================================================
+WHERE THE REPO ALREADY IS (DO NOT RE-DISCOVER)
+================================================================================
+
+• **Internal linking:** Hubs (guides, stories, venues, Whistler) are cross-wired from
+  FAQ, weddings, guides, Whistler, venues, venue detail “Also useful,” etc. See handoff
+  above.
+
+• **Structured data (already shipped, not a blank slate):** `src/lib/json-ld.ts` and
+  `src/components/json-ld.tsx` provide Organization, **FAQPage** (FAQ), **Article**
+  (guides + stories), **BreadcrumbList** (major templates), **Service** (venue pages).
+  Tier-2 work = **refinement and completeness**, not “add Article from zero.”
+
+• **Conversion plumbing:** Shared **CTADuo**, consult + availability flows on contact
+  (`src/app/contact/page.tsx`, `contact-book-consult-section`, availability form),
+  tracked links, footer/header nav. Psychology pass tunes **copy, sequencing, and
+  reassurance**, not a new funnel from scratch.
+
+• **Stories system:** `src/app/stories/` + one editorial piece; `venue-pages.ts` /
+  `site-images.ts` support expansion. Venue-atmosphere narratives are **content +
+  routing**, not new infrastructure.
+
+================================================================================
+ROADMAP OVERVIEW (PRIORITIZED)
+================================================================================
+
+  Phase A  Premium trust + conversion psychology .............. HIGHEST ROI (web)
+  Phase B  Venue-specific atmosphere stories ................. HIGH SEO + brand moat
+  Phase C  Image / editorial consistency ...................... MEDIUM (trust + polish)
+  Phase D  Google Business Profile ............................ HIGH (off-site local)
+  Phase E  Indexation & performance monitoring ................ ONGOING (GSC / GA)
+  Phase F  Technical SEO tier-2 ............................... LOWER urgency (gaps only)
+
+================================================================================
+PHASE A — PREMIUM TRUST + CONVERSION PSYCHOLOGY (IMPLEMENT FIRST)
+================================================================================
+
+Goal: When a couple lands on About, Contact, Weddings, Packages, or key pillars,
+they should feel **calm certainty**, **premium fit**, and **low social risk**—without
+spammy urgency or fake scarcity.
+
+Design principles:
+  • Reassurance before ask (what happens next, no-pressure framing already strong—extend).
+  • **Specificity > adjectives** (Squamish-rooted, Sea-to-Sky, named planning lenses).
+  • **Social proof placement** near decisions (reviews, AuthorityProofStrip patterns).
+  • **Exclusivity as craft**, not elitism (“intentional calendar,” “right fit,” not
+    “only 3 spots left” unless true).
+
+Likely implementation targets (edit only where copy/UX audit finds gap):
+
+  • `src/app/about/page.tsx` — “Why different” / trust architecture; optional short
+    block linking to guides + reviews; tighten headline support lines for anxiety
+    (timeline, communication, what if X goes wrong).
+
+  • `src/app/contact/page.tsx` — Hero + “What happens next”; micro-copy on consult vs
+    availability; reinforce same reassurance as reviews language.
+
+  • `src/components/cta-duo.tsx` + `book-consult-tracked-link` /
+    `check-availability-tracked-link` — Label consistency, surface naming for analytics.
+
+  • `src/components/contact-book-consult-section.tsx`,
+    `src/components/contact-page-cta-trio.tsx` — Ordering, subcopy, friction reduction.
+
+  • High-traffic pillars: `src/app/weddings/page.tsx`, `src/app/packages/page.tsx`,
+    `src/app/whistler-wedding-dj/page.tsx` — One pass for “why HSDJ” and anxiety-kill
+    sentences **above the fold** and **above final CTA**.
+
+  • `src/app/faq/page.tsx` — Bridge FAQs to human trust (“how Patrick works”) where
+    it reduces fear, not more links for links’ sake.
+
+Deliverables:
+  A1. Copy audit checklist (per page): primary anxiety → on-page answer → CTA.
+  A2. Implemented copy/layout tweaks preserving motion + premium surfaces.
+  A3. Analytics: confirm key events still fire (`src/lib/analytics.ts`).
+
+Success metrics (4–8 weeks): higher consult + availability CTR from About/Contact/
+  Weddings; scroll depth on Contact; qualitative “feels premium” review.
+
+================================================================================
+PHASE B — VENUE-SPECIFIC AUTHORITY STORIES (EDITORIAL MOAT)
+================================================================================
+
+Goal: **Editorial atmosphere narratives** tied to venue *dynamics* (sound, pacing,
+guest travel, weather/elevation psychology)—not duplicate venue SEO pages.
+
+Content rules (non-negotiable):
+  • No fabricated couple names, dates, or venues; label editorial vs documentary.
+  • Tie to **Roomflow Method** / **Atmosphere Arc** where natural.
+  • Internal link to relevant `/venues/[slug]`, guides, Whistler pillar.
+
+Implementation pattern (reuse existing stack):
+  • New routes under `src/app/stories/[slug]/page.tsx` (follow sea-to-sky story).
+  • Register in `src/app/stories/page.tsx` story list + `src/app/sitemap.ts`.
+  • JSON-LD: `storyArticleJsonLd` + breadcrumb (already in `json-ld.ts`).
+  • Imagery: `src/config/site-images.ts` + `public/images/` (see Phase C).
+
+Example themes (backlog, prioritize by search + brand):
+  • Sea-to-Sky Gondola: arc of the night + elevation/guest energy.
+  • Whistler: destination-weekend pacing vs single-day Squamish.
+  • “When the floor never opens” — planning diagnosis piece (non-judgmental).
+
+Deliverables:
+  B1. Editorial calendar (1–2 drafts/month realistic).
+  B2. Published stories with internal links into venue hub and pillars.
+
+================================================================================
+PHASE C — IMAGE / EDITORIAL CONSISTENCY
+================================================================================
+
+Goal: Visual language matches **cinematic, documentary, atmosphere-first** positioning;
+mobile crops stay intentional.
+
+Implementation targets:
+  • `public/images/README.md`, `src/config/site-images.ts` — slot discipline.
+  • `src/components/image-slot.tsx` — aspect ratios, `object-*` focal points.
+  • Key pages: home hero, weddings band, guides/stories headers, about portrait.
+
+Deliverables:
+  C1. Shot list + WebP pipeline (max dimensions, quality) per slot.
+  C2. Replace weak crops; avoid one off-brand stock frame undermining trust.
+
+================================================================================
+PHASE D — GOOGLE BUSINESS PROFILE (OFF-REPO, OPERATIONS)
+================================================================================
+
+Goal: GBP reinforces **Sea-to-Sky wedding DJ** specialization and feeds the site
+pillars (Whistler, guides, venues)—not a duplicate of the homepage.
+
+Checklist (owner: principal / marketing):
+  • Categories, service areas, description aligned with site terminology.
+  • Photo set: consistent with Phase C (editorial, not low-res phone-only).
+  • Posts: link to `/whistler-wedding-dj`, `/guides`, priority venue guides.
+  • Review response tone matches site voice (calm, professional).
+
+================================================================================
+PHASE E — INDEXATION & CONVERSION MONITORING (ONGOING)
+================================================================================
+
+Goal: Observe **Search Console** after internal linking + future content: indexing,
+impressions, queries for Whistler/Squamish/venue names. No panic on lag.
+
+Pair with **GA4** (already wired via site): landing pages, CTA events, consult vs
+availability split.
+
+Cadence: Weekly 15 min for 4 weeks after major deploys; then monthly.
+
+================================================================================
+PHASE F — TECHNICAL SEO TIER-2 (GAPS ONLY; NOT THE BOTTLENECK)
+================================================================================
+
+Reality check: Core JSON-LD types **already exist** (see `json-ld.ts`). Remaining work:
+
+  • ImageObject / `images` enrichment on Article where beneficial.
+  • Validate FAQ schema coverage vs visible FAQ content (drift audit).
+  • `next.config` / metadata passes for priority URLs (incremental).
+  • Core Web Vitals and mobile UX (already strong; regressions only).
+
+Do **not** delay Phase A for schema tinkering.
+
+================================================================================
+PROGRAM MANAGEMENT
+================================================================================
+
+Dependencies:
+  Phase A can start immediately.
+  Phase B benefits from Phase C assets; can run partial parallel with A.
+  Phase D is independent but messaging should match Phase A copy.
+
+Risks:
+  • Over-linking or repetitive “SEO paragraphs” — forbidden; keep editorial tone.
+  • Fabricated wedding narratives — forbidden; damages trust and brand.
+
+Definition of done (program level):
+  • Measurable improvement path for consult/availability actions.
+  • At least one new atmosphere story live or scheduled with clear internal links.
+  • GBP checklist executed or ticketed with owner.
+  • GSC baseline noted post-deploy.
+
+================================================================================
+GIT / HANDOFF
+================================================================================
+
+After each tranche: optional `docs/handoff/<topic>.md` with files changed, metrics
+hypothesis, and validation (`npx tsc --noEmit`, `npx eslint .`, `npm run build`).
+
+Commit only when operator requests.
+
+================================================================================
+ONE-LINE CEO SUMMARY
+================================================================================
+
+**Next web tranche:** Phase A — premium trust and conversion psychology on About,
+Contact, and primary commercial pages; then Phase B venue-atmosphere stories with
+honest editorial boundaries; GBP and monitoring in parallel.
