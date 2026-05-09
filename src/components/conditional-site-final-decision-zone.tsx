@@ -15,6 +15,7 @@ const PATHS_WITHOUT_GLOBAL_FINALE = new Set([
   "/contact",
   "/faq",
   "/vancouver-wedding-dj",
+  "/squamish-wedding-dj",
   "/whistler-wedding-dj",
   "/venues",
   "/guides",
