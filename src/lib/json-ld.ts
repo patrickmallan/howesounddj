@@ -71,6 +71,27 @@ export function whistlerWeddingDjBreadcrumbJsonLd(): Record<string, unknown> {
   };
 }
 
+export function squamishWeddingDjBreadcrumbJsonLd(): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${SITE_ORIGIN}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Squamish Wedding DJ",
+        item: `${SITE_ORIGIN}/squamish-wedding-dj`,
+      },
+    ],
+  };
+}
+
 export function storiesHubBreadcrumbJsonLd(): Record<string, unknown> {
   return {
     "@context": "https://schema.org",

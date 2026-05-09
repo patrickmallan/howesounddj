@@ -132,7 +132,11 @@ export default function StoriesHubPage() {
             <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               wedding venue guides
             </Link>
-            , and Whistler-wide pacing sits in the{" "}
+            . Squamish-first context sits in the{" "}
+            <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              Squamish wedding DJ
+            </Link>{" "}
+            pillar, and Whistler-wide pacing sits in the{" "}
             <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Whistler wedding DJ
             </Link>{" "}

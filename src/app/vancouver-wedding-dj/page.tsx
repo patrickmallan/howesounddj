@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
 import { ImageSlot } from "@/components/image-slot";
 import { JsonLd } from "@/components/json-ld";
@@ -241,6 +242,16 @@ export default function VancouverWeddingDjPage() {
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Squamish, Whistler, and the Sea-to-Sky, not a Vancouver storefront</h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
               Howe Sound DJ is based in Squamish and works across the corridor. You do not need a fake Vancouver address to feel like you hired the right corridor specialist. You need someone who knows how these weddings actually run. That is the through-line whether your guests are mostly local or flying in from across the country.
+            </p>
+            <p className="mt-4 text-lg leading-8 text-white/70">
+              If your date is anchored in Squamish itself, the dedicated overview is the{" "}
+              <Link
+                href="/squamish-wedding-dj"
+                className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 hover:decoration-amber-200/60"
+              >
+                Squamish wedding DJ
+              </Link>{" "}
+              pillar, then this page stays useful when you are comparing how planning-from-Vancouver maps to the whole Sea-to-Sky.
             </p>
           </div>
           <div className="mt-12 grid gap-6 lg:grid-cols-3">

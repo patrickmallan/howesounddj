@@ -186,6 +186,16 @@ export default async function VenueDetailPage({ params }: Props) {
                   Featured Weddings &amp; Dance Floor Stories
                 </Link>
               </li>
+              {venue.area === "squamish" || venue.slug === "sea-to-sky-gondola" || venue.slug === "sunwolf" ? (
+                <li>
+                  <Link
+                    href="/squamish-wedding-dj"
+                    className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+                  >
+                    Squamish wedding DJ pillar
+                  </Link>
+                </li>
+              ) : null}
               {venue.area === "whistler" ? (
                 <li>
                   <Link

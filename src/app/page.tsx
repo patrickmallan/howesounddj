@@ -261,7 +261,11 @@ export default function HoweSoundDJHomepage() {
                 <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                   Browse wedding venue guides
                 </Link>{" "}
-                for planning-focused context on music, flow, and Sea-to-Sky logistics. Then check availability when you are ready.
+                for planning-focused context on music, flow, and Sea-to-Sky logistics. For a Squamish-first planning read, see the{" "}
+                <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                  Squamish wedding DJ
+                </Link>{" "}
+                pillar. Then check availability when you are ready.
               </p>
             </div>
             <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">

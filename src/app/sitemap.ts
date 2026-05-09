@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/weddings",
     "/vancouver-wedding-dj",
+    "/squamish-wedding-dj",
     "/whistler-wedding-dj",
     "/about",
     "/packages",

@@ -200,7 +200,11 @@ export default function WhistlerWeddingDjPage() {
             <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               venue hub
             </Link>{" "}
-            for Squamish and corridor properties too.
+            for Squamish and corridor properties too. When the wedding is Squamish-first, the{" "}
+            <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              Squamish wedding DJ
+            </Link>{" "}
+            pillar is the closer match.
           </p>
         </div>
         <ul className="mt-10 grid list-none gap-4 sm:grid-cols-2">

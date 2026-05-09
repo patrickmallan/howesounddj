@@ -69,6 +69,12 @@ const navTree: SiteNavItem[] = [
         description: "Ceremony and reception spaces across the corridor.",
       },
       {
+        href: "/squamish-wedding-dj",
+        label: "Squamish",
+        description: "Local wedding DJ support for Squamish celebrations.",
+        footerLabel: "Squamish Wedding DJ",
+      },
+      {
         href: "/whistler-wedding-dj",
         label: "Whistler",
         description: "Destination-wedding pacing for mountain celebrations.",
