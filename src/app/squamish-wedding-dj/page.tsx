@@ -75,7 +75,7 @@ export default function SquamishWeddingDjPage() {
             <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
               Squamish wedding DJ
             </div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Sea-to-Sky · Local specialist</div>
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Squamish home base · Sea-to-Sky specialist</div>
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">Premium Sea-to-Sky support for weddings in Squamish</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
               Howe Sound DJ is Squamish-rooted: a calm planning partner for couples marrying here, whether you live in town or are bringing guests into the mountains. The through-line is corridor-native

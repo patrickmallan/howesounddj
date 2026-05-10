@@ -62,7 +62,7 @@ export default function HoweSoundDJHomepage() {
     },
     {
       title: "Rooted in Squamish",
-      text: "Local life: I know the venues, the vendors, and the vibe across the Sea-to-Sky corridor."
+      text: "Home base in Squamish: the work maps the Sea-to-Sky corridor—venues, vendors, and how weekends actually move from town to valley to mountain."
     },
     {
       title: "Seamless planning",
@@ -102,7 +102,7 @@ export default function HoweSoundDJHomepage() {
     },
     {
       q: "Do you travel beyond Squamish?",
-      a: "Yes. Weddings in Whistler, Vancouver, and across the Sea-to-Sky corridor can be accommodated depending on date and logistics."
+      a: "Yes. Sea-to-Sky corridor, Whistler, and Vancouver-area celebrations are part of the same planning map, depending on date and logistics."
     },
     {
       q: "Can you help with the flow of the evening?",

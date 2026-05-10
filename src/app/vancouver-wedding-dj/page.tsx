@@ -153,7 +153,7 @@ export default function VancouverWeddingDjPage() {
               Vancouver Wedding DJ
             </div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Sea-to-Sky · Squamish · Whistler
+              Squamish · Sea-to-Sky · Whistler
             </div>
             <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-[2.75rem] lg:leading-[1.12]">
               Vancouver wedding DJ for Squamish, Whistler & Sea-to-Sky weddings
@@ -166,7 +166,14 @@ export default function VancouverWeddingDjPage() {
               <a href="/weddings" className="text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 hover:decoration-amber-200/60">
                 Wedding DJ Services
               </a>{" "}
-              built for the day you are actually having, not the search you typed before coffee on Monday.
+              built for the day you are actually having, not the search you typed before coffee on Monday. When Squamish is the anchor for your day, the{" "}
+              <Link
+                href="/squamish-wedding-dj"
+                className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 hover:decoration-amber-200/60"
+              >
+                local-first overview
+              </Link>{" "}
+              sits alongside this page.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="hero" checkSurface="hero" />

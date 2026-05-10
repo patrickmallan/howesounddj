@@ -32,6 +32,12 @@ export const metadata: Metadata = {
 
 const stories = [
   {
+    slug: "what-a-sea-to-sky-gondola-dance-floor-feels-like",
+    title: "What a Sea to Sky Gondola Dance Floor Feels Like",
+    summary:
+      "Editorial observation: elevation, light, and Howe Sound atmosphere—how guests arrive, how the night turns toward dancing, and why mountain pacing rewards local intelligence.",
+  },
+  {
     slug: "sea-to-sky-wedding-dance-floor-energy",
     title: "What a High-Energy Sea-to-Sky Wedding Dance Floor Feels Like",
     summary:

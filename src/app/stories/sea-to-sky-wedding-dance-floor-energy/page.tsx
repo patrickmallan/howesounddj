@@ -183,7 +183,14 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
             <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               venue guides
             </Link>
-            ; Whistler destination weekends layer in the{" "}
+            . For an editorial read on how elevation and light shape reception pacing at the{" "}
+            <Link
+              href="/stories/what-a-sea-to-sky-gondola-dance-floor-feels-like"
+              className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+            >
+              Sea to Sky Gondola
+            </Link>
+            , see the companion story. Whistler destination weekends layer in the{" "}
             <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Whistler wedding DJ
             </Link>{" "}

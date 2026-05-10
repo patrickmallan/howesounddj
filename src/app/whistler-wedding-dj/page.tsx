@@ -86,7 +86,7 @@ export default function WhistlerWeddingDjPage() {
             <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
               Whistler wedding DJ
             </div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Sea-to-Sky</div>
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Sea-to-Sky · Squamish-based</div>
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
               Whistler wedding DJ for elegant mountain celebrations
             </h1>

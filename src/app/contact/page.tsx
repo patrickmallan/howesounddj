@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ContactAvailabilityForm } from "@/components/contact-availability-form";
 import { ContactBookConsultSection } from "@/components/contact-book-consult-section";
 import { ContactSecondaryInquiryForm } from "@/components/contact-secondary-inquiry-form";
@@ -38,7 +39,7 @@ export default function ContactPage() {
         <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
           <div className="max-w-3xl">
             <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
-              Weddings · Sea-to-Sky
+              Squamish · Sea-to-Sky · Weddings
             </div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Contact</div>
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
@@ -99,7 +100,7 @@ export default function ContactPage() {
               </li>
               <li className="flex gap-2">
                 <span className="text-amber-300/80">•</span>
-                Venue or general location in Squamish, Whistler, Vancouver, or along the corridor
+                Venue or town: Squamish, corridor, Whistler, or Metro Vancouver—whatever matches your invitation
               </li>
               <li className="flex gap-2">
                 <span className="text-amber-300/80">•</span>
@@ -179,12 +180,15 @@ export default function ContactPage() {
             </div>
             <div className="premium-surface rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-8">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-                Squamish wedding DJ
+                Local to the corridor
               </div>
               <p className="mt-4 text-sm leading-7 text-white/65">
-                Weddings are the expertise, with a musical range wide enough to match real crowds and a local lens on
-                venues and vendors. Whether the day is intimate or a full dance floor, the through-line is personalized
-                service and professional execution, what couples describe in their own words after the wedding.
+                Howe Sound DJ is Squamish-based: wedding-first work with a range that matches real crowds and planning that already speaks the language of Sea-to-Sky venues and weekends. Whether the day
+                is intimate or dance-forward, the through-line is personalized execution—what couples describe in their own words after the wedding. For Squamish-anchored context, see the{" "}
+                <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                  Squamish overview
+                </Link>
+                .
               </p>
             </div>
           </div>

@@ -39,7 +39,7 @@ export default function VenuesHubPage() {
             <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
               Venues
             </div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Sea-to-Sky & Squamish</div>
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Squamish · Sea-to-Sky corridor</div>
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">Wedding venue guides built for real planning decisions</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
               These pages are not generic “SEO shells.” Each guide connects a named venue to the kinds of music, pacing, and sound-thinking questions that matter for Sea-to-Sky weddings, from
@@ -86,7 +86,7 @@ export default function VenuesHubPage() {
             <Link href="/guides" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Wedding Planning Guides
             </Link>
-            .             For Squamish-rooted context across the local ecosystem, read the{" "}
+            . For Squamish-rooted context across the local ecosystem, read the{" "}
             <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Squamish wedding DJ pillar
             </Link>

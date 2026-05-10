@@ -186,6 +186,16 @@ export default async function VenueDetailPage({ params }: Props) {
                   Featured Weddings &amp; Dance Floor Stories
                 </Link>
               </li>
+              {venue.slug === "sea-to-sky-gondola" ? (
+                <li>
+                  <Link
+                    href="/stories/what-a-sea-to-sky-gondola-dance-floor-feels-like"
+                    className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+                  >
+                    Editorial perspective on Sea-to-Sky reception atmosphere at this setting
+                  </Link>
+                </li>
+              ) : null}
               {venue.area === "squamish" || venue.slug === "sea-to-sky-gondola" || venue.slug === "sunwolf" ? (
                 <li>
                   <Link

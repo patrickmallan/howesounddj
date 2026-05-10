@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/guides/how-to-keep-a-wedding-dance-floor-packed",
     "/guides/how-to-choose-a-wedding-dj-in-squamish",
     "/stories",
+    "/stories/what-a-sea-to-sky-gondola-dance-floor-feels-like",
     "/stories/sea-to-sky-wedding-dance-floor-energy",
     ...getAllVenueSlugs().map((slug) => `/venues/${slug}`),
   ];

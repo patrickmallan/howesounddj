@@ -61,9 +61,8 @@ export default function AboutPage() {
                 Music is how I connect. Weddings are where that connection matters most.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70 lg:max-w-none">
-                I am Patrick, the person behind Howe Sound DJ. More than fifteen years in music have taught me that the
-                best nights are not loud for the sake of loud. They are honest to the couple, true to the room, and
-                built with care long before the first guest arrives.
+                I am Patrick, the person behind Howe Sound DJ, based in Squamish with Sea-to-Sky weddings at the center of the work. More than fifteen years in music have taught me that the best nights are
+                not loud for the sake of loud. They are honest to the couple, true to the room, and built with care long before the first guest arrives.
               </p>
             </div>
             <div className="min-w-0 w-full lg:max-w-none lg:justify-self-end">
