@@ -131,6 +131,16 @@ const nextConfig: NextConfig = {
         destination: "/weddings",
         permanent: true,
       },
+      {
+        source: "/blog",
+        destination: "/stories",
+        permanent: true,
+      },
+      {
+        source: "/blog/",
+        destination: "/stories",
+        permanent: true,
+      },
     ];
   },
 };
