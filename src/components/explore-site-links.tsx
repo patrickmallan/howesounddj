@@ -37,7 +37,7 @@ export function HomepageExploreSection() {
           id="home-authority-discovery-heading"
           className="max-w-2xl text-base font-semibold leading-relaxed text-white sm:text-lg sm:leading-8"
         >
-          Going deeper on the corridor? Squamish context, venues, guides, and editorial notes—when you want them.
+          Going deeper on the corridor? Squamish context, venues, guides, and editorial notes, when you want them.
         </h2>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {homepageAuthorityDiscoveryLinks.map((item) => (

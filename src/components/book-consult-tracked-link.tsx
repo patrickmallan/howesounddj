@@ -18,7 +18,7 @@ export type BookConsultSurface =
   /** Primary Book a Consult CTAs on `/contact` (hero and consult-first panel). */
   | "contact_page_primary";
 
-/** Default Calendly primary pill — always applied first on `BookConsultTrackedLink`; use for raw Calendly anchors too. */
+/** Default Calendly primary pill, always applied first on `BookConsultTrackedLink`; use for raw Calendly anchors too. */
 const BOOK_CONSULT_PRIMARY_PILL_BASE =
   "inline-flex items-center justify-center min-h-[44px] rounded-full bg-amber-300 px-6 py-3 text-sm font-semibold text-black shadow-[0_18px_45px_rgba(250,204,21,0.2)] transition hover:bg-amber-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-200 focus-visible:ring-offset-2 focus-visible:ring-offset-black";
 

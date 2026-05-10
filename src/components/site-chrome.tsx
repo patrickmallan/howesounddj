@@ -31,7 +31,7 @@ function isGroup(item: SiteNavItem): item is SiteNavGroup {
 /**
  * Single source of truth for desktop nav, mobile drawer, and footer.
  * Top-level groups expose categories; the footer flattens this tree so every important route stays crawlable.
- * Home is reached through the wordmark only — intentionally absent here for premium pacing.
+ * Home is reached through the wordmark only, intentionally absent here for premium pacing.
  */
 const navTree: SiteNavItem[] = [
   {

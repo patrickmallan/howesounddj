@@ -66,11 +66,11 @@ export default function HoweSoundDJHomepage() {
   const features = [
     {
       title: "Bangers Only",
-      text: "No overplayed wedding fluff, no autopilot playlists—music shaped for your crowd and the room you are actually in."
+      text: "No overplayed wedding fluff, no autopilot playlists: music shaped for your crowd and the room you are actually in."
     },
     {
       title: "Rooted in Squamish",
-      text: "Home base in Squamish: the work maps the Sea-to-Sky corridor—venues, vendors, and how weekends actually move from town to valley to mountain."
+      text: "Home base in Squamish: the work maps the Sea-to-Sky corridor. Venues, vendors, and how weekends actually move from town to valley to mountain."
     },
     {
       title: "Seamless planning",
@@ -156,7 +156,7 @@ export default function HoweSoundDJHomepage() {
                   />
                 </div>
                 <p className="mt-4 text-lg leading-8 text-white/70">
-                  Squamish-rooted, corridor-wide: polished sound, calm planning, and nights that feel elegant, emotional, or celebratory—often all three, in the order that fits your people.
+                  Squamish-rooted, corridor-wide: polished sound, calm planning, and nights that feel elegant, emotional, or celebratory (often all three, in the order that fits your people).
                 </p>
                 <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-5">
                   <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300/90">
@@ -182,7 +182,7 @@ export default function HoweSoundDJHomepage() {
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Why Howe Sound DJ</div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Sea-to-Sky passion: connection, craft, and a night that stays with your guests.</h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              It’s not generic wedding filler. It’s deliberate music, local know-how, and flow that respects your setting—from ceremony through the last song.
+              It’s not generic wedding filler. It’s deliberate music, local know-how, and flow that respects your setting, from ceremony through the last song.
             </p>
           </div>
           <StaggerGroup className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -209,7 +209,7 @@ export default function HoweSoundDJHomepage() {
                 The kind of night guests talk about after.
               </h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
-                One frame for the atmosphere: the floor, the room, or the Sea-to-Sky setting you chose—held with intention, not volume for its own sake.
+                One frame for the atmosphere: the floor, the room, or the Sea-to-Sky setting you chose. Held with intention, not volume for its own sake.
               </p>
             </div>
             <ImageSlot
@@ -232,7 +232,7 @@ export default function HoweSoundDJHomepage() {
                 In their own words.
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-white/50">
-                A few voices from Squamish, the corridor, and Whistler—the full set lives on{" "}
+                A few voices from Squamish, the corridor, and Whistler. The full set lives on{" "}
                 <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                   reviews
                 </Link>
@@ -269,7 +269,7 @@ export default function HoweSoundDJHomepage() {
                 Venues we’ve worked at across Squamish & Sea-to-Sky
               </h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
-                From mountaintop receptions to brewery celebrations and restored local spaces—settings where sound, pacing, and guest flow need to match the landscape, not fight it.
+                From mountaintop receptions to brewery celebrations and restored local spaces: settings where sound, pacing, and guest flow need to match the landscape, not fight it.
               </p>
               <p className="mt-4 text-sm leading-7 text-white/50">
                 <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">

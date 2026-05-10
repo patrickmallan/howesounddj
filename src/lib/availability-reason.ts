@@ -1,5 +1,5 @@
 /**
- * Internal diagnostics only — never sent to clients.
+ * Internal diagnostics only, never sent to clients.
  * Used for logs when investigating false negatives (manual list vs Google overlap vs API errors).
  */
 export type AvailabilityDiagnosticReason =

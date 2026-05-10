@@ -71,7 +71,7 @@ export function trackEvent(
     try {
       window.gtag("event", eventName, params ?? {});
     } catch {
-      // gtag present but threw — ignore
+      // gtag present but threw, ignore
     }
   };
 

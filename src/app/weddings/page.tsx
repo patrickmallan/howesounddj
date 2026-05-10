@@ -158,13 +158,13 @@ export default function WeddingsPage() {
             Wedding celebration
           </h2>
           <div
-            className="px-0 sm:px-6 lg:px-8 [&_figure>div]:!rounded-none sm:[&_figure>div]:!rounded-[1.5rem] max-sm:[&_figure>div]:!aspect-[1/1] sm:max-lg:[&_figure>div]:!aspect-[4/3]"
+            className="px-0 sm:px-6 lg:px-8 [&_figure>div]:!rounded-none sm:[&_figure>div]:!rounded-[1.5rem] max-lg:[&_figure>div]:!aspect-[4/3]"
           >
             <ImageSlot
               src={SITE_IMAGES.weddingsCrowd}
               alt={SITE_IMAGE_ALT.weddingsCrowd}
               aspect="16/10"
-              imageClassName="h-full w-full object-cover object-[center_42%]"
+              imageClassName="h-full w-full object-cover object-[25%_42%] lg:object-[center_42%]"
               subtleBottomGradient
               label="Your people"
               reservedHint="Candid crowd energy: the people who travel with you and fill the floor."
@@ -174,7 +174,7 @@ export default function WeddingsPage() {
           <figure className="mx-auto mt-8 max-w-2xl px-6 text-center sm:mt-10 lg:mt-12 lg:px-8">
             <blockquote className="text-balance text-base leading-relaxed text-white/75 sm:text-lg sm:leading-8">
               <p>
-                The best dance floors don&rsquo;t feel forced. They unfold naturally &mdash; the right song at the right moment, your people fully present, and a room that slowly lets go together.
+                The best dance floors don&rsquo;t feel forced. They unfold naturally: the right song at the right moment, your people fully present, and a room that slowly lets go together.
               </p>
             </blockquote>
           </figure>

@@ -95,14 +95,14 @@ function logAvailabilityReason(
   diag: GoogleCalendarDayDiagnostics,
   finalBooked: boolean
 ): AvailabilityDiagnosticReason {
-  // 6. AVAILABLE_NO_EVENTS — slot open for visitors (merge yields not booked).
+  // 6. AVAILABLE_NO_EVENTS: slot open for visitors (merge yields not booked).
   if (!finalBooked) {
     return "AVAILABLE_NO_EVENTS";
   }
 
   const g = diag.booked;
 
-  // 2. CALENDAR_QUERY_ERROR — Google API failure (merge still uses manual list when applicable).
+  // 2. CALENDAR_QUERY_ERROR: Google API failure (merge still uses manual list when applicable).
   if (g === null && diag.googleReason === "CALENDAR_QUERY_ERROR") {
     return "CALENDAR_QUERY_ERROR";
   }
@@ -118,12 +118,12 @@ function logAvailabilityReason(
     return "UNKNOWN";
   }
 
-  // 5. BLOCKED_BY_MANUAL_DATE — manual list hit while Google is free, skipped, or non-busy.
+  // 5. BLOCKED_BY_MANUAL_DATE: manual list hit while Google is free, skipped, or non-busy.
   if (manualBooked && (g === false || g === null)) {
     return "BLOCKED_BY_MANUAL_DATE";
   }
 
-  // 7. UNKNOWN — inconsistent / unclassified final booked state.
+  // 7. UNKNOWN: inconsistent / unclassified final booked state.
   return "UNKNOWN";
 }
 
