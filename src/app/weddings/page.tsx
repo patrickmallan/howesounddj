@@ -153,19 +153,31 @@ export default function WeddingsPage() {
       </section>
 
       <SectionReveal as="section" className="border-y border-white/10 bg-white/5" aria-labelledby="weddings-proof-heading">
-        <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+        <div className="mx-auto max-w-6xl py-16 lg:py-20">
           <h2 id="weddings-proof-heading" className="sr-only">
             Wedding celebration
           </h2>
-          <ImageSlot
-            src={SITE_IMAGES.weddingsCrowd}
-            alt={SITE_IMAGE_ALT.weddingsCrowd}
-            aspect="16/10"
-            imageClassName="h-full w-full object-cover object-[center_42%]"
-            label="Your people"
-            reservedHint="Candid crowd energy: the people who travel with you and fill the floor."
-            sizes="(max-width: 1024px) 100vw, 72rem"
-          />
+          <div
+            className="px-0 sm:px-6 lg:px-8 [&_figure>div]:!rounded-none sm:[&_figure>div]:!rounded-[1.5rem] max-sm:[&_figure>div]:!aspect-[1/1] sm:max-lg:[&_figure>div]:!aspect-[4/3]"
+          >
+            <ImageSlot
+              src={SITE_IMAGES.weddingsCrowd}
+              alt={SITE_IMAGE_ALT.weddingsCrowd}
+              aspect="16/10"
+              imageClassName="h-full w-full object-cover object-[center_42%]"
+              subtleBottomGradient
+              label="Your people"
+              reservedHint="Candid crowd energy: the people who travel with you and fill the floor."
+              sizes="(max-width: 1024px) 100vw, 72rem"
+            />
+          </div>
+          <figure className="mx-auto mt-8 max-w-2xl px-6 text-center sm:mt-10 lg:mt-12 lg:px-8">
+            <blockquote className="text-balance text-base leading-relaxed text-white/75 sm:text-lg sm:leading-8">
+              <p>
+                The best dance floors don&rsquo;t feel forced. They unfold naturally &mdash; the right song at the right moment, your people fully present, and a room that slowly lets go together.
+              </p>
+            </blockquote>
+          </figure>
         </div>
       </SectionReveal>
 

@@ -11,11 +11,19 @@ import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { VENUES } from "@/config/venues";
 
-/** Homepage H1 A/B/C, all include “Squamish wedding DJ” + “Sea to Sky”. Server HTML uses A; client may swap after resolve. */
+/**
+ * Homepage H1 unified line (premium / Sea-to-Sky aligned).
+ * The A/B/C keys remain so the legacy experiment + analytics pipeline keeps working,
+ * but every key now resolves to the same canonical headline so no client/mobile variant
+ * can fall back to the older party-DJ framing (e.g. "earns the room", "packed every time").
+ */
+const HOMEPAGE_HEADLINE =
+  "Squamish wedding DJ for the Sea-to-Sky, elegant when it matters, wild when it should.";
+
 export const HEADLINE_VARIANTS = {
-  A: "Squamish wedding DJ for the Sea to Sky, the right music at the right moment.",
-  B: "Squamish wedding DJ for the Sea to Sky, reception energy that builds with intention.",
-  C: "Squamish wedding DJ for the Sea to Sky, a dance floor that earns the room.",
+  A: HOMEPAGE_HEADLINE,
+  B: HOMEPAGE_HEADLINE,
+  C: HOMEPAGE_HEADLINE,
 } as const;
 
 export const metadata: Metadata = {
@@ -134,7 +142,7 @@ export default function HoweSoundDJHomepage() {
 
             <div className="relative z-10 flex w-full min-w-0 flex-col lg:basis-0 lg:flex-1">
               <div className="atmosphere-grain flex w-full flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/30">
-                <div className="w-full [&_figure]:m-0 [&_figure]:space-y-0 [&_figure>div]:rounded-2xl max-lg:[&_figure>div]:aspect-[4/3] lg:[&_figure>div]:!aspect-auto lg:[&_figure>div]:!h-[420px]">
+                <div className="w-full [&_figure]:m-0 [&_figure]:space-y-0 [&_figure>div]:rounded-2xl max-lg:[&_figure>div]:!aspect-[7/6] lg:[&_figure>div]:!aspect-auto lg:[&_figure>div]:!h-[420px]">
                   <ImageSlot
                     src={SITE_IMAGES.brandEditorialHeroDjGlow}
                     alt={SITE_IMAGE_ALT.brandEditorialHeroDjGlow}
@@ -144,7 +152,7 @@ export default function HoweSoundDJHomepage() {
                     priority
                     sizes="(max-width: 1024px) 100vw, 45vw"
                     className="!m-0 !space-y-0"
-                    imageClassName="object-[center_32%]"
+                    imageClassName="object-[center_55%] lg:object-[center_32%]"
                   />
                 </div>
                 <p className="mt-4 text-lg leading-8 text-white/70">
@@ -155,7 +163,7 @@ export default function HoweSoundDJHomepage() {
                     Atmosphere First
                   </div>
                   <div className="mt-2 text-lg font-medium leading-snug text-white">
-                    Elegant when it matters. Wild when it should.
+                    Music with intention. Built around your people.
                   </div>
                 </div>
               </div>
@@ -346,13 +354,13 @@ export default function HoweSoundDJHomepage() {
 
         <SectionReveal as="section" id="about" className="border-y border-white/10 bg-white/5">
           <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:py-24 lg:grid-cols-2 lg:px-8">
-            <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/60 p-6">
+            <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/60 p-6 max-lg:[&_figure>div]:!aspect-[3/5]">
               <ImageSlot
                 src={SITE_IMAGES.aboutPatrickAction}
                 alt={SITE_IMAGE_ALT.aboutPatrickAction}
                 aspect="4/5"
                 premiumPhotoTreatment
-                imageClassName="object-[52%_45%]"
+                imageClassName="object-[center_50%] lg:object-[52%_45%]"
                 label="Patrick"
                 reservedHint="At the decks or in planning: calm, professional, the presence couples get on the day."
                 sizes="(max-width: 1024px) 100vw, 42vw"
