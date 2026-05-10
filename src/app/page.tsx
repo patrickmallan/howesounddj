@@ -14,8 +14,8 @@ import { VENUES } from "@/config/venues";
 /** Homepage H1 A/B/C, all include “Squamish wedding DJ” + “Sea to Sky”. Server HTML uses A; client may swap after resolve. */
 export const HEADLINE_VARIANTS = {
   A: "Squamish wedding DJ for the Sea to Sky, the right music at the right moment.",
-  B: "Squamish wedding DJ for the Sea to Sky, high energy dance floors.",
-  C: "Squamish wedding DJ for the Sea to Sky, packed dance floors every time.",
+  B: "Squamish wedding DJ for the Sea to Sky, reception energy that builds with intention.",
+  C: "Squamish wedding DJ for the Sea to Sky, a dance floor that earns the room.",
 } as const;
 
 export const metadata: Metadata = {
@@ -58,7 +58,7 @@ export default function HoweSoundDJHomepage() {
   const features = [
     {
       title: "Bangers Only",
-      text: "No overplayed wedding fluff, no autopilot playlists, just dancefloor-packing tracks."
+      text: "No overplayed wedding fluff, no autopilot playlists—music shaped for your crowd and the room you are actually in."
     },
     {
       title: "Rooted in Squamish",
@@ -127,7 +127,7 @@ export default function HoweSoundDJHomepage() {
                   15 minutes &bull; No pressure &bull; Just clarity
                 </p>
                 <p className="text-sm leading-relaxed text-white/55">
-                  Most couples start with a quick call; it&apos;s the fastest way to confirm everything.
+                  If a short call would help, it stays low-key: alignment first, on your timeline.
                 </p>
               </div>
             </div>
@@ -148,7 +148,7 @@ export default function HoweSoundDJHomepage() {
                   />
                 </div>
                 <p className="mt-4 text-lg leading-8 text-white/70">
-                  Serving Squamish, Whistler, Vancouver, and the corridor with passion: polished sound, seamless planning, and nights that feel elegant, emotional, or wild (often all three).
+                  Squamish-rooted, corridor-wide: polished sound, calm planning, and nights that feel elegant, emotional, or celebratory—often all three, in the order that fits your people.
                 </p>
                 <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-5">
                   <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300/90">
@@ -169,15 +169,15 @@ export default function HoweSoundDJHomepage() {
 
         <BrandAnchorStatement />
 
-        <SectionReveal as="section" id="why" className="mx-auto max-w-6xl px-6 py-14 md:py-20 lg:px-8">
+        <SectionReveal as="section" id="why" className="mx-auto max-w-6xl px-6 py-16 md:py-24 lg:px-8">
           <div className="max-w-2xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Why Howe Sound DJ</div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Sea-to-Sky passion: connection, craft, and packed floors.</h2>
+            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Sea-to-Sky passion: connection, craft, and a night that stays with your guests.</h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              It’s not generic wedding filler. It’s deliberate music, local know-how, and a night that moves with your people, from ceremony through the last song.
+              It’s not generic wedding filler. It’s deliberate music, local know-how, and flow that respects your setting—from ceremony through the last song.
             </p>
           </div>
-          <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <StaggerGroup className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {features.map((feature) => (
               <StaggerItem key={feature.title}>
                 <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
@@ -194,14 +194,14 @@ export default function HoweSoundDJHomepage() {
           className="border-y border-white/10 bg-neutral-950"
           aria-labelledby="home-proof-heading"
         >
-          <div className="mx-auto max-w-6xl px-6 py-14 md:py-16 lg:px-8 lg:py-20">
-            <div className="mb-10 max-w-2xl">
+          <div className="mx-auto max-w-6xl px-6 py-16 md:py-20 lg:px-8 lg:py-24">
+            <div className="mb-12 max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Proof</div>
               <h2 id="home-proof-heading" className="mt-4 text-3xl font-semibold sm:text-4xl">
                 The kind of night guests talk about after.
               </h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
-                A wide shot that shows the energy Howe Sound DJ builds: the floor, the room, or the Sea-to-Sky setting around you.
+                One frame for the atmosphere: the floor, the room, or the Sea-to-Sky setting you chose—held with intention, not volume for its own sake.
               </p>
             </div>
             <ImageSlot
@@ -217,14 +217,21 @@ export default function HoweSoundDJHomepage() {
         </SectionReveal>
 
         <SectionReveal as="section" id="reviews" className="border-y border-white/10 bg-white/5" aria-labelledby="home-reviews-heading">
-          <div className="mx-auto max-w-6xl px-6 py-14 md:py-20 lg:px-8">
-            <div className="mb-10 max-w-2xl">
+          <div className="mx-auto max-w-6xl px-6 py-16 md:py-24 lg:px-8">
+            <div className="mb-12 max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Reviews</div>
               <h2 id="home-reviews-heading" className="mt-4 text-3xl font-semibold sm:text-4xl">
-                Client backed: real couples, real parties.
+                In their own words.
               </h2>
+              <p className="mt-4 text-sm leading-relaxed text-white/50">
+                A few voices from Squamish, the corridor, and Whistler—the full set lives on{" "}
+                <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                  reviews
+                </Link>
+                .
+              </p>
             </div>
-            <StaggerGroup className="mt-12 grid gap-6 lg:grid-cols-3">
+            <StaggerGroup className="mt-10 grid gap-6 lg:grid-cols-3">
               {testimonials.map((item) => (
                 <StaggerItem key={item.name}>
                   <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
@@ -245,7 +252,7 @@ export default function HoweSoundDJHomepage() {
           className="border-t border-white/10 bg-neutral-950"
           aria-labelledby="home-venues-heading"
         >
-          <div className="mx-auto max-w-6xl px-6 py-14 md:py-20 lg:px-8">
+          <div className="mx-auto max-w-6xl px-6 py-16 md:py-24 lg:px-8">
             <div className="max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
                 Venue familiarity
@@ -254,8 +261,7 @@ export default function HoweSoundDJHomepage() {
                 Venues we’ve worked at across Squamish & Sea-to-Sky
               </h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
-                From mountaintop receptions to brewery celebrations and restored local spaces, these are some of the
-                venues and businesses where Howe Sound DJ has helped shape wedding days and packed dance floors.
+                From mountaintop receptions to brewery celebrations and restored local spaces—settings where sound, pacing, and guest flow need to match the landscape, not fight it.
               </p>
               <p className="mt-4 text-sm leading-7 text-white/50">
                 <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
@@ -268,7 +274,7 @@ export default function HoweSoundDJHomepage() {
                 pillar. Then check availability when you are ready.
               </p>
             </div>
-            <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <StaggerGroup className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {VENUES.map((venue) => (
                 <StaggerItem key={venue.name}>
                   <article className="premium-surface flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
@@ -298,8 +304,8 @@ export default function HoweSoundDJHomepage() {
           </div>
         </SectionReveal>
 
-        <SectionReveal as="section" id="services" className="mx-auto max-w-6xl px-6 py-14 md:py-20 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+        <SectionReveal as="section" id="services" className="mx-auto max-w-6xl px-6 py-16 md:py-24 lg:px-8">
+          <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Services</div>
               <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Support for the full wedding-day experience.</h2>
@@ -339,7 +345,7 @@ export default function HoweSoundDJHomepage() {
         </SectionReveal>
 
         <SectionReveal as="section" id="about" className="border-y border-white/10 bg-white/5">
-          <div className="mx-auto grid max-w-6xl gap-12 px-6 py-14 md:py-20 lg:grid-cols-2 lg:px-8">
+          <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:py-24 lg:grid-cols-2 lg:px-8">
             <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/60 p-6">
               <ImageSlot
                 src={SITE_IMAGES.aboutPatrickAction}
@@ -361,17 +367,28 @@ export default function HoweSoundDJHomepage() {
               <p className="mt-4 text-lg leading-8 text-white/70">
                 Rooted in Squamish with an ear for atmosphere and calm, professional planning support, Patrick helps you feel covered before the day and free to enjoy it when the music hits.
               </p>
-              <div className="mt-8 max-w-xl space-y-4">
-                <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-                <p className="text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; Just clarity
-                </p>
-              </div>
+              <p className="mt-8 text-sm leading-relaxed text-white/50">
+                <Link
+                  href="/about"
+                  className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+                >
+                  Full story on About
+                </Link>
+                <span className="mx-2 text-white/25" aria-hidden>
+                  ·
+                </span>
+                <Link
+                  href="/contact"
+                  className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+                >
+                  Contact when you are ready
+                </Link>
+              </p>
             </div>
           </div>
         </SectionReveal>
 
-        <SectionReveal as="section" id="faq" className="mx-auto max-w-6xl px-6 py-14 md:py-20 lg:px-8">
+        <SectionReveal as="section" id="faq" className="mx-auto max-w-6xl px-6 py-16 md:py-24 lg:px-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">FAQ</div>
@@ -393,7 +410,7 @@ export default function HoweSoundDJHomepage() {
 
         <SectionReveal
           as="section"
-          className="border-t border-white/10 bg-neutral-950 py-14 md:py-20"
+          className="border-t border-white/10 bg-neutral-950 pb-6 pt-16 md:pb-8 md:pt-24"
           aria-labelledby="home-final-decision-heading"
         >
           <div className="mx-auto max-w-6xl px-6 lg:px-8">
