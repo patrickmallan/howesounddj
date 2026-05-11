@@ -62,13 +62,18 @@ export function ImageSlot({
     return (
       <figure className={figureLayout}>
         <div className={frame}>
+          {/* Preflight sets img height:auto — !h-full/!w-full keep fill+object-cover pinned to the frame */}
           <Image
             src={src}
             alt={alt}
             fill
             priority={priority}
             sizes={sizes}
-            className={imageClassName ? `object-cover ${imageClassName}` : "object-cover"}
+            className={
+              imageClassName
+                ? `!h-full !w-full max-w-none min-h-0 object-cover ${imageClassName}`
+                : "!h-full !w-full max-w-none min-h-0 object-cover"
+            }
             unoptimized={isSvg}
           />
           {premiumPhotoTreatment ? (

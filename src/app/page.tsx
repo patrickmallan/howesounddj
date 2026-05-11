@@ -354,13 +354,13 @@ export default function HoweSoundDJHomepage() {
 
         <SectionReveal as="section" id="about" className="border-y border-white/10 bg-white/5">
           <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:py-24 lg:grid-cols-2 lg:px-8">
-            <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/60 p-4 sm:p-6 max-lg:[&_figure]:min-w-0 max-lg:[&_figure]:w-full max-lg:[&_figure>div]:!aspect-[2/3]">
+            <div className="hsdj-home-patrick-card atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/60 p-3 sm:p-6 max-lg:[&_figure]:min-w-0 max-lg:[&_figure]:w-full max-lg:[&_figure>div]:!aspect-[3/4]">
               <ImageSlot
                 src={SITE_IMAGES.aboutPatrickAction}
                 alt={SITE_IMAGE_ALT.aboutPatrickAction}
                 aspect="4/5"
                 premiumPhotoTreatment
-                imageClassName="max-lg:scale-[1.08] max-lg:object-[50%_30%] lg:object-[52%_45%]"
+                imageClassName="max-lg:object-[44%_28%] lg:object-[52%_45%]"
                 label="Patrick"
                 reservedHint="At the decks or in planning: calm, professional, the presence couples get on the day."
                 sizes="(max-width: 1024px) 100vw, 42vw"
