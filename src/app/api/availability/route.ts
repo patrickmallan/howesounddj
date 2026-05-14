@@ -242,7 +242,10 @@ export async function POST(request: Request) {
   return NextResponse.json({
     success: true,
     available: true,
-    message:
-      "That date is open on the calendar. Share a few details below, or book a consult first when you want a calm, straightforward conversation before you reply.",
+    message: `Your date is officially open, which feels like a good sign already.
+
+If the vibe of the site already feels aligned with what you're imagining for your wedding, the next best step is to book a quick consult. It's a chance to talk through your vision, your venue, the kind of atmosphere you want on the dance floor, and whether it feels like the right fit on both sides.
+
+And if you're still on the fence, spend a few minutes reading through the Google reviews and then come back. The words couples wrote after their weddings say far more than anything I could put here.`,
   });
 }

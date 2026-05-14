@@ -488,7 +488,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
 
       {availability.kind === "available" && (
         <div className="rounded-[1.5rem] border border-amber-400/25 bg-amber-950/25 p-6 lg:p-8">
-          <p className="text-lg leading-relaxed text-white/90">{availability.message}</p>
+          <p className="whitespace-pre-line text-lg leading-relaxed text-white/90">{availability.message}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={CONSULT_CALENDLY_URL}
