@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { CompactAvailabilityChecker } from "@/components/compact-availability-checker";
-import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
 import { CTA_PILL_FLEX_CENTER } from "@/lib/cta-alignment";
 import { headlineVariantPayload } from "@/lib/experiment";
@@ -16,7 +15,7 @@ type Props = {
   onPanelOpen?: () => void;
 };
 
-/** Desktop (xl+): floating availability panel. Below xl: link to `/contact#availability`. */
+/** Header Check Availability opens a compact floating panel on all breakpoints. */
 export function HeaderCheckAvailability({ onPanelOpen }: Props) {
   const pathname = usePathname() ?? "";
   const panelId = useId();
@@ -54,6 +53,17 @@ export function HeaderCheckAvailability({ onPanelOpen }: Props) {
 
   useEffect(() => {
     if (!open) return;
+    const mq = window.matchMedia("(max-width: 1279px)");
+    if (!mq.matches) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -62,7 +72,7 @@ export function HeaderCheckAvailability({ onPanelOpen }: Props) {
       }
     };
 
-    const onMouseDown = (e: MouseEvent) => {
+    const onPointerDown = (e: PointerEvent) => {
       const target = e.target;
       if (!(target instanceof Node)) return;
       if (triggerRef.current?.contains(target)) return;
@@ -71,46 +81,65 @@ export function HeaderCheckAvailability({ onPanelOpen }: Props) {
     };
 
     window.addEventListener("keydown", onKeyDown);
-    window.addEventListener("mousedown", onMouseDown);
+    window.addEventListener("pointerdown", onPointerDown);
     return () => {
       window.removeEventListener("keydown", onKeyDown);
-      window.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("pointerdown", onPointerDown);
     };
   }, [open, close]);
 
   return (
-    <>
-      <CheckAvailabilityTrackedLink
-        surface="header"
-        href="/contact#availability"
-        className={`${triggerClass} xl:hidden`}
-      />
+    <div className="relative shrink-0">
+      <button
+        ref={triggerRef}
+        type="button"
+        className={triggerClass}
+        aria-expanded={open}
+        aria-controls={panelId}
+        aria-haspopup="dialog"
+        onClick={togglePanel}
+      >
+        Check Availability
+      </button>
 
-      <div className="relative hidden xl:block">
-        <button
-          ref={triggerRef}
-          type="button"
-          className={triggerClass}
-          aria-expanded={open}
-          aria-controls={panelId}
-          aria-haspopup="dialog"
-          onClick={togglePanel}
-        >
-          Check Availability
-        </button>
-
-        {open ? (
+      {open ? (
+        <>
+          <button
+            type="button"
+            tabIndex={-1}
+            aria-hidden
+            className="fixed inset-0 z-[64] cursor-default border-0 bg-black/45 p-0 backdrop-blur-[2px] xl:pointer-events-none xl:bg-transparent xl:backdrop-blur-none"
+            onClick={close}
+          />
           <div
             ref={panelRef}
             id={panelId}
             role="dialog"
+            aria-modal="true"
             aria-label="Check wedding date availability"
-            className="absolute right-0 top-full z-[85] mt-2 w-[min(100vw-2rem,22rem)] origin-top-right rounded-2xl border border-white/10 bg-neutral-950/95 p-5 shadow-xl shadow-black/50 backdrop-blur transition duration-150"
+            className="fixed left-1/2 top-[max(4.75rem,calc(env(safe-area-inset-top,0px)+3.75rem))] z-[85] max-h-[min(calc(100dvh-5.5rem),34rem)] w-[min(calc(100vw-1.5rem),22rem)] -translate-x-1/2 overflow-y-auto overscroll-contain rounded-2xl border border-white/10 bg-neutral-950/95 p-5 pb-6 shadow-xl shadow-black/50 backdrop-blur transition duration-150 xl:absolute xl:right-0 xl:left-auto xl:top-full xl:mt-2 xl:max-h-[min(calc(100dvh-6rem),36rem)] xl:w-[min(calc(100vw-2rem),22rem)] xl:translate-x-0"
           >
-            <CompactAvailabilityChecker key={pathname} idPrefix="header-panel" />
+            <button
+              type="button"
+              onClick={close}
+              className="absolute right-3 top-3 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-white/55 transition hover:bg-white/10 hover:text-white/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/50"
+              aria-label="Close availability check"
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden>
+                <path
+                  d="M2 2l10 10M12 2L2 12"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+            <div className="pr-8">
+              <CompactAvailabilityChecker key={pathname} idPrefix="header-panel" />
+            </div>
           </div>
-        ) : null}
-      </div>
-    </>
+        </>
+      ) : null}
+    </div>
   );
 }

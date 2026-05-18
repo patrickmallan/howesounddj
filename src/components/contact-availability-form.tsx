@@ -247,7 +247,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
     "inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-amber-300/40 hover:bg-white/5";
 
   const dateInputClass =
-    "rounded-xl border border-white/15 bg-neutral-950 px-3 py-3 text-center text-white outline-none focus:border-amber-300/50 tabular-nums";
+    "rounded-xl border border-white/15 bg-neutral-950 px-2.5 py-3 text-center text-sm text-white outline-none focus:border-amber-300/50 tabular-nums";
 
   function clearDateFields() {
     setYearStr("");
@@ -353,7 +353,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               value={monthStr}
               onChange={handleMonthChange}
               maxLength={2}
-              className={`${dateInputClass} w-[3.25rem]`}
+              className={`${dateInputClass} min-w-[3.5rem] w-[3.5rem]`}
             />
             <span className="text-white/35 select-none" aria-hidden>
               /
@@ -370,7 +370,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               value={dayStr}
               onChange={handleDayChange}
               maxLength={2}
-              className={`${dateInputClass} w-[3.25rem]`}
+              className={`${dateInputClass} min-w-[3.5rem] w-[3.5rem]`}
             />
           </div>
           <button

@@ -2,8 +2,8 @@
 
 import type { RefObject } from "react";
 
-const dateInputClass =
-  "rounded-xl border border-white/15 bg-neutral-950 px-3 py-2.5 text-center text-white outline-none focus:border-amber-300/50 tabular-nums";
+const dateInputBase =
+  "rounded-xl border border-white/15 bg-neutral-950 text-center text-sm text-white outline-none focus:border-amber-300/50 tabular-nums";
 
 type Props = {
   yearInputId: string;
@@ -47,7 +47,7 @@ export function WeddingDateFields({
       </label>
       {helper ? <p className="mt-1 text-sm text-white/45">{helper}</p> : null}
       <div
-        className={`flex flex-wrap items-center gap-2 ${compact ? "mt-3" : "mt-4 sm:gap-3"}`}
+        className={`flex max-w-full flex-wrap items-center gap-2.5 ${compact ? "mt-3" : "mt-4 sm:gap-3"}`}
         role="group"
         aria-labelledby={yearInputId}
       >
@@ -63,9 +63,9 @@ export function WeddingDateFields({
           value={yearStr}
           onChange={onYearChange}
           maxLength={4}
-          className={`${dateInputClass} w-[4.25rem] sm:w-[4.75rem]`}
+          className={`${dateInputBase} min-h-[44px] min-w-[4.5rem] flex-none px-2.5 py-2.5 sm:min-w-[4.75rem]`}
         />
-        <span className="text-white/35 select-none" aria-hidden>
+        <span className="shrink-0 text-white/35 select-none" aria-hidden>
           /
         </span>
         <input
@@ -80,9 +80,9 @@ export function WeddingDateFields({
           value={monthStr}
           onChange={onMonthChange}
           maxLength={2}
-          className={`${dateInputClass} w-[3rem]`}
+          className={`${dateInputBase} min-h-[44px] min-w-[3.5rem] flex-none px-2.5 py-2.5`}
         />
-        <span className="text-white/35 select-none" aria-hidden>
+        <span className="shrink-0 text-white/35 select-none" aria-hidden>
           /
         </span>
         <input
@@ -97,7 +97,7 @@ export function WeddingDateFields({
           value={dayStr}
           onChange={onDayChange}
           maxLength={2}
-          className={`${dateInputClass} w-[3rem]`}
+          className={`${dateInputBase} min-h-[44px] min-w-[3.5rem] flex-none px-2.5 py-2.5`}
         />
       </div>
     </div>
