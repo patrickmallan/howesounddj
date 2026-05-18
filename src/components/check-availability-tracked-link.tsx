@@ -8,6 +8,8 @@ import { headlineVariantPayload } from "@/lib/experiment";
 
 export type CheckAvailabilitySurface =
   | "header"
+  | "header_cta"
+  | "header_panel"
   | "footer"
   | "hero"
   | "inline"

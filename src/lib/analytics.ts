@@ -31,6 +31,7 @@ export const ANALYTICS_EVENTS = {
 export type FunnelContext =
   | "homepage"
   | "post_availability"
+  | "header_availability_panel"
   | "reviews"
   | "about"
   | "packages"
@@ -73,9 +74,14 @@ export function consultClickEventParams(
   params: Record<string, string | number | boolean | undefined>
 ): Record<string, string | number | boolean | undefined> {
   const page_path = typeof window !== "undefined" ? window.location.pathname : undefined;
+  const explicit = params.funnel_context;
+  const funnel_context =
+    typeof explicit === "string" ? (explicit as FunnelContext) : resolveFunnelContext();
+  const rest = { ...params };
+  delete rest.funnel_context;
   return {
-    ...params,
-    funnel_context: resolveFunnelContext(),
+    ...rest,
+    funnel_context,
     page_path,
   };
 }
@@ -83,7 +89,8 @@ export function consultClickEventParams(
 /** Shared fields for `availability_check_start` / `availability_check_result` (client-only callers). */
 export function availabilityCheckEventParams(
   dateSelected: string,
-  availabilityStatus?: "available" | "unavailable"
+  availabilityStatus?: "available" | "unavailable",
+  surface?: string
 ): Record<string, string | number | boolean | undefined> {
   const page_path = typeof window !== "undefined" ? window.location.pathname : "";
   const out: Record<string, string | number | boolean | undefined> = {
@@ -91,6 +98,7 @@ export function availabilityCheckEventParams(
     page_path,
     ...gaDebugModeParam(),
   };
+  if (surface) out.surface = surface;
   if (availabilityStatus !== undefined) {
     out.availability_status = availabilityStatus;
   }

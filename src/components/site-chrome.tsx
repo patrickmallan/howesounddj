@@ -5,6 +5,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import CTADuo from "@/components/cta-duo";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import { HeaderCheckAvailability } from "@/components/header-check-availability";
 import { trackPostAvailabilityTrustClickFromHref } from "@/lib/post-availability-trust";
 
 function onTrustNavClick(href: string, after?: () => void) {
@@ -476,10 +477,7 @@ export function SiteHeader() {
           >
             Menu
           </button>
-          <CheckAvailabilityTrackedLink
-            surface="header"
-            className="min-h-[44px] shrink-0 items-center justify-center rounded-full bg-amber-300 px-2.5 text-center text-xs font-semibold leading-tight text-neutral-950 transition hover:scale-[1.02] sm:min-h-0 sm:px-4 sm:py-2.5 sm:text-sm xl:px-5"
-          />
+          <HeaderCheckAvailability onPanelOpen={() => setOpenMenuLabel(null)} />
         </div>
       </div>
 
@@ -537,6 +535,7 @@ export function SiteHeader() {
             <div className="relative z-10 border-t border-white/10 p-3">
               <CheckAvailabilityTrackedLink
                 surface="header"
+                href="/contact#availability"
                 onClick={closeMobileMenu}
                 className="relative z-10 inline-flex min-h-[44px] w-full items-center justify-center rounded-full bg-amber-300 px-4 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
               />

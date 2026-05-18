@@ -2,20 +2,18 @@
 
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Script from "next/script";
-import {
-  ANALYTICS_EVENTS,
-  availabilityCheckEventParams,
-  consultClickEventParams,
-  trackEvent,
-} from "@/lib/analytics";
+import { ANALYTICS_EVENTS, consultClickEventParams, trackEvent } from "@/lib/analytics";
+import { runAvailabilityCheck } from "@/lib/availability-check-client";
 import { bookConsultPrimaryButtonClassName } from "@/components/book-consult-tracked-link";
 import { PostAvailabilityTrustLink } from "@/components/post-availability-trust-link";
 import { CONSULT_CALENDLY_URL } from "@/lib/consult-calendly";
-import {
-  clearPostAvailabilityContext,
-  setPostAvailabilityContext,
-} from "@/lib/post-availability-context";
+import { clearPostAvailabilityContext } from "@/lib/post-availability-context";
 import { headlineVariantPayload } from "@/lib/experiment";
+import {
+  composedWeddingDate,
+  digitsOnly,
+  isForwardInput,
+} from "@/lib/wedding-date-input";
 import type { ContactApiResponse } from "@/types/contact-api";
 
 function clientPagePath(): string | undefined {
@@ -35,34 +33,6 @@ type AvailabilityPhase =
   | { kind: "available"; message: string };
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
-
-function digitsOnly(value: string, maxLen: number): string {
-  return value.replace(/\D/g, "").slice(0, maxLen);
-}
-
-/** Returns YYYY-MM-DD when all segments are complete and calendar-valid; otherwise "". */
-function composedWeddingDate(yearStr: string, monthStr: string, dayStr: string): string {
-  if (yearStr.length !== 4 || monthStr.length !== 2 || dayStr.length !== 2) return "";
-  const yi = Number(yearStr);
-  const mi = Number(monthStr);
-  const di = Number(dayStr);
-  if (yi < 2000 || yi > 2100) return "";
-  if (mi < 1 || mi > 12) return "";
-  if (di < 1 || di > 31) return "";
-  const dt = new Date(yi, mi - 1, di);
-  if (dt.getFullYear() !== yi || dt.getMonth() !== mi - 1 || dt.getDate() !== di) return "";
-  return `${yearStr}-${monthStr}-${dayStr}`;
-}
-
-function isForwardInput(e: React.ChangeEvent<HTMLInputElement>): boolean {
-  const ie = e.nativeEvent as InputEvent;
-  if (!ie.inputType) return true;
-  return (
-    ie.inputType !== "deleteContentBackward" &&
-    ie.inputType !== "deleteContentForward" &&
-    ie.inputType !== "deleteByCut"
-  );
-}
 
 export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey: string }) {
   /** Server prop first; then build-time `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (common on Vercel if only the public key was set). */
@@ -137,86 +107,18 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       return;
     }
     setDateError("");
-    clearPostAvailabilityContext();
-    const selectedDate = weddingDate;
-    trackEvent(
-      ANALYTICS_EVENTS.availabilityCheckStart,
-      availabilityCheckEventParams(selectedDate),
-      { deferUntilGtag: true }
-    );
     setAvailability({ kind: "checking" });
     setShowInquiry(false);
     setFormStatus("idle");
     setFieldErrors({});
-    try {
-      const res = await fetch("/api/availability", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ date: weddingDate }),
-      });
 
-      let data: unknown;
-      try {
-        data = await res.json();
-      } catch {
-        setAvailability({
-          kind: "unavailable",
-          message: "That date could not be checked. Try again in a moment.",
-        });
-        return;
-      }
-
-      if (typeof data !== "object" || data === null) {
-        setAvailability({
-          kind: "unavailable",
-          message: "That date could not be checked. Try again in a moment.",
-        });
-        return;
-      }
-
-      const body = data as { success?: boolean; available?: boolean; message?: string };
-
-      if (!res.ok || body.success === false) {
-        setAvailability({
-          kind: "unavailable",
-          message: body.message ?? "That date could not be checked. Try again in a moment.",
-        });
-        return;
-      }
-
-      if (typeof body.available !== "boolean") {
-        setAvailability({
-          kind: "unavailable",
-          message: "That date could not be checked. Try again in a moment.",
-        });
-        return;
-      }
-
-      if (body.available === false) {
-        clearPostAvailabilityContext();
-        trackEvent(
-          ANALYTICS_EVENTS.availabilityCheckResult,
-          availabilityCheckEventParams(selectedDate, "unavailable"),
-          { deferUntilGtag: true }
-        );
-        setAvailability({ kind: "unavailable", message: body.message ?? "That date is not available." });
-        return;
-      }
-
-      setPostAvailabilityContext(selectedDate);
-      trackEvent(
-        ANALYTICS_EVENTS.availabilityCheckResult,
-        availabilityCheckEventParams(selectedDate, "available"),
-        { deferUntilGtag: true }
-      );
-      setAvailability({ kind: "available", message: body.message ?? "That date looks open." });
+    const outcome = await runAvailabilityCheck(weddingDate, FORM_ANALYTICS.surface);
+    if (outcome.status === "available") {
+      setAvailability({ kind: "available", message: outcome.message });
       setShowInquiry(false);
-    } catch {
-      setAvailability({
-        kind: "unavailable",
-        message: "Something went wrong checking the date. Please try again.",
-      });
+      return;
     }
+    setAvailability({ kind: "unavailable", message: outcome.message });
   }
 
   function trackCalendlyClick() {
