@@ -5,6 +5,14 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import CTADuo from "@/components/cta-duo";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import { trackPostAvailabilityTrustClickFromHref } from "@/lib/post-availability-trust";
+
+function onTrustNavClick(href: string, after?: () => void) {
+  return () => {
+    after?.();
+    trackPostAvailabilityTrustClickFromHref(href);
+  };
+}
 
 /** Single leaf in the site nav (renders as `<Link>` in the header dropdown / mobile accordion / footer). */
 type SiteNavLeaf = {
@@ -249,7 +257,7 @@ function DesktopDropdown({
               href={child.href}
               role="menuitem"
               aria-current={childActive ? "page" : undefined}
-              onClick={onRequestClose}
+              onClick={onTrustNavClick(child.href, onRequestClose)}
               className={`block rounded-lg px-3 py-2.5 text-left transition hover:bg-white/5 ${
                 childActive ? "text-amber-300" : "text-white/90"
               }`}
@@ -318,7 +326,7 @@ function MobileAccordion({ group, pathname, expanded, onToggle, onNavigate }: Mo
               <Link
                 key={child.href}
                 href={child.href}
-                onClick={onNavigate}
+                onClick={onTrustNavClick(child.href, onNavigate)}
                 aria-current={childActive ? "page" : undefined}
                 className={`relative z-10 block px-7 py-2.5 text-left text-sm transition hover:bg-white/5 ${
                   childActive ? "text-amber-300 hover:text-amber-200" : "text-white/80 hover:text-white"
@@ -444,6 +452,7 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
+                  onClick={onTrustNavClick(item.href)}
                   onFocus={() => setOpenMenuLabel(null)}
                   onPointerEnter={() => setOpenMenuLabel(null)}
                   className={
@@ -513,7 +522,7 @@ export function SiteHeader() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={closeMobileMenu}
+                  onClick={onTrustNavClick(item.href, closeMobileMenu)}
                   aria-current={active ? "page" : undefined}
                   className={
                     active
@@ -567,13 +576,21 @@ export function SiteFinalDecisionZone() {
                 15 minutes &bull; No pressure &bull; Just clarity
               </p>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-white/45">
-                <Link href="/packages" className="transition hover:text-white/65">
+                <Link
+                  href="/packages"
+                  onClick={onTrustNavClick("/packages")}
+                  className="transition hover:text-white/65"
+                >
                   Wedding DJ Packages
                 </Link>
                 <span className="text-white/20" aria-hidden>
                   ·
                 </span>
-                <Link href="/reviews" className="transition hover:text-white/65">
+                <Link
+                  href="/reviews"
+                  onClick={onTrustNavClick("/reviews")}
+                  className="transition hover:text-white/65"
+                >
                   Wedding DJ Reviews
                 </Link>
               </div>
@@ -599,7 +616,12 @@ export function SiteFooter() {
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           {footerLinks.map((item) => (
-            <Link key={item.href} href={item.href} className="transition hover:text-white/70">
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={onTrustNavClick(item.href)}
+              className="transition hover:text-white/70"
+            >
               {item.footerLabel ?? item.label}
             </Link>
           ))}

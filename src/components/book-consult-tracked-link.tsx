@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
+import { ANALYTICS_EVENTS, consultClickEventParams, trackEvent } from "@/lib/analytics";
 import { CTA_PILL_FLEX_CENTER } from "@/lib/cta-alignment";
 import { CONSULT_CALENDLY_URL } from "@/lib/consult-calendly";
 
@@ -38,11 +38,13 @@ type Props = {
 
 export function BookConsultTrackedLink({ surface, className, children }: Props) {
   function handleClick() {
-    trackEvent(ANALYTICS_EVENTS.bookConsultClick, {
-      surface,
-      intent: "direct_consult",
-      page_path: typeof window !== "undefined" ? window.location.pathname : undefined,
-    });
+    trackEvent(
+      ANALYTICS_EVENTS.bookConsultClick,
+      consultClickEventParams({
+        surface,
+        intent: "direct_consult",
+      })
+    );
   }
 
   const merged = [BOOK_CONSULT_PRIMARY_PILL_BASE, "motion-interactive", className].filter(Boolean).join(" ");

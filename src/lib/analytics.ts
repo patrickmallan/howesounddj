@@ -3,6 +3,8 @@
  * Event names are stable for reports and explorations.
  */
 
+import { isPostAvailabilityContextActive } from "@/lib/post-availability-context";
+
 /**
  * Custom events fired from the contact inquiry form on `/contact` after availability passes.
  * Names are stable for GA4 reports and explorations.
@@ -22,7 +24,61 @@ export const ANALYTICS_EVENTS = {
   /** Contact form: calendar outcome resolved (`availability_status`: available | unavailable only). */
   availabilityCheckResult: "availability_check_result",
   contactFormStart: "contact_form_start",
+  /** Trust-surface navigation while post-availability session context is active. */
+  postAvailabilityTrustClick: "post_availability_trust_click",
 } as const;
+
+export type FunnelContext =
+  | "homepage"
+  | "post_availability"
+  | "reviews"
+  | "about"
+  | "packages"
+  | "venues"
+  | "stories"
+  | "guides"
+  | "direct";
+
+/** GA4 DebugView: development only, or when `NEXT_PUBLIC_GA_DEBUG=true`. */
+export function gaDebugModeParam(): Record<string, boolean> | Record<string, never> {
+  const enabled =
+    process.env.NODE_ENV === "development" || process.env.NEXT_PUBLIC_GA_DEBUG === "true";
+  return enabled ? { debug_mode: true } : {};
+}
+
+function funnelContextFromPath(path: string): FunnelContext | null {
+  if (path === "/") return "homepage";
+  if (path === "/reviews" || path.startsWith("/reviews/")) return "reviews";
+  if (path === "/about" || path.startsWith("/about/")) return "about";
+  if (path === "/packages" || path.startsWith("/packages/")) return "packages";
+  if (path === "/venues" || path.startsWith("/venues/")) return "venues";
+  if (path === "/stories" || path.startsWith("/stories/")) return "stories";
+  if (path === "/guides" || path.startsWith("/guides/")) return "guides";
+  return null;
+}
+
+/** Page- or session-aware consult attribution (`funnel_context`). */
+export function resolveFunnelContext(pathname?: string): FunnelContext {
+  const path =
+    pathname ?? (typeof window !== "undefined" ? window.location.pathname : "");
+  const fromPage = funnelContextFromPath(path);
+  if (fromPage) return fromPage;
+  if (isPostAvailabilityContextActive() && (path === "/contact" || path.startsWith("/contact/"))) {
+    return "post_availability";
+  }
+  return "direct";
+}
+
+export function consultClickEventParams(
+  params: Record<string, string | number | boolean | undefined>
+): Record<string, string | number | boolean | undefined> {
+  const page_path = typeof window !== "undefined" ? window.location.pathname : undefined;
+  return {
+    ...params,
+    funnel_context: resolveFunnelContext(),
+    page_path,
+  };
+}
 
 /** Shared fields for `availability_check_start` / `availability_check_result` (client-only callers). */
 export function availabilityCheckEventParams(
@@ -33,8 +89,7 @@ export function availabilityCheckEventParams(
   const out: Record<string, string | number | boolean | undefined> = {
     date_selected: dateSelected,
     page_path,
-    // TEMP: always set so GA4 DebugView shows live production availability hits; revert to env/hostname-only when validated.
-    debug_mode: true,
+    ...gaDebugModeParam(),
   };
   if (availabilityStatus !== undefined) {
     out.availability_status = availabilityStatus;

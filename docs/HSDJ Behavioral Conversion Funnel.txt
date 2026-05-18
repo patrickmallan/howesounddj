@@ -1,0 +1,584 @@
+================================================================================
+HSDJ CONVERSION INTELLIGENCE — IMPLEMENTATION DESIGN ROADMAP v1
+================================================================================
+
+Document:   HSDJ Behavioral Conversion Funnel (implementation spec)
+Status:     Ready for engineering tranche
+Repo:       howesounddj (Next.js App Router)
+Owner:      Patrick / Howe Sound DJ
+Last sync:  2026-05-17
+
+Related:
+  - src/lib/analytics.ts              (event registry + trackEvent)
+  - src/components/contact-availability-form.tsx
+  - src/components/book-consult-tracked-link.tsx
+  - src/components/check-availability-tracked-link.tsx
+  - logs/HSDJ_CONSULT_FIRST_CONVERSION_ARCHITECTURE_V1_STAGE_FINAL.md
+  - docs/handoff/premium-trust-conversion-psychology-audit.md
+
+================================================================================
+1. EXECUTIVE SUMMARY
+================================================================================
+
+Howe Sound DJ has crossed from “Can couples find the site?” to “What causes
+emotionally aligned couples to move forward after they learn their date may be
+open?” That shift defines the next technical priority:
+
+  Build Conversion Intelligence Layer v1 — milestone analytics for the
+  post-availability-check emotional decision zone.
+
+This roadmap formalizes that layer before more events are added ad hoc. It is
+aligned with the live codebase: consult-first contact architecture, GA4 via
+gtag.js, a single analytics module, and privacy-safe parameters (no PII).
+
+North-star metric (business):
+  Emotionally aligned consult bookings — not raw traffic.
+
+North-star metric (instrumentation):
+  Rate of availability_check_result (available) → consult intent action
+  (book_consult_click or calendly_click with post-availability context).
+
+What this document is:
+  - Event taxonomy + parameter contract
+  - Repo-specific implementation map (files, patterns, acceptance criteria)
+  - GA4 exploration playbook (Phase 2)
+  - Optimization feedback loop (Phase 3–4)
+
+What this document is not:
+  - Hotjar / heatmaps / enterprise analytics (explicitly deferred)
+  - Calendly server-side booking confirmation (optional Phase 4+)
+
+================================================================================
+2. STRATEGIC CONTEXT (WHY NOW)
+================================================================================
+
+2.1 Business stage
+
+  Phase A (largely complete): Discovery, SEO pillars, authority density,
+  consult-first contact hierarchy, availability API + Turnstile forms.
+
+  Phase B (current): Understand hesitation and trust-building behavior between
+  “your date looks open” and “book a consult / send inquiry.”
+
+2.2 Primary economic funnel
+
+  Homepage / pillar / ads
+        ↓
+  /contact (consult-first layout)
+        ↓
+  availability_check_start
+        ↓
+  availability_check_result (availability_status: available | unavailable)
+        ↓
+  [EMOTIONAL DECISION ZONE — highest ROI instrumentation gap]
+        ↓
+  Consult intent (Calendly) OR inquiry form OR exit / defer
+
+2.3 Design principles (non-negotiable)
+
+  1. Milestone analytics, not pageview noise — every new event must answer a
+     decision question.
+  2. Extend src/lib/analytics.ts — one registry, one trackEvent() path.
+  3. No PII in GA — no names, emails, phone, full dates in event params
+     (YYYY-MM-DD for wedding date is acceptable only if already committed;
+     prefer month/year buckets in reports if volume is low).
+  4. Performance — client-only, no extra network beyond gtag; deferUntilGtag
+     pattern already used for availability events.
+  5. Privacy — GA loads only when NEXT_PUBLIC_GA_MEASUREMENT_ID is set
+     (see src/components/google-analytics.tsx, CSP in next.config.ts).
+  6. Do not pollute production GA during local dev — omit measurement ID in
+     .env.local (docs/LAUNCH_CHECKLIST.md §10).
+
+================================================================================
+3. CURRENT STATE — REPO AUDIT (AS OF 2026-05-17)
+================================================================================
+
+3.1 Analytics infrastructure (implemented)
+
+  | Concern              | Implementation                                      |
+  |----------------------|-----------------------------------------------------|
+  | GA4 load             | GoogleAnalytics in src/app/layout.tsx               |
+  | Page views           | Manual page_path on route change (send_page_view:   |
+  |                      | false in gtag config)                               |
+  | Event dispatch       | trackEvent() in src/lib/analytics.ts                |
+  | Env gate             | No-op if NEXT_PUBLIC_GA_MEASUREMENT_ID unset        |
+  | gtag race            | deferUntilGtag option (50ms × 80 attempts)            |
+
+3.2 Existing custom events (ANALYTICS_EVENTS)
+
+  | Event name                    | Primary source                          |
+  |-------------------------------|-----------------------------------------|
+  | homepage_headline_view        | homepage-hero-headline.tsx              |
+  | check_availability_click      | check-availability-tracked-link.tsx     |
+  | book_consult_click            | book-consult-tracked-link.tsx,          |
+  |                               | contact-availability-form (Calendly)    |
+  | calendly_click                | contact-availability-form.tsx           |
+  | availability_check_start      | contact-availability-form.tsx           |
+  | availability_check_result     | contact-availability-form.tsx           |
+  | contact_form_start            | both inquiry forms                      |
+  | contact_form_submit_attempt   | both inquiry forms                      |
+  | contact_form_submit_success   | both inquiry forms                      |
+  | contact_form_submit           | both inquiry forms                      |
+  | contact_form_submit_error     | both inquiry forms                      |
+
+3.3 Availability event parameters (today)
+
+  availability_check_start / availability_check_result share:
+    - date_selected (YYYY-MM-DD)
+    - page_path
+    - availability_status (available | unavailable) — result only
+    - debug_mode: true  *** TECH DEBT: remove after GA4 validation ***
+
+  Original notes referenced availability_result_open / unavailable as separate
+  events. The repo correctly uses ONE event (availability_check_result) with
+  availability_status param — keep this pattern for all new dimensions.
+
+3.4 Post-availability UX (today)
+
+  On availability_check_result (available), contact-availability-form.tsx shows:
+    - Success message (from /api/availability)
+    - Primary: Book a Consult → CONSULT_CALENDLY_URL (Calendly)
+      → fires calendly_click + book_consult_click
+         (intent: post_availability_calendly)
+    - Secondary: Continue with Inquiry → inline form
+      → contact_form_* events with surface: contact_form
+
+  There are NO in-panel links to Reviews, About, Packages, Venues, or Stories
+  after date-open. Trust-seeking today happens via:
+    - Site header/footer navigation (untracked for post-availability context)
+    - Leaving /contact to other routes (visible only as generic page_path)
+    - Scrolling to consult panel above the form on the same page
+
+  Implication: Phase 1 must add (a) session context flag + (b) optional
+  tracked trust links in the success panel OR header wrapper when context is
+  active — see §6.3.
+
+3.5 Consult booking completion gap
+
+  Calendly opens in a new tab (src/lib/consult-calendly.ts). The site cannot
+  fire consult_booking_completed without:
+    - Calendly webhook → server endpoint (Phase 4+), or
+    - Treating calendly_click / book_consult_click as proxy conversions in GA4
+
+  Roadmap accepts proxy conversion for v1; document clearly in reporting.
+
+3.6 Experiment coupling
+
+  headline_variant (A|B|C) from src/lib/experiment.ts is merged into form
+  events via headlineVariantPayload(). New post-availability events SHOULD
+  include headline_variant when present for homepage-origin sessions.
+
+================================================================================
+4. RESEARCH SYNTHESIS (GA4 BEST PRACTICES — APPLIED TO HSDJ)
+================================================================================
+
+Industry guidance (GA4 Explorations, 2025–2026) supports this approach:
+
+  - Funnel exploration: Define closed sequential steps for the availability
+    journey; use Open funnel only for exploratory path analysis.
+  - Elapsed time between steps: Surfaces “read reviews for 8 minutes then
+    book” vs “bounce in 30 seconds” — critical for emotional purchases.
+  - Parameter over proliferation: Prefer availability_status, trust_target,
+    funnel_context params over dozens of near-duplicate event names.
+  - Segment by device, landing page, and headline_variant before redesigning UX.
+  - Mark 1–3 key events as conversions — avoid marking everything.
+
+HSDJ-specific application:
+  Do NOT add Hotjar/session replay in v1. The consult-first site already
+  optimizes for calm, low-pressure UX; behavioral milestones + GA4 Explorations
+  deliver higher ROI at lower weight than heatmaps for current traffic scale.
+
+================================================================================
+5. TARGET EVENT TAXONOMY — CONVERSION INTELLIGENCE v1
+================================================================================
+
+Naming convention (match existing repo):
+  - snake_case event names
+  - lowercase string param values
+  - register all names in ANALYTICS_EVENTS (src/lib/analytics.ts)
+
+5.1 Tier map
+
+  TIER S — Strategic milestones (reporting + funnel steps)
+  TIER A — Trust-seeking signals (post-availability context)
+  TIER B — Consult funnel (intent → proxy completion)
+  TIER C — Context / quality params (on multiple events)
+
+5.2 Tier S — Keep and refine (no rename)
+
+  | Event                         | Notes                                      |
+  |-------------------------------|--------------------------------------------|
+  | availability_check_start      | Unchanged                                  |
+  | availability_check_result     | Unchanged; status via availability_status  |
+  | check_availability_click      | Entry to /contact#availability             |
+  | book_consult_click            | Extend params (see §5.4)                   |
+  | calendly_click                | Keep; link to funnel_context               |
+
+5.3 Tier A — NEW trust-seeking events
+
+  Fired when user clicks a trust destination WHILE post-availability context
+  is active (see §6.2).
+
+  | Event                              | Param: trust_target (required)     |
+  |------------------------------------|------------------------------------|
+  | post_availability_trust_click      | reviews | about | packages |       |
+  |                                    | venues | stories | google_reviews |
+  |                                    | squamish_pillar | faq | guides     |
+
+  google_reviews: only if an external Google review URL is linked from the
+  success state or contact page in a future UX pass.
+
+  Do NOT create availability_reviews_click, availability_about_click, etc.
+  as separate top-level events — one event + trust_target keeps GA4 Admin clean
+  and matches GA4 custom parameter best practice.
+
+5.4 Tier B — Consult funnel (extend existing + one optional alias)
+
+  | Event / signal                    | Implementation                           |
+  |-----------------------------------|------------------------------------------|
+  | book_consult_click                | Add funnel_context param (see below)     |
+  | calendly_click                    | Add funnel_context param                 |
+  | consult_booking_started           | OPTIONAL alias event fired alongside     |
+  |                                   | calendly_click when funnel_context is    |
+  |                                   | post_availability — prefer extending     |
+  |                                   | calendly_click only unless Reports need  |
+  |                                   | a dedicated conversion name              |
+  | consult_booking_completed         | DEFERRED — requires Calendly webhook     |
+  | contact_form_submit_success       | Already tracks inquiry path; add         |
+  |                                   | funnel_context: post_availability when   |
+  |                                   | inquiry opened from availability success |
+
+  funnel_context values:
+    direct_consult      — BookConsultTrackedLink (default today)
+    post_availability   — Calendly or inquiry after date open
+    contact_primary     — contact_page_primary surface
+    other               — escape hatch
+
+  Map existing intent: post_availability_calendly → funnel_context:
+  post_availability (keep intent param one release for backward compatibility).
+
+5.5 Tier C — Shared parameters (add to relevant events)
+
+  | Parameter           | Type    | Purpose                                      |
+  |---------------------|---------|----------------------------------------------|
+  | funnel_context      | string  | Where in economic funnel action occurred     |
+  | trust_target        | string  | Destination for post_availability_trust_click|
+  | page_path           | string  | Already used — keep                          |
+  | surface             | string  | Already used on CTAs — keep                  |
+  | availability_status | string  | available | unavailable — keep               |
+  | date_selected       | string  | YYYY-MM-DD on availability events only       |
+  | headline_variant    | string  | A | B | C when stored — keep                 |
+  | session_post_avail  | boolean | true when event occurs in post-open window   |
+
+5.6 Drop-off inference (no new event required)
+
+  Pattern: availability_check_result (available) → no further Tier S/A/B
+  events in session → session end.
+
+  GA4 Explorations:
+    - Funnel exploration with 120-minute session window
+    - Segment “Available but no consult intent” = step 1 completed, step 2 not
+
+  Do NOT implement a synthetic availability_session_abandon event in v1 —
+  it duplicates GA4 funnel abandonment and adds client complexity.
+
+5.7 Events explicitly NOT in v1 scope
+
+  - Per-scroll depth / rage clicks / heatmaps
+  - availability_inquiry_field_focus (too granular)
+  - Duplicate availability_result_open / unavailable event names
+  - Server-side consult_booking_completed without Calendly integration plan
+
+================================================================================
+6. IMPLEMENTATION ARCHITECTURE (REPO-ALIGNED)
+================================================================================
+
+6.1 File change map (Phase 1)
+
+  | File                                      | Change                        |
+  |-------------------------------------------|-------------------------------|
+  | src/lib/analytics.ts                      | New events, params helpers,   |
+  |                                           | post-availability session API |
+  | src/components/contact-availability-form  | Set/clear session context;    |
+  |                                           | trust link instrumentation;   |
+  |                                           | funnel_context on existing    |
+  |                                           | fires; remove debug_mode debt |
+  | src/components/post-availability-trust- | NEW (recommended): small      |
+  |   links.tsx (optional)                  | presentational trust row      |
+  | src/components/book-consult-tracked-link  | Pass funnel_context on direct |
+  | src/components/site-chrome.tsx            | OPTIONAL: wrap nav clicks with|
+  |                                           | post-avail tracker when flag  |
+  |                                           | set (higher fidelity)         |
+  | README.md + docs/LAUNCH_CHECKLIST.md      | Document new events (Phase 1  |
+  |                                           | done criteria)                |
+
+6.2 Post-availability session context (client)
+
+  Purpose: Attribute header/footer navigation and same-page actions to the
+  emotional decision zone without relying on URL state.
+
+  Proposed API in src/lib/analytics.ts:
+
+    setPostAvailabilityContext({ dateSelected: string }): void
+    clearPostAvailabilityContext(): void
+    getPostAvailabilityContext(): { active: boolean; dateSelected?: string }
+
+  Storage: sessionStorage key hsdj_post_availability (JSON: { ts, dateSelected })
+  TTL: session end OR clear on new availability_check_start OR unavailable result
+
+  Set context: immediately after successful availability_check_result (available)
+  Clear context: unavailable result, new check, or explicit reset
+
+  All Tier A events include session_post_avail: true and funnel_context:
+  post_availability.
+
+6.3 UX recommendation bundled with instrumentation
+
+  The psychology audit and consult-first architecture both suggest reassurance
+  AFTER date-open without adding pressure. Minimal v1 UI (same panel as success):
+
+    “Still exploring? Couples often skim [Reviews] or [About] before booking.”
+
+  Links use PostAvailabilityTrustLink component → post_availability_trust_click.
+
+  This is optional for Phase 1 engineering but strongly recommended — otherwise
+  Tier A events will only fire via header instrumentation and under-report
+  intentional trust-seeking.
+
+6.4 trackEvent usage pattern (unchanged)
+
+  trackEvent(ANALYTICS_EVENTS.postAvailabilityTrustClick, {
+    trust_target: "reviews",
+    page_path,
+    funnel_context: "post_availability",
+    session_post_avail: true,
+    ...headlineVariantPayload(),
+  }, { deferUntilGtag: true });
+
+6.5 Tech debt — debug_mode
+
+  availabilityCheckEventParams() forces debug_mode: true for DebugView validation.
+  Phase 1 exit criteria: gate debug_mode behind
+    NODE_ENV === "development" ||
+    process.env.NEXT_PUBLIC_GA_DEBUG === "true"
+  so production reports stay clean.
+
+6.6 Type safety
+
+  Extend src/types/gtag.d.ts only if needed. Prefer const objects for param
+  enums in analytics.ts exported for components.
+
+================================================================================
+7. PHASED ROADMAP
+================================================================================
+
+------------------------------------------------------------------------------
+PHASE 1 — Behavioral funnel instrumentation (engineering tranche)
+------------------------------------------------------------------------------
+
+Goal: Ship Conversion Intelligence v1 in code; validate in GA4 DebugView + Realtime.
+
+Tasks:
+  1. Implement §6.2 session context + §5.3–5.5 event/param contract
+  2. Instrument contact-availability-form success state (Calendly + inquiry)
+  3. Add PostAvailabilityTrustLink row OR instrument site-chrome nav when
+     context active
+  4. Normalize funnel_context on book_consult_click / calendly_click
+  5. Remove / gate debug_mode tech debt
+  6. Update README + LAUNCH_CHECKLIST event tables
+
+Acceptance criteria:
+  [ ] Local: with NEXT_PUBLIC_GA_MEASUREMENT_ID + NEXT_PUBLIC_GA_DEBUG=true,
+      DebugView shows full chain: start → result (available) → trust_click OR
+      book_consult_click (post_availability) → calendly_click
+  [ ] Unavailable path clears context; no post_availability_trust_click with
+      session_post_avail after unavailable
+  [ ] No PII in any param (grep audit)
+  [ ] npm run lint && npm run build pass
+  [ ] Production deploy: Realtime shows events on real availability check
+
+Estimated effort: 1 focused Cursor tranche (4–8 hours)
+
+------------------------------------------------------------------------------
+PHASE 2 — GA4 funnel definitions & reporting (analytics ops, no code required)
+------------------------------------------------------------------------------
+
+Goal: Turn events into decisions within 2–4 weeks of Phase 1 data collection.
+
+2.1 Register custom dimensions (Admin → Custom definitions)
+
+  | Parameter           | Scope   | Dimension name              |
+  |---------------------|---------|-----------------------------|
+  | funnel_context      | Event   | Funnel context              |
+  | trust_target        | Event   | Trust target                |
+  | availability_status | Event   | Availability status         |
+  | headline_variant    | Event   | Headline variant            |
+  | surface             | Event   | CTA surface                 |
+
+2.2 Mark conversions (minimal set)
+
+  | Event                         | Rationale                          |
+  |-------------------------------|------------------------------------|
+  | calendly_click                | Proxy for consult booked (v1)        |
+  | contact_form_submit_success   | Inquiry conversion                 |
+  | availability_check_result     | Only if filtered to available +    |
+  |                               | used as micro-conversion           |
+
+  Do NOT mark post_availability_trust_click as conversion — it is diagnostic.
+
+2.3 Explorations to create
+
+  A. Closed funnel — “Post-availability consult path”
+     Step 1: availability_check_result (availability_status = available)
+     Step 2: post_availability_trust_click OR book_consult_click
+             (funnel_context = post_availability) [OR]
+     Step 3: calendly_click (funnel_context = post_availability)
+     Enable elapsed time + breakdown by Device category
+
+  B. Open funnel — “Trust target effectiveness”
+     Step 1: post_availability_trust_click (any)
+     Step 2: calendly_click OR contact_form_submit_success
+     Breakdown: trust_target
+
+  C. Path exploration — Entry: /contact, include availability + consult events
+
+  D. Segment comparisons
+     - Mobile vs desktop
+     - headline_variant A vs B vs C (homepage entrants)
+     - Landing page: / vs /squamish-wedding-dj vs /whistler-wedding-dj
+
+2.4 Baseline period
+
+  Collect 30–60 days OR minimum 50 availability_check_result (available) before
+  major UX changes. Sea-to-Sky wedding seasonality — note month in analysis.
+
+Acceptance criteria:
+  [ ] Custom dimensions receiving data (Admin → DebugView sample)
+  [ ] Saved explorations shared/exported for Patrick
+  [ ] One-page “how to read this” note in docs (optional short addendum)
+
+------------------------------------------------------------------------------
+PHASE 3 — Behavior-driven UX optimization (hypothesis-led)
+------------------------------------------------------------------------------
+
+Goal: Change the site only where data supports it.
+
+Decision triggers (examples — replace with real numbers after Phase 2):
+
+  | Observation                                      | Action                        |
+  |--------------------------------------------------|-------------------------------|
+  | trust_target=reviews → 4× consult rate vs none   | Elevate reviews in success    |
+  |                                                  | panel; add 1 quote snippet    |
+  | trust_target=packages → high exit, low consult   | Soften pricing framing; defer |
+  |                                                  | packages link below consult   |
+  | about trust click → high consult correlation     | Founder line + photo in panel |
+  | Mobile drop-off at step 2                        | Shorter success copy; sticky  |
+  |                                                  | Book Consult on mobile        |
+  | post_availability inquiry >> Calendly            | Revisit consult-first copy in |
+  |                                                  | success state                 |
+
+Coordinate with:
+  - docs/handoff/premium-trust-conversion-psychology-audit.md (friction table)
+  - Consult-first architecture (do not weaken Check Availability)
+
+Acceptance criteria:
+  [ ] Each UX change references a funnel exploration screenshot or export
+  [ ] Before/after comparison planned (4 weeks post-change)
+
+------------------------------------------------------------------------------
+PHASE 4 — Consult booking optimization (advanced)
+------------------------------------------------------------------------------
+
+Goal: Close the consult_booking_completed gap and reduce manual follow-up.
+
+Options (pick one when Phase 2–3 justify investment):
+
+  A. Calendly webhook → POST /api/calendly → server-side GA4 Measurement Protocol
+     (or internal log + weekly digest)
+  B. Calendly UTM params on CONSULT_CALENDLY_URL per funnel_context
+  C. Thank-you redirect page on Calendly (if plan supports) → on-site event
+
+  Also consider:
+  - Align book_consult_click surfaces site-wide (venues, homepage CTADuo)
+  - Funnel_context on all BookConsultTrackedLink surfaces for comparability
+
+================================================================================
+8. HYPOTHESES TO TEST (PRE-REGISTERED)
+================================================================================
+
+Register these before peeking at data to avoid narrative fallacy:
+
+  H1: Couples who click Reviews after date-open convert to Calendly at ≥2×
+      the rate of those who do not trigger any trust event.
+  H2: Packages trust clicks correlate with lower consult rate (pricing anxiety).
+  H3: About trust clicks correlate with higher consult rate (founder trust).
+  H4: Mobile sessions show higher drop-off between available → calendly_click.
+  H5: headline_variant B/C (energy-forward) differs in post-availability consult
+      rate vs A for homepage-origin sessions.
+
+================================================================================
+9. PRIVACY, COMPLIANCE & PERFORMANCE
+================================================================================
+
+  - No cookies beyond GA4’s own handling; no third-party behavior stacks in v1.
+  - Cookie/consent banner: if added later (BC PIPA / marketing compliance),
+    gate GoogleAnalytics component — out of scope for this tranche but note in
+    launch checklist when traffic from EU/UK is material (currently Canada-focused).
+  - CSP already allows google-analytics.com (next.config.ts) — no change expected.
+  - Bundle impact: zero additional scripts; only event calls.
+  - sessionStorage: no PII; only date_selected already shown to user.
+
+================================================================================
+10. SUCCESS METRICS (90-DAY)
+================================================================================
+
+  Primary:
+    Consult proxy rate =
+      calendly_click (funnel_context=post_availability)
+      ─────────────────────────────────────────────────────
+      availability_check_result (availability_status=available)
+
+  Secondary:
+    Inquiry path rate = contact_form_submit_success with post_availability
+    Trust engagement rate = % available sessions with ≥1 trust_click
+    Median elapsed time: available → calendly_click
+
+  Guardrails:
+    - contact_form_submit_success (secondary_inquiry) should not collapse
+    - check_availability_click volume stable (SEO/ads not broken)
+    - No increase in LCP/INP from instrumentation (expect none)
+
+================================================================================
+11. CURSOR TRANCHE BRIEF — READY TO PASTE
+================================================================================
+
+Title: HSDJ Conversion Intelligence Pass v1 (Phase 1 instrumentation)
+
+Implement per §5–§7 Phase 1:
+  - src/lib/analytics.ts: post-availability context + new events/params
+  - contact-availability-form.tsx: context lifecycle + funnel_context
+  - Optional post-availability trust link row on date-open panel
+  - Gate debug_mode on availability events
+  - Document new events in README + LAUNCH_CHECKLIST
+
+Out of scope this tranche:
+  - GA4 Admin explorations (Phase 2)
+  - Calendly webhook
+  - Hotjar / heatmaps
+  - Renaming existing production events
+
+Verify: GA4 DebugView full funnel; lint + build; no PII in params.
+
+================================================================================
+12. GLOSSARY
+================================================================================
+
+  Milestone analytics — Events tied to business-meaningful steps, not all clicks.
+  Post-availability context — Session window after date-open result.
+  Trust-seeking — Navigation to social proof / founder / pricing / venues.
+  Proxy conversion — calendly_click used where completion isn’t observable on-site.
+  Consult-first — Contact page hierarchy privileging Book a Consult over inquiry.
+
+================================================================================
+END OF ROADMAP
+================================================================================

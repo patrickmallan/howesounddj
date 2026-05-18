@@ -2,9 +2,19 @@
 
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Script from "next/script";
-import { ANALYTICS_EVENTS, availabilityCheckEventParams, trackEvent } from "@/lib/analytics";
+import {
+  ANALYTICS_EVENTS,
+  availabilityCheckEventParams,
+  consultClickEventParams,
+  trackEvent,
+} from "@/lib/analytics";
 import { bookConsultPrimaryButtonClassName } from "@/components/book-consult-tracked-link";
+import { PostAvailabilityTrustLink } from "@/components/post-availability-trust-link";
 import { CONSULT_CALENDLY_URL } from "@/lib/consult-calendly";
+import {
+  clearPostAvailabilityContext,
+  setPostAvailabilityContext,
+} from "@/lib/post-availability-context";
 import { headlineVariantPayload } from "@/lib/experiment";
 import type { ContactApiResponse } from "@/types/contact-api";
 
@@ -127,6 +137,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       return;
     }
     setDateError("");
+    clearPostAvailabilityContext();
     const selectedDate = weddingDate;
     trackEvent(
       ANALYTICS_EVENTS.availabilityCheckStart,
@@ -182,6 +193,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       }
 
       if (body.available === false) {
+        clearPostAvailabilityContext();
         trackEvent(
           ANALYTICS_EVENTS.availabilityCheckResult,
           availabilityCheckEventParams(selectedDate, "unavailable"),
@@ -191,6 +203,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         return;
       }
 
+      setPostAvailabilityContext(selectedDate);
       trackEvent(
         ANALYTICS_EVENTS.availabilityCheckResult,
         availabilityCheckEventParams(selectedDate, "available"),
@@ -207,12 +220,17 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
   }
 
   function trackCalendlyClick() {
-    trackEvent(ANALYTICS_EVENTS.calendlyClick, { surface: FORM_ANALYTICS.surface });
-    trackEvent(ANALYTICS_EVENTS.bookConsultClick, {
-      surface: "contact_form",
-      intent: "post_availability_calendly",
-      page_path: clientPagePath(),
-    });
+    trackEvent(
+      ANALYTICS_EVENTS.calendlyClick,
+      consultClickEventParams({ surface: FORM_ANALYTICS.surface })
+    );
+    trackEvent(
+      ANALYTICS_EVENTS.bookConsultClick,
+      consultClickEventParams({
+        surface: "contact_form",
+        intent: "post_availability_calendly",
+      })
+    );
   }
 
   function handleInquiryFormFocusCapture(e: React.FocusEvent<HTMLFormElement>) {
@@ -340,6 +358,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
     setYearStr(v);
     setDateError("");
     setAvailability({ kind: "idle" });
+    clearPostAvailabilityContext();
     if (v.length !== 4 || !isForwardInput(e)) return;
     const yn = Number(v);
     if (yn >= 2000 && yn <= 2100) {
@@ -352,6 +371,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
     setMonthStr(v);
     setDateError("");
     setAvailability({ kind: "idle" });
+    clearPostAvailabilityContext();
     if (v.length !== 2 || !isForwardInput(e)) return;
     const mn = Number(v);
     if (mn >= 1 && mn <= 12) {
@@ -364,6 +384,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
     setDayStr(v);
     setDateError("");
     setAvailability({ kind: "idle" });
+    clearPostAvailabilityContext();
   }
 
   return (
@@ -470,6 +491,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               type="button"
               onClick={() => {
                 setAvailability({ kind: "idle" });
+                clearPostAvailabilityContext();
                 clearDateFields();
               }}
               className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
@@ -507,6 +529,17 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               Continue with Inquiry
             </button>
           </div>
+          <p className="mt-5 text-sm leading-relaxed text-white/50">
+            Still exploring? Couples often skim{" "}
+            <PostAvailabilityTrustLink href="/reviews" trustTarget="reviews">
+              Reviews
+            </PostAvailabilityTrustLink>{" "}
+            or{" "}
+            <PostAvailabilityTrustLink href="/about" trustTarget="about">
+              About
+            </PostAvailabilityTrustLink>{" "}
+            before booking.
+          </p>
         </div>
       )}
 
