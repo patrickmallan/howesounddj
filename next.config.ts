@@ -123,12 +123,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/whistler-dj-services",
-        destination: "/weddings",
+        destination: "/whistler-wedding-dj",
         permanent: true,
       },
       {
         source: "/whistler-dj-services/",
-        destination: "/weddings",
+        destination: "/whistler-wedding-dj",
         permanent: true,
       },
       {
