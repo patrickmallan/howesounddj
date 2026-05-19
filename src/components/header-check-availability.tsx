@@ -10,6 +10,10 @@ import { headlineVariantPayload } from "@/lib/experiment";
 const triggerClass =
   `${CTA_PILL_FLEX_CENTER} motion-interactive min-h-[44px] shrink-0 items-center justify-center rounded-full bg-amber-300 px-2.5 text-center text-xs font-semibold leading-tight text-neutral-950 transition hover:scale-[1.02] sm:min-h-0 sm:px-4 sm:py-2.5 sm:text-sm xl:px-5`;
 
+/** Full-screen on mobile (above page, below panel); on xl sits under sticky header so nav stays clear. */
+const backdropClass =
+  "fixed inset-0 z-[64] cursor-default border-0 bg-black/60 p-0 backdrop-blur-md xl:z-[40] xl:bg-black/50 xl:backdrop-blur-sm";
+
 type Props = {
   /** Close any open desktop nav dropdown when the panel opens. */
   onPanelOpen?: () => void;
@@ -108,7 +112,7 @@ export function HeaderCheckAvailability({ onPanelOpen }: Props) {
             type="button"
             tabIndex={-1}
             aria-hidden
-            className="fixed inset-0 z-[64] cursor-default border-0 bg-black/45 p-0 backdrop-blur-[2px] xl:pointer-events-none xl:bg-transparent xl:backdrop-blur-none"
+            className={backdropClass}
             onClick={close}
           />
           <div
@@ -117,7 +121,7 @@ export function HeaderCheckAvailability({ onPanelOpen }: Props) {
             role="dialog"
             aria-modal="true"
             aria-label="Check wedding date availability"
-            className="fixed left-1/2 top-[max(4.75rem,calc(env(safe-area-inset-top,0px)+3.75rem))] z-[85] max-h-[min(calc(100dvh-5.5rem),34rem)] w-[min(calc(100vw-1.5rem),22rem)] -translate-x-1/2 overflow-y-auto overscroll-contain rounded-2xl border border-white/10 bg-neutral-950/95 p-5 pb-6 shadow-xl shadow-black/50 backdrop-blur transition duration-150 xl:absolute xl:right-0 xl:left-auto xl:top-full xl:mt-2 xl:max-h-[min(calc(100dvh-6rem),36rem)] xl:w-[min(calc(100vw-2rem),22rem)] xl:translate-x-0"
+            className="fixed left-1/2 top-[max(4.75rem,calc(env(safe-area-inset-top,0px)+3.75rem))] z-[85] max-h-[min(calc(100dvh-5.5rem),34rem)] w-[min(calc(100vw-1.5rem),22rem)] -translate-x-1/2 overflow-y-auto overscroll-contain rounded-2xl border border-white/10 bg-neutral-950/[0.98] p-5 pb-6 shadow-2xl shadow-black/55 backdrop-blur-sm transition duration-150 xl:absolute xl:right-0 xl:left-auto xl:top-full xl:mt-2 xl:max-h-[min(calc(100dvh-6rem),36rem)] xl:w-[min(calc(100vw-2rem),22rem)] xl:translate-x-0"
           >
             <button
               type="button"
