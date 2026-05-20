@@ -10,20 +10,20 @@ import { JsonLd } from "@/components/json-ld";
 import { storiesHubBreadcrumbJsonLd } from "@/lib/json-ld";
 
 const hubDesc =
-  "A growing home for real wedding moments, dance floor stories, and Sea-to-Sky celebration notes as more licensed photography and couple permissions become available.";
+  "Real Squamish and Whistler wedding stories, mountain reception energy, and dance floor moments from the Sea-to-Sky corridor—editorial proof of how corridor weddings actually feel.";
 
 export const metadata: Metadata = {
-  title: "Featured Weddings & Dance Floor Stories",
+  title: "Sea-to-Sky Wedding Stories | Real Dance Floor Moments",
   description: hubDesc,
   openGraph: {
-    title: "Featured Weddings & Dance Floor Stories | Howe Sound DJ",
+    title: "Sea-to-Sky Wedding Stories | Real Dance Floor Moments",
     description: hubDesc,
     url: "/stories",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Featured Weddings & Dance Floor Stories | Howe Sound DJ",
+    title: "Sea-to-Sky Wedding Stories | Real Dance Floor Moments",
     description: hubDesc,
     images: ["/og-share.jpg"],
   },
@@ -56,12 +56,12 @@ export default function StoriesHubPage() {
             <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
               Stories
             </div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Sea-to-Sky weddings</div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">Featured Weddings &amp; Dance Floor Stories</h1>
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Sea-to-Sky wedding stories</div>
+            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">Mountain wedding energy, told through real dance floor moments</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">{hubDesc}</p>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
-              This section will not invent couples, venues, or dates. As real recaps join the site, they will live here alongside planning guides and reviews so couples can feel the atmosphere before they
-              book.
+              These are editorial stories from Squamish and Whistler celebrations—not invented recaps. Read how mountain weddings build atmosphere, how guests arrive at the dance floor, and what packed
+              Sea-to-Sky receptions actually feel like before you book.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
@@ -98,7 +98,10 @@ export default function StoriesHubPage() {
       <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Read</div>
-          <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Available now</h2>
+          <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Sea-to-Sky wedding stories available now</h2>
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
+            Each story explores how mountain weddings build toward the dance floor—elevation, guest trust, and the emotional arc of a packed Sea-to-Sky reception.
+          </p>
         </div>
         <StaggerGroup className="mt-10 grid gap-6 md:grid-cols-2">
           {stories.map((s) => (
@@ -132,21 +135,29 @@ export default function StoriesHubPage() {
           <p className="max-w-3xl text-sm leading-7 text-white/55">
             Planning context lives in the{" "}
             <Link href="/guides" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              Wedding Planning Guides
+              wedding planning guides
             </Link>
-            . Named settings and flow questions map cleanly to{" "}
+            , including{" "}
+            <Link href="/guides/how-to-keep-a-wedding-dance-floor-packed" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              how to keep a Sea-to-Sky dance floor packed
+            </Link>
+            . Named settings and reception flow map to{" "}
             <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               wedding venue guides
             </Link>
-            . Squamish-first context sits in the{" "}
+            . Squamish commercial context sits in the{" "}
             <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Squamish wedding DJ
             </Link>{" "}
-            pillar, and Whistler-wide pacing sits in the{" "}
+            pillar; Whistler destination pacing in the{" "}
             <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Whistler wedding DJ
             </Link>{" "}
-            pillar. Couple voices in their own words stay on{" "}
+            pillar. Full service overview on{" "}
+            <Link href="/weddings" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              wedding DJ services
+            </Link>
+            . Couple voices in their own words stay on{" "}
             <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               reviews
             </Link>

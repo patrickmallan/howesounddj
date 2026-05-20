@@ -6,13 +6,13 @@ import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { CTA_FINALE_SECTION_TOP, MAIN_SECTION_Y } from "@/lib/cta-section-spacing";
 
 export const metadata: Metadata = {
-  title: { absolute: "About Howe Sound DJ | Squamish Wedding DJ" },
+  title: { absolute: "About Howe Sound DJ | Sea-to-Sky Wedding Authority" },
   description:
-    "Meet Patrick of Howe Sound DJ: Squamish wedding DJ with 15+ years in music, OIART-trained audio background, and a planning-forward approach for Sea-to-Sky weddings.",
+    "Meet Patrick of Howe Sound DJ: Squamish wedding DJ with 15+ years in music, production-trained audio, and a dance-floor-first approach for Sea-to-Sky celebrations.",
   openGraph: {
-    title: "About Howe Sound DJ | Squamish Wedding DJ",
+    title: "About Howe Sound DJ | Sea-to-Sky Wedding Authority",
     description:
-      "Story, approach, and credibility: production-minded sound, local venue familiarity, and wedding dance floors built with intention.",
+      "Story, approach, and credibility: production-minded sound, corridor venue familiarity, and wedding dance floors built with emotional intention.",
     url: "/about",
   },
   alternates: { canonical: "/about" },

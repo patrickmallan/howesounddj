@@ -11,20 +11,20 @@ import { JsonLd } from "@/components/json-ld";
 import { squamishWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
 
 const desc =
-  "Squamish-rooted wedding DJ for local and destination celebrations in Squamish: calm planning, Sea-to-Sky venue familiarity, and ceremony-to-reception flow without importing unnecessary travel complexity.";
+  "Squamish wedding DJ for Sea-to-Sky celebrations: corridor-native sound, cinematic reception energy, and dance floors built for mountain weddings—from ceremony to last song.";
 
 export const metadata: Metadata = {
-  title: "Squamish Wedding DJ",
+  title: "Squamish Wedding DJ | Mountain Dance Floors That Stay Packed",
   description: desc,
   openGraph: {
-    title: "Squamish Wedding DJ | Howe Sound DJ",
+    title: "Squamish Wedding DJ | Mountain Dance Floors That Stay Packed",
     description: desc,
     url: "/squamish-wedding-dj",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Squamish Wedding DJ | Howe Sound DJ",
+    title: "Squamish Wedding DJ | Mountain Dance Floors That Stay Packed",
     description: desc,
     images: ["/og-share.jpg"],
   },
@@ -75,16 +75,20 @@ export default function SquamishWeddingDjPage() {
             <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
               Squamish wedding DJ
             </div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Squamish home base · Sea-to-Sky specialist</div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">Premium Sea-to-Sky support for weddings in Squamish</h1>
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Squamish home base · Sea-to-Sky wedding specialist</div>
+            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">Squamish wedding DJ for celebrations that build to an unforgettable dance floor</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              Howe Sound DJ is Squamish-rooted: a calm planning partner for couples marrying here, whether you live in town or are bringing guests into the mountains. The through-line is corridor-native
-              sound and pacing, ceremony through reception, with the same premium posture as the rest of the Sea-to-Sky work.
+              Howe Sound DJ is Squamish-rooted: a calm planning partner for couples marrying in the mountains, whether you live here or are bringing guests into the corridor. The through-line is
+              cinematic reception energy—ceremony clarity, cocktail warmth, and a dance floor your people actually stay on—built with corridor-native sound and pacing, not a generic city-wedding template.
             </p>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
               For the full service breakdown, see{" "}
               <Link href="/weddings" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                Wedding DJ Services
+                Sea-to-Sky wedding DJ services
+              </Link>
+              . For editorial dance floor proof from real corridor celebrations, read{" "}
+              <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                Sea-to-Sky wedding stories
               </Link>
               . Venue-specific questions map to the{" "}
               <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
@@ -229,9 +233,9 @@ export default function SquamishWeddingDjPage() {
             </li>
             <li>
               <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                Featured Weddings &amp; Dance Floor Stories
+                Sea-to-Sky wedding stories
               </Link>
-              for editorial proof on corridor energy (not invented recaps).
+              for editorial proof on corridor dance floor energy (not invented recaps).
             </li>
             <li>
               <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">

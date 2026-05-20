@@ -5,13 +5,13 @@ import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP, MAIN_SECTION_Y } from "@/lib/cta-section-spacing";
 
 export const metadata: Metadata = {
-  title: "Wedding DJ Packages",
+  title: "Wedding DJ Packages | Sea-to-Sky Celebration Coverage",
   description:
-    "Wedding DJ packages and optional enhancements for Squamish and Sea-to-Sky weddings: celebration through full-day coverage, plus lighting, audio zones, and custom mixes.",
+    "Wedding DJ packages for Squamish and Sea-to-Sky celebrations: ceremony through reception, dance floor energy, and atmosphere built around your crowd—not a generic playlist.",
   openGraph: {
-    title: "Wedding DJ Packages | Howe Sound DJ",
+    title: "Wedding DJ Packages | Sea-to-Sky Celebration Coverage",
     description:
-      "Clear package tiers, what every booking includes, and add-ons when you want more. Pricing confirmed after your date and venue.",
+      "Clear tiers for ceremony-to-reception coverage, dance floor energy, and optional enhancements—built for couples who care about atmosphere, not price-shopping.",
     url: "/packages",
   },
   alternates: { canonical: "/packages" },

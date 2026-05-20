@@ -7,13 +7,13 @@ import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 
 export const metadata: Metadata = {
-  title: "Squamish Wedding DJ Services",
+  title: "Sea-to-Sky Wedding DJ | Dance Floors Built Around You",
   description:
-    "Personalized wedding DJ for Squamish & the corridor: musical tastes to atmosphere you want, ceremony through reception, first dance to last song. Classic romance or a full dance party.",
+    "Personalized wedding DJ for Squamish, Whistler, and the Sea-to-Sky corridor: ceremony through reception, emotional pacing, and dance floors your guests stay on all night.",
   openGraph: {
-    title: "Squamish Wedding DJ Services | Howe Sound DJ",
+    title: "Sea-to-Sky Wedding DJ | Dance Floors Built Around You",
     description:
-      "Tailored music for your story: elegant and emotional or wild and unforgettable. Polished, high-energy nights from Howe Sound DJ.",
+      "Tailored music and atmosphere for mountain weddings—elegant and emotional or full dance party—built with intention from first dance to last song.",
     url: "/weddings",
   },
   alternates: { canonical: "/weddings" },
@@ -221,7 +221,7 @@ export default function WeddingsPage() {
             href="/stories"
             className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 hover:decoration-amber-200/60"
           >
-            Featured Weddings &amp; Dance Floor Stories
+            Sea-to-Sky wedding stories
           </Link>
           .
         </p>

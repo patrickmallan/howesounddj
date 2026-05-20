@@ -96,7 +96,7 @@ export default function VenuesHubPage() {
             </Link>
             . Editorial dance-floor proof lives in{" "}
             <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              Featured Weddings &amp; Dance Floor Stories
+              Sea-to-Sky wedding stories
             </Link>
             .
           </p>

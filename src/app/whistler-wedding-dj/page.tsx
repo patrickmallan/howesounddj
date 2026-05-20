@@ -104,7 +104,7 @@ export default function WhistlerWeddingDjPage() {
               </Link>
               . For editorial proof on how Sea-to-Sky energy reads on the floor, see{" "}
               <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                Featured Weddings &amp; Dance Floor Stories
+                Sea-to-Sky wedding stories
               </Link>
               .
             </p>
@@ -252,6 +252,10 @@ export default function WhistlerWeddingDjPage() {
               When the fit feels right, most couples book a short consult, check availability for their date, or both. Proof from past weddings lives on the{" "}
               <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 reviews page
+              </Link>
+              ; editorial dance floor stories live in{" "}
+              <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                Sea-to-Sky wedding stories
               </Link>
               .
             </p>

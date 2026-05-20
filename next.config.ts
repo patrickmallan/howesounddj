@@ -63,12 +63,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/squamish-dj-services",
-        destination: "/weddings",
+        destination: "/squamish-wedding-dj",
         permanent: true,
       },
       {
         source: "/squamish-dj-services/",
-        destination: "/weddings",
+        destination: "/squamish-wedding-dj",
         permanent: true,
       },
       {
@@ -93,12 +93,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/whistler-wedding-dj-services",
-        destination: "/weddings",
+        destination: "/whistler-wedding-dj",
         permanent: true,
       },
       {
         source: "/whistler-wedding-dj-services/",
-        destination: "/weddings",
+        destination: "/whistler-wedding-dj",
         permanent: true,
       },
       {

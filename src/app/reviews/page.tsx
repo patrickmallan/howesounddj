@@ -4,13 +4,13 @@ import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
 export const metadata: Metadata = {
-  title: "Wedding DJ Reviews",
+  title: "Wedding DJ Reviews | Couples on Dance Floor Energy",
   description:
-    "Real couple reviews for Howe Sound DJ: Squamish and Sea-to-Sky weddings, with feedback on planning, music, professionalism, and dance floor energy.",
+    "Real couple reviews for Howe Sound DJ: Squamish and Sea-to-Sky weddings, packed dance floors, calm planning, and the atmosphere couples remember long after last song.",
   openGraph: {
-    title: "Wedding DJ Reviews | Howe Sound DJ",
+    title: "Wedding DJ Reviews | Couples on Dance Floor Energy",
     description:
-      "Proof from weddings across Squamish, Whistler, Vancouver, and the Sea-to-Sky corridor.",
+      "Proof from weddings across Squamish, Whistler, and the Sea-to-Sky corridor—couples on planning trust, reception energy, and dance floors that stayed full.",
     url: "/reviews",
   },
   alternates: { canonical: "/reviews" },

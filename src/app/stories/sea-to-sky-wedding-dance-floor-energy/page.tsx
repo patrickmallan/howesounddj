@@ -190,11 +190,19 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
             >
               Sea to Sky Gondola
             </Link>
-            , see the companion story. Whistler destination weekends layer in the{" "}
+            , see the companion story. Squamish-first commercial context sits in the{" "}
+            <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              Squamish wedding DJ
+            </Link>{" "}
+            pillar. Whistler destination weekends layer in the{" "}
             <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Whistler wedding DJ
             </Link>{" "}
-            pillar.
+            pillar. More Sea-to-Sky wedding stories live in the{" "}
+            <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              stories hub
+            </Link>
+            .
           </p>
         </Block>
 
