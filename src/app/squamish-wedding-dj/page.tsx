@@ -158,6 +158,13 @@ export default function SquamishWeddingDjPage() {
             </Link>{" "}
             for Whistler and corridor pages too.
           </p>
+          <p className="mt-4 text-base leading-7 text-white/60">
+            For a Brackendale riverside resort where daytime calm and a focused reception arc matter, the{" "}
+            <Link href="/venues/sunwolf" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              Sunwolf Riverside Resort guide
+            </Link>{" "}
+            walks through intentional pacing and dance-floor planning without treating the evening like an open-ended marathon.
+          </p>
         </div>
         <ul className="mt-10 grid list-none gap-4 sm:grid-cols-2">
           {pillarVenues.map((v) => (

@@ -1,0 +1,687 @@
+================================================================================
+HOWE SOUND DJ — EDITORIAL AUTHORITY EXPANSION
+TRANCHE 02 — IMPLEMENTATION ROADMAP (DESIGN AUTHORITY)
+================================================================================
+
+Document status:   REWRITTEN 2026-05-19
+Supersedes:        Original Tranche 02 brief (pre-intelligence, pre-Tranche 01)
+Authority chain:   HSDJ_SEO_Intelligence live pull → Tranche 01 deploy → this roadmap
+Website repo:      ~/Desktop/howesounddj
+Intelligence repo: ~/Developer/HSDJ_SEO_Intelligence
+Baseline report:   HSDJ_SEO_Intelligence/data/latest/seo_intelligence_report.md
+Baseline JSON:     HSDJ_SEO_Intelligence/data/latest/seo_summary.json
+Tranche 01 record: logs/HSDJ_AUTHORITY_CONVERSION_TRANCHE_01_STAGE_FINAL.md
+
+================================================================================
+1. EXECUTIVE SUMMARY
+================================================================================
+
+Tranche 02 is not generic SEO expansion. It is a **precision editorial build**
+designed to convert live Google signals into durable authority:
+
+  FROM  “a wedding DJ in Squamish”
+  TO    “the definitive Sea-to-Sky wedding atmosphere authority”
+
+Tranche 01 (complete) handled redirect consolidation, SERP packaging, and
+internal graph reinforcement. Tranche 02 handles what GSC is already rewarding
+but not yet converting:
+
+  • Editorial wedding dance floor intent  ("weddingdancefloor" editorial)
+  • Mountain reception atmosphere
+  • Sea-to-Sky wedding storytelling
+  • Venue-adjacent emotional queries (North Arm Farm cluster emerging)
+
+This roadmap aligns every deliverable with:
+
+  1. Current repo routes, schema patterns, and content already shipped
+  2. Live GSC evidence from HSDJ_SEO_Intelligence (2026-05-16 window)
+  3. Google’s 2025–2026 quality bar: Experience-led, people-first editorial
+     (not volume, not AI filler, not fabricated recaps)
+
+**Volume rule:** 2 net-new editorial stories maximum in this tranche, plus 1
+enhancement pass on existing high-impression editorial URL. Quality gate
+overrides schedule — ship 1 excellent piece before shipping 3 mediocre ones.
+
+================================================================================
+2. STRATEGIC CONTEXT — WHAT LIVE DATA PROVED
+================================================================================
+
+Source: First authenticated GSC pull (7d ending 2026-05-16)
+Totals: 7 clicks · 240 impressions · 2.9% CTR · avg position 14.4
+
+2.1 Primary authority signal (highest strategic weight)
+--------------------------------------------------------------------------------
+Query cluster:  "weddingdancefloor" editorial
+Impressions:    71 (near-win)
+Position:       ~4.3
+CTR:            0%
+Intelligence flag: NEAR_WIN_QUERY + HIGH_IMPRESSION_LOW_CTR
+
+Interpretation:
+  Google already treats HSDJ as editorially relevant for wedding dance floor
+  culture. Ranking is not the bottleneck — **snippet fit and editorial depth**
+  are. This tranche must deepen the editorial cluster, not add vendor pages.
+
+2.2 Hub signal (Tranche 01 partially addressed)
+--------------------------------------------------------------------------------
+Page:           /stories
+Impressions:    84 · position ~4.3 · 0 clicks
+Action taken:   Tranche 01 title/meta/hero rewrite (deploy pending recrawl)
+Tranche 02 role: New stories must give the hub **click-worthy destinations**
+                 that match the editorial query intent.
+
+2.3 Commercial pillar signal
+--------------------------------------------------------------------------------
+Page:           /squamish-wedding-dj
+Impressions:    8 · position ~1.9 · 0 clicks
+Tranche 01:     Redirect /squamish-dj-services → pillar; emotional SERP rewrite
+Tranche 02 role: Every new editorial must link to pillar with natural anchors;
+                 measure post-recrawl CTR before homepage repositioning.
+
+2.4 Venue-adjacent signal (secondary, rising)
+--------------------------------------------------------------------------------
+Queries:        north arm farm wedding · north arm farm pemberton (+ variants)
+Impressions:    11 combined (low volume, high semantic fit)
+Repo asset:     /venues/north-arm-farm (indexed, operational guide exists)
+Tranche 02 role: Optional venue-atmosphere editorial ONLY if Story B/C quality
+                 bar is met — do not spawn venue spam.
+
+2.5 What is NOT the signal (do not optimize for)
+--------------------------------------------------------------------------------
+  • Generic "wedding dj" head terms (97 imp wedding-generic bucket, weak pos)
+  • Vancouver head terms (pos ~46 — feeder only, /vancouver-wedding-dj exists)
+  • Price-shopping language (packages has impressions but T01 retitled)
+  • 20 inventory pages with zero GSC visibility — no thin page creation
+
+2.6 Tranche 01 completion state (repo truth)
+--------------------------------------------------------------------------------
+DONE in howesounddj (awaiting production deploy + recrawl):
+  • /squamish-dj-services → /squamish-wedding-dj
+  • /whistler-wedding-dj-services → /whistler-wedding-dj
+  • Stories hub + pillar + hub SERP rewrites
+  • Internal authority graph anchor refresh across cluster
+
+NOT DONE (explicitly out of Tranche 02 unless gated in):
+  • Homepage repositioning to “atmosphere authority”
+  • New nav items
+  • GBP / off-site local pack work
+  • Automated publish from intelligence reports
+
+================================================================================
+3. INTELLIGENCE SYSTEM INTEGRATION (HSDJ_SEO_Intelligence)
+================================================================================
+
+Tranche 02 execution is **gated by evidence**, not calendar optimism.
+
+3.1 Operator toolchain
+--------------------------------------------------------------------------------
+Install & config:  ~/Developer/HSDJ_SEO_Intelligence/README.md
+First-live guide:  ~/Developer/HSDJ_SEO_Intelligence/docs/FIRST_LIVE_PULL.md
+
+Core commands (run from intelligence repo):
+
+  # After any howesounddj sitemap / redirect / venue change:
+  hsdj-seo sync-inventory --repo ~/Desktop/howesounddj
+
+  # Post-deploy baseline (wait 7–14 days after Tranche 01 prod deploy):
+  hsdj-seo run --range 28d --compare
+
+  # Read outputs:
+  open data/latest/seo_intelligence_report.md
+  open data/latest/seo_summary.json
+
+3.2 Pre-flight sync (mandatory before Tranche 02 branch)
+--------------------------------------------------------------------------------
+After Tranche 01 deploys to production:
+
+  1. hsdj-seo sync-inventory --repo ~/Desktop/howesounddj
+  2. Confirm inventory reflects:
+       • /squamish-wedding-dj, /whistler-wedding-dj redirect targets
+       • 2 existing story slugs + 2 guide slugs
+       • ~20 venue slugs in venue-pages.ts
+  3. Verify UNLISTED_URL_IN_GSC flags trend down for legacy paths
+
+3.3 Go / Hold / Pivot decision matrix
+--------------------------------------------------------------------------------
+Run `hsdj-seo run --range 28d --compare` after Tranche 01 recrawl window.
+
+PROCEED with Tranche 02 editorial build if ANY TWO are true:
+  [ ] /stories CTR > 0% OR clicks ≥ 1 (baseline was 0)
+  [ ] "weddingdancefloor" editorial impressions stable or rising
+  [ ] /squamish-wedding-dj impressions migrate from legacy URL
+  [ ] /guides/how-to-keep-a-wedding-dance-floor-packed position ≤ 10
+
+HOLD (extend wait window) if:
+  [ ] Tranche 01 not yet deployed to production
+  [ ] GSC still reporting pre-redirect URLs without impression migration
+  [ ] Total site impressions < 100 in 28d window (insufficient signal)
+
+PIVOT editorial thesis if:
+  [ ] North Arm Farm query cluster grows > 20 imp/28d → prioritize farm editorial
+  [ ] Whistler venue queries outpace Squamish → bias Story B toward destination
+  [ ] Existing story URL earns clicks — enhance before adding new slug
+
+**Do not auto-publish from reports.** Intelligence recommends; humans approve.
+
+================================================================================
+4. CURRENT REPO STATE — CONTENT INVENTORY & GAP ANALYSIS
+================================================================================
+
+4.1 Editorial layer (stories) — EXISTS
+--------------------------------------------------------------------------------
+Route                                                          | Status | GSC note
+---------------------------------------------------------------|--------|------------------
+/stories                                                       | Hub    | 84 imp, 0 clicks
+/stories/sea-to-sky-wedding-dance-floor-energy                 | Live   | pos ~8.8
+/stories/what-a-sea-to-sky-gondola-dance-floor-feels-like      | Live   | low imp
+
+Pattern (copy for all new stories):
+  • src/app/stories/[slug]/page.tsx
+  • storyArticleBreadcrumbJsonLd + storyArticleJsonLd (lib/json-ld.ts)
+  • Block section component (inline per page today)
+  • STORY_SLUG, STORY_TITLE, STORY_DATE constants
+  • Register in src/app/stories/page.tsx stories array
+  • Add path to src/app/sitemap.ts
+  • Optional: conditional link from venues/[slug]/page.tsx
+
+4.2 Planning layer (guides) — EXISTS
+--------------------------------------------------------------------------------
+/guides/how-to-keep-a-wedding-dance-floor-packed    30 imp · pos ~11.1 · 0 clicks
+/guides/how-to-choose-a-wedding-dj-in-squamish       5 imp · pos ~7.6
+
+Tranche 02 includes a **lightweight SERP enhancement pass** on the dance-floor
+guide (title/description only) — it is near breakthrough and supports the same
+query cluster as new editorials. No body rewrite unless CTR still flat after
+meta pass + new story links.
+
+4.3 Commercial pillars — EXISTS (link targets, not rewrite targets)
+--------------------------------------------------------------------------------
+/squamish-wedding-dj     Primary Squamish commercial pillar (T01 optimized)
+/whistler-wedding-dj     Whistler destination pillar
+/weddings                Service hub
+/vancouver-wedding-dj    Feeder pillar (defer heavy investment)
+
+4.4 Venue cluster — EXISTS (contextual link targets only)
+--------------------------------------------------------------------------------
+Priority venues for Tranche 02 contextual links (from brief + GSC):
+
+  sea-to-sky-gondola          Already has dedicated story — cross-link only
+  north-arm-farm              GSC venue queries — candidate for optional editorial
+  fairmont-chateau-whistler   Whistler authority reinforcement
+  cheekye-ranch               Squamish/ corridor emotional setting
+  sunwolf                     Squamish river/farm atmosphere
+
+All slugs confirmed in src/config/venue-pages.ts.
+
+4.5 Overlap analysis — CRITICAL (prevents duplicate content)
+--------------------------------------------------------------------------------
+Original Tranche 02 Story 1:
+  "What a Packed Sea-to-Sky Wedding Dance Floor Actually Feels Like"
+
+Repo already has near-equivalent:
+  /stories/sea-to-sky-wedding-dance-floor-energy
+  Title: "What a High-Energy Sea-to-Sky Wedding Dance Floor Feels Like"
+
+DECISION: Do NOT create a third dance-floor-feels-like URL.
+  → Replace with **Enhancement Pass A** (Section 6.1)
+
+Original Story 3:
+  "How a Sea-to-Sky Wedding Changes After Sunset"
+
+Partial overlap with gondola story (elevation, light, transitions).
+
+DECISION: Proceed only with **distinct thesis** — corridor-wide sunset arc,
+  not venue-specific elevation. See Story C spec (Section 6.3).
+
+================================================================================
+5. TRANCHE 02 MISSION & SUCCESS CRITERIA
+================================================================================
+
+5.1 Mission
+--------------------------------------------------------------------------------
+Create a small number of extremely high-quality editorial authority assets that:
+
+  • Reinforce Google's existing entity association (Sea-to-Sky · dance floor ·
+    mountain wedding atmosphere)
+  • Increase branded memorability and emotional differentiation
+  • Convert near-win editorial queries into clicks and engaged visits
+  • Strengthen internal semantic paths to /squamish-wedding-dj and /stories
+  • Never compromise trust with fabricated weddings or AI-slop tone
+
+5.2 Success criteria (90-day horizon, measured via intelligence runs)
+--------------------------------------------------------------------------------
+Primary:
+  [ ] "weddingdancefloor" editorial: CTR > 0% OR clicks ≥ 2 in 28d window
+  [ ] /stories hub: CTR improvement vs baseline (0% → target 3%+ at pos 4–5)
+  [ ] At least 1 new story URL indexed with impressions
+
+Secondary:
+  [ ] /squamish-wedding-dj: clicks ≥ 1 at pos ≤ 3
+  [ ] /guides/how-to-keep-a-wedding-dance-floor-packed: position ≤ 8
+  [ ] Internal link count to pillars from stories cluster increases (manual audit)
+
+Qualitative:
+  [ ] Copy passes Patrick voice review — cinematic, observational, premium
+  [ ] No fabricated couple names, dates, or venue claims
+  [ ] Each piece has a single emotional thesis (handoff standard)
+
+5.3 Anti-success (do not celebrate)
+--------------------------------------------------------------------------------
+  • Raw impression growth without CTR or consult intent
+  • Ranking for irrelevant head terms (Vancouver price shoppers)
+  • Page count growth without hub engagement
+  • AI-detectable generic mountain wedding prose
+
+================================================================================
+6. EDITORIAL PORTFOLIO — REVISED DELIVERABLES
+================================================================================
+
+Three work packages. Ship in order. Stop if quality drops.
+
+------------------------------------------------------------------------------
+6.1 Enhancement Pass A — Existing dance floor story (P0)
+------------------------------------------------------------------------------
+Target:  src/app/stories/sea-to-sky-wedding-dance-floor-energy/page.tsx
+Why:     Captures core "weddingdancefloor editorial" intent without URL duplication
+Type:    Retitle + meta + opening deck + internal link reinforcement (body light touch)
+
+Proposed SERP packaging:
+  Title:   What a Packed Sea-to-Sky Wedding Dance Floor Feels Like
+           (shorter variant if >60 chars in SERP test: "Packed Sea-to-Sky Wedding
+           Dance Floors | Editorial")
+  Meta:    Observational editorial on dinner-to-dance-floor arcs, guest trust,
+           and mountain reception momentum — from Howe Sound DJ's Sea-to-Sky work.
+
+Content emphasis to add/strengthen:
+  • Emotional arc: dinner speeches → first dance → floor opening
+  • Mountain wedding atmosphere after sunset (without duplicating gondola piece)
+  • Crowd energy progression (recognition before intensity — Roomflow)
+  • Explicit editorial disclaimer (not a named wedding recap)
+
+Internal links (verify/add):
+  → /squamish-wedding-dj          anchor: Squamish wedding DJ
+  → /whistler-wedding-dj          anchor: Whistler wedding DJ
+  → /stories                      anchor: Sea-to-Sky wedding stories
+  → /guides/how-to-keep-a-wedding-dance-floor-packed
+  → /venues/sea-to-sky-gondola    companion read (not duplicate)
+  → /weddings
+
+Schema:  Update headline in storyArticleJsonLd to match new title
+Sitemap:  No URL change
+Hub card: Update title + summary in src/app/stories/page.tsx
+
+------------------------------------------------------------------------------
+6.2 Story B — NEW editorial (P1)
+------------------------------------------------------------------------------
+Working title:
+  Why Mountain Weddings Need Different DJ Energy Than City Weddings
+
+Proposed slug:
+  why-mountain-weddings-need-different-dj-energy
+
+File:
+  src/app/stories/why-mountain-weddings-need-different-dj-energy/page.tsx
+
+Emotional thesis (one sentence):
+  City-wedding DJ playbooks fail in the corridor because guest travel, outdoor
+  acoustics, weather windows, and mixed local/destination crowds change the
+  emotional pacing of the entire reception.
+
+Primary semantic targets:
+  mountain wedding DJ · Squamish wedding DJ · Whistler wedding DJ ·
+  Sea-to-Sky weddings · wedding atmosphere
+
+Sections (minimum architecture):
+  1. Hero — breadcrumb, editorial label, date, H1, deck, CTADuo
+  2. Arrival — destination guest psychology vs local crowd
+  3. Acoustics & space — outdoor/tent/ballroom variance (observational)
+  4. Pacing — Atmosphere Arc applied to mountain timelines
+  5. Weather & flexibility — operational calm as emotional safety
+  6. DJ energy — recognition-first floor building (Roomflow link)
+  7. Place — Squamish vs Whistler vs corridor (pillar links)
+  8. Related — guides, venues hub, companion stories
+  9. Soft finale CTA
+
+Venue contextual links (natural mentions, not list):
+  → /venues/cheekye-ranch
+  → /venues/fairmont-chateau-whistler
+  → /venues/sunwolf
+
+Word count target:  1,200–1,800 words (quality over length)
+Image:              Use existing editorial slot from site-images.ts if available;
+                    brandEditorialPremiumDjCrowd or brandEditorialDocumentaryDanceFloor
+
+Metadata pattern:
+  title:       Why Mountain Weddings Need Different DJ Energy
+  description: Sea-to-Sky editorial: why corridor weddings reward different sound,
+               pacing, and dance-floor psychology than city ballroom celebrations.
+  og:type:     article
+  canonical:   /stories/why-mountain-weddings-need-different-dj-energy
+
+------------------------------------------------------------------------------
+6.3 Story C — NEW editorial (P2, optional — ship only if B meets quality bar)
+------------------------------------------------------------------------------
+Working title:
+  How a Sea-to-Sky Wedding Reception Changes After Sunset
+
+Proposed slug:
+  how-a-sea-to-sky-wedding-changes-after-sunset
+
+Differentiation from gondola story:
+  Gondola piece = elevation + named setting + light at a specific venue type
+  This piece     = corridor-wide sunset transition (light, temperature, energy,
+                   music shift) applicable across farms, lodges, gondola, breweries
+
+Primary semantic targets:
+  Sea-to-Sky wedding reception · wedding atmosphere · dance floor moments ·
+  mountain wedding energy
+
+Optional venue thread (if GSC North Arm Farm cluster grows):
+  Weave /venues/north-arm-farm as one observational example among others —
+  NOT a North Arm Farm wedding recap.
+
+Sections:
+  1. Hero
+  2. Golden hour — emotional softening, photo drift, guest fatigue
+  3. The threshold — when the room turns toward celebration
+  4. Light & sound — how dusk changes perception on the floor
+  5. Music shift — tempo, genre trust, cross-generational recognition
+  6. Mountain night — energy without forcing hype
+  7. Related links + pillars
+
+------------------------------------------------------------------------------
+6.4 Enhancement Pass B — Dance floor guide SERP (P1, parallel-safe)
+------------------------------------------------------------------------------
+Target:  src/app/guides/how-to-keep-a-wedding-dance-floor-packed/page.tsx
+Why:     30 impressions · position ~11.1 · PAGE_NEAR_BREAKTHROUGH · 0 clicks
+
+Change scope:  title + meta description + OG only (no body unless post-deploy CTR flat)
+
+Proposed title:
+  Keep a Wedding Dance Floor Packed | Sea-to-Sky DJ Guide
+
+Proposed meta:
+  Practical Roomflow Method guide for Sea-to-Sky weddings: emotional pacing,
+  guest trust, and dance floor momentum from ceremony through last song.
+
+After new stories ship: add 1 contextual link from guide footer to Story B.
+
+================================================================================
+7. INTERNAL LINKING MATRIX (MANDATORY)
+================================================================================
+
+Every editorial must reinforce this graph. Natural anchors only.
+
+7.1 Required outbound links (each new/enhanced story)
+--------------------------------------------------------------------------------
+Commercial pillars (≥2 links):
+  /squamish-wedding-dj
+  /whistler-wedding-dj
+  /weddings
+
+Authority hubs (≥2 links):
+  /stories
+  /guides   (prefer /guides/how-to-keep-a-wedding-dance-floor-packed)
+  /venues   (hub or ≥1 named venue)
+
+7.2 Recommended cross-links between editorials
+--------------------------------------------------------------------------------
+Enhancement Pass A  ↔  gondola story        (companion reads)
+Story B             ↔  Enhancement Pass A    (energy vs pacing)
+Story B             ↔  dance floor guide    (Roomflow Method)
+Story C             ↔  gondola story        (light/atmosphere contrast)
+Story C             ↔  Enhancement Pass A    (sunset → floor arc)
+
+7.3 Inbound links to add when new stories ship
+--------------------------------------------------------------------------------
+From                          | Action
+------------------------------|------------------------------------------
+src/app/stories/page.tsx      | Add card(s) with summary + Read link
+src/app/squamish-wedding-dj   | Reference new story in Related section if fit
+src/app/whistler-wedding-dj   | Same
+src/app/weddings/page.tsx     | Optional one-line editorial proof link
+src/app/guides/page.tsx       | Footer mention if Story B ships
+venues/[slug]/page.tsx        | Conditional "Also useful" ONLY for venues
+                              | explicitly referenced in story (see handoff
+                              | pattern for sea-to-sky-gondola)
+
+7.4 Anchor vocabulary (consistent with Tranche 01)
+--------------------------------------------------------------------------------
+Prefer:
+  Sea-to-Sky wedding stories · dance floor energy · packed dance floor ·
+  mountain wedding atmosphere · Squamish wedding DJ · Whistler wedding DJ ·
+  wedding venue guides · Roomflow Method · Atmosphere Arc
+
+Avoid:
+  best wedding DJ · cheap · affordable · #1 · epic · blog post
+
+================================================================================
+8. METADATA & SERP STRATEGY
+================================================================================
+
+8.1 Title formula
+--------------------------------------------------------------------------------
+  [Emotional outcome] + [Regional identity] + [Wedding atmosphere context]
+
+Examples:
+  ✓  Why Mountain Weddings Need Different DJ Energy
+  ✓  How a Sea-to-Sky Wedding Reception Changes After Sunset
+  ✗  Top 10 Wedding DJ Tips for Squamish
+  ✗  Best Wedding DJ Sea to Sky BC
+
+8.2 Meta description formula (≤160 chars target)
+--------------------------------------------------------------------------------
+  Observational hook + Sea-to-Sky uniqueness + dance floor / atmosphere outcome
+  No pricing · no feature lists · no "call now"
+
+8.3 Structured data (use existing patterns only)
+--------------------------------------------------------------------------------
+Stories:
+  storyArticleBreadcrumbJsonLd(title, slug)
+  storyArticleJsonLd({ slug, headline, description, datePublished })
+
+Guides (Enhancement Pass B only):
+  guideArticleJsonLd — unchanged wiring
+
+Do NOT invent new schema types in this tranche.
+
+8.4 Canonical & OG
+--------------------------------------------------------------------------------
+  alternates.canonical: /stories/[slug]  (relative — metadataBase resolves)
+  openGraph.type: article
+  openGraph.publishedTime: ISO date matching STORY_DATE constant
+  twitter.card: summary_large_image
+
+================================================================================
+9. CONTENT RULES & VOICE
+================================================================================
+
+Required:
+  • Emotionally vivid, cinematically specific prose
+  • Atmosphere-first storytelling; Sea-to-Sky identity on every page
+  • Genuine observational tone — Patrick's on-the-ground fluency
+  • Premium positioning without hype adjectives
+  • Natural internal links embedded in narrative
+  • Explicit disclaimer where editorial is not a named-wedding recap
+
+Forbidden:
+  • Fake weddings, fabricated testimonials, invented dates
+  • Generic SEO filler, keyword stuffing, listicle formatting
+  • Robotic AI tone, city-generic wedding copy
+  • Thin pages (<800 words with substance)
+  • Auto-generated venue spam pages
+  • Deleting or noindexing working authority pages
+
+Voice reference files:
+  docs/handoff/venue-story-emotional-authority-foundation-pass.md
+  Existing stories under src/app/stories/
+
+================================================================================
+10. TECHNICAL IMPLEMENTATION CHECKLIST
+================================================================================
+
+Per new story slug, execute in order:
+
+  [ ] 1. Create src/app/stories/[slug]/page.tsx (clone structure from
+           sea-to-sky-wedding-dance-floor-energy — adapt content)
+  [ ] 2. Add entry to stories array in src/app/stories/page.tsx
+  [ ] 3. Add path to src/app/sitemap.ts (after /stories, before venue slugs)
+  [ ] 4. Wire JsonLd (breadcrumb + article)
+  [ ] 5. Add inbound links per Section 7.3
+  [ ] 6. Add conditional venue links if applicable (venues/[slug]/page.tsx)
+  [ ] 7. Confirm route NOT in conditional-site-final-decision-zone omit list
+           (stories use page-level CTAs — verify no duplicate finale)
+  [ ] 8. Run bounded validation (Section 11)
+  [ ] 9. hsdj-seo sync-inventory --repo ~/Desktop/howesounddj
+  [ ] 10. Deploy → URL Inspection in GSC for new URL
+  [ ] 11. Write logs/HSDJ_EDITORIAL_AUTHORITY_TRANCHE_02_STAGE_FINAL.md
+
+Enhancement passes skip steps 1, 3, 6 unless URL changes (they should not).
+
+================================================================================
+11. VALIDATION (BOUNDED — TOUCHED FILES ONLY)
+================================================================================
+
+From howesounddj root:
+
+  npx tsc --noEmit
+  npx eslint src/app/stories/ src/app/guides/how-to-keep-a-wedding-dance-floor-packed/
+  npm run build
+
+Manual QA:
+  [ ] Desktop + mobile (375px) — section rhythm, line length
+  [ ] All internal links resolve (no 404)
+  [ ] Breadcrumb nav matches JSON-LD
+  [ ] CTADuo surfaces render (hero + finale)
+  [ ] Editorial disclaimer visible where required
+  [ ] No em-dash spam; tone matches existing stories
+
+Post-deploy:
+  curl -I https://www.howesounddj.com/stories/[slug]  → 200
+
+================================================================================
+12. OPERATIONAL SEQUENCE (END-TO-END)
+================================================================================
+
+Phase 0 — Prerequisites
+  [ ] Tranche 01 deployed to production (howesounddj)
+  [ ] hsdj-seo sync-inventory post-deploy
+  [ ] Record baseline: copy seo_summary.json metrics to Tranche 02 log
+
+Phase 1 — Recrawl wait (7–14 days)
+  [ ] Allow redirect propagation + metadata reindexing
+  [ ] Do NOT ship new URLs during first 7 days unless emergency
+
+Phase 2 — Intelligence gate
+  [ ] hsdj-seo run --range 28d --compare
+  [ ] Evaluate decision matrix (Section 3.3)
+  [ ] Patrick approves editorial thesis (B required, C optional)
+
+Phase 3 — Implementation sprint (recommended order)
+  Day 1: Enhancement Pass A (existing dance floor story)
+  Day 1: Enhancement Pass B (guide meta — parallel)
+  Day 2–3: Story B draft → Patrick voice review → ship
+  Day 4–5: Story C ONLY if B quality bar met
+  Day 5: Internal link pass across cluster (Section 7.3)
+  Day 5: sync-inventory + build + deploy
+
+Phase 4 — Post-ship monitoring (14 days)
+  [ ] hsdj-seo run --range 28d --compare
+  [ ] GSC URL Inspection on new slugs
+  [ ] Compare /stories CTR vs Tranche 01 baseline
+  [ ] Compare "weddingdancefloor" editorial cluster
+  [ ] Document in STAGE_FINAL
+
+Phase 5 — Next tranche decision
+  IF editorial CTR improving → consider homepage authority repositioning (Section 13)
+  IF North Arm Farm cluster grows → venue-atmosphere editorial for north-arm-farm
+  IF Vancouver feeder strengthens → light /vancouver-wedding-dj copy pass (not new pages)
+
+================================================================================
+13. DEFERRED — NOT IN TRANCHE 02
+================================================================================
+
+Homepage repositioning
+  FROM: wedding DJ service framing
+  TO:   Sea-to-Sky wedding atmosphere authority
+  Gate:  Post-recrawl CTR lift on /stories AND /squamish-wedding-dj + 28d compare
+
+Mass content / blog cadence
+  No monthly blog pipeline. Editorial drops are event-driven by intelligence.
+
+GBP / off-site local SEO
+  High ROI but separate tranche (see docs/handoff/gbp-local-authority-alignment-pass.md)
+
+Nav architecture changes
+  Stories remain discoverable via hubs, pillars, venues — not primary nav
+
+Shared Block component extraction
+  Optional refactor after 3+ stories; not blocking
+
+HSDJ_SEO_Intelligence Phase 2+
+  GA4, GBP, URL Inspection automation, dashboard UI — see intelligence roadmap
+
+================================================================================
+14. RISK REGISTER
+================================================================================
+
+Risk                              | Mitigation
+----------------------------------|------------------------------------------
+Duplicate dance floor URLs        | Enhancement Pass A instead of new slug
+Fabricated wedding trust loss     | Editorial disclaimer + no named recaps
+AI-detectable prose               | Patrick voice review before ship
+Premature deploy before recrawl     | Phase 1 wait window
+Over-linking / spammy anchors     | Section 7 matrix + natural prose only
+Venue spam scale                  | Max 1 venue-tied editorial per tranche
+Low-volume GSC noise              | Use 28d --compare; avoid overreacting to 1-week
+Redirect impression lag           | Monitor LEGACY_URL_IMPRESSIONS flag in reports
+
+================================================================================
+15. EXPECTED OUTCOMES
+================================================================================
+
+If Tranche 02 executes correctly:
+
+  • CTR lift on editorial SERPs (especially /stories and dance-floor cluster)
+  • Stronger Sea-to-Sky entity association in query mix
+  • Improved long-tail authority for mountain wedding + dance floor language
+  • Deeper emotional differentiation vs generic BC wedding DJs
+  • Stronger commercial pillar relevance via internal reinforcement
+  • Site feels category-defining — editorial authority, not vendor listing
+
+Strategic warning (unchanged, still true):
+
+  The objective is NOT "more traffic."
+  The objective IS attracting couples who emotionally resonate with the
+  Sea-to-Sky wedding experience Howe Sound DJ represents.
+
+That resonance is the long-term authority moat.
+
+================================================================================
+16. APPENDIX — QUICK REFERENCE
+================================================================================
+
+Intelligence outputs:
+  ~/Developer/HSDJ_SEO_Intelligence/data/latest/seo_intelligence_report.md
+  ~/Developer/HSDJ_SEO_Intelligence/data/latest/seo_summary.json
+
+Repo patterns:
+  src/lib/json-ld.ts                    — storyArticleJsonLd, storiesHubBreadcrumbJsonLd
+  src/config/venue-pages.ts             — venue slugs / areas
+  src/app/sitemap.ts                    — add new story paths here
+  src/app/stories/page.tsx              — hub card registry
+
+Related docs:
+  logs/HSDJ_AUTHORITY_CONVERSION_TRANCHE_01_STAGE_FINAL.md
+  docs/handoff/venue-story-emotional-authority-foundation-pass.md
+  docs/AUTHORITY DEPTH + CONVERSION PSYCHOLOGY.txt
+  docs/handoff/authority-flow-topological-clustering-pass.md
+
+Weekly operator rhythm (ongoing):
+  hsdj-seo sync-inventory --repo ~/Desktop/howesounddj   # if site changed
+  hsdj-seo run --range 28d --compare
+  Promote top 1–3 intelligence actions → Cursor tranche brief
+
+================================================================================
+END TRANCHE 02 ROADMAP
+================================================================================

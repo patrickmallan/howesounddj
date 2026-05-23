@@ -38,6 +38,12 @@ const stories = [
       "Editorial observation: elevation, light, and Howe Sound atmosphere. How guests arrive, how the night turns toward dancing, and why mountain pacing rewards local intelligence.",
   },
   {
+    slug: "what-a-sunwolf-riverside-wedding-reception-feels-like",
+    title: "What a Sunwolf Riverside Wedding Reception Feels Like",
+    summary:
+      "Editorial reflection: riverside calm in Brackendale, focused reception pacing, and why dance-floor energy often peaks when the arc is shaped, not stretched.",
+  },
+  {
     slug: "sea-to-sky-wedding-dance-floor-energy",
     title: "What a High-Energy Sea-to-Sky Wedding Dance Floor Feels Like",
     summary:

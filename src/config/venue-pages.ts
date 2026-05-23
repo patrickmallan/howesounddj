@@ -106,27 +106,30 @@ export const VENUE_PAGES: readonly VenuePage[] = [
   },
   {
     slug: "sunwolf",
-    name: "Sunwolf",
+    name: "Sunwolf Riverside Resort",
     officialUrl: "https://sunwolf.net/",
     locationLabel: "Brackendale, BC",
     area: "sea-to-sky",
-    venueType: "Riverside lodge & event space",
-    cardDescription: "Riverside atmosphere with a relaxed Sea-to-Sky feel.",
+    venueType: "Riverside resort & lodge",
+    cardDescription:
+      "Brackendale riverside resort where calm daytime energy can build into a focused, well-paced reception.",
     shortSummary:
-      "Riverside Sea-to-Sky atmosphere where relaxed daytime energy can transition into a reception that still needs a confident musical plan.",
+      "A Brackendale riverside resort where the river and lodge character set a relaxed daytime tone, then the evening asks for clear transitions, intentional pacing, and a dance floor that peaks because the arc is shaped, not stretched.",
     metaDescription:
-      "Sunwolf wedding DJ services: relaxed Sea-to-Sky riverside character with professional reception support. Howe Sound DJ, Squamish-rooted, with personalized music and clear planning.",
+      "Sunwolf Riverside Resort wedding DJ in Brackendale: riverside Sea-to-Sky receptions with intentional pacing, ceremony-to-dance-floor flow, and Squamish-rooted planning from Howe Sound DJ.",
     whyFit: [
-      "Water-adjacent venues bring a natural calm that can be magical, then the evening still has to arrive with intention: speeches, special moments, and a dance floor that matches your crowd.",
-      "The setting does part of the work; the soundtrack should do the rest without fighting the room.",
+      "Riverside resort weddings often feel best when the day breathes: guests arrive into calm, open air and conversation, then the reception needs a DJ who respects that softness instead of rushing the room toward hype.",
+      "Sunwolf's character rewards music planning that builds recognition through dinner and speeches, then opens dancing when your crowd is actually ready. The goal is a floor that feels full and alive, not a timeline that keeps pushing past the moment when energy naturally peaks.",
+      "Howe Sound DJ is Squamish-rooted with low corridor friction for Brackendale: fewer travel variables on the day, more headspace for timing, transitions, and reading the room you actually have.",
     ],
     planningFocus: [
-      "Think about how guests move from arrival through dinner: where sound should feel soft, where it should lift, and when you want the night to pivot into celebration.",
-      "A strong plan reduces day-of improvisation on things that should be decided once, calmly, ahead of time.",
+      "Map the evening as a focused arc: where ceremony and cocktail sound stay clear and warm, how dinner and toasts hold attention without flattening momentum, and when you want the turn toward celebration.",
+      "Receptions here tend to land better when dancing is treated as a concentrated chapter rather than an open-ended marathon. Pacing, song choice, and transitions matter more than volume: trust and recognition before intensity, then let the peak arrive because the room earned it.",
+      "Think about how guests cross from outdoor riverside moments into the reception space: handoffs should feel calm, not like the night restarted. That is where advance planning on mic moments, playlists, and cues pays off.",
     ],
     localExpertise: [
-      "Brackendale and Sea-to-Sky weddings are familiar territory: corridor weekends, guest travel, and the practical side of hosting a real party in a natural setting.",
-      "Start with availability and a planning conversation, then map music and timeline to the day you are actually planning.",
+      "Squamish-rooted corridor work means realistic conversation about guest travel, weekend timing, and how Brackendale fits into a Sea-to-Sky wedding without treating it like a downtown template.",
+      "If Sunwolf Riverside Resort is your venue, start with availability and walk through coverage, your rough timeline, and how you want the atmosphere to build from the river through last song.",
     ],
   },
   {

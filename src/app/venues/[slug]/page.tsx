@@ -196,6 +196,16 @@ export default async function VenueDetailPage({ params }: Props) {
                   </Link>
                 </li>
               ) : null}
+              {venue.slug === "sunwolf" ? (
+                <li>
+                  <Link
+                    href="/stories/what-a-sunwolf-riverside-wedding-reception-feels-like"
+                    className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+                  >
+                    Editorial perspective on focused riverside reception pacing at this setting
+                  </Link>
+                </li>
+              ) : null}
               {venue.area === "squamish" || venue.slug === "sea-to-sky-gondola" || venue.slug === "sunwolf" ? (
                 <li>
                   <Link

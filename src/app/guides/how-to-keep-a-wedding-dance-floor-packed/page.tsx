@@ -133,9 +133,9 @@ export default function GuideDanceFloorPackedPage() {
               </Link>{" "}
               carries different energy than a{" "}
               <Link href="/venues/sunwolf" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                riverside lodge
+                Brackendale riverside resort
               </Link>{" "}
-              or a forest sanctuary. The playlist still has to be yours, but the pacing should match how guests actually move through that place.
+              or a forest sanctuary. At a riverside setting, the floor often peaks when the arc is concentrated: trust through dinner, lift when the room is ready, and resist dragging the energy past its natural end. The playlist still has to be yours, but the pacing should match how guests actually move through that place.
             </p>
             <p>
               For venue-specific planning questions, the{" "}

@@ -183,14 +183,21 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
             <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               venue guides
             </Link>
-            . For an editorial read on how elevation and light shape reception pacing at the{" "}
+            .             For an editorial read on how elevation and light shape reception pacing at the{" "}
             <Link
               href="/stories/what-a-sea-to-sky-gondola-dance-floor-feels-like"
               className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
             >
               Sea to Sky Gondola
             </Link>
-            , see the companion story. Squamish-first commercial context sits in the{" "}
+            , see the companion story. For focused riverside pacing at{" "}
+            <Link
+              href="/stories/what-a-sunwolf-riverside-wedding-reception-feels-like"
+              className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+            >
+              Sunwolf Riverside Resort
+            </Link>
+            , see the Brackendale editorial. Squamish-first commercial context sits in the{" "}
             <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Squamish wedding DJ
             </Link>{" "}
