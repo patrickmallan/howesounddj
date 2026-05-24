@@ -4,7 +4,6 @@ import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
 import { ImageSlot } from "@/components/image-slot";
 import { SectionReveal } from "@/components/motion";
-import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 import { JsonLd } from "@/components/json-ld";
 import { storyArticleBreadcrumbJsonLd, storyArticleJsonLd } from "@/lib/json-ld";
@@ -112,20 +111,17 @@ export default function StorySunwolfRiversideReceptionPage() {
         <div className="border-b border-white/10 bg-neutral-950">
           <div className="mx-auto max-w-4xl px-6 py-12 lg:px-8 lg:py-16">
             <ImageSlot
-              src={SITE_IMAGES.brandEditorialPackedDanceFloor}
-              alt={SITE_IMAGE_ALT.brandEditorialPackedDanceFloor}
+              src="/images/stories/sunwolf-riverside-resort-dj.webp"
+              alt="DJ Patrick from Howe Sound DJ performing at a wedding reception inside the riverside tent at Sunwolf Riverside Resort in Squamish, BC."
               aspect="16/9"
-              label="Editorial atmosphere"
-              reservedHint="Reception energy and crowd momentum, not a documentary frame from a private event."
+              label="Sunwolf Riverside Resort"
+              reservedHint="Wedding reception at Sunwolf Riverside Resort in Brackendale, Squamish."
               sizes="(max-width: 1024px) 100vw, 56rem"
               imageClassName="object-[center_42%]"
               premiumPhotoTreatment
               priority
             >
-              <span className="block text-white/60">A full dance floor is often the result of concentration, not duration.</span>
-              <span className="mt-2 block text-xs text-white/40">
-                Editorial brand atmosphere, not proof of a specific couple or date.
-              </span>
+              <span className="block text-white/60">Wedding reception at Sunwolf Riverside Resort in Brackendale, Squamish.</span>
             </ImageSlot>
           </div>
         </div>
