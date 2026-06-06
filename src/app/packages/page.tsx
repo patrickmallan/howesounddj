@@ -4,14 +4,17 @@ import CTADuo from "@/components/cta-duo";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP, MAIN_SECTION_Y } from "@/lib/cta-section-spacing";
 
+const packagesTitle = "Wedding DJ Packages | Clear Sea-to-Sky Coverage";
+const packagesDesc =
+  "What couples actually receive: ceremony-through-reception DJ coverage, planning calls, custom playlists, and corridor-ready sound for Squamish and Sea-to-Sky weddings.";
+
 export const metadata: Metadata = {
-  title: "Wedding DJ Packages | Sea-to-Sky Celebration Coverage",
-  description:
-    "Wedding DJ packages for Squamish and Sea-to-Sky celebrations: ceremony through reception, dance floor energy, and atmosphere built around your crowd—not a generic playlist.",
+  title: packagesTitle,
+  description: packagesDesc,
   openGraph: {
-    title: "Wedding DJ Packages | Sea-to-Sky Celebration Coverage",
+    title: packagesTitle,
     description:
-      "Clear tiers for ceremony-to-reception coverage, dance floor energy, and optional enhancements—built for couples who care about atmosphere, not price-shopping.",
+      "Transparent wedding DJ tiers for the corridor: planning confidence, full-day coverage options, and atmosphere built around your crowd, not a feature checklist.",
     url: "/packages",
   },
   alternates: { canonical: "/packages" },

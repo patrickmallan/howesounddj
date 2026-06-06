@@ -10,11 +10,11 @@ import { JsonLd } from "@/components/json-ld";
 import { storyArticleBreadcrumbJsonLd, storyArticleJsonLd } from "@/lib/json-ld";
 
 const STORY_SLUG = "sea-to-sky-wedding-dance-floor-energy";
-const STORY_TITLE = "What a High-Energy Sea-to-Sky Wedding Dance Floor Feels Like";
+const STORY_TITLE = "What a Packed Sea-to-Sky Wedding Dance Floor Feels Like";
 const STORY_DATE = "2026-05-08";
 
 const metaDesc =
-  "Editorial proof from Howe Sound DJ: what high-energy Sea-to-Sky wedding dance floors feel like, how guest trust builds, and how the Roomflow Method shows up in real celebration arcs.";
+  "Observational editorial on how Sea-to-Sky wedding dance floors get packed: guest trust, dinner-to-dance pacing, and mountain reception momentum from Howe Sound DJ.";
 
 export const metadata: Metadata = {
   title: STORY_TITLE,
@@ -87,8 +87,8 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
             </p>
             <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl">{STORY_TITLE}</h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/70">
-              This is not a recap of one specific wedding. It is a proof-style editorial about the kind of high-energy Sea-to-Sky reception Howe Sound DJ builds when the arc is right: guest trust, sound
-              that supports the setting, and a floor that feels alive because the room was read honestly.
+              This is not a recap of one specific wedding. It is an observational editorial about how Sea-to-Sky dance floors get packed when the arc is right: guest trust, sound that supports the setting,
+              and a room that feels alive because it was read honestly.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="page_cta" checkSurface="page_cta" />

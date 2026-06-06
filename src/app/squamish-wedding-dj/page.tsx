@@ -11,20 +11,22 @@ import { JsonLd } from "@/components/json-ld";
 import { squamishWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
 
 const desc =
-  "Squamish wedding DJ for Sea-to-Sky celebrations: corridor-native sound, cinematic reception energy, and dance floors built for mountain weddings—from ceremony to last song.";
+  "Squamish wedding DJ rooted in the corridor: venue-aware planning, ceremony-to-reception flow, and dance floors your guests stay on. Built for mountain weddings, not city templates.";
+
+const pageTitle = "Squamish Wedding DJ | Local Reception Energy That Stays Packed";
 
 export const metadata: Metadata = {
-  title: "Squamish Wedding DJ | Mountain Dance Floors That Stay Packed",
+  title: pageTitle,
   description: desc,
   openGraph: {
-    title: "Squamish Wedding DJ | Mountain Dance Floors That Stay Packed",
+    title: pageTitle,
     description: desc,
     url: "/squamish-wedding-dj",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Squamish Wedding DJ | Mountain Dance Floors That Stay Packed",
+    title: pageTitle,
     description: desc,
     images: ["/og-share.jpg"],
   },
@@ -76,10 +78,10 @@ export default function SquamishWeddingDjPage() {
               Squamish wedding DJ
             </div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Squamish home base · Sea-to-Sky wedding specialist</div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">Squamish wedding DJ for celebrations that build to an unforgettable dance floor</h1>
+            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">Squamish wedding DJ for celebrations that build to a packed dance floor</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
               Howe Sound DJ is Squamish-rooted: a calm planning partner for couples marrying in the mountains, whether you live here or are bringing guests into the corridor. The through-line is
-              cinematic reception energy—ceremony clarity, cocktail warmth, and a dance floor your people actually stay on—built with corridor-native sound and pacing, not a generic city-wedding template.
+              ceremony clarity, cocktail warmth, and reception energy your people actually stay on, built with corridor-native sound and pacing, not a generic city-wedding template.
             </p>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
               For the full service breakdown, see{" "}

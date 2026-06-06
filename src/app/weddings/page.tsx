@@ -6,14 +6,17 @@ import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 
+const weddingsTitle = "Sea-to-Sky Wedding DJ | Ceremony to Packed Dance Floor";
+const weddingsDesc =
+  "Wedding DJ for Squamish, Whistler, and the corridor: calm planning, ceremony-through-reception coverage, and dance floors shaped by how your crowd actually moves.";
+
 export const metadata: Metadata = {
-  title: "Sea-to-Sky Wedding DJ | Dance Floors Built Around You",
-  description:
-    "Personalized wedding DJ for Squamish, Whistler, and the Sea-to-Sky corridor: ceremony through reception, emotional pacing, and dance floors your guests stay on all night.",
+  title: weddingsTitle,
+  description: weddingsDesc,
   openGraph: {
-    title: "Sea-to-Sky Wedding DJ | Dance Floors Built Around You",
+    title: weddingsTitle,
     description:
-      "Tailored music and atmosphere for mountain weddings—elegant and emotional or full dance party—built with intention from first dance to last song.",
+      "Mountain wedding sound and pacing from vows through last song: atmosphere-first planning, clear communication, and reception energy built around your people.",
     url: "/weddings",
   },
   alternates: { canonical: "/weddings" },

@@ -10,20 +10,22 @@ import { JsonLd } from "@/components/json-ld";
 import { storiesHubBreadcrumbJsonLd } from "@/lib/json-ld";
 
 const hubDesc =
-  "Real Squamish and Whistler wedding stories, mountain reception energy, and dance floor moments from the Sea-to-Sky corridor—editorial proof of how corridor weddings actually feel.";
+  "How packed Sea-to-Sky dance floors actually feel: mountain reception energy, guest trust, and the pacing that turns Squamish and Whistler weddings from dinner into celebration.";
+
+const hubTitle = "Sea-to-Sky Dance Floor Stories | Packed Mountain Receptions";
 
 export const metadata: Metadata = {
-  title: "Sea-to-Sky Wedding Stories | Real Dance Floor Moments",
+  title: hubTitle,
   description: hubDesc,
   openGraph: {
-    title: "Sea-to-Sky Wedding Stories | Real Dance Floor Moments",
+    title: hubTitle,
     description: hubDesc,
     url: "/stories",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sea-to-Sky Wedding Stories | Real Dance Floor Moments",
+    title: hubTitle,
     description: hubDesc,
     images: ["/og-share.jpg"],
   },
@@ -45,9 +47,9 @@ const stories = [
   },
   {
     slug: "sea-to-sky-wedding-dance-floor-energy",
-    title: "What a High-Energy Sea-to-Sky Wedding Dance Floor Feels Like",
+    title: "What a Packed Sea-to-Sky Wedding Dance Floor Feels Like",
     summary:
-      "Editorial proof: the emotional shape of a mountain corridor reception, how guest trust shows up on the floor, and how this connects to the Roomflow Method.",
+      "Editorial observation: how mountain corridor receptions build guest trust, cross from dinner into dancing, and why pacing shapes a packed floor.",
   },
 ] as const;
 
@@ -63,11 +65,11 @@ export default function StoriesHubPage() {
               Stories
             </div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Sea-to-Sky wedding stories</div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">Mountain wedding energy, told through real dance floor moments</h1>
+            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">What packed Sea-to-Sky dance floors actually feel like</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">{hubDesc}</p>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
-              These are editorial stories from Squamish and Whistler celebrations—not invented recaps. Read how mountain weddings build atmosphere, how guests arrive at the dance floor, and what packed
-              Sea-to-Sky receptions actually feel like before you book.
+              Editorial observations from Squamish and Whistler corridor weddings, not invented recaps. Read how mountain receptions build atmosphere, how guests cross the threshold into dancing, and why
+              pacing often matters more than how late the music runs.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="page_cta" checkSurface="page_cta" />

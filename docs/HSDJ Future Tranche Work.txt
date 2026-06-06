@@ -1,0 +1,65 @@
+What the system does NOT yet see
+
+Eventually, the highest-tier version of HSDJ_SEO_Intelligence would also correlate:
+
+1. Google Analytics 4 (GA4)
+
+Not just:
+
+* clicks
+
+But:
+
+* engagement
+* scroll depth
+* time on page
+* conversion paths
+* bounce/drop-off behavior
+* which editorial pages actually create inquiries
+
+This is likely the next major intelligence expansion later.
+
+2. Google Business Profile (GBP)
+
+Eventually:
+
+* map pack signals
+* review velocity
+* calls
+* direction requests
+* photo engagement
+* local pack performance
+
+Very important long term for:
+“most sought-after Sea-to-Sky wedding DJ”
+
+3. URL Inspection API
+
+Eventually:
+
+* indexing state automation
+* canonical mismatch detection
+* crawl anomaly detection
+* recrawl tracking
+
+4. Authority Graphing
+
+Much later:
+
+* internal link topology scoring
+* semantic cluster strength
+* pillar authority weighting
+* editorial-to-commercial conversion flow
+
+5. Conversion Intelligence
+
+Eventually:
+
+* which pages actually generate inquiries
+* which stories emotionally convert couples
+* which venue pages lead to contact submissions
+* which editorial themes create trust
+
+That becomes:
+business intelligence
+

@@ -6,13 +6,13 @@ import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { CTA_FINALE_SECTION_TOP, MAIN_SECTION_Y } from "@/lib/cta-section-spacing";
 
 export const metadata: Metadata = {
-  title: { absolute: "About Howe Sound DJ | Sea-to-Sky Wedding Authority" },
+  title: { absolute: "About Patrick | Squamish Sea-to-Sky Wedding DJ" },
   description:
-    "Meet Patrick of Howe Sound DJ: Squamish wedding DJ with 15+ years in music, production-trained audio, and a dance-floor-first approach for Sea-to-Sky celebrations.",
+    "Squamish-rooted wedding DJ for the corridor: production-trained sound, real venue familiarity, and reception pacing built around how mountain weddings actually move from vows to dance floor.",
   openGraph: {
-    title: "About Howe Sound DJ | Sea-to-Sky Wedding Authority",
+    title: "About Patrick | Squamish Sea-to-Sky Wedding DJ",
     description:
-      "Story, approach, and credibility: production-minded sound, corridor venue familiarity, and wedding dance floors built with emotional intention.",
+      "Meet Patrick: corridor-native planning, atmosphere-first receptions, and dance floors shaped by room-reading, not a generic wedding playlist.",
     url: "/about",
   },
   alternates: { canonical: "/about" },
@@ -61,8 +61,8 @@ export default function AboutPage() {
                 Music is how I connect. Weddings are where that connection matters most.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70 lg:max-w-none">
-                I am Patrick, the person behind Howe Sound DJ, based in Squamish with Sea-to-Sky weddings at the center of the work. More than fifteen years in music have taught me that the best nights are
-                not loud for the sake of loud. They are honest to the couple, true to the room, and built with care long before the first guest arrives.
+                I am Patrick, Squamish-rooted and focused on Sea-to-Sky weddings: the venues, the weekend traffic, and the way mountain receptions actually move from vows to a packed floor. More than fifteen
+                years in music have taught me that the strongest nights are honest to the couple, true to the room, and built with care long before the first guest arrives.
               </p>
             </div>
             <div className="min-w-0 w-full lg:max-w-none lg:justify-self-end">
