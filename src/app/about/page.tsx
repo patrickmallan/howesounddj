@@ -42,7 +42,7 @@ export default function AboutPage() {
       label: "How couples describe it",
       title: "Calm, detail-driven, present",
       text:
-        "People often say the day felt effortless, that I was the steady hand behind the scenes. I take that seriously: professional, adaptable, and focused on the small things that make the music feel magical instead of mechanical."
+        "People often say the day felt effortless, that I was the steady hand behind the scenes. I take that seriously: professional, adaptable, and focused on the small things that make the music feel human instead of mechanical."
     }
   ];
 
@@ -58,11 +58,14 @@ export default function AboutPage() {
               </div>
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Meet Patrick</div>
               <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-                Music is how I connect. Weddings are where that connection matters most.
+                Your wedding DJ should feel like someone you are comfortable talking with, not a name on a vendor list.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70 lg:max-w-none">
-                I am Patrick, Squamish-rooted and focused on Sea-to-Sky weddings: the venues, the weekend traffic, and the way mountain receptions actually move from vows to a packed floor. More than fifteen
-                years in music have taught me that the strongest nights are honest to the couple, true to the room, and built with care long before the first guest arrives.
+                I am Patrick, Squamish-rooted and focused on Sea-to-Sky weddings. I know how corridor venues breathe, how weekend traffic shapes the day, and how a reception moves from vows to a packed
+                floor when the pacing is intentional. My job is not only to play music: it is to read the room, protect the moments that matter, and keep you calm while the night unfolds.
+              </p>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55 lg:max-w-none">
+                Most couples start with a short conversation. No pitch deck, no pressure. Just clarity on whether the fit feels right.
               </p>
             </div>
             <div className="min-w-0 w-full lg:max-w-none lg:justify-self-end">
@@ -93,18 +96,15 @@ export default function AboutPage() {
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">The story</div>
           <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-            From a love of music to a focus on weddings.
+            From a love of music to a focus on weddings in this corridor.
           </h2>
           <p className="mt-4 text-lg leading-8 text-white/70">
-            This started with a simple love of music. Over time it became something more specific: crafting high-energy,
-            personal experiences where every celebration feels intentional. I have worked with countless couples, each
-            with their own story, from quiet ceremonies to full-scale receptions, and that range is what keeps the work
-            sharp.
+            This started with a simple love of music. Over time it became something more specific: helping couples in Squamish, Whistler, and along the Sea-to-Sky build receptions that feel intentional,
+            from quiet ceremony moments to dance floors that stay alive. I have worked across that range, and it is what keeps the planning sharp.
           </p>
           <p className="mt-4 text-lg leading-8 text-white/70">
-            What has not changed is the through-line: your day should sound like you, not like a template. I show up ready
-            to listen, plan with you, and execute so you can stay in the moment while I handle the flow behind the
-            mixer.
+            What has not changed is the through-line: your day should sound like you, not like a template. I show up ready to listen, learn how your venue and guest list behave, and execute so you can stay in
+            the moment while I handle flow behind the mixer.
           </p>
         </div>
       </SectionReveal>
@@ -116,10 +116,11 @@ export default function AboutPage() {
               The approach
             </div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              Tailored to your taste, and to the room.
+              More than a playlist: hosting, pacing, and the flow of your day.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              I take time to understand your musical world: what you love, what you cannot stand, and the atmosphere you want guests to carry home. Whether you are leaning into classic romance or a packed dance floor, we shape a soundtrack that reflects your vision and keeps people engaged from the first moment to the last.
+              I take time to understand your musical world: what you love, what you cannot stand, and the atmosphere you want guests to carry home. That includes how ceremony hands off to cocktails, when
+              speeches should land, and when the room is ready to dance. Whether you are leaning into classic romance or a packed floor, we shape a soundtrack that reflects your vision.
             </p>
           </div>
           <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-3">
@@ -134,7 +135,7 @@ export default function AboutPage() {
               },
               {
                 title: "Rooted in Squamish",
-                text: "I live and work in this corridor. Local venues and Sea-to-Sky logistics are part of how I plan, not an afterthought."
+                text: "I live and work in this corridor. Local venues, weekend logistics, and how Sea-to-Sky weddings actually run are part of how I plan with you, not an afterthought."
               }
             ].map((item) => (
               <StaggerItem key={item.title}>
@@ -154,10 +155,10 @@ export default function AboutPage() {
             Credibility
           </div>
           <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-            Production background. Wedding-day instincts.
+            Why couples trust the technical side to hold up the emotional side.
           </h2>
           <p className="mt-4 text-lg leading-8 text-white/70">
-            Couples book me for how the night feels, but the feel holds up because the technical side is solid. Here is what that looks like in practice.
+            You book a person, not a speaker stack. Still, when vows need to be heard and the floor needs to peak at the right moment, the background matters. Here is what sits behind the calm on the day.
           </p>
         </div>
         <StaggerGroup className="mt-12 grid gap-6 lg:grid-cols-2">
@@ -181,13 +182,14 @@ export default function AboutPage() {
                 Experience
               </div>
               <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-                Specializing in wedding dance floors that feel authentic, lively, and personal.
+                Wedding dance floors that feel authentic, lively, and personal.
               </h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
-                I have been across intimate gatherings and big receptions. That range matters: you get someone who can adapt when the timeline shifts, when the crowd surprises you, or when a speech runs long and the night needs to recover its stride.
+                I have been across intimate gatherings and big receptions in this corridor. That range matters: you get someone who can adapt when the timeline shifts, when the crowd surprises you, or when
+                a speech runs long and the night needs to recover its stride.
               </p>
               <p className="mt-4 text-lg leading-8 text-white/70">
-                My job is to make the celebration feel extraordinary in a way that still sounds and feels like you. If that resonates, the next step is a conversation about your date, your venue, and the kind of night you want to build together.
+                If that sounds like the kind of partner you want for your reception, the next step is simple: a conversation about your date, your venue, and the night you want to build together.
               </p>
             </div>
             <div className="premium-surface rounded-[2rem] border border-white/10 bg-neutral-950/70 p-8">
@@ -209,6 +211,10 @@ export default function AboutPage() {
                 </li>
                 <li className="flex gap-3">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
+                  <span>Familiarity with Sea-to-Sky venues and how each setting shapes the evening</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
                   <span>Planning-forward process: clarity before the day, calm during it</span>
                 </li>
               </ul>
@@ -227,10 +233,11 @@ export default function AboutPage() {
               Next step
             </div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              If it feels aligned, let&apos;s talk about your wedding.
+              If it feels aligned, let&apos;s talk.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Send your date, venue, and how you want the night to feel. I will follow up with availability and a clear path to a consultation, no pressure, no generic pitch.
+              Send your date, venue, and how you want the night to feel. I will reply with availability and a clear path to a short consult. No pressure, no generic pitch. Most couples know quickly whether
+              the conversation feels comfortable.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="page_cta" checkSurface="page_cta" />

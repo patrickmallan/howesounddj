@@ -43,11 +43,11 @@ export default function ContactPage() {
             </div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Contact</div>
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              Let&apos;s Make Sure We&apos;re Aligned
+              Reach out when you are ready. The process is straightforward.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              A quick 15-minute call to confirm your date, your vision, and make sure everything feels right. No
-              pressure, no commitment.
+              Share your date, venue, and how you want the reception to feel. I reply personally with availability and a clear next step, usually a short consult to align on timeline and fit. No pressure, no
+              commitment required to start the conversation.
             </p>
           </div>
         </div>
@@ -63,11 +63,38 @@ export default function ContactPage() {
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               What happens next
             </div>
-            <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">A conversation first, not a hard sell.</h2>
+            <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">What happens after you submit</h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Patrick invites couples to talk through the wedding, the vision, and the kind of experience you want guests
-              to remember, whether you begin with a consult or check availability first. Planning stays built around fast
-              replies and clear communication, the same calm, supported feeling couples name in reviews.
+              You hear back from Patrick directly, not an autoresponder loop. A typical path looks like this:
+            </p>
+            <ol className="mt-6 list-none space-y-4 text-base leading-8 text-white/70">
+              <li className="flex gap-4">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-amber-300/35 bg-amber-300/10 text-sm font-semibold text-amber-200">
+                  1
+                </span>
+                <span>You send your date, venue, and whatever you know about the day so far.</span>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-amber-300/35 bg-amber-300/10 text-sm font-semibold text-amber-200">
+                  2
+                </span>
+                <span>Patrick replies with availability and a clear quote or next question if something needs clarifying.</span>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-amber-300/35 bg-amber-300/10 text-sm font-semibold text-amber-200">
+                  3
+                </span>
+                <span>If the fit feels right, you book a short consult to align on music, flow, and coverage.</span>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-amber-300/35 bg-amber-300/10 text-sm font-semibold text-amber-200">
+                  4
+                </span>
+                <span>Planning calls and a shared timeline build from there at your pace.</span>
+              </li>
+            </ol>
+            <p className="mt-6 text-sm leading-7 text-white/55">
+              Fast replies and calm communication are part of the same experience couples describe in reviews. A conversation first, not a hard sell.
             </p>
           </div>
         </div>
@@ -84,8 +111,7 @@ export default function ContactPage() {
             </div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Already have a date in mind?</h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              You can check availability first if you&apos;re still exploring options or want to confirm your date before
-              booking a consult.
+              Submit the form below and Patrick will reply with availability for your date. Include what you can; partial details are fine. You will know within a normal reply window what the next step is.
             </p>
           </div>
 
@@ -124,9 +150,9 @@ export default function ContactPage() {
           <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
             Tertiary path
           </div>
-          <h2 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">Not ready to chat yet?</h2>
+          <h2 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">Prefer email first?</h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/65">
-            Send a quick message and I&apos;ll personally follow up.
+            Send a quick message and Patrick will follow up personally with availability and a clear next step.
           </p>
           <p className="mt-6 max-w-2xl text-sm leading-relaxed text-white/55">
             Planner, venue, or vendor inquiry? You can email directly at{" "}
@@ -161,21 +187,17 @@ export default function ContactPage() {
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-                Why reach out now
+                Why couples reach out early
               </div>
               <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-                Clarity now makes the planning easier.
+                A clear path beats guessing in the final weeks.
               </h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
-                Popular weekends in Squamish, Whistler, and along the Sea-to-Sky can book in advance. Checking
-                availability early is practical, not hype. A consultation gives you space to ask about ceremony versus
-                reception coverage, MC support, sound in your specific venue, and how personalized playlists come
-                together before the day.
+                An early conversation helps you understand coverage, MC support, sound in your specific venue, and how playlists come together before the day. There is no obligation to book after you reach
+                out. The goal is clarity.
               </p>
               <p className="mt-4 text-lg leading-8 text-white/70">
-                If Howe Sound DJ feels like the right direction, the next step is the same one the site has always
-                pointed to: connect, talk it through, and build a plan that matches your wedding, not a generic package
-                grid.
+                If Howe Sound DJ feels like the right direction, the next step is the same one the site has always pointed to: connect, talk it through, and build a plan that matches your wedding.
               </p>
             </div>
             <div className="premium-surface rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-8">

@@ -27,8 +27,8 @@ export default function PackagesPage() {
       text: "Consultation calls, clear communication, and a timeline-minded approach so music and announcements line up with how your event actually runs."
     },
     {
-      title: "Sound chosen for clarity",
-      text: "Equipment selected for clean, balanced audio, from soft moments to full dance-floor energy, with careful setup and level management throughout."
+      title: "Sound that supports every moment",
+      text: "Clear audio from soft vows to full dance-floor energy, with setup and level management so guests hear what matters without strain."
     },
     {
       title: "Playlists built around you",
@@ -50,7 +50,7 @@ export default function PackagesPage() {
       features: [
         "DJ coverage for your event (typically 3–5 hours)",
         "Custom playlist design tailored to your theme or preferences",
-        "Premium sound system scaled to fill the space",
+        "Professional sound system scaled to fill the space",
         "Dancefloor lighting to support the vibe",
         "MC support for announcements, toasts, or program moments",
         "Pre-event consultation so the run-of-show feels intentional"
@@ -65,7 +65,7 @@ export default function PackagesPage() {
       features: [
         "Full-day DJ service covering ceremony and reception",
         "Custom playlist design based on your preferences and key moments",
-        "Premium sound and lighting package for each phase of the day",
+        "Sound and lighting suited to each phase of the day",
         "Wireless microphones for vows, officiant, and speeches",
         "MC support: introductions, transitions, and a smooth flow for guests",
         "Pre-event planning: calls, venue coordination when needed, and a shared timeline"
@@ -73,7 +73,7 @@ export default function PackagesPage() {
     },
     {
       name: "Signature",
-      tag: "Elevated production",
+      tag: "More customization",
       position:
         "Everything in Complete Wedding, with room to layer in enhancements when you want the night to feel even more custom: extra lighting, expanded audio, and bespoke music moments.",
       highlight: false,
@@ -111,10 +111,11 @@ export default function PackagesPage() {
               Packages
             </div>
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              Clear options. One standard of care.
+              Know what you are booking before you commit.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              Howe Sound DJ is built around customized service, not cookie-cutter blocks of time. Whether you are planning a focused celebration or a full wedding day, these packages describe what you are booking: professional sound, thoughtful music direction, and a host who can steer the room without stealing the spotlight.
+              These tiers describe the shape of your day and the support you receive: planning calls, ceremony-through-reception coverage when you need it, and a host who steers the room without stealing
+              the spotlight. After you reach out, I reply with availability, a clear quote, and what the planning path looks like from there.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="hero" checkSurface="hero" />
@@ -129,13 +130,14 @@ export default function PackagesPage() {
       <SectionReveal as="section" className={`${MAIN_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}>
         <div className="max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-            How to read this page
+            How to choose
           </div>
           <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-            Start with the shape of your day, then we align details.
+            Match the package to your day, then we fill in the details together.
           </h2>
           <p className="mt-4 text-lg leading-8 text-white/70">
-            Every booking includes the same commitment to clarity and sound quality. The tiers differ by scope: hours, whether ceremony is in the mix, and how much production layering you want on top of a strong musical foundation.
+            Every booking includes the same standard of communication and care. Tiers differ by scope: hours, whether ceremony is included, and how much production layering you want. Not sure which fits?
+            That is normal. A short inquiry is enough to align.
           </p>
         </div>
 
@@ -178,10 +180,11 @@ export default function PackagesPage() {
 
         <div className="mt-10 rounded-[1.5rem] border border-white/10 bg-white/5 p-6 lg:p-8">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-            Pricing & availability
+            What happens after you inquire
           </div>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-white/65">
-            Investment depends on date, location, hours, and any add-ons. Exact pricing is confirmed after a conversation about your venue and timeline. No surprise fees baked into a generic online number. Reach out with your date and vision; I will respond with availability and a clear quote.
+            I reply personally with availability for your date, a quote based on your venue and timeline, and a suggested next step (usually a 15-minute consult). From there, planning calls, music direction,
+            and a shared run-of-show build at your pace. Investment depends on date, location, hours, and any add-ons. No surprise fees hidden behind a generic online number.
           </p>
           <p className="mt-4 text-sm leading-7 text-white/55">
             <Link
@@ -202,10 +205,10 @@ export default function PackagesPage() {
               Every package includes
             </div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              The baseline you should expect from Howe Sound DJ.
+              The same care in every tier.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Tiers change scope, not standards. From soft ballads to peak dance-floor moments, the gear and the approach are built so your event sounds balanced, immersive, and true to what you planned.
+              Scope changes; standards do not. From soft ballads to peak dance-floor moments, you get thoughtful music direction, responsive communication, and execution that matches what you planned.
             </p>
           </div>
           <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2">
@@ -260,10 +263,10 @@ export default function PackagesPage() {
               Next step
             </div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              Send your date, venue, and the package that closest matches your plan.
+              Send your date and the tier that closest matches your plan.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              If something sits between tiers, we can shape it. The goal is a quote that reflects your real day, not a label on a spreadsheet.
+              If something sits between tiers, we shape it together. You will hear back with availability, a clear quote, and what planning looks like from there. No spreadsheet labels, no pressure.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
