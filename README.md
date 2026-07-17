@@ -1,6 +1,6 @@
 # Howe Sound DJ — site
 
-Next.js app for [howesounddj.com](https://www.howesounddj.com) — wedding DJ positioning, packages, and **first-party availability** on **`/contact`**: date check via **`/api/availability`** (primary: **Google Calendar** dedicated bookings calendar; fallback / merge: **`src/data/booked-dates.ts`**), inquiry email via **Resend**, **Cloudflare Turnstile**, and optional **Book a Consult** via [Calendly](https://calendly.com/patrick-howesounddj).
+Next.js app for [howesounddj.com](https://www.howesounddj.com) — wedding DJ positioning, packages, and **first-party availability** on **`/contact`**: date check via same-origin **`/api/availability`** (server proxy to **[HSDJ Operations](https://ops.howesounddj.com/api/availability)** — no Google Calendar credentials on this site), inquiry email via **Resend**, **Cloudflare Turnstile**, and optional **Book a Consult** via [Calendly](https://calendly.com/patrick-howesounddj).
 
 ## Quick start
 
@@ -20,36 +20,9 @@ Copy **`env.example`** to **`.env.local`** for local testing (never commit `.env
 | **Resend** | `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` — required for `/api/contact` to send mail. |
 | **Turnstile** | `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` — required for the inquiry form to verify and send. |
 | **GA4** | `NEXT_PUBLIC_GA_MEASUREMENT_ID` — optional. If unset, no analytics scripts load. |
-| **Google Calendar** | Server-only — see **`env.example`** and the rollout section below. **`src/data/booked-dates.ts`** still applies when Google is off, fails, or alongside Google (merge protection during rollout). |
+| **Availability** | Optional `HSDJ_OPERATIONS_AVAILABILITY_API_URL` — defaults to Operations production API. Google Calendar credentials belong only in **HSDJ Operations**, not this repo. |
 
-See **`docs/LAUNCH_CHECKLIST.md`** for Vercel, post-deploy checks, and Search Console.
-
-### Google Calendar — remaining manual steps
-
-1. **Local:** Copy **`env.example`** → **`.env.local`** and set real values (no secrets in git).
-2. **Vercel:** Add the same variables under **Project → Settings → Environment Variables** for Production (and Preview if needed).
-3. **Calendar:** Add a **test event** on the dedicated bookings calendar for a specific day you can type into `/contact`.
-4. **Verify:** On **`/contact`**, run **Check Availability** for a day with the test event (unavailable) and a clear day (available).
-5. **Rotate key:** If the service account private key was ever exposed, create a **new** key in Google Cloud, update **`GOOGLE_PRIVATE_KEY`** locally and in Vercel, redeploy.
-6. **Delete old key:** In **IAM → Service Accounts → Keys**, **delete** the old exposed key so it can no longer authenticate.
-
-**Dedicated integration (non-secret IDs — runtime still reads from env only):**
-
-| | |
-|--|--|
-| **Project** | `howe-sound-dj` (`GOOGLE_PROJECT_ID`) |
-| **Calendar ID** | `5993064f1fe3cc1b61da058efb4240a8744a87beaba96045845cebbe688d549d@group.calendar.google.com` |
-| **Service account** | `howe-sound-dj-calendar@howe-sound-dj.iam.gserviceaccount.com` |
-
-**Copy-paste template (placeholders only — paste a real key from GCP, not from chat):**
-
-```bash
-GOOGLE_CALENDAR_ENABLED=true
-GOOGLE_CALENDAR_ID=5993064f1fe3cc1b61da058efb4240a8744a87beaba96045845cebbe688d549d@group.calendar.google.com
-GOOGLE_CLIENT_EMAIL=howe-sound-dj-calendar@howe-sound-dj.iam.gserviceaccount.com
-GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nPASTE_NEW_KEY_HERE\n-----END PRIVATE KEY-----\n"
-GOOGLE_PROJECT_ID=howe-sound-dj
-```
+See **`docs/LAUNCH_CHECKLIST.md`**, **`docs/PUBLIC_WEBSITE_ENVIRONMENT_CONTRACT_V1.md`**, and **`docs/PUBLIC_AVAILABILITY_INTEGRATION_CONTRACT_V1.md`** for Vercel, post-deploy checks, and Search Console.
 
 ## Analytics (GA4)
 

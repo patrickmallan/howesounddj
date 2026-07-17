@@ -55,6 +55,8 @@ All other conditions → `MANUAL_CONFIRMATION_REQUIRED`.
 
 **Removed from website:** `GOOGLE_*` calendar credentials, `BOOKED_DATES` manual list for availability.
 
+**R1 (HSDJ-WEB-AVAIL-01-R1):** Obsolete `GOOGLE_CALENDAR_*`, `GOOGLE_CLIENT_EMAIL`, and `GOOGLE_PRIVATE_KEY` removed from public website Vercel; see `docs/PUBLIC_WEBSITE_ENVIRONMENT_CONTRACT_V1.md`.
+
 ## Caching
 
 `Cache-Control: no-store` on website route and upstream client fetch.

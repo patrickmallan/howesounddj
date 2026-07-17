@@ -1,6 +1,6 @@
 # Launch checklist — Howe Sound DJ
 
-Practical steps to deploy [howesounddj.com](https://www.howesounddj.com) on Vercel with a **first-party availability checker** on **`/contact`** (**Google Calendar** for a dedicated bookings calendar when enabled, with **`src/data/booked-dates.ts`** as fallback), plus **Resend** email and **Turnstile**. Production URL: **https://www.howesounddj.com**.
+Practical steps to deploy [howesounddj.com](https://www.howesounddj.com) on Vercel with a **first-party availability checker** on **`/contact`** (same-origin **`/api/availability`** → **HSDJ Operations** governed API; **no Google Calendar credentials on the website**), plus **Resend** email and **Turnstile**. Production URL: **https://www.howesounddj.com**.
 
 ---
 
@@ -28,37 +28,21 @@ Open [http://localhost:3000](http://localhost:3000). Copy **`env.example`** to *
 | `TURNSTILE_SITE_KEY` | Cloudflare Turnstile **site** key (widget on inquiry form) |
 | `TURNSTILE_SECRET_KEY` | Turnstile **secret** — server verifies each submission |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Optional **GA4** measurement ID (`G-XXXXXXXXXX`). If unset, analytics does not load. |
-| `GOOGLE_CALENDAR_ENABLED` | Set `true` to read the dedicated bookings calendar (server-side). |
-| `GOOGLE_CALENDAR_ID` | `5993064f1fe3cc1b61da058efb4240a8744a87beaba96045845cebbe688d549d@group.calendar.google.com` |
-| `GOOGLE_CLIENT_EMAIL` | `howe-sound-dj-calendar@howe-sound-dj.iam.gserviceaccount.com` (must have access to that calendar). |
-| `GOOGLE_PROJECT_ID` | `howe-sound-dj` (GCP project reference; optional for ops). |
-| `GOOGLE_PRIVATE_KEY` | Service account PEM — **never commit**; use `\n` for newlines in Vercel/local. |
+| `HSDJ_OPERATIONS_AVAILABILITY_API_URL` | Optional — full Operations availability URL (defaults to `https://ops.howesounddj.com/api/availability`). |
 
-See **`env.example`**. **`src/data/booked-dates.ts`** — fallback if Google is off or fails; **merged** with Google when Google returns a definitive result (rollout safety).
+See **`env.example`** and **`docs/PUBLIC_WEBSITE_ENVIRONMENT_CONTRACT_V1.md`**. Calendar credentials live in **HSDJ Operations** only.
 
-### Google Calendar — operator checklist (manual)
+### Availability — operator checklist (manual)
 
-1. Add env vars locally (copy **`env.example`** → **`.env.local`**, real secrets only on your machine).
-2. Add the same vars in **Vercel → Environment Variables** for Production.
-3. Add a **test event** on the dedicated bookings calendar for a known date.
-4. On **`/contact`**, verify **Check Availability**: that date **unavailable**, a clear date **available**.
-5. **Rotate** the service account key if it was ever exposed elsewhere: create a new key in GCP, update **`GOOGLE_PRIVATE_KEY`** in `.env.local` and Vercel, redeploy.
-6. In **Google Cloud → IAM → Service Accounts → Keys**, **delete** the old key.
-
-**Env template (placeholders only):**
-
-```bash
-GOOGLE_CALENDAR_ENABLED=true
-GOOGLE_CALENDAR_ID=5993064f1fe3cc1b61da058efb4240a8744a87beaba96045845cebbe688d549d@group.calendar.google.com
-GOOGLE_CLIENT_EMAIL=howe-sound-dj-calendar@howe-sound-dj.iam.gserviceaccount.com
-GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nPASTE_NEW_KEY_HERE\n-----END PRIVATE KEY-----\n"
-GOOGLE_PROJECT_ID=howe-sound-dj
-```
+1. On **`/contact`**, run **Check Availability** for a known booked fixture (e.g. `2027-07-31`) → **unavailable**.
+2. Run for a known free fixture (e.g. `2027-07-28`) → **available**.
+3. Confirm operator notification email matches the visitor result (authority: **HSDJ Operations Availability API**).
+4. For calendar changes, use **HSDJ Operations** — not website env vars.
 
 ## 4. Vercel environment variables
 
 1. Vercel → your project → **Settings** → **Environment Variables**.
-2. Add Resend, Turnstile, contact email, and (when ready) Google Calendar vars for **Production** (and Preview if you test real email there). Add `NEXT_PUBLIC_GA_MEASUREMENT_ID` when you want GA4.
+2. Add Resend, Turnstile, contact email, and optional Operations availability URL for **Production** (and Preview if you test real email there). Add `NEXT_PUBLIC_GA_MEASUREMENT_ID` when you want GA4. **Do not** add Google Calendar credentials to this Vercel project.
 3. Redeploy after changing vars so the runtime picks them up.
 
 ## 5. Deploy flow
@@ -70,21 +54,19 @@ GOOGLE_PROJECT_ID=howe-sound-dj
 
 ## 6. Post-deploy: `/contact` availability & inquiry (required)
 
-Run after every production deploy that touches **`/contact`**, **`/api/availability`**, **`/api/contact`**, **`booked-dates`**, or env vars.
+Run after every production deploy that touches **`/contact`**, **`/api/availability`**, **`/api/contact`**, or env vars.
 
 | Check | How |
 |-------|-----|
 | **Page loads** | Open **`https://www.howesounddj.com/contact`** — no blank page. |
-| **Date check** | With Google on: add/remove an event on the **dedicated bookings** calendar and confirm open vs held. With Google off: use **`booked-dates.ts`** only. |
-| **Booked path** | Date blocked in Google and/or listed in **`booked-dates.ts`** → unavailable message + **Book a Consult** (Calendly). |
+| **Date check** | POST **`/api/availability`** or use the contact form — booked fixtures (e.g. `2027-07-31`, `2027-08-07`) → unavailable; approved free fixture (e.g. `2027-07-28`) → available. |
+| **Booked path** | Unavailable message + **Book a Consult** (Calendly). |
 | **Calendly** | **Book a Consult** opens `https://calendly.com/patrick-howesounddj` in a new tab. |
 | **Inquiry send** | With an available date, submit the form — success message; email arrives at `CONTACT_TO_EMAIL` with **Reply-To** = couple’s email. |
 | **Turnstile** | If keys are set, widget renders; submit fails without completing the check. |
 | **Mobile** | Same checks on a phone — date input, buttons, and form usable. |
 
-**Operator setup (Google):** Share the dedicated calendar with **`howe-sound-dj-calendar@howe-sound-dj.iam.gserviceaccount.com`**, enable the Calendar API on project **`howe-sound-dj`**, set env vars (see checklist above), redeploy.
-
-**Operator note:** Keep **`booked-dates.ts`** in sync during rollout or as a backup list (YYYY-MM-DD).
+**Operator setup (calendar):** Manage bookings calendar and credentials in **HSDJ Operations** (`ops.howesounddj.com`), not on the public website Vercel project.
 
 ## 7. Images and Open Graph
 
