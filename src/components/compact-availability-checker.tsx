@@ -12,17 +12,15 @@ import { clearPostAvailabilityContext } from "@/lib/post-availability-context";
 
 const ANALYTICS_SURFACE = "header_panel";
 
-const AVAILABLE_LEAD =
-  "Your date is officially open, which feels like a good sign already.";
 const AVAILABLE_NEXT =
-  "Next best step: book a quick consult so we can talk through your venue, your vision, and whether it feels like the right fit.";
+  "Submit an inquiry to continue, or book a quick consult to talk through your venue and vision.";
 
 type CheckPhase =
   | { kind: "idle" }
   | { kind: "loading" }
-  | { kind: "available" }
+  | { kind: "available"; message: string }
   | { kind: "unavailable"; message: string }
-  | { kind: "error"; message: string };
+  | { kind: "manual"; message: string };
 
 type Props = {
   /** Called when the checker mounts so the panel can focus the year field. */
@@ -65,11 +63,11 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
     setPhase({ kind: "loading" });
     const outcome = await runAvailabilityCheck(date.weddingDate, ANALYTICS_SURFACE);
     if (outcome.status === "available") {
-      setPhase({ kind: "available" });
+      setPhase({ kind: "available", message: outcome.message });
       return;
     }
-    if (outcome.status === "error") {
-      setPhase({ kind: "error", message: outcome.message });
+    if (outcome.status === "manual") {
+      setPhase({ kind: "manual", message: outcome.message });
       return;
     }
     setPhase({ kind: "unavailable", message: outcome.message });
@@ -138,7 +136,7 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
           className="rounded-xl border border-amber-400/20 bg-amber-950/30 p-4"
           role="status"
         >
-          <p className="text-sm leading-relaxed text-white/90">{AVAILABLE_LEAD}</p>
+          <p className="text-sm leading-relaxed text-white/90">{phase.message}</p>
           <p className="mt-3 text-sm leading-relaxed text-white/70">{AVAILABLE_NEXT}</p>
           <div className="mt-4 flex flex-col gap-2">
             <a
@@ -169,10 +167,16 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
         </div>
       )}
 
-      {phase.kind === "error" && (
-        <p className="text-sm text-rose-300/90" role="alert">
-          {phase.message}
-        </p>
+      {phase.kind === "manual" && (
+        <div
+          className="rounded-xl border border-white/10 bg-white/5 p-4"
+          role="status"
+        >
+          <p className="text-sm leading-relaxed text-white/80">{phase.message}</p>
+          <Link href="/contact#send-message" className={`${outlineButtonClass} mt-3`}>
+            Contact us directly
+          </Link>
+        </div>
       )}
 
       {phase.kind === "idle" && (

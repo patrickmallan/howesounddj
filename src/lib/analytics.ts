@@ -21,7 +21,7 @@ export const ANALYTICS_EVENTS = {
   checkAvailabilityClick: "check_availability_click",
   /** Contact form: POST to `/api/availability` begins (valid `YYYY-MM-DD` only). */
   availabilityCheckStart: "availability_check_start",
-  /** Contact form: calendar outcome resolved (`availability_status`: available | unavailable only). */
+  /** Contact form: calendar outcome resolved (`availability_status`: available | unavailable | manual_confirmation_required). */
   availabilityCheckResult: "availability_check_result",
   contactFormStart: "contact_form_start",
   /** Trust-surface navigation while post-availability session context is active. */
@@ -89,7 +89,7 @@ export function consultClickEventParams(
 /** Shared fields for `availability_check_start` / `availability_check_result` (client-only callers). */
 export function availabilityCheckEventParams(
   dateSelected: string,
-  availabilityStatus?: "available" | "unavailable",
+  availabilityStatus?: "available" | "unavailable" | "manual_confirmation_required",
   surface?: string
 ): Record<string, string | number | boolean | undefined> {
   const page_path = typeof window !== "undefined" ? window.location.pathname : "";

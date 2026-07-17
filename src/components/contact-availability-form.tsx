@@ -30,7 +30,8 @@ type AvailabilityPhase =
   | { kind: "idle" }
   | { kind: "checking" }
   | { kind: "unavailable"; message: string }
-  | { kind: "available"; message: string };
+  | { kind: "available"; message: string }
+  | { kind: "manual"; message: string };
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -115,6 +116,11 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
     const outcome = await runAvailabilityCheck(weddingDate, FORM_ANALYTICS.surface);
     if (outcome.status === "available") {
       setAvailability({ kind: "available", message: outcome.message });
+      setShowInquiry(false);
+      return;
+    }
+    if (outcome.status === "manual") {
+      setAvailability({ kind: "manual", message: outcome.message });
       setShowInquiry(false);
       return;
     }
@@ -384,6 +390,28 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         </div>
         {dateError ? <p className="mt-3 text-sm text-rose-300/90">{dateError}</p> : null}
       </div>
+
+      {availability.kind === "manual" && (
+        <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6 lg:p-8">
+          <p className="text-lg leading-relaxed text-white/85">{availability.message}</p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a href="/contact#send-message" className={consultButtonClass}>
+              Contact us directly
+            </a>
+            <button
+              type="button"
+              onClick={() => {
+                setAvailability({ kind: "idle" });
+                clearPostAvailabilityContext();
+                clearDateFields();
+              }}
+              className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+            >
+              Try Another Date
+            </button>
+          </div>
+        </div>
+      )}
 
       {availability.kind === "unavailable" && (
         <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6 lg:p-8">
