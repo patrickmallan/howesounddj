@@ -4,6 +4,7 @@ import { GoogleAnalytics } from "@/components/google-analytics";
 import { JsonLd } from "@/components/json-ld";
 import { ConditionalSiteFinalDecisionZone } from "@/components/conditional-site-final-decision-zone";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
+import { SITE_PUBLIC_NAME, SITE_SHORT_NAME } from "@/config/site-brand";
 import { organizationJsonLd } from "@/lib/json-ld";
 import "./globals.css";
 
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.howesounddj.com"),
   title: {
     default: "Howe Sound DJ | Squamish Wedding DJ",
-    template: "%s | Howe Sound DJ",
+    template: `%s | ${SITE_SHORT_NAME}`,
   },
   description: siteDescription,
   icons: {
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_CA",
-    siteName: "Howe Sound DJ",
+    siteName: SITE_PUBLIC_NAME,
     title: "Howe Sound DJ | Squamish Wedding DJ",
     description: siteDescription,
     images: [
@@ -69,6 +70,9 @@ export default function RootLayout({
       lang="en-CA"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <meta property="og:site_name" content={SITE_PUBLIC_NAME} />
+      </head>
       <body className="flex min-h-full flex-col bg-neutral-950 text-white">
         <JsonLd data={organizationJsonLd()} />
         <a

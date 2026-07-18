@@ -1,0 +1,17 @@
+RENDERED HOMEPAGE METADATA
+==========================
+title: Howe Sound Wedding DJ | Squamish, Whistler & Vancouver
+canonical: https://www.howesounddj.com
+og:site_name: Howe Sound Wedding DJ
+og:title: Howe Sound Wedding DJ | Squamish, Whistler & Vancouver
+twitter:title: Howe Sound Wedding DJ | Squamish, Whistler & Vancouver
+json_ld_block_count: 2
+json_ld_1_type: Organization
+organization_name: Howe Sound Wedding DJ
+organization_alternateName: ['Howe Sound DJ']
+json_ld_2_type: WebSite
+website_name: Howe Sound Wedding DJ
+website_url: https://www.howesounddj.com/
+website_alternateName: ['Howe Sound DJ', 'howesounddj.com']
+website_entity_count: 1
+localhost_present: False

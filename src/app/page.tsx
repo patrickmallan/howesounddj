@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HOMEPAGE_TITLE, SITE_ORIGIN } from "@/config/site-brand";
 import { BrandAnchorStatement } from "@/components/brand-anchor-statement";
+import { JsonLd } from "@/components/json-ld";
 import CTADuo from "@/components/cta-duo";
 import { HomepageExploreSection } from "@/components/explore-site-links";
 import { HeroSoundIdentity } from "@/components/hero-sound-identity";
@@ -10,6 +12,7 @@ import { ImageSlot } from "@/components/image-slot";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { VENUES } from "@/config/venues";
+import { websiteJsonLd } from "@/lib/json-ld";
 
 /**
  * Homepage H1 unified line (premium / Sea-to-Sky aligned).
@@ -27,17 +30,20 @@ export const HEADLINE_VARIANTS = {
 } as const;
 
 export const metadata: Metadata = {
-  title: { absolute: "Howe Sound DJ | Squamish Wedding DJ" },
+  title: { absolute: HOMEPAGE_TITLE },
   description:
     "Squamish wedding DJ for the Sea-to-Sky corridor and beyond: unforgettable experiences, Bangers Only (no autopilot playlists), seamless planning, and real connection. Whistler & Vancouver.",
   openGraph: {
-    title: "Howe Sound DJ | Squamish Wedding DJ",
+    title: HOMEPAGE_TITLE,
     description:
       "Creating unforgettable wedding experiences in Squamish, Whistler, and the Sea-to-Sky: rooted locally, trusted at top venues, dancefloor-packing tracks.",
-    url: "https://www.howesounddj.com",
+    url: `${SITE_ORIGIN}/`,
+  },
+  twitter: {
+    title: HOMEPAGE_TITLE,
   },
   alternates: {
-    canonical: "https://www.howesounddj.com",
+    canonical: `${SITE_ORIGIN}/`,
   },
 };
 
@@ -120,6 +126,7 @@ export default function HoweSoundDJHomepage() {
 
   return (
     <main className="min-h-screen bg-neutral-950 text-white">
+        <JsonLd data={websiteJsonLd()} />
         <section className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.18),transparent_45%)]" />
           <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 py-20 lg:flex-row lg:items-start lg:gap-16 lg:px-8 lg:py-28">

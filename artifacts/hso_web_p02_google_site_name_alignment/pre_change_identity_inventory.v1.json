@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0.0",
+  "tranche_id": "HSO-WEB-P02_GOOGLE_SITE_NAME_ALIGNMENT",
+  "generated_at_utc": "2026-07-18T15:37:40Z",
+  "signals": [
+    {
+      "signal": "homepage_title",
+      "original_value": "Howe Sound DJ | Squamish Wedding DJ",
+      "canonical_owner": "src/app/page.tsx",
+      "rendered_location": "/",
+      "visibility": "metadata",
+      "intended_disposition": "change",
+      "reason": "Establish approved brand in homepage title without keyword stuffing",
+      "blast_radius": "homepage only"
+    },
+    {
+      "signal": "og_site_name",
+      "original_value": "Howe Sound DJ",
+      "canonical_owner": "src/app/layout.tsx",
+      "rendered_location": "sitewide head",
+      "visibility": "metadata",
+      "intended_disposition": "change",
+      "reason": "Align Open Graph site identity with preferred public name",
+      "blast_radius": "all routes via root layout"
+    },
+    {
+      "signal": "og_title_homepage",
+      "original_value": "Howe Sound DJ | Squamish Wedding DJ",
+      "canonical_owner": "src/app/page.tsx",
+      "rendered_location": "/",
+      "visibility": "metadata",
+      "intended_disposition": "change",
+      "reason": "Match homepage social title to approved brand",
+      "blast_radius": "homepage only"
+    },
+    {
+      "signal": "twitter_title_homepage",
+      "original_value": "inherited default: Howe Sound DJ | Squamish Wedding DJ",
+      "canonical_owner": "src/app/page.tsx",
+      "rendered_location": "/",
+      "visibility": "metadata",
+      "intended_disposition": "change",
+      "reason": "Explicit homepage Twitter title aligned to approved brand",
+      "blast_radius": "homepage only"
+    },
+    {
+      "signal": "website_json_ld",
+      "original_value": "absent",
+      "canonical_owner": "none (new on homepage)",
+      "rendered_location": "/",
+      "visibility": "metadata",
+      "intended_disposition": "add",
+      "reason": "Primary technical owner for Google site-name preference",
+      "blast_radius": "homepage only"
+    },
+    {
+      "signal": "organization_json_ld_name",
+      "original_value": "Howe Sound DJ",
+      "canonical_owner": "src/lib/json-ld.ts via src/app/layout.tsx",
+      "rendered_location": "sitewide",
+      "visibility": "metadata",
+      "intended_disposition": "change",
+      "reason": "Align business entity name with approved public identity",
+      "blast_radius": "all routes via root layout"
+    },
+    {
+      "signal": "localbusiness_json_ld",
+      "original_value": "absent",
+      "canonical_owner": "n/a",
+      "rendered_location": "n/a",
+      "visibility": "metadata",
+      "intended_disposition": "no_change",
+      "reason": "No LocalBusiness entity exists in repository architecture",
+      "blast_radius": "none"
+    },
+    {
+      "signal": "homepage_h1",
+      "original_value": "Squamish wedding DJ for the Sea-to-Sky, elegant when it matters, wild when it should.",
+      "canonical_owner": "src/app/page.tsx via HomepageHeroHeadline",
+      "rendered_location": "/ hero",
+      "visibility": "visible",
+      "intended_disposition": "no_change",
+      "reason": "H1 is user-facing service positioning, not canonical business naming surface",
+      "blast_radius": "homepage hero only"
+    },
+    {
+      "signal": "homepage_brand_anchor",
+      "original_value": "Howe Sound DJ",
+      "canonical_owner": "src/components/brand-anchor-statement.tsx",
+      "rendered_location": "/ midpoint brand section",
+      "visibility": "visible",
+      "intended_disposition": "change",
+      "reason": "Prominent homepage brand reference should match approved public name",
+      "blast_radius": "homepage only"
+    },
+    {
+      "signal": "header_wordmark",
+      "original_value": "Howe Sound DJ / Squamish Wedding DJ",
+      "canonical_owner": "src/components/site-chrome.tsx",
+      "rendered_location": "sitewide header",
+      "visibility": "visible",
+      "intended_disposition": "change",
+      "reason": "Primary accessible brand label and visible business name",
+      "blast_radius": "all routes via SiteHeader"
+    },
+    {
+      "signal": "footer_business_name",
+      "original_value": "Howe Sound DJ",
+      "canonical_owner": "src/components/site-chrome.tsx",
+      "rendered_location": "sitewide footer",
+      "visibility": "visible",
+      "intended_disposition": "change",
+      "reason": "Footer business label should match approved public name",
+      "blast_radius": "all routes via SiteFooter"
+    },
+    {
+      "signal": "title_template_internal_pages",
+      "original_value": "%s | Howe Sound DJ",
+      "canonical_owner": "src/app/layout.tsx",
+      "rendered_location": "internal pages using relative titles",
+      "visibility": "metadata",
+      "intended_disposition": "no_change",
+      "reason": "Shorter alternate brand remains appropriate for page-specific titles",
+      "blast_radius": "internal pages only"
+    },
+    {
+      "signal": "web_app_manifest",
+      "original_value": "absent",
+      "canonical_owner": "n/a",
+      "rendered_location": "n/a",
+      "visibility": "metadata",
+      "intended_disposition": "no_change",
+      "reason": "No manifest file present in repository",
+      "blast_radius": "none"
+    },
+    {
+      "signal": "canonical_homepage_url",
+      "original_value": "https://www.howesounddj.com",
+      "canonical_owner": "src/app/page.tsx",
+      "rendered_location": "/",
+      "visibility": "metadata",
+      "intended_disposition": "minor_change",
+      "reason": "Canonical and WebSite.url aligned to domain root with trailing slash in schema",
+      "blast_radius": "homepage metadata and WebSite JSON-LD"
+    }
+  ]
+}

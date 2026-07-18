@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "tranche_id": "HSO-WEB-P02_GOOGLE_SITE_NAME_ALIGNMENT",
+  "generated_at_utc": "2026-07-18T15:39:21Z",
+  "workspace_root": "/Users/patrickmallan/Desktop/howesounddj",
+  "canonical_domain": "https://www.howesounddj.com/",
+  "preferred_site_name": "Howe Sound Wedding DJ",
+  "alternate_names": ["Howe Sound DJ", "howesounddj.com"],
+  "changed_files": [
+    "src/config/site-brand.ts",
+    "src/lib/json-ld.ts",
+    "src/app/layout.tsx",
+    "src/app/page.tsx",
+    "src/components/brand-anchor-statement.tsx",
+    "src/components/site-chrome.tsx",
+    "tests/google-site-name-alignment.test.ts"
+  ],
+  "original_file_hashes": {
+    "src/app/layout.tsx": "2cabbb435e15f8adc706098b1fadb4e6eaec0dc9dc0b048a38a36a558e493ea8",
+    "src/app/page.tsx": "1695bb39b0905d9fcedc9d0973e8ce4139bca24f01d42918d2a022bc760d28f0",
+    "src/lib/json-ld.ts": "8a136227de71a285a50ec56e15b630de2def2a5049714713225459702ce1304d",
+    "src/components/brand-anchor-statement.tsx": "d94646d52109ae8538ddeffd55a244ed115d1c6184b0eed3d9a68a33dc0fc59a",
+    "src/components/site-chrome.tsx": "3c41801aa8859a36102ecbeed751690d354778bc74dc9d47b1bda1e1cbf0285c"
+  },
+  "resulting_file_hashes": {
+    "src/config/site-brand.ts": "c9c261c732bcb5b313955d8825adbc483087112e346487baff8e1cc83d07c384",
+    "src/app/layout.tsx": "1a467465787141c4059722cec9fbb5063b36c6791e303c68c61dfcfe1ee9af0a",
+    "src/app/page.tsx": "60f534dfb1cfbce6ad4ce777e74490ba2c24b6b353ee537acaf5f3d71443aa0c",
+    "src/lib/json-ld.ts": "9bfa24c15996ecb870a1f396888e7d257ccaef075cfd247c71b3baddc023e40a",
+    "src/components/brand-anchor-statement.tsx": "e97ee6db224ed174dd255351d5df06ccdfcbc694aa6b1b7601f6ff6dd8035a72",
+    "src/components/site-chrome.tsx": "d5ec597e15a3720b0c9cfef7b2bae87ee6abb4eb8ddb1d279be9974a2cae8d35",
+    "tests/google-site-name-alignment.test.ts": "8fbc6fced0bd0a0ef15fd1a6b8e8f2071c7f8aeca041a3e65e908c341b7bb88e"
+  },
+  "structured_data_owner": "src/lib/json-ld.ts",
+  "metadata_owner": "src/app/layout.tsx (sitewide), src/app/page.tsx (homepage overrides)",
+  "visible_brand_owner": "src/config/site-brand.ts consumed by src/components/site-chrome.tsx and src/components/brand-anchor-statement.tsx",
+  "canonical_url": "https://www.howesounddj.com/",
+  "rendered_WebSite_entity": {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://www.howesounddj.com/#website",
+    "url": "https://www.howesounddj.com/",
+    "name": "Howe Sound Wedding DJ",
+    "alternateName": ["Howe Sound DJ", "howesounddj.com"],
+    "publisher": { "@id": "https://www.howesounddj.com/#organization" }
+  },
+  "rendered_Organization_entity": {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://www.howesounddj.com/#organization",
+    "name": "Howe Sound Wedding DJ",
+    "alternateName": ["Howe Sound DJ"],
+    "url": "https://www.howesounddj.com"
+  },
+  "rendered_LocalBusiness_entity": null,
+  "homepage_title": "Howe Sound Wedding DJ | Squamish, Whistler & Vancouver",
+  "og_site_name": "Howe Sound Wedding DJ",
+  "validation_commands": [
+    "npm run lint",
+    "npm run typecheck",
+    "npm test",
+    "npm run build",
+    "rendered homepage metadata inspection on localhost:3000"
+  ],
+  "validation_results": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "test": "pass (33 tests, 4 files)",
+    "build": "pass",
+    "rendered_homepage": "pass"
+  },
+  "production_build_result": "pass — Next.js 16.2.3 production build completed; 44 pages generated",
+  "duplicate_schema_check": "pass — exactly one WebSite entity on homepage; Organization remains sitewide single entity",
+  "internal_page_title_regression_result": "pass — Contact, Packages, About titles remain page-specific with shorter alternate brand suffix",
+  "external_schema_validation_status": "EXTERNAL_SCHEMA_VALIDATION_NOT_AVAILABLE",
+  "deployment_status": "not_deployed",
+  "production_verification_status": "not_verified",
+  "excluded_scope_confirmation": {
+    "google_business_profile": "not_modified",
+    "internal_page_title_rewrites": "not_performed",
+    "hso_web_p01_about_links": "not_modified",
+    "navigation_redesign": "not_performed",
+    "analytics": "not_modified",
+    "route_changes": "not_performed"
+  },
+  "limitations": [
+    "Next.js 16 metadata API did not emit og:site_name from openGraph.siteName alone; explicit head meta added in root layout.",
+    "Google site-name adoption is not guaranteed and was not observed in Search.",
+    "No web app manifest exists in repository.",
+    "Graphical logo asset unchanged; header uses text wordmark.",
+    "Body copy on internal pages still references Howe Sound DJ in prose by design."
+  ],
+  "completion_evidence_status": "IMPLEMENTED_AND_VALIDATED_LOCALLY"
+}

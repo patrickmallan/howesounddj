@@ -1,5 +1,12 @@
-/** Canonical site origin, keep in sync with `metadataBase` in `src/app/layout.tsx`. */
-export const SITE_ORIGIN = "https://www.howesounddj.com";
+import {
+  SITE_ALTERNATE_NAMES,
+  SITE_ORIGIN,
+  SITE_PUBLIC_NAME,
+  SITE_SHORT_NAME,
+} from "@/config/site-brand";
+
+/** @deprecated Import `SITE_ORIGIN` from `@/config/site-brand` for new code. */
+export { SITE_ORIGIN };
 
 const ORG_DESCRIPTION =
   "Squamish wedding DJ for Sea-to-Sky weddings. Personalized music, professional planning, and polished ceremony-to-reception support, across Whistler, Vancouver, and the corridor.";
@@ -8,12 +15,28 @@ const ORG_DESCRIPTION =
  * Sitewide Organization (Squamish-rooted, service-area). No street address on site.
  * No sameAs, no verified social profile URLs in the codebase. No ratings or awards.
  */
+/** Canonical homepage WebSite entity for Google site-name preference. Emit on `/` only. */
+export function websiteJsonLd(): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_ORIGIN}/#website`,
+    url: `${SITE_ORIGIN}/`,
+    name: SITE_PUBLIC_NAME,
+    alternateName: [...SITE_ALTERNATE_NAMES],
+    publisher: {
+      "@id": `${SITE_ORIGIN}/#organization`,
+    },
+  };
+}
+
 export function organizationJsonLd(): Record<string, unknown> {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": `${SITE_ORIGIN}/#organization`,
-    name: "Howe Sound DJ",
+    name: SITE_PUBLIC_NAME,
+    alternateName: [SITE_SHORT_NAME],
     url: SITE_ORIGIN,
     description: ORG_DESCRIPTION,
     logo: {

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { SITE_PUBLIC_NAME } from "@/config/site-brand";
 import CTADuo from "@/components/cta-duo";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { HeaderCheckAvailability } from "@/components/header-check-availability";
@@ -416,12 +417,12 @@ export function SiteHeader() {
         <Link
           href="/"
           className="mr-2 min-w-0 shrink text-left transition hover:opacity-90 sm:mr-4 md:min-w-[12rem]"
-          aria-label="Howe Sound DJ home"
+          aria-label={`${SITE_PUBLIC_NAME} home`}
         >
-          <div className="text-base font-semibold tracking-[0.12em] uppercase text-amber-300 sm:text-lg sm:tracking-[0.2em]">
-            Howe Sound DJ
+          <div className="text-sm font-semibold tracking-[0.08em] uppercase text-amber-300 sm:text-base sm:tracking-[0.14em]">
+            {SITE_PUBLIC_NAME}
           </div>
-          <div className="text-[0.65rem] text-white/60 sm:text-xs">Squamish Wedding DJ</div>
+          <div className="text-[0.65rem] text-white/60 sm:text-xs">Squamish · Sea-to-Sky</div>
         </Link>
         <div className="flex min-w-0 shrink-0 items-center gap-1.5 sm:gap-3">
           <nav
@@ -608,7 +609,7 @@ export function SiteFooter() {
     <footer className="mt-auto border-t border-white/10">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-white/45 lg:px-8">
         <div className="border-b border-white/10 pb-6">
-          <div className="text-base font-semibold text-white/90">Howe Sound DJ</div>
+          <div className="text-base font-semibold text-white/90">{SITE_PUBLIC_NAME}</div>
           <p className="mt-1 max-w-md text-sm leading-relaxed text-white/50">
             Personalized music and professional planning for Sea-to-Sky weddings, from ceremony through reception.
           </p>
@@ -631,7 +632,7 @@ export function SiteFooter() {
           </Link>
         </p>
         <div className="flex flex-col gap-3 border-t border-white/10 pt-6 md:flex-row md:items-center md:justify-between">
-          <div className="text-white/40">© {year} Howe Sound DJ. Squamish Wedding DJ.</div>
+          <div className="text-white/40">© {year} {SITE_PUBLIC_NAME}. Squamish · Sea-to-Sky.</div>
           <div className="text-white/40">Serving Squamish, Whistler, Vancouver, and the Sea-to-Sky corridor.</div>
         </div>
       </div>
