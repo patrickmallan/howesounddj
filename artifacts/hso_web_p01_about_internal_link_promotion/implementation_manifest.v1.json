@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0.0",
+  "tranche_id": "HSO-WEB-P01_ABOUT_INTERNAL_LINK_PROMOTION",
+  "generated_at_utc": "2026-07-18T15:25:17Z",
+  "operational_action_id": "act-2ffbce56885571ac",
+  "source_opportunity_id": "2ffbce56885571ac",
+  "implementation_plan_id": "iplan-318379784edd5ad9",
+  "observation_plan_id": "oplan-318379784edd5ad9",
+  "website_workspace_root": "/Users/patrickmallan/Desktop/howesounddj",
+  "intervention_family": "INTERNAL_LINK_PROMOTION",
+  "target_route": "/about",
+  "changed_routes": ["/packages", "/contact"],
+  "changed_files": [
+    "src/app/packages/page.tsx",
+    "src/app/contact/page.tsx",
+    "tests/about-internal-link-promotion.test.ts"
+  ],
+  "original_file_hashes": {
+    "src/app/page.tsx": "1695bb39b0905d9fcedc9d0973e8ce4139bca24f01d42918d2a022bc760d28f0",
+    "src/app/packages/page.tsx": "55109bd636de330fd2491b05d6de26e141566ae9a31686f0d9b79122b30fde67",
+    "src/app/contact/page.tsx": "b3ff82980dd2d27404e2602150013ecb99f9ecf5dc2262da75de7b1f93b42a5b",
+    "src/app/about/page.tsx": "98ed44fa7b50c5c5661a45d0aac8cd2c970d3a67811781b172c3313c630f2d07"
+  },
+  "resulting_file_hashes": {
+    "src/app/page.tsx": "1695bb39b0905d9fcedc9d0973e8ce4139bca24f01d42918d2a022bc760d28f0",
+    "src/app/packages/page.tsx": "c4df6059f136f7c20f3c8c76a332ae930fb03d23e49614adfd4ad8021e184a91",
+    "src/app/contact/page.tsx": "8e1a831cc0c0d370493cb2e190b461a8a28ae4a538587a76efffa1a00e526c79",
+    "src/app/about/page.tsx": "98ed44fa7b50c5c5661a45d0aac8cd2c970d3a67811781b172c3313c630f2d07",
+    "tests/about-internal-link-promotion.test.ts": "13f1436435a1458e6ad57ddcb40c848aa90b704832fc263fbbe6fd51638a7091"
+  },
+  "link_placements": [
+    {
+      "source_route": "/",
+      "source_file": "src/app/page.tsx",
+      "owning_component": "HoweSoundDJHomepage (default export)",
+      "insertion_context": "Meet Patrick section (#about), below introductory body copy",
+      "anchor_text": "Full story on About",
+      "destination": "/about",
+      "status": "already_valid",
+      "rationale": "Existing contextual body link in trust/founder section satisfies pilot requirement; no duplicate added."
+    },
+    {
+      "source_route": "/packages",
+      "source_file": "src/app/packages/page.tsx",
+      "owning_component": "PackagesPage (default export)",
+      "insertion_context": "Every package includes section intro, after standards paragraph",
+      "anchor_text": "Meet the person behind Howe Sound DJ",
+      "destination": "/about",
+      "status": "newly_added",
+      "rationale": "Visitors evaluating tiers can discover Patrick's approach and corridor experience without interrupting package comparison or primary CTAs."
+    },
+    {
+      "source_route": "/contact",
+      "source_file": "src/app/contact/page.tsx",
+      "owning_component": "ContactPage (default export)",
+      "insertion_context": "What happens after you submit trust paragraph, adjacent to inquiry path",
+      "anchor_text": "Read about Patrick's approach",
+      "destination": "/about",
+      "status": "newly_added",
+      "rationale": "Provides human reassurance before inquiry without moving or weakening contact forms or primary CTAs."
+    }
+  ],
+  "anchor_texts": [
+    "Full story on About",
+    "Meet the person behind Howe Sound DJ",
+    "Read about Patrick's approach"
+  ],
+  "destination_routes": ["/about"],
+  "validation_commands": [
+    "npm run lint",
+    "npm run typecheck",
+    "npm test",
+    "npm run build",
+    "curl SSR link verification on localhost:3000"
+  ],
+  "validation_results": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "test": "pass (25 tests, 3 files)",
+    "build": "pass",
+    "ssr_link_verification": "pass — contextual /about links present in /, /packages, /contact HTML; /about returns 200"
+  },
+  "production_build_result": "pass — Next.js 16.2.3 production build completed; 44 static pages generated",
+  "visual_validation_status": "pass_local — browser accessibility snapshot and SSR curl confirmed contextual links on packages and contact; homepage existing link confirmed",
+  "excluded_scope_confirmation": {
+    "header_navigation": "unchanged",
+    "footer_navigation": "unchanged",
+    "page_titles": "unchanged",
+    "meta_descriptions": "unchanged",
+    "structured_data": "unchanged",
+    "canonical_urls": "unchanged",
+    "contact_form": "unchanged",
+    "analytics": "unchanged",
+    "seo_intelligence_state": "not_mutated"
+  },
+  "limitations": [
+    "Changes validated locally only; production deployment not performed in this tranche execution.",
+    "Post-availability trust links in ContactAvailabilityForm were not counted as the pilot body placement; page-level contextual link added separately.",
+    "Mobile-specific screenshot evidence not captured; accessibility snapshot and SSR HTML used instead."
+  ],
+  "completion_evidence_status": "IMPLEMENTED_AND_VALIDATED_LOCALLY"
+}

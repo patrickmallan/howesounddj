@@ -94,7 +94,14 @@ export default function ContactPage() {
               </li>
             </ol>
             <p className="mt-6 text-sm leading-7 text-white/55">
-              Fast replies and calm communication are part of the same experience couples describe in reviews. A conversation first, not a hard sell.
+              Fast replies and calm communication are part of the same experience couples describe in reviews.{" "}
+              <Link
+                href="/about"
+                className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+              >
+                Read about Patrick&apos;s approach
+              </Link>{" "}
+              if you want that human context before you write—a conversation first, not a hard sell.
             </p>
           </div>
         </div>

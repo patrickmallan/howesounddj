@@ -210,6 +210,15 @@ export default function PackagesPage() {
             <p className="mt-4 text-lg leading-8 text-white/70">
               Scope changes; standards do not. From soft ballads to peak dance-floor moments, you get thoughtful music direction, responsive communication, and execution that matches what you planned.
             </p>
+            <p className="mt-4 text-sm leading-7 text-white/55">
+              <Link
+                href="/about"
+                className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
+              >
+                Meet the person behind Howe Sound DJ
+              </Link>{" "}
+              if you want the approach and corridor experience before you choose a tier.
+            </p>
           </div>
           <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2">
             {everyPackageIncludes.map((item) => (
