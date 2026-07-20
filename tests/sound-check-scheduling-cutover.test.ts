@@ -43,7 +43,7 @@ describe("HSDJ-WEB-SCHEDULING-01 Sound Check public cutover", () => {
     expect(PUBLIC_SOUND_CHECK_SCHEDULING.durationMinutes).toBe(45);
     expect(PUBLIC_SOUND_CHECK_SCHEDULING.url).toBe(SOUND_CHECK_URL);
     expect(CONSULT_CALENDLY_URL).toBe(SOUND_CHECK_URL);
-    expect(PUBLIC_SOUND_CHECK_CTA_LABEL).toBe("Book a Sound Check");
+    expect(PUBLIC_SOUND_CHECK_CTA_LABEL).toBe("Book a Consult");
   });
 
   it("keeps consult-calendly as a thin re-export of the canonical owner", () => {
@@ -67,14 +67,30 @@ describe("HSDJ-WEB-SCHEDULING-01 Sound Check public cutover", () => {
     expect(headerChecker).toMatch(/PUBLIC_SOUND_CHECK_CTA_LABEL/);
   });
 
-  it("renders accessible Sound Check CTA labels on direct scheduling surfaces", () => {
+  it("renders accessible consult CTA labels on direct scheduling surfaces", () => {
     expect(readSource("src/components/book-consult-tracked-link.tsx")).toMatch(
       /children \?\? PUBLIC_SOUND_CHECK_CTA_LABEL/
     );
-    expect(readSource("src/components/contact-availability-form.tsx")).toMatch(/Book a Sound Check/);
+    expect(readSource("src/components/contact-availability-form.tsx")).toMatch(/PUBLIC_SOUND_CHECK_CTA_LABEL/);
     expect(readSource("src/components/contact-book-consult-section.tsx")).toMatch(
       /PUBLIC_SOUND_CHECK_SUPPORTING_COPY/
     );
+  });
+
+  it("does not retain stale public booking CTA labels in production source", () => {
+    const staleLabels = [
+      "Book a Sound Check",
+      "Book Your Sound Check",
+      "Schedule a Sound Check",
+    ];
+    const offenders = PRODUCTION_SOURCES.flatMap((filePath) => {
+      const source = readFileSync(filePath, "utf8");
+      const relative = filePath.replace(`${ROOT}/`, "");
+      return staleLabels
+        .filter((label) => source.includes(label))
+        .map((label) => `${relative}: ${label}`);
+    });
+    expect(offenders).toEqual([]);
   });
 
   it("preserves external-link security on the tracked scheduling link", () => {

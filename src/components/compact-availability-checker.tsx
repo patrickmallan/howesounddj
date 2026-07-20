@@ -13,7 +13,7 @@ import { clearPostAvailabilityContext } from "@/lib/post-availability-context";
 const ANALYTICS_SURFACE = "header_panel";
 
 const AVAILABLE_NEXT =
-  "Submit an inquiry to continue, or book a complimentary Sound Check to talk through your venue and vision.";
+  "Submit an inquiry to continue, or book a complimentary consult to talk through your venue and vision.";
 
 type CheckPhase =
   | { kind: "idle" }

@@ -544,7 +544,7 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
           </div>
         ) : (
           <p className="text-sm text-white/45">
-            Spam protection is not configured. Use the availability section above or book a Sound Check
+            Spam protection is not configured. Use the availability section above or book a consult
             from the consult section higher on this page.
           </p>
         )}

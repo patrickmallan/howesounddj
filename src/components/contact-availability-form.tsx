@@ -303,7 +303,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
           href="#book-consult"
           className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
         >
-          Book a Sound Check
+          {PUBLIC_SOUND_CHECK_CTA_LABEL}
         </a>
         <span className="text-white/45">, or check your date first below.</span>{" "}
         <span className="text-white/45">
@@ -613,7 +613,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               Turnstile (spam protection) is not configured for this deployment. Add{" "}
               <code className="rounded bg-white/10 px-1 py-0.5 text-xs text-white/90">TURNSTILE_SITE_KEY</code> or{" "}
               <code className="rounded bg-white/10 px-1 py-0.5 text-xs text-white/90">NEXT_PUBLIC_TURNSTILE_SITE_KEY</code> in
-              your host env, redeploy, or book a Sound Check from the consult section below.
+              your host env, redeploy, or book a consult from the consult section below.
             </p>
           )}
 

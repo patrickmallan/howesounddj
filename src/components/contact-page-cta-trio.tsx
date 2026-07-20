@@ -10,7 +10,7 @@ const trioChildLayout =
   "inline-flex min-h-[44px] min-w-0 w-full flex-1 items-center justify-center text-center md:flex-1 md:w-0";
 
 /**
- * Contact “Start here” + bottom finale: Book a Sound Check (primary), Check Availability (outline), Send a Message (outline).
+ * Contact “Start here” + bottom finale: Book a Consult (primary), Check Availability (outline), Send a Message (outline).
  * Stacked full-width on narrow viewports; one row from `md` when space allows.
  */
 export function ContactPageCtaTrio() {

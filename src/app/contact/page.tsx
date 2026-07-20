@@ -21,11 +21,11 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: { absolute: "Contact | Howe Sound DJ" },
   description:
-    "Book a complimentary Sound Check — a 45-minute wedding DJ consultation to talk through your date, vision, and whether Howe Sound DJ is the right fit. Or check availability first.",
+    "Book a consult — a complimentary 45-minute wedding DJ consultation to talk through your date, vision, and whether Howe Sound DJ is the right fit. Or check availability first.",
   openGraph: {
     title: "Contact | Howe Sound DJ",
     description:
-      "Book a complimentary Sound Check — a 45-minute wedding DJ consultation to talk through your date, vision, and whether Howe Sound DJ is the right fit. Or check availability first.",
+      "Book a consult — a complimentary 45-minute wedding DJ consultation to talk through your date, vision, and whether Howe Sound DJ is the right fit. Or check availability first.",
     url: "/contact",
   },
   alternates: { canonical: "/contact" },
@@ -84,7 +84,7 @@ export default function ContactPage() {
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-amber-300/35 bg-amber-300/10 text-sm font-semibold text-amber-200">
                   3
                 </span>
-                <span>If the fit feels right, you book a Sound Check to align on music, flow, and coverage.</span>
+                <span>If the fit feels right, you book a consult to align on music, flow, and coverage.</span>
               </li>
               <li className="flex gap-4">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-amber-300/35 bg-amber-300/10 text-sm font-semibold text-amber-200">
@@ -234,7 +234,7 @@ export default function ContactPage() {
               Ready when you are
             </div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              Book a Sound Check when you&apos;re ready to talk, or check your date first.
+              Book a Consult when you&apos;re ready to talk, or check your date first.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
               Pick what matches where you are in planning: schedule your complimentary consultation, skim packages if
