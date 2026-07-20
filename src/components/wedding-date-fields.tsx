@@ -3,9 +3,10 @@
 import type { RefObject } from "react";
 
 const dateInputBase =
-  "rounded-xl border border-white/15 bg-neutral-950 text-center text-sm text-white outline-none focus:border-amber-300/50 tabular-nums";
+  "w-full min-w-0 rounded-xl border border-white/15 bg-neutral-950 text-center text-sm text-white outline-none focus:border-amber-300/50 tabular-nums";
 
-const dateSlashClass = "hidden shrink-0 text-white/35 select-none sm:inline";
+const dateRowGridClass =
+  "grid w-full max-w-full grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)] gap-2";
 
 type Props = {
   yearInputId: string;
@@ -49,7 +50,7 @@ export function WeddingDateFields({
       </label>
       {helper ? <p className="mt-1 text-sm text-white/45">{helper}</p> : null}
       <div
-        className={`flex max-w-full flex-col gap-2.5 sm:flex-row sm:flex-nowrap sm:items-center ${compact ? "mt-3 sm:gap-2.5" : "mt-4 sm:gap-3"}`}
+        className={`${dateRowGridClass} ${compact ? "mt-3" : "mt-4"}`}
         role="group"
         aria-labelledby={yearInputId}
       >
@@ -65,11 +66,8 @@ export function WeddingDateFields({
           value={yearStr}
           onChange={onYearChange}
           maxLength={4}
-          className={`${dateInputBase} min-h-[44px] w-full px-3 py-2.5 sm:w-auto sm:min-w-[4.5rem] sm:flex-none sm:px-2.5 md:min-w-[4.75rem]`}
+          className={`${dateInputBase} min-h-[44px] px-2.5 py-2.5`}
         />
-        <span className={dateSlashClass} aria-hidden>
-          /
-        </span>
         <input
           ref={monthRef}
           id={monthInputId}
@@ -82,11 +80,8 @@ export function WeddingDateFields({
           value={monthStr}
           onChange={onMonthChange}
           maxLength={2}
-          className={`${dateInputBase} min-h-[44px] w-full px-3 py-2.5 sm:w-auto sm:min-w-[3.5rem] sm:flex-none sm:px-2.5`}
+          className={`${dateInputBase} min-h-[44px] px-2.5 py-2.5`}
         />
-        <span className={dateSlashClass} aria-hidden>
-          /
-        </span>
         <input
           ref={dayRef}
           id={dayInputId}
@@ -99,7 +94,7 @@ export function WeddingDateFields({
           value={dayStr}
           onChange={onDayChange}
           maxLength={2}
-          className={`${dateInputBase} min-h-[44px] w-full px-3 py-2.5 sm:w-auto sm:min-w-[3.5rem] sm:flex-none sm:px-2.5`}
+          className={`${dateInputBase} min-h-[44px] px-2.5 py-2.5`}
         />
       </div>
     </div>

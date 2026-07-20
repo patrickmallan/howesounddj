@@ -15,7 +15,7 @@ const backdropClass =
   "fixed inset-0 z-[90] cursor-default border-0 bg-black/65 p-0 backdrop-blur-md xl:bg-black/55 xl:backdrop-blur-sm";
 
 const panelBaseClass =
-  "fixed z-[95] max-h-[min(calc(100dvh-5.5rem),34rem)] w-[min(calc(100vw-1.5rem),22rem)] overflow-y-auto overscroll-contain rounded-2xl border border-white/10 bg-neutral-950/[0.98] p-5 pb-6 shadow-2xl shadow-black/55 backdrop-blur-sm transition duration-150 xl:max-h-[min(calc(100dvh-6rem),36rem)] xl:w-[min(calc(100vw-2rem),22rem)]";
+  "fixed z-[95] max-h-[min(calc(100dvh-5.5rem),34rem)] w-[min(calc(100vw-1.5rem),26rem)] overflow-y-auto overscroll-contain rounded-2xl border border-white/10 bg-neutral-950/[0.98] p-5 pb-6 shadow-2xl shadow-black/55 backdrop-blur-sm transition duration-150 xl:max-h-[min(calc(100dvh-6rem),36rem)] xl:w-[min(calc(100vw-2rem),28rem)]";
 
 const panelMobileClass =
   "left-1/2 top-[max(4.75rem,calc(env(safe-area-inset-top,0px)+3.75rem))] -translate-x-1/2";
