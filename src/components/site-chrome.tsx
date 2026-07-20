@@ -573,7 +573,7 @@ export function SiteFinalDecisionZone() {
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="footer" checkSurface="footer" />
               <p className="text-sm leading-relaxed text-white/60">
-                15 minutes &bull; No pressure &bull; Just clarity
+                45 minutes &bull; No pressure &bull; Just clarity
               </p>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-white/45">
                 <Link

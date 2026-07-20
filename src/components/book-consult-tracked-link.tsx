@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { ANALYTICS_EVENTS, consultClickEventParams, trackEvent } from "@/lib/analytics";
 import { CTA_PILL_FLEX_CENTER } from "@/lib/cta-alignment";
-import { CONSULT_CALENDLY_URL } from "@/lib/consult-calendly";
+import { CONSULT_CALENDLY_URL, PUBLIC_SOUND_CHECK_CTA_LABEL } from "@/lib/consult-calendly";
 
 export type BookConsultSurface =
   | "hero"
@@ -15,7 +15,7 @@ export type BookConsultSurface =
   | "footer"
   | "explore_card"
   | "contact_page"
-  /** Primary Book a Consult CTAs on `/contact` (hero and consult-first panel). */
+  /** Primary Sound Check CTAs on `/contact` (hero and consult-first panel). */
   | "contact_page_primary";
 
 /** Default Calendly primary pill, always applied first on `BookConsultTrackedLink`; use for raw Calendly anchors too. */
@@ -57,7 +57,7 @@ export function BookConsultTrackedLink({ surface, className, children }: Props) 
       className={merged}
       onClick={handleClick}
     >
-      {children ?? "Book a Consult"}
+      {children ?? PUBLIC_SOUND_CHECK_CTA_LABEL}
     </a>
   );
 }

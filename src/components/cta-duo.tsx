@@ -20,7 +20,7 @@ type Props = {
 };
 
 /**
- * Standard paired CTAs: **Book a Consult** (Calendly) + **Check Availability** (`/contact#availability`).
+ * Standard paired CTAs: **Book a Sound Check** (Calendly) + **Check Availability** (`/contact#availability`).
  * Side-by-side from `sm` up with equal flex width; stacked full-width on narrow screens.
  */
 export default function CTADuo({

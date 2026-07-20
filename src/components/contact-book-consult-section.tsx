@@ -1,6 +1,7 @@
 "use client";
 
 import { ContactPageCtaTrio } from "@/components/contact-page-cta-trio";
+import { PUBLIC_SOUND_CHECK_SUPPORTING_COPY } from "@/lib/consult-calendly";
 
 export function ContactBookConsultSection() {
   return (
@@ -17,18 +18,17 @@ export function ContactBookConsultSection() {
           Start here
         </div>
         <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
-          Let&apos;s map out your wedding
+          Let&apos;s talk about your wedding
         </h2>
         <p className="mt-5 max-w-2xl text-lg leading-8 text-white/75">
-          A quick consult is the easiest way to get clear on your timeline, music direction, and how the night will
-          actually flow.
+          {PUBLIC_SOUND_CHECK_SUPPORTING_COPY}
         </p>
 
         <div className="mt-8 max-w-xl">
           <ContactPageCtaTrio />
         </div>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/60">
-          15 minutes &bull; No pressure &bull; Just clarity
+          45 minutes &bull; No pressure &bull; Just clarity
         </p>
 
         <ul className="mt-8 max-w-xl space-y-3 text-base leading-relaxed text-white/70">

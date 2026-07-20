@@ -52,7 +52,7 @@ export default function VenuesHubPage() {
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="venues_hub" checkSurface="venues_hub" />
               <p className="text-sm leading-relaxed text-white/60">
-                15 minutes &bull; No pressure &bull; Just clarity
+                45 minutes &bull; No pressure &bull; Just clarity
               </p>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
                 <Link
@@ -154,7 +154,7 @@ export default function VenuesHubPage() {
               <div className="mt-8 max-w-xl space-y-4">
                 <CTADuo bookSurface="venues_hub" checkSurface="venues_hub" />
                 <p className="text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; Just clarity
+                  45 minutes &bull; No pressure &bull; Just clarity
                 </p>
                 <div className="flex flex-wrap items-center gap-3 gap-y-3">
                   <Link

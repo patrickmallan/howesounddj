@@ -91,7 +91,7 @@ export default async function VenueDetailPage({ params }: Props) {
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="venue_hero" checkSurface="venue_hero" />
               <p className="text-sm leading-relaxed text-white/60">
-                15 minutes &bull; No pressure &bull; Just clarity
+                45 minutes &bull; No pressure &bull; Just clarity
               </p>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
                 <a
@@ -251,7 +251,7 @@ export default async function VenueDetailPage({ params }: Props) {
               <div className="mt-8 max-w-xl space-y-4">
                 <CTADuo bookSurface="venue_page_cta" checkSurface="venue_page_cta" />
                 <p className="text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; Just clarity
+                  45 minutes &bull; No pressure &bull; Just clarity
                 </p>
                 <div className="flex flex-wrap items-center gap-3 gap-y-3">
                   <Link

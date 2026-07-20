@@ -103,7 +103,7 @@ export default function StorySeaToSkyGondolaDanceFloorPage() {
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
               <p className="text-sm leading-relaxed text-white/60">
-                15 minutes &bull; No pressure &bull; Just clarity
+                45 minutes &bull; No pressure &bull; Just clarity
               </p>
             </div>
           </div>
@@ -245,7 +245,7 @@ export default function StorySeaToSkyGondolaDanceFloorPage() {
                 <div className="mt-8 max-w-xl space-y-4">
                   <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
                   <p className="text-sm leading-relaxed text-white/60">
-                    15 minutes &bull; No pressure &bull; Just clarity
+                    45 minutes &bull; No pressure &bull; Just clarity
                   </p>
                   <p className="text-sm text-white/45">
                     <Link href="/stories" className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">

@@ -148,7 +148,7 @@ export default function WeddingsPage() {
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="hero" checkSurface="hero" />
               <p className="text-sm leading-relaxed text-white/60">
-                15 minutes &bull; No pressure &bull; Just clarity
+                45 minutes &bull; No pressure &bull; Just clarity
               </p>
             </div>
           </div>
@@ -344,12 +344,12 @@ export default function WeddingsPage() {
               Let’s talk about your date, your venue, and the kind of night you want to create.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              When the direction feels aligned, most couples start with Book a Consult. You can confirm your calendar date alongside or right after.
+              When the direction feels aligned, most couples start with a Sound Check. You can confirm your calendar date alongside or right after.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
               <p className="text-sm leading-relaxed text-white/60">
-                15 minutes &bull; No pressure &bull; Just clarity
+                45 minutes &bull; No pressure &bull; Just clarity
               </p>
             </div>
           </div>

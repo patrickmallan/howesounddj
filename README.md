@@ -1,6 +1,6 @@
 # Howe Sound DJ — site
 
-Next.js app for [howesounddj.com](https://www.howesounddj.com) — wedding DJ positioning, packages, and **first-party availability** on **`/contact`**: date check via same-origin **`/api/availability`** (server proxy to **[HSDJ Operations](https://ops.howesounddj.com/api/availability)** — no Google Calendar credentials on this site), inquiry email via **Resend**, **Cloudflare Turnstile**, and optional **Book a Consult** via [Calendly](https://calendly.com/patrick-howesounddj).
+Next.js app for [howesounddj.com](https://www.howesounddj.com) — wedding DJ positioning, packages, and **first-party availability** on **`/contact`**: date check via same-origin **`/api/availability`** (server proxy to **[HSDJ Operations](https://ops.howesounddj.com/api/availability)** — no Google Calendar credentials on this site), inquiry email via **Resend**, **Cloudflare Turnstile**, and optional **Book a Sound Check** via [Calendly](https://calendly.com/patrick-howesounddj/sound-check).
 
 ## Quick start
 

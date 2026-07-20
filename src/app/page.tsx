@@ -139,7 +139,7 @@ export default function HoweSoundDJHomepage() {
               <div className="mt-6 max-w-xl space-y-4">
                 <CTADuo bookSurface="hero" checkSurface="hero" />
                 <p className="text-sm leading-relaxed text-white/60">
-                  15 minutes &bull; No pressure &bull; Just clarity
+                  45 minutes &bull; No pressure &bull; Just clarity
                 </p>
                 <p className="text-sm leading-relaxed text-white/55">
                   If a short call would help, it stays low-key: alignment first, on your timeline.
@@ -447,7 +447,7 @@ export default function HoweSoundDJHomepage() {
                 <div className="mt-8 mx-auto max-w-xl space-y-4">
                   <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
                   <p className="text-sm leading-relaxed text-white/60">
-                    15 minutes &bull; No pressure &bull; Just clarity
+                    45 minutes &bull; No pressure &bull; Just clarity
                   </p>
                 </div>
               </div>

@@ -120,7 +120,7 @@ export default function PackagesPage() {
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="hero" checkSurface="hero" />
               <p className="text-sm leading-relaxed text-white/60">
-                15 minutes &bull; No pressure &bull; Just clarity
+                45 minutes &bull; No pressure &bull; Just clarity
               </p>
             </div>
           </div>
@@ -256,7 +256,7 @@ export default function PackagesPage() {
               ))}
             </ul>
             <p className="mt-6 text-sm leading-7 text-white/50">
-              Not sure what you need? That is what Book a Consult is for. We match enhancements to your venue, guest count, and how you want the night to feel.
+              Not sure what you need? That is what a Sound Check is for. We match enhancements to your venue, guest count, and how you want the night to feel.
             </p>
           </div>
         </div>
@@ -280,7 +280,7 @@ export default function PackagesPage() {
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
               <p className="text-sm leading-relaxed text-white/60">
-                15 minutes &bull; No pressure &bull; Just clarity
+                45 minutes &bull; No pressure &bull; Just clarity
               </p>
             </div>
           </div>

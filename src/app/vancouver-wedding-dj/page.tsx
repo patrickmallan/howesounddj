@@ -178,7 +178,7 @@ export default function VancouverWeddingDjPage() {
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="hero" checkSurface="hero" />
               <p className="text-sm leading-relaxed text-white/60">
-                15 minutes &bull; No pressure &bull; Just clarity
+                45 minutes &bull; No pressure &bull; Just clarity
               </p>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
                 <a
@@ -354,12 +354,12 @@ export default function VancouverWeddingDjPage() {
               Vancouver couples: let’s match music, date, and Sea-to-Sky logistics
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Check your date first for your Squamish, Whistler, or corridor wedding, layer in packages when you want structure, or start with Book a Consult. Either way, the goal is your story, your crowd, your night.
+              Check your date first for your Squamish, Whistler, or corridor wedding, layer in packages when you want structure, or start with a Sound Check. Either way, the goal is your story, your crowd, your night.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
               <p className="text-sm leading-relaxed text-white/60">
-                15 minutes &bull; No pressure &bull; Just clarity
+                45 minutes &bull; No pressure &bull; Just clarity
               </p>
               <div className="flex flex-wrap items-center gap-3 gap-y-3">
                 <a

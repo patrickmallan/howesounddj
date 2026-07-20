@@ -7,13 +7,13 @@ import { bookConsultPrimaryButtonClassName } from "@/components/book-consult-tra
 import { useWeddingDateInput } from "@/hooks/use-wedding-date-input";
 import { runAvailabilityCheck } from "@/lib/availability-check-client";
 import { ANALYTICS_EVENTS, consultClickEventParams, trackEvent } from "@/lib/analytics";
-import { CONSULT_CALENDLY_URL } from "@/lib/consult-calendly";
+import { CONSULT_CALENDLY_URL, PUBLIC_SOUND_CHECK_CTA_LABEL } from "@/lib/consult-calendly";
 import { clearPostAvailabilityContext } from "@/lib/post-availability-context";
 
 const ANALYTICS_SURFACE = "header_panel";
 
 const AVAILABLE_NEXT =
-  "Submit an inquiry to continue, or book a quick consult to talk through your venue and vision.";
+  "Submit an inquiry to continue, or book a complimentary Sound Check to talk through your venue and vision.";
 
 type CheckPhase =
   | { kind: "idle" }
@@ -146,7 +146,7 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
               className={`${bookConsultPrimaryButtonClassName} w-full py-2.5 text-sm`}
               onClick={trackCalendlyClick}
             >
-              Book a Consult
+              {PUBLIC_SOUND_CHECK_CTA_LABEL}
             </a>
             <Link href="/contact#availability" className={outlineButtonClass}>
               Full contact page

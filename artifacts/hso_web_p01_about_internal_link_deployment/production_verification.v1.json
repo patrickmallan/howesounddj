@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "verified_at_utc": "2026-07-18T16:35:07Z",
+  "production_domain": "https://www.howesounddj.com",
+  "deployment_url": "https://howesounddj-mhg1k5i05-patrickmallans-projects.vercel.app",
+  "deployment_identity": "dpl_5qDXgDKXnUyvEjauFbUmDPdYcZJX",
+  "route_checks": [
+    { "route": "/", "requested_url": "https://www.howesounddj.com/", "final_url": "https://www.howesounddj.com/", "status": 200, "pass": true },
+    { "route": "/about", "requested_url": "https://www.howesounddj.com/about", "final_url": "https://www.howesounddj.com/about", "status": 200, "pass": true },
+    { "route": "/packages", "requested_url": "https://www.howesounddj.com/packages", "final_url": "https://www.howesounddj.com/packages", "status": 200, "pass": true },
+    { "route": "/contact", "requested_url": "https://www.howesounddj.com/contact", "final_url": "https://www.howesounddj.com/contact", "status": 200, "pass": true }
+  ],
+  "link_checks": [
+    {
+      "source_route": "/",
+      "expected_anchor": "Full story on About",
+      "observed_anchor": "Full story on About",
+      "expected_destination": "/about",
+      "observed_destination": "/about",
+      "body_context_confirmed": true,
+      "pass": true
+    },
+    {
+      "source_route": "/packages",
+      "expected_anchor": "Meet the person behind Howe Sound DJ",
+      "observed_anchor": "Meet the person behind Howe Sound DJ",
+      "expected_destination": "/about",
+      "observed_destination": "/about",
+      "body_context_confirmed": true,
+      "pass": true
+    },
+    {
+      "source_route": "/contact",
+      "expected_anchor": "Read about Patrick's approach",
+      "observed_anchor": "Read about Patrick's approach",
+      "expected_destination": "/about",
+      "observed_destination": "/about",
+      "body_context_confirmed": true,
+      "pass": true
+    }
+  ],
+  "http_results": "all_four_routes_http_200_on_www_howesounddj_com",
+  "desktop_visual_status": "pass — contextual links visible on production packages and contact via browser accessibility snapshot",
+  "mobile_visual_status": "not_performed",
+  "accessibility_status": "pass — links exposed as semantic link roles with descriptive names in accessibility tree",
+  "contact_surface_status": "pass — availability form fields, secondary inquiry form, consult section, and CTAs present",
+  "package_surface_status": "pass — tier cards, FAQ link, and Book a Consult / Check Availability CTAs present",
+  "metadata_scope_status": "pass_for_p01 — packages/contact titles unchanged from pre-P01 pattern; homepage title changed by separate P02 commit",
+  "navigation_scope_status": "pass — nav/footer About links present as before; P01 did not modify navigation",
+  "analytics_scope_status": "pass — GA script loading unchanged; no analytics config edits in P01 scope",
+  "console_error_status": "not_inspected",
+  "rollback_status": "not_required",
+  "overall_status": "DEPLOYED_AND_VERIFIED",
+  "limitations": [
+    "Mobile viewport visual check not performed.",
+    "Browser click-navigation test not completed due to automation context; SSR href verification used.",
+    "Production deployment includes P02 site-name changes from same main branch."
+  ]
+}

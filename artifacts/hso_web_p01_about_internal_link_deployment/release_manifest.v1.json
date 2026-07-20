@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "tranche_id": "HSO-WEB-P01D_ABOUT_INTERNAL_LINK_PRODUCTION_DEPLOYMENT_AND_VERIFICATION",
+  "generated_at_utc": "2026-07-18T16:35:30Z",
+  "workspace_root": "/Users/patrickmallan/Desktop/howesounddj",
+  "vercel_project_identity": {
+    "projectId": "prj_tpdUuC3ojT7pT4vSeJqYc2qAbi5y",
+    "projectName": "howesounddj",
+    "orgId": "team_1PALrSWoypXwjvjFtYiUKy5r",
+    "scope": "patrickmallans-projects"
+  },
+  "operational_action_id": "act-2ffbce56885571ac",
+  "source_opportunity_id": "2ffbce56885571ac",
+  "implementation_plan_id": "iplan-318379784edd5ad9",
+  "observation_plan_id": "oplan-318379784edd5ad9",
+  "parent_implementation_manifest": "artifacts/hso_web_p01_about_internal_link_promotion/implementation_manifest.v1.json",
+  "authorized_routes": ["/", "/packages", "/contact", "/about"],
+  "authorized_files": [
+    "src/app/packages/page.tsx",
+    "src/app/contact/page.tsx",
+    "tests/about-internal-link-promotion.test.ts"
+  ],
+  "source_file_hashes": {
+    "src/app/page.tsx": {
+      "current": "60f534dfb1cfbce6ad4ce777e74490ba2c24b6b353ee537acaf5f3d71443aa0c",
+      "p01_certified": "1695bb39b0905d9fcedc9d0973e8ce4139bca24f01d42918d2a022bc760d28f0",
+      "reconciliation": "drift_explained_by_subsequent_p02_commit_not_p01_regression"
+    },
+    "src/app/packages/page.tsx": {
+      "current": "c4df6059f136f7c20f3c8c76a332ae930fb03d23e49614adfd4ad8021e184a91",
+      "p01_certified": "c4df6059f136f7c20f3c8c76a332ae930fb03d23e49614adfd4ad8021e184a91",
+      "reconciliation": "match"
+    },
+    "src/app/contact/page.tsx": {
+      "current": "8e1a831cc0c0d370493cb2e190b461a8a28ae4a538587a76efffa1a00e526c79",
+      "p01_certified": "8e1a831cc0c0d370493cb2e190b461a8a28ae4a538587a76efffa1a00e526c79",
+      "reconciliation": "match"
+    },
+    "src/app/about/page.tsx": {
+      "current": "98ed44fa7b50c5c5661a45d0aac8cd2c970d3a67811781b172c3313c630f2d07",
+      "p01_certified": "98ed44fa7b50c5c5661a45d0aac8cd2c970d3a67811781b172c3313c630f2d07",
+      "reconciliation": "match"
+    }
+  },
+  "test_file_hashes": {
+    "tests/about-internal-link-promotion.test.ts": {
+      "current": "13f1436435a1458e6ad57ddcb40c848aa90b704832fc263fbbe6fd51638a7091",
+      "p01_certified": "13f1436435a1458e6ad57ddcb40c848aa90b704832fc263fbbe6fd51638a7091",
+      "reconciliation": "match"
+    }
+  },
+  "predeployment_validation": {
+    "lint": { "started_utc": "2026-07-18T16:33:47Z", "ended_utc": "2026-07-18T16:33:49Z", "exit_code": 0, "result": "pass" },
+    "typecheck": { "started_utc": "2026-07-18T16:33:49Z", "ended_utc": "2026-07-18T16:33:50Z", "exit_code": 0, "result": "pass" },
+    "test": { "started_utc": "2026-07-18T16:33:50Z", "ended_utc": "2026-07-18T16:33:50Z", "exit_code": 0, "result": "pass", "totals": "33 tests, 4 files" },
+    "build": { "started_utc": "2026-07-18T16:33:50Z", "ended_utc": "2026-07-18T16:33:57Z", "exit_code": 0, "result": "pass", "framework": "Next.js 16.2.3", "routes_generated": 44 }
+  },
+  "deployment_command": "npx vercel --prod --yes",
+  "deployment_status": "success",
+  "deployment_identity": "dpl_5qDXgDKXnUyvEjauFbUmDPdYcZJX",
+  "deployment_url": "https://howesounddj-mhg1k5i05-patrickmallans-projects.vercel.app",
+  "production_url": "https://www.howesounddj.com",
+  "production_alias": [
+    "https://www.howesounddj.com",
+    "https://howesounddj.com",
+    "https://howesounddj-patrickmallans-projects.vercel.app",
+    "https://howesounddj-git-main-patrickmallans-projects.vercel.app"
+  ],
+  "production_verification_status": "DEPLOYED_AND_VERIFIED",
+  "rollback_reference": {
+    "prior_production_deployment_id": "dpl_3vZn4SW5Qd4Z7SUj5QYnyDEXZYwu",
+    "prior_production_deployment_url": "https://howesounddj-34xnummob-patrickmallans-projects.vercel.app",
+    "rollback_mechanism": "Vercel dashboard promote prior production deployment or redeploy previous git commit",
+    "intervention_source_files": ["src/app/packages/page.tsx", "src/app/contact/page.tsx"]
+  },
+  "limitations": [
+    "Deployment unit is current main HEAD (includes subsequent P02 site-name commit co-deployed with P01 links).",
+    "P01-authorized source files reconcile to certified hashes; page.tsx drift is from P02 only.",
+    "Mobile viewport browser inspection not performed; desktop browser + SSR verification used.",
+    "No production contact form submission performed."
+  ]
+}

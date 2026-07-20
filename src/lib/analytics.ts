@@ -83,6 +83,8 @@ export function consultClickEventParams(
     ...rest,
     funnel_context,
     page_path,
+    provider: "calendly",
+    booking_purpose: "sound_check",
   };
 }
 
