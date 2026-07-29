@@ -11,12 +11,15 @@
 Visitor browser
   → POST https://www.howesounddj.com/api/availability  { "date": "YYYY-MM-DD" }
   → Website server (Next.js route)
-  → GET https://ops.howesounddj.com/api/availability?date=YYYY-MM-DD
+  → GET https://ops.howesounddj.com/api/availability?date=YYYY-MM-DD  (authoritative read; blocks response)
   → Normalized result object
-  → Visitor message + operator Resend notification (same object)
+  → Immediate JSON response to visitor (`Server-Timing` diagnostic header)
+  → Operator Resend notification (fire-and-forget; does not block response)
 ```
 
 No browser cross-origin call. No Google Calendar credentials on the website.
+
+Post-availability emotional conversion UI (`PostAvailabilitySuccess`) is visitor-facing; governed API `message` remains available to assistive technology via `canonicalStatusMessage`.
 
 ## Website client
 
@@ -24,7 +27,10 @@ No browser cross-origin call. No Google Calendar credentials on the website.
 |--------|------|
 | `src/lib/check-public-availability.ts` | `checkPublicAvailability(date)` — canonical server client |
 | `src/lib/public-availability-contract.ts` | Result types and public copy |
-| `src/app/api/availability/route.ts` | Same-origin proxy + notification |
+| `src/app/api/availability/route.ts` | Same-origin proxy; async operator notification |
+| `src/components/post-availability-success.tsx` | Post-available emotional conversion (full + compact) |
+| `src/config/post-availability-copy.ts` | Visitor-facing success copy SSOT |
+| `src/config/reviews.ts` | Canonical testimonial SSOT |
 | `src/lib/availability-check-client.ts` | Browser form client (POST to same-origin route only) |
 
 ## Fail-closed rules

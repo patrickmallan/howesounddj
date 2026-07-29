@@ -24,4 +24,8 @@ export const PUBLIC_SOUND_CHECK_CTA_LABEL = "Book a Consult" as const;
 
 /** Supporting context when "Sound Check" needs clarification for first-time visitors. */
 export const PUBLIC_SOUND_CHECK_SUPPORTING_COPY =
-  "A complimentary wedding DJ consultation — a 45-minute conversation about your wedding, your vision, and whether Howe Sound DJ is the right fit." as const;
+  "A complimentary 45-minute Sound Check: a calm planning conversation about your wedding date, venue, vision, music, and whether Howe Sound DJ is the right fit." as const;
+
+/** Post-availability context: first step after an open date. */
+export const PUBLIC_SOUND_CHECK_POST_AVAILABILITY_COPY =
+  "Your date looks open. The Sound Check is the first calm planning conversation: 45 minutes to talk through your venue, vision, music, and fit. No pressure to decide on the call." as const;

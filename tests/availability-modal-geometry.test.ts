@@ -32,6 +32,7 @@ describe("HSDJ-WEB-AVAILABILITY-01 modal desktop geometry", () => {
     const checker = readSource("src/components/compact-availability-checker.tsx");
     expect(checker).toMatch(/WeddingDateFields/);
     expect(checker).toMatch(/runAvailabilityCheck/);
+    expect(checker).toMatch(/PostAvailabilitySuccess/);
     expect(checker).toMatch(/Check Availability/);
     expect(checker).not.toMatch(/overflow-x-auto/);
   });

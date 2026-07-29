@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CANONICAL_REVIEWS } from "@/config/reviews";
 import CTADuo from "@/components/cta-duo";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
@@ -17,67 +18,10 @@ export const metadata: Metadata = {
 };
 
 export default function ReviewsPage() {
-  const featuredTestimonials = [
-    {
-      quote:
-        "We would get married all over again just so we could hangout and work with Patrick again. He's a talented DJ and a truly caring person.",
-      name: "Stephen Henry"
-    },
-    {
-      quote:
-        "Patrick kept the party going all night long. If you're thinking about booking him run, don't walk! You will not regret it.",
-      name: "Molly Finn"
-    },
-    {
-      quote:
-        "Seamless, stress-free, and seriously fun. Patrick's the go-to for a reason.",
-      name: "Lauren Steeles"
-    },
-    {
-      quote:
-        "Couldn't be happier with the service provided by Patrick. We hired Patrick for our recent wedding and it was one of the best decisions we made from the ceremony to cocktail hour to the dance everything was perfect! All our guests can't stop talking about how great of a dance party it was and the dance floor was packed at all times! I would recommend him over and over again!",
-      name: "Cassandra Wilding"
-    },
-    {
-      quote:
-        "Patrick is incredible. His calm, professional, yet personable communication made our day stress-free.",
-      name: "Matthew Bundala"
-    },
-    {
-      quote:
-        "Patrick kept the dance floor packed and the energy high all night long.",
-      name: "Vanessa Pocock"
-    },
-    {
-      quote:
-        "We were thrilled to have Patrick from Squamish as he was able to easily attend pre-wedding meetings at our venue.",
-      name: "Natasha Beaudry"
-    },
-    {
-      quote: "We couldn't have asked for a better DJ! Highly recommend for any event.",
-      name: "Matias Fontecilla"
-    },
-    {
-      quote:
-        "Patrick was absolutely fantastic! He handled our ceremony, cocktail hour, and reception seamlessly.",
-      name: "Danya Karras"
-    },
-    {
-      quote:
-        "Patrick was more than just a DJ for our wedding; he was a vital part of our team, and he really went above and beyond to ensure everything ran smoothly. We highly recommend him.",
-      name: "Wedding couple"
-    },
-    {
-      quote:
-        "Patrick was great at our wedding. The song transitions were perfect, and there was never a lull in music throughout the entire night! The group was dancing, and everyone really enjoyed the music! Thanks Patrick for making our wedding unforgettable!",
-      name: "Ellen Selby"
-    },
-    {
-      quote:
-        "Patrick provided fantastic entertainment for us and our guests at our wedding this past August. From prep and planning to day-of execution, Patrick was friendly, professional and talented. The music was on point and our dance floor was the place to be during our reception. I highly recommend Patrick for any and all of your DJ needs!",
-      name: "Melissa Schweyer"
-    }
-  ];
+  const featuredTestimonials = CANONICAL_REVIEWS.map((item) => ({
+    quote: item.quote,
+    name: item.reviewerName,
+  }));
 
   const valueThemes = [
     {

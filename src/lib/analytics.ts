@@ -21,8 +21,20 @@ export const ANALYTICS_EVENTS = {
   checkAvailabilityClick: "check_availability_click",
   /** Contact form: POST to `/api/availability` begins (valid `YYYY-MM-DD` only). */
   availabilityCheckStart: "availability_check_start",
+  /** Canonical alias for availability check start. */
+  availabilityCheckStarted: "availability_check_started",
   /** Contact form: calendar outcome resolved (`availability_status`: available | unavailable | manual_confirmation_required). */
   availabilityCheckResult: "availability_check_result",
+  /** Canonical alias for availability check completion. */
+  availabilityCheckCompleted: "availability_check_completed",
+  /** Post-availability success emotional engine rendered. */
+  postAvailabilitySuccessView: "post_availability_success_view",
+  /** Named proof block visible in post-availability success. */
+  postAvailabilityProofView: "post_availability_proof_view",
+  /** Inquiry text-link fallback from post-availability success (full surface only). */
+  inquiryFallbackClick: "inquiry_fallback_click",
+  /** Unavailable or manual/error availability outcome. */
+  availabilityCheckFailedOrManual: "availability_check_failed_or_manual",
   contactFormStart: "contact_form_start",
   /** Trust-surface navigation while post-availability session context is active. */
   postAvailabilityTrustClick: "post_availability_trust_click",

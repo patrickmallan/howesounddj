@@ -3,6 +3,7 @@ import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
 import { ImageSlot } from "@/components/image-slot";
 import { JsonLd } from "@/components/json-ld";
+import { HOMEPAGE_FEATURED_REVIEW_IDS, getReviewById } from "@/config/reviews";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { vancouverWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
@@ -30,6 +31,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/vancouver-wedding-dj",
   },
+};
+
+const VANCOUVER_REVIEW_CONTEXT: Record<(typeof HOMEPAGE_FEATURED_REVIEW_IDS)[number], string> = {
+  "vanessa-pocock": "Squamish",
+  "matthew-bundala": "Sea to Sky",
+  "stephen-henry": "Whistler",
 };
 
 export default function VancouverWeddingDjPage() {
@@ -121,26 +128,15 @@ export default function VancouverWeddingDjPage() {
     }
   ];
 
-  const reviewSnippets = [
-    {
-      quote:
-        "Patrick kept the dance floor packed and the energy high all night long.",
-      name: "Vanessa Pocock",
-      context: "Squamish"
-    },
-    {
-      quote:
-        "Patrick is incredible. His calm, professional, yet personable communication made our day stress-free.",
-      name: "Matthew Bundala",
-      context: "Sea to Sky"
-    },
-    {
-      quote:
-        "We would get married all over again just so we could hangout and work with Patrick again. He's a talented DJ and a truly caring person.",
-      name: "Stephen Henry",
-      context: "Whistler"
-    }
-  ];
+  const reviewSnippets = HOMEPAGE_FEATURED_REVIEW_IDS.map((id) => {
+    const review = getReviewById(id);
+    if (!review) throw new Error(`Missing Vancouver review snippet: ${id}`);
+    return {
+      quote: review.quote,
+      name: review.reviewerName,
+      context: VANCOUVER_REVIEW_CONTEXT[id],
+    };
+  });
 
   return (
     <main className="min-h-screen bg-neutral-950 text-white">

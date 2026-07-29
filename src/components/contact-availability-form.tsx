@@ -2,12 +2,16 @@
 
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Script from "next/script";
-import { ANALYTICS_EVENTS, consultClickEventParams, trackEvent } from "@/lib/analytics";
+import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
 import { runAvailabilityCheck } from "@/lib/availability-check-client";
-import { bookConsultPrimaryButtonClassName } from "@/components/book-consult-tracked-link";
-import { PostAvailabilityTrustLink } from "@/components/post-availability-trust-link";
-import { CONSULT_CALENDLY_URL, PUBLIC_SOUND_CHECK_CTA_LABEL } from "@/lib/consult-calendly";
+import {
+  AvailabilityCheckingState,
+  availabilityCheckingButtonLabel,
+} from "@/components/availability-checking-state";
+import { PostAvailabilityOutcome } from "@/components/post-availability-outcome";
+import { PostAvailabilitySuccess } from "@/components/post-availability-success";
 import { clearPostAvailabilityContext } from "@/lib/post-availability-context";
+import { PUBLIC_SOUND_CHECK_CTA_LABEL } from "@/lib/consult-calendly";
 import { headlineVariantPayload } from "@/lib/experiment";
 import {
   composedWeddingDate,
@@ -119,26 +123,12 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       setShowInquiry(false);
       return;
     }
-    if (outcome.status === "manual") {
+    if (outcome.status === "manual" || outcome.status === "error") {
       setAvailability({ kind: "manual", message: outcome.message });
       setShowInquiry(false);
       return;
     }
     setAvailability({ kind: "unavailable", message: outcome.message });
-  }
-
-  function trackCalendlyClick() {
-    trackEvent(
-      ANALYTICS_EVENTS.calendlyClick,
-      consultClickEventParams({ surface: FORM_ANALYTICS.surface })
-    );
-    trackEvent(
-      ANALYTICS_EVENTS.bookConsultClick,
-      consultClickEventParams({
-        surface: "contact_form",
-        intent: "post_availability_calendly",
-      })
-    );
   }
 
   function handleInquiryFormFocusCapture(e: React.FocusEvent<HTMLFormElement>) {
@@ -248,9 +238,6 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       resetTurnstile();
     }
   }
-
-  const consultButtonClass =
-    "inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-amber-300/40 hover:bg-white/5";
 
   const dateInputClass =
     "rounded-xl border border-white/15 bg-neutral-950 px-2.5 py-3 text-center text-sm text-white outline-none focus:border-amber-300/50 tabular-nums";
@@ -385,93 +372,49 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
             disabled={availability.kind === "checking"}
             className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {availability.kind === "checking" ? "Checking…" : "Check Availability"}
+            {availability.kind === "checking" ? availabilityCheckingButtonLabel() : "Check Availability"}
           </button>
         </div>
         {dateError ? <p className="mt-3 text-sm text-rose-300/90">{dateError}</p> : null}
       </div>
 
-      {availability.kind === "manual" && (
-        <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6 lg:p-8">
-          <p className="text-lg leading-relaxed text-white/85">{availability.message}</p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a href="/contact#send-message" className={consultButtonClass}>
-              Contact us directly
-            </a>
-            <button
-              type="button"
-              onClick={() => {
-                setAvailability({ kind: "idle" });
-                clearPostAvailabilityContext();
-                clearDateFields();
-              }}
-              className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-            >
-              Try Another Date
-            </button>
-          </div>
-        </div>
-      )}
+      {availability.kind === "checking" ? <AvailabilityCheckingState /> : null}
 
-      {availability.kind === "unavailable" && (
-        <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6 lg:p-8">
-          <p className="text-lg leading-relaxed text-white/85">{availability.message}</p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <button
-              type="button"
-              onClick={() => {
-                setAvailability({ kind: "idle" });
-                clearPostAvailabilityContext();
-                clearDateFields();
-              }}
-              className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
-            >
-              Try Another Date
-            </button>
-            <a
-              href="/contact#send-message"
-              className={consultButtonClass}
-            >
-              Send a Message
-            </a>
-          </div>
-        </div>
-      )}
+      {availability.kind === "manual" ? (
+        <PostAvailabilityOutcome
+          kind="manual"
+          weddingDate={weddingDate}
+          canonicalStatusMessage={availability.message}
+          onTryAnotherDate={() => {
+            setAvailability({ kind: "idle" });
+            clearPostAvailabilityContext();
+            clearDateFields();
+          }}
+        />
+      ) : null}
 
-      {availability.kind === "available" && (
-        <div className="rounded-[1.5rem] border border-amber-400/25 bg-amber-950/25 p-6 lg:p-8">
-          <p className="whitespace-pre-line text-lg leading-relaxed text-white/90">{availability.message}</p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a
-              href={CONSULT_CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={bookConsultPrimaryButtonClassName}
-              onClick={trackCalendlyClick}
-            >
-              {PUBLIC_SOUND_CHECK_CTA_LABEL}
-            </a>
-            <button
-              type="button"
-              onClick={() => setShowInquiry(true)}
-              className={consultButtonClass}
-            >
-              Continue with Inquiry
-            </button>
-          </div>
-          <p className="mt-5 text-sm leading-relaxed text-white/50">
-            Still exploring? Couples often skim{" "}
-            <PostAvailabilityTrustLink href="/reviews" trustTarget="reviews">
-              Reviews
-            </PostAvailabilityTrustLink>{" "}
-            or{" "}
-            <PostAvailabilityTrustLink href="/about" trustTarget="about">
-              About
-            </PostAvailabilityTrustLink>{" "}
-            before booking.
-          </p>
-        </div>
-      )}
+      {availability.kind === "unavailable" ? (
+        <PostAvailabilityOutcome
+          kind="unavailable"
+          weddingDate={weddingDate}
+          canonicalStatusMessage={availability.message}
+          onTryAnotherDate={() => {
+            setAvailability({ kind: "idle" });
+            clearPostAvailabilityContext();
+            clearDateFields();
+          }}
+        />
+      ) : null}
+
+      {availability.kind === "available" ? (
+        <PostAvailabilitySuccess
+          variant="full"
+          weddingDate={weddingDate}
+          surface={FORM_ANALYTICS.surface}
+          canonicalStatusMessage={availability.message}
+          onInquiryFallback={() => setShowInquiry(true)}
+        />
+      ) : null}
 
       {availability.kind === "available" && showInquiry && (
         <form

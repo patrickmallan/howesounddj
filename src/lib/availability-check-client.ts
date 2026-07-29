@@ -7,6 +7,7 @@ import {
   clearPostAvailabilityContext,
   setPostAvailabilityContext,
 } from "@/lib/post-availability-context";
+import { availabilityCompletedParams } from "@/lib/post-availability-analytics";
 import { PublicAvailabilityResult } from "@/lib/public-availability-contract";
 
 export type AvailabilityCheckOutcome =
@@ -26,6 +27,49 @@ function analyticsStatus(
   return "manual_confirmation_required";
 }
 
+function trackAvailabilityStarted(selectedDate: string, analyticsSurface: string): void {
+  const params = availabilityCheckEventParams(selectedDate, undefined, analyticsSurface);
+  trackEvent(ANALYTICS_EVENTS.availabilityCheckStart, params, { deferUntilGtag: true });
+  trackEvent(ANALYTICS_EVENTS.availabilityCheckStarted, params, { deferUntilGtag: true });
+}
+
+function trackAvailabilityCompleted(
+  selectedDate: string,
+  analyticsSurface: string,
+  status: AvailabilityCheckOutcome["status"],
+  durationMs: number,
+): void {
+  const legacyStatus = analyticsStatus(status);
+  const legacyParams = availabilityCheckEventParams(
+    selectedDate,
+    legacyStatus,
+    analyticsSurface,
+  );
+  trackEvent(ANALYTICS_EVENTS.availabilityCheckResult, legacyParams, { deferUntilGtag: true });
+
+  const result =
+    status === "error" ? "error" : (legacyStatus as "available" | "unavailable" | "manual_confirmation_required");
+
+  const completedParams = availabilityCompletedParams({
+    surface: analyticsSurface,
+    weddingDate: selectedDate,
+    result,
+    durationMs,
+  });
+
+  trackEvent(ANALYTICS_EVENTS.availabilityCheckCompleted, completedParams, {
+    deferUntilGtag: true,
+  });
+
+  if (status === "manual" || status === "error") {
+    trackEvent(
+      ANALYTICS_EVENTS.availabilityCheckFailedOrManual,
+      completedParams,
+      { deferUntilGtag: true },
+    );
+  }
+}
+
 /**
  * POST `/api/availability` (same-origin proxy to HSDJ Operations).
  * Caller owns UI loading state; fires analytics once per invocation.
@@ -34,12 +78,10 @@ export async function runAvailabilityCheck(
   selectedDate: string,
   analyticsSurface: string,
 ): Promise<AvailabilityCheckOutcome> {
+  const startedAt = typeof performance !== "undefined" ? performance.now() : Date.now();
+
   clearPostAvailabilityContext();
-  trackEvent(
-    ANALYTICS_EVENTS.availabilityCheckStart,
-    availabilityCheckEventParams(selectedDate, undefined, analyticsSurface),
-    { deferUntilGtag: true },
-  );
+  trackAvailabilityStarted(selectedDate, analyticsSurface);
 
   try {
     const res = await fetch("/api/availability", {
@@ -52,15 +94,20 @@ export async function runAvailabilityCheck(
       body: JSON.stringify({ date: selectedDate }),
     });
 
+    const durationMs =
+      (typeof performance !== "undefined" ? performance.now() : Date.now()) - startedAt;
+
     let data: unknown;
     try {
       data = await res.json();
     } catch {
-      return trackAndReturnManual(selectedDate, analyticsSurface);
+      trackAvailabilityCompleted(selectedDate, analyticsSurface, "error", durationMs);
+      return { status: "error", message: MANUAL_MESSAGE, date: selectedDate };
     }
 
     if (typeof data !== "object" || data === null) {
-      return trackAndReturnManual(selectedDate, analyticsSurface);
+      trackAvailabilityCompleted(selectedDate, analyticsSurface, "error", durationMs);
+      return { status: "error", message: MANUAL_MESSAGE, date: selectedDate };
     }
 
     const body = data as {
@@ -71,7 +118,8 @@ export async function runAvailabilityCheck(
     };
 
     if (body.date && body.date !== selectedDate) {
-      return trackAndReturnManual(selectedDate, analyticsSurface);
+      trackAvailabilityCompleted(selectedDate, analyticsSurface, "manual", durationMs);
+      return { status: "manual", message: MANUAL_MESSAGE, date: selectedDate };
     }
 
     const message =
@@ -81,44 +129,22 @@ export async function runAvailabilityCheck(
 
     if (body.result === PublicAvailabilityResult.AVAILABLE && body.date === selectedDate) {
       setPostAvailabilityContext(selectedDate);
-      trackEvent(
-        ANALYTICS_EVENTS.availabilityCheckResult,
-        availabilityCheckEventParams(selectedDate, "available", analyticsSurface),
-        { deferUntilGtag: true },
-      );
+      trackAvailabilityCompleted(selectedDate, analyticsSurface, "available", durationMs);
       return { status: "available", message, date: selectedDate };
     }
 
     if (body.result === PublicAvailabilityResult.UNAVAILABLE && body.date === selectedDate) {
       clearPostAvailabilityContext();
-      trackEvent(
-        ANALYTICS_EVENTS.availabilityCheckResult,
-        availabilityCheckEventParams(selectedDate, "unavailable", analyticsSurface),
-        { deferUntilGtag: true },
-      );
+      trackAvailabilityCompleted(selectedDate, analyticsSurface, "unavailable", durationMs);
       return { status: "unavailable", message, date: selectedDate };
     }
 
-    return trackAndReturnManual(selectedDate, analyticsSurface, message);
+    trackAvailabilityCompleted(selectedDate, analyticsSurface, "manual", durationMs);
+    return { status: "manual", message, date: selectedDate };
   } catch {
-    return trackAndReturnManual(selectedDate, analyticsSurface);
+    const durationMs =
+      (typeof performance !== "undefined" ? performance.now() : Date.now()) - startedAt;
+    trackAvailabilityCompleted(selectedDate, analyticsSurface, "error", durationMs);
+    return { status: "error", message: MANUAL_MESSAGE, date: selectedDate };
   }
-}
-
-function trackAndReturnManual(
-  selectedDate: string,
-  analyticsSurface: string,
-  message = MANUAL_MESSAGE,
-): AvailabilityCheckOutcome {
-  clearPostAvailabilityContext();
-  trackEvent(
-    ANALYTICS_EVENTS.availabilityCheckResult,
-    availabilityCheckEventParams(
-      selectedDate,
-      analyticsStatus("manual"),
-      analyticsSurface,
-    ),
-    { deferUntilGtag: true },
-  );
-  return { status: "manual", message, date: selectedDate };
 }

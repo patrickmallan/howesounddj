@@ -1,25 +1,22 @@
 import Link from "next/link";
+import {
+  AUTHORITY_PROOF_STRIP_REVIEW_IDS,
+  getReviewById,
+} from "@/config/reviews";
 
 /**
- * Verbatim excerpts from featured testimonials on `/reviews`.
- * Keep aligned with `src/app/reviews/page.tsx` when updating quotes.
+ * Verbatim excerpts from canonical reviews (`src/config/reviews.ts`).
  */
-export const AUTHORITY_PROOF_QUOTES = [
-  {
-    name: "Vanessa Pocock",
-    quote: "Patrick kept the dance floor packed and the energy high all night long.",
-  },
-  {
-    name: "Matthew Bundala",
-    quote:
-      "Patrick is incredible. His calm, professional, yet personable communication made our day stress-free.",
-  },
-  {
-    name: "Cassandra Wilding",
-    quote:
-      "Couldn't be happier with the service provided by Patrick. We hired Patrick for our recent wedding and it was one of the best decisions we made from the ceremony to cocktail hour to the dance everything was perfect! All our guests can't stop talking about how great of a dance party it was and the dance floor was packed at all times! I would recommend him over and over again!",
-  },
-] as const;
+export const AUTHORITY_PROOF_QUOTES = AUTHORITY_PROOF_STRIP_REVIEW_IDS.map((id) => {
+  const review = getReviewById(id);
+  if (!review) {
+    throw new Error(`Missing authority proof review: ${id}`);
+  }
+  return {
+    name: review.reviewerName,
+    quote: review.quote,
+  };
+});
 
 type Props = {
   /** Visible heading; defaults to short proof label. */

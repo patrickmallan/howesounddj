@@ -13,7 +13,14 @@ function publicHttpStatus(result: PublicAvailabilityResult): number {
   return 200;
 }
 
+function serverTimingHeader(opsDurationMs: number, totalDurationMs: number): string {
+  const serialize = totalDurationMs - opsDurationMs;
+  return `ops;dur=${opsDurationMs.toFixed(1)}, serialize;dur=${serialize.toFixed(1)}, total;dur=${totalDurationMs.toFixed(1)}`;
+}
+
 export async function POST(request: Request) {
+  const requestStarted = performance.now();
+
   let body: unknown;
   try {
     body = await request.json();
@@ -38,7 +45,9 @@ export async function POST(request: Request) {
       ? String((body as { date: unknown }).date).trim().slice(0, 10)
       : "";
 
+  const opsStarted = performance.now();
   const evaluated = await checkPublicAvailability(date);
+  const opsDurationMs = performance.now() - opsStarted;
 
   console.info("[availability] governed_result", {
     requested_date: evaluated.requestedDate,
@@ -47,9 +56,17 @@ export async function POST(request: Request) {
     source_endpoint: evaluated.sourceEndpoint,
     diagnostic_reason: evaluated.diagnosticReason ?? null,
     checked_at: evaluated.checkedAt,
+    ops_duration_ms: Math.round(opsDurationMs),
   });
 
-  await sendAvailabilityCheckNotification(evaluated);
+  // Operator notification must not block the public response path.
+  void sendAvailabilityCheckNotification(evaluated).catch((error: unknown) => {
+    console.error("[availability] notification_async_failed", {
+      message: error instanceof Error ? error.message : "unknown",
+    });
+  });
+
+  const totalDurationMs = performance.now() - requestStarted;
 
   return NextResponse.json(
     {
@@ -61,7 +78,10 @@ export async function POST(request: Request) {
     },
     {
       status: publicHttpStatus(evaluated.result),
-      headers: { "Cache-Control": "no-store, max-age=0, must-revalidate" },
+      headers: {
+        "Cache-Control": "no-store, max-age=0, must-revalidate",
+        "Server-Timing": serverTimingHeader(opsDurationMs, totalDurationMs),
+      },
     },
   );
 }

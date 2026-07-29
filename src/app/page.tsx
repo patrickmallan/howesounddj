@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HOMEPAGE_FEATURED_REVIEW_IDS, getReviewById } from "@/config/reviews";
 import { HOMEPAGE_TITLE, SITE_ORIGIN } from "@/config/site-brand";
 import { BrandAnchorStatement } from "@/components/brand-anchor-statement";
 import { JsonLd } from "@/components/json-ld";
@@ -47,27 +48,22 @@ export const metadata: Metadata = {
   },
 };
 
+const HOMEPAGE_REVIEW_VENUES: Record<(typeof HOMEPAGE_FEATURED_REVIEW_IDS)[number], string> = {
+  "vanessa-pocock": "Squamish",
+  "matthew-bundala": "Sea to Sky",
+  "stephen-henry": "Whistler",
+};
+
 export default function HoweSoundDJHomepage() {
-  const testimonials = [
-    {
-      quote:
-        "Patrick kept the dance floor packed and the energy high all night long.",
-      name: "Vanessa Pocock",
-      venue: "Squamish"
-    },
-    {
-      quote:
-        "Patrick is incredible. His calm, professional, yet personable communication made our day stress-free.",
-      name: "Matthew Bundala",
-      venue: "Sea to Sky"
-    },
-    {
-      quote:
-        "We would get married all over again just so we could hangout and work with Patrick again. He’s a talented DJ and a truly caring person.",
-      name: "Stephen Henry",
-      venue: "Whistler"
-    }
-  ];
+  const testimonials = HOMEPAGE_FEATURED_REVIEW_IDS.map((id) => {
+    const review = getReviewById(id);
+    if (!review) throw new Error(`Missing homepage review: ${id}`);
+    return {
+      quote: review.quote,
+      name: review.reviewerName,
+      venue: HOMEPAGE_REVIEW_VENUES[id],
+    };
+  });
 
   const features = [
     {

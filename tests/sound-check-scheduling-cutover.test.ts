@@ -59,19 +59,19 @@ describe("HSDJ-WEB-SCHEDULING-01 Sound Check public cutover", () => {
     expect(trackedLink).toMatch(/PUBLIC_SOUND_CHECK_CTA_LABEL/);
 
     const availabilityForm = readSource("src/components/contact-availability-form.tsx");
-    expect(availabilityForm).toMatch(/href=\{CONSULT_CALENDLY_URL\}/);
-    expect(availabilityForm).toMatch(/PUBLIC_SOUND_CHECK_CTA_LABEL/);
+    expect(availabilityForm).toMatch(/PostAvailabilitySuccess/);
 
     const headerChecker = readSource("src/components/compact-availability-checker.tsx");
-    expect(headerChecker).toMatch(/href=\{CONSULT_CALENDLY_URL\}/);
-    expect(headerChecker).toMatch(/PUBLIC_SOUND_CHECK_CTA_LABEL/);
+    expect(headerChecker).toMatch(/PostAvailabilitySuccess/);
   });
 
   it("renders accessible consult CTA labels on direct scheduling surfaces", () => {
     expect(readSource("src/components/book-consult-tracked-link.tsx")).toMatch(
       /children \?\? PUBLIC_SOUND_CHECK_CTA_LABEL/
     );
-    expect(readSource("src/components/contact-availability-form.tsx")).toMatch(/PUBLIC_SOUND_CHECK_CTA_LABEL/);
+    expect(readSource("src/components/post-availability-success.tsx")).toMatch(
+      /POST_AVAILABILITY_PRIMARY_CTA_LABEL/
+    );
     expect(readSource("src/components/contact-book-consult-section.tsx")).toMatch(
       /PUBLIC_SOUND_CHECK_SUPPORTING_COPY/
     );
