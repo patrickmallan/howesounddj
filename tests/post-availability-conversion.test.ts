@@ -57,13 +57,24 @@ describe("review SSOT", () => {
 describe("post-availability copy authority", () => {
   const copySurfaces = [
     POST_AVAILABILITY_FULL_COPY.reliefHeadline,
+    POST_AVAILABILITY_FULL_COPY.excitementBridge,
+    POST_AVAILABILITY_FULL_COPY.nextStepHeading,
+    POST_AVAILABILITY_FULL_COPY.proofTransition,
     POST_AVAILABILITY_FULL_COPY.identityStatement,
     ...POST_AVAILABILITY_FULL_COPY.outcomeBullets,
     POST_AVAILABILITY_FULL_COPY.soundCheckExplanation,
     POST_AVAILABILITY_COMPACT_COPY.reliefHeadline,
+    POST_AVAILABILITY_COMPACT_COPY.excitementBridge,
+    POST_AVAILABILITY_COMPACT_COPY.proofTransition,
     POST_AVAILABILITY_PRIMARY_CTA_LABEL,
     POST_AVAILABILITY_RISK_REDUCER,
   ];
+
+  it("uses V2 headline without hedging language", () => {
+    expect(POST_AVAILABILITY_FULL_COPY.reliefHeadline).toMatch(/Patrick is available/);
+    expect(POST_AVAILABILITY_FULL_COPY.reliefHeadline).not.toMatch(/looks open/i);
+    expect(POST_AVAILABILITY_COMPACT_COPY.reliefHeadline).not.toMatch(/looks open/i);
+  });
 
   it("contains no emoji characters", () => {
     for (const text of copySurfaces) {
@@ -107,6 +118,18 @@ describe("shared post-availability success ownership", () => {
     expect(success).toMatch(/POST_AVAILABILITY_PRIMARY_CTA_LABEL/);
     expect(success).not.toMatch(/Full contact page/i);
     expect(success).not.toMatch(/Reviews/);
+  });
+
+  it("sequences narrative before proof and centers the primary CTA", () => {
+    const success = readSource("src/components/post-availability-success.tsx");
+    expect(success).toMatch(/proofTransition/);
+    expect(success).toMatch(/nextStepHeading/);
+    expect(success).toMatch(/excitementBridge/);
+    expect(success).toMatch(/CTA_PILL_FLEX_CENTER/);
+    expect(success).toMatch(/flex flex-col items-center/);
+    const proofIndex = success.indexOf("proofTransition");
+    const headlineIndex = success.indexOf("reliefHeadline");
+    expect(proofIndex).toBeGreaterThan(headlineIndex);
   });
 });
 
