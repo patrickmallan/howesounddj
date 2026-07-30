@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Current V2 Reference — Stacked Modal (Research)</title>
+    <link rel="stylesheet" href="shared.css" />
+    <style>
+      .form-block label { display:block; font-size:0.85rem; color:var(--muted); margin-bottom:0.35rem; }
+      .date-row { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:0.5rem; margin:0.75rem 0; }
+      .date-row input { min-height:2.75rem; border-radius:0.75rem; border:1px solid var(--border); background:#0a0a0a; color:#fff; text-align:center; }
+      .check-btn { width:100%; min-height:2.6rem; border-radius:999px; border:0; background:var(--amber); font-weight:650; margin-bottom:0.75rem; }
+      .v2-card { border:1px solid rgba(250,204,21,0.2); border-radius:0.85rem; background:rgba(69,26,3,0.25); padding:1rem; }
+      .v2-card h2 { font-size:1rem; margin:0.5rem 0 0; }
+      .v2-proof { margin-top:0.75rem; padding:0.75rem; border:1px solid var(--border); border-radius:0.65rem; font-size:0.82rem; }
+      .panel { max-height: min(calc(100dvh - 5.5rem), 34rem); overflow-y:auto; }
+    </style>
+  </head>
+  <body>
+  <!-- Documents current V2 defect: form remains + result appended -->
+    <div class="panel" role="dialog">
+      <div style="padding:1.25rem">
+        <h1 style="font-size:1rem;margin:0">Check your wedding date</h1>
+        <p class="bridge">Quickly see if your date is open before starting the conversation.</p>
+        <label>Wedding date</label>
+        <div class="date-row">
+          <input value="2028" readonly /><input value="06" readonly /><input value="15" readonly />
+        </div>
+        <button class="check-btn" type="button">Check Availability</button>
+
+        <div class="v2-card" aria-labelledby="v2h">
+          <div class="chip">Available · Thursday, June 15, 2028</div>
+          <h2 id="v2h">Patrick is available on your date</h2>
+          <p class="bridge">Planning can start with one conversation.</p>
+          <p style="font-size:0.72rem;color:var(--faint);margin:0.5rem 0 0">Lauren describes that experience in three words:</p>
+          <div class="v2-proof">&ldquo;Seamless, stress-free, and seriously fun.&rdquo;<br /><span class="proof__attr">Lauren Steeles</span></div>
+          <p class="risk" style="margin-top:0.75rem">45 minutes · No pressure · Just clarity</p>
+          <a class="cta" href="#">Reserve My Complimentary Wedding Planning Session</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

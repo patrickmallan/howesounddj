@@ -1,55 +1,40 @@
 /**
  * Post-availability emotional conversion copy (visitor-facing SSOT).
  *
- * V2 headline evaluation (HSDJ-WEB-AVAILABILITY-SUCCESS-V2):
- *
- * | Criterion          | A: Patrick Available | B: Date Confirmed | C: Great Start    | D: Calendar Open (V1) |
- * |--------------------|----------------------|-------------------|-------------------|-----------------------|
- * | Clarity            | 5                    | 5                 | 4                 | 4                     |
- * | Energy             | 5                    | 3                 | 4                 | 3                     |
- * | Memorability       | 5                    | 3                 | 4                 | 4                     |
- * | Confidence         | 5                    | 5                 | 3                 | 3 (hedging "looks")   |
- * | Premium feel       | 5                    | 4                 | 3                 | 4                     |
- * | TOTAL              | 25                   | 20                | 18                | 18                    |
- *
- * Winner: Candidate A ("Patrick is available on your wedding date") — names Patrick,
- * confirms availability without hedging, and creates a personal bridge to the Sound Check.
+ * V3 — Human Connection (Patrick-authorized 2026-07-30).
+ * Authority: docs/branding/HSDJ_AVAILABILITY_SUCCESS_V3_COPY_CONTRACT.md
  */
 
-export const POST_AVAILABILITY_COPY_VARIANT = "patrick_available_v2" as const;
+export const POST_AVAILABILITY_COPY_VARIANT = "human_connection_v3" as const;
 
 export const POST_AVAILABILITY_PRIMARY_CTA_LABEL =
   "Reserve My Complimentary Wedding Planning Session" as const;
+
+export const POST_AVAILABILITY_COMPACT_CTA_LABEL = "Meet Patrick" as const;
 
 export const POST_AVAILABILITY_RISK_REDUCER = "45 minutes · No pressure · Just clarity" as const;
 
 export const POST_AVAILABILITY_INQUIRY_FALLBACK_LABEL = "Prefer email first?" as const;
 
-/** Prefix shown on the date chip after a successful availability check. */
-export const POST_AVAILABILITY_DATE_CHIP_PREFIX = "Available" as const;
+export const POST_AVAILABILITY_EDIT_DATE_LABEL = "Edit date" as const;
 
-export const POST_AVAILABILITY_FULL_COPY = {
-  reliefHeadline: "Patrick is available on your wedding date",
-  excitementBridge:
-    "With your date confirmed, you can move from checking calendars to actually planning your day.",
-  nextStepHeading: "What happens next",
-  soundCheckExplanation:
-    "Reserve a complimentary 45-minute Sound Check with Patrick: a calm conversation about your venue, vision, music, and whether Howe Sound DJ is the right fit. No pressure to decide on the call.",
-  proofTransition:
-    "Couples who take this step often describe the same feeling Matthew shared after his wedding:",
-  identityStatement:
-    "Patrick works as a calm, caring part of the wedding team, from ceremony through the reception, not just behind the decks.",
-  outcomeBullets: [
-    "Ceremony, cocktail hour, and reception handled seamlessly.",
-    "A packed dance floor with energy that stays high all night.",
-  ] as const,
-} as const;
+export const POST_AVAILABILITY_PROOF_CONTEXT = "From a couple who worked with Patrick" as const;
 
-export const POST_AVAILABILITY_COMPACT_COPY = {
-  reliefHeadline: "Patrick is available on your date",
-  excitementBridge: "Planning can start with one conversation.",
-  proofTransition: "Lauren describes that experience in three words:",
-} as const;
+/** Shared headline (compact + full). */
+export const POST_AVAILABILITY_SUCCESS_HEADLINE =
+  "Wonderful news. Your wedding date is available." as const;
+
+/** Shared mutual-fit bridge (compact + full). */
+export const POST_AVAILABILITY_SUCCESS_BRIDGE =
+  "Let's see if we're a great fit for each other." as const;
+
+/** Full contact surface only — one planning-session explanation. */
+export const POST_AVAILABILITY_FULL_PLANNING_SESSION =
+  "Reserve a complimentary 45-minute planning session to talk about your wedding, your music, and whether Howe Sound DJ is the right fit." as const;
+
+export function postAvailabilityConfirmedDateLabel(formattedDate: string): string {
+  return `${formattedDate} is available`;
+}
 
 export const POST_AVAILABILITY_LOADING = {
   buttonLabel: "Checking Patrick's calendar…",

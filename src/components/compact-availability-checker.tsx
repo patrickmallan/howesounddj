@@ -75,6 +75,25 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
     date.resetSegments();
   }
 
+  function handleEditDate() {
+    setPhase({ kind: "idle" });
+    clearPostAvailabilityContext();
+    requestAnimationFrame(() => date.focusYear());
+  }
+
+  if (phase.kind === "available" && date.weddingDate) {
+    return (
+      <PostAvailabilitySuccess
+        variant="compact"
+        weddingDate={date.weddingDate}
+        surface={ANALYTICS_SURFACE}
+        canonicalStatusMessage={phase.message}
+        onEditDate={handleEditDate}
+        className="min-h-0 flex-1"
+      />
+    );
+  }
+
   return (
     <div className="space-y-4">
       <div>
@@ -116,15 +135,6 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
       </button>
 
       {phase.kind === "loading" ? <AvailabilityCheckingState className="!p-4 !rounded-xl" /> : null}
-
-      {phase.kind === "available" && date.weddingDate ? (
-        <PostAvailabilitySuccess
-          variant="compact"
-          weddingDate={date.weddingDate}
-          surface={ANALYTICS_SURFACE}
-          canonicalStatusMessage={phase.message}
-        />
-      ) : null}
 
       {phase.kind === "unavailable" && date.weddingDate ? (
         <PostAvailabilityOutcome

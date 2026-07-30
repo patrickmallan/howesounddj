@@ -33,6 +33,8 @@ export const ANALYTICS_EVENTS = {
   postAvailabilityProofView: "post_availability_proof_view",
   /** Inquiry text-link fallback from post-availability success (full surface only). */
   inquiryFallbackClick: "inquiry_fallback_click",
+  /** Edit date from post-availability success state. */
+  changeDateClick: "change_date_click",
   /** Unavailable or manual/error availability outcome. */
   availabilityCheckFailedOrManual: "availability_check_failed_or_manual",
   contactFormStart: "contact_form_start",

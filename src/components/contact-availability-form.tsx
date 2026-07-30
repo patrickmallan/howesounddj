@@ -282,6 +282,13 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
     clearPostAvailabilityContext();
   }
 
+  function handleEditDate() {
+    setAvailability({ kind: "idle" });
+    clearPostAvailabilityContext();
+    setShowInquiry(false);
+    requestAnimationFrame(() => yearRef.current?.focus());
+  }
+
   return (
     <div className="space-y-8">
       <p className="text-sm leading-relaxed text-white/55">
@@ -310,75 +317,86 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         onLoad={() => setTurnstileReady(true)}
       />
 
-      <div className="rounded-[1.5rem] border border-white/10 bg-neutral-950/60 p-6 lg:p-8">
-        <label className="block text-sm font-medium text-white/80" htmlFor="wedding-date-year">
-          Wedding date
-        </label>
-        <p className="mt-1 text-sm text-white/45">Pick your day. We will check it against Patrick&apos;s calendar.</p>
-        <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end">
-          <div className="flex max-w-md flex-wrap items-center gap-2 sm:gap-3">
-            <input
-              ref={yearRef}
-              id="wedding-date-year"
-              name="weddingDateYear"
-              type="text"
-              inputMode="numeric"
-              autoComplete="off"
-              placeholder="YYYY"
-              aria-label="Year (YYYY)"
-              value={yearStr}
-              onChange={handleYearChange}
-              maxLength={4}
-              className={`${dateInputClass} w-[4.75rem] sm:w-[5.25rem]`}
-            />
-            <span className="text-white/35 select-none" aria-hidden>
-              /
-            </span>
-            <input
-              ref={monthRef}
-              id="wedding-date-month"
-              name="weddingDateMonth"
-              type="text"
-              inputMode="numeric"
-              autoComplete="off"
-              placeholder="MM"
-              aria-label="Month (MM)"
-              value={monthStr}
-              onChange={handleMonthChange}
-              maxLength={2}
-              className={`${dateInputClass} min-w-[3.5rem] w-[3.5rem]`}
-            />
-            <span className="text-white/35 select-none" aria-hidden>
-              /
-            </span>
-            <input
-              ref={dayRef}
-              id="wedding-date-day"
-              name="weddingDateDay"
-              type="text"
-              inputMode="numeric"
-              autoComplete="off"
-              placeholder="DD"
-              aria-label="Day (DD)"
-              value={dayStr}
-              onChange={handleDayChange}
-              maxLength={2}
-              className={`${dateInputClass} min-w-[3.5rem] w-[3.5rem]`}
-            />
-          </div>
-          <button
-            type="button"
-            onClick={checkAvailability}
-            disabled={availability.kind === "checking"}
-            className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {availability.kind === "checking" ? availabilityCheckingButtonLabel() : "Check Availability"}
-          </button>
-        </div>
-        {dateError ? <p className="mt-3 text-sm text-rose-300/90">{dateError}</p> : null}
-      </div>
-
       {availability.kind === "checking" ? <AvailabilityCheckingState /> : null}
+
+      {availability.kind === "available" ? (
+        <PostAvailabilitySuccess
+          variant="full"
+          weddingDate={weddingDate}
+          surface={FORM_ANALYTICS.surface}
+          canonicalStatusMessage={availability.message}
+          onInquiryFallback={() => setShowInquiry(true)}
+          onEditDate={handleEditDate}
+        />
+      ) : (
+        <div className="rounded-[1.5rem] border border-white/10 bg-neutral-950/60 p-6 lg:p-8">
+          <label className="block text-sm font-medium text-white/80" htmlFor="wedding-date-year">
+            Wedding date
+          </label>
+          <p className="mt-1 text-sm text-white/45">Pick your day. We will check it against Patrick&apos;s calendar.</p>
+          <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end">
+            <div className="flex max-w-md flex-wrap items-center gap-2 sm:gap-3">
+              <input
+                ref={yearRef}
+                id="wedding-date-year"
+                name="weddingDateYear"
+                type="text"
+                inputMode="numeric"
+                autoComplete="off"
+                placeholder="YYYY"
+                aria-label="Year (YYYY)"
+                value={yearStr}
+                onChange={handleYearChange}
+                maxLength={4}
+                className={`${dateInputClass} w-[4.75rem] sm:w-[5.25rem]`}
+              />
+              <span className="text-white/35 select-none" aria-hidden>
+                /
+              </span>
+              <input
+                ref={monthRef}
+                id="wedding-date-month"
+                name="weddingDateMonth"
+                type="text"
+                inputMode="numeric"
+                autoComplete="off"
+                placeholder="MM"
+                aria-label="Month (MM)"
+                value={monthStr}
+                onChange={handleMonthChange}
+                maxLength={2}
+                className={`${dateInputClass} min-w-[3.5rem] w-[3.5rem]`}
+              />
+              <span className="text-white/35 select-none" aria-hidden>
+                /
+              </span>
+              <input
+                ref={dayRef}
+                id="wedding-date-day"
+                name="weddingDateDay"
+                type="text"
+                inputMode="numeric"
+                autoComplete="off"
+                placeholder="DD"
+                aria-label="Day (DD)"
+                value={dayStr}
+                onChange={handleDayChange}
+                maxLength={2}
+                className={`${dateInputClass} min-w-[3.5rem] w-[3.5rem]`}
+              />
+            </div>
+            <button
+              type="button"
+              onClick={checkAvailability}
+              disabled={availability.kind === "checking"}
+              className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {availability.kind === "checking" ? availabilityCheckingButtonLabel() : "Check Availability"}
+            </button>
+          </div>
+          {dateError ? <p className="mt-3 text-sm text-rose-300/90">{dateError}</p> : null}
+        </div>
+      )}
 
       {availability.kind === "manual" ? (
         <PostAvailabilityOutcome
@@ -403,16 +421,6 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
             clearPostAvailabilityContext();
             clearDateFields();
           }}
-        />
-      ) : null}
-
-      {availability.kind === "available" ? (
-        <PostAvailabilitySuccess
-          variant="full"
-          weddingDate={weddingDate}
-          surface={FORM_ANALYTICS.surface}
-          canonicalStatusMessage={availability.message}
-          onInquiryFallback={() => setShowInquiry(true)}
         />
       ) : null}
 

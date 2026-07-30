@@ -185,8 +185,8 @@ export const CANONICAL_REVIEWS: readonly CanonicalReview[] = [
   },
 ] as const;
 
-export const POST_AVAILABILITY_PROOF_FULL_ID = "matthew-bundala" as const;
-export const POST_AVAILABILITY_PROOF_COMPACT_ID = "lauren-steeles" as const;
+export const POST_AVAILABILITY_PROOF_FULL_ID = "stephen-henry" as const;
+export const POST_AVAILABILITY_PROOF_COMPACT_ID = "stephen-henry" as const;
 
 export function getReviewById(id: string): CanonicalReview | undefined {
   return CANONICAL_REVIEWS.find((review) => review.id === id);

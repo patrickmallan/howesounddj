@@ -1,15 +1,19 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  POST_AVAILABILITY_COMPACT_COPY,
-  POST_AVAILABILITY_DATE_CHIP_PREFIX,
-  POST_AVAILABILITY_FULL_COPY,
-  POST_AVAILABILITY_PRIMARY_CTA_LABEL,
-  POST_AVAILABILITY_RISK_REDUCER,
+  POST_AVAILABILITY_COMPACT_CTA_LABEL,
+  POST_AVAILABILITY_EDIT_DATE_LABEL,
+  POST_AVAILABILITY_FULL_PLANNING_SESSION,
   POST_AVAILABILITY_INQUIRY_FALLBACK_LABEL,
+  POST_AVAILABILITY_PRIMARY_CTA_LABEL,
+  POST_AVAILABILITY_PROOF_CONTEXT,
+  POST_AVAILABILITY_RISK_REDUCER,
   POST_AVAILABILITY_SR_STATUS,
+  POST_AVAILABILITY_SUCCESS_BRIDGE,
+  POST_AVAILABILITY_SUCCESS_HEADLINE,
+  postAvailabilityConfirmedDateLabel,
 } from "@/config/post-availability-copy";
 import {
   getReviewById,
@@ -32,10 +36,37 @@ type Props = {
   /** Governed API factual message for assistive technology. */
   canonicalStatusMessage: string;
   onInquiryFallback?: () => void;
+  onEditDate?: () => void;
   className?: string;
 };
 
-const ctaClassName = [
+function splitReviewQuoteAtFirstSentence(quote: string): { lead: string; rest: string } {
+  const idx = quote.indexOf(". ");
+  if (idx === -1) return { lead: quote, rest: "" };
+  return { lead: quote.slice(0, idx + 1), rest: quote.slice(idx + 2) };
+}
+
+function isElementInitiallyVisible(element: HTMLElement): boolean {
+  const rect = element.getBoundingClientRect();
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+  const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+  return (
+    rect.width > 0 &&
+    rect.height > 0 &&
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= viewportHeight &&
+    rect.right <= viewportWidth
+  );
+}
+
+const compactCtaClassName = [
+  bookConsultPrimaryButtonClassName,
+  CTA_PILL_FLEX_CENTER,
+  "w-full whitespace-nowrap px-4 py-3 text-sm font-semibold sm:text-base",
+].join(" ");
+
+const fullCtaClassName = [
   bookConsultPrimaryButtonClassName,
   CTA_PILL_FLEX_CENTER,
   "w-full max-w-md leading-snug px-5 py-3.5 sm:py-3",
@@ -47,21 +78,39 @@ export function PostAvailabilitySuccess({
   surface,
   canonicalStatusMessage,
   onInquiryFallback,
+  onEditDate,
   className = "",
 }: Props) {
   const reduceMotion = useReducedMotion();
   const proofViewTracked = useRef(false);
+  const successViewTracked = useRef(false);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const ctaRef = useRef<HTMLAnchorElement>(null);
+
   const formattedDate = formatWeddingDateLong(weddingDate);
   const proofId =
     variant === "full" ? POST_AVAILABILITY_PROOF_FULL_ID : POST_AVAILABILITY_PROOF_COMPACT_ID;
   const proof = getReviewById(proofId);
   const calendlyUrl = buildPostAvailabilityCalendlyUrl({ weddingDate, surface });
-  const copy = variant === "full" ? POST_AVAILABILITY_FULL_COPY : POST_AVAILABILITY_COMPACT_COPY;
+  const proofQuote = proof?.quote ?? "";
+  const quoteParts = proofQuote ? splitReviewQuoteAtFirstSentence(proofQuote) : null;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    headingRef.current?.focus({ preventScroll: true });
+  }, []);
+
+  useLayoutEffect(() => {
+    if (successViewTracked.current) return;
+    successViewTracked.current = true;
+    const ctaVisible =
+      variant === "compact" && ctaRef.current
+        ? isElementInitiallyVisible(ctaRef.current)
+        : undefined;
     trackEvent(
       ANALYTICS_EVENTS.postAvailabilitySuccessView,
-      postAvailabilityAnalyticsBase(surface, weddingDate, variant),
+      postAvailabilityAnalyticsBase(surface, weddingDate, variant, {
+        ctaInitiallyVisible: ctaVisible,
+      }),
     );
   }, [surface, weddingDate, variant]);
 
@@ -101,30 +150,30 @@ export function PostAvailabilitySuccess({
     onInquiryFallback?.();
   }
 
-  const cardClass =
-    variant === "compact"
-      ? "rounded-xl border border-amber-400/20 bg-amber-950/30 p-4"
-      : "rounded-[1.5rem] border border-amber-400/25 bg-amber-950/25 p-6 lg:p-8";
+  function handleEditDateClick() {
+    trackEvent(
+      ANALYTICS_EVENTS.changeDateClick,
+      postAvailabilityAnalyticsBase(surface, weddingDate, variant),
+    );
+    onEditDate?.();
+  }
 
   const motionProps = reduceMotion
     ? {}
     : {
-        initial: { opacity: 0, y: 4 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] as const },
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] as const },
       };
 
-  const proofQuote =
-    variant === "full" ? proof?.quote : proof?.compactExcerpt ?? proof?.quote;
-
-  const dateChipClass =
+  const confirmedBarClass =
     variant === "compact"
-      ? "inline-flex items-center gap-2 rounded-full border border-amber-300/25 bg-amber-300/10 px-3 py-1 text-xs font-medium text-amber-200/95"
-      : "inline-flex items-center gap-2 rounded-full border border-amber-300/30 bg-amber-300/10 px-3.5 py-1.5 text-xs font-medium uppercase tracking-wide text-amber-200/95";
+      ? "flex items-center justify-between gap-3 rounded-lg border border-amber-300/20 bg-amber-300/10 px-3 py-2.5"
+      : "flex items-center justify-between gap-3 rounded-xl border border-amber-300/25 bg-amber-300/10 px-4 py-3";
 
   const headlineClass =
     variant === "compact"
-      ? "text-base font-semibold leading-snug text-balance text-white/95"
+      ? "text-lg font-semibold leading-snug text-balance text-white/95"
       : "text-xl font-semibold leading-snug text-balance text-white/95 sm:text-2xl";
 
   const bridgeClass =
@@ -132,129 +181,113 @@ export function PostAvailabilitySuccess({
       ? "text-sm leading-relaxed text-white/75"
       : "text-sm leading-relaxed text-white/75 sm:text-base";
 
-  const proofPanelClass =
+  const footerClass =
     variant === "compact"
-      ? "mt-3 rounded-lg border border-white/10 bg-white/[0.04] p-3.5"
-      : "mt-2 rounded-xl border border-white/10 bg-white/[0.04] p-4 sm:p-5";
+      ? "shrink-0 border-t border-white/10 bg-neutral-950/[0.98] px-0 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))]"
+      : "shrink-0 border-t border-white/10 pt-6 sm:pt-7";
 
-  return (
-    <motion.div
-      {...motionProps}
-      className={`${cardClass} ${className}`.trim()}
-      role="region"
-      aria-labelledby={`post-availability-success-heading-${variant}`}
-    >
-      <p className="sr-only">{POST_AVAILABILITY_SR_STATUS.available(formattedDate)}</p>
-      <p className="sr-only">{canonicalStatusMessage}</p>
+  const ctaLabel =
+    variant === "compact" ? POST_AVAILABILITY_COMPACT_CTA_LABEL : POST_AVAILABILITY_PRIMARY_CTA_LABEL;
+  const ctaClassName = variant === "compact" ? compactCtaClassName : fullCtaClassName;
 
-      {/* Act 1 — Relief + Excitement */}
-      <header className={variant === "compact" ? "space-y-2.5" : "space-y-3 sm:space-y-4"}>
-        <div className="flex justify-center sm:justify-start">
-          <div className={dateChipClass}>
-            <span className="text-amber-300/90">{POST_AVAILABILITY_DATE_CHIP_PREFIX}</span>
-            <span className="text-white/30" aria-hidden>
-              ·
-            </span>
-            <span>{formattedDate}</span>
-          </div>
-        </div>
+  const bodyContent = (
+    <>
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only"
+      >
+        {POST_AVAILABILITY_SR_STATUS.available(formattedDate)} {canonicalStatusMessage}
+      </div>
 
-        <h3
-          id={`post-availability-success-heading-${variant}`}
-          className={`${headlineClass} text-center sm:text-left`}
-        >
-          {copy.reliefHeadline}
-        </h3>
-
-        <p className={`${bridgeClass} text-center sm:text-left`}>{copy.excitementBridge}</p>
-      </header>
-
-      {/* Act 2 — Confidence (full only) */}
-      {variant === "full" ? (
-        <section
-          className="mt-6 border-t border-white/10 pt-6 sm:mt-8 sm:pt-7"
-          aria-labelledby={`post-availability-next-step-${variant}`}
-        >
-          <p
-            id={`post-availability-next-step-${variant}`}
-            className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300/85"
-          >
-            {POST_AVAILABILITY_FULL_COPY.nextStepHeading}
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-white/75 sm:text-base">
-            {POST_AVAILABILITY_FULL_COPY.soundCheckExplanation}
-          </p>
-        </section>
-      ) : null}
-
-      {/* Act 3 — Trust */}
-      {proof && proofQuote ? (
-        <section
-          className={variant === "compact" ? "mt-3" : "mt-6 sm:mt-8"}
-          aria-labelledby={`post-availability-proof-${variant}`}
-        >
-          <p
-            id={`post-availability-proof-${variant}`}
-            className={
-              variant === "compact"
-                ? "text-xs leading-relaxed text-white/60"
-                : "text-sm leading-relaxed text-white/65"
-            }
-          >
-            {copy.proofTransition}
-          </p>
-
-          <figure className={proofPanelClass}>
-            <blockquote
-              className={
-                variant === "compact"
-                  ? "text-sm font-medium leading-relaxed text-white/90"
-                  : "text-base font-medium leading-relaxed text-white/90 sm:text-[1.05rem]"
-              }
-            >
-              &ldquo;{proofQuote}&rdquo;
-            </blockquote>
-            <figcaption
-              className={
-                variant === "compact"
-                  ? "mt-2 text-xs font-medium uppercase tracking-wide text-amber-300/90"
-                  : "mt-3 text-xs font-medium uppercase tracking-wide text-amber-300/90"
-              }
-            >
-              {proof.attribution}
-            </figcaption>
-          </figure>
-
-          {variant === "full" ? (
-            <>
-              <p className="mt-5 text-sm leading-relaxed text-white/75">
-                {POST_AVAILABILITY_FULL_COPY.identityStatement}
-              </p>
-              <ul className="mt-4 space-y-2.5 text-sm leading-relaxed text-white/70">
-                {POST_AVAILABILITY_FULL_COPY.outcomeBullets.map((bullet) => (
-                  <li key={bullet} className="flex gap-2.5">
-                    <span
-                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300/80"
-                      aria-hidden
-                    />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : null}
-        </section>
-      ) : null}
-
-      {/* Act 4 — Action */}
-      <section
+      <div
         className={
           variant === "compact"
-            ? "mt-4 flex flex-col items-center"
-            : "mt-8 flex flex-col items-center border-t border-white/10 pt-6 sm:mt-9 sm:pt-7"
+            ? "flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain"
+            : "flex flex-col"
         }
-        aria-label="Reserve your planning session"
       >
+        <div className={variant === "compact" ? "space-y-3" : "space-y-4 sm:space-y-5"}>
+          <div className={confirmedBarClass}>
+            <p className="min-w-0 text-sm font-medium text-white/95">
+              {postAvailabilityConfirmedDateLabel(formattedDate)}
+            </p>
+            {onEditDate ? (
+              <button
+                type="button"
+                onClick={handleEditDateClick}
+                className="shrink-0 rounded-md px-2 py-1.5 text-xs font-medium text-amber-200/90 underline decoration-amber-300/30 underline-offset-2 transition hover:text-amber-100 hover:decoration-amber-200/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/50 min-h-[44px] min-w-[44px] inline-flex items-center justify-center"
+                aria-label={`Edit wedding date, currently ${formattedDate}`}
+              >
+                {POST_AVAILABILITY_EDIT_DATE_LABEL}
+              </button>
+            ) : null}
+          </div>
+
+          <header className={variant === "compact" ? "space-y-2" : "space-y-3"}>
+            <h3
+              ref={headingRef}
+              id={`post-availability-success-heading-${variant}`}
+              tabIndex={-1}
+              className={`${headlineClass} outline-none`}
+            >
+              {POST_AVAILABILITY_SUCCESS_HEADLINE}
+            </h3>
+            <p className={bridgeClass}>{POST_AVAILABILITY_SUCCESS_BRIDGE}</p>
+            {variant === "full" ? (
+              <p className={`${bridgeClass} text-white/70`}>{POST_AVAILABILITY_FULL_PLANNING_SESSION}</p>
+            ) : null}
+          </header>
+
+          {proof && proofQuote ? (
+            <figure className={variant === "compact" ? "space-y-2" : "space-y-3"}>
+              <p
+                className={
+                  variant === "compact"
+                    ? "text-xs leading-relaxed text-white/60"
+                    : "text-sm leading-relaxed text-white/65"
+                }
+              >
+                {POST_AVAILABILITY_PROOF_CONTEXT}
+              </p>
+              <blockquote
+                className={
+                  variant === "compact"
+                    ? "border-l-2 border-amber-300/30 pl-3 text-sm leading-relaxed text-white/90"
+                    : "border-l-2 border-amber-300/35 pl-4 text-base leading-relaxed text-white/90 sm:text-[1.05rem]"
+                }
+              >
+                {quoteParts ? (
+                  <>
+                    &ldquo;
+                    <span className="font-semibold text-white/95">{quoteParts.lead}</span>
+                    {quoteParts.rest ? (
+                      <>
+                        {" "}
+                        <span className="text-white/75">{quoteParts.rest}</span>
+                      </>
+                    ) : null}
+                    &rdquo;
+                  </>
+                ) : (
+                  <>&ldquo;{proofQuote}&rdquo;</>
+                )}
+              </blockquote>
+              <figcaption
+                className={
+                  variant === "compact"
+                    ? "text-xs font-medium text-amber-300/90"
+                    : "text-sm font-medium text-amber-300/90"
+                }
+              >
+                {proof.attribution}
+              </figcaption>
+            </figure>
+          ) : null}
+        </div>
+      </div>
+
+      <footer className={footerClass} aria-label="Next step">
         <p
           className={
             variant === "compact"
@@ -264,19 +297,18 @@ export function PostAvailabilitySuccess({
         >
           {POST_AVAILABILITY_RISK_REDUCER}
         </p>
-
-        <div className="mt-4 flex w-full justify-center">
+        <div className={variant === "compact" ? "mt-3 flex w-full justify-center" : "mt-4 flex w-full justify-center"}>
           <a
+            ref={ctaRef}
             href={calendlyUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={ctaClassName}
             onClick={handleConsultClick}
           >
-            {POST_AVAILABILITY_PRIMARY_CTA_LABEL}
+            {ctaLabel}
           </a>
         </div>
-
         {variant === "full" && onInquiryFallback ? (
           <p className="mt-4 text-center text-sm text-white/45">
             <button
@@ -288,7 +320,31 @@ export function PostAvailabilitySuccess({
             </button>
           </p>
         ) : null}
-      </section>
+      </footer>
+    </>
+  );
+
+  if (variant === "compact") {
+    return (
+      <motion.div
+        {...motionProps}
+        className={`flex min-h-0 flex-1 flex-col ${className}`.trim()}
+        role="region"
+        aria-labelledby={`post-availability-success-heading-${variant}`}
+      >
+        {bodyContent}
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      {...motionProps}
+      className={`flex flex-col rounded-[1.5rem] border border-amber-400/25 bg-amber-950/25 p-6 lg:p-8 ${className}`.trim()}
+      role="region"
+      aria-labelledby={`post-availability-success-heading-${variant}`}
+    >
+      {bodyContent}
     </motion.div>
   );
 }

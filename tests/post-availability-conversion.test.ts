@@ -2,10 +2,16 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
-  POST_AVAILABILITY_COMPACT_COPY,
-  POST_AVAILABILITY_FULL_COPY,
+  POST_AVAILABILITY_COMPACT_CTA_LABEL,
+  POST_AVAILABILITY_COPY_VARIANT,
+  POST_AVAILABILITY_EDIT_DATE_LABEL,
+  POST_AVAILABILITY_FULL_PLANNING_SESSION,
   POST_AVAILABILITY_PRIMARY_CTA_LABEL,
+  POST_AVAILABILITY_PROOF_CONTEXT,
   POST_AVAILABILITY_RISK_REDUCER,
+  POST_AVAILABILITY_SUCCESS_BRIDGE,
+  POST_AVAILABILITY_SUCCESS_HEADLINE,
+  postAvailabilityConfirmedDateLabel,
 } from "@/config/post-availability-copy";
 import {
   CANONICAL_REVIEWS,
@@ -14,9 +20,15 @@ import {
   REVIEW_THEME_TAGS,
   getReviewById,
 } from "@/config/reviews";
+import { ANALYTICS_EVENTS } from "@/lib/analytics";
 import { formatWeddingDateLong, weddingDateMonthBucket } from "@/lib/format-wedding-date";
 import { buildPostAvailabilityCalendlyUrl } from "@/lib/post-availability-calendly";
-import { durationBucketMs } from "@/lib/post-availability-analytics";
+import {
+  POST_AVAILABILITY_CONTAINER_VARIANT,
+  POST_AVAILABILITY_SUCCESS_VARIANT,
+  durationBucketMs,
+  postAvailabilityAnalyticsBase,
+} from "@/lib/post-availability-analytics";
 
 const ROOT = process.cwd();
 
@@ -48,32 +60,50 @@ describe("review SSOT", () => {
     }
   });
 
-  it("exposes default post-availability proof reviews", () => {
-    expect(getReviewById(POST_AVAILABILITY_PROOF_FULL_ID)?.reviewerName).toBe("Matthew Bundala");
-    expect(getReviewById(POST_AVAILABILITY_PROOF_COMPACT_ID)?.reviewerName).toBe("Lauren Steeles");
+  it("uses Stephen Henry as the sole post-availability proof", () => {
+    expect(POST_AVAILABILITY_PROOF_FULL_ID).toBe("stephen-henry");
+    expect(POST_AVAILABILITY_PROOF_COMPACT_ID).toBe("stephen-henry");
+    const stephen = getReviewById("stephen-henry");
+    expect(stephen?.reviewerName).toBe("Stephen Henry");
+    expect(stephen?.quote).toBe(
+      "We would get married all over again just so we could hangout and work with Patrick again. He's a talented DJ and a truly caring person.",
+    );
   });
 });
 
-describe("post-availability copy authority", () => {
+describe("post-availability copy authority (V3)", () => {
   const copySurfaces = [
-    POST_AVAILABILITY_FULL_COPY.reliefHeadline,
-    POST_AVAILABILITY_FULL_COPY.excitementBridge,
-    POST_AVAILABILITY_FULL_COPY.nextStepHeading,
-    POST_AVAILABILITY_FULL_COPY.proofTransition,
-    POST_AVAILABILITY_FULL_COPY.identityStatement,
-    ...POST_AVAILABILITY_FULL_COPY.outcomeBullets,
-    POST_AVAILABILITY_FULL_COPY.soundCheckExplanation,
-    POST_AVAILABILITY_COMPACT_COPY.reliefHeadline,
-    POST_AVAILABILITY_COMPACT_COPY.excitementBridge,
-    POST_AVAILABILITY_COMPACT_COPY.proofTransition,
+    POST_AVAILABILITY_SUCCESS_HEADLINE,
+    POST_AVAILABILITY_SUCCESS_BRIDGE,
+    POST_AVAILABILITY_FULL_PLANNING_SESSION,
+    POST_AVAILABILITY_PROOF_CONTEXT,
+    POST_AVAILABILITY_COMPACT_CTA_LABEL,
     POST_AVAILABILITY_PRIMARY_CTA_LABEL,
     POST_AVAILABILITY_RISK_REDUCER,
+    POST_AVAILABILITY_EDIT_DATE_LABEL,
+    postAvailabilityConfirmedDateLabel("June 15, 2028"),
   ];
 
-  it("uses V2 headline without hedging language", () => {
-    expect(POST_AVAILABILITY_FULL_COPY.reliefHeadline).toMatch(/Patrick is available/);
-    expect(POST_AVAILABILITY_FULL_COPY.reliefHeadline).not.toMatch(/looks open/i);
-    expect(POST_AVAILABILITY_COMPACT_COPY.reliefHeadline).not.toMatch(/looks open/i);
+  it("uses the Patrick-authorized V3 headline and bridge", () => {
+    expect(POST_AVAILABILITY_SUCCESS_HEADLINE).toBe(
+      "Wonderful news. Your wedding date is available.",
+    );
+    expect(POST_AVAILABILITY_SUCCESS_BRIDGE).toBe(
+      "Let's see if we're a great fit for each other.",
+    );
+    expect(POST_AVAILABILITY_COPY_VARIANT).toBe("human_connection_v3");
+  });
+
+  it("does not use V2 Patrick-forward headline or compact Sound Check bridge", () => {
+    const copyFile = readSource("src/config/post-availability-copy.ts");
+    expect(copyFile).not.toMatch(/Patrick is available/);
+    expect(copyFile).not.toMatch(/complimentary Sound Check is the calm next step/i);
+    expect(POST_AVAILABILITY_SUCCESS_HEADLINE).not.toMatch(/Patrick is available/);
+  });
+
+  it("uses compact CTA Meet Patrick and governed risk reducer", () => {
+    expect(POST_AVAILABILITY_COMPACT_CTA_LABEL).toBe("Meet Patrick");
+    expect(POST_AVAILABILITY_RISK_REDUCER).toBe("45 minutes · No pressure · Just clarity");
   });
 
   it("contains no emoji characters", () => {
@@ -88,48 +118,68 @@ describe("post-availability copy authority", () => {
     }
   });
 
-  it("uses the required primary CTA label", () => {
+  it("uses the required full primary CTA label", () => {
     expect(POST_AVAILABILITY_PRIMARY_CTA_LABEL).toBe(
       "Reserve My Complimentary Wedding Planning Session",
     );
   });
 });
 
-describe("shared post-availability success ownership", () => {
-  it("contact form consumes PostAvailabilitySuccess", () => {
+describe("shared post-availability success ownership (V3)", () => {
+  it("contact form replaces the availability form on success", () => {
     const form = readSource("src/components/contact-availability-form.tsx");
+    expect(form).toMatch(/availability\.kind === "available"/);
     expect(form).toMatch(/PostAvailabilitySuccess/);
+    expect(form).toMatch(/onEditDate=\{handleEditDate\}/);
     expect(form).not.toMatch(/PostAvailabilityTrustLink/);
-    expect(form).not.toMatch(/Continue with Inquiry/);
-    expect(form).not.toMatch(/Full contact page/i);
   });
 
-  it("compact checker consumes PostAvailabilitySuccess and removes escape CTAs", () => {
+  it("compact checker performs state replacement on available", () => {
     const checker = readSource("src/components/compact-availability-checker.tsx");
-    expect(checker).toMatch(/PostAvailabilitySuccess/);
-    expect(checker).not.toMatch(/Full contact page/i);
-    expect(checker).not.toMatch(/PostAvailabilityTrustLink/);
-    expect(checker).not.toMatch(/AVAILABLE_NEXT/);
+    expect(checker).toMatch(/if \(phase\.kind === "available"/);
+    expect(checker).toMatch(/return \(\s*\n\s*<PostAvailabilitySuccess/);
+    const availableBranch = checker.indexOf('if (phase.kind === "available"');
+    const formIntro = checker.indexOf("Check your wedding date");
+    expect(availableBranch).toBeGreaterThan(-1);
+    expect(availableBranch).toBeLessThan(formIntro);
+    expect(checker).toMatch(/onEditDate=\{handleEditDate\}/);
   });
 
-  it("defines a single shared success component file", () => {
+  it("implements sticky footer, Stephen proof, and accessibility structure", () => {
     const success = readSource("src/components/post-availability-success.tsx");
-    expect(success).toMatch(/variant: PostAvailabilitySuccessVariant/);
-    expect(success).toMatch(/POST_AVAILABILITY_PRIMARY_CTA_LABEL/);
-    expect(success).not.toMatch(/Full contact page/i);
-    expect(success).not.toMatch(/Reviews/);
+    expect(success).toMatch(/POST_AVAILABILITY_SUCCESS_HEADLINE/);
+    expect(success).toMatch(/POST_AVAILABILITY_PROOF_CONTEXT/);
+    expect(success).toMatch(/POST_AVAILABILITY_COMPACT_CTA_LABEL/);
+    expect(success).toMatch(/<figure/);
+    expect(success).toMatch(/<blockquote/);
+    expect(success).toMatch(/<figcaption/);
+    expect(success).toMatch(/aria-live="polite"/);
+    expect(success).toMatch(/headingRef/);
+    expect(success).toMatch(/tabIndex=\{-1\}/);
+    expect(success).toMatch(/shrink-0 border-t/);
+    expect(success).not.toMatch(/Patrick is available/);
+    expect(success).not.toMatch(/Sea to Sky Gondola/i);
+    expect(success).not.toMatch(/matthew-bundala|lauren-steeles/);
   });
 
-  it("sequences narrative before proof and centers the primary CTA", () => {
-    const success = readSource("src/components/post-availability-success.tsx");
-    expect(success).toMatch(/proofTransition/);
-    expect(success).toMatch(/nextStepHeading/);
-    expect(success).toMatch(/excitementBridge/);
-    expect(success).toMatch(/CTA_PILL_FLEX_CENTER/);
-    expect(success).toMatch(/flex flex-col items-center/);
-    const proofIndex = success.indexOf("proofTransition");
-    const headlineIndex = success.indexOf("reliefHeadline");
-    expect(proofIndex).toBeGreaterThan(headlineIndex);
+  it("header panel uses flex column overflow-hidden for sticky footer", () => {
+    const header = readSource("src/components/header-check-availability.tsx");
+    expect(header).toMatch(/overflow-hidden/);
+    expect(header).toMatch(/flex-col/);
+  });
+});
+
+describe("post-availability analytics (V3)", () => {
+  it("includes variant properties and change_date_click event", () => {
+    expect(ANALYTICS_EVENTS.changeDateClick).toBe("change_date_click");
+    const base = postAvailabilityAnalyticsBase("header_panel", "2028-06-15", "compact", {
+      ctaInitiallyVisible: true,
+    });
+    expect(base.success_variant).toBe(POST_AVAILABILITY_SUCCESS_VARIANT);
+    expect(base.container_variant).toBe(POST_AVAILABILITY_CONTAINER_VARIANT);
+    expect(base.copy_variant).toBe("human_connection_v3");
+    expect(base.cta_initially_visible).toBe(true);
+    expect(base.proof_variant).toBe("stephen-henry");
   });
 });
 

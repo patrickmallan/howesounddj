@@ -1,0 +1,110 @@
+[
+  {
+    "viewport": "desktop-1280",
+    "size": "1280x720",
+    "preCheck": {
+      "panelHeight": 270,
+      "panelTop": 63,
+      "panelMaxScroll": 0,
+      "formSectionHeight": 224,
+      "checkButtonBottom": 308,
+      "viewportHeight": 720
+    },
+    "postCheck": {
+      "panelHeight": 576,
+      "panelScrollHeight": 643,
+      "panelClientHeight": 574,
+      "scrollRequired": true,
+      "scrollOverflowPx": 69,
+      "formStillVisible": true,
+      "formBlockHeight": 599,
+      "resultHeight": 359,
+      "ctaTop": 603,
+      "ctaBottom": 666,
+      "ctaInitiallyVisible": false,
+      "panelScrollTop": 0,
+      "focusActiveId": "BODY"
+    }
+  },
+  {
+    "viewport": "desktop-1512",
+    "size": "1512x982",
+    "preCheck": {
+      "panelHeight": 270,
+      "panelTop": 63,
+      "panelMaxScroll": 0,
+      "formSectionHeight": 224,
+      "checkButtonBottom": 308,
+      "viewportHeight": 982
+    },
+    "postCheck": {
+      "panelHeight": 576,
+      "panelScrollHeight": 643,
+      "panelClientHeight": 574,
+      "scrollRequired": true,
+      "scrollOverflowPx": 69,
+      "formStillVisible": true,
+      "formBlockHeight": 599,
+      "resultHeight": 359,
+      "ctaTop": 606,
+      "ctaBottom": 668,
+      "ctaInitiallyVisible": false,
+      "panelScrollTop": 0,
+      "focusActiveId": "BODY"
+    }
+  },
+  {
+    "viewport": "mobile-390",
+    "size": "390x844",
+    "preCheck": {
+      "panelHeight": 270,
+      "panelTop": 76,
+      "panelMaxScroll": 0,
+      "formSectionHeight": 224,
+      "checkButtonBottom": 321,
+      "viewportHeight": 844
+    },
+    "postCheck": {
+      "panelHeight": 544,
+      "panelScrollHeight": 712,
+      "panelClientHeight": 542,
+      "scrollRequired": true,
+      "scrollOverflowPx": 170,
+      "formStillVisible": true,
+      "formBlockHeight": 668,
+      "resultHeight": 428,
+      "ctaTop": 681,
+      "ctaBottom": 748,
+      "ctaInitiallyVisible": false,
+      "panelScrollTop": 0,
+      "focusActiveId": "BODY"
+    }
+  },
+  {
+    "viewport": "mobile-375",
+    "size": "375x812",
+    "preCheck": {
+      "panelHeight": 270,
+      "panelTop": 76,
+      "panelMaxScroll": 0,
+      "formSectionHeight": 224,
+      "checkButtonBottom": 321,
+      "viewportHeight": 812
+    },
+    "postCheck": {
+      "panelHeight": 544,
+      "panelScrollHeight": 734,
+      "panelClientHeight": 542,
+      "scrollRequired": true,
+      "scrollOverflowPx": 192,
+      "formStillVisible": true,
+      "formBlockHeight": 690,
+      "resultHeight": 450,
+      "ctaTop": 706,
+      "ctaBottom": 772,
+      "ctaInitiallyVisible": false,
+      "panelScrollTop": 0,
+      "focusActiveId": "BODY"
+    }
+  }
+]

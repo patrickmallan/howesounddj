@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-07-30T18:24:57.764Z",
+  "baseUrl": "http://localhost:3459",
+  "variant": "human_connection_v3",
+  "viewports": [
+    {
+      "viewport": "desktop-1280",
+      "size": "1280x720",
+      "metrics": {
+        "panelTop": 63,
+        "panelHeight": 449,
+        "bodyClientHeight": 290,
+        "bodyScrollHeight": 290,
+        "bodyTop": 84,
+        "footerHeight": 113,
+        "ctaTop": 423,
+        "ctaBottom": 471,
+        "ctaInitiallyVisible": true,
+        "ctaWraps": false,
+        "formStillVisible": false,
+        "activeFocusTarget": "post-availability-success-heading-compact",
+        "headingHasFocus": true,
+        "horizontalOverflow": false,
+        "editDateVisible": true,
+        "closeControlVisible": true,
+        "safeAreaPaddingBottom": "16px"
+      }
+    },
+    {
+      "viewport": "desktop-1512",
+      "size": "1512x982",
+      "metrics": {
+        "panelTop": 63,
+        "panelHeight": 449,
+        "bodyClientHeight": 290,
+        "bodyScrollHeight": 290,
+        "bodyTop": 84,
+        "footerHeight": 113,
+        "ctaTop": 423,
+        "ctaBottom": 471,
+        "ctaInitiallyVisible": true,
+        "ctaWraps": false,
+        "formStillVisible": false,
+        "activeFocusTarget": "post-availability-success-heading-compact",
+        "headingHasFocus": true,
+        "horizontalOverflow": false,
+        "editDateVisible": true,
+        "closeControlVisible": true,
+        "safeAreaPaddingBottom": "16px"
+      }
+    },
+    {
+      "viewport": "mobile-390",
+      "size": "390x844",
+      "metrics": {
+        "panelTop": 76,
+        "panelHeight": 467,
+        "bodyClientHeight": 313,
+        "bodyScrollHeight": 313,
+        "bodyTop": 97,
+        "footerHeight": 109,
+        "ctaTop": 458,
+        "ctaBottom": 502,
+        "ctaInitiallyVisible": true,
+        "ctaWraps": false,
+        "formStillVisible": false,
+        "activeFocusTarget": "post-availability-success-heading-compact",
+        "headingHasFocus": true,
+        "horizontalOverflow": false,
+        "editDateVisible": true,
+        "closeControlVisible": true,
+        "safeAreaPaddingBottom": "16px"
+      }
+    },
+    {
+      "viewport": "mobile-375",
+      "size": "375x812",
+      "metrics": {
+        "panelTop": 76,
+        "panelHeight": 467,
+        "bodyClientHeight": 313,
+        "bodyScrollHeight": 313,
+        "bodyTop": 97,
+        "footerHeight": 109,
+        "ctaTop": 458,
+        "ctaBottom": 502,
+        "ctaInitiallyVisible": true,
+        "ctaWraps": false,
+        "formStillVisible": false,
+        "activeFocusTarget": "post-availability-success-heading-compact",
+        "headingHasFocus": true,
+        "horizontalOverflow": false,
+        "editDateVisible": true,
+        "closeControlVisible": true,
+        "safeAreaPaddingBottom": "16px"
+      }
+    }
+  ],
+  "pass": true
+}
