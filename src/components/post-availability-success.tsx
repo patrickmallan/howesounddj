@@ -22,6 +22,23 @@ import {
   POST_AVAILABILITY_PROOF_FULL_ID,
 } from "@/config/reviews";
 import { bookConsultPrimaryButtonClassName } from "@/components/book-consult-tracked-link";
+import {
+  roleActionFooter,
+  roleAttributionName,
+  roleAttributionVenue,
+  roleConfirmationBar,
+  roleConfirmationDate,
+  roleConfirmationEdit,
+  roleContentGroups,
+  roleHeadline,
+  roleHeadlineConfirmation,
+  roleHeadlineLead,
+  roleNarrativeGroup,
+  roleProofContext,
+  roleProofGroup,
+  roleSupportingNarrative,
+  roleTestimonial,
+} from "@/components/post-availability-success-styles";
 import { formatWeddingDateLong } from "@/lib/format-wedding-date";
 import { ANALYTICS_EVENTS, consultClickEventParams, trackEvent } from "@/lib/analytics";
 import { buildPostAvailabilityCalendlyUrl } from "@/lib/post-availability-calendly";
@@ -66,6 +83,8 @@ const fullCtaClassName = [
   CTA_PILL_FLEX_CENTER,
   "w-full max-w-md leading-snug px-5 py-3.5 sm:py-3",
 ].join(" ");
+
+const supportingNarrative = roleSupportingNarrative();
 
 export function PostAvailabilitySuccess({
   variant,
@@ -160,36 +179,6 @@ export function PostAvailabilitySuccess({
         transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] as const },
       };
 
-  const confirmedBarClass =
-    variant === "compact"
-      ? "flex items-center justify-between gap-3 rounded-lg border border-amber-300/20 bg-amber-300/10 px-3 py-2.5"
-      : "flex items-center justify-between gap-3 rounded-xl border border-amber-300/25 bg-amber-300/10 px-4 py-3";
-
-  const headlineLeadClass =
-    variant === "compact"
-      ? "block text-base font-medium leading-snug text-white/85"
-      : "block text-lg font-medium leading-snug text-white/85 sm:text-xl";
-
-  const headlineConfirmationClass =
-    variant === "compact"
-      ? "mt-1 block text-lg font-semibold leading-snug text-balance text-white/95"
-      : "mt-1 block text-xl font-semibold leading-snug text-balance text-white/95 sm:text-2xl";
-
-  const bridgeClass =
-    variant === "compact"
-      ? "text-sm leading-relaxed text-white/75"
-      : "text-sm leading-relaxed text-white/75 sm:text-base";
-
-  const proofContextClass =
-    variant === "compact"
-      ? "text-sm font-medium leading-relaxed text-white/72"
-      : "text-sm font-medium leading-relaxed text-white/75 sm:text-base";
-
-  const footerClass =
-    variant === "compact"
-      ? "shrink-0 border-t border-white/10 bg-neutral-950/[0.98] px-0 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))]"
-      : "shrink-0 border-t border-white/10 pt-6 sm:pt-7";
-
   const ctaLabel =
     variant === "compact" ? POST_AVAILABILITY_COMPACT_CTA_LABEL : POST_AVAILABILITY_PRIMARY_CTA_LABEL;
   const ctaClassName = variant === "compact" ? compactCtaClassName : fullCtaClassName;
@@ -211,16 +200,17 @@ export function PostAvailabilitySuccess({
             : "flex flex-col"
         }
       >
-        <div className={variant === "compact" ? "space-y-3.5" : "space-y-4 sm:space-y-5"}>
-          <div className={confirmedBarClass}>
-            <p className="min-w-0 text-sm font-medium text-white/95">
+        <div className={roleContentGroups(variant)}>
+          {/* GROUP 1 — Confirmation */}
+          <div className={roleConfirmationBar(variant)} data-availability-role="confirmation">
+            <p className={`min-w-0 ${roleConfirmationDate()}`}>
               {postAvailabilityConfirmedDateLabel(formattedDate)}
             </p>
             {onEditDate ? (
               <button
                 type="button"
                 onClick={handleEditDateClick}
-                className="shrink-0 rounded-md px-2 py-1.5 text-xs font-medium text-amber-200/90 underline decoration-amber-300/30 underline-offset-2 transition hover:text-amber-100 hover:decoration-amber-200/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/50 min-h-[44px] min-w-[44px] inline-flex items-center justify-center"
+                className={roleConfirmationEdit()}
                 aria-label={`Edit wedding date, currently ${formattedDate}`}
               >
                 {POST_AVAILABILITY_EDIT_DATE_LABEL}
@@ -228,46 +218,43 @@ export function PostAvailabilitySuccess({
             ) : null}
           </div>
 
-          <header className={variant === "compact" ? "space-y-2.5" : "space-y-3"}>
+          {/* GROUP 2 — Narrative */}
+          <header className={roleNarrativeGroup()} data-availability-role="narrative">
             <h3
               ref={headingRef}
               id={`post-availability-success-heading-${variant}`}
               tabIndex={-1}
-              className="outline-none"
+              className={roleHeadline(variant)}
+              data-availability-role="headline"
             >
-              <span className={headlineLeadClass}>{POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD}</span>
-              <span className={headlineConfirmationClass}>
+              <span className={roleHeadlineLead()}>{POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD}</span>
+              <span className={roleHeadlineConfirmation()}>
                 {POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION}
               </span>
             </h3>
-            <p className={bridgeClass}>{POST_AVAILABILITY_SUCCESS_BRIDGE}</p>
+            <p className={supportingNarrative} data-availability-role="supporting-narrative">
+              {POST_AVAILABILITY_SUCCESS_BRIDGE}
+            </p>
             {variant === "full" ? (
-              <p className={`${bridgeClass} text-white/70`}>{POST_AVAILABILITY_FULL_PLANNING_SESSION}</p>
+              <p className={supportingNarrative} data-availability-role="supporting-narrative">
+                {POST_AVAILABILITY_FULL_PLANNING_SESSION}
+              </p>
             ) : null}
           </header>
 
+          {/* GROUP 3 — Proof */}
           {proof && proofQuote ? (
-            <figure className={variant === "compact" ? "space-y-2.5 pt-0.5" : "space-y-3 pt-1"}>
-              <p className={proofContextClass}>{POST_AVAILABILITY_PROOF_CONTEXT}</p>
-              <blockquote
-                className={
-                  variant === "compact"
-                    ? "border-l-2 border-amber-300/30 pl-3 text-sm font-semibold leading-relaxed text-white/95"
-                    : "border-l-2 border-amber-300/35 pl-4 text-base font-semibold leading-relaxed text-white/95 sm:text-[1.05rem]"
-                }
-              >
+            <figure className={roleProofGroup()} data-availability-role="proof">
+              <p className={roleProofContext()} data-availability-role="proof-context">
+                {POST_AVAILABILITY_PROOF_CONTEXT}
+              </p>
+              <blockquote className={roleTestimonial()} data-availability-role="testimonial">
                 &ldquo;{proofQuote}&rdquo;
               </blockquote>
-              <figcaption
-                className={
-                  variant === "compact"
-                    ? "text-xs font-medium text-amber-300/90"
-                    : "text-sm font-medium text-amber-300/90"
-                }
-              >
-                <span className="block">{proof.attribution}</span>
+              <figcaption data-availability-role="attribution">
+                <span className={roleAttributionName()}>{proof.attribution}</span>
                 {proof.venue ? (
-                  <span className="mt-0.5 block text-white/65">{proof.venue}</span>
+                  <span className={roleAttributionVenue()}>{proof.venue}</span>
                 ) : null}
               </figcaption>
             </figure>
@@ -275,14 +262,9 @@ export function PostAvailabilitySuccess({
         </div>
       </div>
 
-      <footer className={footerClass} aria-label="Next step">
-        <p
-          className={
-            variant === "compact"
-              ? "text-center text-sm leading-relaxed text-white/65"
-              : "text-center text-sm leading-relaxed text-white/65 sm:text-[0.9375rem]"
-          }
-        >
+      {/* GROUP 4 — Action */}
+      <footer className={roleActionFooter(variant)} aria-label="Next step" data-availability-role="action">
+        <p className={supportingNarrative} data-availability-role="cta-support">
           {POST_AVAILABILITY_CTA_SUPPORT}
         </p>
         <div className={variant === "compact" ? "mt-3 flex w-full justify-center" : "mt-4 flex w-full justify-center"}>
@@ -292,6 +274,7 @@ export function PostAvailabilitySuccess({
             target="_blank"
             rel="noopener noreferrer"
             className={ctaClassName}
+            data-availability-role="primary-cta"
             onClick={handleConsultClick}
           >
             {ctaLabel}
@@ -302,7 +285,7 @@ export function PostAvailabilitySuccess({
             <button
               type="button"
               onClick={handleInquiryFallbackClick}
-              className="font-medium text-white/55 underline decoration-white/20 underline-offset-4 transition hover:text-amber-200/90 hover:decoration-amber-300/35"
+              className="font-normal text-white/55 underline decoration-white/20 underline-offset-4 transition hover:text-white/70 hover:decoration-white/35"
             >
               {POST_AVAILABILITY_INQUIRY_FALLBACK_LABEL}
             </button>
@@ -328,7 +311,7 @@ export function PostAvailabilitySuccess({
   return (
     <motion.div
       {...motionProps}
-      className={`flex flex-col rounded-[1.5rem] border border-amber-400/25 bg-amber-950/25 p-6 lg:p-8 ${className}`.trim()}
+      className={`flex flex-col rounded-[1.5rem] border border-amber-400/20 bg-amber-950/20 p-6 lg:p-8 ${className}`.trim()}
       role="region"
       aria-labelledby={`post-availability-success-heading-${variant}`}
     >

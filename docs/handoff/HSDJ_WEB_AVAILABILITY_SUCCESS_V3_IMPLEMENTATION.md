@@ -3,8 +3,27 @@
 **Date:** 2026-07-30  
 **Verdict:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_IMPLEMENTED_AND_LOCALLY_CERTIFIED`  
 **V3.1 status:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_1_COPY_AND_UX_REFINEMENT_COMPLETE` (2026-07-30)  
+**V3.2 status:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_2_VISUAL_HIERARCHY_CONVERGED_AND_LOCALLY_CERTIFIED` (2026-07-30)  
+**V3.2 handoff:** `docs/handoff/HSDJ_WEB_AVAILABILITY_SUCCESS_V3_2_VISUAL_HIERARCHY.md`  
 **Workspace:** `~/Desktop/howesounddj`  
 **Deployment:** Not performed in this tranche
+
+---
+
+## V3.2 — Visual Hierarchy Convergence (Patrick Visual Review)
+
+**Reason:** Typography fragmentation — too many independent size/weight/colour combinations.  
+**No architecture, copy, API, analytics, or Calendly changes.**
+
+| Change | Outcome |
+|--------|---------|
+| Typography roles | `post-availability-success-styles.ts` — roles A–G |
+| Headline cohesion | Same size/colour; medium + semibold weight only |
+| Supporting narrative | Bridge + CTA support share `roleSupportingNarrative` |
+| Proof | Removed gold border rule; editorial blockquote |
+| Attribution | Stephen Henry + Sea to Sky Gondola from SSOT |
+| Colour | Gold reserved for CTA; neutral edit/attribution |
+| Spacing | Four content groups with `gap-4`/`gap-5` rhythm |
 
 ---
 

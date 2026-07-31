@@ -61,18 +61,19 @@ describe("review SSOT", () => {
     }
   });
 
-  it("uses Stephen Henry as the sole post-availability proof", () => {
+  it("uses Stephen Henry as the sole post-availability proof with governed venue", () => {
     expect(POST_AVAILABILITY_PROOF_FULL_ID).toBe("stephen-henry");
     expect(POST_AVAILABILITY_PROOF_COMPACT_ID).toBe("stephen-henry");
     const stephen = getReviewById("stephen-henry");
     expect(stephen?.reviewerName).toBe("Stephen Henry");
+    expect(stephen?.venue).toBe("Sea to Sky Gondola");
     expect(stephen?.quote).toBe(
       "We would get married all over again just so we could hangout and work with Patrick again. He's a talented DJ and a truly caring person.",
     );
   });
 });
 
-describe("post-availability copy authority (V3.1)", () => {
+describe("post-availability copy authority (V3.1 preserved in V3.2)", () => {
   const copySurfaces = [
     POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD,
     POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION,
@@ -133,6 +134,41 @@ describe("post-availability copy authority (V3.1)", () => {
   });
 });
 
+describe("post-availability visual hierarchy (V3.2)", () => {
+  it("uses role-based typography system instead of inline fragmentation", () => {
+    const success = readSource("src/components/post-availability-success.tsx");
+    const styles = readSource("src/components/post-availability-success-styles.ts");
+    expect(success).toMatch(/post-availability-success-styles/);
+    expect(styles).toMatch(/roleHeadline/);
+    expect(styles).toMatch(/roleSupportingNarrative/);
+    expect(styles).toMatch(/roleTestimonial/);
+    expect(success).toMatch(/data-availability-role="headline"/);
+    expect(success).toMatch(/data-availability-role="testimonial"/);
+    expect(success).toMatch(/data-availability-role="attribution"/);
+    expect(success).toMatch(/data-availability-role="cta-support"/);
+    expect(success).not.toMatch(/border-l-2 border-amber/);
+    expect(success).not.toMatch(/text-amber-300\/90/);
+  });
+
+  it("keeps headline lines in one heading container with shared role system", () => {
+    const success = readSource("src/components/post-availability-success.tsx");
+    expect(success).toMatch(/roleHeadlineLead/);
+    expect(success).toMatch(/roleHeadlineConfirmation/);
+    expect(success).toMatch(/data-availability-role="headline"/);
+  });
+
+  it("renders venue from SSOT beneath Stephen Henry without hardcoding", () => {
+    const success = readSource("src/components/post-availability-success.tsx");
+    const reviews = readSource("src/config/reviews.ts");
+    expect(reviews).toMatch(/venue: "Sea to Sky Gondola"/);
+    expect(success).toMatch(/proof\.venue/);
+    expect(success).not.toMatch(/Sea to Sky Gondola/);
+    expect(getReviewById("stephen-henry")?.venue).toBe("Sea to Sky Gondola");
+    const lauren = getReviewById("lauren-steeles");
+    expect(lauren?.venue).toBeUndefined();
+  });
+});
+
 describe("shared post-availability success ownership (V3)", () => {
   it("contact form replaces the availability form on success", () => {
     const form = readSource("src/components/contact-availability-form.tsx");
@@ -166,10 +202,9 @@ describe("shared post-availability success ownership (V3)", () => {
     expect(success).toMatch(/aria-live="polite"/);
     expect(success).toMatch(/headingRef/);
     expect(success).toMatch(/tabIndex=\{-1\}/);
-    expect(success).toMatch(/shrink-0 border-t/);
+    expect(success).toMatch(/roleActionFooter/);
     expect(success).not.toMatch(/splitReviewQuoteAtFirstSentence/);
     expect(success).not.toMatch(/Wonderful news/);
-    expect(success).not.toMatch(/Sea to Sky Gondola/i);
     expect(success).not.toMatch(/matthew-bundala|lauren-steeles/);
   });
 
@@ -177,13 +212,6 @@ describe("shared post-availability success ownership (V3)", () => {
     const header = readSource("src/components/header-check-availability.tsx");
     expect(header).toMatch(/overflow-hidden/);
     expect(header).toMatch(/flex-col/);
-  });
-
-  it("renders venue from review SSOT only when governed metadata exists", () => {
-    const success = readSource("src/components/post-availability-success.tsx");
-    expect(success).toMatch(/proof\.venue/);
-    const stephen = getReviewById("stephen-henry");
-    expect(stephen?.venue).toBeUndefined();
   });
 });
 
