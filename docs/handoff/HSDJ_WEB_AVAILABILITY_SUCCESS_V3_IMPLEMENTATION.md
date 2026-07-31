@@ -6,10 +6,27 @@
 **V3.2 status:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_2_VISUAL_HIERARCHY_CONVERGED_AND_LOCALLY_CERTIFIED` (2026-07-30)  
 **V3.3 status:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_3_COMPOSITION_COHESION_COMPLETE_AND_LOCALLY_CERTIFIED` (2026-07-30)  
 **V3.4 status:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_4_FINAL_EDITORIAL_CLOSURE_LOCALLY_CERTIFIED` (2026-07-31)  
+**V3.5 status:** `FINAL_DESIGN_FREEZE_PENDING_DEPLOYMENT` (2026-07-31)  
+**V3.5 handoff:** `docs/handoff/HSDJ_WEB_AVAILABILITY_SUCCESS_V3_5_FINAL_POLISH_AND_DESIGN_FREEZE.md`  
 **V3.4 handoff:** `docs/handoff/HSDJ_WEB_AVAILABILITY_SUCCESS_V3_4_FINAL_EDITORIAL_CLOSURE.md`  
 **V3.3 handoff:** `docs/handoff/HSDJ_WEB_AVAILABILITY_SUCCESS_V3_3_COMPOSITION_COHESION.md`  
 **Workspace:** `~/Desktop/howesounddj`  
 **Deployment:** Not performed in this tranche
+
+---
+
+## V3.5 — Final Polish and Design Freeze (Patrick Final Visual Review)
+
+**Reason:** Quotation clarity, CTA-group alignment, pre-deployment freeze.  
+**No architecture, copy, API, analytics, or Calendly changes.**
+
+| Change | Outcome |
+|--------|---------|
+| Quotation marks | `formatAvailabilityTestimonialQuotation` — curly `“` `”` at render |
+| Testimonial alignment | Explicit `text-left`; no justification |
+| Testimonial weight | `font-medium italic` (Geist Sans native) |
+| CTA support | `roleCtaSupport` — centred over full-width button |
+| Design status | `FINAL_DESIGN_FREEZE_PENDING_DEPLOYMENT` |
 
 ---
 

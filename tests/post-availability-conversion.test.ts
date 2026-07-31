@@ -21,6 +21,7 @@ import {
   getAvailabilitySuccessProofQuote,
   getReviewById,
 } from "@/config/reviews";
+import { formatAvailabilityTestimonialQuotation } from "@/components/post-availability-success-styles";
 import { ANALYTICS_EVENTS } from "@/lib/analytics";
 import { formatWeddingDateLong, weddingDateMonthBucket } from "@/lib/format-wedding-date";
 import { buildPostAvailabilityCalendlyUrl } from "@/lib/post-availability-calendly";
@@ -178,13 +179,14 @@ describe("post-availability composition cohesion (V3.3)", () => {
     expect(success).toMatch(/<figcaption/);
   });
 
-  it("removes visible action divider and left-aligns CTA support", () => {
+  it("removes visible action divider; CTA support centred in V3.5 action group", () => {
     const styles = readSource("src/components/post-availability-success-styles.ts");
     const success = readSource("src/components/post-availability-success.tsx");
     expect(styles).not.toMatch(/border-t border-white/);
     expect(success).toMatch(/data-availability-role="cta-support"/);
-    expect(success).not.toMatch(/text-center.*cta-support/);
-    expect(success).not.toMatch(/justify-center.*cta-support/);
+    expect(success).toMatch(/roleCtaSupport/);
+    expect(styles).toMatch(/roleCtaSupport/);
+    expect(styles).toMatch(/text-center/);
   });
 
   it("preserves proof structure quote then attribution with SSOT venue", () => {
@@ -267,6 +269,78 @@ describe("post-availability final editorial closure (V3.4)", () => {
     expect(success).toMatch(/POST_AVAILABILITY_FULL_PLANNING_SESSION/);
     expect(success).toMatch(/POST_AVAILABILITY_INQUIRY_FALLBACK_LABEL/);
     expect(success).toMatch(/variant === "full"/);
+  });
+});
+
+describe("post-availability final polish and design freeze (V3.5)", () => {
+  const STEPHEN_EXCERPT =
+    "We would get married all over again just so we could hangout and work with Patrick. He's a talented DJ and a truly caring person.";
+  const OPENING_QUOTE = "\u201C";
+  const CLOSING_QUOTE = "\u201D";
+
+  it("renders typographic quotation marks around governed excerpt without mutating data", () => {
+    const rendered = formatAvailabilityTestimonialQuotation(STEPHEN_EXCERPT);
+    expect(rendered.startsWith(OPENING_QUOTE)).toBe(true);
+    expect(rendered.endsWith(CLOSING_QUOTE)).toBe(true);
+    expect(rendered).toBe(`${OPENING_QUOTE}${STEPHEN_EXCERPT}${CLOSING_QUOTE}`);
+    const stephen = getReviewById("stephen-henry");
+    expect(stephen?.availabilitySuccessExcerpt).toBe(STEPHEN_EXCERPT);
+    expect(stephen?.availabilitySuccessExcerpt).not.toMatch(/^[“"]/);
+    expect(stephen?.availabilitySuccessExcerpt).not.toMatch(/[”"]$/);
+    const success = readSource("src/components/post-availability-success.tsx");
+    expect(success).toMatch(/formatAvailabilityTestimonialQuotation/);
+  });
+
+  it("does not duplicate quotation marks when excerpt already includes them", () => {
+    const alreadyQuoted = `${OPENING_QUOTE}${STEPHEN_EXCERPT}${CLOSING_QUOTE}`;
+    expect(formatAvailabilityTestimonialQuotation(alreadyQuoted)).toBe(alreadyQuoted);
+  });
+
+  it("keeps testimonial left-aligned without justification", () => {
+    const styles = readSource("src/components/post-availability-success-styles.ts");
+    expect(styles).toMatch(/roleTestimonial/);
+    expect(styles).toMatch(/text-left/);
+    expect(styles).not.toMatch(/text-justify/);
+    expect(styles).not.toMatch(/text-center.*roleTestimonial/);
+  });
+
+  it("uses medium italic for testimonial via Geist Sans role", () => {
+    const styles = readSource("src/components/post-availability-success-styles.ts");
+    expect(styles).toMatch(/font-medium italic/);
+    expect(styles).not.toMatch(/font-bold/);
+  });
+
+  it("centres CTA support in compact and full action groups", () => {
+    const styles = readSource("src/components/post-availability-success-styles.ts");
+    const success = readSource("src/components/post-availability-success.tsx");
+    expect(styles).toMatch(/roleCtaSupport/);
+    expect(styles).toMatch(/text-center/);
+    expect(success).toMatch(/roleCtaSupport\(\)/);
+    expect(success).toMatch(/data-availability-role="cta-support"/);
+  });
+
+  it("preserves left-aligned attribution and data integrity", () => {
+    const stephen = getReviewById("stephen-henry")!;
+    expect(stephen.quote).toContain("Patrick again");
+    expect(getAvailabilitySuccessProofQuote(stephen)).toBe(STEPHEN_EXCERPT);
+    expect(stephen.venue).toBe("Sea to Sky Gondola");
+    expect(formatMarriedAtVenue("Sea to Sky Gondola")).toBe("Married at Sea to Sky Gondola");
+    const styles = readSource("src/components/post-availability-success-styles.ts");
+    expect(styles).toMatch(/roleAttributionName/);
+    expect(styles).not.toMatch(/text-center.*roleAttribution/);
+  });
+
+  it("preserves regression contract: bridge absent, CTA exact, analytics intact", () => {
+    const success = readSource("src/components/post-availability-success.tsx");
+    expect(success).not.toMatch(/Let's see if we're a great fit for each other/);
+    expect(POST_AVAILABILITY_CTA_SUPPORT).toBe(
+      "Your next best step is to book a chat with Patrick.",
+    );
+    expect(POST_AVAILABILITY_COMPACT_CTA_LABEL).toBe("Choose a Time");
+    expect(success).toMatch(/buildPostAvailabilityCalendlyUrl/);
+    expect(success).toMatch(/aria-live="polite"/);
+    expect(success).toMatch(/headingRef/);
+    expect(success).toMatch(/POST_AVAILABILITY_INQUIRY_FALLBACK_LABEL/);
   });
 });
 

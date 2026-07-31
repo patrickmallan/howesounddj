@@ -1,9 +1,22 @@
 /**
- * V3.2/V3.3/V3.4 typography role system for post-availability success surfaces.
- * V3.4: italic testimonial excerpt, proof breathing room, bridge removed.
+ * V3.2–V3.5 typography role system for post-availability success surfaces.
+ * V3.5: typographic quotation marks, left-aligned proof, centred CTA support.
  */
 
 export type AvailabilitySuccessSurface = "compact" | "full";
+
+const OPENING_QUOTE = "\u201C";
+const CLOSING_QUOTE = "\u201D";
+
+/** Presentation-only curly quotes around governed excerpt (data stays unquoted). */
+export function formatAvailabilityTestimonialQuotation(excerpt: string): string {
+  let text = excerpt.trim();
+  const hasOpen = text.startsWith(OPENING_QUOTE) || text.startsWith('"');
+  const hasClose = text.endsWith(CLOSING_QUOTE) || text.endsWith('"');
+  if (!hasOpen) text = `${OPENING_QUOTE}${text}`;
+  if (!hasClose) text = `${text}${CLOSING_QUOTE}`;
+  return text;
+}
 
 const headlineSize: Record<AvailabilitySuccessSurface, string> = {
   compact: "text-lg",
@@ -36,14 +49,19 @@ export function roleHeadlineLine(): string {
   return "block text-balance";
 }
 
-/** ROLE C — Supporting narrative (CTA support, full planning sentence) */
+/** ROLE C — Supporting narrative (full planning sentence; left-aligned) */
 export function roleSupportingNarrative(): string {
   return "text-sm font-normal leading-relaxed text-white/70";
 }
 
-/** ROLE E — Testimonial quotation (italic editorial excerpt) */
+/** ROLE C — CTA support in action footer (centred over full-width button) */
+export function roleCtaSupport(): string {
+  return `${roleSupportingNarrative()} mx-auto max-w-md text-center text-balance`;
+}
+
+/** ROLE E — Testimonial quotation (left-aligned medium italic; Geist Sans native face) */
 export function roleTestimonial(): string {
-  return "text-sm font-medium italic leading-relaxed text-white/90";
+  return "text-left text-sm font-medium italic leading-relaxed text-white/90";
 }
 
 /** ROLE F — Attribution name */

@@ -1,17 +1,31 @@
 # HSDJ Availability Success V3 — Copy Contract
 
-**Status:** `APPROVED_FOR_IMPLEMENTATION` (V3.4 editorial closure appended 2026-07-31)  
-**Patrick approval date:** `2026-07-30` (V3); `2026-07-31` (V3.4 final editorial)  
+**Status:** `FINAL_DESIGN_FREEZE_PENDING_DEPLOYMENT` (V3.5 polish appended 2026-07-31)  
+**Patrick approval date:** `2026-07-30` (V3); `2026-07-31` (V3.4 editorial, V3.5 final polish)  
 **Concept:** Human Connection  
 **Variant ID:** `human_connection_v3`  
 **Qualitative user validation:** `POST_IMPLEMENTATION_VALIDATION_PENDING`  
 **Stephen SSOT:** `src/config/reviews.ts` → `stephen-henry`
 
-Patrick approved this contract on 2026-07-30. V3.4 final editorial closure was authorized on 2026-07-31 after rendered review. Post-implementation qualitative sessions remain useful validation but are not a prerequisite to the bounded implementation.
+Patrick approved this contract on 2026-07-30. V3.4 editorial closure and V3.5 final polish were authorized on 2026-07-31. Post-implementation qualitative sessions remain useful validation but are not a prerequisite to the bounded implementation.
 
 ---
 
-## V3.4 Editorial Closure (2026-07-31) — Current Authority
+## V3.5 Final Polish (2026-07-31) — Design Freeze Authority
+
+| Element | Treatment | Notes |
+|---------|-----------|-------|
+| **Rendered quotation** | `“{availabilitySuccessExcerpt}”` | Curly quotes supplied by blockquote renderer; excerpt data unquoted |
+| **Testimonial alignment** | Left-aligned | No justification |
+| **Testimonial weight** | Medium italic (`font-medium italic`) | Geist Sans native face |
+| **CTA support alignment** | Centred over full-width CTA | Compact and full action groups |
+| **Proof block** | Left-aligned | Headline, testimonial, attribution unchanged axis |
+
+All V3.4 copy, data, and excerpt wording unchanged.
+
+---
+
+## V3.4 Editorial Closure (2026-07-31)
 
 | Element | Governed copy | Notes |
 |---------|---------------|-------|
@@ -37,7 +51,7 @@ Patrick approved this contract on 2026-07-30. V3.4 final editorial closure was a
 
 - Italic, medium weight, single colour, editorial line height
 - Semantic `<figure>` / `<blockquote>` / `<figcaption>`
-- No decorative oversized quotation marks
+- V3.5 adds restrained typographic quotation marks at render time (see V3.5 section)
 
 ---
 

@@ -30,11 +30,13 @@ import {
   roleConfirmationDate,
   roleConfirmationEdit,
   roleContentGroups,
+  roleCtaSupport,
   roleHeadline,
   roleHeadlineLine,
   roleProofGroup,
   roleSupportingNarrative,
   roleTestimonial,
+  formatAvailabilityTestimonialQuotation,
 } from "@/components/post-availability-success-styles";
 import { formatWeddingDateLong } from "@/lib/format-wedding-date";
 import { ANALYTICS_EVENTS, consultClickEventParams, trackEvent } from "@/lib/analytics";
@@ -238,7 +240,7 @@ export function PostAvailabilitySuccess({
           {proof && proofQuote ? (
             <figure className={roleProofGroup()} data-availability-role="proof">
               <blockquote className={roleTestimonial()} data-availability-role="testimonial">
-                {proofQuote}
+                {formatAvailabilityTestimonialQuotation(proofQuote)}
               </blockquote>
               <figcaption data-availability-role="attribution">
                 <span className={roleAttributionName()}>{proof.attribution}</span>
@@ -255,7 +257,7 @@ export function PostAvailabilitySuccess({
 
       {/* GROUP 4 — Action */}
       <footer className={roleActionFooter(variant)} aria-label="Next step" data-availability-role="action">
-        <p className={supportingNarrative} data-availability-role="cta-support">
+        <p className={roleCtaSupport()} data-availability-role="cta-support">
           {POST_AVAILABILITY_CTA_SUPPORT}
         </p>
         <div className={variant === "compact" ? "mt-3 w-full" : "mt-4 w-full"}>
