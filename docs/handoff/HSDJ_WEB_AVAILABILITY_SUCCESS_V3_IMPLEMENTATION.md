@@ -2,8 +2,29 @@
 
 **Date:** 2026-07-30  
 **Verdict:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_IMPLEMENTED_AND_LOCALLY_CERTIFIED`  
+**V3.1 status:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_1_COPY_AND_UX_REFINEMENT_COMPLETE` (2026-07-30)  
 **Workspace:** `~/Desktop/howesounddj`  
 **Deployment:** Not performed in this tranche
+
+---
+
+## V3.1 — Copy Clarity Refinement (Patrick Executive Review)
+
+**Reason:** Copy clarity refinement after Patrick executive review. **No architecture changes.**
+
+| Change | Before (V3) | After (V3.1) |
+|--------|-------------|--------------|
+| Headline | Wonderful news. Your wedding date is available. | Two lines: *This is the answer you were hoping for.* / *Your wedding date is available.* |
+| CTA support | 45 minutes · No pressure · Just clarity | Your next best step is to book a chat with Patrick. |
+| Compact CTA | Meet Patrick | Choose a Time |
+| Testimonial | Split font weight mid-quote | Single `font-semibold` quotation |
+| Context label | `text-xs text-white/60` | `text-sm font-medium text-white/72` |
+| Stephen venue | N/A | Renders `proof.venue` from SSOT when present; Stephen has no governed venue → name only |
+| Spacing | `space-y-3` body | `space-y-3.5` + `space-y-2.5` header/figure rhythm |
+
+**Unchanged:** state replacement, sticky footer, Stephen proof ID, accessibility, analytics topology, Calendly destination, geometry architecture.
+
+**V3.1 validation:** typecheck, lint, 69 tests, build, geometry proof re-run (see §15).
 
 ---
 

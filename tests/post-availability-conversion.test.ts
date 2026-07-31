@@ -4,13 +4,14 @@ import { describe, expect, it } from "vitest";
 import {
   POST_AVAILABILITY_COMPACT_CTA_LABEL,
   POST_AVAILABILITY_COPY_VARIANT,
+  POST_AVAILABILITY_CTA_SUPPORT,
   POST_AVAILABILITY_EDIT_DATE_LABEL,
   POST_AVAILABILITY_FULL_PLANNING_SESSION,
   POST_AVAILABILITY_PRIMARY_CTA_LABEL,
   POST_AVAILABILITY_PROOF_CONTEXT,
-  POST_AVAILABILITY_RISK_REDUCER,
   POST_AVAILABILITY_SUCCESS_BRIDGE,
-  POST_AVAILABILITY_SUCCESS_HEADLINE,
+  POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION,
+  POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD,
   postAvailabilityConfirmedDateLabel,
 } from "@/config/post-availability-copy";
 import {
@@ -71,22 +72,26 @@ describe("review SSOT", () => {
   });
 });
 
-describe("post-availability copy authority (V3)", () => {
+describe("post-availability copy authority (V3.1)", () => {
   const copySurfaces = [
-    POST_AVAILABILITY_SUCCESS_HEADLINE,
+    POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD,
+    POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION,
     POST_AVAILABILITY_SUCCESS_BRIDGE,
     POST_AVAILABILITY_FULL_PLANNING_SESSION,
     POST_AVAILABILITY_PROOF_CONTEXT,
     POST_AVAILABILITY_COMPACT_CTA_LABEL,
     POST_AVAILABILITY_PRIMARY_CTA_LABEL,
-    POST_AVAILABILITY_RISK_REDUCER,
+    POST_AVAILABILITY_CTA_SUPPORT,
     POST_AVAILABILITY_EDIT_DATE_LABEL,
     postAvailabilityConfirmedDateLabel("June 15, 2028"),
   ];
 
-  it("uses the Patrick-authorized V3 headline and bridge", () => {
-    expect(POST_AVAILABILITY_SUCCESS_HEADLINE).toBe(
-      "Wonderful news. Your wedding date is available.",
+  it("uses the V3.1 two-line headline and bridge", () => {
+    expect(POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD).toBe(
+      "This is the answer you were hoping for.",
+    );
+    expect(POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION).toBe(
+      "Your wedding date is available.",
     );
     expect(POST_AVAILABILITY_SUCCESS_BRIDGE).toBe(
       "Let's see if we're a great fit for each other.",
@@ -94,16 +99,19 @@ describe("post-availability copy authority (V3)", () => {
     expect(POST_AVAILABILITY_COPY_VARIANT).toBe("human_connection_v3");
   });
 
-  it("does not use V2 Patrick-forward headline or compact Sound Check bridge", () => {
+  it("does not use superseded V3 headline or risk reducer", () => {
     const copyFile = readSource("src/config/post-availability-copy.ts");
+    expect(copyFile).not.toMatch(/Wonderful news/);
+    expect(copyFile).not.toMatch(/45 minutes · No pressure · Just clarity/);
+    expect(copyFile).not.toMatch(/Meet Patrick/);
     expect(copyFile).not.toMatch(/Patrick is available/);
-    expect(copyFile).not.toMatch(/complimentary Sound Check is the calm next step/i);
-    expect(POST_AVAILABILITY_SUCCESS_HEADLINE).not.toMatch(/Patrick is available/);
   });
 
-  it("uses compact CTA Meet Patrick and governed risk reducer", () => {
-    expect(POST_AVAILABILITY_COMPACT_CTA_LABEL).toBe("Meet Patrick");
-    expect(POST_AVAILABILITY_RISK_REDUCER).toBe("45 minutes · No pressure · Just clarity");
+  it("uses compact CTA Choose a Time and CTA support copy", () => {
+    expect(POST_AVAILABILITY_COMPACT_CTA_LABEL).toBe("Choose a Time");
+    expect(POST_AVAILABILITY_CTA_SUPPORT).toBe(
+      "Your next best step is to book a chat with Patrick.",
+    );
   });
 
   it("contains no emoji characters", () => {
@@ -147,9 +155,11 @@ describe("shared post-availability success ownership (V3)", () => {
 
   it("implements sticky footer, Stephen proof, and accessibility structure", () => {
     const success = readSource("src/components/post-availability-success.tsx");
-    expect(success).toMatch(/POST_AVAILABILITY_SUCCESS_HEADLINE/);
+    expect(success).toMatch(/POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD/);
+    expect(success).toMatch(/POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION/);
     expect(success).toMatch(/POST_AVAILABILITY_PROOF_CONTEXT/);
     expect(success).toMatch(/POST_AVAILABILITY_COMPACT_CTA_LABEL/);
+    expect(success).toMatch(/POST_AVAILABILITY_CTA_SUPPORT/);
     expect(success).toMatch(/<figure/);
     expect(success).toMatch(/<blockquote/);
     expect(success).toMatch(/<figcaption/);
@@ -157,7 +167,8 @@ describe("shared post-availability success ownership (V3)", () => {
     expect(success).toMatch(/headingRef/);
     expect(success).toMatch(/tabIndex=\{-1\}/);
     expect(success).toMatch(/shrink-0 border-t/);
-    expect(success).not.toMatch(/Patrick is available/);
+    expect(success).not.toMatch(/splitReviewQuoteAtFirstSentence/);
+    expect(success).not.toMatch(/Wonderful news/);
     expect(success).not.toMatch(/Sea to Sky Gondola/i);
     expect(success).not.toMatch(/matthew-bundala|lauren-steeles/);
   });
@@ -166,6 +177,13 @@ describe("shared post-availability success ownership (V3)", () => {
     const header = readSource("src/components/header-check-availability.tsx");
     expect(header).toMatch(/overflow-hidden/);
     expect(header).toMatch(/flex-col/);
+  });
+
+  it("renders venue from review SSOT only when governed metadata exists", () => {
+    const success = readSource("src/components/post-availability-success.tsx");
+    expect(success).toMatch(/proof\.venue/);
+    const stephen = getReviewById("stephen-henry");
+    expect(stephen?.venue).toBeUndefined();
   });
 });
 

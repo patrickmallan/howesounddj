@@ -28,6 +28,8 @@ export type CanonicalReview = {
   compactExcerpt: string;
   fullExcerpt: string;
   attribution: string;
+  /** Governed venue label when authorized in review SSOT (e.g. Sea to Sky Gondola). */
+  venue?: string;
   evidenceStatus: "published_site";
 };
 

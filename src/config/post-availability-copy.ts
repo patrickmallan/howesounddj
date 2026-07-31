@@ -1,7 +1,7 @@
 /**
  * Post-availability emotional conversion copy (visitor-facing SSOT).
  *
- * V3 — Human Connection (Patrick-authorized 2026-07-30).
+ * V3.1 — Human Connection copy refinement (Patrick executive review 2026-07-30).
  * Authority: docs/branding/HSDJ_AVAILABILITY_SUCCESS_V3_COPY_CONTRACT.md
  */
 
@@ -10,9 +10,10 @@ export const POST_AVAILABILITY_COPY_VARIANT = "human_connection_v3" as const;
 export const POST_AVAILABILITY_PRIMARY_CTA_LABEL =
   "Reserve My Complimentary Wedding Planning Session" as const;
 
-export const POST_AVAILABILITY_COMPACT_CTA_LABEL = "Meet Patrick" as const;
+export const POST_AVAILABILITY_COMPACT_CTA_LABEL = "Choose a Time" as const;
 
-export const POST_AVAILABILITY_RISK_REDUCER = "45 minutes · No pressure · Just clarity" as const;
+export const POST_AVAILABILITY_CTA_SUPPORT =
+  "Your next best step is to book a chat with Patrick." as const;
 
 export const POST_AVAILABILITY_INQUIRY_FALLBACK_LABEL = "Prefer email first?" as const;
 
@@ -20,9 +21,13 @@ export const POST_AVAILABILITY_EDIT_DATE_LABEL = "Edit date" as const;
 
 export const POST_AVAILABILITY_PROOF_CONTEXT = "From a couple who worked with Patrick" as const;
 
-/** Shared headline (compact + full). */
-export const POST_AVAILABILITY_SUCCESS_HEADLINE =
-  "Wonderful news. Your wedding date is available." as const;
+/** Shared headline lead line (compact + full). */
+export const POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD =
+  "This is the answer you were hoping for." as const;
+
+/** Shared headline confirmation line (compact + full). */
+export const POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION =
+  "Your wedding date is available." as const;
 
 /** Shared mutual-fit bridge (compact + full). */
 export const POST_AVAILABILITY_SUCCESS_BRIDGE =

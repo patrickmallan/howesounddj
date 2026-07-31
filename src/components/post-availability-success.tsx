@@ -4,15 +4,16 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   POST_AVAILABILITY_COMPACT_CTA_LABEL,
+  POST_AVAILABILITY_CTA_SUPPORT,
   POST_AVAILABILITY_EDIT_DATE_LABEL,
   POST_AVAILABILITY_FULL_PLANNING_SESSION,
   POST_AVAILABILITY_INQUIRY_FALLBACK_LABEL,
   POST_AVAILABILITY_PRIMARY_CTA_LABEL,
   POST_AVAILABILITY_PROOF_CONTEXT,
-  POST_AVAILABILITY_RISK_REDUCER,
   POST_AVAILABILITY_SR_STATUS,
   POST_AVAILABILITY_SUCCESS_BRIDGE,
-  POST_AVAILABILITY_SUCCESS_HEADLINE,
+  POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION,
+  POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD,
   postAvailabilityConfirmedDateLabel,
 } from "@/config/post-availability-copy";
 import {
@@ -39,12 +40,6 @@ type Props = {
   onEditDate?: () => void;
   className?: string;
 };
-
-function splitReviewQuoteAtFirstSentence(quote: string): { lead: string; rest: string } {
-  const idx = quote.indexOf(". ");
-  if (idx === -1) return { lead: quote, rest: "" };
-  return { lead: quote.slice(0, idx + 1), rest: quote.slice(idx + 2) };
-}
 
 function isElementInitiallyVisible(element: HTMLElement): boolean {
   const rect = element.getBoundingClientRect();
@@ -93,7 +88,6 @@ export function PostAvailabilitySuccess({
   const proof = getReviewById(proofId);
   const calendlyUrl = buildPostAvailabilityCalendlyUrl({ weddingDate, surface });
   const proofQuote = proof?.quote ?? "";
-  const quoteParts = proofQuote ? splitReviewQuoteAtFirstSentence(proofQuote) : null;
 
   useLayoutEffect(() => {
     headingRef.current?.focus({ preventScroll: true });
@@ -171,15 +165,25 @@ export function PostAvailabilitySuccess({
       ? "flex items-center justify-between gap-3 rounded-lg border border-amber-300/20 bg-amber-300/10 px-3 py-2.5"
       : "flex items-center justify-between gap-3 rounded-xl border border-amber-300/25 bg-amber-300/10 px-4 py-3";
 
-  const headlineClass =
+  const headlineLeadClass =
     variant === "compact"
-      ? "text-lg font-semibold leading-snug text-balance text-white/95"
-      : "text-xl font-semibold leading-snug text-balance text-white/95 sm:text-2xl";
+      ? "block text-base font-medium leading-snug text-white/85"
+      : "block text-lg font-medium leading-snug text-white/85 sm:text-xl";
+
+  const headlineConfirmationClass =
+    variant === "compact"
+      ? "mt-1 block text-lg font-semibold leading-snug text-balance text-white/95"
+      : "mt-1 block text-xl font-semibold leading-snug text-balance text-white/95 sm:text-2xl";
 
   const bridgeClass =
     variant === "compact"
       ? "text-sm leading-relaxed text-white/75"
       : "text-sm leading-relaxed text-white/75 sm:text-base";
+
+  const proofContextClass =
+    variant === "compact"
+      ? "text-sm font-medium leading-relaxed text-white/72"
+      : "text-sm font-medium leading-relaxed text-white/75 sm:text-base";
 
   const footerClass =
     variant === "compact"
@@ -207,7 +211,7 @@ export function PostAvailabilitySuccess({
             : "flex flex-col"
         }
       >
-        <div className={variant === "compact" ? "space-y-3" : "space-y-4 sm:space-y-5"}>
+        <div className={variant === "compact" ? "space-y-3.5" : "space-y-4 sm:space-y-5"}>
           <div className={confirmedBarClass}>
             <p className="min-w-0 text-sm font-medium text-white/95">
               {postAvailabilityConfirmedDateLabel(formattedDate)}
@@ -224,14 +228,17 @@ export function PostAvailabilitySuccess({
             ) : null}
           </div>
 
-          <header className={variant === "compact" ? "space-y-2" : "space-y-3"}>
+          <header className={variant === "compact" ? "space-y-2.5" : "space-y-3"}>
             <h3
               ref={headingRef}
               id={`post-availability-success-heading-${variant}`}
               tabIndex={-1}
-              className={`${headlineClass} outline-none`}
+              className="outline-none"
             >
-              {POST_AVAILABILITY_SUCCESS_HEADLINE}
+              <span className={headlineLeadClass}>{POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD}</span>
+              <span className={headlineConfirmationClass}>
+                {POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION}
+              </span>
             </h3>
             <p className={bridgeClass}>{POST_AVAILABILITY_SUCCESS_BRIDGE}</p>
             {variant === "full" ? (
@@ -240,38 +247,16 @@ export function PostAvailabilitySuccess({
           </header>
 
           {proof && proofQuote ? (
-            <figure className={variant === "compact" ? "space-y-2" : "space-y-3"}>
-              <p
-                className={
-                  variant === "compact"
-                    ? "text-xs leading-relaxed text-white/60"
-                    : "text-sm leading-relaxed text-white/65"
-                }
-              >
-                {POST_AVAILABILITY_PROOF_CONTEXT}
-              </p>
+            <figure className={variant === "compact" ? "space-y-2.5 pt-0.5" : "space-y-3 pt-1"}>
+              <p className={proofContextClass}>{POST_AVAILABILITY_PROOF_CONTEXT}</p>
               <blockquote
                 className={
                   variant === "compact"
-                    ? "border-l-2 border-amber-300/30 pl-3 text-sm leading-relaxed text-white/90"
-                    : "border-l-2 border-amber-300/35 pl-4 text-base leading-relaxed text-white/90 sm:text-[1.05rem]"
+                    ? "border-l-2 border-amber-300/30 pl-3 text-sm font-semibold leading-relaxed text-white/95"
+                    : "border-l-2 border-amber-300/35 pl-4 text-base font-semibold leading-relaxed text-white/95 sm:text-[1.05rem]"
                 }
               >
-                {quoteParts ? (
-                  <>
-                    &ldquo;
-                    <span className="font-semibold text-white/95">{quoteParts.lead}</span>
-                    {quoteParts.rest ? (
-                      <>
-                        {" "}
-                        <span className="text-white/75">{quoteParts.rest}</span>
-                      </>
-                    ) : null}
-                    &rdquo;
-                  </>
-                ) : (
-                  <>&ldquo;{proofQuote}&rdquo;</>
-                )}
+                &ldquo;{proofQuote}&rdquo;
               </blockquote>
               <figcaption
                 className={
@@ -280,7 +265,10 @@ export function PostAvailabilitySuccess({
                     : "text-sm font-medium text-amber-300/90"
                 }
               >
-                {proof.attribution}
+                <span className="block">{proof.attribution}</span>
+                {proof.venue ? (
+                  <span className="mt-0.5 block text-white/65">{proof.venue}</span>
+                ) : null}
               </figcaption>
             </figure>
           ) : null}
@@ -291,11 +279,11 @@ export function PostAvailabilitySuccess({
         <p
           className={
             variant === "compact"
-              ? "text-center text-xs leading-relaxed text-white/50"
-              : "text-center text-sm leading-relaxed text-white/50"
+              ? "text-center text-sm leading-relaxed text-white/65"
+              : "text-center text-sm leading-relaxed text-white/65 sm:text-[0.9375rem]"
           }
         >
-          {POST_AVAILABILITY_RISK_REDUCER}
+          {POST_AVAILABILITY_CTA_SUPPORT}
         </p>
         <div className={variant === "compact" ? "mt-3 flex w-full justify-center" : "mt-4 flex w-full justify-center"}>
           <a
