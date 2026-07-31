@@ -8,7 +8,6 @@ import {
   POST_AVAILABILITY_EDIT_DATE_LABEL,
   POST_AVAILABILITY_FULL_PLANNING_SESSION,
   POST_AVAILABILITY_PRIMARY_CTA_LABEL,
-  POST_AVAILABILITY_PROOF_CONTEXT,
   POST_AVAILABILITY_SUCCESS_BRIDGE,
   POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION,
   POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD,
@@ -79,7 +78,6 @@ describe("post-availability copy authority (V3.1 preserved in V3.2)", () => {
     POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION,
     POST_AVAILABILITY_SUCCESS_BRIDGE,
     POST_AVAILABILITY_FULL_PLANNING_SESSION,
-    POST_AVAILABILITY_PROOF_CONTEXT,
     POST_AVAILABILITY_COMPACT_CTA_LABEL,
     POST_AVAILABILITY_PRIMARY_CTA_LABEL,
     POST_AVAILABILITY_CTA_SUPPORT,
@@ -100,12 +98,9 @@ describe("post-availability copy authority (V3.1 preserved in V3.2)", () => {
     expect(POST_AVAILABILITY_COPY_VARIANT).toBe("human_connection_v3");
   });
 
-  it("does not use superseded V3 headline or risk reducer", () => {
+  it("does not retain removed proof-context copy in configuration", () => {
     const copyFile = readSource("src/config/post-availability-copy.ts");
-    expect(copyFile).not.toMatch(/Wonderful news/);
-    expect(copyFile).not.toMatch(/45 minutes · No pressure · Just clarity/);
-    expect(copyFile).not.toMatch(/Meet Patrick/);
-    expect(copyFile).not.toMatch(/Patrick is available/);
+    expect(copyFile).not.toMatch(/From a couple who worked with Patrick/);
   });
 
   it("uses compact CTA Choose a Time and CTA support copy", () => {
@@ -150,10 +145,13 @@ describe("post-availability visual hierarchy (V3.2)", () => {
     expect(success).not.toMatch(/text-amber-300\/90/);
   });
 
-  it("keeps headline lines in one heading container with shared role system", () => {
+  it("keeps headline lines in one unified heading container", () => {
     const success = readSource("src/components/post-availability-success.tsx");
-    expect(success).toMatch(/roleHeadlineLead/);
-    expect(success).toMatch(/roleHeadlineConfirmation/);
+    const styles = readSource("src/components/post-availability-success-styles.ts");
+    expect(success).toMatch(/roleHeadlineLine/);
+    expect(styles).toMatch(/font-semibold/);
+    expect(success).not.toMatch(/roleHeadlineLead/);
+    expect(success).not.toMatch(/roleHeadlineConfirmation/);
     expect(success).toMatch(/data-availability-role="headline"/);
   });
 
@@ -166,6 +164,35 @@ describe("post-availability visual hierarchy (V3.2)", () => {
     expect(getReviewById("stephen-henry")?.venue).toBe("Sea to Sky Gondola");
     const lauren = getReviewById("lauren-steeles");
     expect(lauren?.venue).toBeUndefined();
+  });
+});
+
+describe("post-availability composition cohesion (V3.3)", () => {
+  it("removes proof-context line from rendered success surfaces", () => {
+    const success = readSource("src/components/post-availability-success.tsx");
+    expect(success).not.toMatch(/POST_AVAILABILITY_PROOF_CONTEXT/);
+    expect(success).not.toMatch(/proof-context/);
+    expect(success).not.toMatch(/From a couple who worked with Patrick/);
+    expect(success).toMatch(/<blockquote/);
+    expect(success).toMatch(/<figcaption/);
+  });
+
+  it("removes visible action divider and left-aligns CTA support", () => {
+    const styles = readSource("src/components/post-availability-success-styles.ts");
+    const success = readSource("src/components/post-availability-success.tsx");
+    expect(styles).not.toMatch(/border-t border-white/);
+    expect(success).toMatch(/data-availability-role="cta-support"/);
+    expect(success).not.toMatch(/text-center.*cta-support/);
+    expect(success).not.toMatch(/justify-center.*cta-support/);
+  });
+
+  it("preserves proof structure quote then attribution with SSOT venue", () => {
+    const success = readSource("src/components/post-availability-success.tsx");
+    const quoteIndex = success.indexOf("data-availability-role=\"testimonial\"");
+    const attributionIndex = success.indexOf("data-availability-role=\"attribution\"");
+    expect(quoteIndex).toBeGreaterThan(-1);
+    expect(attributionIndex).toBeGreaterThan(quoteIndex);
+    expect(getReviewById("stephen-henry")?.venue).toBe("Sea to Sky Gondola");
   });
 });
 
@@ -193,7 +220,7 @@ describe("shared post-availability success ownership (V3)", () => {
     const success = readSource("src/components/post-availability-success.tsx");
     expect(success).toMatch(/POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD/);
     expect(success).toMatch(/POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION/);
-    expect(success).toMatch(/POST_AVAILABILITY_PROOF_CONTEXT/);
+    expect(success).not.toMatch(/POST_AVAILABILITY_PROOF_CONTEXT/);
     expect(success).toMatch(/POST_AVAILABILITY_COMPACT_CTA_LABEL/);
     expect(success).toMatch(/POST_AVAILABILITY_CTA_SUPPORT/);
     expect(success).toMatch(/<figure/);

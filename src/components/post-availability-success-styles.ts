@@ -1,6 +1,6 @@
 /**
- * V3.2 typography role system for post-availability success surfaces.
- * Hierarchy through disciplined roles — not arbitrary per-element styling.
+ * V3.2/V3.3 typography role system for post-availability success surfaces.
+ * V3.3: unified headline, proof-context removed, integrated action footer.
  */
 
 export type AvailabilitySuccessSurface = "compact" | "full";
@@ -26,19 +26,14 @@ export function roleConfirmationEdit(): string {
   ].join(" ");
 }
 
-/** ROLE B — Primary narrative headline container */
+/** ROLE B — Primary narrative headline (unified unit, both lines semibold) */
 export function roleHeadline(surface: AvailabilitySuccessSurface): string {
-  return `${headlineSize[surface]} leading-snug text-white/95 outline-none`;
+  return `${headlineSize[surface]} font-semibold leading-snug text-white/95 outline-none`;
 }
 
-/** ROLE B — Headline line 1 */
-export function roleHeadlineLead(): string {
-  return "block font-medium";
-}
-
-/** ROLE B — Headline line 2 */
-export function roleHeadlineConfirmation(): string {
-  return "mt-0.5 block font-semibold text-balance";
+/** ROLE B — Headline line (no internal margin or weight variation) */
+export function roleHeadlineLine(): string {
+  return "block text-balance";
 }
 
 /** ROLE C — Supporting narrative (bridge, CTA support, full planning sentence) */
@@ -46,12 +41,7 @@ export function roleSupportingNarrative(): string {
   return "text-sm font-normal leading-relaxed text-white/70";
 }
 
-/** ROLE D — Social proof context */
-export function roleProofContext(): string {
-  return "text-xs font-normal leading-relaxed text-white/70 sm:text-sm";
-}
-
-/** ROLE E — Testimonial quotation (single weight, no border card) */
+/** ROLE E — Testimonial quotation */
 export function roleTestimonial(): string {
   return "text-sm font-semibold leading-relaxed text-white/95";
 }
@@ -66,7 +56,7 @@ export function roleAttributionVenue(): string {
   return "block text-xs font-normal text-white/70";
 }
 
-/** Group spacing between major content blocks */
+/** Scroll body: groups 1–3 (confirmation, narrative, proof) */
 export function roleContentGroups(surface: AvailabilitySuccessSurface): string {
   return surface === "compact" ? "flex flex-col gap-4" : "flex flex-col gap-5 sm:gap-6";
 }
@@ -76,9 +66,9 @@ export function roleNarrativeGroup(): string {
   return "space-y-2";
 }
 
-/** Within-group spacing for proof */
+/** Within-group spacing for proof (quote + attribution) */
 export function roleProofGroup(): string {
-  return "space-y-2";
+  return "space-y-1.5";
 }
 
 /** Confirmation bar container */
@@ -88,9 +78,9 @@ export function roleConfirmationBar(surface: AvailabilitySuccessSurface): string
     : "flex items-center justify-between gap-3 rounded-xl border border-amber-300/15 bg-amber-300/[0.06] px-4 py-3";
 }
 
-/** Action footer — softened divider */
+/** Action footer — no visible divider; whitespace separates from proof */
 export function roleActionFooter(surface: AvailabilitySuccessSurface): string {
   const base =
-    "shrink-0 border-t border-white/[0.06] bg-neutral-950/[0.98] pt-4 pb-[max(1rem,env(safe-area-inset-bottom))]";
-  return surface === "compact" ? `${base} px-0` : `${base} sm:pt-5`;
+    "shrink-0 bg-neutral-950/[0.98] pt-5 pb-[max(1rem,env(safe-area-inset-bottom))]";
+  return surface === "compact" ? `${base} px-0` : `${base} sm:pt-6`;
 }

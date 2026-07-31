@@ -19,8 +19,6 @@ export const POST_AVAILABILITY_INQUIRY_FALLBACK_LABEL = "Prefer email first?" as
 
 export const POST_AVAILABILITY_EDIT_DATE_LABEL = "Edit date" as const;
 
-export const POST_AVAILABILITY_PROOF_CONTEXT = "From a couple who worked with Patrick" as const;
-
 /** Shared headline lead line (compact + full). */
 export const POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD =
   "This is the answer you were hoping for." as const;

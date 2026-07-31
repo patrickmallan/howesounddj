@@ -4,13 +4,28 @@
 **Verdict:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_IMPLEMENTED_AND_LOCALLY_CERTIFIED`  
 **V3.1 status:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_1_COPY_AND_UX_REFINEMENT_COMPLETE` (2026-07-30)  
 **V3.2 status:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_2_VISUAL_HIERARCHY_CONVERGED_AND_LOCALLY_CERTIFIED` (2026-07-30)  
-**V3.2 handoff:** `docs/handoff/HSDJ_WEB_AVAILABILITY_SUCCESS_V3_2_VISUAL_HIERARCHY.md`  
+**V3.3 status:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_3_COMPOSITION_COHESION_COMPLETE_AND_LOCALLY_CERTIFIED` (2026-07-30)  
+**V3.3 handoff:** `docs/handoff/HSDJ_WEB_AVAILABILITY_SUCCESS_V3_3_COMPOSITION_COHESION.md`  
 **Workspace:** `~/Desktop/howesounddj`  
 **Deployment:** Not performed in this tranche
 
 ---
 
-## V3.2 — Visual Hierarchy Convergence (Patrick Visual Review)
+## V3.3 — Final Composition Cohesion (Patrick Visual Review)
+
+**Reason:** Micro-composition fragmentation — headline hierarchy, redundant proof label, action divider, centred CTA support.  
+**No architecture, copy (except proof-context removal), API, analytics, or Calendly changes.**
+
+| Change | Outcome |
+|--------|---------|
+| Headline | Unified semibold unit — same size, colour, weight on both lines |
+| Proof context | Removed `From a couple who worked with Patrick` |
+| Proof structure | blockquote → Stephen Henry → Sea to Sky Gondola |
+| Action divider | Removed visible `border-t` |
+| CTA support | Left-aligned with narrative column |
+| Spacing | `pt-5` footer gap; `gap-4` body groups |
+
+---
 
 **Reason:** Typography fragmentation — too many independent size/weight/colour combinations.  
 **No architecture, copy, API, analytics, or Calendly changes.**

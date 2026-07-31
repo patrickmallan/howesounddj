@@ -9,7 +9,6 @@ import {
   POST_AVAILABILITY_FULL_PLANNING_SESSION,
   POST_AVAILABILITY_INQUIRY_FALLBACK_LABEL,
   POST_AVAILABILITY_PRIMARY_CTA_LABEL,
-  POST_AVAILABILITY_PROOF_CONTEXT,
   POST_AVAILABILITY_SR_STATUS,
   POST_AVAILABILITY_SUCCESS_BRIDGE,
   POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION,
@@ -31,10 +30,8 @@ import {
   roleConfirmationEdit,
   roleContentGroups,
   roleHeadline,
-  roleHeadlineConfirmation,
-  roleHeadlineLead,
+  roleHeadlineLine,
   roleNarrativeGroup,
-  roleProofContext,
   roleProofGroup,
   roleSupportingNarrative,
   roleTestimonial,
@@ -182,6 +179,7 @@ export function PostAvailabilitySuccess({
   const ctaLabel =
     variant === "compact" ? POST_AVAILABILITY_COMPACT_CTA_LABEL : POST_AVAILABILITY_PRIMARY_CTA_LABEL;
   const ctaClassName = variant === "compact" ? compactCtaClassName : fullCtaClassName;
+  const headlineLine = roleHeadlineLine();
 
   const bodyContent = (
     <>
@@ -227,10 +225,8 @@ export function PostAvailabilitySuccess({
               className={roleHeadline(variant)}
               data-availability-role="headline"
             >
-              <span className={roleHeadlineLead()}>{POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD}</span>
-              <span className={roleHeadlineConfirmation()}>
-                {POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION}
-              </span>
+              <span className={headlineLine}>{POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD}</span>
+              <span className={headlineLine}>{POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION}</span>
             </h3>
             <p className={supportingNarrative} data-availability-role="supporting-narrative">
               {POST_AVAILABILITY_SUCCESS_BRIDGE}
@@ -245,9 +241,6 @@ export function PostAvailabilitySuccess({
           {/* GROUP 3 — Proof */}
           {proof && proofQuote ? (
             <figure className={roleProofGroup()} data-availability-role="proof">
-              <p className={roleProofContext()} data-availability-role="proof-context">
-                {POST_AVAILABILITY_PROOF_CONTEXT}
-              </p>
               <blockquote className={roleTestimonial()} data-availability-role="testimonial">
                 &ldquo;{proofQuote}&rdquo;
               </blockquote>
@@ -267,7 +260,7 @@ export function PostAvailabilitySuccess({
         <p className={supportingNarrative} data-availability-role="cta-support">
           {POST_AVAILABILITY_CTA_SUPPORT}
         </p>
-        <div className={variant === "compact" ? "mt-3 flex w-full justify-center" : "mt-4 flex w-full justify-center"}>
+        <div className={variant === "compact" ? "mt-3 w-full" : "mt-4 w-full"}>
           <a
             ref={ctaRef}
             href={calendlyUrl}
