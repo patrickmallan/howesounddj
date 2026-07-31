@@ -8,7 +8,6 @@ import {
   POST_AVAILABILITY_EDIT_DATE_LABEL,
   POST_AVAILABILITY_FULL_PLANNING_SESSION,
   POST_AVAILABILITY_PRIMARY_CTA_LABEL,
-  POST_AVAILABILITY_SUCCESS_BRIDGE,
   POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION,
   POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD,
   postAvailabilityConfirmedDateLabel,
@@ -18,6 +17,8 @@ import {
   POST_AVAILABILITY_PROOF_COMPACT_ID,
   POST_AVAILABILITY_PROOF_FULL_ID,
   REVIEW_THEME_TAGS,
+  formatMarriedAtVenue,
+  getAvailabilitySuccessProofQuote,
   getReviewById,
 } from "@/config/reviews";
 import { ANALYTICS_EVENTS } from "@/lib/analytics";
@@ -72,11 +73,10 @@ describe("review SSOT", () => {
   });
 });
 
-describe("post-availability copy authority (V3.1 preserved in V3.2)", () => {
+describe("post-availability copy authority (V3.1 preserved through V3.4)", () => {
   const copySurfaces = [
     POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD,
     POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION,
-    POST_AVAILABILITY_SUCCESS_BRIDGE,
     POST_AVAILABILITY_FULL_PLANNING_SESSION,
     POST_AVAILABILITY_COMPACT_CTA_LABEL,
     POST_AVAILABILITY_PRIMARY_CTA_LABEL,
@@ -85,17 +85,17 @@ describe("post-availability copy authority (V3.1 preserved in V3.2)", () => {
     postAvailabilityConfirmedDateLabel("June 15, 2028"),
   ];
 
-  it("uses the V3.1 two-line headline and bridge", () => {
+  it("uses the V3.1 two-line headline without mutual-fit bridge", () => {
     expect(POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD).toBe(
       "This is the answer you were hoping for.",
     );
     expect(POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION).toBe(
       "Your wedding date is available.",
     );
-    expect(POST_AVAILABILITY_SUCCESS_BRIDGE).toBe(
-      "Let's see if we're a great fit for each other.",
-    );
     expect(POST_AVAILABILITY_COPY_VARIANT).toBe("human_connection_v3");
+    const copyFile = readSource("src/config/post-availability-copy.ts");
+    expect(copyFile).not.toMatch(/POST_AVAILABILITY_SUCCESS_BRIDGE/);
+    expect(copyFile).not.toMatch(/Let's see if we're a great fit for each other/);
   });
 
   it("does not retain removed proof-context copy in configuration", () => {
@@ -155,13 +155,14 @@ describe("post-availability visual hierarchy (V3.2)", () => {
     expect(success).toMatch(/data-availability-role="headline"/);
   });
 
-  it("renders venue from SSOT beneath Stephen Henry without hardcoding", () => {
+  it("renders married-at venue context from SSOT without hardcoding", () => {
     const success = readSource("src/components/post-availability-success.tsx");
     const reviews = readSource("src/config/reviews.ts");
     expect(reviews).toMatch(/venue: "Sea to Sky Gondola"/);
-    expect(success).toMatch(/proof\.venue/);
-    expect(success).not.toMatch(/Sea to Sky Gondola/);
+    expect(success).toMatch(/formatMarriedAtVenue/);
+    expect(success).not.toMatch(/Married at Sea to Sky Gondola/);
     expect(getReviewById("stephen-henry")?.venue).toBe("Sea to Sky Gondola");
+    expect(formatMarriedAtVenue("Sea to Sky Gondola")).toBe("Married at Sea to Sky Gondola");
     const lauren = getReviewById("lauren-steeles");
     expect(lauren?.venue).toBeUndefined();
   });
@@ -196,6 +197,79 @@ describe("post-availability composition cohesion (V3.3)", () => {
   });
 });
 
+describe("post-availability final editorial closure (V3.4)", () => {
+  const STEPHEN_EXCERPT =
+    "We would get married all over again just so we could hangout and work with Patrick. He's a talented DJ and a truly caring person.";
+  const STEPHEN_CANONICAL =
+    "We would get married all over again just so we could hangout and work with Patrick again. He's a talented DJ and a truly caring person.";
+
+  it("preserves Stephen canonical full quote unchanged in SSOT", () => {
+    const stephen = getReviewById("stephen-henry");
+    expect(stephen?.quote).toBe(STEPHEN_CANONICAL);
+    expect(stephen?.quote).toContain("Patrick again");
+  });
+
+  it("governs Patrick-approved Availability Success excerpt separately", () => {
+    const stephen = getReviewById("stephen-henry");
+    expect(stephen?.availabilitySuccessExcerpt).toBe(STEPHEN_EXCERPT);
+    expect(stephen?.availabilitySuccessExcerpt).not.toContain("Patrick again");
+  });
+
+  it("selects excerpt for Availability Success without hardcoding in component", () => {
+    const stephen = getReviewById("stephen-henry")!;
+    expect(getAvailabilitySuccessProofQuote(stephen)).toBe(STEPHEN_EXCERPT);
+    const success = readSource("src/components/post-availability-success.tsx");
+    expect(success).toMatch(/getAvailabilitySuccessProofQuote/);
+    expect(success).not.toMatch(/Patrick again/);
+    expect(success).not.toContain(STEPHEN_EXCERPT);
+  });
+
+  it("falls back to canonical quote when no excerpt is governed", () => {
+    const vanessa = getReviewById("vanessa-pocock")!;
+    expect(vanessa.availabilitySuccessExcerpt).toBeUndefined();
+    expect(getAvailabilitySuccessProofQuote(vanessa)).toBe(vanessa.quote);
+  });
+
+  it("removes mutual-fit bridge from success surfaces", () => {
+    const success = readSource("src/components/post-availability-success.tsx");
+    const copy = readSource("src/config/post-availability-copy.ts");
+    expect(success).not.toMatch(/POST_AVAILABILITY_SUCCESS_BRIDGE/);
+    expect(success).not.toMatch(/Let's see if we're a great fit for each other/);
+    expect(copy).not.toMatch(/POST_AVAILABILITY_SUCCESS_BRIDGE/);
+    expect(copy).not.toMatch(/Let's see if we're a great fit for each other/);
+  });
+
+  it("renders italic testimonial with married-at venue attribution", () => {
+    const styles = readSource("src/components/post-availability-success-styles.ts");
+    const success = readSource("src/components/post-availability-success.tsx");
+    expect(styles).toMatch(/roleTestimonial/);
+    expect(styles).toMatch(/italic/);
+    expect(success).toMatch(/<figure/);
+    expect(success).toMatch(/<blockquote/);
+    expect(success).toMatch(/<figcaption/);
+    expect(success).toMatch(/formatMarriedAtVenue\(proof\.venue\)/);
+  });
+
+  it("preserves CTA support, CTA label, and sticky footer regression", () => {
+    const success = readSource("src/components/post-availability-success.tsx");
+    expect(success).toMatch(/POST_AVAILABILITY_CTA_SUPPORT/);
+    expect(success).toMatch(/POST_AVAILABILITY_COMPACT_CTA_LABEL/);
+    expect(success).toMatch(/roleActionFooter/);
+    expect(success).toMatch(/buildPostAvailabilityCalendlyUrl/);
+    expect(POST_AVAILABILITY_CTA_SUPPORT).toBe(
+      "Your next best step is to book a chat with Patrick.",
+    );
+    expect(POST_AVAILABILITY_COMPACT_CTA_LABEL).toBe("Choose a Time");
+  });
+
+  it("preserves full-surface planning session and email fallback", () => {
+    const success = readSource("src/components/post-availability-success.tsx");
+    expect(success).toMatch(/POST_AVAILABILITY_FULL_PLANNING_SESSION/);
+    expect(success).toMatch(/POST_AVAILABILITY_INQUIRY_FALLBACK_LABEL/);
+    expect(success).toMatch(/variant === "full"/);
+  });
+});
+
 describe("shared post-availability success ownership (V3)", () => {
   it("contact form replaces the availability form on success", () => {
     const form = readSource("src/components/contact-availability-form.tsx");
@@ -221,6 +295,8 @@ describe("shared post-availability success ownership (V3)", () => {
     expect(success).toMatch(/POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD/);
     expect(success).toMatch(/POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION/);
     expect(success).not.toMatch(/POST_AVAILABILITY_PROOF_CONTEXT/);
+    expect(success).not.toMatch(/POST_AVAILABILITY_SUCCESS_BRIDGE/);
+    expect(success).not.toMatch(/Let's see if we're a great fit for each other/);
     expect(success).toMatch(/POST_AVAILABILITY_COMPACT_CTA_LABEL/);
     expect(success).toMatch(/POST_AVAILABILITY_CTA_SUPPORT/);
     expect(success).toMatch(/<figure/);

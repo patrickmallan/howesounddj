@@ -1,6 +1,6 @@
 /**
- * V3.2/V3.3 typography role system for post-availability success surfaces.
- * V3.3: unified headline, proof-context removed, integrated action footer.
+ * V3.2/V3.3/V3.4 typography role system for post-availability success surfaces.
+ * V3.4: italic testimonial excerpt, proof breathing room, bridge removed.
  */
 
 export type AvailabilitySuccessSurface = "compact" | "full";
@@ -36,14 +36,14 @@ export function roleHeadlineLine(): string {
   return "block text-balance";
 }
 
-/** ROLE C — Supporting narrative (bridge, CTA support, full planning sentence) */
+/** ROLE C — Supporting narrative (CTA support, full planning sentence) */
 export function roleSupportingNarrative(): string {
   return "text-sm font-normal leading-relaxed text-white/70";
 }
 
-/** ROLE E — Testimonial quotation */
+/** ROLE E — Testimonial quotation (italic editorial excerpt) */
 export function roleTestimonial(): string {
-  return "text-sm font-semibold leading-relaxed text-white/95";
+  return "text-sm font-medium italic leading-relaxed text-white/90";
 }
 
 /** ROLE F — Attribution name */
@@ -68,7 +68,7 @@ export function roleNarrativeGroup(): string {
 
 /** Within-group spacing for proof (quote + attribution) */
 export function roleProofGroup(): string {
-  return "space-y-1.5";
+  return "space-y-2 pt-2";
 }
 
 /** Confirmation bar container */

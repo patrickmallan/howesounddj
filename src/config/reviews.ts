@@ -30,6 +30,11 @@ export type CanonicalReview = {
   attribution: string;
   /** Governed venue label when authorized in review SSOT (e.g. Sea to Sky Gondola). */
   venue?: string;
+  /**
+   * Patrick-approved editorial excerpt for Availability Success surfaces only.
+   * Canonical `quote` remains the full published testimonial.
+   */
+  availabilitySuccessExcerpt?: string;
   evidenceStatus: "published_site";
 };
 
@@ -46,6 +51,8 @@ export const CANONICAL_REVIEWS: readonly CanonicalReview[] = [
       "We would get married all over again just so we could hangout and work with Patrick again. He's a talented DJ and a truly caring person.",
     attribution: "Stephen Henry",
     venue: "Sea to Sky Gondola",
+    availabilitySuccessExcerpt:
+      "We would get married all over again just so we could hangout and work with Patrick. He's a talented DJ and a truly caring person.",
     evidenceStatus: "published_site",
   },
   {
@@ -193,6 +200,16 @@ export const POST_AVAILABILITY_PROOF_COMPACT_ID = "stephen-henry" as const;
 
 export function getReviewById(id: string): CanonicalReview | undefined {
   return CANONICAL_REVIEWS.find((review) => review.id === id);
+}
+
+/** Proof quotation for Availability Success — excerpt when governed, else canonical quote. */
+export function getAvailabilitySuccessProofQuote(review: CanonicalReview): string {
+  return review.availabilitySuccessExcerpt ?? review.quote;
+}
+
+/** Visitor-facing venue context for post-availability attribution. */
+export function formatMarriedAtVenue(venue: string): string {
+  return `Married at ${venue}`;
 }
 
 export function getFeaturedReviewsForSurface(

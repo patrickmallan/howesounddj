@@ -27,10 +27,6 @@ export const POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD =
 export const POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION =
   "Your wedding date is available." as const;
 
-/** Shared mutual-fit bridge (compact + full). */
-export const POST_AVAILABILITY_SUCCESS_BRIDGE =
-  "Let's see if we're a great fit for each other." as const;
-
 /** Full contact surface only — one planning-session explanation. */
 export const POST_AVAILABILITY_FULL_PLANNING_SESSION =
   "Reserve a complimentary 45-minute planning session to talk about your wedding, your music, and whether Howe Sound DJ is the right fit." as const;

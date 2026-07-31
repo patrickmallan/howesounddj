@@ -10,12 +10,13 @@ import {
   POST_AVAILABILITY_INQUIRY_FALLBACK_LABEL,
   POST_AVAILABILITY_PRIMARY_CTA_LABEL,
   POST_AVAILABILITY_SR_STATUS,
-  POST_AVAILABILITY_SUCCESS_BRIDGE,
   POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION,
   POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD,
   postAvailabilityConfirmedDateLabel,
 } from "@/config/post-availability-copy";
 import {
+  formatMarriedAtVenue,
+  getAvailabilitySuccessProofQuote,
   getReviewById,
   POST_AVAILABILITY_PROOF_COMPACT_ID,
   POST_AVAILABILITY_PROOF_FULL_ID,
@@ -31,7 +32,6 @@ import {
   roleContentGroups,
   roleHeadline,
   roleHeadlineLine,
-  roleNarrativeGroup,
   roleProofGroup,
   roleSupportingNarrative,
   roleTestimonial,
@@ -103,7 +103,7 @@ export function PostAvailabilitySuccess({
     variant === "full" ? POST_AVAILABILITY_PROOF_FULL_ID : POST_AVAILABILITY_PROOF_COMPACT_ID;
   const proof = getReviewById(proofId);
   const calendlyUrl = buildPostAvailabilityCalendlyUrl({ weddingDate, surface });
-  const proofQuote = proof?.quote ?? "";
+  const proofQuote = proof ? getAvailabilitySuccessProofQuote(proof) : "";
 
   useLayoutEffect(() => {
     headingRef.current?.focus({ preventScroll: true });
@@ -216,38 +216,36 @@ export function PostAvailabilitySuccess({
             ) : null}
           </div>
 
-          {/* GROUP 2 — Narrative */}
-          <header className={roleNarrativeGroup()} data-availability-role="narrative">
-            <h3
-              ref={headingRef}
-              id={`post-availability-success-heading-${variant}`}
-              tabIndex={-1}
-              className={roleHeadline(variant)}
-              data-availability-role="headline"
-            >
-              <span className={headlineLine}>{POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD}</span>
-              <span className={headlineLine}>{POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION}</span>
-            </h3>
+          {/* GROUP 2 — Headline */}
+          <h3
+            ref={headingRef}
+            id={`post-availability-success-heading-${variant}`}
+            tabIndex={-1}
+            className={roleHeadline(variant)}
+            data-availability-role="headline"
+          >
+            <span className={headlineLine}>{POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD}</span>
+            <span className={headlineLine}>{POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION}</span>
+          </h3>
+
+          {variant === "full" ? (
             <p className={supportingNarrative} data-availability-role="supporting-narrative">
-              {POST_AVAILABILITY_SUCCESS_BRIDGE}
+              {POST_AVAILABILITY_FULL_PLANNING_SESSION}
             </p>
-            {variant === "full" ? (
-              <p className={supportingNarrative} data-availability-role="supporting-narrative">
-                {POST_AVAILABILITY_FULL_PLANNING_SESSION}
-              </p>
-            ) : null}
-          </header>
+          ) : null}
 
           {/* GROUP 3 — Proof */}
           {proof && proofQuote ? (
             <figure className={roleProofGroup()} data-availability-role="proof">
               <blockquote className={roleTestimonial()} data-availability-role="testimonial">
-                &ldquo;{proofQuote}&rdquo;
+                {proofQuote}
               </blockquote>
               <figcaption data-availability-role="attribution">
                 <span className={roleAttributionName()}>{proof.attribution}</span>
                 {proof.venue ? (
-                  <span className={roleAttributionVenue()}>{proof.venue}</span>
+                  <span className={roleAttributionVenue()}>
+                    {formatMarriedAtVenue(proof.venue)}
+                  </span>
                 ) : null}
               </figcaption>
             </figure>

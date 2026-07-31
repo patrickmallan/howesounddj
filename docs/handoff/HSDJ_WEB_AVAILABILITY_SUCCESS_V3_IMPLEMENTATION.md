@@ -5,9 +5,28 @@
 **V3.1 status:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_1_COPY_AND_UX_REFINEMENT_COMPLETE` (2026-07-30)  
 **V3.2 status:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_2_VISUAL_HIERARCHY_CONVERGED_AND_LOCALLY_CERTIFIED` (2026-07-30)  
 **V3.3 status:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_3_COMPOSITION_COHESION_COMPLETE_AND_LOCALLY_CERTIFIED` (2026-07-30)  
+**V3.4 status:** `PASS_HSDJ_AVAILABILITY_SUCCESS_V3_4_FINAL_EDITORIAL_CLOSURE_LOCALLY_CERTIFIED` (2026-07-31)  
+**V3.4 handoff:** `docs/handoff/HSDJ_WEB_AVAILABILITY_SUCCESS_V3_4_FINAL_EDITORIAL_CLOSURE.md`  
 **V3.3 handoff:** `docs/handoff/HSDJ_WEB_AVAILABILITY_SUCCESS_V3_3_COMPOSITION_COHESION.md`  
 **Workspace:** `~/Desktop/howesounddj`  
 **Deployment:** Not performed in this tranche
+
+---
+
+## V3.4 — Final Editorial Closure (Patrick Rendered Review)
+
+**Reason:** Emotional proof clarity — testimonial as centre, bridge removal, venue-context clarity.  
+**No architecture, API, analytics, or Calendly changes.**
+
+| Change | Outcome |
+|--------|---------|
+| Bridge | Removed `Let's see if we're a great fit for each other.` |
+| Canonical quote | Unchanged in SSOT (`Patrick again` preserved) |
+| Governed excerpt | `availabilitySuccessExcerpt` on `stephen-henry` |
+| Testimonial | Italic `font-medium` editorial excerpt |
+| Venue context | SSOT `Sea to Sky Gondola`; renders `Married at ${venue}` |
+| Proof spacing | `roleProofGroup` `pt-2` breathing room |
+| Compact + full | Both use governed excerpt via `getAvailabilitySuccessProofQuote` |
 
 ---
 

@@ -1,17 +1,47 @@
 # HSDJ Availability Success V3 — Copy Contract
 
-**Status:** `APPROVED_FOR_IMPLEMENTATION`  
-**Patrick approval date:** `2026-07-30`  
+**Status:** `APPROVED_FOR_IMPLEMENTATION` (V3.4 editorial closure appended 2026-07-31)  
+**Patrick approval date:** `2026-07-30` (V3); `2026-07-31` (V3.4 final editorial)  
 **Concept:** Human Connection  
 **Variant ID:** `human_connection_v3`  
 **Qualitative user validation:** `POST_IMPLEMENTATION_VALIDATION_PENDING`  
 **Stephen SSOT:** `src/config/reviews.ts` → `stephen-henry`
 
-Patrick approved this contract on 2026-07-30. Post-implementation qualitative sessions remain useful validation but are not a prerequisite to the bounded implementation.
+Patrick approved this contract on 2026-07-30. V3.4 final editorial closure was authorized on 2026-07-31 after rendered review. Post-implementation qualitative sessions remain useful validation but are not a prerequisite to the bounded implementation.
 
 ---
 
-## Compact / Header Panel
+## V3.4 Editorial Closure (2026-07-31) — Current Authority
+
+| Element | Governed copy | Notes |
+|---------|---------------|-------|
+| **Confirmed bar** | `{formattedDate} is available` | Unchanged |
+| **Headline line 1** | This is the answer you were hoping for. | Unchanged |
+| **Headline line 2** | Your wedding date is available. | Unchanged |
+| **Bridge** | *(removed)* | No replacement bridge |
+| **Stephen canonical quote** | We would get married all over again just so we could hangout and work with Patrick again. He's a talented DJ and a truly caring person. | **SSOT `quote` — unchanged** |
+| **Availability Success excerpt** | We would get married all over again just so we could hangout and work with Patrick. He's a talented DJ and a truly caring person. | **SSOT `availabilitySuccessExcerpt` — Patrick-approved editorial excerpt; not a replacement for canonical quote** |
+| **Attribution** | Stephen Henry | Unchanged |
+| **Venue metadata** | Sea to Sky Gondola | **SSOT `venue` — factual value** |
+| **Rendered venue context** | Married at Sea to Sky Gondola | Presentation: `Married at ${review.venue}` |
+| **CTA support** | Your next best step is to book a chat with Patrick. | Unchanged |
+| **Compact CTA** | Choose a Time | Unchanged |
+| **Edit action** | Edit date | Unchanged |
+
+### V3.4 removed from compact and full success
+
+- `Let's see if we're a great fit for each other.` (mutual-fit bridge)
+- Proof context (`From a couple who worked with Patrick`) — removed in V3.3
+
+### V3.4 testimonial treatment
+
+- Italic, medium weight, single colour, editorial line height
+- Semantic `<figure>` / `<blockquote>` / `<figcaption>`
+- No decorative oversized quotation marks
+
+---
+
+## Historical — Compact / Header Panel (V3 original)
 
 | Element | Governed copy | Template |
 |---------|---------------|----------|
