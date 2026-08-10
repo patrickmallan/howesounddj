@@ -14,7 +14,7 @@ Visitor browser
   → GET https://ops.howesounddj.com/api/availability?date=YYYY-MM-DD  (authoritative read; blocks response)
   → Normalized result object
   → Immediate JSON response to visitor (`Server-Timing` diagnostic header)
-  → Operator Resend notification (fire-and-forget; does not block response)
+  → Operator Resend notification (`after()` from `next/server`; does not block response)
 ```
 
 No browser cross-origin call. No Google Calendar credentials on the website.

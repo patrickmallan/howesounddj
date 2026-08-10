@@ -27,7 +27,14 @@ export async function sendAvailabilityCheckNotification(
 ): Promise<void> {
   const resend = getResend();
   const mail = getMailConfig();
-  if (!resend || !mail) return;
+  if (!resend || !mail) {
+    console.warn("[availability] notification_skipped", {
+      reason: !resend ? "missing_resend_api_key" : "missing_mail_config",
+      requested_date: result.requestedDate,
+      result: result.result,
+    });
+    return;
+  }
 
   const resultLabel = availabilityResultLabel(result.result);
   const textBody = [
@@ -54,7 +61,13 @@ export async function sendAvailabilityCheckNotification(
         statusCode: sendResult.error.statusCode,
         message: sendResult.error.message,
       });
+      return;
     }
+
+    console.info("[availability] notification_sent", {
+      requested_date: result.requestedDate,
+      result: result.result,
+    });
   } catch (err) {
     console.error("[availability] notification_failed", {
       message: err instanceof Error ? err.message : "unknown",

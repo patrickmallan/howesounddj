@@ -440,9 +440,11 @@ describe("duration buckets", () => {
 });
 
 describe("availability route latency authority", () => {
-  it("does not await operator notification before returning response", () => {
+  it("schedules operator notification with after() without blocking the response", () => {
     const route = readSource("src/app/api/availability/route.ts");
-    expect(route).toMatch(/void sendAvailabilityCheckNotification/);
+    expect(route).toMatch(/after\(\(\) =>/);
+    expect(route).toMatch(/sendAvailabilityCheckNotification\(evaluated\)/);
+    expect(route).not.toMatch(/void sendAvailabilityCheckNotification/);
     expect(route).not.toMatch(/await sendAvailabilityCheckNotification/);
     expect(route).toMatch(/Server-Timing/);
   });

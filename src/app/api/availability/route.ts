@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { sendAvailabilityCheckNotification } from "@/lib/availability-notification";
 import { checkPublicAvailability } from "@/lib/check-public-availability";
 import { PublicAvailabilityResult } from "@/lib/public-availability-contract";
@@ -59,12 +59,15 @@ export async function POST(request: Request) {
     ops_duration_ms: Math.round(opsDurationMs),
   });
 
-  // Operator notification must not block the public response path.
-  void sendAvailabilityCheckNotification(evaluated).catch((error: unknown) => {
-    console.error("[availability] notification_async_failed", {
-      message: error instanceof Error ? error.message : "unknown",
-    });
-  });
+  // Operator notification runs after the response via next/server `after()` so
+  // serverless runtimes keep the function alive until Resend completes.
+  after(() =>
+    sendAvailabilityCheckNotification(evaluated).catch((error: unknown) => {
+      console.error("[availability] notification_async_failed", {
+        message: error instanceof Error ? error.message : "unknown",
+      });
+    }),
+  );
 
   const totalDurationMs = performance.now() - requestStarted;
 
