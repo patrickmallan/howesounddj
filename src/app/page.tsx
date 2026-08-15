@@ -14,6 +14,17 @@ import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { VENUES } from "@/config/venues";
 import { websiteJsonLd } from "@/lib/json-ld";
+import {
+  EYEBROW_TO_HEADING,
+  MEDIA_CARD_PAD,
+  MEDIA_COPY_GRID_GAP,
+  PAGE_GUTTER_X,
+  SECTION_BAND_BORDER_ENTRY,
+  SECTION_BAND_PRE_BORDER_BOTTOM,
+  SECTION_BAND_TOP,
+  SECTION_BAND_Y,
+  SECTION_SHELL,
+} from "@/lib/cta-section-spacing";
 
 /**
  * Homepage H1 unified line (premium / Sea-to-Sky aligned).
@@ -180,10 +191,10 @@ export default function HoweSoundDJHomepage() {
 
         <BrandAnchorStatement />
 
-        <SectionReveal as="section" id="why" className="mx-auto max-w-6xl px-6 py-16 md:py-24 lg:px-8">
+        <SectionReveal as="section" id="why" className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_Y}`}>
           <div className="max-w-2xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Why Howe Sound DJ</div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Sea-to-Sky passion: connection, craft, and a night that stays with your guests.</h2>
+            <h2 className={`${EYEBROW_TO_HEADING} text-3xl font-semibold sm:text-4xl`}>Sea-to-Sky passion: connection, craft, and a night that stays with your guests.</h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
               It’s not generic wedding filler. It’s deliberate music, local know-how, and flow that respects your setting, from ceremony through the last song.
             </p>
@@ -205,10 +216,10 @@ export default function HoweSoundDJHomepage() {
           className="border-y border-white/10 bg-neutral-950"
           aria-labelledby="home-proof-heading"
         >
-          <div className="mx-auto max-w-6xl px-6 py-16 md:py-20 lg:px-8 lg:py-24">
+          <div className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_BORDER_ENTRY}`}>
             <div className="mb-12 max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Proof</div>
-              <h2 id="home-proof-heading" className="mt-4 text-3xl font-semibold sm:text-4xl">
+              <h2 id="home-proof-heading" className={`${EYEBROW_TO_HEADING} text-3xl font-semibold sm:text-4xl`}>
                 The kind of night guests talk about after.
               </h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
@@ -228,10 +239,10 @@ export default function HoweSoundDJHomepage() {
         </SectionReveal>
 
         <SectionReveal as="section" id="reviews" className="border-y border-white/10 bg-white/5" aria-labelledby="home-reviews-heading">
-          <div className="mx-auto max-w-6xl px-6 py-16 md:py-24 lg:px-8">
+          <div className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_BORDER_ENTRY}`}>
             <div className="mb-12 max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Reviews</div>
-              <h2 id="home-reviews-heading" className="mt-4 text-3xl font-semibold sm:text-4xl">
+              <h2 id="home-reviews-heading" className={`${EYEBROW_TO_HEADING} text-3xl font-semibold sm:text-4xl`}>
                 In their own words.
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-white/50">
@@ -263,12 +274,12 @@ export default function HoweSoundDJHomepage() {
           className="border-t border-white/10 bg-neutral-950"
           aria-labelledby="home-venues-heading"
         >
-          <div className="mx-auto max-w-6xl px-6 py-16 md:py-24 lg:px-8">
+          <div className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_BORDER_ENTRY}`}>
             <div className="max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
                 Venue familiarity
               </div>
-              <h2 id="home-venues-heading" className="mt-4 text-3xl font-semibold sm:text-4xl">
+              <h2 id="home-venues-heading" className={`${EYEBROW_TO_HEADING} text-3xl font-semibold sm:text-4xl`}>
                 Venues we’ve worked at across Squamish & Sea-to-Sky
               </h2>
               <p className="mt-4 text-lg leading-8 text-white/70">
@@ -315,11 +326,15 @@ export default function HoweSoundDJHomepage() {
           </div>
         </SectionReveal>
 
-        <SectionReveal as="section" id="services" className="mx-auto max-w-6xl px-6 py-16 md:py-24 lg:px-8">
+        <SectionReveal
+          as="section"
+          id="services"
+          className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_TOP} ${SECTION_BAND_PRE_BORDER_BOTTOM}`}
+        >
           <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Services</div>
-              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Support for the full wedding-day experience.</h2>
+              <h2 className={`${EYEBROW_TO_HEADING} text-3xl font-semibold sm:text-4xl`}>Support for the full wedding-day experience.</h2>
               <p className="mt-4 max-w-2xl text-lg leading-8 text-white/70">
                 From ceremony through reception, the service is designed to help the day sound right, feel smooth, and stay aligned with the vibe you want.
               </p>
@@ -356,8 +371,14 @@ export default function HoweSoundDJHomepage() {
         </SectionReveal>
 
         <SectionReveal as="section" id="about" className="border-y border-white/10 bg-white/5">
-          <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:py-24 lg:grid-cols-2 lg:px-8">
-            <div className="hsdj-home-patrick-card atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/60 p-3 sm:p-6 max-lg:[&_figure]:min-w-0 max-lg:[&_figure]:w-full max-lg:[&_figure>div]:!aspect-[3/4]">
+          <div
+            data-testid="home-about-grid"
+            className={`${SECTION_SHELL} grid ${PAGE_GUTTER_X} ${SECTION_BAND_BORDER_ENTRY} ${MEDIA_COPY_GRID_GAP} lg:grid-cols-2`}
+          >
+            <div
+              data-testid="home-patrick-portrait"
+              className={`hsdj-home-patrick-card atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/60 ${MEDIA_CARD_PAD} max-lg:[&_figure]:min-w-0 max-lg:[&_figure]:w-full max-lg:[&_figure>div]:!aspect-[3/4]`}
+            >
               <ImageSlot
                 src={SITE_IMAGES.aboutPatrickAction}
                 alt={SITE_IMAGE_ALT.aboutPatrickAction}
@@ -367,11 +388,12 @@ export default function HoweSoundDJHomepage() {
                 label="Patrick"
                 reservedHint="At the decks or in planning: calm, professional, the presence couples get on the day."
                 sizes="(max-width: 1024px) 100vw, 42vw"
+                className="!m-0 !space-y-0"
               />
             </div>
-            <div className="flex flex-col justify-center">
+            <div data-testid="home-about-copy" className="flex flex-col max-lg:justify-start lg:justify-center">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">About</div>
-              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Meet Patrick</h2>
+              <h2 className={`${EYEBROW_TO_HEADING} text-3xl font-semibold sm:text-4xl`}>Meet Patrick</h2>
               <p className="mt-5 text-lg leading-8 text-white/70">
                 Weddings are the focus, not cookie-cutter DJing. The approach is simple: show up prepared, read the room, and treat your wedding like it matters, because it does.
               </p>
@@ -399,11 +421,11 @@ export default function HoweSoundDJHomepage() {
           </div>
         </SectionReveal>
 
-        <SectionReveal as="section" id="faq" className="mx-auto max-w-6xl px-6 py-16 md:py-24 lg:px-8">
+        <SectionReveal as="section" id="faq" className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_Y}`}>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">FAQ</div>
-              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Clear answers before you ask.</h2>
+              <h2 className={`${EYEBROW_TO_HEADING} text-3xl font-semibold sm:text-4xl`}>Clear answers before you ask.</h2>
             </div>
             <a href="/faq" className="motion-interactive shrink-0 text-sm font-semibold text-amber-300 hover:text-amber-200">
               Full FAQ →

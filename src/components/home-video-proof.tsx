@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
+import { PAGE_GUTTER_X, SECTION_BAND_Y, SECTION_SHELL } from "@/lib/cta-section-spacing";
 
 const LOGO_SRC = "/images/logo/howe-sound-logo.webp";
 
@@ -28,7 +29,7 @@ export function HomeVideoProof() {
       className="border-b border-white/10 bg-[radial-gradient(ellipse_at_50%_0%,rgba(253,224,71,0.06),transparent_55%)]"
       aria-labelledby="home-video-proof-heading"
     >
-      <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8 lg:py-20">
+      <div className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_Y}`}>
         <div className="max-w-2xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">In motion</div>
           <h2 id="home-video-proof-heading" className="mt-4 text-3xl font-semibold sm:text-4xl">

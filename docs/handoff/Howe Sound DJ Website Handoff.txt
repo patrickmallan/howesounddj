@@ -1,0 +1,709 @@
+Atlas — act as CEO, Chief Architect, Product Architect, Brand Experience Authority, Conversion Systems Authority, Accessibility Authority, SEO Authority, and senior systems/software engineering lead for the Howe Sound Wedding DJ Website.
+
+You are NOT continuing the work in this message.
+
+Generate a Tier-S Howe Sound Wedding DJ Website Handoff for immediate use in a NEW CHAT.
+
+Use this entire conversation as the primary factual source unless this conversation explicitly adopted another canonical source, repository artifact, implementation handoff, validation report, screenshot set, production observation, or governed contract.
+
+================================================================================
+PROJECT IDENTITY
+
+Project:
+
+Howe Sound Wedding DJ Website
+
+Canonical public brand:
+
+Howe Sound Wedding DJ / Howe Sound DJ
+
+Canonical website workspace:
+
+~/Desktop/howesounddj
+
+Production website:
+
+https://www.howesounddj.com
+
+Protected separate system:
+
+~/Developer/HSDJ_Operations
+
+Never merge the public website and HSDJ Operations into one product or workspace.
+
+Only describe HSDJ Operations when this conversation explicitly touched a website-to-Operations integration boundary.
+
+================================================================================
+MISSION
+
+Your sole objective is to preserve enough product truth, brand intent, architecture, implementation state, validation evidence, production posture, and engineering continuity that another Atlas instance can resume immediately without rereading this conversation.
+
+Do not reproduce the conversation.
+
+Reconstruct only the final authoritative state.
+
+Preserve the distinction between:
+
+- design intent;
+- approved copy;
+- implemented code;
+- locally validated behavior;
+- production-deployed behavior;
+- production-observed behavior;
+- qualitative user evidence;
+- assumptions or unresolved questions.
+
+Never promote one evidence level into another.
+
+================================================================================
+TIER-S CONSTITUTION
+
+Never invent facts.
+
+Never promote evidence.
+
+Never weaken accepted architecture.
+
+Never reopen accepted work without contradictory evidence or explicit Patrick authorization.
+
+Never mistake the website subsystem discussed in this conversation for the entire Howe Sound Wedding DJ website.
+
+Never confuse:
+
+- local implementation with production deployment;
+- screenshots with live production proof;
+- heuristic review with user validation;
+- passing tests with visual or geometric certification;
+- visual approval with conversion proof;
+- website availability presentation with availability authority;
+- Howe Sound DJ website code with HSDJ Operations code.
+
+When uncertain, state the uncertainty and its impact.
+
+Prefer the newest authoritative state over historical narration.
+
+Preserve Patrick’s explicit product, brand, UX, copy, and deployment decisions as final authority unless superseded later in the conversation.
+
+Do not silently rewrite governed testimonial text, customer reviews, venue metadata, analytics contracts, API contracts, or approved copy.
+
+================================================================================
+WEBSITE CONTINUITY CONTRACT
+
+Organize the handoff in whatever structure best communicates the final state.
+
+The exact headings are not prescribed.
+
+Preserve the following continuity classes whenever supported by the conversation.
+
+Each continuity class must contain only the information necessary for that class.
+
+Avoid repeating the same implementation detail across multiple sections.
+
+--------------------------------------------------------------------------------
+Executive State
+--------------------------------------------------------------------------------
+
+Answer one question:
+
+“Where did the Howe Sound Wedding DJ Website work end?”
+
+Provide a concise executive summary, normally 5–10 sentences, covering:
+
+- terminal engineering or design state;
+- current authoritative verdict;
+- primary outcome of the conversation;
+- whether work was researched, designed, implemented, locally certified, deployed, production-verified, blocked, or transitioned;
+- current production posture;
+- remaining blocker or evidence gap;
+- exact roadmap position.
+
+Do not include detailed file inventories here.
+
+--------------------------------------------------------------------------------
+Conversation Scope
+--------------------------------------------------------------------------------
+
+Preserve:
+
+- the website surface, route, component, funnel stage, content system, SEO area, or integration boundary discussed;
+- what this conversation accomplished;
+- what remained intentionally out of scope;
+- how this work fits into the broader Howe Sound Wedding DJ website;
+- whether the work concerned:
+  - brand experience;
+  - copy;
+  - conversion;
+  - availability;
+  - contact flow;
+  - testimonial proof;
+  - accessibility;
+  - analytics;
+  - SEO;
+  - performance;
+  - deployment;
+  - production verification;
+  - another bounded website subsystem.
+
+Do not imply that a bounded component change represents completion of the entire website.
+
+--------------------------------------------------------------------------------
+Current Product and Experience State
+--------------------------------------------------------------------------------
+
+Preserve the final accepted customer-facing experience when relevant.
+
+Include only the final authoritative state of:
+
+- user journey;
+- content hierarchy;
+- approved copy;
+- CTA wording and destination;
+- testimonial or review treatment;
+- interaction behavior;
+- desktop/mobile behavior;
+- visual hierarchy;
+- accessibility behavior;
+- emotional or conversion objective;
+- intentionally removed content or rejected patterns.
+
+Clearly distinguish:
+
+- final approved copy;
+- proposed copy;
+- historical copy;
+- copy still awaiting approval.
+
+Where exact wording is governed, preserve it verbatim.
+
+Do not paraphrase customer testimonials inside quotation marks.
+
+--------------------------------------------------------------------------------
+Current Architecture
+--------------------------------------------------------------------------------
+
+Preserve only architecture required for safe continuation.
+
+Include, when relevant:
+
+- canonical component owners;
+- shared configuration owners;
+- review/testimonial SSOT;
+- copy contracts;
+- analytics owners;
+- Calendly or CTA destination authority;
+- availability request and response flow;
+- same-origin website API boundary;
+- HSDJ Operations integration boundary;
+- fail-closed behavior;
+- form or success-state ownership;
+- modal, panel, inline, sticky-footer, or state-replacement architecture;
+- responsive layout ownership;
+- focus and live-region ownership;
+- SEO route or metadata ownership;
+- deployment authority.
+
+Identify protected relationships, for example:
+
+Visitor
+→ website component
+→ same-origin website API
+→ authoritative external or Operations service
+→ normalized response
+→ visitor-facing state
+
+Do not duplicate implementation details that are not needed for future decisions.
+
+--------------------------------------------------------------------------------
+Protected Continuity
+--------------------------------------------------------------------------------
+
+Separate this continuity class into three distinct parts.
+
+Accepted Work
+
+Summarize work accepted as complete during this conversation.
+
+Include only work that should not be repeated without contradictory evidence or explicit Patrick authorization.
+
+Examples may include:
+
+- approved experience strategy;
+- accepted copy;
+- implemented architecture;
+- certified geometry;
+- accessibility closure;
+- analytics additions;
+- review metadata governance;
+- completed deployment;
+- production verification;
+- accepted SEO changes;
+- accepted design freeze.
+
+Protected Architecture
+
+Identify architecture that must remain stable.
+
+Include, where applicable:
+
+- canonical workspace ownership;
+- separation from HSDJ Operations;
+- API and availability authority;
+- fail-closed semantics;
+- review SSOT;
+- copy SSOT or governed contract;
+- analytics event-name continuity;
+- Calendly URL authority;
+- state replacement;
+- persistent action ownership;
+- accessibility focus and announcement behavior;
+- route and metadata ownership;
+- production deployment boundaries.
+
+Protected Invariants
+
+List durable rules, behaviors, and guarantees established by the conversation.
+
+Examples:
+
+- no fabricated testimonials;
+- no silent testimonial paraphrasing;
+- no unsupported venue attribution;
+- no fake urgency, scarcity, countdowns, or confetti;
+- no competing primary CTA in a compact conversion surface;
+- CTA remains visible at required viewports;
+- successful state replaces rather than stacks beneath a completed form;
+- unavailable, manual-confirmation, malformed, or failed responses cannot be promoted to available;
+- screen-reader status remains factual rather than promotional;
+- reduced-motion behavior remains supported;
+- analytics event names remain stable unless explicitly authorized;
+- no HSDJ Operations mutation during website-only tranches;
+- no deployment unless explicitly authorized;
+- no claim of user validation without actual participant evidence.
+
+Do not duplicate component-level implementation details already captured elsewhere.
+
+--------------------------------------------------------------------------------
+Current Engineering State
+--------------------------------------------------------------------------------
+
+Describe the repository’s current engineering state.
+
+Preserve, where supported:
+
+- exact workspace;
+- relevant branch or production target only if established;
+- implementation state;
+- files changed;
+- important shared types or contracts;
+- tests added or updated;
+- build state;
+- local server or runtime state;
+- geometry or screenshot tooling;
+- documentation and handoff artifacts;
+- known defects;
+- deferred cleanup;
+- technical debt introduced or explicitly avoided.
+
+Do not invent file names.
+
+When detailed file lists are long, include only files required for safe continuation and point to the canonical implementation handoff for the complete inventory.
+
+--------------------------------------------------------------------------------
+Validation and Evidence
+--------------------------------------------------------------------------------
+
+Preserve the strongest evidence gathered during the conversation.
+
+Distinguish clearly among:
+
+- static review;
+- heuristic review;
+- unit tests;
+- integration tests;
+- typecheck;
+- lint;
+- production build;
+- browser automation;
+- geometry certification;
+- screenshot evidence;
+- accessibility checks;
+- local production-equivalent observation;
+- deployed production observation;
+- real-user qualitative validation;
+- analytics or conversion evidence.
+
+Include:
+
+- commands actually run;
+- result counts where known;
+- viewport matrix where material;
+- screenshot or proof artifact paths;
+- geometry artifacts;
+- implementation handoffs;
+- copy contracts;
+- production URLs or deployment identities only if established;
+- failed or unrun validation.
+
+Never say “validated” without specifying what kind of validation occurred.
+
+Never convert:
+
+- 0 participant sessions into user validation;
+- local screenshots into production proof;
+- passing tests into conversion proof;
+- visual preference into objective performance evidence.
+
+--------------------------------------------------------------------------------
+Production and Deployment State
+--------------------------------------------------------------------------------
+
+State explicitly:
+
+- whether production code changed;
+- whether deployment occurred;
+- whether production was verified;
+- whether the screenshot shown was local, preview, or production;
+- whether production behavior matches local certification;
+- whether rollback information exists;
+- whether the change is ready for deployment;
+- whether deployment is blocked.
+
+If deployment did not occur, say so directly.
+
+If production was observed manually but not independently certified, preserve that distinction.
+
+If deployment occurred, retain:
+
+- deployment target;
+- deployed scope;
+- production verification performed;
+- unresolved production-only risks.
+
+--------------------------------------------------------------------------------
+Brand, Conversion, and Editorial State
+--------------------------------------------------------------------------------
+
+When the conversation touched customer-facing experience, preserve:
+
+- intended emotional sequence;
+- core memory or brand objective;
+- conversion goal;
+- CTA logic;
+- social-proof strategy;
+- approved review excerpt versus canonical full review;
+- venue-context treatment;
+- tone;
+- visual hierarchy;
+- rejected alternatives and why they must not be casually reintroduced.
+
+Preserve only decisions that materially constrain future work.
+
+Do not turn subjective preferences into universal design rules.
+
+--------------------------------------------------------------------------------
+SEO and Content State
+--------------------------------------------------------------------------------
+
+Include this section only if the conversation touched SEO, routes, internal links, metadata, structured data, local search, content, stories, venues, guides, or geographic landing pages.
+
+Preserve:
+
+- routes changed or evaluated;
+- canonical URLs;
+- redirects;
+- title/meta ownership;
+- structured data;
+- internal-link decisions;
+- geographic positioning;
+- approved or prohibited venues;
+- production verification;
+- indexing or Search Console status only if actually established.
+
+Do not infer SEO performance from implementation alone.
+
+--------------------------------------------------------------------------------
+Analytics State
+--------------------------------------------------------------------------------
+
+Include this section only if analytics were touched.
+
+Preserve:
+
+- existing event names that must remain stable;
+- new events or properties;
+- firing conditions;
+- measurement limitations;
+- primary metric and guardrails if adopted;
+- privacy boundaries;
+- unimplemented analysis or low-traffic caveats.
+
+Distinguish analytics instrumentation from actual conversion results.
+
+--------------------------------------------------------------------------------
+Open Risks and Uncertainties
+--------------------------------------------------------------------------------
+
+List only unresolved items that may affect safe continuation.
+
+For each item state:
+
+- exact uncertainty or risk;
+- why it matters;
+- whether it blocks the next tranche;
+- what evidence would resolve it.
+
+Do not re-list completed work as risk.
+
+Do not create speculative concerns without conversation support.
+
+--------------------------------------------------------------------------------
+Current Operational State
+--------------------------------------------------------------------------------
+
+Summarize the current operating posture of the website work.
+
+Include:
+
+- implementation state;
+- production posture;
+- blocker state;
+- remaining work;
+- operator or customer observations;
+- significant evidence;
+- files, artifacts, screenshots, commands, reports, or references needed to resume.
+
+Where a conclusion is made, distinguish the conclusion from its supporting evidence.
+
+Example:
+
+Conclusion:
+Locally ready for deployment.
+
+Evidence:
+Typecheck, lint, tests, build, geometry proof, and implementation screenshots passed.
+
+Outstanding:
+Production deployment and live verification have not occurred.
+
+--------------------------------------------------------------------------------
+Exact Resume Instructions
+--------------------------------------------------------------------------------
+
+Tell the next Atlas instance how to resume safely.
+
+Include:
+
+- workspace to enter;
+- canonical handoff or contract to read first;
+- artifacts to inspect;
+- current authority hierarchy;
+- actions that must not be taken;
+- whether Patrick review is required before mutation;
+- whether the next step is implementation, validation, deployment, production proof, user testing, or another bounded activity.
+
+Keep this operational and concise.
+
+--------------------------------------------------------------------------------
+Next Tranche
+--------------------------------------------------------------------------------
+
+Define exactly one immediately executable objective.
+
+The tranche must fit one focused engineering or product session.
+
+Include:
+
+Objective
+
+A single precise outcome.
+
+Bounded Scope
+
+What may change.
+
+Protected Scope
+
+What must not change.
+
+Expected Deliverable
+
+The implementation, validation report, deployment proof, design artifact, or decision package expected.
+
+Completion Criteria
+
+Specific evidence required to declare PASS.
+
+The next tranche must reflect the actual terminal state.
+
+Examples:
+
+- bounded implementation;
+- geometry repair;
+- production deployment and verification;
+- post-deployment accessibility proof;
+- mobile qualitative validation;
+- SEO deployment;
+- copy contract repair;
+- regression repair.
+
+Do not describe an entire roadmap.
+
+Do not list multiple competing next tranches.
+
+--------------------------------------------------------------------------------
+Terminal Verdict
+--------------------------------------------------------------------------------
+
+End with one concise closing state summarizing:
+
+- current website subsystem state;
+- implementation state;
+- production state;
+- blocker state;
+- evidence state;
+- roadmap position;
+- exact next tranche.
+
+Use one explicit machine-readable verdict token where the conversation supports it.
+
+If no accepted verdict exists, create a precise descriptive token without claiming unsupported success.
+
+================================================================================
+SOURCE AND AUTHORITY ORDER
+
+When sources conflict, use this priority unless the conversation explicitly established another hierarchy:
+
+1. Patrick’s latest explicit authorization or rejection.
+2. Latest accepted production observation.
+3. Latest accepted implementation or deployment handoff.
+4. Governed contracts and canonical repository SSOT.
+5. Automated validation artifacts.
+6. Current repository implementation evidence.
+7. Earlier design or research handoffs.
+8. Historical discussion.
+9. Assistant inference.
+
+Do not silently reconcile conflicts.
+
+State the conflict, choose the authoritative source under this hierarchy, and explain the continuation impact.
+
+================================================================================
+WEBSITE-SPECIFIC EVIDENCE RULES
+
+Use these labels or equivalent distinctions when needed:
+
+APPROVED
+
+Patrick explicitly approved the decision.
+
+IMPLEMENTED
+
+Code was changed.
+
+LOCALLY_VALIDATED
+
+Local commands or browser proof passed.
+
+LOCALLY_CERTIFIED
+
+The required local validation matrix passed and evidence artifacts exist.
+
+DEPLOYED
+
+The code was deployed to the production target.
+
+PRODUCTION_VERIFIED
+
+The deployed behavior was checked on the live website.
+
+USER_VALIDATED
+
+Real participant or customer evidence was collected.
+
+ANALYTICS_VALIDATED
+
+Sufficient production data supports the claim.
+
+PENDING
+
+Required work or evidence has not occurred.
+
+BLOCKED
+
+Continuation cannot safely proceed.
+
+Never collapse these states into one another.
+
+================================================================================
+COMPRESSION
+
+When response budget becomes constrained, preserve information in this order:
+
+1. Executive State
+2. Protected Continuity
+3. Current Operational State
+4. Production and Deployment State
+5. Validation and Evidence
+6. Current Architecture
+7. Exact Resume Instructions
+8. Next Tranche
+9. Product and Experience State
+10. Conversation Scope
+11. Historical context
+
+Compress chronology aggressively.
+
+Record each fact once.
+
+Prefer concise synthesis over exhaustive narration.
+
+Point to canonical artifacts rather than reproducing them.
+
+Omit unsupported continuity classes rather than creating empty sections.
+
+================================================================================
+QUALITY STANDARD
+
+The handoff must read like a senior website, product, brand, conversion, and
+engineering lead transferring ownership to another senior lead.
+
+Optimize for:
+
+- factual correctness;
+- product continuity;
+- architectural safety;
+- brand fidelity;
+- evidence discipline;
+- deployment clarity;
+- implementation usefulness;
+- brevity.
+
+The goal is not to preserve every detail.
+
+The goal is to preserve everything required for safe, accurate, and efficient continuation of the Howe Sound Wedding DJ Website.
+
+================================================================================
+RECEIVING-INSTANCE DIRECTIVE
+
+The generated handoff must begin with an explicit instruction to the Atlas instance receiving it in a new chat.
+
+That instruction must state:
+
+* this is authoritative operating context, not a document submitted for review;
+* ingest and adopt the handoff silently;
+* do not grade, critique, improve, summarize, or rewrite it unless Patrick explicitly asks;
+* preserve its authority hierarchy, protected continuity, evidence distinctions, blocker state, and roadmap position;
+* use it as the starting state for subsequent work;
+* acknowledge adoption briefly;
+* do not begin implementation unless Patrick’s accompanying message explicitly says to proceed, or the receiving directive explicitly authorizes immediate execution.
+
+The receiving directive is part of the handoff and must appear before the Executive State.
+
+================================================================================
+OUTPUT
+
+Output one complete Tier-S Howe Sound Wedding DJ Website Handoff inside one markdown fence.
+
+Output only the handoff.
+
+Do not include commentary before or after the fence.
