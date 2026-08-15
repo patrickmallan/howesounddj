@@ -3,19 +3,16 @@
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import { trackPageView } from "@/lib/analytics";
 
 type GoogleAnalyticsProps = {
   /** GA4 measurement ID (e.g. `G-XXXXXXXXXX`). Omit or empty to disable all analytics. */
   gaId: string | undefined;
 };
 
-function sendPagePath(gaId: string, pathname: string): void {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
-  window.gtag("config", gaId, { page_path: pathname });
-}
-
 /**
- * Loads gtag.js once and sends `page_path` on initial load and on client-side navigations.
+ * Loads gtag.js once and sends explicit `page_view` events on initial load and client navigations.
+ * Bootstrap keeps `send_page_view: false` so config updates alone never silently drop page views.
  */
 export function GoogleAnalytics({ gaId }: GoogleAnalyticsProps) {
   const pathname = usePathname();
@@ -29,7 +26,7 @@ export function GoogleAnalytics({ gaId }: GoogleAnalyticsProps) {
     const trySend = () => {
       if (cancelled) return;
       if (typeof window.gtag === "function") {
-        sendPagePath(gaId, pathname);
+        trackPageView(pathname);
         return;
       }
       attempts += 1;

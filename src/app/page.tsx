@@ -16,14 +16,20 @@ import { VENUES } from "@/config/venues";
 import { websiteJsonLd } from "@/lib/json-ld";
 import {
   EYEBROW_TO_HEADING,
+  HOMEPAGE_FINALE_INNER_TOP,
+  HOMEPAGE_FINALE_SECTION,
+  HOMEPAGE_HERO_PADDING,
   MEDIA_CARD_PAD,
   MEDIA_COPY_GRID_GAP,
   PAGE_GUTTER_X,
-  SECTION_BAND_BORDER_ENTRY,
-  SECTION_BAND_PRE_BORDER_BOTTOM,
+  SECTION_BAND_BORDER_FOLLOW,
+  SECTION_BAND_BORDER_TOP,
+  SECTION_BAND_BORDER_Y,
   SECTION_BAND_TOP,
   SECTION_BAND_Y,
   SECTION_SHELL,
+  SECTION_TRANSITION_IN,
+  SECTION_TRANSITION_OUT,
 } from "@/lib/cta-section-spacing";
 
 /**
@@ -136,7 +142,7 @@ export default function HoweSoundDJHomepage() {
         <JsonLd data={websiteJsonLd()} />
         <section className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.18),transparent_45%)]" />
-          <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 py-20 lg:flex-row lg:items-start lg:gap-16 lg:px-8 lg:py-28">
+          <div className={`mx-auto flex max-w-6xl flex-col gap-16 ${PAGE_GUTTER_X} ${HOMEPAGE_HERO_PADDING} lg:flex-row lg:items-start lg:gap-16`}>
             <div className="relative z-10 flex min-w-0 flex-col lg:basis-0 lg:flex-1">
               <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
                 Squamish Wedding DJ · Sea-to-Sky
@@ -216,7 +222,7 @@ export default function HoweSoundDJHomepage() {
           className="border-y border-white/10 bg-neutral-950"
           aria-labelledby="home-proof-heading"
         >
-          <div className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_BORDER_ENTRY}`}>
+          <div className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_BORDER_Y}`}>
             <div className="mb-12 max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Proof</div>
               <h2 id="home-proof-heading" className={`${EYEBROW_TO_HEADING} text-3xl font-semibold sm:text-4xl`}>
@@ -239,7 +245,7 @@ export default function HoweSoundDJHomepage() {
         </SectionReveal>
 
         <SectionReveal as="section" id="reviews" className="border-y border-white/10 bg-white/5" aria-labelledby="home-reviews-heading">
-          <div className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_BORDER_ENTRY}`}>
+          <div className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_BORDER_Y}`}>
             <div className="mb-12 max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Reviews</div>
               <h2 id="home-reviews-heading" className={`${EYEBROW_TO_HEADING} text-3xl font-semibold sm:text-4xl`}>
@@ -274,7 +280,10 @@ export default function HoweSoundDJHomepage() {
           className="border-t border-white/10 bg-neutral-950"
           aria-labelledby="home-venues-heading"
         >
-          <div className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_BORDER_ENTRY}`}>
+          <div
+            data-testid="home-venues-band"
+            className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_BORDER_TOP} ${SECTION_TRANSITION_OUT}`}
+          >
             <div className="max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
                 Venue familiarity
@@ -329,11 +338,17 @@ export default function HoweSoundDJHomepage() {
         <SectionReveal
           as="section"
           id="services"
-          className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_TOP} ${SECTION_BAND_PRE_BORDER_BOTTOM}`}
+          data-testid="home-services-section"
+          className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_TRANSITION_IN} ${SECTION_TRANSITION_OUT}`}
         >
           <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Services</div>
+              <div
+                data-testid="home-services-eyebrow"
+                className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300"
+              >
+                Services
+              </div>
               <h2 className={`${EYEBROW_TO_HEADING} text-3xl font-semibold sm:text-4xl`}>Support for the full wedding-day experience.</h2>
               <p className="mt-4 max-w-2xl text-lg leading-8 text-white/70">
                 From ceremony through reception, the service is designed to help the day sound right, feel smooth, and stay aligned with the vibe you want.
@@ -373,7 +388,7 @@ export default function HoweSoundDJHomepage() {
         <SectionReveal as="section" id="about" className="border-y border-white/10 bg-white/5">
           <div
             data-testid="home-about-grid"
-            className={`${SECTION_SHELL} grid ${PAGE_GUTTER_X} ${SECTION_BAND_BORDER_ENTRY} ${MEDIA_COPY_GRID_GAP} lg:grid-cols-2`}
+            className={`${SECTION_SHELL} grid ${PAGE_GUTTER_X} ${SECTION_BAND_BORDER_FOLLOW} ${MEDIA_COPY_GRID_GAP} lg:grid-cols-2`}
           >
             <div
               data-testid="home-patrick-portrait"
@@ -421,7 +436,12 @@ export default function HoweSoundDJHomepage() {
           </div>
         </SectionReveal>
 
-        <SectionReveal as="section" id="faq" className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_Y}`}>
+        <SectionReveal
+          as="section"
+          id="faq"
+          data-testid="home-faq-section"
+          className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_TOP} ${SECTION_TRANSITION_OUT}`}
+        >
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">FAQ</div>
@@ -443,11 +463,15 @@ export default function HoweSoundDJHomepage() {
 
         <SectionReveal
           as="section"
-          className="border-t border-white/10 bg-neutral-950 pb-6 pt-16 md:pb-8 md:pt-24"
+          data-testid="home-finale-section"
+          className={HOMEPAGE_FINALE_SECTION}
           aria-labelledby="home-final-decision-heading"
         >
-          <div className="mx-auto max-w-6xl px-6 lg:px-8">
-            <div className="mx-auto w-full max-w-3xl atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
+          <div className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${HOMEPAGE_FINALE_INNER_TOP}`}>
+            <div
+              data-testid="home-finale-well"
+              className="mx-auto w-full max-w-3xl atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12"
+            >
               <div className="mx-auto max-w-2xl text-center">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300/95 sm:text-xs sm:tracking-[0.2em]">
                   Ready when you are

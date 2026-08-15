@@ -1,1 +1,6 @@
 cd ~/Desktop/howesounddj && git add -A && git commit -m "chore: commit pending changes" && git push origin main
+
+cd ~/Desktop/howesounddj && \
+git add -A && git reset test-results/ && \
+git commit -m "chore: commit pending changes" && \
+git push origin main

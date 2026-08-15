@@ -129,6 +129,32 @@ type TrackEventOptions = {
   deferUntilGtag?: boolean;
 };
 
+/**
+ * GA4 page_view for App Router client navigations.
+ * Init uses `send_page_view: false` so only explicit events count (no double fire on load).
+ */
+export function trackPageView(pagePath: string): void {
+  if (typeof window === "undefined") return;
+  if (!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) return;
+  if (typeof window.gtag !== "function") return;
+
+  const pageLocation =
+    typeof window.location !== "undefined"
+      ? `${window.location.origin}${pagePath}${window.location.search}${window.location.hash}`
+      : undefined;
+
+  try {
+    window.gtag("event", "page_view", {
+      page_path: pagePath,
+      page_location: pageLocation,
+      page_title: typeof document !== "undefined" ? document.title : undefined,
+      ...gaDebugModeParam(),
+    });
+  } catch {
+    // gtag present but threw, ignore
+  }
+}
+
 export function trackEvent(
   eventName: string,
   params?: Record<string, string | number | boolean | undefined>,

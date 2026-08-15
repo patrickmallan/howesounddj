@@ -4,9 +4,10 @@ import { describe, expect, it } from "vitest";
 import {
   MEDIA_COPY_GRID_GAP,
   PAGE_GUTTER_X,
-  SECTION_BAND_BORDER_ENTRY,
-  SECTION_BAND_PRE_BORDER_BOTTOM,
+  SECTION_BAND_BORDER_FOLLOW,
   SECTION_BAND_Y,
+  SECTION_TRANSITION_IN,
+  SECTION_TRANSITION_OUT,
 } from "../src/lib/cta-section-spacing";
 
 const ROOT = process.cwd();
@@ -16,34 +17,41 @@ function readSource(relativePath: string): string {
 }
 
 describe("HSDJ sitewide spacing geometry contracts", () => {
-  it("exports a bounded spacing vocabulary for primary content bands", () => {
+  it("exports mobile-first transition tokens with single-owner pairing", () => {
     expect(PAGE_GUTTER_X).toBe("px-6 lg:px-8");
-    expect(SECTION_BAND_Y).toContain("pt-14");
-    expect(SECTION_BAND_BORDER_ENTRY).toMatch(/pt-10/);
-    expect(SECTION_BAND_PRE_BORDER_BOTTOM).toMatch(/pb-10/);
+    expect(SECTION_BAND_Y).toContain("pt-8");
+    expect(SECTION_TRANSITION_OUT).toMatch(/pb-8/);
+    expect(SECTION_TRANSITION_IN).toBe("pt-0");
+    expect(SECTION_BAND_BORDER_FOLLOW).toMatch(/^pt-0/);
     expect(MEDIA_COPY_GRID_GAP).toBe("gap-8 md:gap-10 lg:gap-12");
   });
 
-  it("homepage about band uses border-entry rhythm and avoids stacked section dead zones", () => {
+  it("homepage applies single-owner transitions for reported mobile defects", () => {
     const page = readSource("src/app/page.tsx");
-    expect(page).toMatch(/id="about"/);
-    expect(page).toContain("SECTION_BAND_BORDER_ENTRY");
-    expect(page).toContain("SECTION_BAND_PRE_BORDER_BOTTOM");
-    expect(page).toContain("MEDIA_COPY_GRID_GAP");
-    expect(page).toContain("MEDIA_CARD_PAD");
-    expect(page).toContain('data-testid="home-about-grid"');
-    expect(page).toContain('data-testid="home-patrick-portrait"');
-    expect(page).toContain('data-testid="home-about-copy"');
-    expect(page).toMatch(/className="!m-0 !space-y-0"/);
-    expect(page).toMatch(/max-lg:justify-start lg:justify-center/);
-    expect(page).not.toMatch(/gap-12 px-6 py-16 md:py-24 lg:grid-cols-2/);
+    const video = readSource("src/components/home-video-proof.tsx");
+
+    expect(page).toContain("HOMEPAGE_HERO_PADDING");
+    expect(page).toContain('data-testid="home-venues-band"');
+    expect(page).toContain("SECTION_BAND_BORDER_TOP");
+    expect(page).toContain("SECTION_TRANSITION_OUT");
+    expect(page).toContain("SECTION_TRANSITION_IN");
+    expect(page).toContain("SECTION_BAND_BORDER_FOLLOW");
+    expect(page).toContain("SECTION_BAND_TOP");
+    expect(page).toContain("HOMEPAGE_FINALE_SECTION");
+    expect(page).toContain("HOMEPAGE_FINALE_INNER_TOP");
+
+    expect(video).toContain("SECTION_TRANSITION_IN");
+    expect(video).toContain("SECTION_BAND_BOTTOM");
+    expect(video).toContain('data-testid="home-video-proof-eyebrow"');
   });
 
-  it("homepage primary sections import canonical spacing tokens", () => {
+  it("homepage about band preserves portrait rhythm tokens", () => {
     const page = readSource("src/app/page.tsx");
-    expect(page).toContain("PAGE_GUTTER_X");
-    expect(page).toContain("SECTION_BAND_Y");
-    expect(page).toContain("EYEBROW_TO_HEADING");
+    expect(page).toContain('data-testid="home-about-grid"');
+    expect(page).toContain("MEDIA_COPY_GRID_GAP");
+    expect(page).toContain("MEDIA_CARD_PAD");
+    expect(page).toMatch(/className="!m-0 !space-y-0"/);
+    expect(page).toMatch(/max-lg:justify-start lg:justify-center/);
   });
 
   it("does not wire Availability Success into homepage spacing edits", () => {
@@ -52,14 +60,10 @@ describe("HSDJ sitewide spacing geometry contracts", () => {
     expect(readSource("src/components/post-availability-success.tsx")).toMatch(/PostAvailabilitySuccess/);
   });
 
-  it("documents expected mobile gutter symmetry at 375px viewport", () => {
-    const gutterPx = 24;
-    const borderEntryTopPx = 40;
-    const preBorderBottomPx = 40;
-    const mediaCopyGapPx = 32;
-    const combinedServicesToAboutGap = preBorderBottomPx + borderEntryTopPx;
-    expect(gutterPx).toBe(24);
-    expect(combinedServicesToAboutGap).toBeLessThan(128);
-    expect(mediaCopyGapPx).toBeLessThan(48);
+  it("documents tighter mobile transition targets at 375px", () => {
+    const singleOwnerGapPx = 32;
+    const finaleInnerTopPx = 32;
+    expect(singleOwnerGapPx).toBeLessThan(56);
+    expect(finaleInnerTopPx).toBeLessThan(64);
   });
 });
