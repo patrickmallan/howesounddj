@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { JsonLd } from "@/components/json-ld";
 import { ConditionalSiteFinalDecisionZone } from "@/components/conditional-site-final-decision-zone";
@@ -7,16 +6,6 @@ import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { SITE_PUBLIC_NAME, SITE_SHORT_NAME } from "@/config/site-brand";
 import { organizationJsonLd } from "@/lib/json-ld";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const siteDescription =
   "Squamish wedding DJ for Sea-to-Sky weddings. Personalized music, professional planning, and polished ceremony-to-reception support, across Whistler, Vancouver, and the corridor.";
@@ -68,7 +57,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-CA"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className="h-full antialiased"
     >
       <head>
         <meta property="og:site_name" content={SITE_PUBLIC_NAME} />

@@ -14,7 +14,7 @@ describe("GA4 page_view measurement", () => {
         search: "",
         hash: "",
       },
-    } as Window & typeof globalThis);
+    } as unknown as Window & typeof globalThis);
     vi.stubGlobal("document", { title: "Howe Sound Wedding DJ" });
   });
 

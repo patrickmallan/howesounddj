@@ -41,7 +41,7 @@ import {
 const HOMEPAGE_HEADLINE =
   "Squamish wedding DJ for the Sea-to-Sky, elegant when it matters, wild when it should.";
 
-export const HEADLINE_VARIANTS = {
+const HEADLINE_VARIANTS = {
   A: HOMEPAGE_HEADLINE,
   B: HOMEPAGE_HEADLINE,
   C: HOMEPAGE_HEADLINE,

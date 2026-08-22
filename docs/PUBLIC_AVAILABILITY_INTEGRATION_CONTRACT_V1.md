@@ -10,6 +10,7 @@
 ```
 Visitor browser
   → POST https://www.howesounddj.com/api/availability  { "date": "YYYY-MM-DD" }
+  → Vercel Firewall programmatic rate limit (`hsdj-availability-check`)
   → Website server (Next.js route)
   → GET https://ops.howesounddj.com/api/availability?date=YYYY-MM-DD  (authoritative read; blocks response)
   → Normalized result object
@@ -66,3 +67,9 @@ All other conditions → `MANUAL_CONFIRMATION_REQUIRED`.
 ## Caching
 
 `Cache-Control: no-store` on website route and upstream client fetch.
+
+## Abuse controls
+
+- The website rejects non-JSON, oversized, malformed, or unsupported dates before calling Operations.
+- Production requires the `hsdj-availability-check` Vercel Firewall rule and fails closed if it is unavailable.
+- Operator notification is scheduled only after a valid request completes an authoritative check.

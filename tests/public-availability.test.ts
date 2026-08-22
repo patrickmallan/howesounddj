@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import {
   availabilityEmailSubject,
   checkPublicAvailability,
+  getOperationsAvailabilityApiUrl,
   validateRequestedAvailabilityDate,
 } from "@/lib/check-public-availability";
 import {
@@ -149,6 +150,28 @@ describe("checkPublicAvailability", () => {
 describe("validateRequestedAvailabilityDate", () => {
   it("rejects invalid calendar date", () => {
     expect(validateRequestedAvailabilityDate("2027-13-40")).toBe("invalid_calendar_date");
+  });
+});
+
+describe("getOperationsAvailabilityApiUrl", () => {
+  it("uses a configured full endpoint without appending the path twice", () => {
+    vi.stubEnv(
+      "HSDJ_OPERATIONS_AVAILABILITY_API_URL",
+      "https://ops.howesounddj.com/api/availability",
+    );
+    expect(getOperationsAvailabilityApiUrl()).toBe(
+      "https://ops.howesounddj.com/api/availability",
+    );
+    vi.unstubAllEnvs();
+  });
+
+  it("appends the endpoint path to the base URL alternative", () => {
+    vi.stubEnv("HSDJ_OPERATIONS_AVAILABILITY_API_URL", "");
+    vi.stubEnv("HSDJ_OPERATIONS_API_BASE_URL", "https://ops.example.com/");
+    expect(getOperationsAvailabilityApiUrl()).toBe(
+      "https://ops.example.com/api/availability",
+    );
+    vi.unstubAllEnvs();
   });
 });
 

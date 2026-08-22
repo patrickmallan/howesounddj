@@ -21,6 +21,7 @@ Copy **`env.example`** to **`.env.local`** for local testing (never commit `.env
 | **Turnstile** | `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` — required for the inquiry form to verify and send. |
 | **GA4** | `NEXT_PUBLIC_GA_MEASUREMENT_ID` — optional. If unset, no analytics scripts load. |
 | **Availability** | Optional `HSDJ_OPERATIONS_AVAILABILITY_API_URL` — defaults to Operations production API. Google Calendar credentials belong only in **HSDJ Operations**, not this repo. |
+| **Rate limiting** | Production requires one Vercel Firewall programmatic rule named `hsdj-availability-check` (20 requests per 60 seconds per IP). Both APIs share the bucket; contact also requires Turnstile. The APIs fail closed if the rule is unavailable. |
 
 See **`docs/LAUNCH_CHECKLIST.md`**, **`docs/PUBLIC_WEBSITE_ENVIRONMENT_CONTRACT_V1.md`**, and **`docs/PUBLIC_AVAILABILITY_INTEGRATION_CONTRACT_V1.md`** for Vercel, post-deploy checks, and Search Console.
 
@@ -46,6 +47,9 @@ To see **Vancouver landing** traffic: **Reports** → **Engagement** → **Pages
 | `npm run build` | Production build (includes TypeScript check) |
 | `npm run start` | Run production build locally |
 | `npm run lint` | ESLint |
+| `npm run typecheck` | Full repository TypeScript check |
+| `npm test` | Unit and contract tests |
+| `npm run security:secrets` | Scan tracked source for secret patterns |
 
 ## Launch & cutover
 

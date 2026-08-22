@@ -1,7 +1,12 @@
 import { after, NextResponse } from "next/server";
 import { sendAvailabilityCheckNotification } from "@/lib/availability-notification";
-import { checkPublicAvailability } from "@/lib/check-public-availability";
+import {
+  checkPublicAvailability,
+  validateRequestedAvailabilityDate,
+} from "@/lib/check-public-availability";
 import { PublicAvailabilityResult } from "@/lib/public-availability-contract";
+import { readJsonObject, RequestBodyError } from "@/lib/api-request";
+import { checkApiRateLimit, RATE_LIMIT_IDS } from "@/lib/api-rate-limit";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -21,10 +26,19 @@ function serverTimingHeader(opsDurationMs: number, totalDurationMs: number): str
 export async function POST(request: Request) {
   const requestStarted = performance.now();
 
-  let body: unknown;
+  const rateLimit = await checkApiRateLimit(request, RATE_LIMIT_IDS.availability);
+  if (rateLimit !== "allowed") {
+    return NextResponse.json(
+      { success: false, message: rateLimit === "limited" ? "Too many checks. Please wait and try again." : "Availability checking is temporarily unavailable." },
+      { status: rateLimit === "limited" ? 429 : 503, headers: { "Cache-Control": "no-store" } },
+    );
+  }
+
+  let body: Record<string, unknown>;
   try {
-    body = await request.json();
-  } catch {
+    body = await readJsonObject(request, 1024);
+  } catch (error) {
+    const status = error instanceof RequestBodyError ? error.status : 400;
     return NextResponse.json(
       {
         success: false,
@@ -34,16 +48,19 @@ export async function POST(request: Request) {
         date: null,
       },
       {
-        status: 400,
+        status,
         headers: { "Cache-Control": "no-store, max-age=0, must-revalidate" },
       },
     );
   }
 
-  const date =
-    typeof body === "object" && body !== null && "date" in body
-      ? String((body as { date: unknown }).date).trim().slice(0, 10)
-      : "";
+  const date = typeof body.date === "string" ? body.date.trim() : "";
+  if (validateRequestedAvailabilityDate(date)) {
+    return NextResponse.json(
+      { success: false, result: PublicAvailabilityResult.MANUAL_CONFIRMATION_REQUIRED, message: "Please enter a valid future date.", date: null },
+      { status: 400, headers: { "Cache-Control": "no-store, max-age=0, must-revalidate" } },
+    );
+  }
 
   const opsStarted = performance.now();
   const evaluated = await checkPublicAvailability(date);

@@ -4,7 +4,6 @@ import { getAllVenueSlugs } from "@/config/venue-pages";
 const base = "https://www.howesounddj.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
   const paths = [
     "",
     "/weddings",
@@ -28,6 +27,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   return paths.map((path) => ({
     url: `${base}${path}`,
-    lastModified,
   }));
 }

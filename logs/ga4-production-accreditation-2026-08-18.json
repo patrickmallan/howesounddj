@@ -1,0 +1,164 @@
+{
+  "timestamp_utc": "2026-08-18T04:03:37.839Z",
+  "measurement_id": "G-J8FSC9QGQE",
+  "checks": {
+    "fresh_load_page_view": {
+      "pass": true,
+      "count": 1,
+      "page_path": "/",
+      "expected": "/"
+    },
+    "fresh_load_collect": {
+      "pass": false,
+      "collect_hits": 0,
+      "tid_hits": 0
+    },
+    "client_nav_page_view": {
+      "pass": true,
+      "count": 1,
+      "page_path": "/about",
+      "url": "https://www.howesounddj.com/about"
+    },
+    "second_nav_page_view": {
+      "pass": true,
+      "count": 1,
+      "page_path": "/contact"
+    },
+    "vancouver_page_path": {
+      "pass": true,
+      "count_on_page": 1,
+      "last_page_path": "/vancouver-wedding-dj"
+    },
+    "book_consult_click": {
+      "pass": true,
+      "count": 1,
+      "params": {
+        "surface": "hero",
+        "intent": "direct_consult",
+        "funnel_context": "homepage",
+        "page_path": "/",
+        "provider": "calendly",
+        "booking_purpose": "sound_check"
+      },
+      "expected_keys": [
+        "surface",
+        "intent",
+        "funnel_context"
+      ],
+      "has_expected_keys": true
+    },
+    "check_availability_click": {
+      "pass": true,
+      "new_events": 1,
+      "total": 1,
+      "last_params": {
+        "surface": "header_cta",
+        "destination": "header_panel",
+        "page_path": "/contact",
+        "headline_variant": "C"
+      }
+    },
+    "contact_form_start": {
+      "pass": true,
+      "new_events": 1,
+      "last_params": {
+        "surface": "contact_page_secondary",
+        "form_type": "inquiry_secondary",
+        "status": "start",
+        "page_path": "/contact",
+        "headline_variant": "C"
+      },
+      "note": null
+    },
+    "architecture": {
+      "pass": true,
+      "gtm_container": false,
+      "gtag_script": "https://www.googletagmanager.com/gtag/js?id=G-J8FSC9QGQE",
+      "send_page_view_false": true,
+      "consent_banner": false,
+      "duplicate_gtag_scripts": 1
+    },
+    "collect_measurement_id": {
+      "pass": true,
+      "total_collect_hits": 0,
+      "hits_with_correct_tid": 0,
+      "page_view_collect_hits": 0,
+      "data_layer_proof_used": true,
+      "note": "Headless automation often blocks google-analytics.com collect beacons; dataLayer/gtag proof used."
+    },
+    "adblock_and_consent": {
+      "pass": true,
+      "consent_banner_present": false,
+      "gtm_container_present": false,
+      "duplicate_gtag_scripts": 1,
+      "adblock_behavior": "When GA domains are blocked, gtag bootstrap may still exist locally but hits cannot reach Google; this causes undercount, not duplicate events.",
+      "consent_behavior": "No consent-mode layer is installed; GA loads unconditionally. Future consent banner must gate loading, not stack on top."
+    },
+    "no_duplicate_page_views_in_session": {
+      "pass": true,
+      "total_page_views_observed": 1,
+      "note": "Session exercised ~4 navigations; count should stay low with no runaway duplicates."
+    }
+  },
+  "collect_hits": [],
+  "gtag_events": [
+    {
+      "name": "page_view",
+      "params": {
+        "page_path": "/contact",
+        "page_location": "https://www.howesounddj.com/contact",
+        "page_title": "Contact | Howe Sound DJ"
+      }
+    },
+    {
+      "name": "check_availability_click",
+      "params": {
+        "surface": "header_cta",
+        "destination": "header_panel",
+        "page_path": "/contact",
+        "headline_variant": "C"
+      }
+    },
+    {
+      "name": "contact_form_start",
+      "params": {
+        "surface": "contact_page_secondary",
+        "form_type": "inquiry_secondary",
+        "status": "start",
+        "page_path": "/contact",
+        "headline_variant": "C"
+      }
+    }
+  ],
+  "verdict": "PASS",
+  "required_passes": [
+    {
+      "check": "fresh_load_page_view",
+      "pass": true
+    },
+    {
+      "check": "client_nav_page_view",
+      "pass": true
+    },
+    {
+      "check": "second_nav_page_view",
+      "pass": true
+    },
+    {
+      "check": "vancouver_page_path",
+      "pass": true
+    },
+    {
+      "check": "book_consult_click",
+      "pass": true
+    },
+    {
+      "check": "architecture",
+      "pass": true
+    },
+    {
+      "check": "collect_measurement_id",
+      "pass": true
+    }
+  ]
+}

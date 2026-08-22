@@ -36,16 +36,14 @@ function isSupportedFutureDate(date: string): boolean {
 
 export function getOperationsAvailabilityApiUrl(): string {
   const configured = process.env.HSDJ_OPERATIONS_AVAILABILITY_API_URL?.trim();
-  const base =
-    configured ??
-    process.env.HSDJ_OPERATIONS_API_BASE_URL?.trim() ??
-    "https://ops.howesounddj.com";
-
-  const normalized = base.replace(/\/$/, "");
+  const base = process.env.HSDJ_OPERATIONS_API_BASE_URL?.trim();
+  const normalized = configured
+    ? configured.replace(/\/$/, "")
+    : `${(base ?? "https://ops.howesounddj.com").replace(/\/$/, "")}/api/availability`;
   if (process.env.NODE_ENV === "production" && LOCALHOST_PATTERN.test(normalized)) {
     throw new Error("Production cannot use localhost Operations API URL.");
   }
-  return `${normalized}/api/availability`;
+  return normalized;
 }
 
 function manualResult(

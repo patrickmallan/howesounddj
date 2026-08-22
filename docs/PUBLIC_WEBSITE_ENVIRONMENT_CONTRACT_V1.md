@@ -51,6 +51,14 @@
 - **`.env.local`:** operator machine only; gitignored. Must not contain website Google Calendar credentials after R1 cleanup.
 - **`env.example`:** names and placeholders only; must match this contract.
 
+## Vercel Firewall contract
+
+Before deploying this version, create one programmatic rate-limit rule in the website's Vercel Firewall:
+
+- `hsdj-availability-check` — 20 requests per 60 seconds per IP.
+
+Both public API routes share this per-IP bucket so the configuration fits the Hobby plan's single-rule limit. Contact submissions additionally require Cloudflare Turnstile. The production API routes fail closed with HTTP 503 when the rule is missing or the Firewall check is unavailable. Development and test environments bypass the remote Firewall check.
+
 ## Related contracts
 
 - `docs/PUBLIC_AVAILABILITY_INTEGRATION_CONTRACT_V1.md`

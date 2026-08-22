@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
-import { checkContactRateLimit, getClientIp } from "@/lib/contact-rate-limit";
+import { checkApiRateLimit, RATE_LIMIT_IDS } from "@/lib/api-rate-limit";
+import { boundedString, readJsonObject, RequestBodyError } from "@/lib/api-request";
 import {
   formatInquiryHtml,
   formatInquiryPlainText,
@@ -11,10 +12,6 @@ import { verifyTurnstileToken } from "@/lib/turnstile";
 import type { ContactApiResponse } from "@/types/contact-api";
 
 export const runtime = "nodejs";
-
-function trimValue(v: unknown): string {
-  return typeof v === "string" ? v.trim() : "";
-}
 
 function getResend(): Resend | null {
   const key = process.env.RESEND_API_KEY?.trim();
@@ -81,29 +78,28 @@ function logContact(stage: string, data?: Record<string, unknown>) {
 
 export async function POST(request: Request) {
   logContact("request_received");
-  const ip = getClientIp(request);
-  const { ok: rateOk } = checkContactRateLimit(ip);
-  if (!rateOk) {
+  const rateLimit = await checkApiRateLimit(request, RATE_LIMIT_IDS.contact);
+  if (rateLimit !== "allowed") {
     return NextResponse.json<ContactApiResponse>(
       {
         success: false,
-        message: "Too many attempts from this connection. Please wait a minute and try again.",
+        message: rateLimit === "limited" ? "Too many attempts from this connection. Please wait and try again." : "Message delivery is temporarily unavailable.",
       },
-      { status: 429 }
+      { status: rateLimit === "limited" ? 429 : 503 }
     );
   }
 
   let data: Record<string, unknown>;
   try {
-    data = (await request.json()) as Record<string, unknown>;
-  } catch {
+    data = await readJsonObject(request, 32_768);
+  } catch (error) {
     return NextResponse.json<ContactApiResponse>(
       { success: false, message: "Something went wrong. Please refresh and try again." },
-      { status: 400 }
+      { status: error instanceof RequestBodyError ? error.status : 400 }
     );
   }
 
-  const company = trimValue(data.company);
+  const company = boundedString(data.company, 200);
   if (company) {
     return NextResponse.json<ContactApiResponse>({
       success: true,
@@ -111,22 +107,25 @@ export async function POST(request: Request) {
     });
   }
 
-  const formType = trimValue(data.formType);
+  const formType = boundedString(data.formType, 40);
   /** Primary path: availability check → full inquiry (default when omitted). */
   const isSecondaryInquiry = formType === "secondary_inquiry";
 
-  const name = trimValue(data.name);
-  const partnerName = trimValue(data.partnerName) || trimValue(data.partner);
-  const email = trimValue(data.email);
-  const phone = trimValue(data.phone);
-  const weddingDate = trimValue(data.weddingDate);
-  const venue = trimValue(data.venue);
-  const guestCount = trimValue(data.guestCount);
-  const servicesNeeded = trimValue(data.servicesNeeded);
-  const message = trimValue(data.message);
-  const turnstileToken = trimValue(data.turnstileToken);
+  const name = boundedString(data.name, 120);
+  const partnerName = boundedString(data.partnerName, 120) || boundedString(data.partner, 120);
+  const email = boundedString(data.email, 254);
+  const phone = boundedString(data.phone, 40);
+  const weddingDate = boundedString(data.weddingDate, 10);
+  const venue = boundedString(data.venue, 200);
+  const guestCount = boundedString(data.guestCount, 20);
+  const servicesNeeded = boundedString(data.servicesNeeded, 500);
+  const message = boundedString(data.message, 5000);
+  const turnstileToken = boundedString(data.turnstileToken, 4096);
 
   const fieldErrors: Record<string, string> = {};
+  if (formType !== "availability_inquiry" && formType !== "secondary_inquiry") {
+    fieldErrors.formType = "Unsupported inquiry type.";
+  }
   if (!name) fieldErrors.name = "Please add your name.";
   if (!email) fieldErrors.email = "Please add your email.";
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) fieldErrors.email = "Please check your email address.";
