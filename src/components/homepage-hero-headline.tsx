@@ -4,7 +4,7 @@ import { useLayoutEffect, useState } from "react";
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
 import { getHomepageVariant, type HeadlineVariant } from "@/lib/experiment";
 
-const TAGLINE = "Your Celebration. Our Passion.";
+const TAGLINE = "Based here. Prepared for your venue. Built around your people.";
 
 type Headlines = Readonly<Record<HeadlineVariant, string>>;
 

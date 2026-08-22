@@ -35,8 +35,8 @@ export const metadata: Metadata = {
 
 const VANCOUVER_REVIEW_CONTEXT: Record<(typeof HOMEPAGE_FEATURED_REVIEW_IDS)[number], string> = {
   "vanessa-pocock": "Squamish",
+  "natasha-beaudry": "Squamish",
   "matthew-bundala": "Sea to Sky",
-  "stephen-henry": "Whistler",
 };
 
 export default function VancouverWeddingDjPage() {
@@ -84,8 +84,8 @@ export default function VancouverWeddingDjPage() {
 
   const experiencePillars = [
     {
-      title: "Bangers Only",
-      text: "Dancefloor-packing tracks, no overplayed wedding fluff, no autopilot playlists."
+      title: "Your taste, not a template",
+      text: "Music shaped around your must-plays, do-not-plays, guests, and the room—not an autopilot wedding playlist."
     },
     {
       title: "Your story, your energy, your people",

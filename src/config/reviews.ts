@@ -122,7 +122,7 @@ export const CANONICAL_REVIEWS: readonly CanonicalReview[] = [
     reviewerName: "Natasha Beaudry",
     quote:
       "We were thrilled to have Patrick from Squamish as he was able to easily attend pre-wedding meetings at our venue.",
-    sourceSurfaces: ["/reviews"],
+    sourceSurfaces: ["/reviews", "/"],
     themes: ["LOCAL", "PLANNING"],
     compactExcerpt: "He was able to easily attend pre-wedding meetings at our venue.",
     fullExcerpt:
@@ -221,8 +221,8 @@ export function getFeaturedReviewsForSurface(
 /** Homepage and proof-strip featured set (order preserved). */
 export const HOMEPAGE_FEATURED_REVIEW_IDS = [
   "vanessa-pocock",
+  "natasha-beaudry",
   "matthew-bundala",
-  "stephen-henry",
 ] as const;
 
 export const AUTHORITY_PROOF_STRIP_REVIEW_IDS = [

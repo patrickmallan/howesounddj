@@ -183,8 +183,8 @@ export default function PackagesPage() {
             What happens after you inquire
           </div>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-white/65">
-            I reply personally with availability for your date, a quote based on your venue and timeline, and a suggested next step (usually a 15-minute consult). From there, planning calls, music direction,
-            and a shared run-of-show build at your pace. Investment depends on date, location, hours, and any add-ons. No surprise fees hidden behind a generic online number.
+            I reply personally with availability for your date, a written quote based on your venue and timeline, and a suggested next step (usually a 45-minute consult). From there, planning calls, music direction,
+            and a shared run-of-show build at your pace. Your quote spells out the coverage and add-ons before you make any commitment.
           </p>
           <p className="mt-4 text-sm leading-7 text-white/55">
             <Link

@@ -39,7 +39,7 @@ import {
  * can fall back to the older party-DJ framing (e.g. "earns the room", "packed every time").
  */
 const HOMEPAGE_HEADLINE =
-  "Squamish wedding DJ for the Sea-to-Sky, elegant when it matters, wild when it should.";
+  "The Squamish wedding DJ who already knows the Sea-to-Sky.";
 
 const HEADLINE_VARIANTS = {
   A: HOMEPAGE_HEADLINE,
@@ -50,11 +50,11 @@ const HEADLINE_VARIANTS = {
 export const metadata: Metadata = {
   title: { absolute: HOMEPAGE_TITLE },
   description:
-    "Squamish wedding DJ for the Sea-to-Sky corridor and beyond: unforgettable experiences, Bangers Only (no autopilot playlists), seamless planning, and real connection. Whistler & Vancouver.",
+    "A Squamish-based wedding DJ for the Sea-to-Sky: local venue experience, ceremony-to-reception coverage, calm planning, and music built around your guests.",
   openGraph: {
     title: HOMEPAGE_TITLE,
     description:
-      "Creating unforgettable wedding experiences in Squamish, Whistler, and the Sea-to-Sky: rooted locally, trusted at top venues, dancefloor-packing tracks.",
+      "A genuinely local Squamish wedding DJ: venue-ready planning, ceremony-to-reception coverage, and a soundtrack built around your people.",
     url: `${SITE_ORIGIN}/`,
   },
   twitter: {
@@ -67,8 +67,8 @@ export const metadata: Metadata = {
 
 const HOMEPAGE_REVIEW_VENUES: Record<(typeof HOMEPAGE_FEATURED_REVIEW_IDS)[number], string> = {
   "vanessa-pocock": "Squamish",
+  "natasha-beaudry": "Squamish",
   "matthew-bundala": "Sea to Sky",
-  "stephen-henry": "Whistler",
 };
 
 export default function HoweSoundDJHomepage() {
@@ -84,8 +84,8 @@ export default function HoweSoundDJHomepage() {
 
   const features = [
     {
-      title: "Bangers Only",
-      text: "No overplayed wedding fluff, no autopilot playlists: music shaped for your crowd and the room you are actually in."
+      title: "Your taste, not a template",
+      text: "Must-plays, do-not-plays, family favourites, and the room in front of us all shape the soundtrack. No autopilot wedding playlist."
     },
     {
       title: "Rooted in Squamish",
@@ -96,8 +96,8 @@ export default function HoweSoundDJHomepage() {
       text: "Fast replies, clear communication, and zero guesswork from first message to last song."
     },
     {
-      title: "Trusted by local venues",
-      text: "Preferred status with many of the region’s most popular venues. The craft earns its place."
+      title: "Experienced at local venues",
+      text: "Familiarity with Sea-to-Sky spaces means fewer day-of unknowns around access, audio, timing, and guest flow."
     },
     {
       title: "Client backed",
@@ -158,6 +158,18 @@ export default function HoweSoundDJHomepage() {
                   If a short call would help, it stays low-key: alignment first, on your timeline.
                 </p>
               </div>
+              <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-3" aria-label="Howe Sound DJ trust signals">
+                {[
+                  ["5.0 Google rating", "47 reviews"],
+                  ["15+ years", "Music & live events"],
+                  ["Squamish based", "Sea-to-Sky focused"],
+                ].map(([value, label]) => (
+                  <div key={value} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                    <div className="text-sm font-semibold text-white">{value}</div>
+                    <div className="mt-1 text-xs leading-5 text-white/50">{label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="relative z-10 flex w-full min-w-0 flex-col lg:basis-0 lg:flex-1">
@@ -199,10 +211,10 @@ export default function HoweSoundDJHomepage() {
 
         <SectionReveal as="section" id="why" className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_Y}`}>
           <div className="max-w-2xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Why Howe Sound DJ</div>
-            <h2 className={`${EYEBROW_TO_HEADING} text-3xl font-semibold sm:text-4xl`}>Sea-to-Sky passion: connection, craft, and a night that stays with your guests.</h2>
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">The local advantage</div>
+            <h2 className={`${EYEBROW_TO_HEADING} text-3xl font-semibold sm:text-4xl`}>Your wedding is here. Your DJ is too.</h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              It’s not generic wedding filler. It’s deliberate music, local know-how, and flow that respects your setting, from ceremony through the last song.
+              Sea-to-Sky weddings come with real logistics: mountain weather, corridor traffic, venue access, separate ceremony spaces, and tight timelines. Patrick lives in Squamish, knows the region, and stays personally involved from the first conversation to the last song.
             </p>
           </div>
           <StaggerGroup className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -306,7 +318,7 @@ export default function HoweSoundDJHomepage() {
               </p>
             </div>
             <StaggerGroup className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {VENUES.map((venue) => (
+              {VENUES.slice(0, 6).map((venue) => (
                 <StaggerItem key={venue.name}>
                   <article className="premium-surface flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
                     <h3 className="text-xl font-semibold leading-snug text-white">

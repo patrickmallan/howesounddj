@@ -25,12 +25,12 @@ export function BrandAnchorStatement() {
           id="brand-anchor-heading"
           className="mt-6 text-balance text-4xl font-semibold leading-[1.12] tracking-tight text-white sm:text-5xl md:text-6xl"
         >
-          Packed dance floors.
-          <span className="block mt-2 text-amber-200/95 md:mt-3">Every time.</span>
+          A dance floor built
+          <span className="block mt-2 text-amber-200/95 md:mt-3">around your people.</span>
         </h2>
         <HeroSoundIdentity variant="anchor" />
         <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-white/45 md:mt-10 md:text-lg">
-          Music, room, and crowd, read with intention, not left to chance.
+          Your taste leads. Patrick reads the room and brings generations together without reaching for a cookie-cutter playlist.
         </p>
       </div>
     </SectionReveal>
