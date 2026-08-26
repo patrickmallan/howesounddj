@@ -4,14 +4,16 @@ import CTADuo from "@/components/cta-duo";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
+const pageTitle = "Squamish & Sea-to-Sky Wedding DJ Reviews";
+const pageDescription =
+  "Real couple reviews on planning, communication, and dance floor energy for Squamish, Whistler, and corridor weddings with Howe Sound DJ.";
+
 export const metadata: Metadata = {
-  title: "Wedding DJ Reviews | Couples on Dance Floor Energy",
-  description:
-    "Real couple reviews for Howe Sound DJ: Squamish and Sea-to-Sky weddings, packed dance floors, calm planning, and the atmosphere couples remember long after last song.",
+  title: { absolute: pageTitle },
+  description: pageDescription,
   openGraph: {
-    title: "Wedding DJ Reviews | Couples on Dance Floor Energy",
-    description:
-      "Proof from weddings across Squamish, Whistler, and the Sea-to-Sky corridor—couples on planning trust, reception energy, and dance floors that stayed full.",
+    title: pageTitle,
+    description: pageDescription,
     url: "/reviews",
   },
   alternates: { canonical: "/reviews" },

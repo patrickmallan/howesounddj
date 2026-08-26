@@ -8,23 +8,23 @@ import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { vancouverWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
-const ogDesc =
-  "For Vancouver couples marrying in Squamish, Whistler, or the Sea-to-Sky: rooted in Squamish, corridor-savvy logistics, personalized music, and planning that stays ahead of the day.";
+const pageTitle = "Vancouver Wedding DJ | Sea-to-Sky & Whistler Weddings";
+const pageDescription =
+  "Vancouver couples marrying in Squamish or Whistler: Squamish-rooted wedding DJ with corridor venue experience, calm planning, and dance floors that stay packed.";
 
 export const metadata: Metadata = {
-  title: "Vancouver Wedding DJ for Squamish & Sea-to-Sky Weddings",
-  description:
-    "Planning from Vancouver? Howe Sound DJ is Squamish-rooted: Sea-to-Sky and Whistler wedding DJ coverage with personalized music, local familiarity, and seamless planning (no autopilot playlists).",
+  title: { absolute: pageTitle },
+  description: pageDescription,
   openGraph: {
-    title: "Vancouver Wedding DJ for Squamish & Sea-to-Sky Weddings | Howe Sound DJ",
-    description: ogDesc,
+    title: pageTitle,
+    description: pageDescription,
     url: "/vancouver-wedding-dj",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vancouver Wedding DJ for Squamish & Sea-to-Sky Weddings | Howe Sound DJ",
-    description: ogDesc,
+    title: pageTitle,
+    description: pageDescription,
     /** Keep in sync with root `layout.tsx` (`/og-share.jpg`). */
     images: ["/og-share.jpg"],
   },

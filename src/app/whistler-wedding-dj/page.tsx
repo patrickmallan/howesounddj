@@ -10,22 +10,23 @@ import { getWhistlerVenuePages } from "@/config/venue-pages";
 import { JsonLd } from "@/components/json-ld";
 import { whistlerWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
 
-const desc =
-  "Planning a Whistler wedding? Howe Sound DJ brings calm sound planning, Sea-to-Sky atmosphere, and elegant high-energy reception flow to mountain weddings in Whistler and beyond.";
+const pageTitle = "Whistler Wedding DJ | Mountain Reception Energy";
+const pageDescription =
+  "Whistler mountain weddings with calm planning, polished sound, and guest-first dance floor pacing from a Squamish-based Sea-to-Sky DJ.";
 
 export const metadata: Metadata = {
-  title: "Whistler Wedding DJ",
-  description: desc,
+  title: { absolute: pageTitle },
+  description: pageDescription,
   openGraph: {
-    title: "Whistler Wedding DJ | Howe Sound DJ",
-    description: desc,
+    title: pageTitle,
+    description: pageDescription,
     url: "/whistler-wedding-dj",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Whistler Wedding DJ | Howe Sound DJ",
-    description: desc,
+    title: pageTitle,
+    description: pageDescription,
     images: ["/og-share.jpg"],
   },
   alternates: { canonical: "/whistler-wedding-dj" },
