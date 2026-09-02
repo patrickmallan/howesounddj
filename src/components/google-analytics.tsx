@@ -21,7 +21,7 @@ export function GoogleAnalytics({ gaId }: GoogleAnalyticsProps) {
     if (!gaId) return;
     let cancelled = false;
     let attempts = 0;
-    const maxAttempts = 80;
+    const maxAttempts = 200;
 
     const trySend = () => {
       if (cancelled) return;
@@ -47,9 +47,9 @@ export function GoogleAnalytics({ gaId }: GoogleAnalyticsProps) {
     <>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-      <Script id="ga4-init" strategy="afterInteractive">
+      <Script id="ga4-init" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}

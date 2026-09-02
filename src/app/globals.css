@@ -34,6 +34,12 @@ body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
+/* Skip layout and paint work for major sections until they approach the viewport. */
+.below-fold-content {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
 /* -- Site motion language: premium surfaces, media, inputs -- */
 @media (prefers-reduced-motion: no-preference) {
   .premium-surface {
