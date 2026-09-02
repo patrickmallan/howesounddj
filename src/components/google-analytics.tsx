@@ -54,7 +54,11 @@ export function GoogleAnalytics({ gaId }: GoogleAnalyticsProps) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${gaId}', { send_page_view: false });
+          gtag('config', '${gaId}', {
+            send_page_view: false,
+            allow_google_signals: false,
+            allow_ad_personalization_signals: false
+          });
         `}
       </Script>
     </>

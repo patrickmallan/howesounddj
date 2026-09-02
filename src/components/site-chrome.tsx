@@ -411,7 +411,6 @@ export function SiteHeader() {
         <Link
           href="/"
           className="mr-2 min-w-0 shrink text-left transition hover:opacity-90 sm:mr-4 md:min-w-[12rem]"
-          aria-label={`${SITE_PUBLIC_NAME} home`}
         >
           <div className="text-sm font-semibold tracking-[0.08em] uppercase text-amber-300 sm:text-base sm:tracking-[0.14em]">
             {SITE_PUBLIC_NAME}

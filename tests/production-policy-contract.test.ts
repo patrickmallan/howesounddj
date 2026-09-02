@@ -15,6 +15,13 @@ describe("production browser policy", () => {
 
     expect(css).toMatch(/\.text-white\\\/35,[\s\S]*\.text-white\\\/40,[\s\S]*\.text-white\\\/45[\s\S]*rgb\(255 255 255 \/ 0\.5\)/);
   });
+
+  it("keeps analytics out of Google advertising signal collection", () => {
+    const analytics = readFileSync("src/components/google-analytics.tsx", "utf8");
+
+    expect(analytics).toContain("allow_google_signals: false");
+    expect(analytics).toContain("allow_ad_personalization_signals: false");
+  });
 });
 
 describe("first-paint policy", () => {

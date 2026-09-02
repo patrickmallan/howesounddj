@@ -149,7 +149,7 @@ export default function ReviewsPage() {
               Rooted in Squamish. Trusted where it matters.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Howe Sound DJ is built around being authentically local: knowing the venues, the vendors, and the vibe of the Sea-to-Sky corridor. The live site describes preferred status with popular regional venues, the kind of repeat trust that comes from showing up professionally, night after night.
+              Howe Sound DJ is built around being authentically local: knowing the venues, the logistics, and the pace of Squamish weddings. The proof here comes from named client feedback and visible public reviews, without implying private venue endorsements.
             </p>
             <p className="mt-4 text-lg leading-8 text-white/70">
               Couples also describe Patrick as the go-to for a reason: seamless and stress-free, a vital part of the team, and someone who goes above and beyond so the celebration stays on track.
@@ -181,7 +181,7 @@ export default function ReviewsPage() {
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
                 <span>
-                  <span className="text-white/90">Venue familiarity:</span> played top Squamish venues multiple times; preferred vendor relationships across the region.
+                  <span className="text-white/90">Venue familiarity:</span> practical Squamish planning context, without claiming an endorsement from a venue.
                 </span>
               </li>
             </ul>

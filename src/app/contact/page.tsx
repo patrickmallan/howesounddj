@@ -133,7 +133,7 @@ export default function ContactPage() {
               </li>
               <li className="flex gap-2">
                 <span className="text-amber-300/80">•</span>
-                Venue or town: Squamish, corridor, Whistler, or Metro Vancouver (whatever matches your invitation)
+                Your Squamish venue or neighbourhood, or TBD if you are still deciding
               </li>
               <li className="flex gap-2">
                 <span className="text-amber-300/80">•</span>
@@ -209,7 +209,7 @@ export default function ContactPage() {
             </div>
             <div className="premium-surface rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-8">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-                Local to the corridor
+                Local to Squamish
               </div>
               <p className="mt-4 text-sm leading-7 text-white/65">
                 Howe Sound DJ is Squamish-based: wedding-first work with a range that matches real crowds and planning that already speaks the language of Sea-to-Sky venues and weekends. Whether the day

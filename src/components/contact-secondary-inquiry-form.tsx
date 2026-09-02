@@ -494,7 +494,7 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
               id="secondary-inquiry-venue"
               value={venueOptional}
               onChange={(e) => setVenueOptional(e.target.value)}
-              placeholder="e.g. Whistler, Squamish, TBD"
+              placeholder="e.g. Sea to Sky Gondola, Squamish, TBD"
               className={`${inputClass} placeholder:text-white/25`}
             />
           </div>
