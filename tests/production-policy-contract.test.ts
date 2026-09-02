@@ -8,6 +8,8 @@ describe("production browser policy", () => {
 
     expect(connectSrc).toContain("https://analytics.google.com");
     expect(connectSrc).toContain("https://www.google-analytics.com");
+    expect(connectSrc).toContain("https://stats.g.doubleclick.net");
+    expect(connectSrc).toContain("https://www.google.com");
   });
 
   it("raises low-opacity supporting text to an accessible baseline", () => {
@@ -35,5 +37,18 @@ describe("first-paint policy", () => {
     const source = readFileSync("src/components/home-video-proof.tsx", "utf8");
     expect(source).toContain('preload="none"');
     expect(source).not.toContain("autoPlay");
+  });
+});
+
+describe("Squamish service boundary", () => {
+  it("permanently retires out-of-area routes without redirect chains", () => {
+    const config = readFileSync("next.config.ts", "utf8");
+    const sitemap = readFileSync("src/app/sitemap.ts", "utf8");
+    const venues = readFileSync("src/config/venue-pages.ts", "utf8");
+
+    expect(config).toContain('"/whistler-wedding-dj"');
+    expect(config).toContain('destination: "/squamish-wedding-dj"');
+    expect(sitemap).not.toContain('"/whistler-wedding-dj"');
+    expect(venues).toContain("RETIRED_OUT_OF_AREA_VENUE_SLUGS");
   });
 });

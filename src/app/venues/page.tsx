@@ -4,7 +4,7 @@ import CTADuo from "@/components/cta-duo";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 import { JsonLd } from "@/components/json-ld";
-import { VENUE_PAGES } from "@/config/venue-pages";
+import { ACTIVE_VENUE_PAGES } from "@/config/venue-pages";
 import { venuesHubBreadcrumbJsonLd } from "@/lib/json-ld";
 
 const hubDesc =
@@ -90,10 +90,6 @@ export default function VenuesHubPage() {
             <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Squamish wedding DJ pillar
             </Link>
-            . For Whistler-wide pacing, read the{" "}
-            <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              Whistler wedding DJ pillar
-            </Link>
             . Editorial dance-floor proof lives in{" "}
             <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Sea-to-Sky wedding stories
@@ -103,7 +99,7 @@ export default function VenuesHubPage() {
         </div>
 
         <StaggerGroup className="mt-12 grid list-none gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {VENUE_PAGES.map((v) => (
+          {ACTIVE_VENUE_PAGES.map((v) => (
             <StaggerItem key={v.slug}>
               <article className="premium-surface flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
                 <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/85">{v.locationLabel}</div>

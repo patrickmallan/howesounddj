@@ -157,7 +157,7 @@ export default function SquamishWeddingDjPage() {
             <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               venue hub
             </Link>{" "}
-            for Whistler and corridor pages too.
+            across the rest of the Squamish planning guides too.
           </p>
           <p className="mt-4 text-base leading-7 text-white/60">
             For a Brackendale riverside resort where daytime calm and a focused reception arc matter, the{" "}
@@ -244,12 +244,6 @@ export default function SquamishWeddingDjPage() {
                 Sea-to-Sky wedding stories
               </Link>
               for editorial proof on corridor dance floor energy (not invented recaps).
-            </li>
-            <li>
-              <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                Whistler wedding DJ
-              </Link>
-              , when your day lives further up the highway and needs destination-weekend framing.
             </li>
             <li>
               <Link href="/vancouver-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">

@@ -10,7 +10,7 @@ import { JsonLd } from "@/components/json-ld";
 import { storiesHubBreadcrumbJsonLd } from "@/lib/json-ld";
 
 const hubDesc =
-  "How packed Sea-to-Sky dance floors actually feel: mountain reception energy, guest trust, and the pacing that turns Squamish and Whistler weddings from dinner into celebration.";
+  "How packed Squamish dance floors actually feel: mountain reception energy, guest trust, and the pacing that turns dinner into celebration.";
 
 const hubTitle = "Sea-to-Sky Dance Floor Stories | Packed Mountain Receptions";
 
@@ -68,7 +68,7 @@ export default function StoriesHubPage() {
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">What packed Sea-to-Sky dance floors actually feel like</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">{hubDesc}</p>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
-              Editorial observations from Squamish and Whistler corridor weddings, not invented recaps. Read how mountain receptions build atmosphere, how guests cross the threshold into dancing, and why
+              Editorial observations from Squamish weddings, not invented recaps. Read how mountain receptions build atmosphere, how guests cross the threshold into dancing, and why
               pacing often matters more than how late the music runs.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
@@ -156,10 +156,6 @@ export default function StoriesHubPage() {
             . Squamish commercial context sits in the{" "}
             <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Squamish wedding DJ
-            </Link>{" "}
-            pillar; Whistler destination pacing in the{" "}
-            <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              Whistler wedding DJ
             </Link>{" "}
             pillar. Full service overview on{" "}
             <Link href="/weddings" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">

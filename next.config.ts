@@ -23,6 +23,8 @@ const CONTENT_SECURITY_POLICY = [
     "https://analytics.google.com",
     "https://www.google-analytics.com",
     "https://region1.google-analytics.com",
+    "https://stats.g.doubleclick.net",
+    "https://www.google.com",
     "https://www.googletagmanager.com",
     "https://challenges.cloudflare.com",
   ].join(" "),
@@ -33,6 +35,7 @@ const CONTENT_SECURITY_POLICY = [
     "blob:",
     "https://www.google-analytics.com",
     "https://www.googletagmanager.com",
+    "https://www.google.ca",
   ].join(" "),
   "frame-src 'self' https://challenges.cloudflare.com",
   "font-src 'self'",
@@ -42,6 +45,17 @@ const CONTENT_SECURITY_POLICY = [
   "form-action 'self'",
   "upgrade-insecure-requests",
 ].join("; ");
+
+const RETIRED_OUT_OF_AREA_PATHS = [
+  "/whistler-wedding-dj",
+  "/venues/roundhouse-lodge",
+  "/venues/nita-lake-lodge",
+  "/venues/fairmont-chateau-whistler",
+  "/venues/squamish-lilwat-cultural-centre",
+  "/venues/audain-art-museum",
+  "/venues/north-arm-farm",
+  "/venues/brew-creek",
+];
 
 const nextConfig: NextConfig = {
   async headers() {
@@ -72,6 +86,11 @@ const nextConfig: NextConfig = {
   /** Legacy URLs (e.g. old Google sitelinks) → closest live route. Permanent (308), no chains. */
   async redirects() {
     return [
+      ...RETIRED_OUT_OF_AREA_PATHS.map((source) => ({
+        source,
+        destination: "/squamish-wedding-dj",
+        permanent: true,
+      })),
       {
         source: "/squamish-dj-services",
         destination: "/squamish-wedding-dj",
@@ -104,12 +123,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/whistler-wedding-dj-services",
-        destination: "/whistler-wedding-dj",
+        destination: "/squamish-wedding-dj",
         permanent: true,
       },
       {
         source: "/whistler-wedding-dj-services/",
-        destination: "/whistler-wedding-dj",
+        destination: "/squamish-wedding-dj",
         permanent: true,
       },
       {
@@ -134,12 +153,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/whistler-dj-services",
-        destination: "/whistler-wedding-dj",
+        destination: "/squamish-wedding-dj",
         permanent: true,
       },
       {
         source: "/whistler-dj-services/",
-        destination: "/whistler-wedding-dj",
+        destination: "/squamish-wedding-dj",
         permanent: true,
       },
       {

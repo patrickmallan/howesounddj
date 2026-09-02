@@ -61,6 +61,13 @@ export default function RootLayout({
     >
       <head>
         <meta property="og:site_name" content={SITE_PUBLIC_NAME} />
+        <link
+          rel="preload"
+          href="/fonts/geist-sans.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="flex min-h-full flex-col bg-neutral-950 text-white">
         <JsonLd data={organizationJsonLd()} />

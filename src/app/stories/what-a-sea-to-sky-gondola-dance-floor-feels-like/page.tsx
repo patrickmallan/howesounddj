@@ -200,11 +200,7 @@ export default function StorySeaToSkyGondolaDanceFloorPage() {
               <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 Squamish-rooted planning lens
               </Link>{" "}
-              is one way to name that posture; destination weekends further up the highway layer in the{" "}
-              <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                Whistler wedding DJ
-              </Link>{" "}
-              framing when the guest list behaves like a full mountain weekend.
+              is one way to name that posture when the guest list behaves like a full mountain weekend.
             </p>
           </Block>
         </SectionReveal>

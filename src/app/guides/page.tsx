@@ -117,10 +117,6 @@ export default function GuidesHubPage() {
               <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 Squamish wedding DJ
               </Link>{" "}
-              pillar, and Whistler destination flow sits in the{" "}
-              <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                Whistler wedding DJ
-              </Link>{" "}
               pillar. For editorial dance floor stories and future real wedding recaps, see{" "}
               <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 Sea-to-Sky wedding stories

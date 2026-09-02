@@ -542,12 +542,26 @@ export const VENUE_PAGES: readonly VenuePage[] = [
   },
 ];
 
+export const RETIRED_OUT_OF_AREA_VENUE_SLUGS = new Set([
+  "roundhouse-lodge",
+  "nita-lake-lodge",
+  "fairmont-chateau-whistler",
+  "squamish-lilwat-cultural-centre",
+  "audain-art-museum",
+  "north-arm-farm",
+  "brew-creek",
+]);
+
+export const ACTIVE_VENUE_PAGES: readonly VenuePage[] = VENUE_PAGES.filter(
+  (venue) => !RETIRED_OUT_OF_AREA_VENUE_SLUGS.has(venue.slug),
+);
+
 export function getVenueBySlug(slug: string): VenuePage | undefined {
-  return VENUE_PAGES.find((v) => v.slug === slug);
+  return ACTIVE_VENUE_PAGES.find((v) => v.slug === slug);
 }
 
 export function getAllVenueSlugs(): string[] {
-  return VENUE_PAGES.map((v) => v.slug);
+  return ACTIVE_VENUE_PAGES.map((v) => v.slug);
 }
 
 /** Whistler-area guides for pillar pages and internal linking; sorted by display name. */

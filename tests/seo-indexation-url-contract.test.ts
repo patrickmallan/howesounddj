@@ -16,7 +16,6 @@ const INDEXABLE_STATIC_PATHS = [
   "/weddings",
   "/vancouver-wedding-dj",
   "/squamish-wedding-dj",
-  "/whistler-wedding-dj",
   "/about",
   "/packages",
   "/reviews",
@@ -63,7 +62,7 @@ describe("HSO SEO indexation URL contract", () => {
       expect(sitemap, `missing sitemap path ${path || "/"}`).toContain(needle);
     }
     expect(sitemap).toContain("getAllVenueSlugs()");
-    expect(getAllVenueSlugs().length).toBeGreaterThanOrEqual(20);
+    expect(getAllVenueSlugs().length).toBeGreaterThanOrEqual(10);
   });
 
   it("declares permanent legacy redirects to live index destinations only", () => {
@@ -72,7 +71,6 @@ describe("HSO SEO indexation URL contract", () => {
       "/about",
       "/packages",
       "/squamish-wedding-dj",
-      "/whistler-wedding-dj",
       "/stories",
     ]);
 

@@ -4,10 +4,10 @@
  *
  * Full page content lives in `venue-pages.ts`; `VENUES` preserves the legacy card shape for the homepage grid.
  */
-import { VENUE_PAGES } from "@/config/venue-pages";
+import { ACTIVE_VENUE_PAGES } from "@/config/venue-pages";
 
 export type { VenuePage, VenueArea } from "@/config/venue-pages";
-export { VENUE_PAGES, getVenueBySlug, getAllVenueSlugs } from "@/config/venue-pages";
+export { ACTIVE_VENUE_PAGES, VENUE_PAGES, getVenueBySlug, getAllVenueSlugs } from "@/config/venue-pages";
 
 export type VenueEntry = {
   name: string;
@@ -19,7 +19,7 @@ export type VenueEntry = {
   imageAlt?: string;
 };
 
-export const VENUES: readonly VenueEntry[] = VENUE_PAGES.map((v) => ({
+export const VENUES: readonly VenueEntry[] = ACTIVE_VENUE_PAGES.map((v) => ({
   name: v.name,
   description: v.cardDescription,
   href: v.officialUrl,

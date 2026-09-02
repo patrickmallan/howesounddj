@@ -6,7 +6,7 @@ import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
 const pageTitle = "Squamish & Sea-to-Sky Wedding DJ Reviews";
 const pageDescription =
-  "Real couple reviews on planning, communication, and dance floor energy for Squamish, Whistler, and corridor weddings with Howe Sound DJ.";
+  "Real couple reviews on planning, communication, and dance floor energy for Squamish weddings with Howe Sound DJ.";
 
 export const metadata: Metadata = {
   title: { absolute: pageTitle },
@@ -71,7 +71,7 @@ export default function ReviewsPage() {
               Real couples, real parties
             </div>
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              Proof from weddings across Squamish, Whistler, Vancouver, and the Sea-to-Sky corridor.
+              Proof from real clients, with a clear focus on weddings in Squamish.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
               The results speak for themselves: real couples, real parties, real reviews. Fast replies, clear communication, and a Squamish-rooted approach where local venues and vendors are part of how the day comes together.

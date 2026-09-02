@@ -12,7 +12,7 @@ const LOGO_SRC = "/images/logo/howe-sound-logo.webp";
 
 const VIDEO_PUBLIC_PATH = "videos/home-proof.mp4";
 /** Uses the same still as the home proof strip (`SITE_IMAGES.homeProof`); no separate poster asset shipped. */
-const POSTER_PUBLIC_PATH = "images/home/home-proof.webp";
+const POSTER_PUBLIC_PATH = "images/home/home-proof-720.webp";
 
 const VIDEO_SRC = `/${VIDEO_PUBLIC_PATH}`;
 const POSTER_SRC = `/${POSTER_PUBLIC_PATH}`;
@@ -85,7 +85,7 @@ export function HomeVideoProof() {
                 width={2000}
                 height={2000}
                 className="h-auto w-auto max-h-[76%] max-w-[78%] object-contain opacity-[0.76] sm:max-h-[72%] sm:max-w-[72%] md:max-h-none md:max-w-[600px] md:w-[62%]"
-                sizes="(max-width: 768px) 72vw, 600px"
+                sizes="(max-width: 768px) 180px, 600px"
                 priority={false}
               />
             </div>

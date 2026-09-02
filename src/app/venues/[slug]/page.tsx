@@ -216,16 +216,6 @@ export default async function VenueDetailPage({ params }: Props) {
                   </Link>
                 </li>
               ) : null}
-              {venue.area === "whistler" ? (
-                <li>
-                  <Link
-                    href="/whistler-wedding-dj"
-                    className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
-                  >
-                    Whistler wedding DJ pillar
-                  </Link>
-                </li>
-              ) : null}
               <li>
                 <Link href="/contact" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                   Contact

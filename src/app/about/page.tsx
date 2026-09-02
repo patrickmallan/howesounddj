@@ -99,7 +99,7 @@ export default function AboutPage() {
             From a love of music to a focus on weddings in this corridor.
           </h2>
           <p className="mt-4 text-lg leading-8 text-white/70">
-            This started with a simple love of music. Over time it became something more specific: helping couples in Squamish, Whistler, and along the Sea-to-Sky build receptions that feel intentional,
+            This started with a simple love of music. Over time it became something more specific: helping couples in Squamish build receptions that feel intentional,
             from quiet ceremony moments to dance floors that stay alive. I have worked across that range, and it is what keeps the planning sharp.
           </p>
           <p className="mt-4 text-lg leading-8 text-white/70">
@@ -207,7 +207,7 @@ export default function AboutPage() {
                 </li>
                 <li className="flex gap-3">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
-                  <span>Weddings across the Sea-to-Sky: Squamish, Whistler, and beyond</span>
+                  <span>Weddings in Squamish and its immediate surrounding communities</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
