@@ -9,7 +9,7 @@ import {
 export { SITE_ORIGIN };
 
 const ORG_DESCRIPTION =
-  "Squamish wedding DJ for Sea-to-Sky weddings. Personalized music, professional planning, and polished ceremony-to-reception support, across Whistler, Vancouver, and the corridor.";
+  "Versatile Squamish wedding DJ mixing open-format sets live across genres, with local venue knowledge and polished ceremony-to-reception support.";
 
 /**
  * Sitewide Organization (Squamish-rooted, service-area). No street address on site.
@@ -45,9 +45,6 @@ export function organizationJsonLd(): Record<string, unknown> {
     },
     areaServed: [
       { "@type": "City", "name": "Squamish", "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" } },
-      { "@type": "City", "name": "Whistler", "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" } },
-      { "@type": "City", "name": "Vancouver", "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" } },
-      { "@type": "Place", "name": "Sea-to-Sky Corridor", "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" } },
     ],
   };
 }
@@ -66,7 +63,7 @@ export function vancouverWeddingDjBreadcrumbJsonLd(): Record<string, unknown> {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Vancouver Wedding DJ · Sea-to-Sky",
+        name: "Planning a Squamish Wedding from Vancouver",
         item: `${SITE_ORIGIN}/vancouver-wedding-dj`,
       },
     ],

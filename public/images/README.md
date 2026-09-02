@@ -1,4 +1,4 @@
-# Images — operator guide (Howe Sound DJ)
+# Images : operator guide (Howe Sound DJ)
 
 Everything lives under **`public/images/`** in four folders. Next.js serves them at **`/images/...`** (no `public` in the URL).
 
@@ -9,7 +9,7 @@ Everything lives under **`public/images/`** in four folders. Next.js serves them
 | **`home/`** | Homepage hero, proof strip |
 | **`weddings/`** | Weddings page support + crowd band; same support asset reused on Vancouver hero |
 | **`about/`** | Patrick portraits (color + black and white) |
-| **`social/`** | Open Graph / share image (1200×630 raster) — **optional until launch** |
+| **`social/`** | Open Graph / share image (1200×630 raster) : **optional until launch** |
 
 ## Connect a page image after you drop it in
 
@@ -44,12 +44,12 @@ Paths are duplicated in **`SITE_IMAGE_FILES`** in `site-images.ts`.
 
 ## Priority order (conversion / polish)
 
-1. **Home hero** — first trust signal next to the headline.  
-2. **Home proof** — strongest post-fold proof.  
-3. **Weddings support** — Weddings + Vancouver.  
-4. **Patrick portraits** — `homeAboutPreview` + `aboutPortrait`.  
-5. **`weddingsCrowd`** — extra weddings-page proof.  
-6. **Social share (OG)** — site-wide link previews (`/og-share.jpg` at repo root, `public/og-share.jpg`); not a `SITE_IMAGES` slot.
+1. **Home hero**: first trust signal next to the headline.
+2. **Home proof**: strongest post-fold proof.
+3. **Weddings support**: Weddings + Vancouver.
+4. **Patrick portraits**: `homeAboutPreview` + `aboutPortrait`.
+5. **`weddingsCrowd`**: extra weddings-page proof.
+6. **Social share (OG)** : site-wide link previews (`/og-share.jpg` at repo root, `public/og-share.jpg`); not a `SITE_IMAGES` slot.
 
 ## Shot list → slot
 
@@ -78,6 +78,6 @@ Edit **`SITE_IMAGE_ALT`** in `site-images.ts` when the picture’s content chang
 3. Set **`width` / `height`** in **`layout.tsx`** to match the file if dimensions change.
 4. Redeploy. Refresh cached previews with [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) if needed.
 
-**Also check:** `src/lib/json-ld.ts` references a default OG URL for structured data — update that string if you want JSON-LD to match the same raster asset.
+**Also check:** `src/lib/json-ld.ts` references a default OG URL for structured data : update that string if you want JSON-LD to match the same raster asset.
 
 More detail: **`docs/LAUNCH_CHECKLIST.md`** §8.

@@ -3,7 +3,7 @@
 export const SCHEDULING_PROVIDER = "CALENDLY" as const;
 
 /**
- * Sound Check — sole public Calendly acquisition event for prospective couples.
+ * Sound Check : sole public Calendly acquisition event for prospective couples.
  * Semantic alias: public acquisition consultation.
  *
  * Naming contract (HSDJ-WEB-SCHEDULING-01E):

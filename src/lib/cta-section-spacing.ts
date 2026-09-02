@@ -11,7 +11,7 @@ export const PAGE_GUTTER_X = "px-6 lg:px-8";
 export const SECTION_SHELL = "mx-auto max-w-6xl";
 
 /**
- * Intra-section vertical rhythm — mobile tighter, tablet moderate, desktop spacious.
+ * Intra-section vertical rhythm : mobile tighter, tablet moderate, desktop spacious.
  * Use SECTION_TRANSITION_OUT / SECTION_TRANSITION_IN for inter-section gaps (single owner).
  */
 export const SECTION_BAND_TOP = "pt-8 md:pt-14 lg:pt-24";
@@ -28,7 +28,7 @@ export const SECTION_BAND_BORDER_ENTRY = SECTION_BAND_BORDER_Y;
 
 /**
  * Bordered band immediately after a transition-out section.
- * Border line provides separation — no stacked top padding.
+ * Border line provides separation : no stacked top padding.
  */
 export const SECTION_BAND_BORDER_FOLLOW = `pt-0 ${SECTION_BAND_BORDER_BOTTOM}`;
 
@@ -38,7 +38,7 @@ export const SECTION_BAND_BORDER_FOLLOW = `pt-0 ${SECTION_BAND_BORDER_BOTTOM}`;
  */
 export const SECTION_TRANSITION_OUT = "pb-8 md:pb-12 lg:pb-20";
 
-/** Successor section — no duplicate top padding when paired with SECTION_TRANSITION_OUT. */
+/** Successor section : no duplicate top padding when paired with SECTION_TRANSITION_OUT. */
 export const SECTION_TRANSITION_IN = "pt-0";
 
 /** @deprecated Use SECTION_TRANSITION_OUT */
@@ -53,10 +53,10 @@ export const MEDIA_COPY_GRID_GAP = "gap-8 md:gap-10 lg:gap-12";
 /** Inline editorial media card padding around ImageSlot frames. */
 export const MEDIA_CARD_PAD = "p-3 sm:p-4";
 
-/** Homepage hero — premium top, tighter bottom handoff to In Motion. */
+/** Homepage hero : premium top, tighter bottom handoff to In Motion. */
 export const HOMEPAGE_HERO_PADDING = "pt-20 pb-8 lg:py-28";
 
-/** Homepage finale outer shell — border participates; no section-level top pad. */
+/** Homepage finale outer shell : border participates; no section-level top pad. */
 export const HOMEPAGE_FINALE_SECTION = "border-t border-white/10 bg-neutral-950 pb-6 pt-0 md:pb-8";
 
 /** Space from finale border to CTA well (after FAQ transition-out). */

@@ -8,7 +8,7 @@ import { organizationJsonLd } from "@/lib/json-ld";
 import "./globals.css";
 
 const siteDescription =
-  "Squamish wedding DJ for Sea-to-Sky weddings. Personalized music, professional planning, and polished ceremony-to-reception support, across Whistler, Vancouver, and the corridor.";
+  "Versatile Squamish wedding DJ mixing drum & bass, tech house, hip-hop, disco, country and everything between. Your taste, mixed live.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.howesounddj.com"),

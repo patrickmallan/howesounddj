@@ -12,4 +12,4 @@ export const SITE_SHORT_NAME = "Howe Sound DJ";
 
 /** Homepage `<title>` and primary social title for the canonical homepage. */
 export const HOMEPAGE_TITLE =
-  "Howe Sound Wedding DJ | Squamish, Whistler & Vancouver";
+  "Howe Sound Wedding DJ | Squamish Wedding DJ";

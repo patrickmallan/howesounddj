@@ -6,9 +6,9 @@ import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 
-const weddingsTitle = "Sea-to-Sky Wedding DJ | Ceremony to Packed Dance Floor";
+const weddingsTitle = "Squamish Wedding DJ | Your Music, Mixed Live";
 const weddingsDesc =
-  "Wedding DJ for Squamish, Whistler, and the corridor: calm planning, ceremony-through-reception coverage, and dance floors shaped by how your crowd actually moves.";
+  "A versatile Squamish wedding DJ mixing your music live, from drum & bass and tech house to hip-hop, disco, country, throwbacks, and everything between.";
 
 export const metadata: Metadata = {
   title: weddingsTitle,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: weddingsTitle,
     description:
-      "Mountain wedding sound and pacing from vows through last song: atmosphere-first planning, clear communication, and reception energy built around your people.",
+      "Wedding is the format; the music is yours. Open-format DJing, calm planning, and a Squamish reception built around how your crowd actually moves.",
     url: "/weddings",
   },
   alternates: { canonical: "/weddings" },
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
 export default function WeddingsPage() {
   const highlights = [
     {
-      title: "Music shaped around you",
-      text: "Your tastes, the atmosphere you want to create, and the crowd in front of you, not a generic wedding playlist."
+      title: "Every genre is on the table",
+      text: "Drum & bass, tech house, hip-hop, disco, country, indie, throwbacks, Top 40, or a set that moves naturally through all of it."
     },
     {
       title: "From first dance to last song",
@@ -59,7 +59,7 @@ export default function WeddingsPage() {
       title: "Reception + dance floor",
       items: [
         "Reading the room: right vibe for the crowd, moment to moment",
-        "Energy that climbs naturally; no forced “wedding cheese”",
+        "Live mixing across genres; no forced “wedding cheese” or preset playlist",
         "A floor your guests want to stay on. The goal is unforgettable, not filler"
       ]
     }
@@ -74,7 +74,7 @@ export default function WeddingsPage() {
     {
       step: "02",
       title: "Planning + music direction",
-      text: "Must-plays, do-not-plays, and the arc of the night, classic romance, full dance party, or both, mapped with intention."
+      text: "Must-plays, do-not-plays, genre direction, and the arc of the night. That can mean timeless dinner music, a nightclub turn after dark, or both."
     },
     {
       step: "03",
@@ -91,7 +91,11 @@ export default function WeddingsPage() {
   const faqs = [
     {
       q: "Can we choose the music and give you a do-not-play list?",
-      a: "Yes. The process is built to reflect your taste while still creating a great experience for the room as a whole."
+      a: "Yes. Your taste defines the direction. Must-plays and do-not-plays matter, but so do the genres, scenes, eras, and energy you want the night to move through."
+    },
+    {
+      q: "Can you DJ drum & bass, tech house, or a nightclub-style wedding?",
+      a: "Yes. Wedding is the event format, not the musical genre. Patrick mixes open-format and can build a focused drum & bass or tech-house run, a nightclub-style reception, or a wide-ranging set that moves with the crowd."
     },
     {
       q: "Do you provide ceremony audio?",
@@ -102,8 +106,8 @@ export default function WeddingsPage() {
       a: "MC support can be included where needed to help the evening feel smooth, clear, and professionally guided."
     },
     {
-      q: "Do you travel outside Squamish?",
-      a: "Yes. Weddings in Whistler, Vancouver, and across the Sea-to-Sky corridor can be accommodated depending on the event."
+      q: "Where do you DJ weddings?",
+      a: "Howe Sound DJ is focused on weddings held in Squamish. Couples can live and plan anywhere; the service boundary is the location of the event."
     }
   ];
 
@@ -116,15 +120,15 @@ export default function WeddingsPage() {
               Weddings
             </div>
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              Wedding DJ for Squamish, Whistler and the Sea-to-Sky, tailored to you.
+              Wedding is the format. The music is yours.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              Not the average wedding-DJ package: personalized music and planning around your tastes, whether you want classic romance, a full-throttle dance party, or both in one night.
+              This is not a top-200 wedding playlist with your names attached. It is a live DJ set built around your taste. That can mean drum &amp; bass, tech house, hip-hop, disco, country, a proper nightclub turn after dark, or all of it in one night.
             </p>
             <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/50">
-              Planning from Vancouver for Squamish, Whistler, or the corridor?{" "}
+              Planning from Vancouver for a wedding in Squamish?{" "}
               <a href="/vancouver-wedding-dj" className="font-medium text-amber-300/90 transition hover:text-amber-200">
-                Vancouver couples & Sea-to-Sky weddings →
+                Vancouver couples planning a Squamish wedding →
               </a>
             </p>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/50">
@@ -139,11 +143,7 @@ export default function WeddingsPage() {
               >
                 How to Choose a Wedding DJ in Squamish
               </Link>{" "}
-              when you want a decision checklist. Marrying in Whistler? Start with the{" "}
-              <Link href="/whistler-wedding-dj" className="font-medium text-amber-300/90 transition hover:text-amber-200">
-                Whistler wedding DJ pillar
-              </Link>
-              .
+              when you want a decision checklist.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="hero" checkSurface="hero" />

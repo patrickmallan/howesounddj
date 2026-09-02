@@ -48,18 +48,6 @@ async function installHarness(page) {
   });
 }
 
-function normalizeCall(call) {
-  if (Array.isArray(call)) return call;
-  if (call && typeof call === "object" && "0" in call) {
-    const out = [];
-    for (let i = 0; Object.prototype.hasOwnProperty.call(call, String(i)); i += 1) {
-      out.push(call[String(i)]);
-    }
-    return out;
-  }
-  return [];
-}
-
 async function readHarness(page) {
   return page.evaluate(() => {
     const raw = window.__hsdjGa?.calls ?? [];

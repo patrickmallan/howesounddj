@@ -202,7 +202,7 @@ export function getReviewById(id: string): CanonicalReview | undefined {
   return CANONICAL_REVIEWS.find((review) => review.id === id);
 }
 
-/** Proof quotation for Availability Success — excerpt when governed, else canonical quote. */
+/** Proof quotation for Availability Success : excerpt when governed, else canonical quote. */
 export function getAvailabilitySuccessProofQuote(review: CanonicalReview): string {
   return review.availabilitySuccessExcerpt ?? review.quote;
 }

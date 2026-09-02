@@ -4,7 +4,8 @@ import { useLayoutEffect, useState } from "react";
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
 import { getHomepageVariant, type HeadlineVariant } from "@/lib/experiment";
 
-const TAGLINE = "Based here. Prepared for your venue. Built around your people.";
+const TAGLINE =
+  "Squamish-based. Venue-ready. Drum & bass to disco. Your taste, mixed live.";
 
 type Headlines = Readonly<Record<HeadlineVariant, string>>;
 
@@ -40,7 +41,7 @@ export function HomepageHeroHeadline({ headlines }: Props) {
   return (
     <div className="min-h-[8.5rem] sm:min-h-[9.5rem] lg:min-h-[11rem]">
       <h1
-        className={`max-w-2xl text-4xl font-semibold leading-tight transition-opacity duration-150 sm:text-5xl lg:text-6xl ${
+        className={`max-w-2xl text-4xl font-semibold leading-tight transition-opacity duration-150 sm:text-5xl ${
           resolved ? "opacity-100" : "opacity-0"
         }`}
         suppressHydrationWarning

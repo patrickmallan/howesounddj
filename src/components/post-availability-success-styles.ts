@@ -23,12 +23,12 @@ const headlineSize: Record<AvailabilitySuccessSurface, string> = {
   full: "text-xl sm:text-2xl",
 };
 
-/** ROLE A — Confirmation date */
+/** ROLE A : Confirmation date */
 export function roleConfirmationDate(): string {
   return `text-sm font-medium leading-snug text-white/90`;
 }
 
-/** ROLE A — Edit date action (subordinate; no gold accent) */
+/** ROLE A : Edit date action (subordinate; no gold accent) */
 export function roleConfirmationEdit(): string {
   return [
     "inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center",
@@ -39,37 +39,37 @@ export function roleConfirmationEdit(): string {
   ].join(" ");
 }
 
-/** ROLE B — Primary narrative headline (unified unit, both lines semibold) */
+/** ROLE B : Primary narrative headline (unified unit, both lines semibold) */
 export function roleHeadline(surface: AvailabilitySuccessSurface): string {
   return `${headlineSize[surface]} font-semibold leading-snug text-white/95 outline-none`;
 }
 
-/** ROLE B — Headline line (no internal margin or weight variation) */
+/** ROLE B : Headline line (no internal margin or weight variation) */
 export function roleHeadlineLine(): string {
   return "block text-balance";
 }
 
-/** ROLE C — Supporting narrative (full planning sentence; left-aligned) */
+/** ROLE C : Supporting narrative (full planning sentence; left-aligned) */
 export function roleSupportingNarrative(): string {
   return "text-sm font-normal leading-relaxed text-white/70";
 }
 
-/** ROLE C — CTA support in action footer (centred over full-width button) */
+/** ROLE C : CTA support in action footer (centred over full-width button) */
 export function roleCtaSupport(): string {
   return `${roleSupportingNarrative()} mx-auto max-w-md text-center text-balance`;
 }
 
-/** ROLE E — Testimonial quotation (left-aligned medium italic; Geist Sans native face) */
+/** ROLE E : Testimonial quotation (left-aligned medium italic; Geist Sans native face) */
 export function roleTestimonial(): string {
   return "text-left text-sm font-medium italic leading-relaxed text-white/90";
 }
 
-/** ROLE F — Attribution name */
+/** ROLE F : Attribution name */
 export function roleAttributionName(): string {
   return "block text-xs font-medium text-white/80";
 }
 
-/** ROLE F — Attribution venue */
+/** ROLE F : Attribution venue */
 export function roleAttributionVenue(): string {
   return "block text-xs font-normal text-white/70";
 }
@@ -96,7 +96,7 @@ export function roleConfirmationBar(surface: AvailabilitySuccessSurface): string
     : "flex items-center justify-between gap-3 rounded-xl border border-amber-300/15 bg-amber-300/[0.06] px-4 py-3";
 }
 
-/** Action footer — no visible divider; whitespace separates from proof */
+/** Action footer : no visible divider; whitespace separates from proof */
 export function roleActionFooter(surface: AvailabilitySuccessSurface): string {
   const base =
     "shrink-0 bg-neutral-950/[0.98] pt-5 pb-[max(1rem,env(safe-area-inset-bottom))]";

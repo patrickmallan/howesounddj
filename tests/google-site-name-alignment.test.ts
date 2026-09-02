@@ -80,7 +80,7 @@ describe("HSO-WEB-P02 google site name alignment", () => {
     expect(contact).toMatch(/Contact \| Howe Sound DJ/);
 
     const packages = readSource("src/app/packages/page.tsx");
-    expect(packages).toMatch(/Wedding DJ Packages \| Clear Sea-to-Sky Coverage/);
+    expect(packages).toMatch(/Squamish Wedding DJ Packages \| Your Music, Your Night/);
     expect(packages).not.toMatch(/Howe Sound Wedding DJ \| Howe Sound Wedding DJ/);
   });
 });

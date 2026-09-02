@@ -33,13 +33,12 @@ import {
 } from "@/lib/cta-section-spacing";
 
 /**
- * Homepage H1 unified line (premium / Sea-to-Sky aligned).
- * The A/B/C keys remain so the legacy experiment + analytics pipeline keeps working,
- * but every key now resolves to the same canonical headline so no client/mobile variant
- * can fall back to the older party-DJ framing (e.g. "earns the room", "packed every time").
+ * Homepage H1 unified line. The eyebrow carries service and geography while the
+ * headline sells the outcome couples actually want. A/B/C remain only so the
+ * existing experiment and analytics pipeline stay compatible.
  */
 const HOMEPAGE_HEADLINE =
-  "The Squamish wedding DJ who already knows the Sea-to-Sky.";
+  "Your venue sets the scene. We make it the night nobody wants to leave.";
 
 const HEADLINE_VARIANTS = {
   A: HOMEPAGE_HEADLINE,
@@ -50,15 +49,17 @@ const HEADLINE_VARIANTS = {
 export const metadata: Metadata = {
   title: { absolute: HOMEPAGE_TITLE },
   description:
-    "A Squamish-based wedding DJ for the Sea-to-Sky: local venue experience, ceremony-to-reception coverage, calm planning, and music built around your guests.",
+    "Versatile Squamish wedding DJ mixing drum & bass, tech house, hip-hop, disco, country and everything between. Your taste, mixed live.",
   openGraph: {
     title: HOMEPAGE_TITLE,
     description:
-      "A genuinely local Squamish wedding DJ: venue-ready planning, ceremony-to-reception coverage, and a soundtrack built around your people.",
+      "Wedding is the format; the music is yours. Open-format DJing, local venue knowledge, and a Squamish dance floor built around your people.",
     url: `${SITE_ORIGIN}/`,
   },
   twitter: {
     title: HOMEPAGE_TITLE,
+    description:
+      "Versatile Squamish wedding DJ mixing drum & bass, tech house, hip-hop, disco, country and everything between. Your taste, mixed live.",
   },
   alternates: {
     canonical: `${SITE_ORIGIN}/`,
@@ -84,12 +85,12 @@ export default function HoweSoundDJHomepage() {
 
   const features = [
     {
-      title: "Your taste, not a template",
-      text: "Must-plays, do-not-plays, family favourites, and the room in front of us all shape the soundtrack. No autopilot wedding playlist."
+      title: "A real DJ set, not wedding autopilot",
+      text: "Drum & bass, tech house, hip-hop, disco, country, throwbacks, or a night that moves through all of it. Your taste sets the brief."
     },
     {
       title: "Rooted in Squamish",
-      text: "Home base in Squamish: the work maps the Sea-to-Sky corridor. Venues, vendors, and how weekends actually move from town to valley to mountain."
+      text: "Home base in Squamish, with local knowledge of the venues, vendors, access, sound, and timing that shape weddings here."
     },
     {
       title: "Seamless planning",
@@ -128,8 +129,8 @@ export default function HoweSoundDJHomepage() {
       a: "Yes. Ceremony coverage can include speaker setup and microphones for the officiant, vows, and key announcements."
     },
     {
-      q: "Do you travel beyond Squamish?",
-      a: "Yes. Sea-to-Sky corridor, Whistler, and Vancouver-area celebrations are part of the same planning map, depending on date and logistics."
+      q: "Can our wedding actually sound like a club night?",
+      a: "Absolutely. Wedding is the event format, not a genre. If you want drum & bass, tech house, hip-hop, disco, dancehall, country, or an open-format journey across all of it, the music direction starts there."
     },
     {
       q: "Can you help with the flow of the evening?",
@@ -145,7 +146,7 @@ export default function HoweSoundDJHomepage() {
           <div className={`mx-auto flex max-w-6xl flex-col gap-16 ${PAGE_GUTTER_X} ${HOMEPAGE_HERO_PADDING} lg:flex-row lg:items-start lg:gap-16`}>
             <div className="relative z-10 flex min-w-0 flex-col lg:basis-0 lg:flex-1">
               <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
-                Squamish Wedding DJ · Sea-to-Sky
+                Squamish Wedding DJ · Local by design
               </div>
               <HomepageHeroHeadline headlines={HEADLINE_VARIANTS} />
               <HeroSoundIdentity variant="groove" />
@@ -162,7 +163,7 @@ export default function HoweSoundDJHomepage() {
                 {[
                   ["5.0 Google rating", "47 reviews"],
                   ["15+ years", "Music & live events"],
-                  ["Squamish based", "Sea-to-Sky focused"],
+                  ["Squamish based", "Squamish weddings"],
                 ].map(([value, label]) => (
                   <div key={value} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                     <div className="text-sm font-semibold text-white">{value}</div>
@@ -188,14 +189,14 @@ export default function HoweSoundDJHomepage() {
                   />
                 </div>
                 <p className="mt-4 text-lg leading-8 text-white/70">
-                  Squamish-rooted, corridor-wide: polished sound, calm planning, and nights that feel elegant, emotional, or celebratory (often all three, in the order that fits your people).
+                  Squamish-rooted and venue-ready: polished sound, calm planning, and a dance floor shaped around the people you actually invited.
                 </p>
                 <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-5">
                   <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300/90">
                     Atmosphere First
                   </div>
                   <div className="mt-2 text-lg font-medium leading-snug text-white">
-                    Music with intention. Built around your people.
+                    Drum &amp; bass to disco. Tech house to throwbacks. Your genre is the brief.
                   </div>
                 </div>
               </div>
@@ -214,7 +215,7 @@ export default function HoweSoundDJHomepage() {
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">The local advantage</div>
             <h2 className={`${EYEBROW_TO_HEADING} text-3xl font-semibold sm:text-4xl`}>Your wedding is here. Your DJ is too.</h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Sea-to-Sky weddings come with real logistics: mountain weather, corridor traffic, venue access, separate ceremony spaces, and tight timelines. Patrick lives in Squamish, knows the region, and stays personally involved from the first conversation to the last song.
+              Squamish weddings come with real logistics: changing weather, venue access, separate ceremony spaces, sound constraints, and tight timelines. Patrick lives here, knows the local landscape, and stays personally involved from the first conversation to the last song.
             </p>
           </div>
           <StaggerGroup className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -264,7 +265,7 @@ export default function HoweSoundDJHomepage() {
                 In their own words.
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-white/50">
-                A few voices from Squamish, the corridor, and Whistler. The full set lives on{" "}
+                A few voices from real couples and real celebrations. The full set lives on{" "}
                 <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                   reviews
                 </Link>

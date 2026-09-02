@@ -1,7 +1,7 @@
 /**
  * Post-availability emotional conversion copy (visitor-facing SSOT).
  *
- * V3.1 — Human Connection copy refinement (Patrick executive review 2026-07-30).
+ * V3.1 : Human Connection copy refinement (Patrick executive review 2026-07-30).
  * Authority: docs/branding/HSDJ_AVAILABILITY_SUCCESS_V3_COPY_CONTRACT.md
  */
 
@@ -27,7 +27,7 @@ export const POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD =
 export const POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION =
   "Your wedding date is available." as const;
 
-/** Full contact surface only — one planning-session explanation. */
+/** Full contact surface only : one planning-session explanation. */
 export const POST_AVAILABILITY_FULL_PLANNING_SESSION =
   "Reserve a complimentary 45-minute planning session to talk about your wedding, your music, and whether Howe Sound DJ is the right fit." as const;
 

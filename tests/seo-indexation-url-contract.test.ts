@@ -32,7 +32,7 @@ const INDEXABLE_STATIC_PATHS = [
   "/stories/sea-to-sky-wedding-dance-floor-energy",
 ] as const;
 
-/** Legacy Wix/sitelink sources — permanent redirects, not sitemap entries. */
+/** Legacy Wix/sitelink sources : permanent redirects, not sitemap entries. */
 const LEGACY_REDIRECT_SOURCES = [
   "/squamish-dj-services",
   "/a-little-about-me",

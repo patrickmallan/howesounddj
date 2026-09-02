@@ -13,13 +13,13 @@ const homepageAuthorityDiscoveryLinks: readonly ExploreLink[] = [
   {
     href: "/squamish-wedding-dj",
     label: "Squamish Wedding DJ",
-    description: "Local wedding DJ support for Squamish and Sea-to-Sky celebrations.",
+    description: "Local wedding DJ support for celebrations in Squamish.",
     emphasize: true,
   },
   { href: "/guides", label: "Wedding Planning Guides" },
   { href: "/stories", label: "Featured Wedding Stories" },
-  { href: "/whistler-wedding-dj", label: "Whistler Wedding DJ" },
-  { href: "/venues", label: "Sea-to-Sky Venues" },
+  { href: "/vancouver-wedding-dj", label: "Planning from Vancouver" },
+  { href: "/venues", label: "Squamish Wedding Venues" },
 ];
 
 const exploreCardBase =
@@ -37,7 +37,7 @@ export function HomepageExploreSection() {
           id="home-authority-discovery-heading"
           className="max-w-2xl text-base font-semibold leading-relaxed text-white sm:text-lg sm:leading-8"
         >
-          Going deeper on the corridor? Squamish context, venues, guides, and editorial notes, when you want them.
+          Planning a Squamish wedding? Explore local venues, practical guides, and real celebration stories when you want more detail.
         </h2>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {homepageAuthorityDiscoveryLinks.map((item) => (

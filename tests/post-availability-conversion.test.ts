@@ -43,7 +43,7 @@ function containsEmoji(text: string): boolean {
 }
 
 function containsEmDash(text: string): boolean {
-  return text.includes("—") || text.includes("–");
+  return text.includes("\u2014") || text.includes("\u2013");
 }
 
 describe("review SSOT", () => {

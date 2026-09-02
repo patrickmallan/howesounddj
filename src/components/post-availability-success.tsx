@@ -201,7 +201,7 @@ export function PostAvailabilitySuccess({
         }
       >
         <div className={roleContentGroups(variant)}>
-          {/* GROUP 1 — Confirmation */}
+          {/* GROUP 1 : Confirmation */}
           <div className={roleConfirmationBar(variant)} data-availability-role="confirmation">
             <p className={`min-w-0 ${roleConfirmationDate()}`}>
               {postAvailabilityConfirmedDateLabel(formattedDate)}
@@ -218,7 +218,7 @@ export function PostAvailabilitySuccess({
             ) : null}
           </div>
 
-          {/* GROUP 2 — Headline */}
+          {/* GROUP 2 : Headline */}
           <h3
             ref={headingRef}
             id={`post-availability-success-heading-${variant}`}
@@ -236,7 +236,7 @@ export function PostAvailabilitySuccess({
             </p>
           ) : null}
 
-          {/* GROUP 3 — Proof */}
+          {/* GROUP 3 : Proof */}
           {proof && proofQuote ? (
             <figure className={roleProofGroup()} data-availability-role="proof">
               <blockquote className={roleTestimonial()} data-availability-role="testimonial">
@@ -255,7 +255,7 @@ export function PostAvailabilitySuccess({
         </div>
       </div>
 
-      {/* GROUP 4 — Action */}
+      {/* GROUP 4 : Action */}
       <footer className={roleActionFooter(variant)} aria-label="Next step" data-availability-role="action">
         <p className={roleCtaSupport()} data-availability-role="cta-support">
           {POST_AVAILABILITY_CTA_SUPPORT}

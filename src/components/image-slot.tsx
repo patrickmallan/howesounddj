@@ -62,7 +62,7 @@ export function ImageSlot({
     return (
       <figure className={figureLayout}>
         <div className={frame}>
-          {/* Preflight sets img height:auto — !h-full/!w-full keep fill+object-cover pinned to the frame */}
+          {/* Preflight sets img height:auto : !h-full/!w-full keep fill+object-cover pinned to the frame */}
           <Image
             src={src}
             alt={alt}

@@ -4,9 +4,9 @@ import CTADuo from "@/components/cta-duo";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { CTA_FINALE_SECTION_TOP, MAIN_SECTION_Y } from "@/lib/cta-section-spacing";
 
-const packagesTitle = "Wedding DJ Packages | Clear Sea-to-Sky Coverage";
+const packagesTitle = "Squamish Wedding DJ Packages | Your Music, Your Night";
 const packagesDesc =
-  "What couples actually receive: ceremony-through-reception DJ coverage, planning calls, custom playlists, and corridor-ready sound for Squamish and Sea-to-Sky weddings.";
+  "Squamish wedding DJ packages with ceremony-to-reception coverage, open-format music planning, live mixing, and sound built around your venue and crowd.";
 
 export const metadata: Metadata = {
   title: packagesTitle,
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: packagesTitle,
     description:
-      "Transparent wedding DJ tiers for the corridor: planning confidence, full-day coverage options, and atmosphere built around your crowd, not a feature checklist.",
+      "Transparent Squamish wedding DJ packages with full-day coverage, real open-format DJing, and music built around your taste, not a wedding template.",
     url: "/packages",
   },
   alternates: { canonical: "/packages" },
@@ -31,8 +31,8 @@ export default function PackagesPage() {
       text: "Clear audio from soft vows to full dance-floor energy, with setup and level management so guests hear what matters without strain."
     },
     {
-      title: "Playlists built around you",
-      text: "Custom playlist design shaped by your taste, your crowd, and the atmosphere you want, not a generic wedding formula."
+      title: "Open-format music direction",
+      text: "Genre direction, must-plays, do-not-plays, and a live set shaped by your taste and the room, not a generic wedding formula."
     },
     {
       title: "Professional execution",
@@ -43,13 +43,13 @@ export default function PackagesPage() {
   const tiers = [
     {
       name: "Celebration",
-      tag: "Special events",
+      tag: "Squamish special events",
       position:
-        "Milestone birthdays, anniversaries, corporate gatherings, or any celebration where you want strong music, energy, and coordination without the full wedding-day arc.",
+        "Squamish milestone birthdays, anniversaries, corporate gatherings, or local celebrations that need strong music and coordination without the full wedding-day arc.",
       highlight: false,
       features: [
         "DJ coverage for your event (typically 3–5 hours)",
-        "Custom playlist design tailored to your theme or preferences",
+        "Open-format music direction tailored to your taste and crowd",
         "Professional sound system scaled to fill the space",
         "Dancefloor lighting to support the vibe",
         "MC support for announcements, toasts, or program moments",
@@ -64,7 +64,7 @@ export default function PackagesPage() {
       highlight: true,
       features: [
         "Full-day DJ service covering ceremony and reception",
-        "Custom playlist design based on your preferences and key moments",
+        "Live DJ set shaped around your genres, preferences, and key moments",
         "Sound and lighting suited to each phase of the day",
         "Wireless microphones for vows, officiant, and speeches",
         "MC support: introductions, transitions, and a smooth flow for guests",
@@ -105,7 +105,7 @@ export default function PackagesPage() {
         <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
           <div className="max-w-3xl">
             <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
-              Squamish • Vancouver • Sea to Sky
+              Squamish • Wedding DJ Packages
             </div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
               Packages
@@ -208,7 +208,7 @@ export default function PackagesPage() {
               The same care in every tier.
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Scope changes; standards do not. From soft ballads to peak dance-floor moments, you get thoughtful music direction, responsive communication, and execution that matches what you planned.
+              Scope changes; standards do not. From dinner atmosphere to drum &amp; bass, tech house, hip-hop, disco, country, or a full open-format dance floor, you get thoughtful music direction and a set mixed for the room in front of Patrick.
             </p>
             <p className="mt-4 text-sm leading-7 text-white/55">
               <Link

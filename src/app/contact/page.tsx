@@ -21,11 +21,11 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: { absolute: "Contact | Howe Sound DJ" },
   description:
-    "Book a consult — a complimentary 45-minute wedding DJ consultation to talk through your date, vision, and whether Howe Sound DJ is the right fit. Or check availability first.",
+    "Book a consult: a complimentary 45-minute wedding DJ consultation to talk through your date, vision, and whether Howe Sound DJ is the right fit. Or check availability first.",
   openGraph: {
     title: "Contact | Howe Sound DJ",
     description:
-      "Book a consult — a complimentary 45-minute wedding DJ consultation to talk through your date, vision, and whether Howe Sound DJ is the right fit. Or check availability first.",
+      "Book a consult: a complimentary 45-minute wedding DJ consultation to talk through your date, vision, and whether Howe Sound DJ is the right fit. Or check availability first.",
     url: "/contact",
   },
   alternates: { canonical: "/contact" },
@@ -101,7 +101,7 @@ export default function ContactPage() {
               >
                 Read about Patrick&apos;s approach
               </Link>{" "}
-              if you want that human context before you write—a conversation first, not a hard sell.
+              if you want that human context before you write. It is a conversation first, not a hard sell.
             </p>
           </div>
         </div>

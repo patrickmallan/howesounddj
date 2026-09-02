@@ -71,12 +71,12 @@ const navTree: SiteNavItem[] = [
     ],
   },
   {
-    label: "Sea-to-Sky",
+    label: "Squamish",
     children: [
       {
         href: "/venues",
         label: "Venues",
-        description: "Ceremony and reception spaces across the corridor.",
+        description: "Squamish ceremony and reception spaces Patrick knows.",
       },
       {
         href: "/squamish-wedding-dj",
@@ -85,16 +85,10 @@ const navTree: SiteNavItem[] = [
         footerLabel: "Squamish Wedding DJ",
       },
       {
-        href: "/whistler-wedding-dj",
-        label: "Whistler",
-        description: "Destination-wedding pacing for mountain celebrations.",
-        footerLabel: "Whistler Wedding DJ",
-      },
-      {
         href: "/vancouver-wedding-dj",
-        label: "Vancouver",
-        description: "Polished wedding sound for city and corridor events.",
-        footerLabel: "Vancouver Wedding DJ",
+        label: "Planning from Vancouver",
+        description: "For Vancouver couples holding their wedding in Squamish.",
+        footerLabel: "Vancouver Couples Marrying in Squamish",
       },
     ],
   },
@@ -104,7 +98,7 @@ const navTree: SiteNavItem[] = [
       {
         href: "/guides",
         label: "Guides",
-        description: "Practical planning advice for Sea-to-Sky weddings.",
+        description: "Practical planning advice for Squamish weddings.",
       },
       {
         href: "/stories",
@@ -422,7 +416,7 @@ export function SiteHeader() {
           <div className="text-sm font-semibold tracking-[0.08em] uppercase text-amber-300 sm:text-base sm:tracking-[0.14em]">
             {SITE_PUBLIC_NAME}
           </div>
-          <div className="text-[0.65rem] text-white/60 sm:text-xs">Squamish · Sea-to-Sky</div>
+          <div className="text-[0.65rem] text-white/60 sm:text-xs">Squamish, BC</div>
         </Link>
         <div className="flex min-w-0 shrink-0 items-center gap-1.5 sm:gap-3">
           <nav
@@ -611,7 +605,7 @@ export function SiteFooter() {
         <div className="border-b border-white/10 pb-6">
           <div className="text-base font-semibold text-white/90">{SITE_PUBLIC_NAME}</div>
           <p className="mt-1 max-w-md text-sm leading-relaxed text-white/50">
-            Personalized music and professional planning for Sea-to-Sky weddings, from ceremony through reception.
+            Personalized music and professional planning for Squamish weddings, from ceremony through reception.
           </p>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
@@ -628,12 +622,12 @@ export function SiteFooter() {
         </div>
         <p className="text-sm text-white/40">
           <Link href="/vancouver-wedding-dj" className="transition hover:text-white/65">
-            Vancouver couples · Sea-to-Sky and Squamish weddings
+            Planning from Vancouver · Marrying in Squamish
           </Link>
         </p>
         <div className="flex flex-col gap-3 border-t border-white/10 pt-6 md:flex-row md:items-center md:justify-between">
-          <div className="text-white/40">© {year} {SITE_PUBLIC_NAME}. Squamish · Sea-to-Sky.</div>
-          <div className="text-white/40">Serving Squamish, Whistler, Vancouver, and the Sea-to-Sky corridor.</div>
+          <div className="text-white/40">© {year} {SITE_PUBLIC_NAME}. Squamish, BC.</div>
+          <div className="text-white/40">Serving weddings and selected events in Squamish.</div>
         </div>
       </div>
     </footer>

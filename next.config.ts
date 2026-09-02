@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 /**
  * CSP is not set anywhere else in this repo (no middleware, vercel.json, or layout meta).
  * Inline scripts used by the app: JSON-LD (`JsonLd`), GA bootstrap (`google-analytics.tsx`),
- * and Next.js runtime chunks — `script-src` includes `'unsafe-inline'` for those (no nonce pipeline yet).
+ * and Next.js runtime chunks : `script-src` includes `'unsafe-inline'` for those (no nonce pipeline yet).
  * Turnstile contact forms load `https://challenges.cloudflare.com/turnstile/v0/api.js` + iframe.
  */
 const CONTENT_SECURITY_POLICY = [

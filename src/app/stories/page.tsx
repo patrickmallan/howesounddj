@@ -108,7 +108,7 @@ export default function StoriesHubPage() {
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Read</div>
           <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Sea-to-Sky wedding stories available now</h2>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
-            Each story explores how mountain weddings build toward the dance floor—elevation, guest trust, and the emotional arc of a packed Sea-to-Sky reception.
+            Each story explores how mountain weddings build toward the dance floor: elevation, guest trust, and the emotional arc of a packed Sea-to-Sky reception.
           </p>
         </div>
         <StaggerGroup className="mt-10 grid gap-6 md:grid-cols-2">

@@ -11,9 +11,9 @@ import { JsonLd } from "@/components/json-ld";
 import { squamishWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
 
 const desc =
-  "Squamish wedding DJ rooted in the corridor: venue-aware planning, ceremony-to-reception flow, and dance floors your guests stay on. Built for mountain weddings, not city templates.";
+  "Versatile Squamish wedding DJ mixing your music live, from drum & bass and tech house to hip-hop, disco, country, throwbacks, and everything between.";
 
-const pageTitle = "Squamish Wedding DJ | Local Reception Energy That Stays Packed";
+const pageTitle = "Squamish Wedding DJ | Open-Format, Venue-Ready";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -77,16 +77,15 @@ export default function SquamishWeddingDjPage() {
             <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
               Squamish wedding DJ
             </div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Squamish home base · Sea-to-Sky wedding specialist</div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">Squamish wedding DJ for celebrations that build to a packed dance floor</h1>
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Squamish home base · Open-format DJ</div>
+            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">Your Squamish wedding. Your music, mixed live.</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              Howe Sound DJ is Squamish-rooted: a calm planning partner for couples marrying in the mountains, whether you live here or are bringing guests into the corridor. The through-line is
-              ceremony clarity, cocktail warmth, and reception energy your people actually stay on, built with corridor-native sound and pacing, not a generic city-wedding template.
+              Wedding is the event format, not the musical genre. Drum &amp; bass, tech house, hip-hop, disco, country, indie, throwbacks, Top 40, or a nightclub-style run after dark. Patrick builds the set around your taste, then mixes for the room in front of him.
             </p>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
               For the full service breakdown, see{" "}
               <Link href="/weddings" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                Sea-to-Sky wedding DJ services
+                Squamish wedding DJ services
               </Link>
               . For editorial dance floor proof from real corridor celebrations, read{" "}
               <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">

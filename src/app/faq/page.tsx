@@ -71,7 +71,7 @@ export default function FaqPage() {
       eyebrow: "Music + Personalization",
       title: "Your taste, your crowd, not a generic wedding formula.",
       intro:
-        "Customized playlists shaped around your story, not a generic wedding formula.",
+        "Wedding is the format. Your genres, scenes, eras, and energy define the music.",
       items: [
         {
           q: "Can we request songs and create a do-not-play list?",
@@ -83,7 +83,11 @@ export default function FaqPage() {
         },
         {
           q: "What kind of music can you actually cover?",
-          a: "Weddings are the focus, but the range runs from Top 40 to Soca and Dancehall, Country, Latin and Global Fusion, ecstatic dance, House and EDM, and family-friendly dance floors. That breadth is part of reading different crowds, especially yours."
+          a: "Wedding is the event format, not the genre. Patrick can move through drum & bass, tech house, house and EDM, hip-hop, disco, Soca and Dancehall, Afrobeats, Latin, country, indie, throwbacks, Top 40, and more. He can also stay focused in the sound you love."
+        },
+        {
+          q: "Can our reception feel like a nightclub instead of a typical wedding?",
+          a: "Absolutely. If the brief is a proper club atmosphere, the music, pacing, transitions, lighting, and energy can be planned around that. The formal parts can still feel polished without forcing the dance floor into traditional wedding music."
         }
       ]
     },
@@ -132,17 +136,17 @@ export default function FaqPage() {
     {
       id: "travel",
       eyebrow: "Travel + Venue + Logistics",
-      title: "Sea-to-Sky roots, and familiarity where you are getting married.",
+      title: "Squamish roots and local venue familiarity.",
         intro:
-        "Patrick describes being rooted in Squamish: knowing the venues, the vendors, and the vibe, with preferred relationships at popular regional venues and repeat experience at top Squamish wedding locations.",
+        "Patrick is based in Squamish and focuses on events held here, bringing local knowledge of the venues, vendors, access, sound, and timing that shape the day.",
       items: [
         {
-          q: "Do you travel beyond Squamish?",
-          a: "Yes. Weddings in Whistler, Vancouver, and across the Sea-to-Sky corridor can be accommodated depending on date and logistics."
+          q: "Where do you DJ weddings?",
+          a: "Howe Sound DJ is focused on weddings held in Squamish. Couples can live and plan anywhere; the service boundary is the location of the event."
         },
         {
           q: "Do you know our venue already?",
-          a: "Couples often book for local familiarity, including pre-wedding meetings at the venue when logistics make sense. Patrick describes being rooted in Squamish: knowing the venues, the vendors, and the vibe of the corridor."
+          a: "Couples often book for local familiarity, including pre-wedding meetings at the venue when logistics make sense. Patrick is rooted in Squamish and understands how local spaces, vendors, access, and timelines come together."
         },
         {
           q: "How is sound handled on the day?",
@@ -283,16 +287,12 @@ export default function FaqPage() {
                 ) : null}
                 {group.id === "travel" ? (
                   <p className="mt-4 text-base leading-8 text-white/65">
-                    Hiring in Squamish or nearby? See{" "}
+                    Hiring for a wedding in Squamish? See{" "}
                     <Link
                       href="/guides/how-to-choose-a-wedding-dj-in-squamish"
                       className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
                     >
                       How to Choose a Wedding DJ in Squamish
-                    </Link>
-                    . Whistler celebrations:{" "}
-                    <Link href="/whistler-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                      Whistler wedding DJ
                     </Link>
                     .
                   </p>

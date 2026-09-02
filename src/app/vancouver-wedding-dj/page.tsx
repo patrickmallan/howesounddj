@@ -8,9 +8,9 @@ import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { vancouverWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
 import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 
-const pageTitle = "Vancouver Wedding DJ | Sea-to-Sky & Whistler Weddings";
+const pageTitle = "Squamish Wedding DJ for Vancouver Couples | Howe Sound DJ";
 const pageDescription =
-  "Vancouver couples marrying in Squamish or Whistler: Squamish-rooted wedding DJ with corridor venue experience, calm planning, and dance floors that stay packed.";
+  "Live in Vancouver and getting married in Squamish? Work with a local Squamish wedding DJ for calm planning, venue-aware production, and a packed dance floor.";
 
 export const metadata: Metadata = {
   title: { absolute: pageTitle },
@@ -42,12 +42,12 @@ const VANCOUVER_REVIEW_CONTEXT: Record<(typeof HOMEPAGE_FEATURED_REVIEW_IDS)[num
 export default function VancouverWeddingDjPage() {
   const whyLocal = [
     {
-      title: "Venue and corridor familiarity",
-      text: "Mountain weddings come with real constraints: load-in, acoustics, weather contingencies, and how the night actually flows. Working here week in and week out means fewer surprises and smoother coordination with your team."
+      title: "Squamish venue familiarity",
+      text: "Squamish weddings come with real constraints: load-in, acoustics, weather contingencies, and how the night actually flows. Working here means fewer surprises and smoother coordination with your team."
     },
     {
       title: "Less friction on travel and timing",
-      text: "Sea-to-Sky weekends have traffic and tight turnarounds. A DJ who already plans in this lane reduces the “will they make it?” stress that can come when talent is routed from the city without corridor experience."
+      text: "Squamish weekends can mean traffic and tight turnarounds. A DJ who is already local removes the “will they make it?” stress that can come when talent is routed from the city."
     },
     {
       title: "Planning that matches the day",
@@ -59,7 +59,7 @@ export default function VancouverWeddingDjPage() {
     },
     {
       title: "Connection, not just another booking",
-      text: "Connection matters when details stack fast: your story, your energy, your people, especially for mountain weddings where the guest list often travels together."
+      text: "Connection matters when details stack fast: your story, your energy, your people, especially when much of the guest list is travelling to Squamish together."
     },
     {
       title: "One cohesive arc",
@@ -73,19 +73,19 @@ export default function VancouverWeddingDjPage() {
       text: "Many couples live in Metro Vancouver but host their day in Squamish. A DJ who already knows the local landscape is not discovering load-in and layout on your wedding day."
     },
     {
-      title: "Whistler & the Sea-to-Sky",
-      text: "From corridor celebrations to Whistler receptions: sound and pacing tuned to mountain venues and guests who made the drive together."
+      title: "A truly local vendor",
+      text: "Your DJ is based in Squamish, so local knowledge and accountability are built into the service rather than added as a travel surcharge."
     },
     {
       title: "Close-to-home destination",
-      text: "If your wedding reads like a getaway but the Sea-to-Sky is the real location, you still deserve a soundtrack that matches the day, not a generic package named for a city you are not marrying in."
+      text: "If your Squamish wedding feels like a getaway for your guests, you still deserve a soundtrack that matches the day, not a generic package named for the city you live in."
     }
   ];
 
   const experiencePillars = [
     {
       title: "Your taste, not a template",
-      text: "Music shaped around your must-plays, do-not-plays, guests, and the room—not an autopilot wedding playlist."
+      text: "Music shaped around your must-plays, do-not-plays, guests, and the room, not an autopilot wedding playlist."
     },
     {
       title: "Your story, your energy, your people",
@@ -104,11 +104,11 @@ export default function VancouverWeddingDjPage() {
   const faqs = [
     {
       q: "Do you work with Vancouver couples getting married in Squamish?",
-      a: "Yes, often. Many couples live and plan in Vancouver while the wedding happens in Squamish, Whistler, or elsewhere along the Sea-to-Sky. The process is built around your date, venue, and how you want the day to feel, whether your inbox says Vancouver or Squamish."
+      a: "Yes, often. Many couples live and plan in Vancouver while their wedding happens in Squamish. The process is built around your date, Squamish venue, and how you want the day to feel."
     },
     {
       q: "Is it better to hire a local Squamish wedding DJ or a Vancouver wedding DJ for a Squamish wedding?",
-      a: "It depends on experience and communication style, not the address on a business card. What matters is whether your DJ knows mountain venues, communicates clearly, and builds music around your crowd. Howe Sound DJ is rooted in Squamish with corridor-wide experience, which is why couples planning Sea-to-Sky weddings often lead with local familiarity and fewer logistics unknowns."
+      a: "For a Squamish wedding, local venue knowledge, clear communication, and music built around your crowd all matter. Howe Sound DJ is based in Squamish, giving Vancouver couples a local partner with fewer logistics unknowns."
     },
     {
       q: "Do you provide ceremony and reception DJ services?",
@@ -119,12 +119,12 @@ export default function VancouverWeddingDjPage() {
       a: "Yes. DJ support includes helping the evening feel smooth and well-paced, not only choosing songs, but aligning with your timeline and the room so transitions feel intentional."
     },
     {
-      q: "Do you travel to Whistler and across the Sea-to-Sky?",
-      a: "Yes. Whistler, Squamish, and corridor weddings are core to the work. Availability depends on your date and logistics, which is why most couples start with an inquiry."
+      q: "Which wedding locations do you serve?",
+      a: "Howe Sound DJ is focused on weddings held in Squamish. You can live and plan anywhere; the service boundary is the location of the event."
     },
     {
       q: "How do we check availability and pricing?",
-      a: "Packages outline what each tier includes; exact pricing is confirmed after your date, venue, and coverage are clear, the same transparent path as any Sea-to-Sky booking. Comparing quotes? Weigh travel, experience in your venue type, and whether the music plan is truly yours. Start with an inquiry and add a consultation when the direction feels clear."
+      a: "Packages outline what each tier includes; exact pricing is confirmed after your date, Squamish venue, and coverage are clear. Comparing quotes? Weigh travel, local venue experience, and whether the music plan is truly yours. Start with an inquiry and add a consultation when the direction feels clear."
     }
   ];
 
@@ -146,19 +146,19 @@ export default function VancouverWeddingDjPage() {
         <div className="relative mx-auto grid max-w-6xl gap-14 px-6 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-8 lg:py-28">
           <div className="flex flex-col justify-center">
             <div className="mb-4 inline-flex w-fit rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
-              Vancouver Wedding DJ
+              Planning from Vancouver
             </div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Squamish · Sea-to-Sky · Whistler
+              Your wedding is in Squamish
             </div>
             <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-[2.75rem] lg:leading-[1.12]">
-              Vancouver wedding DJ for Squamish, Whistler & Sea-to-Sky weddings
+              A Squamish wedding DJ for couples planning from Vancouver
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-white/70">
-              If you live in Vancouver but you are getting married in Squamish, Whistler, or along the corridor, you are not imagining it. A lot of these weddings are planned from the city. The question is whether your DJ understands mountain venues, timing, and crowd energy before the first guest arrives, or is treating your day like another generic club date with a longer drive.
+              If you live in Vancouver but you are getting married in Squamish, you are not alone. Many Squamish weddings are planned from the city. The useful question is whether your DJ understands the local venue, timing, and crowd energy before the first guest arrives.
             </p>
             <p className="mt-4 max-w-xl text-lg leading-8 text-white/70">
-              Howe Sound DJ is rooted in Squamish with real corridor experience: personalized music, seamless planning, and connection through{" "}
+              Howe Sound DJ is based in Squamish: personalized music, seamless planning, and local accountability through{" "}
               <a href="/weddings" className="text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 hover:decoration-amber-200/60">
                 Wedding DJ Services
               </a>{" "}
@@ -205,12 +205,12 @@ export default function VancouverWeddingDjPage() {
                 alt={SITE_IMAGE_ALT.weddingsSupport}
                 aspect="4/5"
                 imageClassName="object-[center_36%]"
-                label="Sea-to-Sky"
-                reservedHint="Reception energy or mountain backdrop: the corridor you are marrying in."
+                label="Squamish"
+                reservedHint="Reception energy and local venue knowledge for the place you are marrying."
                 sizes="(max-width: 1024px) 100vw, 42vw"
               />
               <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-5">
-                <div className="text-sm text-white/60">Planning from Vancouver, party in the mountains</div>
+                <div className="text-sm text-white/60">Planning from Vancouver, celebrating in Squamish</div>
                 <div className="mt-2 text-lg font-medium text-white">
                   Local familiarity beats showing up cold for sound, pacing, and peace of mind.
                 </div>
@@ -222,10 +222,10 @@ export default function VancouverWeddingDjPage() {
 
       <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
         <div className="max-w-3xl">
-          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Why Vancouver couples choose a Sea-to-Sky specialist</div>
-          <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Planning from the city, marrying in the mountains</h2>
+          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Why Vancouver couples choose a Squamish local</div>
+          <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Planning from the city, marrying in Squamish</h2>
           <p className="mt-4 text-lg leading-8 text-white/70">
-            It is normal to research vendors in Vancouver when that is where you live, but your wedding might be a Squamish wedding, a Whistler wedding, or a Sea-to-Sky wedding in every practical sense. When that is true, corridor familiarity and mountain experience are practical advantages: fewer guesswork moments, smoother coordination, and music tailored to the real crowd in the room.
+            It is normal to research vendors in Vancouver when that is where you live, but when the event is in Squamish, local familiarity is a practical advantage: fewer guesswork moments, smoother coordination, and music tailored to the real crowd in the room.
           </p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -242,9 +242,9 @@ export default function VancouverWeddingDjPage() {
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Where this lands</div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Squamish, Whistler, and the Sea-to-Sky, not a Vancouver storefront</h2>
+            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">A Squamish service, not a Vancouver storefront</h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Howe Sound DJ is based in Squamish and works across the corridor. You do not need a fake Vancouver address to feel like you hired the right corridor specialist. You need someone who knows how these weddings actually run. That is the through-line whether your guests are mostly local or flying in from across the country.
+              Howe Sound DJ is based in Squamish and focuses on events held here. You do not need a Vancouver storefront for a Squamish wedding. You need someone who knows how local weddings actually run, whether your guests are mostly local or travelling from across the country.
             </p>
             <p className="mt-4 text-lg leading-8 text-white/70">
               If your date is anchored in Squamish itself, the dedicated overview is the{" "}
@@ -254,7 +254,7 @@ export default function VancouverWeddingDjPage() {
               >
                 Squamish wedding DJ
               </Link>{" "}
-              pillar, then this page stays useful when you are comparing how planning-from-Vancouver maps to the whole Sea-to-Sky.
+              pillar; this page simply explains how planning from Vancouver works when the wedding itself is in Squamish.
             </p>
           </div>
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -347,10 +347,10 @@ export default function VancouverWeddingDjPage() {
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Lock in the plan</div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              Vancouver couples: let’s match music, date, and Sea-to-Sky logistics
+              Vancouver couples: let’s match your music, date, and Squamish venue
             </h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              Check your date first for your Squamish, Whistler, or corridor wedding, layer in packages when you want structure, or start with a Sound Check. Either way, the goal is your story, your crowd, your night.
+              Check your date for your Squamish wedding, compare packages when you want structure, or start with a Sound Check. Either way, the goal is your story, your crowd, your night.
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
