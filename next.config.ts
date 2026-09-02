@@ -20,6 +20,7 @@ const CONTENT_SECURITY_POLICY = [
   [
     "connect-src",
     "'self'",
+    "https://analytics.google.com",
     "https://www.google-analytics.com",
     "https://region1.google-analytics.com",
     "https://www.googletagmanager.com",

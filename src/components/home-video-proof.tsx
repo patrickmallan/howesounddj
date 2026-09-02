@@ -56,14 +56,12 @@ export function HomeVideoProof() {
           <div className="relative mt-10 aspect-video w-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-neutral-900 shadow-2xl shadow-black/40">
             <video
               className="relative z-0 h-full w-full object-cover"
-              autoPlay
-              loop
               muted
               playsInline
-              preload="metadata"
+              preload="none"
               controls
               poster={hasPoster ? POSTER_SRC : undefined}
-              aria-label="Illustrative dance floor and celebration atmosphere. Plays muted on a loop; use controls to pause or unmute"
+              aria-label="Illustrative dance floor and celebration atmosphere. Use controls to play or unmute"
             >
               <source src={VIDEO_SRC} type="video/mp4" />
             </video>

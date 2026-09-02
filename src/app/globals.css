@@ -70,6 +70,13 @@ body {
   }
 }
 
+/* Keep supporting and footer copy above WCAG AA contrast on the site background. */
+.text-white\/35,
+.text-white\/40,
+.text-white\/45 {
+  color: rgb(255 255 255 / 0.5);
+}
+
 /* Form fields: calmer focus handoff (does not replace focus rings from components) */
 @media (prefers-reduced-motion: no-preference) {
   input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]),
