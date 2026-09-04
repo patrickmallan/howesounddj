@@ -75,7 +75,7 @@ describe("sendAvailabilityCheckNotification", () => {
       sendAvailabilityCheckNotification(
         sampleResult(PublicAvailabilityResult.MANUAL_CONFIRMATION_REQUIRED),
       ),
-    ).resolves.toBeUndefined();
+    ).resolves.toBe(true);
     expect(sendMock).toHaveBeenCalledTimes(1);
   });
 
@@ -101,7 +101,7 @@ describe("sendAvailabilityCheckNotification", () => {
     const { sendAvailabilityCheckNotification } = await loadNotifier();
     await expect(
       sendAvailabilityCheckNotification(sampleResult(PublicAvailabilityResult.UNAVAILABLE)),
-    ).resolves.toBeUndefined();
+    ).resolves.toBe(false);
     expect(errorSpy).toHaveBeenCalledWith(
       "[availability] notification_failed",
       expect.objectContaining({ message: "invalid from" }),
@@ -114,9 +114,9 @@ describe("availability route notification scheduling", () => {
   it("schedules operator notification with next/server after()", () => {
     const route = readSource("src/app/api/availability/route.ts");
     expect(route).toMatch(/import \{ after(?:, NextResponse)? \} from "next\/server"|import \{ after, NextResponse \} from "next\/server"/);
-    expect(route).toMatch(/after\(\(\) =>/);
-    expect(route).toMatch(/sendAvailabilityCheckNotification\(evaluated\)/);
+    expect(route).toMatch(/after\(async \(\) =>/);
+    expect(route).toMatch(/sendAvailabilityCheckNotification\(evaluated, journeyId\)/);
     expect(route).not.toMatch(/void sendAvailabilityCheckNotification/);
-    expect(route).not.toMatch(/await sendAvailabilityCheckNotification/);
+    expect(route).toMatch(/await sendAvailabilityCheckNotification/);
   });
 });

@@ -20,6 +20,7 @@ Copy **`env.example`** to **`.env.local`** for local testing (never commit `.env
 | **Resend** | `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` — required for `/api/contact` to send mail. |
 | **Turnstile** | `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` — required for the inquiry form to verify and send. |
 | **GA4** | `NEXT_PUBLIC_GA_MEASUREMENT_ID` — optional. If unset, no analytics scripts load. |
+| **Google rating** | Optional `GOOGLE_PLACES_API_KEY` + `GOOGLE_PLACE_ID` — refreshes the homepage rating daily through the server cache; otherwise the checked-in 5.0 / 51-review fallback is shown. |
 | **Availability** | Optional `HSDJ_OPERATIONS_AVAILABILITY_API_URL` — defaults to Operations production API. Google Calendar credentials belong only in **HSDJ Operations**, not this repo. |
 | **Rate limiting** | Production requires one Vercel Firewall programmatic rule named `hsdj-availability-check` (20 requests per 60 seconds per IP). Both APIs share the bucket; contact also requires Turnstile. The APIs fail closed if the rule is unavailable. |
 

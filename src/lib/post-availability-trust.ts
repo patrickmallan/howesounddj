@@ -1,5 +1,5 @@
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
-import { isPostAvailabilityContextActive } from "@/lib/post-availability-context";
+import { isPostAvailabilityContextActive, touchPostAvailabilityContext } from "@/lib/post-availability-context";
 
 /** Trust surfaces tracked via `post_availability_trust_click`. */
 export type TrustTarget =
@@ -40,6 +40,7 @@ export function trackPostAvailabilityTrustClick(trustTarget: TrustTarget): void 
     page_context: pageContext(),
     post_availability_context_active: true,
   });
+  touchPostAvailabilityContext();
 }
 
 /** Nav/footer helper: maps internal href to trust target and tracks when context is active. */

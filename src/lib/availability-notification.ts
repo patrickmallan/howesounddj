@@ -24,7 +24,8 @@ function getMailConfig(): { to: string; from: string } | null {
  */
 export async function sendAvailabilityCheckNotification(
   result: NormalizedPublicAvailability,
-): Promise<void> {
+  journeyId?: string,
+): Promise<boolean> {
   const resend = getResend();
   const mail = getMailConfig();
   if (!resend || !mail) {
@@ -33,7 +34,7 @@ export async function sendAvailabilityCheckNotification(
       requested_date: result.requestedDate,
       result: result.result,
     });
-    return;
+    return false;
   }
 
   const resultLabel = availabilityResultLabel(result.result);
@@ -42,6 +43,7 @@ export async function sendAvailabilityCheckNotification(
     `Result: ${resultLabel}`,
     `Timestamp (UTC): ${result.checkedAt}`,
     "Source: Check Availability form",
+    journeyId ? `Journey ID: ${journeyId}` : "Journey ID: unavailable",
     `Authority: ${result.authority}`,
     "",
     "Note: No contact info collected at this step.",
@@ -61,16 +63,18 @@ export async function sendAvailabilityCheckNotification(
         statusCode: sendResult.error.statusCode,
         message: sendResult.error.message,
       });
-      return;
+      return false;
     }
 
     console.info("[availability] notification_sent", {
       requested_date: result.requestedDate,
       result: result.result,
     });
+    return true;
   } catch (err) {
     console.error("[availability] notification_failed", {
       message: err instanceof Error ? err.message : "unknown",
     });
+    return false;
   }
 }

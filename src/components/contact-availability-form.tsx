@@ -10,7 +10,8 @@ import {
 } from "@/components/availability-checking-state";
 import { PostAvailabilityOutcome } from "@/components/post-availability-outcome";
 import { PostAvailabilitySuccess } from "@/components/post-availability-success";
-import { clearPostAvailabilityContext } from "@/lib/post-availability-context";
+import { clearPostAvailabilityContext, getPostAvailabilityContext } from "@/lib/post-availability-context";
+import { recordAvailabilityJourneyEvent } from "@/lib/availability-journey-client";
 import { PUBLIC_SOUND_CHECK_CTA_LABEL } from "@/lib/consult-calendly";
 import { headlineVariantPayload } from "@/lib/experiment";
 import {
@@ -224,6 +225,10 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         page_path: clientPagePath(),
         ...headlineVariantPayload(),
       });
+      const availabilityContext = getPostAvailabilityContext();
+      if (availabilityContext?.journeyId) {
+        recordAvailabilityJourneyEvent({ journeyId: availabilityContext.journeyId, eventType: "INQUIRY_SUBMITTED", pagePath: clientPagePath(), surface: FORM_ANALYTICS.surface });
+      }
       setFormStatus("success");
       setFormMessage(data.message);
     } catch {

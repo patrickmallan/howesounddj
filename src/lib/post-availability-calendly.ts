@@ -3,6 +3,7 @@ import { CONSULT_CALENDLY_URL } from "@/lib/consult-calendly";
 export type PostAvailabilityCalendlyParams = {
   weddingDate: string;
   surface: string;
+  journeyId?: string;
 };
 
 /**
@@ -12,7 +13,14 @@ export type PostAvailabilityCalendlyParams = {
 export function buildPostAvailabilityCalendlyUrl({
   weddingDate,
   surface,
+  journeyId,
 }: PostAvailabilityCalendlyParams): string {
+  if (journeyId) {
+    const params = new URLSearchParams({ jid: journeyId, surface });
+    const month = weddingDate.slice(0, 7);
+    if (/^\d{4}-\d{2}$/.test(month)) params.set("month", month);
+    return `/go/consult?${params.toString()}`;
+  }
   const url = new URL(CONSULT_CALENDLY_URL);
   const month = weddingDate.slice(0, 7);
   if (/^\d{4}-\d{2}$/.test(month)) {

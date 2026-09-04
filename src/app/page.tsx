@@ -14,6 +14,7 @@ import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { VENUES } from "@/config/venues";
 import { websiteJsonLd } from "@/lib/json-ld";
+import { getGoogleRatingSummary } from "@/lib/google-rating";
 import {
   EYEBROW_TO_HEADING,
   HOMEPAGE_FINALE_INNER_TOP,
@@ -38,7 +39,7 @@ import {
  * existing experiment and analytics pipeline stay compatible.
  */
 const HOMEPAGE_HEADLINE =
-  "Your venue sets the scene. We make it the night nobody wants to leave.";
+  "A packed dance floor that still feels like your wedding.";
 
 const HEADLINE_VARIANTS = {
   A: HOMEPAGE_HEADLINE,
@@ -72,7 +73,8 @@ const HOMEPAGE_REVIEW_VENUES: Record<(typeof HOMEPAGE_FEATURED_REVIEW_IDS)[numbe
   "matthew-bundala": "Sea to Sky",
 };
 
-export default function HoweSoundDJHomepage() {
+export default async function HoweSoundDJHomepage() {
+  const googleRating = await getGoogleRatingSummary();
   const testimonials = HOMEPAGE_FEATURED_REVIEW_IDS.map((id) => {
     const review = getReviewById(id);
     if (!review) throw new Error(`Missing homepage review: ${id}`);
@@ -160,8 +162,21 @@ export default function HoweSoundDJHomepage() {
                 </p>
               </div>
               <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-3" aria-label="Howe Sound DJ trust signals">
+                <a
+                  href={googleRating.googleMapsUri}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${googleRating.rating.toFixed(1)} rating from ${googleRating.reviewCount} reviews on Google Maps`}
+                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 transition hover:border-amber-300/30 hover:bg-white/[0.07]"
+                >
+                  <div className="text-sm font-semibold text-white">
+                    {googleRating.rating.toFixed(1)} <span className="font-normal" translate="no">Google Maps</span> rating
+                  </div>
+                  <div className="mt-1 text-xs leading-5 text-white/50">
+                    {googleRating.reviewCount} {googleRating.reviewCount === 1 ? "review" : "reviews"}
+                  </div>
+                </a>
                 {[
-                  ["5.0 Google rating", "47 reviews"],
                   ["15+ years", "Music & live events"],
                   ["Squamish based", "Squamish weddings"],
                 ].map(([value, label]) => (
@@ -196,7 +211,7 @@ export default function HoweSoundDJHomepage() {
                     Atmosphere First
                   </div>
                   <div className="mt-2 text-lg font-medium leading-snug text-white">
-                    Drum &amp; bass to disco. Tech house to throwbacks. Your genre is the brief.
+                    Want the night to finish with club energy? From house to drum &amp; bass, we can take it there too.
                   </div>
                 </div>
               </div>

@@ -12,6 +12,7 @@ export type PostAvailabilityContext = {
   active: true;
   timestamp: number;
   selectedDate?: string;
+  journeyId?: string;
   source: "availability_checker";
 };
 
@@ -33,7 +34,7 @@ function readRaw(): PostAvailabilityContext | null {
   }
 }
 
-export function setPostAvailabilityContext(selectedDate?: string): void {
+export function setPostAvailabilityContext(selectedDate?: string, journeyId?: string): void {
   if (typeof window === "undefined") return;
   const ctx: PostAvailabilityContext = {
     active: true,
@@ -41,6 +42,7 @@ export function setPostAvailabilityContext(selectedDate?: string): void {
     source: "availability_checker",
   };
   if (selectedDate) ctx.selectedDate = selectedDate;
+  if (journeyId) ctx.journeyId = journeyId;
   try {
     window.sessionStorage.setItem(POST_AVAILABILITY_CONTEXT_KEY, JSON.stringify(ctx));
   } catch {
@@ -59,6 +61,18 @@ export function clearPostAvailabilityContext(): void {
 
 export function getPostAvailabilityContext(): PostAvailabilityContext | null {
   return readRaw();
+}
+
+export function touchPostAvailabilityContext(): PostAvailabilityContext | null {
+  const context = readRaw();
+  if (!context || typeof window === "undefined") return context;
+  const updated = { ...context, timestamp: Date.now() };
+  try {
+    window.sessionStorage.setItem(POST_AVAILABILITY_CONTEXT_KEY, JSON.stringify(updated));
+  } catch {
+    // quota / private mode
+  }
+  return updated;
 }
 
 export function isPostAvailabilityContextActive(): boolean {

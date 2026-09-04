@@ -5,10 +5,12 @@ import {
 } from "@/lib/analytics";
 import {
   clearPostAvailabilityContext,
+  getPostAvailabilityContext,
   setPostAvailabilityContext,
 } from "@/lib/post-availability-context";
 import { availabilityCompletedParams } from "@/lib/post-availability-analytics";
 import { PublicAvailabilityResult } from "@/lib/public-availability-contract";
+import { acquisitionContext, recordAvailabilityJourneyEvent } from "@/lib/availability-journey-client";
 
 export type AvailabilityCheckOutcome =
   | { status: "available"; message: string; date: string }
@@ -80,6 +82,10 @@ export async function runAvailabilityCheck(
 ): Promise<AvailabilityCheckOutcome> {
   const startedAt = typeof performance !== "undefined" ? performance.now() : Date.now();
 
+  const previousJourney = getPostAvailabilityContext();
+  if (previousJourney?.journeyId) {
+    recordAvailabilityJourneyEvent({ journeyId: previousJourney.journeyId, eventType: "CHECK_REPEATED", pagePath: typeof window !== "undefined" ? window.location.pathname : undefined, surface: analyticsSurface });
+  }
   clearPostAvailabilityContext();
   trackAvailabilityStarted(selectedDate, analyticsSurface);
 
@@ -91,7 +97,7 @@ export async function runAvailabilityCheck(
         "Cache-Control": "no-store",
       },
       cache: "no-store",
-      body: JSON.stringify({ date: selectedDate }),
+      body: JSON.stringify({ date: selectedDate, acquisition: acquisitionContext() }),
     });
 
     const durationMs =
@@ -115,6 +121,7 @@ export async function runAvailabilityCheck(
       message?: string;
       date?: string;
       available?: boolean;
+      journeyId?: string;
     };
 
     if (body.date && body.date !== selectedDate) {
@@ -128,7 +135,7 @@ export async function runAvailabilityCheck(
         : MANUAL_MESSAGE;
 
     if (body.result === PublicAvailabilityResult.AVAILABLE && body.date === selectedDate) {
-      setPostAvailabilityContext(selectedDate);
+      setPostAvailabilityContext(selectedDate, body.journeyId);
       trackAvailabilityCompleted(selectedDate, analyticsSurface, "available", durationMs);
       return { status: "available", message, date: selectedDate };
     }

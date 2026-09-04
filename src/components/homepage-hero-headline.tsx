@@ -5,7 +5,7 @@ import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
 import { getHomepageVariant, type HeadlineVariant } from "@/lib/experiment";
 
 const TAGLINE =
-  "Squamish-based. Venue-ready. Drum & bass to disco. Your taste, mixed live.";
+  "Squamish-based. Venue-ready. Built around your taste and mixed live for the people you love.";
 
 type Headlines = Readonly<Record<HeadlineVariant, string>>;
 

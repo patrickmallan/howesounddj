@@ -7,6 +7,7 @@ import {
 import { PublicAvailabilityResult } from "@/lib/public-availability-contract";
 import { readJsonObject, RequestBodyError } from "@/lib/api-request";
 import { checkApiRateLimit, RATE_LIMIT_IDS } from "@/lib/api-rate-limit";
+import { forwardAvailabilityJourney } from "@/lib/availability-journey-server";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -55,6 +56,8 @@ export async function POST(request: Request) {
   }
 
   const date = typeof body.date === "string" ? body.date.trim() : "";
+  const journeyId = crypto.randomUUID();
+  const acquisition = typeof body.acquisition === "object" && body.acquisition !== null ? body.acquisition as Record<string, unknown> : {};
   if (validateRequestedAvailabilityDate(date)) {
     return NextResponse.json(
       { success: false, result: PublicAvailabilityResult.MANUAL_CONFIRMATION_REQUIRED, message: "Please enter a valid future date.", date: null },
@@ -76,15 +79,25 @@ export async function POST(request: Request) {
     ops_duration_ms: Math.round(opsDurationMs),
   });
 
-  // Operator notification runs after the response via next/server `after()` so
-  // serverless runtimes keep the function alive until Resend completes.
-  after(() =>
-    sendAvailabilityCheckNotification(evaluated).catch((error: unknown) => {
-      console.error("[availability] notification_async_failed", {
-        message: error instanceof Error ? error.message : "unknown",
-      });
-    }),
-  );
+  const journey = {
+      journeyId, checkedAt: evaluated.checkedAt, requestedDate: evaluated.requestedDate, outcome: evaluated.result,
+      entryPage: typeof acquisition.entryPage === "string" ? acquisition.entryPage : "/contact",
+      source: typeof acquisition.source === "string" ? acquisition.source : "direct",
+      medium: typeof acquisition.medium === "string" ? acquisition.medium : "none",
+      campaign: typeof acquisition.campaign === "string" ? acquisition.campaign : null,
+      deviceCategory: ["mobile", "tablet", "desktop"].includes(String(acquisition.deviceCategory)) ? acquisition.deviceCategory : "unknown",
+      notificationSent: false,
+  };
+  const journeyRecorded = await forwardAvailabilityJourney({ kind: "journey", journey });
+  if (!journeyRecorded) console.warn("[availability] journey_not_recorded", { journey_id: journeyId });
+
+  after(async () => {
+    await forwardAvailabilityJourney({ kind: "event", event: { journeyId, eventId: crypto.randomUUID(), eventType: "CHECK_COMPLETED", occurredAt: evaluated.checkedAt, pagePath: "/contact", surface: "contact_form" } });
+    const notificationSent = await sendAvailabilityCheckNotification(evaluated, journeyId);
+    if (notificationSent) {
+      await forwardAvailabilityJourney({ kind: "journey", journey: { ...journey, notificationSent: true } });
+    }
+  });
 
   const totalDurationMs = performance.now() - requestStarted;
 
@@ -95,6 +108,7 @@ export async function POST(request: Request) {
       message: evaluated.publicMessage,
       date: evaluated.requestedDate,
       available: evaluated.result === PublicAvailabilityResult.AVAILABLE,
+      journeyId,
     },
     {
       status: publicHttpStatus(evaluated.result),

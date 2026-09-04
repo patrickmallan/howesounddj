@@ -43,6 +43,8 @@ import { ANALYTICS_EVENTS, consultClickEventParams, trackEvent } from "@/lib/ana
 import { buildPostAvailabilityCalendlyUrl } from "@/lib/post-availability-calendly";
 import { postAvailabilityAnalyticsBase } from "@/lib/post-availability-analytics";
 import { CTA_PILL_FLEX_CENTER } from "@/lib/cta-alignment";
+import { recordAvailabilityJourneyEvent } from "@/lib/availability-journey-client";
+import { getPostAvailabilityContext } from "@/lib/post-availability-context";
 
 export type PostAvailabilitySuccessVariant = "full" | "compact";
 
@@ -104,7 +106,8 @@ export function PostAvailabilitySuccess({
   const proofId =
     variant === "full" ? POST_AVAILABILITY_PROOF_FULL_ID : POST_AVAILABILITY_PROOF_COMPACT_ID;
   const proof = getReviewById(proofId);
-  const calendlyUrl = buildPostAvailabilityCalendlyUrl({ weddingDate, surface });
+  const journeyId = getPostAvailabilityContext()?.journeyId;
+  const calendlyUrl = buildPostAvailabilityCalendlyUrl({ weddingDate, surface, journeyId });
   const proofQuote = proof ? getAvailabilitySuccessProofQuote(proof) : "";
 
   useLayoutEffect(() => {
@@ -124,7 +127,11 @@ export function PostAvailabilitySuccess({
         ctaInitiallyVisible: ctaVisible,
       }),
     );
-  }, [surface, weddingDate, variant]);
+    if (journeyId) {
+      recordAvailabilityJourneyEvent({ journeyId, eventType: "SUCCESS_VIEWED", pagePath: "/contact", surface, experimentVariant: variant });
+      recordAvailabilityJourneyEvent({ journeyId, eventType: "CONSULT_CTA_DISPLAYED", pagePath: "/contact", surface, experimentVariant: variant });
+    }
+  }, [journeyId, surface, weddingDate, variant]);
 
   useEffect(() => {
     if (!proof || proofViewTracked.current) return;
@@ -133,7 +140,8 @@ export function PostAvailabilitySuccess({
       ANALYTICS_EVENTS.postAvailabilityProofView,
       postAvailabilityAnalyticsBase(surface, weddingDate, variant),
     );
-  }, [proof, surface, weddingDate, variant]);
+    if (journeyId) recordAvailabilityJourneyEvent({ journeyId, eventType: "PROOF_VIEWED", pagePath: "/contact", surface, experimentVariant: variant });
+  }, [journeyId, proof, surface, weddingDate, variant]);
 
   function handleConsultClick() {
     trackEvent(
@@ -159,6 +167,7 @@ export function PostAvailabilitySuccess({
       ...postAvailabilityAnalyticsBase(surface, weddingDate, variant),
       surface,
     });
+    if (journeyId) recordAvailabilityJourneyEvent({ journeyId, eventType: "INQUIRY_FALLBACK_CLICKED", pagePath: "/contact", surface });
     onInquiryFallback?.();
   }
 
@@ -167,6 +176,7 @@ export function PostAvailabilitySuccess({
       ANALYTICS_EVENTS.changeDateClick,
       postAvailabilityAnalyticsBase(surface, weddingDate, variant),
     );
+    if (journeyId) recordAvailabilityJourneyEvent({ journeyId, eventType: "DATE_CHANGED", pagePath: "/contact", surface });
     onEditDate?.();
   }
 
