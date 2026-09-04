@@ -5,7 +5,6 @@ import CTADuo from "@/components/cta-duo";
 import { ImageSlot } from "@/components/image-slot";
 import { SectionReveal } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
-import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 import { JsonLd } from "@/components/json-ld";
 import { storyArticleBreadcrumbJsonLd, storyArticleJsonLd } from "@/lib/json-ld";
 
@@ -227,7 +226,7 @@ export default function StorySeaToSkyGondolaDanceFloorPage() {
 
         <SectionReveal
           as="section"
-          className={`${CTA_FINALE_SECTION_TOP} border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent`}
+          className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent"
         >
           <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
             <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">

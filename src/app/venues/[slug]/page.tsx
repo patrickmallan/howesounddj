@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import CTADuo from "@/components/cta-duo";
 import { SectionReveal } from "@/components/motion";
-import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 import { JsonLd } from "@/components/json-ld";
 import { getVenueBySlug, getAllVenueSlugs } from "@/config/venue-pages";
 import { venueDetailBreadcrumbJsonLd, venueWeddingDjServiceJsonLd } from "@/lib/json-ld";
@@ -228,7 +227,7 @@ export default async function VenueDetailPage({ params }: Props) {
 
       <SectionReveal
         as="section"
-        className={`${CTA_FINALE_SECTION_TOP} border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent`}
+        className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent"
       >
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">

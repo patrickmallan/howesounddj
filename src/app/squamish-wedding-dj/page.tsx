@@ -6,7 +6,7 @@ import { ImageSlot } from "@/components/image-slot";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { VENUE_PAGES } from "@/config/venue-pages";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
-import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
+import { CTA_FINALE_SECTION_Y } from "@/lib/cta-section-spacing";
 import { JsonLd } from "@/components/json-ld";
 import { squamishWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
 
@@ -255,7 +255,7 @@ export default function SquamishWeddingDjPage() {
         </div>
       </SectionReveal>
 
-      <SectionReveal as="section" className={`${CTA_FINALE_SECTION_TOP} mx-auto max-w-6xl px-6 pb-24 lg:px-8`}>
+<SectionReveal as="section" className={`${CTA_FINALE_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}>
         <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">When it feels right</div>

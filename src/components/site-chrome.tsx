@@ -547,9 +547,9 @@ export function SiteFinalDecisionZone() {
       className="border-t border-white/10 bg-neutral-950"
       aria-labelledby="site-final-decision-heading"
     >
-      <div className="mx-auto max-w-6xl px-6 py-12 lg:px-8 lg:py-16">
-        <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
-          <div className="mx-auto max-w-2xl">
+      <div className="mx-auto max-w-6xl px-6 py-12 md:py-16 lg:px-8 lg:py-20">
+        <div className="atmosphere-grain mx-auto max-w-3xl rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
+          <div className="mx-auto max-w-2xl text-center">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300/95 sm:text-xs sm:tracking-[0.2em]">
               Ready when you are
             </p>
@@ -563,12 +563,12 @@ export function SiteFinalDecisionZone() {
               Share your date, venue, and what you want the night to feel like. I&apos;ll help you understand
               availability, timing, and the best next step.
             </p>
-            <div className="mt-8 max-w-xl space-y-4">
+            <div className="mx-auto mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="footer" checkSurface="footer" />
               <p className="text-sm leading-relaxed text-white/60">
                 45 minutes &bull; No pressure &bull; Just clarity
               </p>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-white/45">
+              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-white/45">
                 <Link
                   href="/packages"
                   onClick={onTrustNavClick("/packages")}

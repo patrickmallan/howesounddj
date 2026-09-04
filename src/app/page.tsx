@@ -17,7 +17,6 @@ import { websiteJsonLd } from "@/lib/json-ld";
 import { getGoogleRatingSummary } from "@/lib/google-rating";
 import {
   EYEBROW_TO_HEADING,
-  HOMEPAGE_FINALE_INNER_TOP,
   HOMEPAGE_FINALE_SECTION,
   HOMEPAGE_HERO_PADDING,
   MEDIA_CARD_PAD,
@@ -145,7 +144,10 @@ export default async function HoweSoundDJHomepage() {
         <JsonLd data={websiteJsonLd()} />
         <section className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.18),transparent_45%)]" />
-          <div className={`mx-auto flex max-w-6xl flex-col gap-16 ${PAGE_GUTTER_X} ${HOMEPAGE_HERO_PADDING} lg:flex-row lg:items-start lg:gap-16`}>
+          <div
+            data-testid="home-hero-inner"
+            className={`mx-auto flex max-w-6xl flex-col gap-12 ${PAGE_GUTTER_X} ${HOMEPAGE_HERO_PADDING} lg:flex-row lg:items-center lg:gap-16`}
+          >
             <div className="relative z-10 flex min-w-0 flex-col lg:basis-0 lg:flex-1">
               <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
                 Squamish Wedding DJ · Local by design
@@ -416,7 +418,7 @@ export default async function HoweSoundDJHomepage() {
         <SectionReveal as="section" id="about" className="border-y border-white/10 bg-white/5">
           <div
             data-testid="home-about-grid"
-            className={`${SECTION_SHELL} grid ${PAGE_GUTTER_X} ${SECTION_BAND_BORDER_FOLLOW} ${MEDIA_COPY_GRID_GAP} lg:grid-cols-2`}
+            className={`${SECTION_SHELL} grid items-center ${PAGE_GUTTER_X} ${SECTION_BAND_BORDER_FOLLOW} ${MEDIA_COPY_GRID_GAP} lg:grid-cols-2`}
           >
             <div
               data-testid="home-patrick-portrait"
@@ -434,7 +436,7 @@ export default async function HoweSoundDJHomepage() {
                 className="!m-0 !space-y-0"
               />
             </div>
-            <div data-testid="home-about-copy" className="flex flex-col max-lg:justify-start lg:justify-center">
+            <div data-testid="home-about-copy" className="flex flex-col justify-center">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">About</div>
               <h2 className={`${EYEBROW_TO_HEADING} text-3xl font-semibold sm:text-4xl`}>Meet Patrick</h2>
               <p className="mt-5 text-lg leading-8 text-white/70">
@@ -495,7 +497,7 @@ export default async function HoweSoundDJHomepage() {
           className={HOMEPAGE_FINALE_SECTION}
           aria-labelledby="home-final-decision-heading"
         >
-          <div className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${HOMEPAGE_FINALE_INNER_TOP}`}>
+          <div className={`${SECTION_SHELL} ${PAGE_GUTTER_X}`}>
             <div
               data-testid="home-finale-well"
               className="mx-auto w-full max-w-3xl atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12"

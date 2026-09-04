@@ -10,6 +10,7 @@ type SectionRevealProps = {
   "aria-labelledby"?: string;
   "aria-describedby"?: string;
   "aria-label"?: string;
+  "data-testid"?: string;
 };
 
 /**
@@ -25,6 +26,7 @@ export function SectionReveal({
   "aria-labelledby": ariaLabelledBy,
   "aria-describedby": ariaDescribedBy,
   "aria-label": ariaLabel,
+  "data-testid": testId,
 }: SectionRevealProps) {
   const revealClassName = ["below-fold-content", className].filter(Boolean).join(" ");
   const sectionProps = {
@@ -34,6 +36,7 @@ export function SectionReveal({
     "aria-labelledby": ariaLabelledBy,
     "aria-describedby": ariaDescribedBy,
     "aria-label": ariaLabel,
+    "data-testid": testId,
   };
 
   if (as === "section") {

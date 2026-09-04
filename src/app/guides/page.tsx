@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
 import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
-import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
 import { JsonLd } from "@/components/json-ld";
 import { guidesHubBreadcrumbJsonLd } from "@/lib/json-ld";
 
@@ -129,7 +128,7 @@ export default function GuidesHubPage() {
 
       <SectionReveal
         as="section"
-        className={`${CTA_FINALE_SECTION_TOP} border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent`}
+        className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent"
       >
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">

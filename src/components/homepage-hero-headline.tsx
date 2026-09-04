@@ -38,7 +38,7 @@ export function HomepageHeroHeadline({ headlines }: Props) {
   }, []);
 
   return (
-    <div className="min-h-[8.5rem] sm:min-h-[9.5rem] lg:min-h-[11rem]">
+    <div>
       <h1
         className="max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl"
         suppressHydrationWarning

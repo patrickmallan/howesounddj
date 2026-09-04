@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PAGE_GUTTER_X, SECTION_BAND_Y, SECTION_SHELL } from "@/lib/cta-section-spacing";
 
 type ExploreLink = {
   href: string;
@@ -23,7 +24,7 @@ const homepageAuthorityDiscoveryLinks: readonly ExploreLink[] = [
 ];
 
 const exploreCardBase =
-  "premium-surface flex h-full w-full min-w-0 flex-col justify-start rounded-2xl px-5 py-4 text-left transition sm:min-h-[5.25rem] sm:px-6 sm:py-5";
+  "premium-surface flex h-full w-full min-w-0 flex-col justify-center rounded-2xl px-5 py-5 text-left transition sm:min-h-[7rem] sm:px-6";
 
 /** Homepage: authority discovery above the site footer (homepage omits global pre-footer CTA). */
 export function HomepageExploreSection() {
@@ -32,7 +33,7 @@ export function HomepageExploreSection() {
       className="border-t border-white/10 bg-neutral-950"
       aria-labelledby="home-authority-discovery-heading"
     >
-      <div className="mx-auto max-w-6xl px-6 pb-16 pt-10 md:pb-20 md:pt-12 lg:px-8">
+      <div data-testid="home-explore-inner" className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_BAND_Y}`}>
         <h2
           id="home-authority-discovery-heading"
           className="max-w-2xl text-base font-semibold leading-relaxed text-white sm:text-lg sm:leading-8"

@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/json-ld";
 import { HOMEPAGE_FEATURED_REVIEW_IDS, getReviewById } from "@/config/reviews";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { vancouverWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
-import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
+import { CTA_FINALE_SECTION_Y } from "@/lib/cta-section-spacing";
 
 const pageTitle = "Squamish Wedding DJ for Vancouver Couples | Howe Sound DJ";
 const pageDescription =
@@ -342,7 +342,7 @@ export default function VancouverWeddingDjPage() {
         </div>
       </section>
 
-      <section className={`${CTA_FINALE_SECTION_TOP} mx-auto max-w-6xl px-6 pb-20 lg:px-8`}>
+<section className={`${CTA_FINALE_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}>
         <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Lock in the plan</div>

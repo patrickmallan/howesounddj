@@ -35,7 +35,10 @@ export function HomeVideoProof() {
       data-testid="home-video-proof-section"
       aria-labelledby="home-video-proof-heading"
     >
-      <div className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_TRANSITION_IN} ${SECTION_BAND_BOTTOM}`}>
+      <div
+        data-testid="home-video-proof-inner"
+        className={`${SECTION_SHELL} ${PAGE_GUTTER_X} ${SECTION_TRANSITION_IN} ${SECTION_BAND_BOTTOM}`}
+      >
         <div className="max-w-2xl">
           <div
             data-testid="home-video-proof-eyebrow"

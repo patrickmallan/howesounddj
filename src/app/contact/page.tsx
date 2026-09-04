@@ -5,7 +5,7 @@ import { ContactBookConsultSection } from "@/components/contact-book-consult-sec
 import { ContactSecondaryInquiryForm } from "@/components/contact-secondary-inquiry-form";
 import { ContactPageCtaTrio } from "@/components/contact-page-cta-trio";
 import { SectionReveal } from "@/components/motion";
-import { CTA_FINALE_SECTION_TOP } from "@/lib/cta-section-spacing";
+import { CTA_FINALE_SECTION_Y } from "@/lib/cta-section-spacing";
 
 /** Read Turnstile site key at request time (avoids empty props if env was missing at build / prefers runtime env on Vercel). */
 function turnstileSiteKey(): string {
@@ -226,7 +226,7 @@ export default function ContactPage() {
 
       <SectionReveal
         as="section"
-        className={`${CTA_FINALE_SECTION_TOP} mx-auto max-w-6xl px-6 pb-24 lg:px-8`}
+        className={`${CTA_FINALE_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}
       >
         <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
           <div className="mx-auto w-full max-w-3xl">
