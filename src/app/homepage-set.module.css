@@ -40,7 +40,7 @@
 .soundPaper { position: relative; width: min(1240px, 91vw); min-height: 760px; margin: auto; color: #fff; background: linear-gradient(90deg, #02050ce8 0 47%, #02050c33 70%, #02050c86); border: 1px solid #70e9f781; box-shadow: 16px 18px 0 #0847ff8c, -10px -10px 0 #fe2d77b0, 0 32px 80px #000b; clip-path: polygon(0 2%, 16% 0, 34% 2%, 55% .5%, 75% 2.4%, 100% .8%, 98.5% 96%, 80% 99%, 58% 97%, 35% 100%, 15% 97.5%, 1% 99%); }
 .soundPaper::before { position: absolute; inset: 4% 3% 19%; content: ""; pointer-events: none; border-left: 2px solid #65edff8c; border-top: 2px solid #ffdc1d8c; background: repeating-linear-gradient(90deg, transparent 0 24px, #70ecff13 24px 25px); clip-path: polygon(0 0, 61% 0, 50% 100%, 0 100%); }
 .soundCopy { position: absolute; z-index: 5; top: 10%; left: 6%; width: 48%; }
-.soundCopy h2 { max-width: 690px; margin: 1rem 0 1.2rem; color: #fff; font: 800 clamp(2.2rem, 3.8vw, 3.9rem)/.94 var(--display); font-palette: --hsdj-paper-light; letter-spacing: .025em; text-transform: uppercase; filter: none; text-shadow: 4px 4px 0 #0847ff; }
+.soundCopy h2 { max-width: 690px; margin: 1rem 0 1.2rem; color: #fff; font: 800 clamp(2.2rem, 3.8vw, 3.9rem)/.94 var(--display); font-palette: --hsdj-paper-light; letter-spacing: .025em; text-transform: uppercase; filter: drop-shadow(0 0 .07em rgb(255 184 119 / 24%)); text-shadow: 3px 3px 0 rgb(255 77 126 / 38%), 0 3px 8px #000; }
 .soundCopy > p:last-child { max-width: 560px; margin: 0; font-size: 1.05rem; font-weight: 700; line-height: 1.55; }
 .soundPortrait { position: absolute; top: -3%; right: 8%; width: 34%; height: 75%; transform: rotate(2.8deg); filter: drop-shadow(10px 9px 0 #fe2d77); }
 .soundPortrait img { object-fit: cover; object-position: center 52%; filter: contrast(1.08) saturate(.94); clip-path: polygon(0 3%, 90% 0, 100% 8%, 95% 94%, 8% 100%, 0 89%); }
@@ -102,7 +102,7 @@
 .operatorPhoto { position: absolute; z-index: 2; top: 11%; bottom: 5%; left: 3%; width: 43%; border: 2px solid #6eeeff; background: #2bd7e9; box-shadow: -12px 11px 0 #0851eb, 0 20px 40px #000c; transform: rotate(-2deg); }
 .operatorPhoto img { object-fit: cover; object-position: center top; filter: grayscale(1) contrast(1.18); mix-blend-mode: multiply; clip-path: polygon(0 0, 100% 0, 100% 16%, 94% 24%, 100% 43%, 93% 62%, 100% 81%, 91% 100%, 0 100%); }
 .operatorCopy { position: absolute; z-index: 4; top: 12%; left: 49%; width: 44%; }
-.operatorCopy h2 { margin: 1rem 0 1.5rem; color: #fff; font: 800 clamp(2rem, 3.2vw, 3.35rem)/.95 var(--display); font-palette: --hsdj-paper-light; letter-spacing: .025em; text-transform: uppercase; filter: none; text-shadow: 3px 3px 0 #0847ff; }
+.operatorCopy h2 { margin: 1rem 0 1.5rem; color: #fff; font: 800 clamp(2rem, 3.2vw, 3.35rem)/.95 var(--display); font-palette: --hsdj-paper-light; letter-spacing: .025em; text-transform: uppercase; filter: drop-shadow(0 0 .07em rgb(255 184 119 / 24%)); text-shadow: 3px 3px 0 rgb(255 77 126 / 38%), 0 3px 8px #000; }
 .operatorCopy > p:not(.tapeLabel) { font-size: 1rem; font-weight: 700; line-height: 1.55; }
 .operatorCopy a { display: inline-block; margin-top: .5rem; padding-bottom: .2rem; border-bottom: 4px solid #ff3880; color: #ffe000; font-weight: 900; text-decoration: none; }
 
@@ -115,7 +115,7 @@
 .remembersArt img { object-fit: cover; object-position: 39% center; opacity: .9; filter: saturate(.9) contrast(1.1); }
 .remembersHeading { position: absolute; z-index: 4; top: 8%; left: 5%; width: 28%; }
 .remembersHeading p { margin: 0 0 .7rem; color: var(--blue); font: 900 .7rem/1 var(--technical); letter-spacing: .18em; text-transform: uppercase; }
-.remembersHeading h2 { margin: 0; color: #fff; font: 800 clamp(2rem, 3.5vw, 3.65rem)/.94 var(--display); font-palette: --hsdj-paper-light; letter-spacing: .025em; text-transform: uppercase; filter: drop-shadow(3px 3px 0 #0847ff); }
+.remembersHeading h2 { margin: 0; color: #fff; font: 800 clamp(2rem, 3.5vw, 3.65rem)/.94 var(--display); font-palette: --hsdj-paper-light; letter-spacing: .025em; text-transform: uppercase; filter: drop-shadow(3px 3px 0 rgb(255 77 126 / 38%)) drop-shadow(0 3px 8px #000); }
 .reviewDeck { position: absolute; z-index: 6; top: 8%; right: 5%; bottom: 11%; left: 35%; }
 .reviewInstruction { position: absolute; z-index: 7; top: 53%; left: 6%; width: 24%; margin: 0; padding: .75rem .85rem; color: white; background: var(--blue); border-left: 8px solid var(--red); clip-path: polygon(0 4%, 96% 0, 100% 87%, 4% 100%); font: 900 .82rem/1.25 var(--technical); text-transform: uppercase; transform: rotate(-2deg); }
 .reviewInstruction b { color: var(--yellow); }
@@ -289,9 +289,9 @@
   .playbackVideoLogo [data-video-overlay-sasquatch] { z-index: 2; bottom: -3%; left: 5%; width: 90%; height: 101%; opacity: .68; filter: drop-shadow(0 10px 24px #000d); }
   .playbackVideoLogo [data-video-overlay-sasquatch]::before { position: absolute; inset: 12% 12% 0; z-index: -1; content: ""; background: radial-gradient(ellipse at 50% 58%, #020306b8 0 18%, #02030673 43%, transparent 72%); filter: blur(14px); }
   .playbackVideoLogo [data-video-overlay-sasquatch] img { object-fit: contain; object-position: center bottom; filter: brightness(.64) contrast(1.24) saturate(.88); }
-  .playbackVideoLogo [data-video-overlay-title] { z-index: 3; top: 6%; right: 4%; left: 4%; color: rgb(255 248 232 / 62%); filter: drop-shadow(0 3px 4px #000c); font-family: var(--display); text-align: center; text-transform: uppercase; }
-  .playbackVideoLogo [data-video-overlay-title] b { display: block; font-size: clamp(2.1rem, 10.5vw, 2.8rem); font-style: normal; line-height: .85; letter-spacing: .015em; }
-  .playbackVideoLogo [data-video-overlay-title] i { display: block; margin-top: .45rem; color: rgb(255 248 232 / 48%); font: 900 clamp(.82rem, 4.1vw, 1.05rem)/1 var(--technical); letter-spacing: .24em; }
+  .playbackVideoLogo [data-video-overlay-title] { z-index: 3; top: 4.5%; right: 3%; left: 3%; padding: .7rem .35rem .8rem; color: #fff4dc; background: linear-gradient(90deg, transparent, rgb(3 5 8 / 84%) 10% 90%, transparent); filter: drop-shadow(0 5px 8px #000e); font-family: var(--display); text-align: center; text-transform: uppercase; }
+  .playbackVideoLogo [data-video-overlay-title] b { display: block; font-palette: --hsdj-club-light; font-size: clamp(2.1rem, 10.5vw, 2.8rem); font-style: normal; line-height: .85; letter-spacing: .015em; filter: drop-shadow(0 0 .08em rgb(255 60 172 / 66%)) drop-shadow(0 2px 2px #000); }
+  .playbackVideoLogo [data-video-overlay-title] i { display: block; margin-top: .5rem; color: #fff4dc; font: 950 clamp(.82rem, 4.1vw, 1.05rem)/1 var(--technical); letter-spacing: .24em; text-shadow: 0 2px 4px #000, 0 0 12px rgb(255 198 95 / 52%); }
   .playbackFingerprint { top: .75rem; left: .75rem; width: 14%; opacity: .72; }
 
   .operator { padding: 1.9rem 1rem 2.1rem; }
