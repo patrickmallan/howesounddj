@@ -7,6 +7,7 @@ import {
   POST_AVAILABILITY_CTA_SUPPORT,
   POST_AVAILABILITY_EDIT_DATE_LABEL,
   POST_AVAILABILITY_FULL_PLANNING_SESSION,
+  POST_AVAILABILITY_FULL_CTA_SUPPORT,
   POST_AVAILABILITY_INQUIRY_FALLBACK_LABEL,
   POST_AVAILABILITY_PRIMARY_CTA_LABEL,
   POST_AVAILABILITY_SR_STATUS,
@@ -192,6 +193,21 @@ export function PostAvailabilitySuccess({
     variant === "compact" ? POST_AVAILABILITY_COMPACT_CTA_LABEL : POST_AVAILABILITY_PRIMARY_CTA_LABEL;
   const ctaClassName = variant === "compact" ? compactCtaClassName : fullCtaClassName;
   const headlineLine = roleHeadlineLine();
+  const proofBlock = proof && proofQuote ? (
+    <figure className={roleProofGroup()} data-availability-role="proof">
+      <blockquote className={roleTestimonial()} data-availability-role="testimonial">
+        {formatAvailabilityTestimonialQuotation(proofQuote)}
+      </blockquote>
+      <figcaption data-availability-role="attribution">
+        <span className={roleAttributionName()}>{proof.attribution}</span>
+        {proof.venue ? (
+          <span className={roleAttributionVenue()}>
+            {formatMarriedAtVenue(proof.venue)}
+          </span>
+        ) : null}
+      </figcaption>
+    </figure>
+  ) : null;
 
   const bodyContent = (
     <>
@@ -247,28 +263,14 @@ export function PostAvailabilitySuccess({
           ) : null}
 
           {/* GROUP 3 : Proof */}
-          {proof && proofQuote ? (
-            <figure className={roleProofGroup()} data-availability-role="proof">
-              <blockquote className={roleTestimonial()} data-availability-role="testimonial">
-                {formatAvailabilityTestimonialQuotation(proofQuote)}
-              </blockquote>
-              <figcaption data-availability-role="attribution">
-                <span className={roleAttributionName()}>{proof.attribution}</span>
-                {proof.venue ? (
-                  <span className={roleAttributionVenue()}>
-                    {formatMarriedAtVenue(proof.venue)}
-                  </span>
-                ) : null}
-              </figcaption>
-            </figure>
-          ) : null}
+          {variant === "compact" ? proofBlock : null}
         </div>
       </div>
 
       {/* GROUP 4 : Action */}
       <footer className={roleActionFooter(variant)} aria-label="Next step" data-availability-role="action">
         <p className={roleCtaSupport()} data-availability-role="cta-support">
-          {POST_AVAILABILITY_CTA_SUPPORT}
+          {variant === "full" ? POST_AVAILABILITY_FULL_CTA_SUPPORT : POST_AVAILABILITY_CTA_SUPPORT}
         </p>
         <div className={variant === "compact" ? "mt-3 w-full" : "mt-4 w-full"}>
           <a
@@ -295,6 +297,7 @@ export function PostAvailabilitySuccess({
           </p>
         ) : null}
       </footer>
+      {variant === "full" ? proofBlock : null}
     </>
   );
 

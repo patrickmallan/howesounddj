@@ -102,15 +102,13 @@ export function consultClickEventParams(
   };
 }
 
-/** Shared fields for `availability_check_start` / `availability_check_result` (client-only callers). */
+/** Shared GA4 fields; the exact wedding date stays in the availability service, not analytics. */
 export function availabilityCheckEventParams(
-  dateSelected: string,
   availabilityStatus?: "available" | "unavailable" | "manual_confirmation_required",
   surface?: string
 ): Record<string, string | number | boolean | undefined> {
   const page_path = typeof window !== "undefined" ? window.location.pathname : "";
   const out: Record<string, string | number | boolean | undefined> = {
-    date_selected: dateSelected,
     page_path,
     ...gaDebugModeParam(),
   };

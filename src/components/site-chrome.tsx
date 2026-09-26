@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { SITE_PUBLIC_NAME } from "@/config/site-brand";
@@ -8,6 +9,7 @@ import CTADuo from "@/components/cta-duo";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { HeaderCheckAvailability } from "@/components/header-check-availability";
 import { trackPostAvailabilityTrustClickFromHref } from "@/lib/post-availability-trust";
+import narrowHeaderStyles from "./site-chrome-narrow.module.css";
 
 function onTrustNavClick(href: string, after?: () => void) {
   return () => {
@@ -113,6 +115,14 @@ const navTree: SiteNavItem[] = [
 
 const MOBILE_PRIMARY_NAV_ID = "site-mobile-primary-nav";
 
+const navPadByLabel: Record<string, string> = {
+  Weddings: "/images/hsdj-redesign/controls/pads/cyan.png",
+  Squamish: "/images/hsdj-redesign/controls/pads/red.png",
+  Journal: "/images/hsdj-redesign/controls/pads/lime.png",
+  About: "/images/hsdj-redesign/controls/pads/orange.png",
+  Contact: "/images/hsdj-redesign/controls/pads/purple.png",
+};
+
 /** True when this href is the current page or a nested segment (e.g. /contact/...), without false positives like /faq vs /faq-extra. */
 function isActiveNavHref(pathname: string, href: string): boolean {
   if (pathname === href) return true;
@@ -215,24 +225,19 @@ function DesktopDropdown({
         aria-controls={panelId}
         onClick={onToggle}
         onFocus={onRequestOpen}
-        className={`inline-flex items-center gap-1 outline-none transition focus-visible:text-white ${triggerColor}`}
+        className={`hsdj-nav-pad outline-none transition focus-visible:text-white ${triggerColor}`}
       >
-        <span>{group.label}</span>
+        <Image src={navPadByLabel[group.label]} alt="" width={76} height={76} />
+        <span className="hsdj-nav-pad__label">{group.label}</span>
         <svg
           aria-hidden="true"
-          width="10"
-          height="6"
-          viewBox="0 0 10 6"
-          className={`transition-transform duration-150 ${isOpen ? "rotate-180" : ""}`}
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          className={`hsdj-nav-pad__deck-open ${isOpen ? "is-open" : ""}`}
         >
-          <path
-            d="M1 1l4 4 4-4"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
+          <path className="hsdj-nav-pad__deck-triangle" d="M3 5h10L8 11z" />
+          <path className="hsdj-nav-pad__deck-line" d="M2 13h12" />
         </svg>
       </button>
       <div
@@ -346,9 +351,11 @@ function MobileAccordion({ group, pathname, expanded, onToggle, onNavigate }: Mo
 export function SiteHeader() {
   const pathname = usePathname() ?? "";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuTop, setMobileMenuTop] = useState(0);
   const [openMenuLabel, setOpenMenuLabel] = useState<string | null>(null);
   const [mobileExpandedGroup, setMobileExpandedGroup] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement | null>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null);
 
   /** Closes the drawer and collapses any expanded accordion section in one batched update. */
   const closeMobileMenu = useCallback(() => {
@@ -369,11 +376,28 @@ export function SiteHeader() {
   useEffect(() => {
     if (!mobileMenuOpen) return;
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeMobileMenu();
+      if (e.key === "Escape") {
+        closeMobileMenu();
+        requestAnimationFrame(() => mobileMenuButtonRef.current?.focus());
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [mobileMenuOpen, closeMobileMenu]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen || !headerRef.current) return;
+    const header = headerRef.current;
+    const updateTop = () => setMobileMenuTop(header.getBoundingClientRect().bottom);
+    updateTop();
+    const observer = new ResizeObserver(updateTop);
+    observer.observe(header);
+    window.addEventListener("resize", updateTop);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateTop);
+    };
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1280px)");
@@ -405,21 +429,25 @@ export function SiteHeader() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/90 backdrop-blur"
+      className="hsdj-site-header sticky top-0 z-50 border-b border-white/10 bg-neutral-950/95"
     >
-      <div className="relative z-[70] mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-4 sm:gap-3 sm:px-6 lg:px-8">
+      <div className={`${narrowHeaderStyles.headerInner} relative z-[70] mx-auto flex max-w-[90rem] items-center justify-between gap-2 px-4 py-2 sm:gap-3 sm:px-6 lg:px-8`}>
         <Link
           href="/"
-          className="mr-2 min-w-0 shrink text-left transition hover:opacity-90 sm:mr-4 md:min-w-[12rem]"
+          className={`${narrowHeaderStyles.wordmark} hsdj-wordmark mr-2 shrink transition hover:opacity-90 sm:mr-4`}
         >
-          <div className="text-sm font-semibold tracking-[0.08em] uppercase text-amber-300 sm:text-base sm:tracking-[0.14em]">
-            {SITE_PUBLIC_NAME}
-          </div>
-          <div className="text-[0.65rem] text-white/60 sm:text-xs">Squamish, BC</div>
+          <Image
+            src="/images/logo/hsdj-business-card-sasquatch-event-dj-v1.png"
+            alt="Howe Sound Event DJ, Sasquatch on a mountain"
+            fill
+            priority
+            sizes="(max-width: 639px) 180px, 300px"
+            className="hsdj-wordmark-art"
+          />
         </Link>
-        <div className="flex min-w-0 shrink-0 items-center gap-1.5 sm:gap-3">
+        <div className="hsdj-header-controller flex min-w-0 shrink-0 items-center gap-1.5 sm:gap-3">
           <nav
-            className="hidden max-w-none flex-wrap items-center justify-end gap-x-4 gap-y-1.5 text-[0.8125rem] leading-snug text-white/80 xl:flex xl:gap-x-5 xl:text-sm"
+            className="hidden max-w-none items-center justify-end gap-2 text-[0.8125rem] leading-snug text-white/80 xl:flex"
             aria-label="Primary"
           >
             {navTree.map((item) => {
@@ -450,26 +478,28 @@ export function SiteHeader() {
                   onClick={onTrustNavClick(item.href)}
                   onFocus={() => setOpenMenuLabel(null)}
                   onPointerEnter={() => setOpenMenuLabel(null)}
-                  className={
-                    active
-                      ? "text-amber-300 transition hover:text-amber-200"
-                      : "text-white/80 transition hover:text-white"
-                  }
+                  className={`hsdj-nav-pad ${active ? "is-active text-amber-300" : "text-white/80"}`}
                 >
-                  {item.label}
+                  <Image src={navPadByLabel[item.label]} alt="" width={76} height={76} />
+                  <span className="hsdj-nav-pad__label">{item.label}</span>
                 </Link>
               );
             })}
           </nav>
           <button
+            ref={mobileMenuButtonRef}
             type="button"
-            className="inline-flex min-h-[44px] min-w-[44px] cursor-pointer list-none items-center justify-center rounded-full border border-white/15 px-2.5 text-sm text-white/85 outline-none transition hover:border-white/25 sm:px-3 xl:hidden"
+            className="hsdj-mobile-pad inline-grid min-h-[50px] min-w-[50px] cursor-pointer place-items-center border-0 bg-transparent p-0 text-[0.62rem] font-black uppercase text-white outline-none xl:hidden"
             aria-expanded={mobileMenuOpen}
             aria-controls={mobileMenuOpen ? MOBILE_PRIMARY_NAV_ID : undefined}
             aria-haspopup="menu"
-            onClick={() => setMobileMenuOpen((open) => !open)}
+            onClick={() => {
+              setMobileMenuTop(headerRef.current?.getBoundingClientRect().bottom ?? 0);
+              setMobileMenuOpen((open) => !open);
+            }}
           >
-            Menu
+            <Image src="/images/hsdj-redesign/controls/pads/blue.png" alt="" width={58} height={58} />
+            <span>Menu</span>
           </button>
           <HeaderCheckAvailability onPanelOpen={() => setOpenMenuLabel(null)} />
         </div>
@@ -477,7 +507,8 @@ export function SiteHeader() {
 
       {mobileMenuOpen ? (
         <div
-          className="fixed inset-0 z-[60] xl:hidden"
+          className="fixed inset-x-0 bottom-0 z-[80] xl:hidden"
+          style={{ top: mobileMenuTop }}
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
@@ -490,7 +521,7 @@ export function SiteHeader() {
           />
           <nav
             id={MOBILE_PRIMARY_NAV_ID}
-            className="absolute right-4 top-[max(4.75rem,calc(env(safe-area-inset-top,0px)+3.25rem))] z-50 mt-2 flex max-h-[min(calc(100dvh-5rem),32rem)] w-[min(calc(100vw-2rem),18rem)] max-w-[18rem] flex-col divide-y divide-white/10 overflow-y-auto overflow-x-hidden rounded-xl border border-white/10 bg-neutral-950/95 shadow-xl shadow-black/40 backdrop-blur"
+            className="hsdj-mobile-menu absolute right-3 top-2 z-50 flex max-h-[min(calc(100%-1rem),34rem)] w-[min(calc(100vw-1.5rem),20rem)] max-w-[20rem] flex-col divide-y divide-white/10 overflow-y-auto overflow-x-hidden border border-white/15 bg-neutral-950/95 shadow-xl shadow-black/40"
             aria-label="Mobile primary"
           >
             {navTree.map((item) => {
@@ -531,7 +562,7 @@ export function SiteHeader() {
                 surface="header"
                 href="/contact#availability"
                 onClick={closeMobileMenu}
-                className="relative z-10 inline-flex min-h-[44px] w-full items-center justify-center rounded-full bg-amber-300 px-4 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]"
+                className="hsdj-mobile-availability relative z-10 inline-flex min-h-[50px] w-full items-center justify-center bg-amber-300 px-4 text-sm font-black uppercase text-neutral-950 transition hover:translate-x-1"
               />
             </div>
           </nav>
@@ -565,9 +596,6 @@ export function SiteFinalDecisionZone() {
             </p>
             <div className="mx-auto mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="footer" checkSurface="footer" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
               <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-white/45">
                 <Link
                   href="/packages"
@@ -598,35 +626,53 @@ export function SiteFinalDecisionZone() {
 export function SiteFooter() {
   const year = new Date().getFullYear();
   const footerLinks = flattenNavForFooter(navTree);
+  const primaryRoutes = new Set(["/weddings", "/packages", "/reviews", "/venues", "/contact"]);
+  const primaryLinks = footerLinks.filter((item) => primaryRoutes.has(item.href));
+  const indexLinks = footerLinks.filter((item) => !primaryRoutes.has(item.href) && item.href !== "/vancouver-wedding-dj");
   return (
-    <footer className="mt-auto border-t border-white/10">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-white/45 lg:px-8">
-        <div className="border-b border-white/10 pb-6">
-          <div className="text-base font-semibold text-white/90">{SITE_PUBLIC_NAME}</div>
-          <p className="mt-1 max-w-md text-sm leading-relaxed text-white/50">
-            Personalized music and professional planning for Squamish weddings, from ceremony through reception.
-          </p>
+    <footer className="hsdj-site-footer mt-auto">
+      <div className="hsdj-site-footer__collage" aria-hidden="true">
+        <Image src="/images/hsdj-redesign/footer/footer-dj-mixer-collage-v2-optimized.webp" alt="" fill sizes="100vw" />
+      </div>
+      <div className="hsdj-site-footer__inner mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm lg:px-8">
+        <div className="hsdj-site-footer__brand">
+          <span className="hsdj-site-footer__eyebrow">Squamish, BC</span>
+          <div className="hsdj-site-footer__name">Howe Sound<br />Wedding DJ</div>
+          <p>Your music. Your people. One very good night.</p>
         </div>
-        <div className="flex flex-wrap gap-x-6 gap-y-2">
-          {footerLinks.map((item) => (
+        <nav className="hsdj-site-footer__signal-path" aria-label="Footer navigation">
+          {primaryLinks.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={onTrustNavClick(item.href)}
-              className="transition hover:text-white/70"
             >
+              <span className="hsdj-site-footer__knob" aria-hidden="true">
+                <Image src="/images/hsdj-redesign/controls/rotary/eq-black.png" alt="" width={110} height={110} />
+                <span className="hsdj-site-footer__knob-zero">0</span>
+                <span className="hsdj-site-footer__knob-min">-26</span>
+                <span className="hsdj-site-footer__knob-infinity">∞</span>
+                <span className="hsdj-site-footer__knob-max">+6</span>
+              </span>
+              <span className="hsdj-site-footer__link-label">{item.footerLabel ?? item.label}</span>
+            </Link>
+          ))}
+        </nav>
+        <nav className="hsdj-site-footer__index" aria-label="More pages">
+          {indexLinks.map((item) => (
+            <Link key={item.href} href={item.href} onClick={onTrustNavClick(item.href)}>
               {item.footerLabel ?? item.label}
             </Link>
           ))}
-        </div>
-        <p className="text-sm text-white/40">
-          <Link href="/vancouver-wedding-dj" className="transition hover:text-white/65">
+        </nav>
+        <p className="hsdj-site-footer__route">
+          <Link href="/vancouver-wedding-dj">
             Planning from Vancouver · Marrying in Squamish
           </Link>
         </p>
-        <div className="flex flex-col gap-3 border-t border-white/10 pt-6 md:flex-row md:items-center md:justify-between">
-          <div className="text-white/40">© {year} {SITE_PUBLIC_NAME}. Squamish, BC.</div>
-          <div className="text-white/40">Serving weddings and selected events in Squamish.</div>
+        <div className="hsdj-site-footer__legal">
+          <div>© {year} {SITE_PUBLIC_NAME}. Squamish, BC.</div>
+          <div>Serving weddings and selected events in Squamish.</div>
         </div>
       </div>
     </footer>

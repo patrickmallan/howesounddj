@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="grain" width="7" height="7" patternUnits="userSpaceOnUse">
+      <path d="M1 1h1M5 4h1" stroke="#a9b4b9" stroke-opacity=".18" stroke-width=".6"/>
+    </pattern>
+    <pattern id="groove" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(-17)">
+      <path d="M0 0v18M7 0v18" stroke="#6b7f87" stroke-opacity=".15" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="#141821"/>
+  <rect width="1600" height="900" fill="url(#groove)"/>
+  <path d="M0 0h640L170 900H0z" fill="#6f185e" opacity=".48"/>
+  <path d="M0 0h250L0 570z" fill="#bc248d" opacity=".5"/>
+  <path d="M1600 0h-590l460 900h130z" fill="#153966" opacity=".65"/>
+  <path d="M1600 0h-240l240 460z" fill="#0fa6b3" opacity=".34"/>
+  <path d="M0 700 520 150 665 0h110L0 860z" fill="#ee388f" opacity=".18"/>
+  <path d="M1600 220 1110 900h-100L1600 30z" fill="#14bcd0" opacity=".19"/>
+  <path d="M0 110 345 0h78L0 196zM1160 900l440-420v84l-340 336z" fill="#f6c43f" opacity=".23"/>
+
+  <!-- Two overlapping wedding bands become part of the circuitry. -->
+  <g fill="none" stroke-linecap="round">
+    <circle cx="246" cy="184" r="92" stroke="#fac63d" stroke-width="13" opacity=".92"/>
+    <circle cx="366" cy="184" r="92" stroke="#37d3df" stroke-width="13" opacity=".85"/>
+    <circle cx="246" cy="184" r="82" stroke="#ffec8d" stroke-width="2"/>
+    <circle cx="366" cy="184" r="82" stroke="#a0f1ee" stroke-width="2"/>
+    <path d="M205 266 62 409 62 622M406 265 550 410 550 624" stroke="#e83089" stroke-width="8" opacity=".7"/>
+  </g>
+
+  <!-- The sound ribbon runs across the whole case, around rather than through the screen. -->
+  <path d="M0 666h104l20-56 22 112 25-150 28 204 31-263 27 303 26-363 31 320 27-240 24 123 25-80 30 12 20-67 25 132 27-195 25 257 29-298 25 228 25-159 24 92 27-32 25-79 26 148 25-212 25 256 26-286 27 234 25-136 24 55 24-23 27-81 27 139 25-199 25 248 28-288 26 215 25-131 25 49 28-18 23-78 28 150 24-208 27 252 26-287 26 222 25-141 25 67 28-40 25-48 25 122 29-175 24 217 28-242 27 184 24-103 24 45 29-12 25-64 24 116 26-166 26 198 27-219 25 151 26-69 25 15 27-8 25-45 28 80 25-117 27 143 26-160 26 106 24-32 27 12h90" fill="none" stroke="#35d8e8" stroke-width="5" stroke-linejoin="miter" opacity=".56"/>
+  <path d="M0 690h250l24-35 25 71 27-104 27 136 27-170 27 204 26-249 27 261 27-224 27 159 27-103 27 55h368l24-30 25 60 27-86 27 112 27-135 27 154 26-186 27 198 27-172 27 118 27-75 27 34h350" fill="none" stroke="#f5bd36" stroke-width="8" opacity=".4"/>
+
+  <!-- Hard-cut confetti facets echo the wedding floor, without spotlight effects. -->
+  <g opacity=".8">
+    <path d="m718 70 27-56 21 62-24 34zM832 29l63 23-51 21zM970 111l46-44 19 69zM1123 30l31 42-59 11zM1277 95l46-36 14 60z" fill="#ffdf48"/>
+    <path d="m65 338 55-45-11 82zM491 109l19-60 34 52zM641 227l42-39 24 53zM1428 147l47-56 24 81z" fill="#ed3b9a"/>
+    <path d="m50 507 31-51 29 59zM568 279l56-27-23 67zM1088 208l42-58 31 69zM1543 324l35-53 21 84z" fill="#3fe0db"/>
+    <path d="m114 771 26-45 40 42zM388 849l55-36-17 68zM766 793l24-54 39 67zM1190 799l59-49-1 87zM1517 743l46-34 31 75z" fill="#e93691"/>
+    <path d="m282 748 52-49 16 75zM549 769l32-61 25 67zM973 832l53-56 21 75zM1374 725l45-41 17 66z" fill="#ffdc45"/>
+  </g>
+  <g fill="#eef6f3" opacity=".38">
+    <circle cx="593" cy="78" r="3"/><circle cx="686" cy="112" r="2"/><circle cx="769" cy="33" r="3"/><circle cx="1195" cy="156" r="3"/><circle cx="1491" cy="35" r="2"/>
+    <circle cx="83" cy="735" r="2"/><circle cx="463" cy="659" r="3"/><circle cx="696" cy="850" r="2"/><circle cx="1309" cy="849" r="3"/>
+  </g>
+  <rect width="1600" height="900" fill="url(#grain)"/>
+</svg>

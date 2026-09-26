@@ -1,0 +1,168 @@
+.hsdj-contact-sheet { background: #0c0b13; }
+#main-content .hsdj-contact-sheet::before, #main-content .hsdj-contact-sheet::after,
+#main-content .hsdj-contact-sheet > section::before { display: none; }
+#main-content .hsdj-contact-sheet > section { border: 0; }
+#main-content .hsdj-contact-sheet .contact-sheet-hero { position: relative; display: flex; align-items: flex-end; min-height: min(920px, 95svh); padding: clamp(10rem, 15vw, 16rem) max(5vw, calc((100vw - 80rem)/2)) 6rem; overflow: hidden; background: #0c0b13 !important; }
+.contact-sheet-hero > img { object-fit: cover; object-position: center; }
+.contact-sheet-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #0b0a1288 0%, #0b0a1250 46%, #0b0a1200 100%), linear-gradient(0deg, #0b0a1299, transparent 45%); }
+.contact-sheet-hero-copy { position: relative; z-index: 2; width: min(100%, 34rem); }
+.hsdj-contact-sheet .contact-sheet-hero h1 { max-width: 100%; line-height: .93; }
+.contact-sheet-hero-copy > p:last-child { max-width: 42rem; padding: 1.3rem; margin: 2rem 0 0; border-left: 8px solid #ff4c91; background: #0c0b13ec; color: #fff !important; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 750; line-height: 1.55; }
+.contact-sheet-hero-mark { position: absolute; z-index: 2; right: 4%; top: 27%; max-width: 8ch; padding: 1.1rem 1.35rem; color: #090f17; background: #ff4d91; font: 1000 clamp(1.7rem, 3.4vw, 3.5rem)/.87 system-ui, sans-serif; text-align: left; text-transform: uppercase; transform: rotate(8deg); box-shadow: 12px 12px 0 #ffe11b; }
+.contact-sheet-hero-mark span { color: #ffe11b; }
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes { position: relative; overflow: hidden; padding: clamp(5rem, 8vw, 8rem) max(4vw, calc((100vw - 92rem)/2)) clamp(5rem, 8vw, 8rem); background: linear-gradient(#070b14aa, #070b1477), url('/images/stories/diary-notes/afterparty-floor-v1.webp') center center / cover no-repeat, #100c0d !important; }
+.contact-sheet-night-notes-intro { position: relative; z-index: 1; max-width: 58rem; }
+.hsdj-contact-sheet .contact-sheet-night-notes h2 { max-width: 15ch !important; margin: 0; font-size: clamp(2.7rem, 5.5vw, 6rem) !important; line-height: .91; text-transform: uppercase; }
+.contact-sheet-night-notes-intro p { max-width: 42rem; margin: 1.5rem 0 0; color: #f7f0eb !important; font-size: clamp(1.02rem, 1.25vw, 1.23rem); line-height: 1.5; }
+.contact-sheet-night-notes-scatter { position: relative; z-index: 1; max-width: 90rem; height: 112rem; margin: clamp(3rem, 5vw, 5rem) auto 0; }
+.contact-sheet-night-note { --note-turn: -9deg; --note-shift: 0rem; --ink: #202a36; position: absolute; display: grid; place-items: center; width: clamp(16rem, 25%, 23rem); aspect-ratio: .88; margin: 0 !important; padding: 2.8rem 2.7rem; color: var(--ink) !important; transform: rotate(var(--note-turn)) translateY(var(--note-shift)); filter: drop-shadow(0 22px 18px #000a); }
+.contact-sheet-night-note--square { aspect-ratio: 1; padding: 2.6rem; }
+.contact-sheet-night-note--envelope { aspect-ratio: 1.35; padding: 4.1rem 2.2rem 1.3rem; }
+.contact-sheet-night-note > img { z-index: 0; width: 100%; height: 100%; object-fit: fill; }
+.contact-sheet-night-note p { position: relative; z-index: 1; max-width: 100%; margin: 0; color: var(--ink) !important; font: 600 clamp(1.13rem, 1.35vw, 1.46rem)/1.24 "Bradley Hand", "Segoe Print", cursive; letter-spacing: -.025em; mix-blend-mode: multiply; }
+.contact-sheet-night-note:nth-child(2) { --note-turn: 4deg; --note-shift: 1.5rem; --ink: #244a72; }
+.contact-sheet-night-note:nth-child(2) p { font-family: "Noteworthy", "Bradley Hand", cursive; font-size: clamp(1.08rem, 1.28vw, 1.38rem); letter-spacing: -.04em; }
+.contact-sheet-night-note:nth-child(3) { --note-turn: -5deg; --note-shift: -.7rem; --ink: #272c35; }
+.contact-sheet-night-note:nth-child(3) p { font-family: "Marker Felt", "Comic Sans MS", cursive; font-weight: 500; line-height: 1.32; }
+.contact-sheet-night-note:nth-child(4) { --note-turn: 5deg; --note-shift: 1.1rem; --ink: #322d4b; }
+.contact-sheet-night-note:nth-child(4) p { font-family: "Chalkboard SE", "Segoe Print", cursive; font-size: clamp(1.04rem, 1.18vw, 1.31rem); }
+.contact-sheet-night-note:nth-child(5) { --note-turn: 5deg; --note-shift: -1rem; --ink: #254d56; }
+.contact-sheet-night-note:nth-child(5) p { font-family: "Noteworthy", "Bradley Hand", cursive; font-size: clamp(1.16rem, 1.45vw, 1.55rem); }
+.contact-sheet-night-note:nth-child(6) { --note-turn: -4deg; --note-shift: 1rem; --ink: #25375a; }
+.contact-sheet-night-note:nth-child(6) p { font-family: "Chalkboard SE", "Segoe Print", cursive; font-size: clamp(1.12rem, 1.3vw, 1.42rem); }
+.contact-sheet-night-note:nth-child(7) { --note-turn: -2deg; --note-shift: -.5rem; --ink: #443229; }
+.contact-sheet-night-note:nth-child(7) p { font-family: "Marker Felt", "Comic Sans MS", cursive; font-size: clamp(1.1rem, 1.3vw, 1.4rem); }
+.contact-sheet-night-note:nth-child(8) { --note-turn: 3deg; --note-shift: 1.7rem; --ink: #4c3155; }
+.contact-sheet-night-note:nth-child(8) p { font-family: "Bradley Hand", "Segoe Print", cursive; font-size: clamp(1.1rem, 1.32vw, 1.42rem); }
+.contact-sheet-night-note:nth-child(9) { --note-turn: -5deg; --note-shift: .7rem; --ink: #242f3b; }
+.contact-sheet-night-note:nth-child(9) p { font-family: "Noteworthy", "Bradley Hand", cursive; line-height: 1.3; }
+.contact-sheet-night-note:nth-child(10) { --note-turn: 4deg; --note-shift: -1.2rem; --ink: #2a5791; }
+.contact-sheet-night-note:nth-child(10) p { font-family: "Chalkboard SE", "Segoe Print", cursive; font-size: clamp(1.12rem, 1.34vw, 1.44rem); }
+.contact-sheet-night-note:nth-child(11) { --note-turn: -3deg; --note-shift: 1.5rem; --ink: #513b3a; }
+.contact-sheet-night-note:nth-child(11) p { font-family: "Marker Felt", "Comic Sans MS", cursive; font-size: clamp(1.18rem, 1.45vw, 1.56rem); }
+.contact-sheet-night-note:nth-child(12) { --note-turn: 5deg; --note-shift: -.8rem; --ink: #2b3c53; }
+.contact-sheet-night-note:nth-child(12) p { font-family: "Noteworthy", "Bradley Hand", cursive; font-size: clamp(1.03rem, 1.22vw, 1.34rem); }
+.contact-sheet-night-note:nth-child(13) { --note-turn: -13deg; --ink: #395474; }
+.contact-sheet-night-note:nth-child(13) p { font-family: "Chalkboard SE", "Segoe Print", cursive; font-size: clamp(1.05rem, 1.25vw, 1.35rem); }
+.contact-sheet-night-note:nth-child(14) { --note-turn: 11deg; --ink: #2b3547; }
+.contact-sheet-night-note:nth-child(14) p { font-family: "Marker Felt", "Comic Sans MS", cursive; font-size: clamp(1.08rem, 1.3vw, 1.4rem); }
+.contact-sheet-night-note:nth-child(15) { --note-turn: -7deg; --ink: #36454b; }
+.contact-sheet-night-note:nth-child(15) p { font-family: "Bradley Hand", "Segoe Print", cursive; font-size: clamp(1.05rem, 1.22vw, 1.35rem); }
+.contact-sheet-night-note:nth-child(16) { --note-turn: 14deg; --ink: #392b52; }
+.contact-sheet-night-note:nth-child(16) p { font-family: "Noteworthy", "Bradley Hand", cursive; font-size: clamp(1.04rem, 1.24vw, 1.36rem); }
+.contact-sheet-night-note:nth-child(17) { --note-turn: -11deg; --ink: #254a5d; }
+.contact-sheet-night-note:nth-child(17) p { font-family: "Chalkboard SE", "Segoe Print", cursive; font-size: clamp(1.04rem, 1.24vw, 1.36rem); }
+.contact-sheet-night-note:nth-child(18) { --note-turn: 9deg; --ink: #2e3345; }
+.contact-sheet-night-note:nth-child(18) p { font-family: "Marker Felt", "Comic Sans MS", cursive; font-size: clamp(1.07rem, 1.29vw, 1.4rem); }
+.contact-sheet-night-note:nth-child(1) { left: 1%; top: 1%; }
+.contact-sheet-night-note:nth-child(2) { left: 23%; top: 5%; }
+.contact-sheet-night-note:nth-child(3) { left: 47%; top: 0; }
+.contact-sheet-night-note:nth-child(4) { left: 70%; top: 4%; }
+.contact-sheet-night-note:nth-child(5) { left: 6%; top: 18%; width: 23%; }
+.contact-sheet-night-note:nth-child(6) { left: 28%; top: 23%; }
+.contact-sheet-night-note:nth-child(7) { left: 51%; top: 18%; width: 28%; }
+.contact-sheet-night-note:nth-child(8) { left: 73%; top: 22%; }
+.contact-sheet-night-note:nth-child(9) { left: 1%; top: 35%; }
+.contact-sheet-night-note:nth-child(10) { left: 23%; top: 40%; }
+.contact-sheet-night-note:nth-child(11) { left: 49%; top: 34%; }
+.contact-sheet-night-note:nth-child(12) { left: 71%; top: 39%; width: 28%; }
+.contact-sheet-night-note:nth-child(13) { left: 8%; top: 52%; width: 28%; }
+.contact-sheet-night-note:nth-child(14) { left: 35%; top: 57%; }
+.contact-sheet-night-note:nth-child(15) { left: 62%; top: 51%; }
+.contact-sheet-night-note:nth-child(16) { left: 2%; top: 69%; }
+.contact-sheet-night-note:nth-child(17) { left: 27%; top: 73%; }
+.contact-sheet-night-note:nth-child(18) { left: 53%; top: 68%; }
+#main-content .hsdj-contact-sheet .contact-sheet-sequence { padding: clamp(4rem, 5vw, 6rem) max(4vw, calc((100vw - 86rem)/2)); background: #0c0b13 !important; }
+.contact-sheet-sequence-heading { max-width: 56rem; margin-bottom: 3.5rem; }
+.hsdj-contact-sheet .contact-sheet-sequence-heading h2 { max-width: 15ch !important; margin: 0; font-size: clamp(2.6rem, 5vw, 5.6rem) !important; line-height: .95; text-transform: uppercase; }
+.contact-sheet-strip { position: relative; display: grid; gap: clamp(4rem, 9vw, 9rem); }
+.contact-sheet-strip::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 6px; transform: translateX(-50%); background: repeating-linear-gradient(0deg, #ff528e 0 33px, transparent 33px 50px, #59e8ef 50px 76px, transparent 76px 93px); }
+.contact-sheet-frame { position: relative; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: center; gap: 0; min-height: 520px; }
+.contact-sheet-frame:nth-child(even) { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+.contact-sheet-frame:nth-child(even) .contact-sheet-photo { grid-column: 2; grid-row: 1; transform: rotate(2deg); }
+.contact-sheet-frame:nth-child(even) .contact-sheet-caption { grid-column: 1; grid-row: 1; transform: rotate(-1deg) translateX(2rem); }
+.contact-sheet-photo { position: relative; min-height: 520px; transform: rotate(-2deg); clip-path: polygon(0 2%, 98% 0, 100% 3%, 99% 99%, 2% 100%); }
+.contact-sheet-photo img { object-fit: cover; }
+.contact-sheet-caption { position: relative; z-index: 3; margin-left: -3.5rem; padding: clamp(2rem, 4vw, 4rem); background: #ff4d91; color: #090c12; transform: rotate(1deg); box-shadow: 13px 14px 0 #ffe11b; }
+.contact-sheet-frame:nth-child(3) .contact-sheet-caption { background: #53e6ee; box-shadow: 13px 14px 0 #ff4d91; }
+.hsdj-contact-sheet .contact-sheet-caption h3 { margin: 0; font-size: clamp(2rem, 3.5vw, 4.1rem) !important; line-height: .96; text-transform: uppercase; }
+.contact-sheet-caption h3 a { color: #090c12; text-decoration: none; }
+.contact-sheet-caption .contact-sheet-summary { margin: 1.3rem 0; color: #090c12 !important; font-size: clamp(1rem, 1.2vw, 1.2rem); line-height: 1.5; font-weight: 700; }
+.contact-sheet-caption > a:last-child { display: inline-block; border-bottom: 3px solid currentColor; padding-bottom: .3rem; color: #090c12; font-weight: 950; text-transform: uppercase; }
+#main-content .hsdj-contact-sheet .contact-sheet-real-reels { position: relative; display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); padding: clamp(4rem, 6vw, 6rem) max(5vw, calc((100vw - 80rem)/2)); background: #142430 !important; }
+.contact-sheet-real-reels-heading { max-width: 25rem; }
+.hsdj-contact-sheet .contact-sheet-real-reels-heading h2 { max-width: 12ch !important; margin: 0; font-size: clamp(2.2rem, 3.4vw, 3.7rem) !important; line-height: .96; text-transform: uppercase; }
+.contact-sheet-real-reels-heading p { max-width: 23rem; margin: 1rem 0 0; color: #f2eff4 !important; font-size: clamp(1rem, 1.15vw, 1.2rem); line-height: 1.5; }
+.contact-sheet-reel { position: relative; margin: 0; transform: rotate(1deg); }
+.contact-sheet-reel video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #080910; clip-path: polygon(0 0, 100% 0, 100% 96%, 97% 100%, 0 100%); }
+.contact-sheet-reel figcaption { margin-top: .7rem; color: #cbe1e6; font: 700 .78rem/1.4 ui-monospace, monospace; }
+.contact-sheet-exit { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem 3rem; padding: 2.5rem max(5vw, calc((100vw - 80rem)/2)); background: #ffe11b; color: #090c12; }
+.contact-sheet-exit p { margin: 0 auto 0 0; font-size: clamp(1.3rem, 2vw, 2rem); font-weight: 950; text-transform: uppercase; }
+.contact-sheet-exit a { color: #090c12; font-weight: 900; text-transform: uppercase; text-decoration: underline; text-decoration-thickness: 3px; }
+@media (max-width: 900px) {
+  #main-content .hsdj-contact-sheet .contact-sheet-hero { min-height: 740px; padding: 11rem 1.4rem 4rem; }
+  .contact-sheet-hero-mark { display: none; }
+  .contact-sheet-hero::after { background: linear-gradient(0deg, #0b0a12 0, #0b0a12bb 50%, #0b0a1233 100%); }
+  #main-content .hsdj-contact-sheet .contact-sheet-sequence { padding: 5rem 1.4rem; }
+  .contact-sheet-strip::before { left: .5rem; }
+  .contact-sheet-frame, .contact-sheet-frame:nth-child(even) { display: block; margin-left: 1.3rem; min-height: 0; }
+  .contact-sheet-frame:nth-child(n) .contact-sheet-photo { min-height: 360px; transform: rotate(-1deg); }
+  .contact-sheet-frame:nth-child(n) .contact-sheet-caption { margin: -2rem 0 0 1rem; transform: rotate(1deg); }
+  #main-content .hsdj-contact-sheet .contact-sheet-real-reels { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.4rem; }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes { padding: 5rem 1.4rem; }
+  .contact-sheet-night-notes-scatter { height: 202rem; max-width: 46rem; }
+  .contact-sheet-night-note:nth-child(n) { width: 48%; }
+  .contact-sheet-night-note:nth-child(n) p { font-size: clamp(1.1rem, 2.6vw, 1.3rem); }
+  .contact-sheet-night-note:nth-child(1) { left: 1%; top: 0; }
+  .contact-sheet-night-note:nth-child(2) { left: 45%; top: 2%; }
+  .contact-sheet-night-note:nth-child(3) { left: 9%; top: 11%; }
+  .contact-sheet-night-note:nth-child(4) { left: 50%; top: 13%; }
+  .contact-sheet-night-note:nth-child(5) { left: 0; top: 22%; }
+  .contact-sheet-night-note:nth-child(6) { left: 44%; top: 24%; }
+  .contact-sheet-night-note:nth-child(7) { left: 10%; top: 33%; width: 52%; }
+  .contact-sheet-night-note:nth-child(8) { left: 49%; top: 35%; }
+  .contact-sheet-night-note:nth-child(9) { left: 2%; top: 44%; }
+  .contact-sheet-night-note:nth-child(10) { left: 43%; top: 46%; }
+  .contact-sheet-night-note:nth-child(11) { left: 12%; top: 55%; }
+  .contact-sheet-night-note:nth-child(12) { left: 47%; top: 57%; width: 52%; }
+  .contact-sheet-night-note:nth-child(13) { left: 1%; top: 66%; width: 52%; }
+  .contact-sheet-night-note:nth-child(14) { left: 45%; top: 68%; }
+  .contact-sheet-night-note:nth-child(15) { left: 9%; top: 77%; }
+  .contact-sheet-night-note:nth-child(16) { left: 49%; top: 79%; }
+  .contact-sheet-night-note:nth-child(17) { left: 1%; top: 87%; }
+  .contact-sheet-night-note:nth-child(18) { left: 46%; top: 89%; }
+}
+@media (max-width: 600px) {
+  .contact-sheet-hero-copy { width: min(100%, 30rem); }
+  .contact-sheet-frame:nth-child(n) .contact-sheet-photo { min-height: 250px; }
+  .contact-sheet-frame:nth-child(n) .contact-sheet-caption { padding: 1.5rem; }
+  .contact-sheet-night-notes-scatter { height: 325rem; max-width: 23rem; }
+  .contact-sheet-night-note:nth-child(n) { width: min(80%, 21rem); padding: 2.4rem; }
+  .contact-sheet-night-note--envelope:nth-child(n) { padding: 4.1rem 2rem 1.2rem; }
+  .contact-sheet-night-note:nth-child(1) { left: 0; top: 0; }
+  .contact-sheet-night-note:nth-child(2) { left: 18%; top: 5.4%; }
+  .contact-sheet-night-note:nth-child(3) { left: 7%; top: 10.8%; }
+  .contact-sheet-night-note:nth-child(4) { left: 15%; top: 16.2%; }
+  .contact-sheet-night-note:nth-child(5) { left: 3%; top: 21.6%; }
+  .contact-sheet-night-note:nth-child(6) { left: 17%; top: 27%; }
+  .contact-sheet-night-note:nth-child(7) { left: 9%; top: 32.4%; }
+  .contact-sheet-night-note:nth-child(8) { left: 14%; top: 37.8%; }
+  .contact-sheet-night-note:nth-child(9) { left: 1%; top: 43.2%; }
+  .contact-sheet-night-note:nth-child(10) { left: 19%; top: 48.6%; }
+  .contact-sheet-night-note:nth-child(11) { left: 6%; top: 54%; }
+  .contact-sheet-night-note:nth-child(12) { left: 12%; top: 59.4%; }
+  .contact-sheet-night-note:nth-child(13) { left: 4%; top: 64.8%; }
+  .contact-sheet-night-note:nth-child(14) { left: 17%; top: 70.2%; }
+  .contact-sheet-night-note:nth-child(15) { left: 8%; top: 75.6%; }
+  .contact-sheet-night-note:nth-child(16) { left: 15%; top: 81%; }
+  .contact-sheet-night-note:nth-child(17) { left: 2%; top: 86.4%; }
+  .contact-sheet-night-note:nth-child(18) { left: 18%; top: 91.8%; }
+  .contact-sheet-night-note p, .contact-sheet-night-note:nth-child(n) p { font-size: clamp(1.2rem, 5.2vw, 1.55rem); }
+  .contact-sheet-reel { transform: none; }
+  .contact-sheet-exit { display: block; padding: 2rem 1.4rem; }
+  .contact-sheet-exit a { display: block; margin-top: 1rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .contact-sheet-photo img { transition: transform .7s ease; }
+  .contact-sheet-frame:hover .contact-sheet-photo img { transform: scale(1.035); }
+}

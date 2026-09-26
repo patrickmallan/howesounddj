@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
@@ -7,6 +8,7 @@ import { SectionReveal } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { JsonLd } from "@/components/json-ld";
 import { storyArticleBreadcrumbJsonLd, storyArticleJsonLd } from "@/lib/json-ld";
+import "../../guides/article-liner-notes.css";
 
 const STORY_SLUG = "sea-to-sky-wedding-dance-floor-energy";
 const STORY_TITLE = "What a Packed Sea-to-Sky Wedding Dance Floor Feels Like";
@@ -19,6 +21,7 @@ export const metadata: Metadata = {
   title: STORY_TITLE,
   description: metaDesc,
   openGraph: {
+    images: ["/og-share.jpg"],
     title: `${STORY_TITLE} | Howe Sound DJ`,
     description: metaDesc,
     url: `/stories/${STORY_SLUG}`,
@@ -46,7 +49,7 @@ function Block({ eyebrow, title, children }: { eyebrow: string; title: string; c
 
 export default function StorySeaToSkyDanceFloorEnergyPage() {
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
+    <main className="hsdj-interior hsdj-editorial-page hsdj-story-detail-page hsdj-story-floor min-h-screen bg-neutral-950 text-white">
       <JsonLd data={storyArticleBreadcrumbJsonLd(STORY_TITLE, STORY_SLUG)} />
       <JsonLd
         data={storyArticleJsonLd({
@@ -57,7 +60,7 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
         })}
       />
 
-      <article>
+      <article className="hsdj-interior-flow">
         <header className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.12),transparent_55%)]" />
           <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
@@ -84,17 +87,11 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
               </span>
               Howe Sound DJ
             </p>
-            <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl">{STORY_TITLE}</h1>
+            <MeterMatrixHeading text={STORY_TITLE} className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl" />
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/70">
-              This is not a recap of one specific wedding. It is an observational editorial about how Sea-to-Sky dance floors get packed when the arc is right: guest trust, sound that supports the setting,
-              and a room that feels alive because it was read honestly.
+              This is not a recap of one specific wedding. It is an observational editorial about how Patrick opens a Sea-to-Sky dance floor: he invites the whole room into the final formal dance,
+              so the party begins together rather than waiting for one brave guest to step out first.
             </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
-            </div>
           </div>
         </header>
 
@@ -121,8 +118,8 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
 
         <Block eyebrow="Sensation" title="What guests actually experience">
           <p>
-            A strong Sea-to-Sky dance floor rarely feels like a switch flipped at 9 p.m. It feels like the night has been leading there: vows heard clearly, cocktail conversation that breathes, dinner
-            that does not drag, speeches that land, then music that invites people in instead of shouting at them.
+            A strong Sea-to-Sky dance floor does not begin with Patrick waiting for someone to be brave. During the last formal dance, often the mother-son dance, he invites every guest to join the couple.
+            When the first party track lands, the floor is already full.
           </p>
           <p>
             High energy in this context is social, not chaotic. It is the moment guests stop scanning the exits and start leaning in because the soundtrack finally matches who they are together.
@@ -136,7 +133,7 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
               <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 reviews page
               </Link>{" "}
-              describes packed floors, calm communication, and seamless ceremony-through-reception flow. Those lines are real voices, not marketing adjectives.
+              describes packed floors, clear communication, and seamless ceremony-through-reception flow. Those lines are real voices, not marketing adjectives.
             </p>
             <p>
               Site photography shows celebration energy in a general, respectful way. As more licensed, couple-approved imagery becomes available, this stories hub will host specific moments without
@@ -154,7 +151,7 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
             >
               Roomflow Method
             </Link>{" "}
-            is how Howe Sound DJ thinks about earning a floor: emotional pacing, recognition before intensity, transitions as bridges, and momentum that stays human. That philosophy is what this
+            is how Howe Sound DJ thinks about keeping that full floor moving: emotional pacing, recognition before intensity, transitions as bridges, and momentum that stays human. That philosophy is what this
             editorial is trying to describe in feeling, not in gear lists.
           </p>
         </Block>
@@ -169,7 +166,7 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
           </Block>
         </SectionReveal>
 
-        <Block eyebrow="Services" title="Where services fit">
+        <Block eyebrow="Services" title="How the services connect">
           <p>
             If you want the full scope of ceremony-through-reception support, start with{" "}
             <Link href="/weddings" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
@@ -218,13 +215,10 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
                 <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Next step</div>
                 <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">See if your day fits this shape</h2>
                 <p className="mt-4 text-lg leading-8 text-white/70">
-                  When you want this kind of atmosphere for your own wedding, the contact flow is the same across the site: consult, availability check, or both.
+                  When you want this kind of atmosphere for your own wedding, check your date first. If it is available, book a consult and see whether working together feels right.
                 </p>
                 <div className="mt-8 max-w-xl space-y-4">
                   <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-                  <p className="text-sm leading-relaxed text-white/60">
-                    45 minutes &bull; No pressure &bull; Just clarity
-                  </p>
                   <p className="text-sm text-white/45">
                     <Link href="/contact" className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                       Contact

@@ -41,7 +41,7 @@ export function BrandAnchorStatement() {
         </h2>
         <HeroSoundIdentity variant="anchor" />
         <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/65 md:mt-10 md:text-lg">
-          Versatility is not a backup plan here; it is the point. Want the reception to feel like a nightclub? Do it. Want a left turn into drum &amp; bass or a full tech-house run after dinner? Patrick can take it there. The set is mixed live, shaped around your taste, and adjusted to the room. It is never pulled from a wedding playlist.
+          Versatility is not a backup plan here; it is the point. Want the reception to feel like a nightclub? Do it. Want a left turn into drum &amp; bass or a full tech-house run after dinner? Patrick can take it there when the room is ready. Your favourites, guest requests, and what is actually working all count. It is never pulled from a wedding playlist.
         </p>
         <div className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-2.5" aria-label="Example music genres">
           {GENRE_EXAMPLES.map((genre) => (

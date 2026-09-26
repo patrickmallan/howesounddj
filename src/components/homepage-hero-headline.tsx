@@ -3,9 +3,12 @@
 import { useEffect, useState } from "react";
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
 import { getHomepageVariant, type HeadlineVariant } from "@/lib/experiment";
+import { FixtureLensHeading } from "@/components/fixture-lens-heading";
+import styles from "./homepage-hero-headline.module.css";
 
-const TAGLINE =
-  "Squamish-based. Venue-ready. Built around your taste and mixed live for the people you love.";
+const TAGLINE = "The classics, the curveballs, and the songs your people lose it to. All in one very good night.";
+const APPROVED_HEADLINE = "Your wedding. A variety of the best.";
+const LED_LINES = [1, 2, 3, 4] as const;
 
 type Headlines = Readonly<Record<HeadlineVariant, string>>;
 
@@ -39,12 +42,44 @@ export function HomepageHeroHeadline({ headlines }: Props) {
 
   return (
     <div>
-      <h1
-        className="max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl"
-        suppressHydrationWarning
-      >
-        {headlines[variant]}
-      </h1>
+      {headlines[variant] === APPROVED_HEADLINE ? (
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hsdj-redesign/hero/home-headline-complete-mobile-optimized.webp"
+          media="(max-width: 700px)"
+        />
+      ) : null}
+      {headlines[variant] === APPROVED_HEADLINE ? (
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hsdj-redesign/hero/home-headline-complete-optimized.webp"
+          media="(min-width: 701px)"
+        />
+      ) : null}
+      {headlines[variant] === APPROVED_HEADLINE ? (
+        <h1 className={styles.heading}>
+          <span className={styles.semanticText}>{headlines[variant]}</span>
+          {LED_LINES.map((line, index) => (
+            <span
+              aria-hidden="true"
+              className={styles.line}
+              key={line}
+              style={{
+                animationDelay: `${index * 105}ms`,
+                clipPath: `inset(${index * 25}% 0 ${75 - index * 25}% 0)`,
+              }}
+            />
+          ))}
+        </h1>
+      ) : (
+        <FixtureLensHeading
+          text={headlines[variant]}
+          lines={["Your", "wedding.", "A variety", "of the best."]}
+          className="max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl"
+        />
+      )}
       <p
         className="mt-4 max-w-xl text-lg font-medium text-amber-200/90"
         suppressHydrationWarning

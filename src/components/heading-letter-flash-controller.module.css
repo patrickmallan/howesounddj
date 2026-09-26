@@ -1,0 +1,13 @@
+.word { display: inline-block; white-space: nowrap; }
+
+.character {
+  display: inline-block;
+  opacity: 1;
+  transition: opacity 70ms linear;
+}
+
+.off { opacity: .14; }
+
+@media (prefers-reduced-motion: reduce) {
+  .character { transition: none; }
+}

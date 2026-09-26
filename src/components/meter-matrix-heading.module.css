@@ -1,0 +1,97 @@
+.matrix {
+  --meter-cell: .105em;
+  --meter-gap: .019em;
+  --meter-glyph-gap: .075em;
+  --meter-word-gap: .31em;
+  display: grid;
+  width: 100%;
+  gap: .11em;
+}
+
+.line {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: .11em var(--meter-word-gap);
+}
+
+.word {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: var(--meter-glyph-gap);
+}
+
+.glyph {
+  display: grid;
+  width: calc(var(--meter-columns) * var(--meter-cell) + (var(--meter-columns) - 1) * var(--meter-gap));
+  height: calc(7 * var(--meter-cell) + 6 * var(--meter-gap));
+  flex: 0 0 auto;
+  grid-template-columns: repeat(var(--meter-columns), var(--meter-cell));
+  grid-template-rows: repeat(7, var(--meter-cell));
+  gap: var(--meter-gap);
+}
+
+.glyph > span {
+  display: block;
+  box-sizing: border-box;
+  width: var(--meter-cell);
+  height: var(--meter-cell);
+  border-radius: .012em;
+}
+
+.unlit {
+  background: #0b1310;
+  border: 1px solid rgb(115 142 130 / 10%);
+}
+
+.lit {
+  background: linear-gradient(145deg, #fff 0 55%, #aeb8b4 100%);
+  border: 1px solid rgb(255 255 255 / 76%);
+  /* The live matrix remains static until its cell lighting is drawn by one
+     shared renderer. Hundreds of independent CSS animations caused visible
+     frame contention in the already animated homepage hero. */
+  animation: none;
+}
+
+@keyframes hsdj-par-bank {
+  0%, 35% {
+    background: radial-gradient(circle at 32% 25%, #fff 0 10%, #fffdf7 12% 34%, #d7d9d4 68%, #737a77 100%);
+    border-color: rgb(255 255 255 / 76%);
+    box-shadow: 0 0 .026em rgb(255 255 255 / 38%), inset .012em .012em .018em rgb(255 255 255 / 88%), inset -.018em -.018em .03em rgb(33 42 39 / 46%);
+  }
+  36%, 50% {
+    background: radial-gradient(circle at 32% 25%, #eaffff 0 10%, #58efff 12% 35%, #13bccc 69%, #07545f 100%);
+    border-color: rgb(137 246 255 / 88%);
+    box-shadow: 0 0 .075em rgb(34 223 244 / 70%), inset .012em .012em .018em rgb(231 255 255 / 84%), inset -.018em -.018em .03em rgb(0 59 68 / 55%);
+  }
+  51%, 56% {
+    background: radial-gradient(circle at 34% 28%, rgb(84 227 240 / 18%) 0 8%, #070d0c 11% 100%);
+    border-color: rgb(103 232 244 / 56%);
+    box-shadow: 0 0 .035em rgb(34 223 244 / 38%), inset 0 0 .02em rgb(93 239 255 / 16%);
+  }
+  57%, 70% {
+    background: radial-gradient(circle at 32% 25%, #fff 0 9%, #bd9aff 12% 34%, #8050df 68%, #38206c 100%);
+    border-color: rgb(203 178 255 / 86%);
+    box-shadow: 0 0 .072em rgb(143 85 255 / 64%), inset .012em .012em .018em rgb(246 239 255 / 80%), inset -.018em -.018em .03em rgb(48 24 99 / 58%);
+  }
+  71%, 84% {
+    background: radial-gradient(circle at 32% 25%, #fff 0 9%, #ff9fd9 12% 34%, #e8329d 68%, #721547 100%);
+    border-color: rgb(255 175 221 / 88%);
+    box-shadow: 0 0 .072em rgb(255 71 183 / 62%), inset .012em .012em .018em rgb(255 239 248 / 82%), inset -.018em -.018em .03em rgb(105 13 64 / 58%);
+  }
+  85%, 90% {
+    background: radial-gradient(circle at 34% 28%, rgb(255 118 199 / 16%) 0 8%, #070d0c 11% 100%);
+    border-color: rgb(255 128 202 / 50%);
+    box-shadow: 0 0 .032em rgb(255 71 183 / 32%), inset 0 0 .02em rgb(255 143 211 / 14%);
+  }
+  91%, 100% {
+    background: radial-gradient(circle at 32% 25%, #fff 0 10%, #fffdf7 12% 34%, #d7d9d4 68%, #737a77 100%);
+    border-color: rgb(255 255 255 / 76%);
+    box-shadow: 0 0 .026em rgb(255 255 255 / 38%), inset .012em .012em .018em rgb(255 255 255 / 88%), inset -.018em -.018em .03em rgb(33 42 39 / 46%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lit { animation: none; }
+}

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <filter id="paper" x="-4%" y="-4%" width="108%" height="108%">
+      <feTurbulence type="fractalNoise" baseFrequency=".012 .085" numOctaves="3" seed="37" result="grain"/>
+      <feColorMatrix in="grain" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 .15 0" result="texture"/>
+      <feComposite in="texture" in2="SourceAlpha" operator="in" result="clippedTexture"/>
+      <feBlend in="SourceGraphic" in2="clippedTexture" mode="multiply"/>
+    </filter>
+    <pattern id="dots" width="13" height="13" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="2" fill="#101218" opacity=".24"/></pattern>
+    <g id="tree" fill="#0d1219"><path d="M0 42 10 26H4L14 13H9L20 0l11 13h-5l10 13h-6l10 16H24v18h-8V42Z"/></g>
+  </defs>
+
+  <g filter="url(#paper)">
+    <circle cx="1280" cy="380" r="218" fill="#ff615f"/>
+    <circle cx="1280" cy="380" r="218" fill="url(#dots)"/>
+
+    <!-- High left wall -->
+    <path d="M0 900V630L82 548 158 452 266 270 375 420 480 548 585 672V900Z" fill="#20364d"/>
+    <path d="M0 630 82 548 54 672Z" fill="#0754ff"/>
+    <path d="M82 548 158 452 128 630Z" fill="#f3ecdf"/>
+    <path d="M158 452 266 270 230 635Z" fill="#80909d"/>
+    <path d="M266 270 375 420 326 648Z" fill="#f3ecdf"/>
+    <path d="M375 420 480 548 417 688Z" fill="#0754ff"/>
+
+    <!-- The central summit is the range's tallest and broadest peak. -->
+    <path d="M250 900 420 662 585 432 800 108 1018 436 1180 662 1350 900Z" fill="#344a5e"/>
+    <path d="M420 662 585 432 520 754Z" fill="#f3ecdf"/>
+    <path d="M585 432 800 108 720 770Z" fill="#758491"/>
+    <path d="M800 108 1018 436 900 768Z" fill="#f3ecdf"/>
+    <path d="M1018 436 1180 662 1062 774Z" fill="#0754ff"/>
+
+    <!-- High right wall -->
+    <path d="M1015 900 1120 666 1215 510 1338 262 1445 420 1535 520 1600 586V900Z" fill="#ff4f55"/>
+    <path d="M1120 666 1215 510 1178 694Z" fill="#f3ecdf" opacity=".88"/>
+    <path d="M1215 510 1338 262 1288 690Z" fill="#9b2940"/>
+    <path d="M1338 262 1445 420 1392 700Z" fill="#ff7774"/>
+    <path d="M1445 420 1535 520 1484 714Z" fill="#f3ecdf" opacity=".72"/>
+    <path d="M1535 520 1600 586 1560 738Z" fill="#7c2338"/>
+
+    <path d="M0 900 0 758 150 690 296 774 451 676 604 790 748 680 892 786 1046 672 1203 786 1360 680 1492 755 1600 708 1600 900Z" fill="#162330"/>
+    <path d="M150 690 296 774 219 799Z" fill="#566b7d"/>
+    <path d="M451 676 604 790 517 812Z" fill="#0754ff"/>
+    <path d="M748 680 892 786 824 820Z" fill="#d9d6cc"/>
+    <path d="M1046 672 1203 786 1115 815Z" fill="#0754ff"/>
+
+    <path d="M0 826 178 790 362 840 548 805 734 846 925 806 1114 852 1303 803 1470 840 1600 806V900H0Z" fill="#0c1118"/>
+    <rect y="805" width="1600" height="95" fill="url(#dots)"/>
+  </g>
+
+  <g opacity=".96">
+    <use href="#tree" transform="translate(17 770) scale(.85)"/><use href="#tree" transform="translate(52 779) scale(.68)"/><use href="#tree" transform="translate(84 762) scale(.98)"/><use href="#tree" transform="translate(122 780) scale(.64)"/>
+    <use href="#tree" transform="translate(1480 768) scale(.82)"/><use href="#tree" transform="translate(1520 750) scale(1.1)"/><use href="#tree" transform="translate(1562 773) scale(.74)"/>
+  </g>
+</svg>

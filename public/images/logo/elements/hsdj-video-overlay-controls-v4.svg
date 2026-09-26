@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <filter id="rough" x="-10%" y="-15%" width="120%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency=".012 .075" numOctaves="2" seed="41" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.1" xChannelSelector="R" yChannelSelector="B"/>
+    </filter>
+    <filter id="lift" x="-20%" y="-25%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="4" flood-color="#07090d" flood-opacity=".8"/>
+    </filter>
+    <radialGradient id="knobFace" cx="34%" cy="27%" r="76%">
+      <stop offset="0" stop-color="#69717b"/>
+      <stop offset=".3" stop-color="#252a31"/>
+      <stop offset=".76" stop-color="#0b0d10"/>
+      <stop offset="1" stop-color="#020304"/>
+    </radialGradient>
+    <pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="2.5" cy="2.5" r="1.4" fill="#101216" opacity=".28"/>
+    </pattern>
+    <path id="weddingArc" d="M492 256 Q800 342 1108 256"/>
+    <g id="knob">
+      <circle r="84" fill="#0754ff" transform="translate(-9 7)"/>
+      <circle r="84" fill="#ff4f55" transform="translate(9 9)"/>
+      <path d="M0-84 22-80 42-72 59-60 73-43 80-22 84 0 80 22 73 43 59 60 42 72 22 80 0 84-22 80-42 72-59 60-73 43-80 22-84 0-80-22-73-43-59-60-42-72-22-80Z" fill="#eee8dc" stroke="#080a0d" stroke-width="14"/>
+      <circle r="67" fill="url(#knobFace)" stroke="#aeb2b6" stroke-width="5"/>
+      <circle r="55" fill="none" stroke="#050608" stroke-width="7"/>
+      <path d="M0-55V-12" stroke="#f4eee2" stroke-width="12" stroke-linecap="round"/>
+      <path d="M-42-41A59 59 0 0 1 42-41" fill="none" stroke="#fff" stroke-width="4" opacity=".38"/>
+      <circle r="9" fill="#06070a"/>
+      <g stroke="#0a0c0f" stroke-width="4">
+        <path d="M-61-62l-12-12M61-62l12-12M-84 0h-14M84 0h14M-61 62l-12 12M61 62l12 12"/>
+      </g>
+    </g>
+  </defs>
+
+  <!-- Bespoke staggered sound-system lettering: individual glyphs, not one generic typed line. -->
+  <g filter="url(#lift)" aria-label="Howe Sound">
+    <g font-family="Avenir Next Condensed, DIN Condensed, Impact, sans-serif" font-size="205" font-weight="900" stroke="#080a0d" stroke-width="17" paint-order="stroke" letter-spacing="-5">
+      <g fill="#0754ff" transform="translate(-9 -5)">
+        <text x="54" y="193" transform="rotate(-2 120 120)">H</text><text x="354" y="188" transform="rotate(1 430 120)">W</text><text x="526" y="198" transform="rotate(-1 585 120)">E</text>
+        <text x="816" y="194" transform="rotate(2 875 120)">S</text><text x="1119" y="187" transform="rotate(-1 1180 120)">U</text><text x="1275" y="198" transform="rotate(1 1340 120)">N</text><text x="1431" y="190" transform="rotate(-2 1490 120)">D</text>
+      </g>
+      <g fill="#ff4f55" transform="translate(9 9)">
+        <text x="54" y="193" transform="rotate(-2 120 120)">H</text><text x="354" y="188" transform="rotate(1 430 120)">W</text><text x="526" y="198" transform="rotate(-1 585 120)">E</text>
+        <text x="816" y="194" transform="rotate(2 875 120)">S</text><text x="1119" y="187" transform="rotate(-1 1180 120)">U</text><text x="1275" y="198" transform="rotate(1 1340 120)">N</text><text x="1431" y="190" transform="rotate(-2 1490 120)">D</text>
+      </g>
+      <g fill="#f3ecdf" filter="url(#rough)">
+        <text x="54" y="193" transform="rotate(-2 120 120)">H</text><text x="354" y="188" transform="rotate(1 430 120)">W</text><text x="526" y="198" transform="rotate(-1 585 120)">E</text>
+        <text x="816" y="194" transform="rotate(2 875 120)">S</text><text x="1119" y="187" transform="rotate(-1 1180 120)">U</text><text x="1275" y="198" transform="rotate(1 1340 120)">N</text><text x="1431" y="190" transform="rotate(-2 1490 120)">D</text>
+      </g>
+    </g>
+    <use href="#knob" transform="translate(263 119)"/>
+    <use href="#knob" transform="translate(1024 119)"/>
+    <rect x="42" y="30" width="1512" height="176" fill="url(#dots)" opacity=".5"/>
+    <g fill="#ff4f55" opacity=".9">
+      <path d="M83 115h74v9H83zM392 71h86v9h-86zM852 137h66v9h-66zM1320 68h78v9h-78z"/>
+    </g>
+    <g fill="#0754ff" opacity=".95">
+      <path d="M83 144h48v7H83zM548 82h66v8h-66zM1146 139h70v8h-70zM1461 111h62v8h-62z"/>
+    </g>
+  </g>
+
+  <!-- No badge or card: the service descriptor becomes a freestanding audio imprint. -->
+  <g filter="url(#lift)" font-family="Avenir Next Condensed, DIN Condensed, Impact, sans-serif" font-size="66" font-weight="900" letter-spacing="12" text-anchor="middle">
+    <text x="792" y="292" fill="#0754ff" stroke="#080a0d" stroke-width="11" paint-order="stroke" transform="translate(-7 7)">WEDDING DJ</text>
+    <text x="808" y="292" fill="#ff4f55" stroke="#080a0d" stroke-width="11" paint-order="stroke" transform="translate(7 6)">WEDDING DJ</text>
+    <text x="800" y="286" fill="#f3ecdf" stroke="#080a0d" stroke-width="11" paint-order="stroke">WEDDING DJ</text>
+    <path d="M500 281Q800 367 1100 281" fill="none" stroke="#ff4f55" stroke-width="8"/>
+    <path d="M514 295Q800 371 1086 295" fill="none" stroke="#0754ff" stroke-width="5" stroke-dasharray="4 15" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="1600" viewBox="0 0 1600 1600" role="img" aria-labelledby="title desc">
+  <title id="title">Howe Sound Wedding DJ Sasquatch logo</title>
+  <desc id="desc">A Sasquatch DJ with one arm raised above a Howe Sound wordmark made with EQ knob letters and a crossfader underline.</desc>
+  <defs>
+    <filter id="bluePrint" x="-20%" y="-20%" width="140%" height="140%">
+      <feFlood flood-color="#0754ff" result="colour"/>
+      <feComposite in="colour" in2="SourceAlpha" operator="in"/>
+    </filter>
+    <filter id="redPrint" x="-20%" y="-20%" width="140%" height="140%">
+      <feFlood flood-color="#ff2838" result="colour"/>
+      <feComposite in="colour" in2="SourceAlpha" operator="in"/>
+    </filter>
+    <filter id="characterKeyline" x="-20%" y="-20%" width="140%" height="140%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="8" result="expanded"/>
+      <feFlood flood-color="#f4eddf" result="keyColour"/>
+      <feComposite in="keyColour" in2="expanded" operator="in" result="keyline"/>
+      <feMerge><feMergeNode in="keyline"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <g id="eqKnob">
+      <path d="M0,-78 L13,-74 L27,-72 L39,-64 L53,-57 L60,-43 L71,-31 L72,-17 L78,0 L72,17 L71,31 L60,43 L53,57 L39,64 L27,72 L13,74 L0,78 L-13,74 L-27,72 L-39,64 L-53,57 L-60,43 L-71,31 L-72,17 L-78,0 L-72,-17 L-71,-31 L-60,-43 L-53,-57 L-39,-64 L-27,-72 L-13,-74 Z" fill="#f4eddf" stroke="#101011" stroke-width="15"/>
+      <circle r="62" fill="#111214" stroke="#66686c" stroke-width="5"/>
+      <path d="M0,-52 V-11" stroke="#f4eddf" stroke-width="11" stroke-linecap="round"/>
+      <path d="M-40,-45 A61,61 0 0 1 40,-45" fill="none" stroke="#a8aaad" stroke-width="5" opacity=".65"/>
+      <circle r="9" fill="#050506"/>
+    </g>
+  </defs>
+
+  <!-- Print-registration echoes keep the mascot legible against moving footage. -->
+  <image xlink:href="../characters/hsdj-sasquatch-patrick-pose-v1-transparent.png" x="386" y="-2" width="830" height="1440" preserveAspectRatio="xMidYMin meet" filter="url(#bluePrint)" transform="translate(-15 3)" opacity=".92"/>
+  <image xlink:href="../characters/hsdj-sasquatch-patrick-pose-v1-transparent.png" x="386" y="-2" width="830" height="1440" preserveAspectRatio="xMidYMin meet" filter="url(#redPrint)" transform="translate(15 7)" opacity=".92"/>
+  <image xlink:href="../characters/hsdj-sasquatch-patrick-pose-v1-transparent.png" x="386" y="-2" width="830" height="1440" preserveAspectRatio="xMidYMin meet" filter="url(#characterKeyline)"/>
+
+  <!-- Wordmark: both O controls are identical and remain at twelve o'clock. -->
+  <g aria-label="Howe Sound">
+    <g transform="translate(11 12)" fill="#ff2838" stroke="#101011" stroke-width="20" paint-order="stroke">
+      <text x="40" y="1180" font-family="Arial Black, Impact, sans-serif" font-size="190" font-weight="900" letter-spacing="-9">H</text>
+      <text x="365" y="1180" font-family="Arial Black, Impact, sans-serif" font-size="190" font-weight="900" letter-spacing="-9">WE</text>
+      <text x="760" y="1180" font-family="Arial Black, Impact, sans-serif" font-size="190" font-weight="900" letter-spacing="-9">S</text>
+      <text x="1085" y="1180" font-family="Arial Black, Impact, sans-serif" font-size="190" font-weight="900" letter-spacing="-9">UND</text>
+    </g>
+    <g transform="translate(-9 -5)" fill="#0754ff" stroke="#101011" stroke-width="20" paint-order="stroke">
+      <text x="40" y="1180" font-family="Arial Black, Impact, sans-serif" font-size="190" font-weight="900" letter-spacing="-9">H</text>
+      <text x="365" y="1180" font-family="Arial Black, Impact, sans-serif" font-size="190" font-weight="900" letter-spacing="-9">WE</text>
+      <text x="760" y="1180" font-family="Arial Black, Impact, sans-serif" font-size="190" font-weight="900" letter-spacing="-9">S</text>
+      <text x="1085" y="1180" font-family="Arial Black, Impact, sans-serif" font-size="190" font-weight="900" letter-spacing="-9">UND</text>
+    </g>
+    <g fill="#f4eddf" stroke="#101011" stroke-width="20" paint-order="stroke">
+      <text x="40" y="1180" font-family="Arial Black, Impact, sans-serif" font-size="190" font-weight="900" letter-spacing="-9">H</text>
+      <text x="365" y="1180" font-family="Arial Black, Impact, sans-serif" font-size="190" font-weight="900" letter-spacing="-9">WE</text>
+      <text x="760" y="1180" font-family="Arial Black, Impact, sans-serif" font-size="190" font-weight="900" letter-spacing="-9">S</text>
+      <text x="1085" y="1180" font-family="Arial Black, Impact, sans-serif" font-size="190" font-weight="900" letter-spacing="-9">UND</text>
+    </g>
+    <use xlink:href="#eqKnob" transform="translate(270 1110)"/>
+    <use xlink:href="#eqKnob" transform="translate(990 1110)"/>
+  </g>
+
+  <!-- Crossfader: horizontal travel, vertical tactile cap aligned to the word gap. -->
+  <g transform="translate(102 1245)">
+    <path d="M18,12 H1392 L1374,120 H0 Z" fill="#0754ff"/>
+    <path d="M0,0 H1392 L1378,107 H14 Z" fill="#ff2838" transform="translate(10 8)"/>
+    <path d="M8,0 H1388 L1372,105 H0 Z" fill="#101011" stroke="#f4eddf" stroke-width="8"/>
+    <g stroke="#85878a" stroke-width="4">
+      <path d="M72,18v24 M146,18v24 M220,18v24 M294,18v24 M368,18v24 M442,18v24 M516,18v24 M590,18v24 M664,18v24 M738,18v24 M812,18v24 M886,18v24 M960,18v24 M1034,18v24 M1108,18v24 M1182,18v24 M1256,18v24 M1330,18v24"/>
+    </g>
+    <rect x="68" y="61" width="1256" height="10" rx="5" fill="#050506" stroke="#7b7d80" stroke-width="3"/>
+    <text x="31" y="88" fill="#f4eddf" font-family="Arial, sans-serif" font-size="27" font-weight="900">A</text>
+    <text x="1338" y="88" fill="#f4eddf" font-family="Arial, sans-serif" font-size="27" font-weight="900">B</text>
+    <g transform="translate(569 6)">
+      <path d="M0,12 L15,0 H70 L85,12 V92 L70,104 H15 L0,92 Z" fill="#e4e5e7" stroke="#050506" stroke-width="8"/>
+      <path d="M22,13v78 M36,8v88 M50,8v88 M64,13v78" stroke="#67696c" stroke-width="7"/>
+      <path d="M13,18 H72" stroke="#fff" stroke-width="4" opacity=".75"/>
+    </g>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="814" y="1491" fill="#101011" stroke="#101011" stroke-width="26" paint-order="stroke" font-family="Arial Black, Impact, sans-serif" font-size="118" font-weight="900" letter-spacing="18">WEDDING DJ</text>
+    <text x="800" y="1477" fill="#ffe000" font-family="Arial Black, Impact, sans-serif" font-size="118" font-weight="900" letter-spacing="18">WEDDING DJ</text>
+    <path d="M475,1530 H1125" stroke="#f4eddf" stroke-width="6"/>
+    <text x="800" y="1580" fill="#f4eddf" stroke="#101011" stroke-width="8" paint-order="stroke" font-family="Arial, sans-serif" font-size="27" font-weight="900" letter-spacing="10">SQUAMISH, BC</text>
+  </g>
+</svg>

@@ -6,13 +6,11 @@ import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
 import { runAvailabilityCheck } from "@/lib/availability-check-client";
 import {
   AvailabilityCheckingState,
-  availabilityCheckingButtonLabel,
 } from "@/components/availability-checking-state";
 import { PostAvailabilityOutcome } from "@/components/post-availability-outcome";
 import { PostAvailabilitySuccess } from "@/components/post-availability-success";
 import { clearPostAvailabilityContext, getPostAvailabilityContext } from "@/lib/post-availability-context";
 import { recordAvailabilityJourneyEvent } from "@/lib/availability-journey-client";
-import { PUBLIC_SOUND_CHECK_CTA_LABEL } from "@/lib/consult-calendly";
 import { headlineVariantPayload } from "@/lib/experiment";
 import {
   composedWeddingDate,
@@ -20,6 +18,7 @@ import {
   isForwardInput,
 } from "@/lib/wedding-date-input";
 import type { ContactApiResponse } from "@/types/contact-api";
+import styles from "./contact-availability-form.module.css";
 
 function clientPagePath(): string | undefined {
   if (typeof window === "undefined") return undefined;
@@ -244,9 +243,6 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
     }
   }
 
-  const dateInputClass =
-    "rounded-xl border border-white/15 bg-neutral-950 px-2.5 py-3 text-center text-sm text-white outline-none focus:border-amber-300/50 tabular-nums";
-
   function clearDateFields() {
     setYearStr("");
     setMonthStr("");
@@ -295,34 +291,16 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
   }
 
   return (
-    <div className="space-y-8">
-      <p className="text-sm leading-relaxed text-white/55">
-        <span className="text-white/45">Prefer to talk first?</span>{" "}
-        <a
-          href="#book-consult"
-          className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
-        >
-          {PUBLIC_SOUND_CHECK_CTA_LABEL}
-        </a>
-        <span className="text-white/45">, or check your date first below.</span>{" "}
-        <span className="text-white/45">
-          Prefer not to chat yet?{" "}
-          <a
-            href="#send-message"
-            className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
-          >
-            Send a Message
-          </a>
-          .
-        </span>
-      </p>
+    <div className={styles.flow} data-contact-state={availability.kind}>
       <Script
         src="https://challenges.cloudflare.com/turnstile/v0/api.js"
         strategy="lazyOnload"
         onLoad={() => setTurnstileReady(true)}
       />
 
-      {availability.kind === "checking" ? <AvailabilityCheckingState /> : null}
+      {availability.kind === "checking" ? (
+        <AvailabilityCheckingState className={styles.checking} />
+      ) : null}
 
       {availability.kind === "available" ? (
         <PostAvailabilitySuccess
@@ -332,15 +310,15 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
           canonicalStatusMessage={availability.message}
           onInquiryFallback={() => setShowInquiry(true)}
           onEditDate={handleEditDate}
+          className={styles.success}
         />
-      ) : (
-        <div className="rounded-[1.5rem] border border-white/10 bg-neutral-950/60 p-6 lg:p-8">
-          <label className="block text-sm font-medium text-white/80" htmlFor="wedding-date-year">
-            Wedding date
-          </label>
-          <p className="mt-1 text-sm text-white/45">Pick your day. We will check it against Patrick&apos;s calendar.</p>
-          <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end">
-            <div className="flex max-w-md flex-wrap items-center gap-2 sm:gap-3">
+      ) : null}
+
+      {availability.kind === "idle" ? (
+        <div className={styles.datePanel}>
+          <p className={styles.dateLabel}>Your wedding date</p>
+          <div className={styles.controls}>
+            <div className={styles.dateInputs} aria-label="Wedding date">
               <input
                 ref={yearRef}
                 id="wedding-date-year"
@@ -353,11 +331,8 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
                 value={yearStr}
                 onChange={handleYearChange}
                 maxLength={4}
-                className={`${dateInputClass} w-[4.75rem] sm:w-[5.25rem]`}
+                className={`${styles.dateInput} ${styles.year}`}
               />
-              <span className="text-white/35 select-none" aria-hidden>
-                /
-              </span>
               <input
                 ref={monthRef}
                 id="wedding-date-month"
@@ -370,11 +345,8 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
                 value={monthStr}
                 onChange={handleMonthChange}
                 maxLength={2}
-                className={`${dateInputClass} min-w-[3.5rem] w-[3.5rem]`}
+                className={`${styles.dateInput} ${styles.month}`}
               />
-              <span className="text-white/35 select-none" aria-hidden>
-                /
-              </span>
               <input
                 ref={dayRef}
                 id="wedding-date-day"
@@ -387,21 +359,24 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
                 value={dayStr}
                 onChange={handleDayChange}
                 maxLength={2}
-                className={`${dateInputClass} min-w-[3.5rem] w-[3.5rem]`}
+                className={`${styles.dateInput} ${styles.day}`}
               />
             </div>
             <button
               type="button"
               onClick={checkAvailability}
-              disabled={availability.kind === "checking"}
-              className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
+              className={styles.checkButton}
             >
-              {availability.kind === "checking" ? availabilityCheckingButtonLabel() : "Check Availability"}
+              Check your date
             </button>
           </div>
-          {dateError ? <p className="mt-3 text-sm text-rose-300/90">{dateError}</p> : null}
+          {dateError ? <p className={styles.error}>{dateError}</p> : null}
+          <p className={styles.noDate}>
+            No date yet?{" "}
+            <a href="#send-message">Send me a message ↗</a>
+          </p>
         </div>
-      )}
+      ) : null}
 
       {availability.kind === "manual" ? (
         <PostAvailabilityOutcome
@@ -413,6 +388,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
             clearPostAvailabilityContext();
             clearDateFields();
           }}
+          className={styles.outcome}
         />
       ) : null}
 
@@ -426,6 +402,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
             clearPostAvailabilityContext();
             clearDateFields();
           }}
+          className={styles.outcome}
         />
       ) : null}
 
@@ -433,7 +410,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         <form
           onSubmit={submitInquiry}
           onFocusCapture={handleInquiryFormFocusCapture}
-          className="relative space-y-5 rounded-[1.5rem] border border-white/10 bg-neutral-950/40 p-6 lg:p-8"
+          className={styles.inquiry}
           noValidate
         >
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Your details</div>

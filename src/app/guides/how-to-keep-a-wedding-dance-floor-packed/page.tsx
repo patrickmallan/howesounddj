@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import "../article-liner-notes.css";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
@@ -19,6 +21,7 @@ export const metadata: Metadata = {
   title: ARTICLE_TITLE,
   description: metaDesc,
   openGraph: {
+    images: ["/og-share.jpg"],
     title: `${ARTICLE_TITLE} | Howe Sound DJ`,
     description: metaDesc,
     url: `/guides/${ARTICLE_SLUG}`,
@@ -54,7 +57,7 @@ function ProseBlock({
 
 export default function GuideDanceFloorPackedPage() {
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
+    <main className="hsdj-interior hsdj-editorial-page hsdj-guide-dance min-h-screen bg-neutral-950 text-white">
       <JsonLd data={guideArticleBreadcrumbJsonLd(ARTICLE_TITLE, ARTICLE_SLUG)} />
       <JsonLd
         data={guideArticleJsonLd({
@@ -65,7 +68,7 @@ export default function GuideDanceFloorPackedPage() {
         })}
       />
 
-      <article>
+      <article className="hsdj-interior-flow">
         <header className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.12),transparent_55%)]" />
           <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
@@ -91,17 +94,11 @@ export default function GuideDanceFloorPackedPage() {
               </span>
               Howe Sound DJ
             </p>
-            <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl">{ARTICLE_TITLE}</h1>
+            <MeterMatrixHeading text={ARTICLE_TITLE} className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl" />
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/70">
               A packed dance floor is not luck and it is not only volume. In Sea-to-Sky weddings, the setting already does emotional work: mountains, forest, farm fields, or a lodge at elevation. Your
               reception music has to earn the room in that context, with pacing that respects the day you actually planned.
             </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
-            </div>
           </div>
         </header>
 
@@ -216,7 +213,7 @@ export default function GuideDanceFloorPackedPage() {
               <Link href="/packages" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 wedding DJ packages
               </Link>{" "}
-              spell out how planning and day-of support fit together.
+              spell out how planning connects to the day-of support.
             </p>
           </ProseBlock>
         </SectionReveal>
@@ -252,7 +249,7 @@ export default function GuideDanceFloorPackedPage() {
             <li>How do you protect the couple&apos;s taste without losing the crowd?</li>
           </ul>
           <p className="mt-6">
-            If the answers feel template-driven, keep looking. If they feel like calm expertise grounded in real weddings, you are closer to the right fit.{" "}
+            If the answers feel template-driven, keep looking. If they sound like practical expertise grounded in real weddings, you have a clearer picture of how that DJ works.{" "}
             <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Wedding DJ reviews
             </Link>{" "}
@@ -268,15 +265,12 @@ export default function GuideDanceFloorPackedPage() {
             <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
               <div className="mx-auto w-full max-w-3xl">
                 <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Your wedding</div>
-                <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Book a consult or check availability</h2>
+                <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Check your date. If it is open, book a consult.</h2>
                 <p className="mt-4 text-lg leading-8 text-white/70">
-                  If this framework matches how you want your Sea-to-Sky wedding to feel, the next step is simple: talk through your date, your venue, and your crowd, then build the arc together.
+                  The date check answers immediately. If Patrick is available, use the consult to talk through your wedding, your crowd, and what working together would look like.
                 </p>
                 <div className="mt-8 max-w-xl space-y-4">
                   <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-                  <p className="text-sm leading-relaxed text-white/60">
-                    45 minutes &bull; No pressure &bull; Just clarity
-                  </p>
                   <p className="text-sm text-white/45">
                     Prefer to message first? Use{" "}
                     <Link href="/contact" className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">

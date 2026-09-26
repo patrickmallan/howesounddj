@@ -29,8 +29,8 @@ function analyticsStatus(
   return "manual_confirmation_required";
 }
 
-function trackAvailabilityStarted(selectedDate: string, analyticsSurface: string): void {
-  const params = availabilityCheckEventParams(selectedDate, undefined, analyticsSurface);
+function trackAvailabilityStarted(analyticsSurface: string): void {
+  const params = availabilityCheckEventParams(undefined, analyticsSurface);
   trackEvent(ANALYTICS_EVENTS.availabilityCheckStart, params, { deferUntilGtag: true });
   trackEvent(ANALYTICS_EVENTS.availabilityCheckStarted, params, { deferUntilGtag: true });
 }
@@ -43,7 +43,6 @@ function trackAvailabilityCompleted(
 ): void {
   const legacyStatus = analyticsStatus(status);
   const legacyParams = availabilityCheckEventParams(
-    selectedDate,
     legacyStatus,
     analyticsSurface,
   );
@@ -87,7 +86,7 @@ export async function runAvailabilityCheck(
     recordAvailabilityJourneyEvent({ journeyId: previousJourney.journeyId, eventType: "CHECK_REPEATED", pagePath: typeof window !== "undefined" ? window.location.pathname : undefined, surface: analyticsSurface });
   }
   clearPostAvailabilityContext();
-  trackAvailabilityStarted(selectedDate, analyticsSurface);
+  trackAvailabilityStarted(analyticsSurface);
 
   try {
     const res = await fetch("/api/availability", {

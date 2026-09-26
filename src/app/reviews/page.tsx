@@ -1,255 +1,219 @@
 import type { Metadata } from "next";
-import { CANONICAL_REVIEWS } from "@/config/reviews";
-import CTADuo from "@/components/cta-duo";
-import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
-import { CTA_FINALE_SECTION_Y } from "@/lib/cta-section-spacing";
+import Image from "next/image";
+import Link from "next/link";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
+import { FeaturedReviewDeck } from "@/components/featured-review-deck";
+import { CANONICAL_REVIEWS, type CanonicalReview } from "@/config/reviews";
+import { makeFeaturedDeckReviews } from "@/config/review-deck";
+import styles from "./reviews-page.module.css";
 
 const pageTitle = "Squamish & Sea-to-Sky Wedding DJ Reviews";
 const pageDescription =
-  "Real couple reviews on planning, communication, and dance floor energy for Squamish weddings with Howe Sound DJ.";
+  "Read what couples said about planning with Patrick, the full wedding day, and the dance floor with Howe Sound DJ.";
 
 export const metadata: Metadata = {
   title: { absolute: pageTitle },
   description: pageDescription,
-  openGraph: {
-    title: pageTitle,
-    description: pageDescription,
-    url: "/reviews",
-  },
+  openGraph: { title: pageTitle, description: pageDescription, url: "/reviews", images: ["/og-share.jpg"] },
   alternates: { canonical: "/reviews" },
 };
 
-export default function ReviewsPage() {
-  const featuredTestimonials = CANONICAL_REVIEWS.map((item) => ({
-    quote: item.quote,
-    name: item.reviewerName,
-  }));
+function review(id: string): CanonicalReview {
+  const found = CANONICAL_REVIEWS.find((item) => item.id === id);
+  if (!found) throw new Error(`Missing published review: ${id}`);
+  return found;
+}
 
-  const valueThemes = [
-    {
-      title: "Communication that lowers stress",
-      text:
-        "Couples often point to calm, professional, yet personable communication, the kind that makes the day feel manageable, not chaotic."
-    },
-    {
-      title: "Planning and day-of execution",
-      text:
-        "From prep and planning through ceremony, cocktail hour, and reception, reviews call out seamless flow, friendly execution, and a team mindset when things need to run smoothly."
-    },
-    {
-      title: "Music that keeps the floor alive",
-      text:
-        "Couples describe packed dance floors, strong transitions, and energy that holds all night, the kind of dancefloor-packing approach Patrick leads with, not a generic wedding formula."
-    },
-    {
-      title: "Local and venue-ready",
-      text:
-        "Squamish-based and easy to coordinate with pre-wedding meetings at your venue, the kind of practical, local familiarity that shows up in real couple feedback, alongside Patrick’s “Rooted in Squamish” positioning."
-    },
-    {
-      title: "More than a playlist",
-      text:
-        "Patrick’s own framing matches what couples say: reading the room, managing transitions, building energy, not just pressing play."
-    },
-    {
-      title: "Trust and connection",
-      text:
-        "Talented DJing plus someone couples genuinely want in their corner. Reviews come back to that mix of skill and care again and again."
-    }
-  ];
+const lead = review("stephen-henry");
+const deckReviews = makeFeaturedDeckReviews(lead);
+const cornerReview = review("lauren-steeles");
+const people = [
+  review("wedding-couple-anonymous"),
+  review("matthew-bundala"),
+  review("natasha-beaudry"),
+];
+const fullDay = [
+  review("danya-karras"),
+  review("cassandra-wilding"),
+  review("melissa-schweyer"),
+];
+const floor = [
+  review("molly-finn"),
+  review("vanessa-pocock"),
+  review("ellen-selby"),
+  review("matias-fontecilla"),
+];
 
+function ReviewQuote({ item, className = "" }: { item: CanonicalReview; className?: string }) {
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.14),transparent_50%)]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
-          <div className="max-w-3xl">
-            <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
-              Reviews
-            </div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Real couples, real parties
-            </div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              Proof from real clients, with a clear focus on weddings in Squamish.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              The results speak for themselves: real couples, real parties, real reviews. Fast replies, clear communication, and a Squamish-rooted approach where local venues and vendors are part of how the day comes together.
-            </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="hero" checkSurface="hero" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
+    <figure className={`${styles.quote} ${className}`.trim()}>
+      <blockquote>“{item.quote}”</blockquote>
+      <figcaption>
+        <span className={styles.bylineKnob} aria-hidden="true" />
+        <span>{item.reviewerName}</span>
+        {item.venue ? <small>{item.venue}</small> : null}
+      </figcaption>
+    </figure>
+  );
+}
+
+function wavePath(seed: number, scale: number) {
+  const energy = [0.88, 0.57, 0.3, 0.74, 1, 0.46, 0.23, 0.67, 0.95, 0.88];
+  const samples = Array.from({ length: 321 }, (_, index) => {
+    const position = index % 320;
+    const phrase = Math.floor(position / 32);
+    const beat = position % 32;
+    const contour = energy[phrase] + (energy[(phrase + 1) % energy.length] - energy[phrase]) * (beat / 32);
+    const transient = (position * 37 + position * position * 7 + seed * 23) % 23;
+    const kick = beat < 3 ? 12 - beat * 4 : 0;
+    return Math.min(37, Math.round((5 + transient + kick) * contour * scale));
+  });
+  const upper = samples.map((height, index) => `L${index * 5} ${40 - height}`).join(" ");
+  const lower = samples.map((height, index) => `L${index * 5} ${40 + height}`).reverse().join(" ");
+  return `M0 40 ${upper} ${lower} Z`;
+}
+
+function WaveformBanner() {
+  return (
+    <div className={styles.waveBanner} aria-hidden="true">
+      <div className={styles.waveBannerHeader}><span>HOWE SOUND DJ / DANCE FLOOR</span><span>THE ROOM IN MOTION</span></div>
+      {[1, 2].map((deck) => (
+        <div className={`${styles.waveDeck} ${deck === 1 ? styles.waveDeckA : styles.waveDeckB}`} key={deck}>
+          <span className={styles.waveDeckLabel}>DECK {deck === 1 ? "A" : "B"}</span>
+          <div className={styles.waveViewport}>
+            <div className={styles.waveTrack}>
+              {[0, 1].map((copy) => (
+                <svg key={copy} viewBox="0 0 1600 80" preserveAspectRatio="none" focusable="false">
+                  <defs>
+                    <linearGradient id={`hsdj-wave-${deck}-${copy}`} gradientUnits="userSpaceOnUse" x1="0" x2="1600">
+                      {(deck === 1
+                        ? ["#f33a55", "#ff753e", "#ffbc3f", "#4bd7c6", "#f8425d", "#ff973d", "#54c9d8", "#ec4b70", "#e8c243", "#f33a55"]
+                        : ["#25c8ed", "#4e88ff", "#9d70f6", "#53dec2", "#2bbbea", "#637dff", "#4de4c8", "#9d70f6", "#44a3ed", "#25c8ed"]
+                      ).map((color, index) => <stop key={index} offset={`${(index / 9) * 100}%`} stopColor={color} />)}
+                    </linearGradient>
+                  </defs>
+                  <path className={styles.waveBody} fill={`url(#hsdj-wave-${deck}-${copy})`} d={wavePath(deck * 7, 1)} />
+                  <path className={styles.waveCore} d={wavePath(deck * 7 + 3, .31)} />
+                  <path className={styles.waveThread} d="M0 40H1600" />
+                </svg>
+              ))}
             </div>
           </div>
+          <span className={styles.waveDeckEnd}>{deck === 1 ? "A" : "B"} / HSDJ</span>
+        </div>
+      ))}
+      <span className={styles.wavePlayhead} />
+    </div>
+  );
+}
+
+export default function ReviewsPage() {
+  return (
+    <main className={styles.page}>
+      <section className={styles.hero} aria-labelledby="reviews-heading">
+        <div className={styles.heroArt} aria-hidden="true">
+          <Image
+            src="/images/hsdj-redesign/reviews/review-dj-booth-after-set-v1.webp"
+            alt=""
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+          />
+        </div>
+        <div className={styles.heroCopy}>
+          <p className={styles.eyebrow}>From the people who were there</p>
+          <MeterMatrixHeading
+            id="reviews-heading"
+            text="They booked me. Here's what they said."
+            className={styles.heroTitle}
+          />
+          <p className={styles.heroIntro}>Some talk about the planning. Others go straight to the dance floor.</p>
+          <a className={styles.readLink} href="#first-review">Start reading <span aria-hidden="true">↓</span></a>
+        </div>
+        <div className={styles.heroEdge} aria-hidden="true" />
+      </section>
+
+      <section id="first-review" className={styles.firstScene} aria-label="Featured client review">
+        <div className={styles.firstSceneInner}>
+          <div className={styles.deckTopline} aria-hidden="true">
+            <span className={styles.deckBrand}>HOWE SOUND <b>DJ</b></span>
+            <span className={styles.powerLight}>ON AIR</span>
+          </div>
+          <FeaturedReviewDeck reviews={deckReviews} />
+          <nav className={styles.topicNav} aria-label="Jump to reviews by topic">
+            <p>Find the part you want to hear about:</p>
+            <div>
+              <a href="#planning-reviews"><span aria-hidden="true" />Planning &amp; people</a>
+              <a href="#whole-day-reviews"><span aria-hidden="true" />The whole day</a>
+              <a href="#dance-floor-reviews"><span aria-hidden="true" />Dance floor</a>
+            </div>
+          </nav>
         </div>
       </section>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-        <div className="max-w-3xl">
-          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-            Featured testimonials
+      <section id="planning-reviews" className={styles.peopleScene} aria-labelledby="people-heading">
+        <div className={styles.peopleIntro}>
+          <div className={styles.sceneHeader}>
+            <span className={styles.sceneLabel}>The people part</span>
+            <h2 id="people-heading" className="hsdj-lightboard-heading">Before the first song.</h2>
           </div>
-          <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-            Words from couples who booked Howe Sound DJ.
-          </h2>
-          <p className="mt-4 text-lg leading-8 text-white/70">
-            Real words from named couples and clients, the same language you will find on the live site, with only light spelling or grammar fixes where needed.
-          </p>
+          <div className={styles.cornerReview}>
+            <ReviewQuote item={cornerReview} />
+          </div>
         </div>
-
-        <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {featuredTestimonials.map((item, index) => (
-            <StaggerItem key={`${item.name}-${index}`}>
-              <figure className="premium-surface flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
-                <blockquote className="flex-1 text-base leading-8 text-white/85">“{item.quote}”</blockquote>
-                <figcaption className="mt-6 border-t border-white/10 pt-4 text-sm font-medium text-amber-300/95">
-                  {item.name}
-                </figcaption>
-              </figure>
-            </StaggerItem>
+        <div className={styles.peopleQuotes}>
+          {people.map((item, index) => (
+            <ReviewQuote item={item} key={item.id} className={index === 0 ? styles.peopleFeature : ""} />
           ))}
-        </StaggerGroup>
-      </SectionReveal>
-
-      <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              What couples consistently value
-            </div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              Themes that show up again and again in real feedback.
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              These are not invented selling points. They are patterns from the testimonials above and the trust language Howe Sound DJ uses on the live site.
-            </p>
-          </div>
-          <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2">
-            {valueThemes.map((item) => (
-              <StaggerItem key={item.title}>
-                <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
-                  <h3 className="text-xl font-semibold">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
         </div>
-      </SectionReveal>
+      </section>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+      <section id="whole-day-reviews" className={styles.dayScene} aria-labelledby="day-heading">
+        <div className={styles.dayHeader}>
           <div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Trust & social proof
-            </div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              Rooted in Squamish. Trusted where it matters.
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              Howe Sound DJ is built around being authentically local: knowing the venues, the logistics, and the pace of Squamish weddings. The proof here comes from named client feedback and visible public reviews, without implying private venue endorsements.
-            </p>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              Couples also describe Patrick as the go-to for a reason: seamless and stress-free, a vital part of the team, and someone who goes above and beyond so the celebration stays on track.
-            </p>
+            <span className={styles.sceneLabel}>All the way through</span>
+            <h2 id="day-heading">From the ceremony onward.</h2>
           </div>
-          <div className="premium-surface rounded-[2rem] border border-white/10 bg-white/5 p-8">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              From the brand
-            </div>
-            <ul className="mt-6 space-y-4 text-sm leading-7 text-white/75">
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
-                <span>
-                  <span className="text-white/90">Serving the Sea-to-Sky corridor with passion.</span> Weddings are the focus, with a musical range that meets real crowds where they are.
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
-                <span>
-                  <span className="text-white/90">Seamless planning:</span> fast replies, clear communication, and zero guesswork.
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
-                <span>
-                  <span className="text-white/90">Client backed:</span> the results speak for themselves: real couples, real parties, real reviews.
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
-                <span>
-                  <span className="text-white/90">Venue familiarity:</span> practical Squamish planning context, without claiming an endorsement from a venue.
-                </span>
-              </li>
-            </ul>
+          <div className={styles.dayPhoto} aria-hidden="true">
+            <Image
+              src="/images/hsdj-redesign/wedding-story/night-stage-first-dance-v1.webp"
+              alt=""
+              fill
+              sizes="(max-width: 720px) 80vw, 34vw"
+            />
+            <span>ONE DAY / EVERY MOMENT</span>
           </div>
         </div>
-      </SectionReveal>
+        <div className={styles.dayQuotes}>
+          {fullDay.map((item) => <ReviewQuote item={item} key={item.id} />)}
+        </div>
+      </section>
 
-      <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              The experience
-            </div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              What working together often feels like, in Patrick’s words.
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              Patrick describes wedding days as feeling effortless, even though the work behind them is professional, adaptable, and detail-driven. Clients often call him the “unsung hero” of the event: the music feels magical because it is backed by experience, not luck.
-            </p>
-          </div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {[
-              {
-                title: "Before the day",
-                text: "I take the time to get to know you, understand your musical tastes, and learn about the atmosphere you want to create, whether you are dreaming of classic romance or an energetic dance party."
-              },
-              {
-                title: "During the celebration",
-                text: "My job is not just to play music. It is to read the room, manage transitions, and build energy, from blending genres to handling special requests on the fly."
-              },
-              {
-                title: "Why it lands",
-                text: "Whether your wedding is elegant and emotional or wild and unforgettable (or both), the goal is a musical journey that is about your story, your energy, and your people, and a dance floor your guests do not want to leave."
-              }
-            ].map((block) => (
-              <div key={block.title} className="premium-surface rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
-                <h3 className="text-lg font-semibold text-amber-300/95">{block.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-white/65">{block.text}</p>
-              </div>
-            ))}
-          </div>
+      <section id="dance-floor-reviews" className={styles.floorScene} aria-labelledby="floor-heading">
+        <div className={styles.floorLight} aria-hidden="true" />
+        <WaveformBanner />
+        <div className={styles.floorHeading}>
+          <span className={styles.sceneLabel}>And when the floor opened</span>
+          <h2 id="floor-heading" className="hsdj-lightboard-heading">They stayed out there.</h2>
         </div>
-      </SectionReveal>
+        <div className={styles.floorQuotes}>
+          {floor.map((item, index) => (
+            <ReviewQuote item={item} key={item.id} className={index === 0 ? styles.floorFeature : ""} />
+          ))}
+        </div>
+      </section>
 
-      <SectionReveal
-        as="section"
-        className={`${CTA_FINALE_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}
-      >
-        <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
-          <div className="mx-auto w-full max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Next step
-            </div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              Ready to see if your date is open?
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              Send your date, venue, and wedding vision. The next step is a conversation about availability and planning.
-            </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
-            </div>
+      <section className={styles.outro} aria-labelledby="reviews-outro-heading">
+        <div className={styles.outroDeck}>
+          <div className={styles.outroCopy}>
+            <span className={styles.sceneLabel}>Your turn, when you&apos;re ready</span>
+            <h2 id="reviews-outro-heading">Now let&apos;s talk about yours.</h2>
+            <p>If you like what these couples had to say, see whether your date is open. Then we can talk music and the kind of night you want to make.</p>
           </div>
+          <Link href="/contact#availability" className={styles.outroLink}>Check your date <span aria-hidden="true">↗</span></Link>
         </div>
-      </SectionReveal>
+      </section>
     </main>
   );
 }

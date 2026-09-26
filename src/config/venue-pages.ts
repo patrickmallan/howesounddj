@@ -65,7 +65,7 @@ export const VENUE_PAGES: readonly VenuePage[] = [
     shortSummary:
       "Rustic Squamish-area character with room for a celebration that can swing intimate, rowdy, or both, often in the same night.",
     metaDescription:
-      "Cheekye Ranch wedding DJ support in the Squamish area: personalized music, calm planning communication, and reception pacing rooted in Sea-to-Sky weddings, with Howe Sound DJ.",
+      "Cheekye Ranch wedding DJ support in the Squamish area: personalized music, clear planning communication, and reception flow rooted in Sea-to-Sky weddings, with Howe Sound DJ.",
     whyFit: [
       "Ranch settings often pair wide-open beauty with a crowd that travels together. That can mean a dance floor that ignites fast, or one that needs patience while guests settle into the night.",
       "The right approach is not forcing a “standard wedding arc.” It is building transitions that match your people and the property’s natural flow.",
@@ -86,9 +86,9 @@ export const VENUE_PAGES: readonly VenuePage[] = [
     locationLabel: "Near Squamish, BC",
     area: "squamish",
     venueType: "Farm & pastoral venue",
-    cardDescription: "Intimate farm venue near Squamish with pastoral space and a calm, country celebration feel.",
+    cardDescription: "Intimate farm venue near Squamish with pastoral space and an easygoing country celebration feel.",
     shortSummary:
-      "Pastoral space near Squamish where a calm daytime feel can turn into a full reception without losing the relaxed farm character.",
+      "Pastoral space near Squamish where an easygoing daytime feel can turn into a full reception without losing the relaxed farm character.",
     metaDescription:
       "Sitka Farms wedding DJ: Sea-to-Sky sound planning and personalized reception music near Squamish. Howe Sound DJ focuses on flow, pacing, and a dance floor that matches your guests.",
     whyFit: [
@@ -112,20 +112,20 @@ export const VENUE_PAGES: readonly VenuePage[] = [
     area: "sea-to-sky",
     venueType: "Riverside resort & lodge",
     cardDescription:
-      "Brackendale riverside resort where calm daytime energy can build into a focused, well-paced reception.",
+      "Brackendale riverside resort where relaxed daytime energy can build into a focused, well-shaped reception.",
     shortSummary:
       "A Brackendale riverside resort where the river and lodge character set a relaxed daytime tone, then the evening asks for clear transitions, intentional pacing, and a dance floor that peaks because the arc is shaped, not stretched.",
     metaDescription:
       "Sunwolf Riverside Resort wedding DJ in Brackendale: riverside Sea-to-Sky receptions with intentional pacing, ceremony-to-dance-floor flow, and Squamish-rooted planning from Howe Sound DJ.",
     whyFit: [
-      "Riverside resort weddings often feel best when the day breathes: guests arrive into calm, open air and conversation, then the reception needs a DJ who respects that softness instead of rushing the room toward hype.",
+      "Riverside resort weddings often feel best when the day has room: guests arrive into open air and conversation, then the reception needs a DJ who respects that softness instead of rushing the room toward hype.",
       "Sunwolf's character rewards music planning that builds recognition through dinner and speeches, then opens dancing when your crowd is actually ready. The goal is a floor that feels full and alive, not a timeline that keeps pushing past the moment when energy naturally peaks.",
       "Howe Sound DJ is Squamish-rooted with low corridor friction for Brackendale: fewer travel variables on the day, more headspace for timing, transitions, and reading the room you actually have.",
     ],
     planningFocus: [
       "Map the evening as a focused arc: where ceremony and cocktail sound stay clear and warm, how dinner and toasts hold attention without flattening momentum, and when you want the turn toward celebration.",
       "Receptions here tend to land better when dancing is treated as a concentrated chapter rather than an open-ended marathon. Pacing, song choice, and transitions matter more than volume: trust and recognition before intensity, then let the peak arrive because the room earned it.",
-      "Think about how guests cross from outdoor riverside moments into the reception space: handoffs should feel calm, not like the night restarted. That is where advance planning on mic moments, playlists, and cues pays off.",
+      "Think about how guests cross from outdoor riverside moments into the reception space: handoffs should feel seamless, not like the night restarted. That is where advance planning on mic moments, playlists, and cues pays off.",
     ],
     localExpertise: [
       "Squamish-rooted corridor work means realistic conversation about guest travel, weekend timing, and how Brackendale fits into a Sea-to-Sky wedding without treating it like a downtown template.",
@@ -153,7 +153,7 @@ export const VENUE_PAGES: readonly VenuePage[] = [
       "Audio needs can vary by room layout; planning ahead keeps special moments from competing with background noise or awkward mic moments.",
     ],
     localExpertise: [
-      "Squamish-area venues are a core part of the local map, corridor timing, guest expectations, and the same calm communication style couples reference in reviews.",
+      "Squamish-area venues are a core part of the local map, corridor timing, guest expectations, and the same clear communication style couples reference in reviews.",
       "If this is your venue, check availability and talk through your timeline and how you want the evening to build.",
     ],
   },
@@ -298,7 +298,7 @@ export const VENUE_PAGES: readonly VenuePage[] = [
     metaDescription:
       "Squamish Lil'wat Cultural Centre wedding DJ support in Whistler: thoughtful sound planning and reception music for culturally rooted celebrations. Howe Sound DJ, Sea-to-Sky corridor experience.",
     whyFit: [
-      "Spaces with strong identity reward a DJ who protects key moments: clear audio for what matters, transitions that feel calm, and a dance section that still reflects your crowd, without turning the night into a generic party template.",
+      "Spaces with strong identity reward a DJ who protects key moments: clear audio for what matters, transitions that feel natural, and a dance section that still reflects your crowd, without turning the night into a generic party template.",
       "The through-line is respect for the arc you are building: guests should feel guided, not rushed from milestone to milestone.",
     ],
     planningFocus: [
@@ -327,7 +327,7 @@ export const VENUE_PAGES: readonly VenuePage[] = [
       "The music should complement the architecture: warm where it should be, celebratory when you choose to turn the corner, without fighting the room’s natural tone.",
     ],
     planningFocus: [
-      "Event layouts in museum settings reward coordination between cocktail, seated moments, and dancing, so announcements and transitions feel calm rather than abrupt.",
+      "Event layouts in museum settings reward coordination between cocktail, seated moments, and dancing, so announcements and transitions feel polished rather than abrupt.",
       "Speech clarity and special-dance tone matter in refined spaces; then the set can open with confidence when you are ready.",
     ],
     localExpertise: [
@@ -434,7 +434,7 @@ export const VENUE_PAGES: readonly VenuePage[] = [
       "Dancing may be compact, but it should still feel real, curated for your people.",
     ],
     localExpertise: [
-      "Brackendale sits in the Squamish orbit with the same corridor realities: guests traveling together, local vendors, and timelines that deserve calm communication.",
+      "Brackendale sits in the Squamish orbit with the same corridor realities: guests traveling together, local vendors, and timelines that deserve clear communication.",
       "Start with availability and map the evening to your priorities.",
     ],
   },
@@ -467,14 +467,14 @@ export const VENUE_PAGES: readonly VenuePage[] = [
     slug: "capilano-university-squamish-campus",
     name: "Capilano University, Squamish campus",
     officialUrl: "https://www.capilanou.ca/about-capu/get-to-know-us/our-locations/capu-squamish-campus/",
-    locationLabel: "Downtown Squamish, BC",
+    locationLabel: "Squamish, BC",
     area: "squamish",
     venueType: "Campus & flexible event rooms",
-    cardDescription: "Downtown Squamish campus with bright, flexible rooms for receptions and community gatherings.",
+    cardDescription: "Squamish campus with bright, flexible rooms for receptions and community gatherings.",
     shortSummary:
-      "Downtown Squamish campus flexibility, useful when you want bright rooms and a practical, contemporary setting for celebrations and gatherings.",
+      "Squamish campus flexibility, useful when you want bright rooms and a practical, contemporary setting for celebrations and gatherings.",
     metaDescription:
-      "Capilano University Squamish campus event DJ support: flexible downtown Squamish spaces with professional sound and personalized music. Howe Sound DJ.",
+      "Capilano University Squamish campus event DJ support: flexible Squamish spaces with professional sound and personalized music. Howe Sound DJ.",
     whyFit: [
       "Flexible rooms can shift layouts and guest flow; music works best when it matches the format, seated dinner vs. mingling vs. dance-forward.",
       "The venue may read contemporary and practical; the celebration can still feel deeply personal with the right pacing.",
@@ -484,7 +484,7 @@ export const VENUE_PAGES: readonly VenuePage[] = [
       "Playlist direction should match the formality you want: modern, warm, high-energy, or blended.",
     ],
     localExpertise: [
-      "Downtown Squamish sits at the heart of the corridor conversation, local timing, guest travel, and the same Sea-to-Sky wedding standards.",
+      "The Squamish campus calls for clear guest-travel timing and the same Sea-to-Sky wedding planning standards.",
       "Start with availability and align music to your schedule and space.",
     ],
   },
@@ -500,7 +500,7 @@ export const VENUE_PAGES: readonly VenuePage[] = [
     shortSummary:
       "A farm-forward Pemberton setting framed as the Sea-to-Sky family farm experience: scenic, grounded, and built for weddings where guests move between open air and the heart of the party.",
     metaDescription:
-      "Planning a North Arm Farm wedding in Pemberton? Howe Sound DJ brings calm sound planning, room-reading, and elegant high-energy reception flow to Sea-to-Sky farm weddings.",
+      "Planning a North Arm Farm wedding in Pemberton? Howe Sound DJ brings clear sound planning, room-reading, and elegant high-energy reception flow to Sea-to-Sky farm weddings.",
     whyFit: [
       "Farm weddings reward a DJ who thinks in chapters: ceremony and mingling outdoors, dinner and speeches where voices need clarity, then a dance floor that grows from the room’s real chemistry, not from forcing volume against the landscape.",
       "Mountain-connected weather and light change how guests arrive and settle. Music should support that rhythm so the night feels natural, not like a city template dropped in a field.",
@@ -510,7 +510,7 @@ export const VENUE_PAGES: readonly VenuePage[] = [
       "Speeches and special moments need warmth in the mix, then the set can open into celebration when your crowd is ready, so the dance floor feels earned rather than announced.",
     ],
     localExpertise: [
-      "Pemberton and the wider Sea-to-Sky corridor share the same weekend reality as Squamish-rooted work: guests often travel together, timelines flex with light and weather, and planning clarity before the day keeps everyone calm.",
+      "Pemberton and the wider Sea-to-Sky corridor share the same weekend reality as Squamish-rooted work: guests often travel together, timelines flex with light and weather, and planning clarity before the day keeps everyone prepared.",
       "If North Arm Farm is your venue, start with availability and a conversation about how you want the atmosphere to build from ceremony through last song.",
     ],
   },

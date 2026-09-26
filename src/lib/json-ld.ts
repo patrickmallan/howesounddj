@@ -9,7 +9,7 @@ import {
 export { SITE_ORIGIN };
 
 const ORG_DESCRIPTION =
-  "Versatile Squamish wedding DJ mixing open-format sets live across genres, with local venue knowledge and polished ceremony-to-reception support.";
+  "Versatile Squamish wedding DJ working across genres, with local venue knowledge and ceremony-to-reception support.";
 
 /**
  * Sitewide Organization (Squamish-rooted, service-area). No street address on site.
@@ -41,7 +41,7 @@ export function organizationJsonLd(): Record<string, unknown> {
     description: ORG_DESCRIPTION,
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_ORIGIN}/og-default.svg`,
+      url: `${SITE_ORIGIN}/images/logo/hsdj-business-card-sasquatch-event-dj-v1.png`,
     },
     areaServed: [
       { "@type": "City", "name": "Squamish", "containedInPlace": { "@type": "AdministrativeArea", "name": "British Columbia" } },

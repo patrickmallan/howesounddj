@@ -8,6 +8,7 @@ import { PublicAvailabilityResult } from "@/lib/public-availability-contract";
 import { readJsonObject, RequestBodyError } from "@/lib/api-request";
 import { checkApiRateLimit, RATE_LIMIT_IDS } from "@/lib/api-rate-limit";
 import { forwardAvailabilityJourney } from "@/lib/availability-journey-server";
+import { isIsolatedPreview } from "@/lib/is-isolated-preview";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -24,7 +25,25 @@ function serverTimingHeader(opsDurationMs: number, totalDurationMs: number): str
   return `ops;dur=${opsDurationMs.toFixed(1)}, serialize;dur=${serialize.toFixed(1)}, total;dur=${totalDurationMs.toFixed(1)}`;
 }
 
+function acquisitionToken(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const token = value.trim();
+  return token.length <= 80 && /^[a-z0-9 _-]+$/i.test(token) ? token : null;
+}
+
+function acquisitionPage(value: unknown): string {
+  return typeof value === "string" && value.length <= 160 && /^\/[a-z0-9/_-]*$/i.test(value)
+    ? value
+    : "/contact";
+}
+
 export async function POST(request: Request) {
+  if (isIsolatedPreview()) {
+    return NextResponse.json(
+      { success: false, result: PublicAvailabilityResult.MANUAL_CONFIRMATION_REQUIRED, message: "This protected preview does not check live availability.", date: null },
+      { status: 503, headers: { "Cache-Control": "no-store" } },
+    );
+  }
   const requestStarted = performance.now();
 
   const rateLimit = await checkApiRateLimit(request, RATE_LIMIT_IDS.availability);
@@ -81,17 +100,16 @@ export async function POST(request: Request) {
 
   const journey = {
       journeyId, checkedAt: evaluated.checkedAt, requestedDate: evaluated.requestedDate, outcome: evaluated.result,
-      entryPage: typeof acquisition.entryPage === "string" ? acquisition.entryPage : "/contact",
-      source: typeof acquisition.source === "string" ? acquisition.source : "direct",
-      medium: typeof acquisition.medium === "string" ? acquisition.medium : "none",
-      campaign: typeof acquisition.campaign === "string" ? acquisition.campaign : null,
+      entryPage: acquisitionPage(acquisition.entryPage),
+      source: acquisitionToken(acquisition.source) ?? "direct",
+      medium: acquisitionToken(acquisition.medium) ?? "none",
+      campaign: acquisitionToken(acquisition.campaign),
       deviceCategory: ["mobile", "tablet", "desktop"].includes(String(acquisition.deviceCategory)) ? acquisition.deviceCategory : "unknown",
       notificationSent: false,
   };
-  const journeyRecorded = await forwardAvailabilityJourney({ kind: "journey", journey });
-  if (!journeyRecorded) console.warn("[availability] journey_not_recorded", { journey_id: journeyId });
-
   after(async () => {
+    const journeyRecorded = await forwardAvailabilityJourney({ kind: "journey", journey });
+    if (!journeyRecorded) console.warn("[availability] journey_not_recorded", { journey_id: journeyId });
     await forwardAvailabilityJourney({ kind: "event", event: { journeyId, eventId: crypto.randomUUID(), eventType: "CHECK_COMPLETED", occurredAt: evaluated.checkedAt, pagePath: "/contact", surface: "contact_form" } });
     const notificationSent = await sendAvailabilityCheckNotification(evaluated, journeyId);
     if (notificationSent) {

@@ -1,196 +1,201 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import CTADuo from "@/components/cta-duo";
-import { AuthorityProofStrip } from "@/components/authority-proof-strip";
-import { ImageSlot } from "@/components/image-slot";
-import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
-import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { storiesHubBreadcrumbJsonLd } from "@/lib/json-ld";
+import { StoriesQuietLoop } from "./stories-quiet-loop";
+import "./stories-contact-sheet.css";
 
-const hubDesc =
-  "How packed Squamish dance floors actually feel: mountain reception energy, guest trust, and the pacing that turns dinner into celebration.";
-
-const hubTitle = "Sea-to-Sky Dance Floor Stories | Packed Mountain Receptions";
+const description = "Sea-to-Sky dance floor stories about the moments, pacing, and music that turn a wedding room into a party.";
+const title = "Sea-to-Sky Dance Floor Stories | Packed Mountain Receptions";
 
 export const metadata: Metadata = {
-  title: hubTitle,
-  description: hubDesc,
-  openGraph: {
-    title: hubTitle,
-    description: hubDesc,
-    url: "/stories",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: hubTitle,
-    description: hubDesc,
-    images: ["/og-share.jpg"],
-  },
+  title,
+  description,
+  openGraph: { title, description, url: "/stories", type: "website", images: ["/og-share.jpg"] },
+  twitter: { card: "summary_large_image", title, description, images: ["/og-share.jpg"] },
   alternates: { canonical: "/stories" },
 };
 
 const stories = [
   {
     slug: "what-a-sea-to-sky-gondola-dance-floor-feels-like",
-    title: "What a Sea to Sky Gondola Dance Floor Feels Like",
-    summary:
-      "Editorial observation: elevation, light, and Howe Sound atmosphere. How guests arrive, how the night turns toward dancing, and why mountain pacing rewards local intelligence.",
+    title: "Above the town, the room changes gear.",
+    description: "A wedding up at the Sea to Sky Gondola already has the view. Here is what happens when the party earns its place beside it.",
+    image: "/images/hsdj-redesign/wedding-story/night-stage-open-floor-v1.webp",
+    alt: "Wedding crowd and dance floor under event lighting",
   },
   {
     slug: "what-a-sunwolf-riverside-wedding-reception-feels-like",
-    title: "What a Sunwolf Riverside Wedding Reception Feels Like",
-    summary:
-      "Editorial reflection: riverside calm in Brackendale, focused reception pacing, and why dance-floor energy often peaks when the arc is shaped, not stretched.",
+    title: "Sunwolf has the river. We bring the party.",
+    description: "A relaxed wedding by the river is lovely. When it is time to dance, I still want the whole room in it.",
+    image: "/images/stories/sunwolf-riverside-resort-dj.webp",
+    alt: "Patrick DJing beside a riverside wedding reception",
   },
   {
     slug: "sea-to-sky-wedding-dance-floor-energy",
-    title: "What a Packed Sea-to-Sky Wedding Dance Floor Feels Like",
-    summary:
-      "Editorial observation: how mountain corridor receptions build guest trust, cross from dinner into dancing, and why pacing shapes a packed floor.",
+    title: "The last formal dance. The first packed floor.",
+    description: "Patrick invites everyone into the final formal dance, so the party begins with the whole room already there.",
+    image: "/images/stories/patrick-with-bride-real-dj-v2.webp",
+    alt: "Patrick with a bride behind his DJ controller at a real wedding reception",
+  },
+] as const;
+
+const diaryNotes = [
+  {
+    image: "/images/stories/diary-notes/cream-stained-v1.webp",
+    shape: "tall",
+    text: "We said one shot-ski. The photo album suggests we cannot count.",
+  },
+  {
+    image: "/images/stories/diary-notes/blush-guestbook-v1.webp",
+    shape: "tall",
+    text: "Grandma knew every Macarena move. Grandpa invented six more and now refuses to teach them to us.",
+  },
+  {
+    image: "/images/stories/diary-notes/cocktail-napkin-v1.webp",
+    shape: "square",
+    text: "Took off my silent-disco headphones. Same song for everyone. Forty people singing it in forty different keys. Incredible.",
+  },
+  {
+    image: "/images/stories/diary-notes/pocket-diary-v1.webp",
+    shape: "tall",
+    text: "Patrick waved everyone in during our last formal dance. My uncle got there first and nearly took out the cake.",
+  },
+  {
+    image: "/images/stories/diary-notes/coffee-coaster-v1.webp",
+    shape: "square",
+    text: "My cousin attempted the worm in a three-piece suit. The worm won.",
+  },
+  {
+    image: "/images/stories/diary-notes/yellow-pad-v1.webp",
+    shape: "tall",
+    text: "Dad danced across the dinner table like he had been booked as entertainment. Mum did not even look up.",
+  },
+  {
+    image: "/images/stories/diary-notes/envelope-v1.webp",
+    shape: "envelope",
+    text: "They lifted us up on chairs. I held on like it was a roller coaster with no seat belt.",
+  },
+  {
+    image: "/images/stories/diary-notes/blush-guestbook-v1.webp",
+    shape: "tall",
+    text: "Best man mentioned the groom’s old drag act. Groom yelled, ‘I was better than you!’ The aunties demanded proof.",
+  },
+  {
+    image: "/images/stories/diary-notes/cream-stained-v1.webp",
+    shape: "tall",
+    text: "Lost a shoe before midnight. Found it by the photo booth the next morning. No idea who has the other one.",
+  },
+  {
+    image: "/images/stories/diary-notes/cocktail-napkin-v1.webp",
+    shape: "square",
+    text: "Rain wrecked the family photos. We came inside looking like wet dogs and somehow led the dancing.",
+  },
+  {
+    image: "/images/stories/diary-notes/pocket-diary-v1.webp",
+    shape: "tall",
+    text: "We said ‘one more song’ four times. Even the shuttle driver started singing along.",
+  },
+  {
+    image: "/images/stories/diary-notes/coffee-coaster-v1.webp",
+    shape: "square",
+    text: "Auntie asked for one ABBA song. Forty-five minutes later she was still in the middle, shoes in one hand.",
+  },
+  {
+    image: "/images/stories/diary-notes/envelope-v1.webp",
+    shape: "envelope",
+    text: "The bouquet missed every hand and landed in dessert. Nobody volunteered to catch it a second time.",
+  },
+  {
+    image: "/images/stories/diary-notes/yellow-pad-v1.webp",
+    shape: "tall",
+    text: "My brother split his trousers doing a squat. Finished the song with his jacket tied around his waist.",
+  },
+  {
+    image: "/images/stories/diary-notes/cream-stained-v1.webp",
+    shape: "tall",
+    text: "Someone passed the guestbook around mid-dance. It came back with a drawing of the DJ and PLEASE PLAY ONE MORE.",
+  },
+  {
+    image: "/images/stories/diary-notes/coffee-coaster-v1.webp",
+    shape: "square",
+    text: "The best man tried to crowd-surf. The crowd carried him four feet and set him down by the bar.",
+  },
+  {
+    image: "/images/stories/diary-notes/blush-guestbook-v1.webp",
+    shape: "tall",
+    text: "Grandad asked for one slow song. Five minutes later he was leading a conga line. No one knows what happened in between.",
+  },
+  {
+    image: "/images/stories/diary-notes/cocktail-napkin-v1.webp",
+    shape: "square",
+    text: "We found confetti in our suitcase in Mexico. Apparently the dance floor came on the honeymoon.",
   },
 ] as const;
 
 export default function StoriesHubPage() {
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
+    <main className="hsdj-interior hsdj-stories-page hsdj-contact-sheet min-h-screen text-white">
       <JsonLd data={storiesHubBreadcrumbJsonLd()} />
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.14),transparent_50%)]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
-          <div className="max-w-3xl">
-            <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
-              Stories
-            </div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Sea-to-Sky wedding stories</div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">What packed Sea-to-Sky dance floors actually feel like</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">{hubDesc}</p>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
-              Editorial observations from Squamish weddings, not invented recaps. Read how mountain receptions build atmosphere, how guests cross the threshold into dancing, and why
-              pacing often matters more than how late the music runs.
-            </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
-            </div>
-          </div>
+      <section className="contact-sheet-hero" aria-labelledby="contact-sheet-title">
+        <Image src="/images/hsdj-redesign/new-editorial/stories-after-set-collage-v1.webp" alt="Editorial collage of mountain wedding dance-floor moments, DJ equipment and string lights" fill sizes="100vw" priority />
+        <div className="contact-sheet-hero-copy">
+          <MeterMatrixHeading id="contact-sheet-title" text="What the room felt like." lines={["What the", "room felt", "like."]} />
+          <p>There is a point when guests stop watching the dance floor and become it. These are stories about the music, timing, and people that get a room there.</p>
         </div>
+        <div className="contact-sheet-hero-mark" aria-hidden="true">THE NIGHT<br />WENT OFF<span>.</span></div>
       </section>
 
-      <AuthorityProofStrip />
-
-      <section className="border-y border-white/10 bg-neutral-950">
-        <div className="mx-auto max-w-4xl px-6 py-14 lg:px-8">
-          <ImageSlot
-            src={SITE_IMAGES.brandEditorialDocumentaryDanceFloor}
-            alt={SITE_IMAGE_ALT.brandEditorialDocumentaryDanceFloor}
-            aspect="16/9"
-            label="Editorial atmosphere"
-            reservedHint="Brand atmosphere imagery."
-            sizes="(max-width: 1024px) 100vw, 56rem"
-            imageClassName="object-[center_40%]"
-            premiumPhotoTreatment
-          >
-            <span className="block text-white/60">The goal is human momentum, not forced hype.</span>
-            <span className="mt-2 block text-xs text-white/40">
-              Editorial brand atmosphere, not a recount of a specific client wedding.
-            </span>
-          </ImageSlot>
+      <section className="contact-sheet-night-notes" aria-labelledby="contact-sheet-night-notes-title">
+        <div className="contact-sheet-night-notes-intro">
+          <h2 id="contact-sheet-night-notes-title">If the dance floor kept a diary...</h2>
+          <p>Imagine the diary entries three weeks later. Nobody is writing about the chair covers; the group chat is still losing it over moments like these.</p>
         </div>
-      </section>
-
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-        <div className="max-w-3xl">
-          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Read</div>
-          <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Sea-to-Sky wedding stories available now</h2>
-          <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
-            Each story explores how mountain weddings build toward the dance floor: elevation, guest trust, and the emotional arc of a packed Sea-to-Sky reception.
-          </p>
-        </div>
-        <StaggerGroup className="mt-10 grid gap-6 md:grid-cols-2">
-          {stories.map((s) => (
-            <StaggerItem key={s.slug}>
-              <article className="premium-surface flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
-                <h3 className="text-xl font-semibold leading-snug text-white">
-                  <Link
-                    href={`/stories/${s.slug}`}
-                    className="rounded-md transition hover:text-amber-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
-                  >
-                    {s.title}
-                  </Link>
-                </h3>
-                <p className="mt-3 flex-1 text-sm leading-7 text-white/65">{s.summary}</p>
-                <div className="mt-6 border-t border-white/10 pt-5">
-                  <Link
-                    href={`/stories/${s.slug}`}
-                    className="text-sm font-semibold text-amber-300 transition hover:text-amber-200"
-                  >
-                    Read →
-                  </Link>
-                </div>
-              </article>
-            </StaggerItem>
+        <div className="contact-sheet-night-notes-scatter">
+          {diaryNotes.map((note) => (
+            <article className={`contact-sheet-night-note contact-sheet-night-note--${note.shape}`} key={`${note.image}-${note.text}`}>
+              <Image src={note.image} alt="" fill sizes="(max-width: 600px) 90vw, 24rem" />
+              <p>{note.text}</p>
+            </article>
           ))}
-        </StaggerGroup>
-      </SectionReveal>
-
-      <SectionReveal as="section" className="border-t border-white/10 bg-white/[0.03]">
-        <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-          <p className="max-w-3xl text-sm leading-7 text-white/55">
-            Planning context lives in the{" "}
-            <Link href="/guides" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              wedding planning guides
-            </Link>
-            , including{" "}
-            <Link href="/guides/how-to-keep-a-wedding-dance-floor-packed" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              how to keep a Sea-to-Sky dance floor packed
-            </Link>
-            . Named settings and reception flow map to{" "}
-            <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              wedding venue guides
-            </Link>
-            . Squamish commercial context sits in the{" "}
-            <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              Squamish wedding DJ
-            </Link>{" "}
-            pillar. Full service overview on{" "}
-            <Link href="/weddings" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              wedding DJ services
-            </Link>
-            . Couple voices in their own words stay on{" "}
-            <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              reviews
-            </Link>
-            .
-          </p>
         </div>
-      </SectionReveal>
+      </section>
 
-      <SectionReveal
-        as="section"
-        className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent"
-      >
-        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-          <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
-            <div className="mx-auto w-full max-w-3xl">
-              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Next step</div>
-              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Talk about your day</h2>
-              <p className="mt-4 text-lg leading-8 text-white/70">
-                Whether or not a full story is live yet, you can still explore services, read guides, and reach out when the timing feels right.
-              </p>
-              <div className="mt-8 max-w-xl space-y-4">
-                <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-                <p className="text-sm leading-relaxed text-white/60">
-                  45 minutes &bull; No pressure &bull; Just clarity
-                </p>
+      <section className="contact-sheet-sequence" aria-labelledby="contact-sheet-sequence-title">
+        <div className="contact-sheet-sequence-heading">
+          <h2 id="contact-sheet-sequence-title">Three rooms. Three different energies.</h2>
+        </div>
+        <div className="contact-sheet-strip">
+          {stories.map((story) => (
+            <article key={story.slug} className="contact-sheet-frame">
+              <div className="contact-sheet-photo">
+                <Image src={story.image} alt={story.alt} fill sizes="(max-width: 800px) 100vw, 65vw" />
               </div>
-            </div>
-          </div>
+              <div className="contact-sheet-caption">
+                <h3><Link href={`/stories/${story.slug}`}>{story.title}</Link></h3>
+                <p className="contact-sheet-summary">{story.description}</p>
+                <Link href={`/stories/${story.slug}`}>Enter this story <span aria-hidden="true">↗</span></Link>
+              </div>
+            </article>
+          ))}
         </div>
-      </SectionReveal>
+      </section>
+
+      <section className="contact-sheet-real-reels" aria-labelledby="contact-sheet-real-reels-title">
+        <div className="contact-sheet-real-reels-heading">
+          <h2 id="contact-sheet-real-reels-title">From the booth, for real.</h2>
+          <p>A quick look at Patrick working the room. No staged gear shot.</p>
+        </div>
+        <StoriesQuietLoop />
+      </section>
+
+      <nav className="contact-sheet-exit" aria-label="More ways to explore">
+        <p>The people say it better.</p>
+        <Link href="/reviews">Hear from couples <span aria-hidden="true">↗</span></Link>
+        <Link href="/guides">Get into the planning <span aria-hidden="true">↗</span></Link>
+      </nav>
     </main>
   );
 }

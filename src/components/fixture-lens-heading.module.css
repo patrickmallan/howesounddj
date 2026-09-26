@@ -1,0 +1,41 @@
+.heading {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+
+.rig {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  shape-rendering: geometricPrecision;
+  /* Keep the many vector fixtures in one composited layer while the page scrolls. */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.fixtureLine { --led-level: 1; }
+.fixture { overflow: visible; }
+.illumination { opacity: var(--led-level, 1); }
+.starburst { opacity: calc(var(--led-level, 1) * .92); }
+
+.semanticText {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fixtureLine { --led-level: 1; }
+}

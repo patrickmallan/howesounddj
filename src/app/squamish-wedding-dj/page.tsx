@@ -1,280 +1,88 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import CTADuo from "@/components/cta-duo";
-import { AuthorityProofStrip } from "@/components/authority-proof-strip";
-import { ImageSlot } from "@/components/image-slot";
-import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
-import { VENUE_PAGES } from "@/config/venue-pages";
-import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
-import { CTA_FINALE_SECTION_Y } from "@/lib/cta-section-spacing";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { squamishWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
+import "./squamish-afterparty.css";
 
-const desc =
-  "Versatile Squamish wedding DJ mixing your music live, from drum & bass and tech house to hip-hop, disco, country, throwbacks, and everything between.";
-
-const pageTitle = "Squamish Wedding DJ | Open-Format, Venue-Ready";
+const description = "Squamish wedding DJ Patrick Mallan brings open-format music and local knowledge to weddings between the Coast Mountains and Howe Sound.";
+const title = "Squamish Wedding DJ | Open-Format, Locally Rooted";
 
 export const metadata: Metadata = {
-  title: pageTitle,
-  description: desc,
-  openGraph: {
-    title: pageTitle,
-    description: desc,
-    url: "/squamish-wedding-dj",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: pageTitle,
-    description: desc,
-    images: ["/og-share.jpg"],
-  },
+  title,
+  description,
+  openGraph: { title, description, url: "/squamish-wedding-dj", type: "website", images: ["/og-share.jpg"] },
+  twitter: { card: "summary_large_image", title, description, images: ["/og-share.jpg"] },
   alternates: { canonical: "/squamish-wedding-dj" },
 };
 
-const PILLAR_VENUE_SLUGS = new Set([
-  ...VENUE_PAGES.filter((v) => v.area === "squamish").map((v) => v.slug),
-  "sea-to-sky-gondola",
-  "sunwolf",
-]);
-
 export default function SquamishWeddingDjPage() {
-  const pillarVenues = [...VENUE_PAGES]
-    .filter((v) => PILLAR_VENUE_SLUGS.has(v.slug))
-    .sort((a, b) => a.name.localeCompare(b.name));
-
-  const whyLocal = [
-    {
-      title: "Less travel friction",
-      text: "When your DJ is already on the corridor map, routing, timing, and day-of flexibility tend to be simpler. You are not stacking mountain logistics on top of a long inbound commute that has to work perfectly once.",
-    },
-    {
-      title: "Venue shapes you can plan for",
-      text: "Squamish runs from breweries and downtown rooms to valley farms and forest-lake weekends. Familiarity with how those spaces breathe, where speeches land, and how guests move helps the night feel intentional rather than improvised at the last minute.",
-    },
-    {
-      title: "Mountain-adjacent reality",
-      text: "Light, weather, and outdoor-adjacent moments can shift the schedule. Sound and pacing work best when they are built to flex with the day instead of treating it like a downtown ballroom template.",
-    },
-    {
-      title: "Planning confidence",
-      text: "Clear communication and a calm run-of-show reduce the mental load you carry in the final weeks. The goal is fewer unknowns about how audio, transitions, and crowd energy will behave in this place.",
-    },
-    {
-      title: "How Squamish weddings tend to move",
-      text: "Weekend guests, corridor traffic, and mixed local-and-travel crowds change the emotional rhythm. Music and hosting land better when they match that flow rather than rushing a generic city-wedding arc.",
-    },
-  ];
-
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
+    <main className="hsdj-interior hsdj-squamish-afterparty min-h-screen text-white">
       <JsonLd data={squamishWeddingDjBreadcrumbJsonLd()} />
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.14),transparent_50%)]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
-          <div className="max-w-3xl">
-            <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
-              Squamish wedding DJ
-            </div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Squamish home base · Open-format DJ</div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">Your Squamish wedding. Your music, mixed live.</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              Wedding is the event format, not the musical genre. Drum &amp; bass, tech house, hip-hop, disco, country, indie, throwbacks, Top 40, or a nightclub-style run after dark. Patrick builds the set around your taste, then mixes for the room in front of him.
-            </p>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
-              For the full service breakdown, see{" "}
-              <Link href="/weddings" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                Squamish wedding DJ services
-              </Link>
-              . For editorial dance floor proof from real corridor celebrations, read{" "}
-              <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                Sea-to-Sky wedding stories
-              </Link>
-              . Venue-specific questions map to the{" "}
-              <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                venue guides
-              </Link>
-              .
-            </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="hero" checkSurface="hero" />
-              <p className="text-sm leading-relaxed text-white/60">45 minutes &bull; No pressure &bull; Just clarity</p>
-            </div>
-          </div>
+
+      <section className="sq-hero" aria-labelledby="sq-hero-title">
+        <div className="sq-hero-copy">
+          <MeterMatrixHeading id="sq-hero-title" text="Your Squamish wedding, without the standard wedding-DJ playlist." />
+          <p>Wedding is the event format, not the genre. I build the music around what you love, then pay attention to what your people actually do when it plays.</p>
+          <a href="#sq-place">Feel this place <span aria-hidden="true">↓</span></a>
         </div>
       </section>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-        <div className="max-w-3xl">
-          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Why local matters</div>
-          <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Squamish weddings reward a DJ who already reads this corridor</h2>
-          <p className="mt-4 text-lg leading-8 text-white/70">
-            “Local” here is operational, not decorative. It is about fewer moving parts on the day, and music planning that respects how Sea-to-Sky celebrations actually unfold.
-          </p>
+      <section id="sq-place" className="sq-place" aria-labelledby="sq-place-title">
+        <div className="sq-place-intro">
+          <h2 id="sq-place-title">This place gets under your skin.</h2>
+          <p>Coast Mountains above you. Howe Sound close by. Forest, water, and a town that has its own energy beyond the view. Squamish makes a wedding feel like you brought your people somewhere worth being together.</p>
         </div>
-        <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2">
-          {whyLocal.map((item) => (
-            <StaggerItem key={item.title}>
-              <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-      </SectionReveal>
-
-      <SectionReveal as="section" className="border-y border-white/10 bg-white/[0.03]">
-        <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">From Vancouver</div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">When your wedding is in Squamish, the setting is part of the brief</h2>
-            <div className="mt-6 space-y-4 text-lg leading-8 text-white/70">
-              <p>
-                Many couples plan from Vancouver and host in Squamish. That is a normal Sea-to-Sky pattern. You do not need to default to importing a city vendor simply because your search started there.
-                The question is who understands load-in, guest travel, and mountain-weekend pacing before the contract is signed.
-              </p>
-              <p>
-                Hiring someone who specializes in this corridor is a practical choice: the same care for music and hosting, framed for the place where your guests will actually stand, toast, and dance.
-                If you want the planning-from-Vancouver lens explicitly, the{" "}
-                <Link href="/vancouver-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                  Vancouver couples page
-                </Link>{" "}
-                walks through that path in more detail.
-              </p>
-            </div>
-          </div>
+        <div className="sq-place-art">
+          <Image src="/images/hsdj-redesign/new-editorial/squamish-night-signal-v1.webp" alt="Editorial collage of a Squamish mountain ceremony, dinner lights, DJ equipment and a wedding dance floor" fill sizes="100vw" />
         </div>
-      </SectionReveal>
-
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-        <div className="max-w-3xl">
-          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Venues</div>
-          <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Squamish and nearby Sea-to-Sky settings on the planning map</h2>
-          <p className="mt-4 text-lg leading-8 text-white/70">
-            These guides tie named properties to flow, sound-thinking, and reception pacing. They are planning tools, not claims about exclusivity. Browse the full{" "}
-            <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              venue hub
-            </Link>{" "}
-            across the rest of the Squamish planning guides too.
-          </p>
-          <p className="mt-4 text-base leading-7 text-white/60">
-            For a Brackendale riverside resort where daytime calm and a focused reception arc matter, the{" "}
-            <Link href="/venues/sunwolf" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              Sunwolf Riverside Resort guide
-            </Link>{" "}
-            walks through intentional pacing and dance-floor planning without treating the evening like an open-ended marathon.
-          </p>
-        </div>
-        <ul className="mt-10 grid list-none gap-4 sm:grid-cols-2">
-          {pillarVenues.map((v) => (
-            <li key={v.slug}>
-              <Link
-                href={`/venues/${v.slug}`}
-                className="premium-surface flex flex-col rounded-[1.25rem] border border-white/10 bg-white/5 p-5 transition hover:border-amber-300/25 hover:bg-white/[0.07]"
-              >
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/85">{v.locationLabel}</span>
-                <span className="mt-2 text-base font-semibold text-white">{v.name}</span>
-                <span className="mt-2 text-sm text-white/55">{v.venueType}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </SectionReveal>
-
-      <SectionReveal as="section" className="border-y border-white/10 bg-white/[0.03]">
-        <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Atmosphere Arc · Roomflow</div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Local expertise expressed as one continuous evening</h2>
-            <div className="mt-6 space-y-4 text-lg leading-8 text-white/70">
-              <p>
-                The Atmosphere Arc is the planning lens for how your wedding should feel from arrival through last song: ceremony clarity, cocktail warmth, dinner and speeches, then celebration when the
-                room is ready. In Squamish, the landscape often does part of that emotional work; the soundtrack should support it instead of racing past it.
-              </p>
-              <p>
-                The Roomflow Method is the dance-floor side of the same idea: build recognition and trust before intensity, then let momentum come from your real crowd. For a longer read, see{" "}
-                <Link
-                  href="/guides/how-to-keep-a-wedding-dance-floor-packed"
-                  className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
-                >
-                  How to Keep a Wedding Dance Floor Packed at a Sea-to-Sky Wedding
-                </Link>
-                .
-              </p>
-            </div>
-          </div>
-        </div>
-      </SectionReveal>
-
-      <AuthorityProofStrip />
-
-      <section className="border-y border-white/10 bg-neutral-950">
-        <div className="mx-auto max-w-4xl px-6 py-14 lg:px-8">
-          <ImageSlot
-            src={SITE_IMAGES.brandEditorialPremiumDjCrowd}
-            alt={SITE_IMAGE_ALT.brandEditorialPremiumDjCrowd}
-            aspect="16/9"
-            label="Editorial atmosphere"
-            reservedHint="Brand atmosphere imagery."
-            sizes="(max-width: 1024px) 100vw, 56rem"
-            imageClassName="object-[center_45%]"
-            premiumPhotoTreatment
-          >
-            <span className="block text-white/60">Reception energy planned to feel elegant before it feels loud.</span>
-            <span className="mt-2 block text-xs text-white/40">Editorial brand atmosphere, not documentary proof of a specific wedding.</span>
-          </ImageSlot>
+        <div className="sq-place-after">
+          <strong>Come for the setting.<br />Stay for the feeling.</strong>
+          <p>Guests can make a whole trip of it. Then the day narrows to one room, your favourite people, and a party that could only be yours. That contrast is what I love about playing weddings here.</p>
         </div>
       </section>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-        <div className="max-w-3xl">
-          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Related planning</div>
-          <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Go deeper when you are ready</h2>
-          <ul className="mt-8 list-none space-y-4 text-lg leading-8 text-white/70">
-            <li>
-              <Link href="/guides" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                Wedding Planning Guides
-              </Link>
-              , including how to choose a DJ in Squamish and Sea-to-Sky dance-floor pacing.
-            </li>
-            <li>
-              <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                Sea-to-Sky wedding stories
-              </Link>
-              for editorial proof on corridor dance floor energy (not invented recaps).
-            </li>
-            <li>
-              <Link href="/vancouver-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                Vancouver couples · Sea-to-Sky weddings
-              </Link>
-              , when your inbox is in the city but the event is not.
-            </li>
-          </ul>
+      <section className="sq-local" aria-labelledby="sq-local-title">
+        <div className="sq-local-copy">
+          <h2 id="sq-local-title">I get to call Squamish home.</h2>
+          <p>That means I am not discovering the Sea-to-Sky corridor on your wedding day. I know the landscape is more than a backdrop: weather can turn, outdoor sound can travel, and the right room changes everything. I plan for the celebration you are actually having here.</p>
+          <p>What I bring is practical local attention, then music that feels as alive as the place. No imported, one-size-fits-all wedding script.</p>
+          <Link href="/vancouver-wedding-dj">Planning from Vancouver? Follow that route <span aria-hidden="true">↗</span></Link>
         </div>
-      </SectionReveal>
+        <div className="sq-local-type" aria-hidden="true"><span>SEA</span><span>TO</span><span>SKY</span></div>
+      </section>
 
-<SectionReveal as="section" className={`${CTA_FINALE_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}>
-        <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
-          <div className="mx-auto w-full max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">When it feels right</div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">A short conversation, on your timeline</h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              If Squamish is where you are marrying, start with whatever reduces uncertainty first: a consult to align on vibe and flow, a calendar check for your date, or both. Couple voices in their own
-              words stay on the{" "}
-              <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                reviews page
-              </Link>
-              .
-            </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-              <p className="text-sm leading-relaxed text-white/60">45 minutes &bull; No pressure &bull; Just clarity</p>
-            </div>
-          </div>
+      <section className="sq-music" aria-labelledby="sq-music-title">
+        <div className="sq-music-intro">
+          <h2 id="sq-music-title">The mix can go anywhere. It still sounds like you.</h2>
+          <p>Disco, hip-hop, country, drum &amp; bass, indie: none of them is a mandatory stop. They are different doors into the same room. Your taste starts the conversation; I watch the floor and know when to take it somewhere new.</p>
         </div>
-      </SectionReveal>
+        <div className="sq-music-art">
+          <Image src="/images/hsdj-redesign/new-editorial/squamish-genre-mural-v1.webp" alt="Editorial music collage moving through disco, hip-hop, country, drum and bass, and indie visual styles at a Squamish wedding" fill sizes="100vw" />
+          <span className="sq-music-playhead" aria-hidden="true" />
+        </div>
+        <div className="sq-music-foot">
+          <p>Different sounds. One room moving together.</p>
+          <Link href="/guides/how-to-keep-a-wedding-dance-floor-packed">How I build a dance floor <span aria-hidden="true">↗</span></Link>
+        </div>
+      </section>
+
+      <section className="sq-venue" aria-labelledby="sq-venue-title">
+        <div className="sq-venue-arrow" aria-hidden="true">↘</div>
+        <div>
+          <h2 id="sq-venue-title">The room changes the record.</h2>
+          <p>A brewery, a ranch, and a mountaintop ask different things of the sound. If you are choosing a setting, the venue route is where those differences belong.</p>
+          <Link href="/venues">Explore the Sea-to-Sky venue route <span aria-hidden="true">↗</span></Link>
+        </div>
+      </section>
+
+      <section className="sq-outro" aria-labelledby="sq-outro-title">
+        <h2 id="sq-outro-title">Got a date? Let&apos;s see where this goes.</h2>
+        <p>The calendar answers right away. If I am open, book a consult and tell me about the music, your people, and the kind of night you want.</p>
+        <Link href="/contact">Check your date <span aria-hidden="true">↗</span></Link>
+      </section>
     </main>
   );
 }

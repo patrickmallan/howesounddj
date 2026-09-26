@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
@@ -6,6 +7,7 @@ import { AuthorityProofStrip } from "@/components/authority-proof-strip";
 import { SectionReveal } from "@/components/motion";
 import { JsonLd } from "@/components/json-ld";
 import { guideArticleBreadcrumbJsonLd, guideArticleJsonLd } from "@/lib/json-ld";
+import "../article-liner-notes.css";
 
 const ARTICLE_SLUG = "how-to-choose-a-wedding-dj-in-squamish";
 const ARTICLE_TITLE = "How to Choose a Wedding DJ in Squamish";
@@ -18,6 +20,7 @@ export const metadata: Metadata = {
   title: ARTICLE_TITLE,
   description: metaDesc,
   openGraph: {
+    images: ["/og-share.jpg"],
     title: `${ARTICLE_TITLE} | Howe Sound DJ`,
     description: metaDesc,
     url: `/guides/${ARTICLE_SLUG}`,
@@ -45,7 +48,7 @@ function Block({ eyebrow, title, children }: { eyebrow: string; title: string; c
 
 export default function GuideChooseWeddingDjSquamishPage() {
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
+    <main className="hsdj-interior hsdj-editorial-page hsdj-guide-choose min-h-screen bg-neutral-950 text-white">
       <JsonLd data={guideArticleBreadcrumbJsonLd(ARTICLE_TITLE, ARTICLE_SLUG)} />
       <JsonLd
         data={guideArticleJsonLd({
@@ -56,7 +59,7 @@ export default function GuideChooseWeddingDjSquamishPage() {
         })}
       />
 
-      <article>
+      <article className="hsdj-interior-flow">
         <header className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.12),transparent_55%)]" />
           <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
@@ -82,23 +85,17 @@ export default function GuideChooseWeddingDjSquamishPage() {
               </span>
               Howe Sound DJ
             </p>
-            <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl">{ARTICLE_TITLE}</h1>
+            <MeterMatrixHeading text={ARTICLE_TITLE} className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl" />
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/70">
               Choosing a wedding DJ is not only about songs. It is about trust, timing, sound, guest momentum, and whether the person in front of you understands the atmosphere you want for a Squamish or
               Sea-to-Sky celebration.
             </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
-            </div>
           </div>
         </header>
 
         <Block eyebrow="Place" title="Look for someone who understands the venue, not just the playlist">
           <p>
-            Squamish and corridor venues carry real constraints: outdoor ceremony wind, tent lines, lodge acoustics, guest travel, and how the night actually breathes. A strong DJ should speak calmly
+            Squamish and corridor venues carry real constraints: outdoor ceremony wind, tent lines, lodge acoustics, guest travel, and how the night actually breathes. A strong DJ should speak clearly
             about how sound supports your setting, not only about genres they like.
           </p>
           <p>
@@ -181,7 +178,7 @@ export default function GuideChooseWeddingDjSquamishPage() {
 
         <Block eyebrow="Howe Sound DJ" title="How Howe Sound DJ approaches it">
           <p>
-            The work is rooted in Squamish with Sea-to-Sky coverage, and the through-line is emotional atmosphere: elegant mountain settings, intentional planning, real dance floor energy, and calm
+            The work is rooted in Squamish with Sea-to-Sky coverage, and the through-line is emotional atmosphere: elegant mountain settings, intentional planning, real dance floor energy, and assured
             professional presence from ceremony through last song.
           </p>
           <p>
@@ -206,15 +203,12 @@ export default function GuideChooseWeddingDjSquamishPage() {
             <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
               <div className="mx-auto w-full max-w-3xl">
                 <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Next step</div>
-                <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Book a consult or check availability</h2>
+                <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Check your date. If it is open, book a consult.</h2>
                 <p className="mt-4 text-lg leading-8 text-white/70">
-                  If this checklist matches how you want to hire, the fastest next move is a short conversation or a date check through the same contact flow used across the site.
+                  The date check answers immediately. If Patrick is available, choose a consult time and see whether the working relationship feels right before you decide to book.
                 </p>
                 <div className="mt-8 max-w-xl space-y-4">
                   <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-                  <p className="text-sm leading-relaxed text-white/60">
-                    45 minutes &bull; No pressure &bull; Just clarity
-                  </p>
                   <p className="text-sm text-white/45">
                     More proof in couples&apos; words:{" "}
                     <Link href="/reviews" className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">

@@ -1,0 +1,76 @@
+.hsdj-venue-journey { --route-cyan: #29e2ea; --route-yellow: #ffdf18; --route-pink: #ff3b82; background: #071215; }
+#main-content .hsdj-venue-journey::before,
+#main-content .hsdj-venue-journey::after { display: none; }
+#main-content .hsdj-venue-journey > section { border: 0; }
+#main-content .hsdj-venue-journey > section::before { display: none; }
+#main-content .hsdj-venue-journey .venue-journey-hero {
+  position: relative; isolation: isolate; display: flex; align-items: center; min-height: min(900px, 92svh);
+  padding: clamp(9rem, 15vw, 16rem) max(6vw, calc((100vw - 78rem) / 2)) 7rem;
+  overflow: hidden; background: #071215 !important;
+}
+.venue-journey-hero-image { z-index: -2; object-fit: cover; object-position: 57% center; }
+.venue-journey-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, #050b0d 0%, #050b0de8 34%, #050b0d42 75%), linear-gradient(0deg, #050b0d 0, transparent 38%); }
+.venue-journey-hero-content { position: relative; max-width: 60rem; }
+.venue-journey-kicker, .venue-route-overline { margin: 0 0 1.5rem; color: var(--route-yellow); font: 800 clamp(.7rem, 1.1vw, .95rem)/1.3 ui-monospace, SFMono-Regular, monospace; letter-spacing: .22em; text-transform: uppercase; }
+.hsdj-venue-journey .venue-journey-hero h1 { max-width: 13ch; font-size: clamp(3.1rem, 7vw, 7.4rem) !important; line-height: .96; }
+.hsdj-venue-journey .venue-journey-lede { max-width: 42rem; margin-top: 2rem; padding: 1rem 1.3rem; border-left: 7px solid var(--route-cyan); color: #fff !important; background: #050b0de8; font-size: clamp(1.05rem, 1.6vw, 1.4rem); font-weight: 700; line-height: 1.55; }
+.venue-journey-cue { display: inline-flex; gap: 2rem; align-items: center; margin-top: 2rem; padding: .8rem 1.1rem; background: var(--route-yellow); color: #071215; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; box-shadow: 7px 7px 0 #1357ff; }
+.venue-journey-cue span { font-size: 1.5em; }
+.venue-journey-side-note { position: absolute; right: 2.5vw; bottom: 8%; max-width: 18rem; color: #fff; font: 900 .85rem/1.2 ui-monospace, monospace; letter-spacing: .19em; text-align: right; text-shadow: 1px 2px 3px #000; }
+#main-content .hsdj-venue-journey .venue-route-section { padding: clamp(5rem, 9vw, 9rem) max(5vw, calc((100vw - 78rem) / 2)); background: #071215 !important; }
+.venue-route-intro { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 1.5rem; max-width: 65rem; margin-bottom: clamp(4rem, 8vw, 7rem); }
+.venue-route-led { width: 2.4rem; height: 2.4rem; border: 6px solid var(--route-yellow); border-radius: 50%; background: #10161c; box-shadow: 0 0 0 7px #071215, 0 0 0 9px var(--route-yellow), 0 0 2rem var(--route-yellow); }
+.venue-route-intro h2, .venue-journey-outro h2 { max-width: 17ch !important; margin: 0; color: #fff; font-size: clamp(2.5rem, 5.5vw, 6rem) !important; line-height: .94; text-transform: uppercase; }
+.venue-route-intro p:last-child, .venue-journey-outro p:not(.venue-route-overline) { max-width: 43rem; color: #e4f3f3 !important; font-size: clamp(1.05rem, 1.5vw, 1.35rem); line-height: 1.6; }
+.venue-route-list { position: relative; margin: 0; padding: 0; list-style: none; }
+.venue-route-list::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 5px; transform: translateX(-50%); background: repeating-linear-gradient(to bottom, var(--route-cyan) 0 44px, #071215 44px 57px, var(--route-pink) 57px 86px, #071215 86px 100px); }
+.venue-route-stop { position: relative; display: grid; grid-template-columns: 1fr 1fr; min-height: 18rem; margin-bottom: 3rem; }
+.venue-route-stop:nth-child(even) .venue-route-stop-content { grid-column: 2; padding-left: clamp(2rem, 5vw, 5rem); }
+.venue-route-stop:nth-child(odd) .venue-route-stop-content { grid-column: 1; padding-right: clamp(2rem, 5vw, 5rem); text-align: right; }
+.venue-route-spindle { position: absolute; z-index: 2; top: 1.4rem; left: 50%; width: 2.2rem; height: 2.2rem; transform: translateX(-50%); border-radius: 50%; border: 5px solid var(--route-yellow); background: #071215; box-shadow: 0 0 0 7px #071215, 0 0 0 9px var(--route-yellow); }
+.venue-route-stop:nth-child(3n + 2) .venue-route-spindle { border-color: var(--route-pink); box-shadow: 0 0 0 7px #071215, 0 0 0 9px var(--route-pink); }
+.venue-route-stop:nth-child(3n) .venue-route-spindle { border-color: var(--route-cyan); box-shadow: 0 0 0 7px #071215, 0 0 0 9px var(--route-cyan); }
+.venue-route-stop-content { position: relative; padding-bottom: 2rem; border-bottom: 2px solid #ffffff3a; }
+.venue-route-stop-content::before { content: ""; position: absolute; top: 2.4rem; width: clamp(2rem, 4vw, 5rem); height: 2px; background: var(--route-yellow); }
+.venue-route-stop:nth-child(odd) .venue-route-stop-content::before { right: 0; }
+.venue-route-stop:nth-child(even) .venue-route-stop-content::before { left: 0; }
+.venue-route-meta { display: flex; flex-wrap: wrap; gap: .35rem 1rem; margin-bottom: 1rem; color: var(--route-cyan); font: 700 .72rem/1.4 ui-monospace, monospace; letter-spacing: .11em; text-transform: uppercase; }
+.venue-route-stop:nth-child(odd) .venue-route-meta, .venue-route-stop:nth-child(odd) .venue-route-actions { justify-content: flex-end; }
+.venue-route-stop h3 { margin: 0; font-size: clamp(1.8rem, 3.4vw, 3.8rem) !important; line-height: .99; text-transform: uppercase; }
+.venue-route-stop h3 a { color: #fff; text-decoration: none; }
+.venue-route-stop h3 a:hover { color: var(--route-yellow) !important; }
+.venue-route-stop p { max-width: 29rem; margin: 1rem 0 1.5rem; color: #dce8e8 !important; font-size: clamp(.98rem, 1.2vw, 1.15rem); line-height: 1.6; }
+.venue-route-stop:nth-child(odd) p { margin-left: auto; }
+.venue-route-actions { display: flex; flex-wrap: wrap; align-items: baseline; gap: .75rem 1.5rem; }
+.venue-route-actions a:first-child { color: var(--route-yellow); font-weight: 900; text-transform: uppercase; }
+.venue-route-actions a:last-child { color: #a7c3c6; font-size: .85rem; }
+.venue-route-scratch { position: absolute; top: 15%; right: 3%; width: 18%; height: 4rem; opacity: .35; background: repeating-linear-gradient(105deg, transparent 0 8px, var(--route-pink) 9px 12px, transparent 13px 24px); transform: rotate(-12deg); pointer-events: none; }
+#main-content .hsdj-venue-journey .venue-journey-outro { padding: clamp(5rem, 10vw, 10rem) max(6vw, calc((100vw - 78rem) / 2)); background: var(--route-yellow) !important; color: #071215; clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%); }
+.venue-journey-outro .venue-route-overline { color: #123c48; }
+.venue-journey-outro h2 { color: #071215; }
+.venue-journey-outro p:not(.venue-route-overline) { color: #071215 !important; font-weight: 700; }
+.venue-journey-outro a { display: inline-block; margin-top: 1rem; padding: 1rem 1.4rem; background: #071215; color: #fff; font-weight: 900; text-transform: uppercase; box-shadow: 8px 8px 0 #1255ff; }
+@media (max-width: 700px) {
+  #main-content .hsdj-venue-journey .venue-journey-hero { min-height: 0; padding: 9rem 1.35rem 5rem; }
+  .venue-journey-hero-image { object-position: 63% center; }
+  .venue-journey-hero::after { background: linear-gradient(90deg, #050b0de8, #050b0d8c), linear-gradient(0deg, #050b0d, transparent 70%); }
+  .hsdj-venue-journey .venue-journey-hero h1 { font-size: clamp(2.8rem, 11vw, 4.5rem) !important; }
+  .venue-journey-side-note { display: none; }
+  #main-content .hsdj-venue-journey .venue-route-section { padding: 5rem 1.4rem; }
+  .venue-route-intro { grid-template-columns: 1.6rem 1fr; gap: 1rem; }
+  .venue-route-led { width: 1.3rem; height: 1.3rem; border-width: 4px; }
+  .venue-route-list::before { left: 1rem; }
+  .venue-route-stop { display: block; min-height: 0; padding-left: 3rem; margin-bottom: 3rem; }
+  .venue-route-spindle { left: 1rem; width: 1.5rem; height: 1.5rem; border-width: 4px; }
+  .venue-route-stop:nth-child(n) .venue-route-stop-content { padding: 0 0 1.5rem; text-align: left; }
+  .venue-route-stop:nth-child(n) .venue-route-stop-content::before { left: -2rem; right: auto; width: 2rem; }
+  .venue-route-stop:nth-child(n) .venue-route-meta,
+  .venue-route-stop:nth-child(n) .venue-route-actions { justify-content: flex-start; }
+  .venue-route-stop:nth-child(n) p { margin-left: 0; }
+  .venue-route-scratch { display: none; }
+  #main-content .hsdj-venue-journey .venue-journey-outro { padding: 6rem 1.4rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .venue-route-stop h3 a, .venue-journey-cue, .venue-journey-outro a { transition: transform .18s ease, color .18s ease; }
+  .venue-journey-cue:hover, .venue-journey-outro a:hover { transform: translate(3px, -3px); }
+}

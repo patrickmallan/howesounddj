@@ -1,360 +1,155 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import CTADuo from "@/components/cta-duo";
-import { ImageSlot } from "@/components/image-slot";
-import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
-import { CTA_FINALE_SECTION_Y } from "@/lib/cta-section-spacing";
-import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
+import styles from "./weddings-overview.module.css";
 
-const weddingsTitle = "Squamish Wedding DJ | Your Music, Mixed Live";
+const weddingsTitle = "Squamish Wedding DJ | Music for the Whole Day";
 const weddingsDesc =
-  "A versatile Squamish wedding DJ mixing your music live, from drum & bass and tech house to hip-hop, disco, country, throwbacks, and everything between.";
+  "What Howe Sound DJ handles across a Squamish wedding: ceremony cues, microphones, dinner music, requests, and dance-floor music built around your crowd.";
 
 export const metadata: Metadata = {
   title: weddingsTitle,
   description: weddingsDesc,
-  openGraph: {
-    title: weddingsTitle,
-    description:
-      "Wedding is the format; the music is yours. Open-format DJing, calm planning, and a Squamish reception built around how your crowd actually moves.",
-    url: "/weddings",
-  },
+  openGraph: { title: weddingsTitle, description: weddingsDesc, url: "/weddings", images: ["/og-share.jpg"] },
   alternates: { canonical: "/weddings" },
 };
 
+const stages = [
+  {
+    name: "Ceremony",
+    title: <><span>The exact version</span><span>you chose. Obviously.</span></>,
+    body: "Processional songs, microphones, and timing are confirmed before anyone starts walking.",
+    image: "/images/hsdj-redesign/weddings-overview/ceremony-crowd-art-v2.png",
+    className: styles.ceremony,
+  },
+  {
+    name: "Speeches",
+    title: <span>No tapping the mic and hoping.</span>,
+    body: "The mic is checked, the speaker knows where to stand, and the photographer gets a heads-up.",
+    image: "/images/hsdj-redesign/weddings-overview/speeches-signal-art-v1.png",
+    className: styles.speeches,
+  },
+  {
+    name: "Dinner",
+    title: <span>Dinner music can still be good.</span>,
+    body: "Good records at a level where everyone can still talk. No sleepy background playlist required.",
+    image: "/images/hsdj-redesign/weddings-overview/dinner-joy-art-v2.png",
+    className: styles.dinner,
+  },
+  {
+    name: "Dance floor",
+    title: <><span>Now let&apos;s see what</span><span>your people dance to.</span></>,
+    body: "Requests come in, plans change, and I pay attention to what keeps people on the floor.",
+    image: "/images/hsdj-redesign/weddings-overview/celebration-joy-art-v2.png",
+    className: styles.danceFloor,
+  },
+];
+
 export default function WeddingsPage() {
-  const highlights = [
-    {
-      title: "Every genre is on the table",
-      text: "Drum & bass, tech house, hip-hop, disco, country, indie, throwbacks, Top 40, or a set that moves naturally through all of it."
-    },
-    {
-      title: "From first dance to last song",
-      text: "Ceremony through reception: polished support when it should feel intimate, high energy when it’s time to open the floor."
-    },
-    {
-      title: "Calm, professional planning",
-      text: "Fast replies, clear communication, and zero guesswork, the seamless planning side couples actually feel on the day."
-    }
-  ];
-
-  const serviceBlocks = [
-    {
-      title: "Ceremony",
-      items: [
-        "Music tailored to the tone you want for arrival and processional moments",
-        "Audio for vows, officiant, and what the setting demands",
-        "Setup that respects the space: indoors, tent, or mountain backdrop"
-      ]
-    },
-    {
-      title: "Cocktail hour + dinner",
-      items: [
-        "Atmosphere that matches classic romance or sets up the party to come",
-        "Smooth handoffs between cocktail, dinner, and speeches",
-        "Volume and vibe that support conversation, then build when you’re ready"
-      ]
-    },
-    {
-      title: "Reception + dance floor",
-      items: [
-        "Reading the room: right vibe for the crowd, moment to moment",
-        "Live mixing across genres; no forced “wedding cheese” or preset playlist",
-        "A floor your guests want to stay on. The goal is unforgettable, not filler"
-      ]
-    }
-  ];
-
-  const process = [
-    {
-      step: "01",
-      title: "Initial consultation",
-      text: "Your wedding, your venue, and the experience you want guests to talk about, so the direction feels clear before anything is locked in."
-    },
-    {
-      step: "02",
-      title: "Planning + music direction",
-      text: "Must-plays, do-not-plays, genre direction, and the arc of the night. That can mean timeless dinner music, a nightclub turn after dark, or both."
-    },
-    {
-      step: "03",
-      title: "Final coordination",
-      text: "Timeline, logistics, and sound details reviewed so you’re not guessing the week of."
-    },
-    {
-      step: "04",
-      title: "Wedding day execution",
-      text: "Polished, high-energy execution: calm behind the scenes, present on the mic when it counts, locked in from first dance to last song."
-    }
-  ];
-
-  const faqs = [
-    {
-      q: "Can we choose the music and give you a do-not-play list?",
-      a: "Yes. Your taste defines the direction. Must-plays and do-not-plays matter, but so do the genres, scenes, eras, and energy you want the night to move through."
-    },
-    {
-      q: "Can you DJ drum & bass, tech house, or a nightclub-style wedding?",
-      a: "Yes. Wedding is the event format, not the musical genre. Patrick mixes open-format and can build a focused drum & bass or tech-house run, a nightclub-style reception, or a wide-ranging set that moves with the crowd."
-    },
-    {
-      q: "Do you provide ceremony audio?",
-      a: "Yes. Ceremony coverage can include speaker support and microphones for key moments depending on what your day requires."
-    },
-    {
-      q: "Do you MC as well?",
-      a: "MC support can be included where needed to help the evening feel smooth, clear, and professionally guided."
-    },
-    {
-      q: "Where do you DJ weddings?",
-      a: "Howe Sound DJ is focused on weddings held in Squamish. Couples can live and plan anywhere; the service boundary is the location of the event."
-    }
-  ];
-
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
-      <section className="border-b border-white/10">
-        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
-          <div className="max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Weddings
-            </div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              Wedding is the format. The music is yours.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              This is not a top-200 wedding playlist with your names attached. It is a live DJ set built around your taste. That can mean drum &amp; bass, tech house, hip-hop, disco, country, a proper nightclub turn after dark, or all of it in one night.
-            </p>
-            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/50">
-              Planning from Vancouver for a wedding in Squamish?{" "}
-              <a href="/vancouver-wedding-dj" className="font-medium text-amber-300/90 transition hover:text-amber-200">
-                Vancouver couples planning a Squamish wedding →
-              </a>
-            </p>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/50">
-              Marrying in Squamish? Start with the{" "}
-              <Link href="/squamish-wedding-dj" className="font-medium text-amber-300/90 transition hover:text-amber-200">
-                Squamish wedding DJ pillar
-              </Link>
-              , then layer in{" "}
-              <Link
-                href="/guides/how-to-choose-a-wedding-dj-in-squamish"
-                className="font-medium text-amber-300/90 transition hover:text-amber-200"
-              >
-                How to Choose a Wedding DJ in Squamish
-              </Link>{" "}
-              when you want a decision checklist.
-            </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="hero" checkSurface="hero" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
-            </div>
+    <main className={styles.page}>
+      <section className={styles.hero} aria-labelledby="weddings-title">
+        <div className={styles.heroPortrait} aria-hidden="true">
+          <Image src="/images/about/patrick-live-light-trails-retouched-v1.png" alt="" fill priority sizes="(max-width: 760px) 68vw, 48vw" className={styles.coverImage} />
+        </div>
+        <div className={styles.heroShade} aria-hidden="true" />
+        <div className={styles.heroInner}>
+          <p className={styles.eyebrow}>What you&apos;re actually hiring</p>
+          <div className={styles.heroTitleFrame}>
+            <MeterMatrixHeading
+              id="weddings-title"
+              text="You don't need to build the whole playlist."
+              lines={["You don't need", "to build the", "whole playlist."]}
+              className={styles.heroTitle}
+            />
+          </div>
+          <p className={styles.heroCopy}>
+            Tell me the songs you love, the ones you cannot stand, and the tracks already tied to the ceremony. I&apos;ll build from there, take requests seriously, and make the calls as the night goes.
+          </p>
+        </div>
+      </section>
+
+      <section className={styles.journey} aria-labelledby="wedding-day-heading">
+        <div className={styles.journeyInner}>
+          <div className={styles.signalLead} aria-hidden="true" />
+          <h2 id="wedding-day-heading" className={styles.sectionLabel}>I&apos;m there long before the dance floor.</h2>
+          <svg className={styles.signalPath} viewBox="0 0 1200 1040" preserveAspectRatio="none" aria-hidden="true">
+            <path className={styles.desktopSignal} d="M62 28H250V142H570V86H1030V452H520V560H170V922H1060V1035" />
+            <path className={styles.mobileSignal} d="M13 0V1040" />
+          </svg>
+
+          <div className={styles.stageGrid}>
+            {stages.map((stage) => (
+              <article key={stage.name} className={`${styles.stage} ${stage.className}`}>
+                <div className={styles.stageArtwork} aria-hidden="true">
+                  <Image src={stage.image} alt="" fill sizes="(max-width: 760px) 92vw, 48vw" className={styles.coverImage} />
+                </div>
+                <div className={styles.stageInk} aria-hidden="true" />
+                <div className={styles.stageCopy}>
+                  <p className={styles.stageLabel}>{stage.name}</p>
+                  <h3>{stage.title}</h3>
+                  <p className={styles.stageBody}>{stage.body}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <SectionReveal as="section" className="border-y border-white/10 bg-white/5" aria-labelledby="weddings-proof-heading">
-        <div className="mx-auto max-w-6xl py-16 lg:py-20">
-          <h2 id="weddings-proof-heading" className="sr-only">
-            Wedding celebration
-          </h2>
-          <div
-            className="px-0 sm:px-6 lg:px-8 [&_figure>div]:!rounded-none sm:[&_figure>div]:!rounded-[1.5rem] max-lg:[&_figure>div]:!aspect-[4/3]"
-          >
-            <ImageSlot
-              src={SITE_IMAGES.weddingsCrowd}
-              alt={SITE_IMAGE_ALT.weddingsCrowd}
-              aspect="16/10"
-              imageClassName="h-full w-full object-cover object-[25%_42%] lg:object-[center_42%]"
-              subtleBottomGradient
-              label="Your people"
-              reservedHint="Candid crowd energy: the people who travel with you and fill the floor."
-              sizes="(max-width: 1024px) 100vw, 72rem"
-            />
-          </div>
-          <figure className="mx-auto mt-8 max-w-2xl px-6 text-center sm:mt-10 lg:mt-12 lg:px-8">
-            <blockquote className="text-balance text-base leading-relaxed text-white/75 sm:text-lg sm:leading-8">
-              <p>
-                The best dance floors don&rsquo;t feel forced. They unfold naturally: the right song at the right moment, your people fully present, and a room that slowly lets go together.
-              </p>
-            </blockquote>
-          </figure>
-        </div>
-      </SectionReveal>
-
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-        <StaggerGroup className="grid gap-6 md:grid-cols-3">
-          {highlights.map((item) => (
-            <StaggerItem key={item.title}>
-              <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
-                <h2 className="text-xl font-semibold">{item.title}</h2>
-                <p className="mt-4 text-sm leading-7 text-white/65">{item.text}</p>
+      <section className={styles.truths} aria-labelledby="truths-heading">
+        <div className={styles.truthsInner}>
+          <h2 id="truths-heading" className={styles.sectionLabel}>Wedding tidbits</h2>
+          <p className={styles.truthsIntro}>The good stuff usually starts when you stop following a wedding template.</p>
+          <div className={styles.truthComposition}>
+            <article className={styles.playlistNote}>
+              <p>Five hours of Spotify isn&apos;t too much.</p>
+              <span>Most songs won&apos;t play front to back. A long playlist tells me where your taste lives.</span>
+            </article>
+            <article className={styles.curveballRecord}>
+              <p>The random rock request might be the one.</p>
+              <span className={styles.recordBody}>I&apos;ve seen one left-field song pull a whole table onto the floor.</span>
+            </article>
+            <article className={styles.dinnerStrip}>
+              <p>Dinner music should not put everybody to sleep.</p>
+            </article>
+            <article className={styles.traditionCard}>
+              <p>You can skip the bouquet toss.</p>
+              <span>It&apos;s your wedding. If a tradition doesn&apos;t sound like you, leave it out. The party will be fine.</span>
+            </article>
+            <article className={styles.ideaSampler}>
+              <p>Let&apos;s make something happen.</p>
+              <span>I&apos;m always up for a planned bit of harmless chaos. Try one of these, or let&apos;s invent our own.</span>
+              <div className={styles.samplerPads} aria-label="Celebration ideas">
+                <span>Limbo</span><span>Conga line</span><span>Dance battle</span><span>Line dance</span><span>Dinner wave</span><span>Kissing game</span>
               </div>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-      </SectionReveal>
-
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 pb-12 lg:px-8">
-        <p className="max-w-3xl text-sm leading-7 text-white/55">
-          Planning around a specific Squamish or Sea-to-Sky venue?{" "}
-          <Link
-            href="/venues"
-            className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 hover:decoration-amber-200/60"
-          >
-            Browse wedding venue guides
-          </Link>{" "}
-          for planning context tied to named settings, then check your date first when you&apos;re ready.
-        </p>
-        <p className="mt-4 max-w-3xl text-sm leading-7 text-white/55">
-          For how ceremony-through-reception pacing feeds the dance floor, read{" "}
-          <Link
-            href="/guides/how-to-keep-a-wedding-dance-floor-packed"
-            className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 hover:decoration-amber-200/60"
-          >
-            How to Keep a Wedding Dance Floor Packed at a Sea-to-Sky Wedding
-          </Link>
-          .
-        </p>
-        <p className="mt-4 max-w-3xl text-sm leading-7 text-white/55">
-          For a proof-style editorial on corridor dance-floor energy (not a single recap), open{" "}
-          <Link
-            href="/stories"
-            className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 hover:decoration-amber-200/60"
-          >
-            Sea-to-Sky wedding stories
-          </Link>
-          .
-        </p>
-      </SectionReveal>
-
-      <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              What’s included
-            </div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              Ceremony through reception: one cohesive sound and flow.
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              The job is bigger than playlists: it’s helping the day sound right, move well, and match the atmosphere you’re after, polished when it matters, high-energy when it’s time.
-            </p>
-          </div>
-
-          <StaggerGroup className="mt-12 grid gap-6 lg:grid-cols-3">
-            {serviceBlocks.map((block) => (
-              <StaggerItem key={block.title}>
-                <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
-                  <h3 className="text-xl font-semibold">{block.title}</h3>
-                  <div className="mt-5 space-y-3">
-                    {block.items.map((item) => (
-                      <div
-                        key={item}
-                        className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/75"
-                      >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-        </div>
-      </SectionReveal>
-
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-          <div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              The experience
-            </div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              Your story, your energy, your people.
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              Whether your day leans elegant and emotional or wild and unforgettable (or both), the music is built around you, wide enough range to match the crowd, focused enough to feel personal.
-            </p>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              That means reading the room, respecting the venue, supporting the timeline, and giving your guests a reason to stay on the floor, from first dance to last song.
-            </p>
-          </div>
-
-          <div className="premium-surface rounded-[2rem] border border-white/10 bg-white/5 p-8">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Planning process
-            </div>
-            <div className="mt-8 space-y-8">
-              {process.map((item) => (
-                <div key={item.step} className="flex gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-300 font-semibold text-neutral-950">
-                    {item.step}
-                  </div>
-                  <div>
-                    <div className="text-lg font-semibold">{item.title}</div>
-                    <p className="mt-2 text-sm leading-7 text-white/65">{item.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            </article>
+            <article className={styles.timelineFader}>
+              <span className={styles.faderTrack} aria-hidden="true" />
+              <div><p>Don&apos;t cut the chorus for the cake.</p><span>If the whole room is singing, we can give it another minute. The timeline should work for the party.</span></div>
+            </article>
+            <article className={styles.entranceTicket}>
+              <p>Your grand entrance, your song.</p>
+              <span>The wedding party can have theirs. You get your own moment when you walk in.</span>
+            </article>
+            <article className={styles.danceEditScreen}>
+              <p>You don&apos;t have to dance for four minutes.</p>
+              <span>I can shorten your first dance and parent dances to the length you want, with a proper ending.</span>
+            </article>
+            <article className={styles.allInCard}>
+              <p>No nickel-and-diming.</p>
+              <span>MCing, song edits, an extra speaker and extra time are all part of the service. No extra fees.</span>
+            </article>
           </div>
         </div>
-      </SectionReveal>
+      </section>
 
-      <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-3xl">
-              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-                FAQ
-              </div>
-              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-                A few of the questions couples often ask.
-              </h2>
-            </div>
-            <a href="/faq" className="motion-interactive shrink-0 text-sm font-semibold text-amber-300 hover:text-amber-200">
-              Full FAQ →
-            </a>
-          </div>
-
-          <div className="mt-10 space-y-4">
-            {faqs.map((item) => (
-              <div key={item.q} className="premium-surface rounded-[1.5rem] border border-white/10 bg-neutral-950/70 p-6">
-                <h3 className="text-lg font-semibold">{item.q}</h3>
-                <p className="mt-3 text-sm leading-7 text-white/65">{item.a}</p>
-              </div>
-            ))}
-          </div>
+      <section className={styles.packageHandoff} aria-labelledby="packages-heading">
+        <div>
+          <p id="packages-heading">Want the details?</p>
+          <Link href="/packages">See packages <span aria-hidden="true">→</span></Link>
         </div>
-      </SectionReveal>
-
-      <SectionReveal
-        as="section"
-        className={`${CTA_FINALE_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}
-      >
-        <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
-          <div className="mx-auto w-full max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Next step
-            </div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              Let’s talk about your date, your venue, and the kind of night you want to create.
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              When the direction feels aligned, most couples start with a Sound Check. You can confirm your calendar date alongside or right after.
-            </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
-            </div>
-          </div>
-        </div>
-      </SectionReveal>
+      </section>
     </main>
   );
 }

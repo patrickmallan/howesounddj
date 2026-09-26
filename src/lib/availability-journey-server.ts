@@ -10,7 +10,7 @@ export async function forwardAvailabilityJourney(payload: unknown): Promise<bool
   const url = endpoint(); const secret = process.env.AVAILABILITY_JOURNEY_INGEST_SECRET?.trim();
   if (!url || !secret) return false;
   try {
-    const response = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${secret}` }, body: JSON.stringify(payload), cache: "no-store" });
+    const response = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${secret}` }, body: JSON.stringify(payload), cache: "no-store", signal: AbortSignal.timeout(750) });
     return response.ok;
   } catch { return false; }
 }

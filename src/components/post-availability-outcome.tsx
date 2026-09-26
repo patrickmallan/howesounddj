@@ -40,14 +40,14 @@ export function PostAvailabilityOutcome(props: Props) {
       : POST_AVAILABILITY_SR_STATUS.manual(formattedDate);
 
   const consultButtonClass =
-    "inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-amber-300/40 hover:bg-white/5";
+    "inline-flex min-h-12 items-center justify-center border border-white/30 px-6 py-3 text-center text-sm font-bold uppercase tracking-wide text-white transition hover:border-cyan-300 hover:text-cyan-200";
 
   const primaryButtonClass =
-    "inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-center text-sm font-semibold text-neutral-950 transition hover:scale-[1.02]";
+    "inline-flex min-h-12 items-center justify-center bg-yellow-300 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-neutral-950 transition hover:bg-cyan-300";
 
   return (
     <div
-      className={`rounded-[1.5rem] border border-white/10 bg-white/5 p-6 lg:p-8 ${props.className ?? ""}`.trim()}
+      className={`border-l-4 border-cyan-300 bg-black/75 p-6 lg:p-8 ${props.className ?? ""}`.trim()}
       role="status"
       aria-live="polite"
     >

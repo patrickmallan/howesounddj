@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
 import { AuthorityProofStrip } from "@/components/authority-proof-strip";
@@ -9,15 +10,17 @@ import { CTA_FINALE_SECTION_Y } from "@/lib/cta-section-spacing";
 import { getWhistlerVenuePages } from "@/config/venue-pages";
 import { JsonLd } from "@/components/json-ld";
 import { whistlerWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
+import "../squamish-wedding-dj/place-setlist.css";
 
 const pageTitle = "Whistler Wedding DJ | Mountain Reception Energy";
 const pageDescription =
-  "Whistler mountain weddings with calm planning, polished sound, and guest-first dance floor pacing from a Squamish-based Sea-to-Sky DJ.";
+  "Whistler mountain weddings with clear planning, polished sound, and guest-first dance floor direction from a Squamish-based Sea-to-Sky DJ.";
 
 export const metadata: Metadata = {
   title: { absolute: pageTitle },
   description: pageDescription,
   openGraph: {
+    images: ["/og-share.jpg"],
     title: pageTitle,
     description: pageDescription,
     url: "/whistler-wedding-dj",
@@ -78,21 +81,19 @@ export default function WhistlerWeddingDjPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
+    <main className="hsdj-interior hsdj-place-page hsdj-place-whistler min-h-screen bg-neutral-950 text-white">
       <JsonLd data={whistlerWeddingDjBreadcrumbJsonLd()} />
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.14),transparent_50%)]" />
         <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
           <div className="max-w-3xl">
-            <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
+            <div className="hsdj-page-eyebrow">
               Whistler wedding DJ
             </div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Sea-to-Sky · Squamish-based</div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              Whistler wedding DJ for elegant mountain celebrations
-            </h1>
+            <MeterMatrixHeading text="Whistler wedding DJ for elegant mountain celebrations" className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl" />
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              For couples marrying in Whistler who want calm planning, polished sound, and a dance floor that feels alive without feeling forced. Howe Sound DJ works in the Sea-to-Sky wedding atmosphere
+              For couples marrying in Whistler who want clear planning, polished sound, and a dance floor that feels alive without feeling forced. Howe Sound DJ works in the Sea-to-Sky wedding atmosphere
               lane: ceremony-to-dance-floor thinking, room-reading, and guest momentum that matches mountain settings.
             </p>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
@@ -109,12 +110,6 @@ export default function WhistlerWeddingDjPage() {
               </Link>
               .
             </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="hero" checkSurface="hero" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -128,7 +123,7 @@ export default function WhistlerWeddingDjPage() {
             try to change it.
           </p>
         </div>
-        <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2">
+        <StaggerGroup className="hsdj-place-rack mt-12 grid gap-6 md:grid-cols-2">
           {whyDifferent.map((item) => (
             <StaggerItem key={item.title}>
               <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
@@ -208,7 +203,7 @@ export default function WhistlerWeddingDjPage() {
             pillar is the closer match.
           </p>
         </div>
-        <ul className="mt-10 grid list-none gap-4 sm:grid-cols-2">
+        <ul className="hsdj-place-venue-list mt-10 grid list-none gap-4 sm:grid-cols-2">
           {whistlerVenues.map((v) => (
             <li key={v.slug}>
               <Link
@@ -250,7 +245,7 @@ export default function WhistlerWeddingDjPage() {
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Next step</div>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Plan the Whistler atmosphere you actually want</h2>
             <p className="mt-4 text-lg leading-8 text-white/70">
-              When the fit feels right, most couples book a short consult, check availability for their date, or both. Proof from past weddings lives on the{" "}
+              Check your date first and the calendar answers immediately. If I&apos;m available, book a short consult so we can talk about your day and how we would work together. Proof from past weddings lives on the{" "}
               <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 reviews page
               </Link>
@@ -262,9 +257,6 @@ export default function WhistlerWeddingDjPage() {
             </p>
             <div className="mt-8 max-w-xl space-y-4">
               <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
             </div>
           </div>
         </div>

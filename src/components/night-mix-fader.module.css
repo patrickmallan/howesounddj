@@ -1,0 +1,94 @@
+.console {
+  --stage-accent: #ffe000;
+  --stage-wash: #7f4e00;
+  position: relative;
+  width: min(1340px, 94vw);
+  margin: auto;
+  color: white;
+  filter: drop-shadow(18px 20px 0 #0847ff);
+}
+
+.scene {
+  position: relative;
+  overflow: hidden;
+  min-height: 520px;
+  border: 1px solid #ffffff4a;
+  background: #08090b;
+  clip-path: polygon(0 3%, 12% 0, 27% 2.5%, 43% .5%, 59% 3%, 76% .5%, 91% 2.5%, 100% 0, 99% 96%, 82% 100%, 65% 97%, 49% 100%, 31% 97%, 14% 100%, 1% 96%);
+  isolation: isolate;
+}
+
+.scene::before {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  content: "";
+  pointer-events: none;
+  background: radial-gradient(circle at 17% 22%, #ffffff12 0 1px, transparent 2px), radial-gradient(circle at 74% 68%, #ffffff0d 0 1px, transparent 2px);
+  background-size: 41px 47px, 59px 53px;
+  mix-blend-mode: overlay;
+}
+
+.sceneImage { object-fit: cover; object-position: var(--image-position, center); filter: contrast(1.08) saturate(.94); animation: image-arrive 620ms cubic-bezier(.2,.75,.15,1) both; }
+.sceneWash { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, #030405f8 0 18%, color-mix(in srgb, var(--stage-wash) 78%, transparent) 48%, transparent 79%), linear-gradient(0deg, #020304df, transparent 58%); mix-blend-mode: multiply; transition: background 360ms ease; }
+
+.sceneCopy { position: absolute; z-index: 5; top: 9%; bottom: 10%; left: 5%; display: flex; width: min(47%, 630px); flex-direction: column; align-items: flex-start; }
+.stageName { margin: .35rem 0 .3rem; color: var(--stage-accent); font: 900 .78rem/1 var(--font-geist-mono), monospace; letter-spacing: .16em; text-transform: uppercase; }
+.stageWord { width: fit-content; max-width: 100%; margin-left: -.025em; padding: .16em .2em .2em; border: 1px solid #ffffff24; border-left: 6px solid var(--stage-accent); color: #f7f2e8; background: linear-gradient(104deg, #020405f8, #080a0de8 86%, #080a0db8); box-shadow: 7px 8px 0 #0008, inset 0 1px 0 #ffffff0d; font: 950 clamp(3rem, 5.2vw, 5.8rem)/1.02 var(--display), Impact, sans-serif; font-palette: --hsdj-paper-light; letter-spacing: .035em; text-shadow: none; text-wrap: balance; filter: drop-shadow(0 0 .055em color-mix(in srgb, var(--stage-accent) 42%, transparent)); animation: word-arrive 420ms cubic-bezier(.16,.84,.26,1) both; }
+.stageLine { position: relative; width: fit-content; max-width: 590px; margin: 1.2rem 0 0; padding: .92rem 1.15rem 1.28rem; overflow: hidden; border: 0; color: #fff8e8; background: linear-gradient(96deg, #050709e8 0 30%, #050709c4 70%, #050709e8), url('/images/hsdj-redesign/footer/footer-dj-mixer-collage-v2-optimized.webp') center 54% / cover no-repeat; box-shadow: none; font-size: clamp(.9rem, 1.2vw, 1.12rem); font-weight: 800; line-height: 1.45; text-shadow: 0 2px 5px #000; clip-path: polygon(0 8%, 97% 0, 100% 82%, 0 100%); isolation: isolate; }
+.stageLine::after { position: absolute; right: 5%; bottom: .16rem; left: 12%; height: 4px; content: ""; background: #ef2727; clip-path: polygon(0 30%, 70% 0, 100% 45%, 62% 100%, 8% 72%); }
+.moves { display: grid; width: 100%; margin-top: auto; grid-template-columns: repeat(3, 1fr); gap: .45rem; }
+.moves span { display: grid; min-height: 62px; padding: .55rem .65rem; align-content: center; border-top: 3px solid var(--stage-accent); background: #050607dc; font: 800 .65rem/1.2 var(--font-geist-mono), monospace; text-transform: uppercase; animation: move-arrive 380ms calc(var(--move-delay, 0) * 70ms) ease-out both; }
+.moves b { margin-bottom: .25rem; color: var(--stage-accent); font-size: .55rem; letter-spacing: .14em; }
+
+.signalField { position: absolute; z-index: 4; right: 3%; bottom: 10%; display: flex; width: 43%; height: 31%; padding: 1.7rem 0 1.15rem; align-items: stretch; justify-content: flex-end; gap: clamp(2px, .22vw, 4px); overflow: visible; border: 0; background: transparent; box-shadow: none; filter: drop-shadow(0 5px 5px #000b); }
+.signalField::after { position: absolute; right: 0; bottom: 1.05rem; left: 0; height: 3px; content: ""; background: linear-gradient(90deg, transparent, var(--stage-accent) 8% 92%, transparent); box-shadow: 0 0 8px color-mix(in srgb, var(--stage-accent) 70%, transparent); }
+.signalField i { --spectrum-level: .08; --peak-level: .1; position: relative; width: 100%; height: 100%; min-width: 2px; opacity: .8; will-change: opacity; }
+.signalField i::before { position: absolute; right: 0; bottom: 1.15rem; left: 0; height: calc(var(--spectrum-level) * 100%); content: ""; border-radius: 2px 2px 0 0; background: repeating-linear-gradient(0deg, transparent 0 4px, #020304c7 4px 5px), linear-gradient(0deg, #35f06a 0 55%, #ffe000 55% 80%, #ff3341 80% 100%); box-shadow: 0 0 6px color-mix(in srgb, var(--stage-accent) 60%, transparent); transition: height 40ms linear; }
+.signalField i::after { position: absolute; right: 0; bottom: calc(1.15rem + var(--peak-level) * 100%); left: 0; height: 2px; content: ""; background: #fff; box-shadow: 0 0 5px #fff, 0 0 7px var(--stage-accent); transition: bottom 55ms linear; }
+.frequencyScale { position: absolute; right: 0; bottom: 0; left: 0; display: flex; justify-content: space-between; color: #d7d9db; font: 800 .42rem/1 var(--font-geist-mono), monospace; letter-spacing: .08em; text-shadow: 0 2px 4px #000; }
+
+.controlSurface { position: relative; z-index: 8; width: 91%; margin: -2.5rem auto 0; padding: 1.25rem 1.8rem 1.35rem; border: 1px solid #656a70; background: linear-gradient(102deg, #08090af7, #1b1e22f4 45%, #070809fa), url('/images/hsdj-redesign/deck-surfaces/djm-a9-topdown-optimized.webp') center 72% / cover; box-shadow: -10px 11px 0 #ef2727; transform: rotate(-.35deg); }
+.instruction { margin: 0 0 .45rem; color: white; font: 900 .7rem/1 var(--font-geist-mono), monospace; letter-spacing: .14em; text-transform: uppercase; }
+.instruction span { margin-left: .8rem; color: var(--stage-accent); }
+.fader { position: relative; height: 72px; margin: 0 1.8rem; }
+.rail { position: absolute; top: 50%; right: 0; left: 0; height: 14px; border: 1px solid #73777c; background: linear-gradient(#050505, #303337 45%, #050505 54%, #17191b); box-shadow: inset 0 2px 5px #000, 0 0 0 9px #090a0b; transform: translateY(-50%); }
+.rail::after { position: absolute; inset: -21px 0; content: ""; opacity: .68; background: repeating-linear-gradient(90deg, #d6d6d6 0 2px, transparent 2px calc(25% - 1px), #d6d6d6 calc(25% - 1px) calc(25% + 1px)); }
+.cap { position: absolute; z-index: 3; top: 50%; left: var(--fader-stop); width: 94px; height: auto; filter: drop-shadow(0 8px 7px #000) drop-shadow(0 0 7px var(--stage-accent)); transform: translate(-50%, -50%); transition: left 300ms cubic-bezier(.22,1,.36,1), filter 250ms ease; }
+.fader input { position: absolute; z-index: 5; inset: 0; width: 100%; height: 100%; cursor: ew-resize; opacity: 0; }
+.fader:focus-within .rail { box-shadow: inset 0 2px 5px #000, 0 0 0 9px #090a0b, 0 0 0 12px var(--stage-accent); }
+.stages { display: grid; grid-template-columns: repeat(5, 1fr); gap: .42rem; }
+.stages button { min-width: 0; padding: .62rem .4rem .55rem; border: 0; border-top: 4px solid #41454a; color: #a9aaac; background: #08090a9c; cursor: pointer; text-align: left; text-transform: uppercase; transition: color 160ms ease, border-color 160ms ease, background 160ms ease, transform 160ms ease; }
+.stages button span { display: block; margin-bottom: .35rem; font: 900 .55rem/1 var(--font-geist-mono), monospace; letter-spacing: .12em; }
+.stages button b { display: block; overflow-wrap: anywhere; font: 900 clamp(.66rem, 1vw, .85rem)/1 var(--technical), Arial, sans-serif; }
+.stages button:hover, .stages button:focus-visible, .stages .active { border-color: var(--stage-accent); color: white; background: linear-gradient(90deg, color-mix(in srgb, var(--stage-accent) 22%, transparent), transparent); outline: none; transform: translateY(-2px); }
+.stages .active span { color: var(--stage-accent); }
+
+@keyframes image-arrive { from { opacity: .45; transform: scale(1.035); } to { opacity: 1; transform: scale(1); } }
+@keyframes word-arrive { from { opacity: 0; transform: translateX(-.18em) skewX(-8deg); } to { opacity: 1; transform: none; } }
+@keyframes move-arrive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .sceneImage, .stageWord, .moves span { animation: none; }
+}
+
+@media (max-width: 700px) {
+  .console { width: calc(100vw - 1.5rem); filter: drop-shadow(8px 9px 0 #0847ff); }
+  .scene { min-height: 650px; }
+  .sceneImage { object-position: 62% center; }
+  .sceneWash { background: linear-gradient(0deg, #030405f8 0 48%, color-mix(in srgb, var(--stage-wash) 75%, transparent) 78%, transparent 100%); }
+  .sceneCopy { top: 5%; right: 6%; bottom: 7%; left: 6%; width: auto; }
+  .stageWord { font-size: clamp(2.5rem, 11vw, 4rem); line-height: 1.04; }
+  .stageLine { margin-top: .8rem; font-size: .88rem; }
+  .signalField { right: 5%; bottom: 31%; width: 56%; height: 20%; }
+  .moves { margin-top: auto; gap: .22rem; }
+  .moves span { min-height: 56px; padding: .45rem .38rem; font-size: .5rem; }
+  .controlSurface { width: 95%; margin-top: -1.8rem; padding: 1rem .65rem; }
+  .instruction { padding-inline: .3rem; line-height: 1.35; }
+  .instruction span { display: block; margin: .25rem 0 0; }
+  .fader { height: 66px; margin: 0 .8rem; }
+  .cap { width: 70px; }
+  .stages { gap: .12rem; }
+  .stages button { padding-inline: .15rem; }
+  .stages button span { font-size: .46rem; }
+  .stages button b { font-size: .5rem; }
+}

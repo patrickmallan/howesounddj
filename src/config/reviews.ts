@@ -52,7 +52,7 @@ export const CANONICAL_REVIEWS: readonly CanonicalReview[] = [
     attribution: "Stephen Henry",
     venue: "Sea to Sky Gondola",
     availabilitySuccessExcerpt:
-      "We would get married all over again just so we could hangout and work with Patrick. He's a talented DJ and a truly caring person.",
+      "We would get married all over again just so we could hangout and work with Patrick again. He's a talented DJ and a truly caring person.",
     evidenceStatus: "published_site",
   },
   {

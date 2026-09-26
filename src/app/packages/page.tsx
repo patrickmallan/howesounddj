@@ -1,287 +1,190 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
-import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
-import { CTA_FINALE_SECTION_Y, MAIN_SECTION_Y } from "@/lib/cta-section-spacing";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
+import { SectionReveal } from "@/components/motion";
+import styles from "./packages-page.module.css";
 
 const packagesTitle = "Squamish Wedding DJ Packages | Your Music, Your Night";
 const packagesDesc =
-  "Squamish wedding DJ packages with ceremony-to-reception coverage, open-format music planning, live mixing, and sound built around your venue and crowd.";
+  "Wedding and event DJ options for Squamish: ceremony audio, reception sound, lighting, music planning, and a dance floor built around your people.";
 
 export const metadata: Metadata = {
   title: packagesTitle,
   description: packagesDesc,
   openGraph: {
+    images: ["/og-share.jpg"],
     title: packagesTitle,
     description:
-      "Transparent Squamish wedding DJ packages with full-day coverage, real open-format DJing, and music built around your taste, not a wedding template.",
+      "Straightforward Squamish wedding DJ options, from ceremony audio to the last song, with honest advice about what your day actually needs.",
     url: "/packages",
   },
   alternates: { canonical: "/packages" },
 };
 
+const weddingIncludes = [
+  ["Ceremony", "Music in the right places, wireless microphones, and vows people can actually hear."],
+  ["Cocktails + dinner", "Good music at a volume where the table beside you can still have a conversation."],
+  ["Speeches", "The microphone is ready, I know who has it next, and nobody is tapping it asking if it is on."],
+  ["Dance floor", "Your must-plays get us started. After that, I watch the room and build from what is working."],
+];
+
+const alwaysIncluded = [
+  "Planning calls with me, not a handoff to whoever is available",
+  "A proper read through your timeline before the wedding",
+  "Your must-plays, absolutely-nots, requests, and musical curveballs",
+  "Sound that fits the room instead of simply being the biggest system possible",
+  "Set-up, soundcheck, pack-down, and the unglamorous work in between",
+  "MC help when it is useful; no radio voice and no unnecessary talking",
+];
+
+const upgrades = [
+  ["MORE LIGHT", "Extra dance-floor or room lighting when the venue needs a push."],
+  ["MORE ROOMS", "A second or third sound zone for ceremonies, patios, or awkward layouts."],
+  ["SILENT DISCO", "Headphones, channels, and the delightfully strange sight of a silent dance floor."],
+  ["CUSTOM AUDIO", "An audio message or a more involved production idea for one very specific entrance."],
+  ["PHOTO BOOTH", "If it belongs at your party, we can talk through the right setup."],
+];
+
 export default function PackagesPage() {
-  const everyPackageIncludes = [
-    {
-      title: "Planning that stays ahead of the day",
-      text: "Consultation calls, clear communication, and a timeline-minded approach so music and announcements line up with how your event actually runs."
-    },
-    {
-      title: "Sound that supports every moment",
-      text: "Clear audio from soft vows to full dance-floor energy, with setup and level management so guests hear what matters without strain."
-    },
-    {
-      title: "Open-format music direction",
-      text: "Genre direction, must-plays, do-not-plays, and a live set shaped by your taste and the room, not a generic wedding formula."
-    },
-    {
-      title: "Professional execution",
-      text: "Smooth transitions, thoughtful MC support when needed, and someone behind the mixer who is paying attention to the room, not just the next track."
-    }
-  ];
-
-  const tiers = [
-    {
-      name: "Celebration",
-      tag: "Squamish special events",
-      position:
-        "Squamish milestone birthdays, anniversaries, corporate gatherings, or local celebrations that need strong music and coordination without the full wedding-day arc.",
-      highlight: false,
-      features: [
-        "DJ coverage for your event (typically 3–5 hours)",
-        "Open-format music direction tailored to your taste and crowd",
-        "Professional sound system scaled to fill the space",
-        "Dancefloor lighting to support the vibe",
-        "MC support for announcements, toasts, or program moments",
-        "Pre-event consultation so the run-of-show feels intentional"
-      ]
-    },
-    {
-      name: "Complete Wedding",
-      tag: "Most couples start here",
-      position:
-        "From the walk down the aisle to the last song: one cohesive soundtrack for ceremony, cocktails, dinner, and the dance floor.",
-      highlight: true,
-      features: [
-        "Full-day DJ service covering ceremony and reception",
-        "Live DJ set shaped around your genres, preferences, and key moments",
-        "Sound and lighting suited to each phase of the day",
-        "Wireless microphones for vows, officiant, and speeches",
-        "MC support: introductions, transitions, and a smooth flow for guests",
-        "Pre-event planning: calls, venue coordination when needed, and a shared timeline"
-      ]
-    },
-    {
-      name: "Signature",
-      tag: "More customization",
-      position:
-        "Everything in Complete Wedding, with room to layer in enhancements when you want the night to feel even more custom: extra lighting, expanded audio, and bespoke music moments.",
-      highlight: false,
-      features: [
-        "Everything included in Complete Wedding",
-        "Enhanced dancefloor lighting and atmosphere options",
-        "Additional speaker setups or zones for complex venues or layouts",
-        "Custom-mixed tracks for grand entrance and formal dances",
-        "Priority planning for bespoke moments (e.g. specialty entrances, staged reveals)",
-        "Access to the full enhancement menu: silent disco, photo booth coordination, and more"
-      ]
-    }
-  ];
-
-  const addOns = [
-    "Additional dancefloor or ambient lighting",
-    "Extra speaker setups and multi-zone audio",
-    "Video edits or visual coordination (when your vendor plan includes it)",
-    "Photo booth add-on coordination",
-    "Silent disco setup",
-    "Audio message from an absent loved one woven into the evening",
-    "Further custom edits and one-off mixes beyond formal dances"
-  ];
-
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.14),transparent_50%)]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
-          <div className="max-w-3xl">
-            <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
-              Squamish • Wedding DJ Packages
-            </div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Packages
-            </div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              Know what you are booking before you commit.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              These tiers describe the shape of your day and the support you receive: planning calls, ceremony-through-reception coverage when you need it, and a host who steers the room without stealing
-              the spotlight. After you reach out, I reply with availability, a clear quote, and what the planning path looks like from there.
+    <main className={`${styles.page} hsdj-interior`}>
+      <section className={styles.hero}>
+        <div className={styles.heroGrid} aria-hidden="true" />
+        <div className={styles.heroInner}>
+          <div className={styles.eyebrow}>PACKAGES / SQUAMISH, BC</div>
+          <MeterMatrixHeading
+            text="Tell me what kind of day you are having."
+            className={styles.heroHeading}
+          />
+          <div className={styles.heroNote}>
+            <p>
+              Most people do not arrive knowing which DJ package they need. You
+              should not have to. Tell me the venue, the rough guest count,
+              whether the ceremony is there too, and how late you want to go. I
+              will tell you what makes sense. If you do not need something, it
+              will not be in the quote.
             </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="hero" checkSurface="hero" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
-            </div>
           </div>
         </div>
       </section>
 
-      <SectionReveal as="section" className={`${MAIN_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}>
-        <div className="max-w-3xl">
-          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-            How to choose
+      <SectionReveal as="section" className={styles.journey}>
+        <div className={`${styles.scene} ${styles.decisionScene}`}>
+          <div className={styles.decisionCopy}>
+            <div className={styles.kicker}>START WITH ONE QUESTION</div>
+            <h2 className="hsdj-lightboard-heading">Wedding or something else?</h2>
+            <p>That answer gets us most of the way there. Follow the signal.</p>
           </div>
-          <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-            Match the package to your day, then we fill in the details together.
-          </h2>
-          <p className="mt-4 text-lg leading-8 text-white/70">
-            Every booking includes the same standard of communication and care. Tiers differ by scope: hours, whether ceremony is included, and how much production layering you want. Not sure which fits?
-            That is normal. A short inquiry is enough to align.
-          </p>
+          <div className={styles.routeSplit}>
+            <a className={styles.weddingRoute} href="#complete-wedding">
+              <strong>Complete Wedding</strong>
+              <small>Ceremony through dance floor</small>
+            </a>
+            <a className={styles.eventRoute} href="#celebration">
+              <strong>A Great Party</strong>
+              <small>Music, sound, lights, built for the room</small>
+            </a>
+          </div>
         </div>
 
-        <StaggerGroup className="mt-14 grid gap-6 lg:grid-cols-3">
-          {tiers.map((tier) => (
-            <StaggerItem key={tier.name}>
-              <div
-                className={`premium-surface flex h-full flex-col rounded-[1.75rem] border p-6 lg:p-8 ${
-                  tier.highlight
-                    ? "border-amber-300/35 bg-gradient-to-b from-amber-300/10 to-white/[0.03] shadow-lg shadow-black/20"
-                    : "border-white/10 bg-white/5"
-                }`}
-              >
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <h3 className="text-2xl font-semibold">{tier.name}</h3>
-                  <div className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/90">
-                    {tier.tag}
-                  </div>
-                </div>
-                {tier.highlight ? (
-                  <span className="shrink-0 rounded-full bg-amber-300 px-2.5 py-1 text-xs font-semibold text-neutral-950">
-                    Popular
-                  </span>
-                ) : null}
-              </div>
-              <p className="mt-4 flex-1 text-sm leading-7 text-white/65">{tier.position}</p>
-              <ul className="mt-6 space-y-3 border-t border-white/10 pt-6">
-                {tier.features.map((line) => (
-                  <li key={line} className="flex gap-3 text-sm leading-7 text-white/80">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
-                    <span>{line}</span>
-                  </li>
-                ))}
-              </ul>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-
-        <div className="mt-10 rounded-[1.5rem] border border-white/10 bg-white/5 p-6 lg:p-8">
-          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-            What happens after you inquire
-          </div>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-white/65">
-            I reply personally with availability for your date, a written quote based on your venue and timeline, and a suggested next step (usually a 45-minute consult). From there, planning calls, music direction,
-            and a shared run-of-show build at your pace. Your quote spells out the coverage and add-ons before you make any commitment.
-          </p>
-          <p className="mt-4 text-sm leading-7 text-white/55">
-            <Link
-              href="/faq"
-              className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 hover:decoration-amber-200/60"
-            >
-              See our FAQ
-            </Link>{" "}
-            for common questions about planning, ceremony audio, and coverage.
-          </p>
-        </div>
-      </SectionReveal>
-
-      <SectionReveal as="section" className="border-y border-white/10 bg-white/5">
-        <div className={`mx-auto max-w-6xl px-6 lg:px-8 ${MAIN_SECTION_Y}`}>
-          <div className="max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Every package includes
-            </div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              The same care in every tier.
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              Scope changes; standards do not. From dinner atmosphere to drum &amp; bass, tech house, hip-hop, disco, country, or a full open-format dance floor, you get thoughtful music direction and a set mixed for the room in front of Patrick.
+        <div className={`${styles.scene} ${styles.weddingScene}`} id="complete-wedding">
+          <div className={styles.collageWindow} role="img" aria-label="A wedding day moving from a mountain ceremony through dinner and dancing" />
+          <div className={styles.weddingCopy}>
+            <div className={styles.kicker}>THE ONE MOST COUPLES NEED</div>
+            <h2>Complete Wedding</h2>
+            <p className={styles.bigCopy}>
+              From the first guest arriving to the last song. One person keeping
+              an eye on the music, the microphones, and where the day is going next.
             </p>
-            <p className="mt-4 text-sm leading-7 text-white/55">
-              <Link
-                href="/about"
-                className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
-              >
-                Meet the person behind Howe Sound DJ
-              </Link>{" "}
-              if you want the approach and corridor experience before you choose a tier.
-            </p>
+            <p>This is the sensible starting point. We trim it or add to it after I see the venue and timeline.</p>
           </div>
-          <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2">
-            {everyPackageIncludes.map((item) => (
-              <StaggerItem key={item.title}>
-                <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-neutral-950/70 p-6">
-                  <h3 className="text-xl font-semibold">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
-                </div>
-              </StaggerItem>
+          <div className={styles.dayPath}>
+            {weddingIncludes.map(([title, text]) => (
+              <article className={styles.dayStop} key={title}>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
             ))}
-          </StaggerGroup>
-        </div>
-      </SectionReveal>
-
-      <SectionReveal as="section" className={`${MAIN_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}>
-        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-          <div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Optional add-ons
-            </div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              When you want to push the experience further.
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              Many couples land on Complete Wedding and add one or two enhancements. Signature is for when you already know you want layered lighting, expanded audio, or bespoke music moments. We map it in planning instead of improvising on the day.
-            </p>
-          </div>
-          <div className="premium-surface rounded-[2rem] border border-white/10 bg-white/5 p-8">
-            <ul className="space-y-4">
-              {addOns.map((item) => (
-                <li key={item} className="flex gap-3 text-sm leading-7 text-white/75">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 text-sm leading-7 text-white/50">
-              Not sure what you need? That is what a Sound Check is for. We match enhancements to your venue, guest count, and how you want the night to feel.
-            </p>
           </div>
         </div>
-      </SectionReveal>
 
-      <SectionReveal
-        as="section"
-        className={`${CTA_FINALE_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}
-      >
-        <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
-          <div className="mx-auto w-full max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Next step
-            </div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              Send your date and the tier that closest matches your plan.
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              If something sits between tiers, we shape it together. You will hear back with availability, a clear quote, and what planning looks like from there. No spreadsheet labels, no pressure.
-            </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
+        <div className={`${styles.scene} ${styles.celebrationScene}`} id="celebration">
+          <div className={styles.celebrationPhoto} aria-hidden="true" />
+          <div className={styles.ticket}>
+            <div className={styles.ticketBody}>
+              <div className={styles.kicker}>BIRTHDAYS / ANNIVERSARIES / WORK PARTIES</div>
+              <h2>Not every party needs the full wedding setup.</h2>
+              <p>
+                If the job is good music, a room that sounds right, and somewhere
+                to dance, Celebration keeps it simple. Usually three to five hours,
+                proper sound, lights, and help with a few announcements if you need it.
               </p>
+              <p className={styles.ticketFootnote}>You bring the reason. I bring the party part.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className={`${styles.scene} ${styles.includedScene}`}>
+          <div className={styles.includedTitle}>
+            <div className={styles.kicker}>ON EVERY BOOKING</div>
+            <h2>The stuff I would not leave out.</h2>
+            <p>Package names change how much of the day I cover, not how much I care once I am there.</p>
+          </div>
+          <ol className={styles.setList}>
+            {alwaysIncluded.map((item) => (
+              <li key={item}>
+                <p>{item}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div className={`${styles.scene} ${styles.upgradeScene}`}>
+          <div className={styles.equipmentArt} aria-hidden="true" />
+          <div className={styles.patchHeader}>
+            <div><div className={styles.kicker}>ONLY IF IT HELPS</div><h2 className="hsdj-lightboard-heading">Need another layer?</h2></div>
+            <p>These are additions, not automatic upgrades. We use the ones that solve a real problem or make the room more fun.</p>
+          </div>
+          <div className={styles.patchBay}>
+            {upgrades.map(([title, text]) => (
+              <article className={styles.patch} key={title}>
+                <h3>{title}</h3><p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className={`${styles.scene} ${styles.afterScene}`}>
+          <div className={styles.afterHeading}>
+            <div className={styles.kicker}>THE NEXT TRACK</div>
+            <h2>One date. One conversation. Your call.</h2>
+            <p>No long form or sales maze. Here is how we get from an open date to a decision.</p>
+          </div>
+          <div className={styles.afterDeck}>
+            <div className={styles.afterDeckTop}>
+              <span>HOWE SOUND DJ</span>
+              <span>THE NEXT FOUR MOVES</span>
+            </div>
+            <ol className={styles.afterPath}>
+              <li><span className={styles.afterStepNumber} aria-hidden="true">01</span><div><strong>Check your date.</strong><p>The calendar answers right away. No venue or guest count needed.</p></div></li>
+              <li><span className={styles.afterStepNumber} aria-hidden="true">02</span><div><strong>If it is open, book a consult.</strong><p>The available-date screen takes you straight to the consult times.</p></div></li>
+              <li><span className={styles.afterStepNumber} aria-hidden="true">03</span><div><strong>Talk it through.</strong><p>We talk wedding, music, and what working together would look like.</p></div></li>
+              <li><span className={styles.afterStepNumber} aria-hidden="true">04</span><div><strong>You decide.</strong><p>If you want me as your DJ, we move into the booking steps.</p></div></li>
+            </ol>
+            <div className={styles.afterDeckFoot}>
+              Howe Sound Wedding DJ. Your Celebration, Our Passion.
+            </div>
+          </div>
+          <div className={styles.signalEnd}>
+            <div className={styles.signalEndCopy}>
+              <div className={styles.kicker}>READY WHEN YOU ARE</div>
+              <h3>Put your date on the deck.</h3>
+              <p>Start with the instant calendar check. The rest is a conversation.</p>
+              <p className={styles.faqLine}>Still collecting information? <Link href="/faq">The FAQ has the practical stuff.</Link></p>
+            </div>
+            <div className={styles.finalActions}>
+              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
             </div>
           </div>
         </div>

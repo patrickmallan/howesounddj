@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <filter id="lift" x="-15%" y="-20%" width="130%" height="145%">
+      <feDropShadow dx="0" dy="8" stdDeviation="3.5" flood-color="#050608" flood-opacity=".78"/>
+    </filter>
+    <radialGradient id="face" cx="38%" cy="31%" r="76%">
+      <stop offset="0" stop-color="#66737c"/><stop offset=".18" stop-color="#273039"/><stop offset=".62" stop-color="#090c10"/><stop offset="1" stop-color="#010204"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/><stop offset=".16" stop-color="#656d74"/><stop offset=".38" stop-color="#161b20"/><stop offset=".64" stop-color="#9aa2a8"/><stop offset=".82" stop-color="#242a30"/><stop offset="1" stop-color="#d7dce0"/>
+    </linearGradient>
+    <linearGradient id="flash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".96"/><stop offset=".42" stop-color="#dff8ff" stop-opacity=".72"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="faceClip"><circle r="63"/></clipPath>
+    <g id="knob">
+      <!-- Fluted black metal skirt, seen directly from above. -->
+      <circle r="79" fill="#05070a" stroke="#11151a" stroke-width="7"/>
+      <circle r="76" fill="none" stroke="url(#ring)" stroke-width="9" stroke-dasharray="10 4"/>
+      <circle r="68" fill="#080b0f" stroke="#020305" stroke-width="4"/>
+      <circle r="63" fill="url(#face)" stroke="url(#ring)" stroke-width="4"/>
+      <!-- Star-like reflected light across the machined face, clear of the indicator. -->
+      <g clip-path="url(#faceClip)">
+        <path d="M-5 1-63-11-62 7Z" fill="#fffdf5" opacity=".92"/>
+        <path d="M-4-2-47-47-32-57Z" fill="url(#flash)" opacity=".82"/>
+        <path d="M5 1 47-45 58-31Z" fill="#d8f5ff" opacity=".45"/>
+        <path d="M6 4 63 17 57 32Z" fill="#ffffff" opacity=".23"/>
+        <path d="M-3 5-48 43-57 31Z" fill="#93a6b0" opacity=".28"/>
+        <path d="M-5 0H-63" stroke="#fff" stroke-width="2.5" opacity=".82"/>
+        <path d="M3 2 53-39M4 4 59 23M-3 4-52 37" stroke="#dff8ff" stroke-width="1.5" opacity=".7"/>
+        <path d="M-58 28A64 64 0 0 0 56 31" fill="none" stroke="#000" stroke-width="10" opacity=".22"/>
+      </g>
+      <path d="M0-7V-58" stroke="#fffdf5" stroke-width="7" stroke-linecap="round"/>
+      <path d="M2-9V-56" stroke="#bdf4ff" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+      <circle r="7" fill="#06080b" stroke="#737b82" stroke-width="2"/>
+      <path d="M30-53A62 62 0 0 1 51-34" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".78"/>
+    </g>
+  </defs>
+
+  <!-- Geometric Floor: each knob occupies the visual width of the O it replaces. -->
+  <g filter="url(#lift)" aria-label="Howe Sound">
+    <g fill="#f4efe4" stroke="#090b0e" stroke-width="8" paint-order="stroke" font-family="Futura, Avenir, sans-serif" font-size="188" font-weight="800">
+      <text x="45" y="185">H</text>
+      <text x="390" y="185">W</text>
+      <text x="615" y="185">E</text>
+      <text x="788" y="185">S</text>
+      <text x="1090" y="185">U</text>
+      <text x="1237" y="185">N</text>
+      <text x="1402" y="185">D</text>
+    </g>
+    <use href="#knob" transform="translate(287 115)"/>
+    <use href="#knob" transform="translate(1003 115)"/>
+  </g>
+
+  <!-- Same selected geometric face, with no card and no underline/swoop. -->
+  <g filter="url(#lift)" text-anchor="middle" font-family="Futura, Avenir, sans-serif" font-size="69" font-weight="800" letter-spacing="15">
+    <text x="800" y="282" fill="#f4efe4" stroke="#090b0e" stroke-width="7" paint-order="stroke">WEDDING DJ</text>
+  </g>
+</svg>

@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
-import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
-import { CTA_FINALE_SECTION_Y } from "@/lib/cta-section-spacing";
+import { SectionReveal } from "@/components/motion";
 import { JsonLd } from "@/components/json-ld";
 import { faqPageJsonLd } from "@/lib/json-ld";
+import "./faq-mixer.css";
 
 export const metadata: Metadata = {
   title: "FAQ",
   description:
     "Wedding DJ FAQ for Howe Sound DJ: music and playlists, planning and consultation, ceremony and reception support, travel, venues, and optional enhancements.",
   openGraph: {
+    images: ["/og-share.jpg"],
     title: "FAQ | Howe Sound DJ",
     description:
       "Straight answers on personalized music, timelines, MC support, Sea-to-Sky coverage, and what makes the experience different.",
@@ -34,29 +37,16 @@ type FaqGroup = {
 
 function FaqAccordion({ items }: { items: FaqItem[] }) {
   return (
-    <div className="space-y-3">
-      {items.map((item) => (
-        <details
-          key={item.q}
-          className="group rounded-[1.5rem] border border-white/10 bg-white/5 transition hover:border-white/15"
-        >
-          <summary className="flex cursor-pointer list-none items-start justify-between gap-4 px-6 py-5 text-left text-base font-semibold leading-snug text-white outline-none marker:content-none [&::-webkit-details-marker]:hidden">
-            <span className="min-w-0 flex-1">{item.q}</span>
-            <span
-              className="mt-0.5 shrink-0 text-amber-300/90 transition-transform duration-200 group-open:rotate-180"
-              aria-hidden
-            >
-              <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-                <path
-                  fillRule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </span>
+    <div className="faq-mixer-questions">
+      {items.map((item, index) => (
+        <details key={item.q} className="faq-mixer-question">
+          <summary>
+            <span className="faq-mixer-question-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+            <span className="faq-mixer-question-text">{item.q}</span>
+            <span className="faq-mixer-question-toggle" aria-hidden="true" />
           </summary>
-          <div className="border-t border-white/10 px-6 pb-5 pt-1">
-            <p className="text-sm leading-7 text-white/65">{item.a}</p>
+          <div className="faq-mixer-answer">
+            <p>{item.a}</p>
           </div>
         </details>
       ))}
@@ -68,237 +58,169 @@ export default function FaqPage() {
   const groups: FaqGroup[] = [
     {
       id: "music",
-      eyebrow: "Music + Personalization",
-      title: "Your taste, your crowd, not a generic wedding formula.",
+      eyebrow: "The music",
+      title: "Your taste. Your crowd. No wedding playlist on autopilot.",
       intro:
-        "Wedding is the format. Your genres, scenes, eras, and energy define the music.",
+        "The wedding is the occasion. The music should sound like you and your people.",
       items: [
         {
           q: "Can we request songs and create a do-not-play list?",
-          a: "Yes. The planning process is designed to help shape the soundtrack around your taste while protecting the energy of the room, reflecting what you love while still creating a great experience for the room as a whole."
+          a: "Absolutely. Send me the songs you love, the ones you cannot stand, and a long playlist if you have one. I will not play every track. It helps me hear where your taste lives, and I will read the room from there."
         },
         {
           q: "Is this going to feel like every other wedding playlist?",
-          a: "Patrick leads with a clear point of view: no overplayed wedding fluff, no autopilot playlists, just dancefloor-packing tracks. The work is tailored to your style and preferences: your musical tastes and the atmosphere you want, not a generic formula."
+          a: "No. We start with your music, not a stock wedding set. I plan the moments that matter, take requests seriously, and make the calls as the night unfolds."
         },
         {
           q: "What kind of music can you actually cover?",
-          a: "Wedding is the event format, not the genre. Patrick can move through drum & bass, tech house, house and EDM, hip-hop, disco, Soca and Dancehall, Afrobeats, Latin, country, indie, throwbacks, Top 40, and more. He can also stay focused in the sound you love."
+          a: "Classics, disco, 2000s, Latin, global sounds, drum and bass, country, house, hip-hop and plenty more. We can roam or stay deep in the sound you love."
         },
         {
           q: "Can our reception feel like a nightclub instead of a typical wedding?",
-          a: "Absolutely. If the brief is a proper club atmosphere, the music, pacing, transitions, lighting, and energy can be planned around that. The formal parts can still feel polished without forcing the dance floor into traditional wedding music."
+          a: "Yes. We can keep the ceremony and speeches polished, then give the dance floor a proper club-night arc. Tell me what kind of room you want after dark."
         }
       ]
     },
     {
       id: "planning",
-      eyebrow: "Planning + Process",
-      title: "Clear communication before the day, less guesswork when it counts.",
+      eyebrow: "Before the day",
+      title: "Before anyone walks in",
       intro:
-        "Seamless planning means fast replies, clear communication, and zero guesswork, the same rhythm couples describe when they talk about calm, professional, yet personable communication that made the day stress-free.",
+        "The good parts feel effortless because we have already talked through the moving parts.",
       items: [
         {
           q: "How does planning work before the wedding?",
-          a: "Depending on your package, pre-event planning can include consultation, Zoom calls, venue walkthroughs, and a custom event timeline, so the day is mapped before you step into the venue."
+          a: "We talk music, must-plays, do-not-plays, timing and the people making announcements. Calls and a venue walkthrough are there when they help. I want the plan to be clear before the day starts."
         },
         {
           q: "Can you help with the flow of the evening?",
-          a: "Yes. DJ support is not just about music. It also includes helping the night feel smooth, well-paced, and stress-reduced. That sits alongside reading the room, managing transitions, and building energy, not only song selection."
+          a: "Yes. I keep an eye on the handoffs between ceremony, cocktails, dinner, speeches and dancing, then adjust when real life moves the timeline around."
         },
         {
           q: "What happens in the first consultation?",
-          a: "It is the entry point before locking in date and logistics: a chance to talk through the wedding, the sound plan, and how the musical experience should feel, the same “free DJ chat” or consultation Patrick invites couples to on the live site."
+          a: "Once your date is confirmed open, we talk about the wedding, your music and what working together would look like. No hard sell. After that, you decide."
         }
       ]
     },
     {
       id: "ceremony",
-      eyebrow: "Ceremony + Reception Support",
-      title: "From the walk down the aisle to the last song.",
-        intro:
-        "Full-day wedding coverage is ceremony plus reception, with premium sound and lighting for each phase, and couples often mention seamless handling of ceremony, cocktail hour, and reception in reviews.",
+      eyebrow: "Vows to last song",
+        title: "From the vows to the last song",
+      intro:
+        "The microphones, the meal and the dance floor all belong to the same day. I treat them that way.",
       items: [
         {
           q: "Do you provide ceremony audio and microphones?",
-          a: "Yes. Ceremony coverage can include speaker setup and microphones for the officiant, vows, and key announcements, scaled to what your day actually requires."
+          a: "Yes. We will sort the processional tracks, speaker placement and microphones for the officiant, vows and announcements. The setup depends on the space and what your ceremony needs."
         },
         {
           q: "Do you cover cocktail hour and dinner, not only the dance floor?",
-          a: "Full wedding coverage runs from the walk down the aisle to the last dance: ceremony, cocktail hour, dinner, and dance floor, one cohesive arc rather than a reception-only bolt-on."
+          a: "Yes. A full wedding can run from the ceremony through cocktails, dinner, speeches and the last dance. The music changes with the room instead of starting from scratch at the reception."
         },
         {
           q: "Do you MC as well?",
-          a: "MC support can be included where needed to help the evening feel smooth, clear, and professionally guided, including transitions, introductions, and announcements when your run-of-show calls for it."
+          a: "Yes. I can handle introductions and announcements when they are useful, without a radio voice or unnecessary chatter. MCing is part of the service, not an extra fee."
         }
       ]
     },
     {
       id: "travel",
-      eyebrow: "Travel + Venue + Logistics",
-      title: "Squamish roots and local venue familiarity.",
-        intro:
-        "Patrick is based in Squamish and focuses on events held here, bringing local knowledge of the venues, vendors, access, sound, and timing that shape the day.",
+      eyebrow: "The place",
+        title: "Here in Squamish",
+      intro:
+        "I live here. I know the roads, the rooms and how quickly a mountain-day timeline can change.",
       items: [
         {
           q: "Where do you DJ weddings?",
-          a: "Howe Sound DJ is focused on weddings held in Squamish. Couples can live and plan anywhere; the service boundary is the location of the event."
+          a: "I focus on weddings held in Squamish. You can plan from anywhere; what matters is where the celebration takes place. Travel is quoted separately when it applies."
         },
         {
           q: "Do you know our venue already?",
-          a: "Couples often book for local familiarity, including pre-wedding meetings at the venue when logistics make sense. Patrick is rooted in Squamish and understands how local spaces, vendors, access, and timelines come together."
+          a: "I know many Squamish spaces. If yours is new to me, I will learn the room and its practical details before the wedding. A walkthrough can help when the layout is tricky."
         },
         {
           q: "How is sound handled on the day?",
-          a: "Equipment is chosen for clarity and dynamic range, from soft ballads to full dance tracks, with meticulous setup, speaker positioning, calibration, and level management so ceremony, speeches, and the party sound balanced and immersive."
+          a: "I place and check the speakers and microphones for your room. Vows need to be clear, dinner should allow conversation, and the dance floor can have its own energy later."
         }
       ]
     },
     {
       id: "enhancements",
-      eyebrow: "Enhancements + Add-ons",
-      title: "Optional layers when you want more than the core package.",
-        intro:
-        "Custom services include event enhancements such as extra lighting or sound tailored to how you want guests to hear and remember the celebration.",
+      eyebrow: "Make it yours",
+        title: "The little things that make it yours",
+      intro:
+        "Grand entrances, shorter first dances, a sudden conga line. Tell me the idea; we will see how to make it work.",
       items: [
         {
-          q: "What add-ons or enhancements are available?",
-          a: "Options include additional dance floor lighting, extra speaker setups, video edits, photo booth add-on, silent disco setup, audio messages from absent loved ones, and custom-mixed tracks for grand entrances and formal dances, discussed during planning so they align with your timeline and vendors."
+          q: "Can we use our own entrance song or shorten a dance?",
+          a: "Of course. Your entrance does not have to use the wedding party's song. I can also make shorter cuts of your first dance or parent dances, with a proper ending instead of an abrupt fade."
         },
         {
-          q: "Is lighting or extra gear always required?",
-          a: "Not always. Packages already describe premium sound and lighting for weddings; enhancements are there when your venue, guest count, or creative plan calls for more coverage or atmosphere."
+          q: "Do MCing, song edits, another speaker or extra hours mean extra fees?",
+          a: "No. Those are part of how I look after your celebration. We will agree on what the day needs, and I will not nickel-and-dime you for those pieces."
+        },
+        {
+          q: "What about bigger production ideas?",
+          a: "We can talk through extra lighting, a photo booth, silent disco or a custom audio moment. I will only suggest what fits the room and your plans, and make the scope clear in the quote."
         }
       ]
-    }
-  ];
-
-  const differentiators = [
-    {
-      title: "Bangers only, no autopilot",
-      text: "No overplayed wedding fluff, no autopilot playlists. Just dancefloor-packing tracks."
-    },
-    {
-      title: "Personalized, not prefab",
-      text: "Tailoring every aspect of the DJ service to match the vibe of your wedding and the music you love, from elegant ceremonies to high-energy receptions."
-    },
-    {
-      title: "Sound treated like production",
-      text: "Patrick’s background includes formal audio training (Ontario Institute of Audio Recording Technology) and real-world production experience, so the job is not only song selection but managing clarity, transitions, and problems before they derail the moment."
-    },
-    {
-      title: "More than a playlist",
-      text: "Reading the room, managing transitions, building energy: blending genres and handling requests on the fly so the celebration keeps flowing."
-    },
-    {
-      title: "Communication you can feel on the day",
-      text: "Reviews consistently name calm, professional, personable communication, the kind that pairs with fast replies and clear planning before you ever step into the venue."
     }
   ];
 
   const faqStructuredData = groups.flatMap((g) => g.items);
 
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
+    <main className="hsdj-interior hsdj-faq-page hsdj-faq-mixer min-h-screen bg-neutral-950 text-white">
       <JsonLd data={faqPageJsonLd(faqStructuredData)} />
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.14),transparent_50%)]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
-          <div className="max-w-3xl">
-            <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
-              FAQ
-            </div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Answers before you ask
-            </div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-              Straight answers, so you can book with confidence.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              Most hesitation comes from not knowing how the process works. These answers mirror what Patrick emphasizes in his own words: personalized music, clear planning, professional sound, and a Sea-to-Sky approach rooted in real venues and real weddings, not a generic DJ script.
+      <section className="faq-mixer-hero relative overflow-hidden border-b border-white/10">
+        <Image src="/images/hsdj-redesign/contact/mixer-wedding-floor-art-v1.webp" alt="DJ mixer and wedding crowd collage" fill sizes="100vw" priority />
+        <div className="faq-mixer-hero-inner">
+          <div className="faq-mixer-hero-copy">
+            <div className="faq-mixer-hero-label">THE QUESTIONS BEFORE THE PARTY</div>
+            <MeterMatrixHeading text="Questions couples actually ask." className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl" />
+            <p className="faq-mixer-hero-lede">
+              Music, microphones, timing, the odd &quot;what if&quot;: here&apos;s what people ask me before we get together.
             </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="hero" checkSurface="hero" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
-            </div>
+            <nav className="faq-mixer-selector" aria-label="Jump to a question channel">
+              {groups.map((group, index) => <a key={group.id} href={`#${group.id}`}><span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>{group.eyebrow}</a>)}
+            </nav>
           </div>
         </div>
       </section>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 lg:p-10">
-          <div className="mx-auto w-full max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Why these questions matter
-            </div>
-            <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">
-              A great wedding DJ is not only music. It is planning, communication, and execution.
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              The through-line is consistent: DJ support includes helping the night feel smooth and well-paced; sound is managed from positioning speakers through the last dance; and couples book Patrick because the experience feels{" "}
-              <span className="text-white/85">personalized, local, and dialed-in</span>, not like a generic playlist.
-            </p>
-          </div>
-        </div>
-      </SectionReveal>
-
-      <div className="space-y-0">
+      <div className="hsdj-faq-channels space-y-0">
         {groups.map((group, groupIndex) => (
           <SectionReveal
             key={group.id}
             as="section"
             id={group.id}
-            className={
-              groupIndex % 2 === 0
-                ? "border-y border-white/10 bg-white/5"
-                : "border-b border-white/10 bg-neutral-950"
-            }
+            className={`faq-mixer-channel faq-mixer-channel-${groupIndex + 1}`}
           >
-            <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-              <div className="max-w-3xl">
-                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">{group.eyebrow}</div>
-                <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">{group.title}</h2>
-                <p className="mt-4 text-lg leading-8 text-white/70">{group.intro}</p>
+            <div className="faq-mixer-channel-inner">
+              <div className="faq-mixer-channel-copy">
+                <div className="faq-mixer-channel-topline"><span className="faq-mixer-channel-dial" aria-hidden="true">{String(groupIndex + 1).padStart(2, "0")}</span><span>{group.eyebrow}</span></div>
+                <h2>{group.title}</h2>
+                <p className="faq-mixer-channel-intro">{group.intro}</p>
                 {group.id === "planning" ? (
-                  <>
-                    <p className="mt-4 text-base leading-8 text-white/65">
-                      For reception energy and guest momentum at mountain weddings, read{" "}
+                  <div className="faq-mixer-channel-links">
+                    <p>
+                      More on keeping the floor moving:{" "}
                       <Link
                         href="/guides/how-to-keep-a-wedding-dance-floor-packed"
-                        className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
                       >
-                        How to Keep a Wedding Dance Floor Packed at a Sea-to-Sky Wedding
+                        Dance floor guide
                       </Link>
-                      .
                     </p>
-                    <p className="mt-4 text-base leading-8 text-white/65">
-                      For editorial proof-style context on how Sea-to-Sky floors feel in practice, see{" "}
-                      <Link
-                        href="/stories"
-                        className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
-                      >
-                        Featured Weddings &amp; Dance Floor Stories
-                      </Link>
-                      .
+                    <p>
+                      Want to see it in action? <Link href="/stories">Wedding stories</Link>
                     </p>
-                  </>
+                  </div>
                 ) : null}
                 {group.id === "travel" ? (
-                  <p className="mt-4 text-base leading-8 text-white/65">
-                    Hiring for a wedding in Squamish? See{" "}
-                    <Link
-                      href="/guides/how-to-choose-a-wedding-dj-in-squamish"
-                      className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
-                    >
-                      How to Choose a Wedding DJ in Squamish
-                    </Link>
-                    .
-                  </p>
+                  <div className="faq-mixer-channel-links"><p>Planning a local wedding? <Link href="/guides/how-to-choose-a-wedding-dj-in-squamish">Squamish DJ guide</Link></p></div>
                 ) : null}
               </div>
-              <div className="mt-10">
+              <div className="faq-mixer-channel-list">
                 <FaqAccordion items={group.items} />
               </div>
             </div>
@@ -306,57 +228,18 @@ export default function FaqPage() {
         ))}
       </div>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-        <div className="max-w-3xl">
-          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-            What makes Howe Sound DJ different
+      <SectionReveal as="section" className="faq-mixer-finale">
+        <div className="faq-mixer-finale-inner">
+          <div className="faq-mixer-finale-copy">
+            <div className="faq-mixer-finale-label">NO PERFECT PLAN REQUIRED</div>
+            <h2>Got a date? Start there.</h2>
+            <p>Check if I&apos;m open. Then we can talk music, the room, and what you want the night to feel like. You decide what happens next.</p>
+            <p>Already chosen the place? <Link href="/venues">Take a look at the venue notes.</Link></p>
           </div>
-          <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-            Not your average wedding DJ, on purpose.
-          </h2>
-          <p className="mt-4 text-lg leading-8 text-white/70">
-            These themes come straight from how Patrick describes the work, tightened for scanning, not rewritten into bland filler.
-          </p>
-        </div>
-        <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {differentiators.map((item) => (
-            <StaggerItem key={item.title}>
-              <div className="premium-surface h-full rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-white/65">{item.text}</p>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-      </SectionReveal>
-
-      <SectionReveal
-        as="section"
-        className={`${CTA_FINALE_SECTION_Y} mx-auto max-w-6xl px-6 lg:px-8`}
-      >
-        <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
-          <div className="mx-auto w-full max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Still deciding?
-            </div>
-            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              You do not need a perfect plan to start the conversation.
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">
-              Reach out with your date, your venue, and a rough sense of how you want the night to feel. The first conversation is there to turn that into a clear path, not to pressure you into a snap decision.
-            </p>
-            <p className="mt-4 text-sm leading-7 text-white/55">
-              If you already know your venue,{" "}
-              <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-                venue guides
-              </Link>{" "}
-              outline planning context for named Sea-to-Sky and Squamish settings, without replacing a real conversation about your day.
-            </p>
-            <div className="mt-8 max-w-xl space-y-4">
+          <div className="faq-mixer-finale-actions">
+            <span>YOUR NEXT MOVE</span>
+            <div>
               <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
             </div>
           </div>
         </div>

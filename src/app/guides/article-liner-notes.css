@@ -1,0 +1,82 @@
+/* Guides are annotated planning records; stories are photographic after-the-set notes. */
+#main-content .hsdj-editorial-page .hsdj-interior-flow { counter-reset: liner; }
+#main-content .hsdj-editorial-page .hsdj-interior-flow > header {
+  min-height: min(82svh, 760px);
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 9px solid #ffe12c;
+  background-image: linear-gradient(90deg, #080d12 3%, #080d12e8 46%, #080d1288), url('/images/hsdj-redesign/deck-surfaces/djm-a9-topdown.jpg') !important;
+  background-position: center, center;
+  background-size: cover;
+}
+#main-content .hsdj-guide-dance .hsdj-interior-flow > header,
+#main-content .hsdj-story-floor .hsdj-interior-flow > header {
+  background-image: linear-gradient(90deg, #080d12 3%, #080d12e3 47%, #080d126a), url('/images/brand-editorial/hsdj-packed-dance-floor-editorial.webp') !important;
+  background-position: center, center 48%;
+}
+#main-content .hsdj-story-gondola .hsdj-interior-flow > header {
+  background-image: linear-gradient(90deg, #080d12 3%, #080d12e3 47%, #080d126a), url('/images/hsdj-redesign/packages/packages-ceremony-clue-v2.webp') !important;
+}
+#main-content .hsdj-story-sunwolf .hsdj-interior-flow > header {
+  background-image: linear-gradient(90deg, #080d12 3%, #080d12e3 47%, #080d126a), url('/images/stories/sunwolf-riverside-resort-dj.webp') !important;
+}
+#main-content .hsdj-editorial-page .hsdj-interior-flow > header::before {
+  content: 'LINER NOTES  /  HOWE SOUND DJ';
+  position: absolute;
+  z-index: 2;
+  inset: 2rem clamp(1rem, 5vw, 5rem) auto auto;
+  width: max-content;
+  height: max-content;
+  padding: .55rem .75rem;
+  background: #ffdf26;
+  color: #111;
+  font: 800 .7rem/1.1 ui-monospace, monospace;
+  letter-spacing: .17em;
+  transform: rotate(3deg);
+}
+#main-content .hsdj-story-detail-page .hsdj-interior-flow > header::before { content: 'AFTER THE SET  /  FIELD NOTES'; background: #fe3484; }
+#main-content .hsdj-editorial-page .hsdj-interior-flow > header > div[class*="max-w"] { width: 100%; padding-block: clamp(7rem, 12vw, 11rem) clamp(3rem, 6vw, 5rem); }
+#main-content .hsdj-editorial-page .hsdj-interior-flow > header h1 { max-width: 100%; color: #fff; text-shadow: 0 2px 15px #000; }
+#main-content .hsdj-editorial-page .hsdj-interior-flow > header h1 + p { max-width: 42rem; padding: 1rem 1.3rem; border-left: 6px solid #ffde25; background: #080d12e8; color: #fff; box-shadow: 10px 10px 0 #1756ff88; }
+#main-content .hsdj-story-detail-page .hsdj-interior-flow > header h1 + p { border-left-color: #ff3986; }
+#main-content .hsdj-editorial-page .hsdj-interior-flow > section {
+  counter-increment: liner;
+  position: relative;
+  max-width: none;
+  padding: clamp(3.5rem, 6vw, 5.5rem) max(1.5rem, calc((100vw - 76rem)/2)) !important;
+  background: #0c1620 !important;
+}
+#main-content .hsdj-editorial-page .hsdj-interior-flow > section:nth-of-type(even) { background: #14232a !important; }
+#main-content .hsdj-story-detail-page .hsdj-interior-flow > section:nth-of-type(odd) { background: #162235 !important; }
+#main-content .hsdj-story-detail-page .hsdj-interior-flow > section:nth-of-type(even) { background: #211a2a !important; }
+#main-content .hsdj-editorial-page .hsdj-interior-flow > section::before {
+  content: '0' counter(liner) '  /  SIDE A';
+  display: block;
+  position: static;
+  width: max-content;
+  height: auto;
+  margin-bottom: 1.5rem;
+  padding: .35rem .6rem;
+  background: #ffe12c;
+  color: #111;
+  font: 900 .72rem/1 ui-monospace, monospace;
+  letter-spacing: .16em;
+  transform: rotate(-2deg);
+}
+#main-content .hsdj-story-detail-page .hsdj-interior-flow > section::before { content: '0' counter(liner) '  /  SCENE'; background: #fb438b; }
+#main-content .hsdj-editorial-page .hsdj-interior-flow > section > div[class*="max-w"] { max-width: 58rem; margin-inline: 0 auto; padding: 0 0 0 clamp(1.2rem, 3vw, 2.5rem); border-left: 4px solid #59dfe5; }
+#main-content .hsdj-editorial-page .hsdj-interior-flow > section:nth-of-type(even) > div[class*="max-w"] { margin-inline: auto 0; border-left-color: #ff4c92; }
+#main-content .hsdj-editorial-page .hsdj-interior-flow > section h2 { max-width: 18ch !important; color: #fff; font-size: clamp(2rem, 4vw, 4.25rem); font-weight: 900; letter-spacing: -.045em; line-height: .98; text-transform: uppercase; }
+#main-content .hsdj-editorial-page .hsdj-interior-flow > section div[class*="tracking-"] { color: #6be6e8 !important; font-family: ui-monospace, monospace; }
+#main-content .hsdj-editorial-page .hsdj-interior-flow > section p,
+#main-content .hsdj-editorial-page .hsdj-interior-flow > section li { color: #f1f2ef !important; font-size: clamp(1.05rem, 1.55vw, 1.28rem); line-height: 1.7; }
+#main-content .hsdj-editorial-page .hsdj-interior-flow > section a { color: #ffe35b !important; text-decoration-thickness: 2px; }
+#main-content .hsdj-story-detail-page .hsdj-interior-flow > div:has(img) { background: #101016 !important; }
+#main-content .hsdj-story-detail-page .hsdj-interior-flow > div:has(img) > div { max-width: 76rem; padding-block: 2rem; }
+#main-content .hsdj-story-detail-page .hsdj-interior-flow > div:has(img) img { filter: saturate(1.15) contrast(1.08); }
+@media (max-width: 700px) {
+  #main-content .hsdj-editorial-page .hsdj-interior-flow > header { min-height: 0; background-position: center, 63% center; }
+  #main-content .hsdj-editorial-page .hsdj-interior-flow > header::before { inset: .75rem .75rem auto auto; font-size: .53rem; }
+  #main-content .hsdj-editorial-page .hsdj-interior-flow > header > div[class*="max-w"] { padding-top: 8rem; padding-bottom: 3rem; }
+  #main-content .hsdj-editorial-page .hsdj-interior-flow > section > div[class*="max-w"] { margin-inline: auto; }
+}

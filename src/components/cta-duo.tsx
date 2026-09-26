@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   BookConsultTrackedLink,
   bookConsultOutlineButtonClassName,
@@ -7,12 +8,29 @@ import {
 import type { BookConsultSurface } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import type { CheckAvailabilitySurface } from "@/components/check-availability-tracked-link";
+import styles from "./cta-duo.module.css";
 
 const duoChildLayout =
-  "min-h-[44px] min-w-0 w-full flex-1 justify-center text-center sm:flex-1 sm:w-0";
+  `${styles.action} hsdj-physical-cta min-h-[76px] min-w-0 w-full justify-center text-center`;
+
+function MiniCassette({ side }: { side: "A" | "B" }) {
+  return (
+    <span className={styles.cassette} aria-hidden="true">
+      <i /><b /><i />
+      <small>SIDE {side}</small>
+    </span>
+  );
+}
 
 type Props = {
   className?: string;
+  tickerText?: string;
+  credentials?: {
+    googleLabel: string;
+    reviewLabel: string;
+    googleMapsUri: string;
+    experienceLabel: string;
+  };
   /** @default "page_cta" */
   bookSurface?: BookConsultSurface;
   /** @default "page_cta" */
@@ -25,17 +43,64 @@ type Props = {
  */
 export default function CTADuo({
   className = "",
+  tickerText = "Your date first. If it is open, let’s talk music. Press play when you’re ready.",
+  credentials,
   bookSurface = "page_cta",
   checkSurface = "page_cta",
 }: Props) {
   return (
-    <div className={`flex w-full flex-col gap-3 sm:flex-row sm:flex-nowrap ${className}`.trim()}>
-      <BookConsultTrackedLink surface={bookSurface} className={duoChildLayout} />
-      <CheckAvailabilityTrackedLink
-        href="/contact#availability"
-        surface={checkSurface}
-        className={`${bookConsultOutlineButtonClassName} ${duoChildLayout}`}
-      />
+    <div className={`${styles.machine} ${className}`.trim()}>
+      <div className={styles.topline} aria-hidden="true">
+        <span className={styles.power}><i /> Power</span>
+        <b>Howe Sound Wedding DJ</b>
+        <span className={styles.signalLights}><i /><i /><i /><i /><i /></span>
+      </div>
+      <div className={`hsdj-control-duo ${styles.bays}`}>
+        <BookConsultTrackedLink surface={bookSurface} className={`${duoChildLayout} hsdj-physical-cta--play`}>
+          <span className={styles.deckId}>Deck A</span>
+          <MiniCassette side="A" />
+          <Image
+            src="/images/hsdj-redesign/controls/buttons/play-pause-round.png"
+            alt=""
+            width={112}
+            height={112}
+            className={`hsdj-physical-cta__hardware ${styles.hardware}`}
+          />
+          <span className={`hsdj-physical-cta__label ${styles.label}`}><small>Press play to</small>Book a consult</span>
+        </BookConsultTrackedLink>
+        <CheckAvailabilityTrackedLink
+          href="/contact#availability"
+          surface={checkSurface}
+          className={`${bookConsultOutlineButtonClassName} ${duoChildLayout} hsdj-physical-cta--cue`}
+        >
+          <span className={styles.deckId}>Deck B</span>
+          <MiniCassette side="B" />
+          <Image
+            src="/images/hsdj-redesign/controls/buttons/cue-round.png"
+            alt=""
+            width={112}
+            height={112}
+            className={`hsdj-physical-cta__hardware ${styles.hardware}`}
+          />
+          <span className={`hsdj-physical-cta__label ${styles.label}`}><small>Load your date</small>Check your date</span>
+        </CheckAvailabilityTrackedLink>
+      </div>
+      <div className={styles.ticker} aria-label={`Stereo display: ${tickerText}`}>
+        <div>
+          <span>{tickerText}&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+          <span aria-hidden="true">{tickerText}&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+        </div>
+      </div>
+      {credentials ? (
+        <div className={styles.credentials} aria-label="Howe Sound DJ credentials">
+          <a href={credentials.googleMapsUri} target="_blank" rel="noreferrer">
+            <i aria-hidden="true" />
+            <b>{credentials.googleLabel}</b>
+            <span>{credentials.reviewLabel}</span>
+          </a>
+          <span><i aria-hidden="true" /><b>{credentials.experienceLabel}</b><span>Music + live events</span></span>
+        </div>
+      ) : null}
     </div>
   );
 }

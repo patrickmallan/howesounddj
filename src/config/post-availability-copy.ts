@@ -8,12 +8,14 @@
 export const POST_AVAILABILITY_COPY_VARIANT = "human_connection_v3" as const;
 
 export const POST_AVAILABILITY_PRIMARY_CTA_LABEL =
-  "Reserve My Complimentary Wedding Planning Session" as const;
+  "Book a Consult" as const;
 
 export const POST_AVAILABILITY_COMPACT_CTA_LABEL = "Choose a Time" as const;
 
 export const POST_AVAILABILITY_CTA_SUPPORT =
   "Your next best step is to book a chat with Patrick." as const;
+
+export const POST_AVAILABILITY_FULL_CTA_SUPPORT = "Pick a time that works." as const;
 
 export const POST_AVAILABILITY_INQUIRY_FALLBACK_LABEL = "Prefer email first?" as const;
 
@@ -29,7 +31,7 @@ export const POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION =
 
 /** Full contact surface only : one planning-session explanation. */
 export const POST_AVAILABILITY_FULL_PLANNING_SESSION =
-  "Reserve a complimentary 45-minute planning session to talk about your wedding, your music, and whether Howe Sound DJ is the right fit." as const;
+  "Book a 45-minute consult and tell me what you're planning. We'll talk about the wedding, the music, and what working together would look like." as const;
 
 export function postAvailabilityConfirmedDateLabel(formattedDate: string): string {
   return `${formattedDate} is available`;
@@ -48,9 +50,9 @@ export const POST_AVAILABILITY_UNAVAILABLE_COPY = {
 } as const;
 
 export const POST_AVAILABILITY_MANUAL_COPY = {
-  headline: "We need to confirm this date personally",
-  body: "The calendar could not be verified automatically. Send a quick message and Patrick will confirm availability for you.",
-  contactLabel: "Contact us directly",
+  headline: "I need to check this one myself",
+  body: "Send me the date and venue and I'll get back to you.",
+  contactLabel: "Send me the details",
   tryAnotherDateLabel: "Try Another Date",
 } as const;
 

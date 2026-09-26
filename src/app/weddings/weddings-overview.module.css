@@ -1,0 +1,478 @@
+.page {
+  --cyan: #27d8ee;
+  --yellow: #ffdb05;
+  --red: #ff3154;
+  --green: #52ed7e;
+  --blue: #1657ff;
+  --bone: #fff;
+  position: relative;
+  overflow: clip;
+  color: var(--bone);
+  background: #07090a;
+}
+
+.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.2;
+  background-image: radial-gradient(circle, rgb(255 219 5 / 55%) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+.hero, .journey, .truths, .packageHandoff { position: relative; z-index: 1; }
+
+.hero {
+  isolation: isolate;
+  min-height: clamp(620px, 62vw, 790px);
+  overflow: hidden;
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+}
+
+.heroPortrait {
+  position: absolute;
+  z-index: -3;
+  inset: 0 0 0 41%;
+  overflow: hidden;
+  clip-path: polygon(5% 3%, 100% 0, 100% 94%, 23% 89%, 0 68%);
+  mask-image: linear-gradient(90deg, transparent 0 17%, rgb(0 0 0 / 10%) 35%, black 59%);
+}
+
+.coverImage { object-fit: cover; }
+.heroPortrait .coverImage { object-position: 82% 46%; filter: contrast(1.07) saturate(0.92); }
+
+.heroShade {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background: linear-gradient(90deg, #07090a 0 39%, rgb(7 9 10 / 94%) 49%, transparent 77%), linear-gradient(0deg, #07090a 0, transparent 23%);
+}
+
+.heroInner {
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  padding: clamp(5rem, 8vw, 8rem) clamp(1.25rem, 5vw, 5rem) 4rem;
+}
+
+.eyebrow, .sectionLabel, .stageLabel {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: 900;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+}
+
+.eyebrow { margin: 0 0 2rem; color: var(--cyan); font-size: clamp(0.67rem, 0.9vw, 0.88rem); }
+
+.heroTitleFrame { width: min(820px, 64vw); }
+
+.heroTitle {
+  margin: 0;
+  padding: .13em .16em .18em;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-left: 6px solid var(--cyan);
+  background: linear-gradient(105deg, rgb(2 5 7 / 97%), rgb(7 10 12 / 91%) 78%, rgb(7 10 12 / 72%));
+  box-shadow: 10px 12px 0 rgb(0 0 0 / 32%), inset 0 1px 0 rgb(255 255 255 / 5%);
+  font-family: var(--font-display), Impact, sans-serif;
+  font-size: clamp(3.2rem, 5.25vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 0.82;
+  text-transform: uppercase;
+  font-palette: --hsdj-club-light;
+}
+
+.heroTitle > span, .stageCopy h3 span { display: block; }
+
+.heroCopy {
+  position: relative;
+  width: min(790px, 62vw);
+  margin: 2.35rem 0 0;
+  padding: 1.35rem 1.6rem 1.35rem 2rem;
+  border: 1px solid rgb(255 255 255 / 12%);
+  background: rgb(5 8 9 / 89%);
+  font-size: clamp(1rem, 1.4vw, 1.27rem);
+  font-weight: 760;
+  line-height: 1.55;
+}
+
+.heroCopy::before {
+  content: "";
+  position: absolute;
+  inset: -1px auto -1px -1px;
+  width: 8px;
+  background: var(--yellow);
+}
+
+.journeyInner, .truthsInner {
+  position: relative;
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 5vw, 5rem);
+}
+
+.journeyInner { padding-top: 4.5rem; padding-bottom: 5rem; }
+
+.signalLead {
+  position: absolute;
+  top: 0;
+  left: clamp(1.25rem, 5vw, 5rem);
+  width: 250px;
+  height: 8px;
+  background: var(--yellow);
+}
+
+.signalLead::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 22px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--yellow);
+  transform: translateY(-50%);
+}
+
+.sectionLabel { position: relative; z-index: 3; margin: 0; color: var(--yellow); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important; font-size: clamp(0.66rem, 0.9vw, 0.86rem); font-palette: normal; letter-spacing: .19em; line-height: 1.2; scroll-margin-top: 210px; }
+
+.signalPath {
+  position: absolute;
+  z-index: 0;
+  inset: 5.5rem clamp(1.25rem, 5vw, 5rem) 2rem;
+  width: calc(100% - clamp(2.5rem, 10vw, 10rem));
+  height: calc(100% - 7.5rem);
+  overflow: visible;
+}
+
+.signalPath path {
+  fill: none;
+  stroke: var(--cyan);
+  stroke-width: 5;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  stroke-dasharray: 22 6;
+  animation: signalFlow 8s linear infinite;
+}
+
+.mobileSignal { display: none; }
+
+.stageGrid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(4rem, 8vw, 8rem) clamp(3rem, 7vw, 7rem);
+  margin-top: 4.5rem;
+}
+
+.stage {
+  position: relative;
+  min-height: clamp(340px, 34vw, 500px);
+  isolation: isolate;
+  transition: transform 300ms ease;
+}
+
+.stage:hover { transform: translateY(-6px) rotate(0deg); }
+.ceremony, .dinner { transform: rotate(-2.3deg); }
+.speeches, .danceFloor { transform: translateY(3rem) rotate(2.1deg); }
+
+.stageArtwork, .stageInk {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(2% 8%, 88% 0, 100% 13%, 96% 90%, 76% 97%, 8% 93%, 0 74%);
+}
+
+.stageArtwork {
+  z-index: -2;
+  overflow: hidden;
+  mask-image: radial-gradient(ellipse at center, black 0 63%, rgb(0 0 0 / 92%) 75%, transparent 100%);
+}
+
+.stageArtwork .coverImage {
+  object-position: center;
+  filter: saturate(0.93) contrast(1.06);
+  transition: transform 900ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.stage:hover .stageArtwork .coverImage { transform: scale(1.025); }
+
+.stageInk {
+  z-index: -1;
+  background: linear-gradient(0deg, rgb(4 7 8 / 95%) 2%, rgb(4 7 8 / 78%) 42%, transparent 72%), linear-gradient(95deg, rgb(4 7 8 / 52%), transparent 62%);
+}
+
+.stageCopy {
+  position: absolute;
+  inset: auto clamp(1.3rem, 3vw, 2.7rem) clamp(1.5rem, 3vw, 2.7rem);
+  text-shadow: 0 2px 15px rgb(0 0 0 / 72%);
+}
+
+.stageLabel { margin: 0 0 0.8rem; color: var(--yellow); font-size: 0.73rem; }
+.speeches .stageLabel { color: #ff7188; }
+.dinner .stageLabel { color: var(--cyan); }
+.danceFloor .stageLabel { color: var(--green); }
+.ceremony .stageCopy h3 span:nth-child(1) { font-palette: --hsdj-signal-light; }
+.ceremony .stageCopy h3 span:nth-child(2) { font-palette: --hsdj-red-light; }
+.speeches .stageCopy h3 span { font-palette: --hsdj-club-light; }
+.dinner .stageCopy h3 span { font-palette: --hsdj-cold-booth; }
+.danceFloor .stageCopy h3 span:nth-child(1) { font-palette: --hsdj-after-dark; }
+.danceFloor .stageCopy h3 span:nth-child(2) { font-palette: --hsdj-violet-light; }
+
+.stageCopy h3 {
+  width: fit-content;
+  margin: 0;
+  padding: .25em .31em .3em;
+  border-left: 4px solid currentColor;
+  background: rgb(3 6 8 / 96%);
+  box-shadow: 6px 6px 0 rgb(0 0 0 / 38%), inset 0 1px 0 rgb(255 255 255 / 6%);
+  font-family: var(--font-display), Impact, sans-serif;
+  font-size: clamp(1.6rem, 2.35vw, 2.75rem);
+  font-weight: 900;
+  letter-spacing: .025em;
+  line-height: 1.04;
+  text-transform: uppercase;
+  text-shadow: 0 0 .08em rgb(255 255 255 / 18%);
+}
+
+.stageBody {
+  max-width: 48rem;
+  margin: 1rem 0 0;
+  color: rgb(255 255 255 / 87%);
+  font-size: clamp(0.86rem, 1.15vw, 1.05rem);
+  font-weight: 720;
+  line-height: 1.45;
+}
+
+.truthsInner { padding-top: 2rem; padding-bottom: 2.6rem; }
+.truthsIntro { max-width: 26ch; margin: .6rem 0 0; color: #fff; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", var(--font-geist-sans), sans-serif; font-size: clamp(2.2rem, 3.2vw, 3.8rem); line-height: .99; text-transform: uppercase; }
+.truthComposition {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  gap: .15rem;
+  margin-top: 1.3rem;
+}
+.truthComposition > * { min-width: 0; }
+.playlistNote, .curveballRecord, .dinnerStrip { position: relative; }
+
+.playlistNote {
+  grid-column: 1 / 6;
+  grid-row: 1;
+  width: 100%;
+  margin-top: .7rem;
+  padding: clamp(1.1rem, 1.65vw, 1.6rem);
+  color: #111416;
+  background: #46dce9;
+  box-shadow: 7px 8px 0 var(--blue);
+  transform: rotate(-2deg);
+}
+
+.playlistNote p, .dinnerStrip p {
+  margin: 0;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", var(--font-geist-sans), sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.018em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.playlistNote p { font-size: clamp(2.2rem, 3vw, 3.25rem); }
+.playlistNote span { display: block; margin-top: .65rem; font-size: clamp(.86rem, 1vw, 1rem); font-weight: 750; line-height: 1.35; }
+
+.curveballRecord {
+  z-index: 1;
+  grid-column: 6 / 9;
+  grid-row: 1;
+  display: flex;
+  width: min(100%, 265px);
+  aspect-ratio: 1;
+  justify-self: center;
+  margin: 0 -1.2rem;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #0f1214;
+  text-align: center;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle at center, var(--yellow) 0 8px, #f1c900 9px 10px, var(--yellow) 11px 19px);
+  transform: rotate(6deg);
+}
+
+.curveballRecord p {
+  display: grid;
+  width: 65%;
+  aspect-ratio: 1;
+  margin: .1rem auto .35rem;
+  padding: .55rem;
+  place-items: center;
+  color: #fff;
+  border-radius: 50%;
+  background: #111416;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", var(--font-geist-sans), sans-serif;
+  font-size: clamp(1.25rem, 1.45vw, 1.55rem);
+  font-weight: 900;
+  letter-spacing: -0.012em;
+  line-height: .94;
+  text-transform: uppercase;
+}
+
+.recordBody { max-width: 13rem; font-size: .9rem; font-weight: 850; line-height: 1.2; }
+
+.dinnerStrip {
+  grid-column: 9 / 13;
+  grid-row: 1;
+  width: 100%;
+  margin: 3rem 0 0 -1.2rem;
+  padding: 1.35rem 1.3rem;
+  color: #090b0c;
+  background: var(--red);
+  clip-path: polygon(0 2%, 100% 0, 99.5% 100%, 1% 97%);
+  transform: rotate(3deg);
+}
+
+.dinnerStrip p { max-width: 19ch; font-size: clamp(2rem, 2.55vw, 2.9rem); }
+
+.traditionCard { position: relative; grid-column: 1 / 5; grid-row: 2; margin-top: -1rem; padding: 1.2rem 1.3rem; color: #fff; border-left: 8px solid var(--cyan); background: #0d1a23; box-shadow: 7px 8px 0 var(--blue); transform: rotate(3deg); }
+.traditionCard p, .ideaSampler p, .timelineFader p, .entranceTicket p, .danceEditScreen p, .allInCard p { margin: 0; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", var(--font-geist-sans), sans-serif; font-weight: 900; line-height: .92; text-transform: uppercase; }
+.traditionCard p { max-width: 12ch; font-size: clamp(2rem, 2.5vw, 2.85rem); }
+.traditionCard > span:last-child, .ideaSampler > span, .timelineFader span:last-child, .entranceTicket > span, .danceEditScreen > span, .allInCard > span { display: block; margin-top: .55rem; font-size: clamp(.84rem, .93vw, .95rem); font-weight: 750; line-height: 1.3; }
+
+.ideaSampler { position: relative; z-index: 1; grid-column: 5 / 10; grid-row: 2; margin: 1rem 1rem 0 -.6rem; padding: 1rem; border: 4px solid #303941; color: #fff; background: #0a0e17; box-shadow: 8px 9px 0 #ff3154; transform: rotate(-2deg); }
+.ideaSampler p { max-width: 18ch; margin: 0 0 .3rem; color: #ffe000; font-size: clamp(2rem, 2.45vw, 2.7rem); }
+.ideaSampler > span { margin: 0 0 .7rem; }
+.samplerPads { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .35rem; }
+.samplerPads span { display: grid; min-height: 43px; padding: .25rem; place-items: center; border: 2px solid #353f48; border-bottom-width: 5px; color: #fff; background: #172a3e; box-shadow: 0 2px 0 #03060c; font: 900 clamp(.7rem, .85vw, .9rem)/1.1 ui-monospace, monospace; text-align: center; text-transform: uppercase; transition: transform 180ms ease, background 180ms ease; }
+.samplerPads span:nth-child(3n + 1) { border-color: #1c6e87; background: #164260; }
+.samplerPads span:nth-child(3n + 2) { border-color: #8a2856; background: #61203c; }
+.samplerPads span:nth-child(3n) { border-color: #8e790e; background: #695400; }
+.ideaSampler:hover .samplerPads span:nth-child(2), .ideaSampler:hover .samplerPads span:nth-child(5) { transform: translateY(-4px); }
+
+.timelineFader { position: relative; grid-column: 1 / 5; grid-row: 3; display: grid; grid-template-columns: 27px 1fr; align-items: center; gap: 1rem; margin-top: -.4rem; padding: 1.2rem 1.3rem; color: #10151b; background: var(--yellow); box-shadow: 7px 8px 0 var(--blue); transform: rotate(-2deg); }
+.timelineFader p { max-width: 15ch; font-size: clamp(2rem, 2.5vw, 2.85rem); }
+.timelineFader span:last-child { max-width: 34rem; }
+.faderTrack { position: relative; width: 10px; height: 135px; margin: 0 auto !important; background: #151b20; border: 2px solid #87929d; box-shadow: 0 0 0 4px #10151b; }
+.faderTrack::after { position: absolute; top: 31%; left: 50%; width: 34px; height: 24px; content: ""; background: linear-gradient(#657380, #17212a 35% 70%, #495764); border: 2px solid #090c10; border-radius: 3px; box-shadow: 0 5px 8px #0008; transform: translateX(-50%); }
+
+.entranceTicket { position: relative; grid-column: 10 / 13; grid-row: 2; margin: -1.6rem 0 0 -.8rem; padding: 1.15rem 1.2rem; color: #fff; background: #103a45; box-shadow: 7px 8px 0 #082537; transform: rotate(4deg); }
+.entranceTicket p { max-width: 13ch; font-size: clamp(1.85rem, 2.2vw, 2.4rem); }
+.entranceTicket > span { max-width: 31ch; }
+
+.danceEditScreen { position: relative; grid-column: 5 / 9; grid-row: 3; margin: .9rem -.4rem 0; padding: 1.2rem 1.3rem; color: #fff; background: #0b1823; box-shadow: 7px 8px 0 #15d6e7; transform: rotate(3deg); }
+.danceEditScreen p { max-width: 16ch; color: #79f3f2; font-size: clamp(2rem, 2.5vw, 2.85rem); }
+.danceEditScreen > span { max-width: 39ch; }
+
+.allInCard { grid-column: 9 / 13; grid-row: 3; margin: -.6rem 0 0 .2rem; padding: 1.2rem 1.3rem; color: #121719; background: #e7f041; box-shadow: 7px 8px 0 #eb266e; transform: rotate(-2deg); }
+.allInCard p { max-width: 12ch; font-size: clamp(2rem, 2.5vw, 2.85rem); }
+.allInCard > span { max-width: 36ch; }
+
+.packageHandoff { color: #111416; background: #46dce9; }
+.packageHandoff::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 58px; background: linear-gradient(90deg, var(--cyan) 0 33%, var(--yellow) 33% 66%, var(--red) 66%); }
+
+.packageHandoff > div {
+  display: flex;
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  padding: clamp(3rem, 5vw, 5rem) clamp(5rem, 9vw, 9rem);
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.packageHandoff p, .packageHandoff a {
+  margin: 0;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", var(--font-geist-sans), sans-serif;
+  font-size: clamp(3rem, 5vw, 5.75rem);
+  font-weight: 900;
+  letter-spacing: -0.018em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.packageHandoff a { color: var(--blue); text-decoration: none; transition: color 180ms ease, transform 180ms ease; }
+.packageHandoff a:hover, .packageHandoff a:focus-visible { color: #0838c9; transform: translateX(8px); }
+
+@keyframes signalFlow { to { stroke-dashoffset: -112; } }
+
+@media (max-width: 900px) {
+  .heroTitleFrame { width: min(100%, 680px); }
+  .heroCopy { width: 72vw; }
+  .stageGrid { column-gap: 2rem; }
+  .stageCopy h3 { font-size: clamp(1.55rem, 3.4vw, 2.3rem); }
+  .truthComposition { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .35rem; }
+  .truthComposition > * { grid-column: auto; grid-row: auto; margin: 0; }
+  .curveballRecord { width: min(100%, 265px); justify-self: center; }
+  .dinnerStrip, .traditionCard, .ideaSampler, .timelineFader, .entranceTicket, .danceEditScreen, .allInCard { width: 100%; }
+  .samplerPads { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 680px) {
+  .page::before { position: absolute; opacity: 0.17; background-size: 17px 17px; }
+  .hero { min-height: 720px; }
+  .heroPortrait { inset: 315px -14% auto 0; height: 420px; opacity: 1; clip-path: polygon(5% 5%, 100% 0, 100% 94%, 27% 85%, 0 59%); mask-image: linear-gradient(90deg, transparent 0 9%, black 28%); }
+  .heroPortrait .coverImage { object-position: 100% 45%; transform: scale(1.2); transform-origin: 100% 50%; }
+  .heroShade { background: linear-gradient(180deg, #07090a 0 34%, rgb(7 9 10 / 65%) 52%, transparent 75%), linear-gradient(0deg, #07090a 0, transparent 19%); }
+  .heroInner { padding: 3.1rem 1.25rem 2.5rem; }
+  .eyebrow { max-width: 15rem; margin-bottom: 1.5rem; font-size: 0.61rem; }
+  .heroTitleFrame { width: 100%; }
+  .heroCopy { width: 100%; margin-top: 1.8rem; padding: 1.15rem 1rem 1.15rem 1.4rem; font-size: 0.95rem; }
+  .journeyInner { padding: 3.8rem 1rem 3rem 2.15rem; }
+  .signalLead { left: 1.1rem; width: 180px; }
+  .sectionLabel { font-size: 0.6rem; }
+  .signalPath { inset: 5rem auto 2rem 0.65rem; width: 26px; height: calc(100% - 7rem); }
+  .desktopSignal { display: none; }
+  .mobileSignal { display: block; stroke-width: 4; stroke-dasharray: 15 7; }
+  .stageGrid { display: block; margin-top: 4.2rem; }
+  .stage { min-height: 335px; margin-bottom: 3.5rem; }
+  .stage:last-child { margin-bottom: 1rem; }
+  .ceremony, .dinner { transform: rotate(-1.6deg); }
+  .speeches, .danceFloor { transform: rotate(1.5deg); }
+  .stage:hover { transform: translateY(-3px) rotate(0deg); }
+  .stageArtwork, .stageInk { clip-path: polygon(1% 9%, 91% 0, 100% 11%, 96% 91%, 70% 98%, 5% 94%, 0 72%); }
+  .stageCopy { inset: auto 1.2rem 1.35rem; }
+  .stageLabel { font-size: 0.61rem; }
+  .stageCopy h3 { font-size: clamp(1.45rem, 6.7vw, 2.05rem); }
+  .stageBody { margin-top: 0.75rem; font-size: 0.78rem; }
+  .truthsInner { padding: 1.6rem 1rem 2.5rem 2.15rem; }
+  .truthsIntro { font-size: clamp(2rem, 9vw, 3rem); }
+  .truthComposition { grid-template-columns: minmax(0, 1fr); margin-top: 1rem; gap: .95rem; }
+  .truthComposition > * { grid-column: 1; grid-row: auto; margin: 0; }
+  .playlistNote { width: 90%; padding: 1rem; box-shadow: 6px 7px 0 var(--blue); }
+  .playlistNote p { font-size: clamp(2.1rem, 9vw, 2.8rem); }
+  .playlistNote span { font-size: .89rem; }
+  .curveballRecord { width: min(265px, 75vw); margin: 0 0 2.6rem; padding: .9rem; justify-self: end; }
+  .curveballRecord p { font-size: clamp(1.25rem, 5vw, 1.55rem); }
+  .recordBody { position: absolute; bottom: -2.5rem; left: 50%; width: 88%; max-width: none; padding: .45rem .55rem; color: #111416; background: #46dce9; box-shadow: 4px 4px 0 var(--blue); font-size: .9rem; line-height: 1.2; transform: translateX(-50%) rotate(-3deg); }
+  .dinnerStrip { box-sizing: border-box; width: 89%; margin: 0; padding: 1rem; }
+  .dinnerStrip p { font-size: clamp(2rem, 7.8vw, 2.65rem); line-height: .93; }
+  .traditionCard { width: 91%; margin: 0 0 0 auto; padding: 1rem; }
+  .traditionCard p { font-size: clamp(2rem, 7.8vw, 2.65rem); }
+  .ideaSampler { box-sizing: border-box; width: 95%; margin: 0; padding: .75rem; }
+  .ideaSampler p { font-size: clamp(1.9rem, 7.3vw, 2.5rem); }
+  .ideaSampler > span { margin-bottom: .55rem; }
+  .samplerPads { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .25rem; }
+  .samplerPads span { min-height: 42px; padding: .2rem; font-size: .59rem; }
+  .timelineFader { box-sizing: border-box; width: 91%; grid-template-columns: 18px 1fr; gap: .85rem; margin: 0 0 0 auto; padding: 1rem; }
+  .timelineFader p { font-size: clamp(1.9rem, 7.3vw, 2.5rem); }
+  .faderTrack { width: 8px; height: 125px; box-shadow: 0 0 0 3px #10151b; }
+  .faderTrack::after { width: 30px; height: 22px; }
+  .entranceTicket { box-sizing: border-box; width: 92%; margin: 0; padding: 1rem; }
+  .entranceTicket p { font-size: clamp(1.9rem, 7.3vw, 2.5rem); }
+  .danceEditScreen { box-sizing: border-box; width: 91%; margin: 0 0 0 auto; padding: 1rem; }
+  .danceEditScreen p { font-size: clamp(1.9rem, 7.3vw, 2.5rem); }
+  .allInCard { box-sizing: border-box; width: 94%; margin: 0; padding: 1rem; }
+  .allInCard p { font-size: clamp(1.9rem, 7.3vw, 2.5rem); }
+  .packageHandoff::before { width: 24px; }
+  .packageHandoff > div { display: block; padding: 2.3rem 1.25rem 2.3rem 2.8rem; }
+  .packageHandoff p, .packageHandoff a { font-size: clamp(2.6rem, 12vw, 3.6rem); }
+  .packageHandoff a { display: inline-block; margin-top: 0.6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signalPath path { animation: none; }
+  .stage, .stageArtwork .coverImage, .packageHandoff a { transition: none; }
+}

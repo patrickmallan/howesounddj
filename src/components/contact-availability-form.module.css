@@ -1,0 +1,255 @@
+.flow {
+  position: relative;
+  width: min(100%, 1320px);
+  margin-top: -0.5rem;
+}
+
+.datePanel,
+.checking,
+.success,
+.outcome,
+.inquiry {
+  position: relative;
+  width: min(100%, 1280px);
+  padding: clamp(1.5rem, 2.8vw, 2.5rem) clamp(1.2rem, 2.8vw, 2.5rem);
+  background: rgb(4 7 7 / 80%);
+  border: 0;
+  border-radius: 0;
+  clip-path: polygon(0 8%, 92% 0, 100% 13%, 96% 91%, 0 100%);
+}
+
+.datePanel::before,
+.success::before,
+.outcome::before,
+.inquiry::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 23%;
+  top: 0;
+  height: 4px;
+  background: #42d8e8;
+}
+
+.dateLabel {
+  margin: 0 0 1.25rem;
+  color: #42d8e8;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.controls {
+  display: flex;
+  align-items: end;
+  gap: clamp(1.5rem, 4vw, 5rem);
+}
+
+.dateInputs {
+  display: grid;
+  grid-template-columns: 1.35fr 0.9fr 0.9fr;
+  gap: clamp(1.25rem, 3.5vw, 3.5rem);
+  width: min(100%, 520px);
+}
+
+.dateInput {
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  border-bottom: 5px solid;
+  border-radius: 0;
+  background: transparent;
+  padding: 0.4rem 0 0.75rem;
+  color: #f8f1e8;
+  font-size: clamp(1.85rem, 3vw, 2.55rem);
+  font-weight: 900;
+  line-height: 1;
+  outline: none;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+.dateInput::placeholder {
+  color: #f8f1e8;
+  opacity: 1;
+}
+
+.dateInput:focus-visible {
+  background: rgb(255 255 255 / 6%);
+  box-shadow: 0 8px 0 rgb(18 78 232 / 45%);
+}
+
+.year { border-color: #42d8e8; }
+.month { border-color: #f5d71f; }
+.day { border-color: #ef3340; }
+
+.checkButton {
+  min-height: 5rem;
+  min-width: min(100%, 340px);
+  border: 0;
+  background: #f5d71f;
+  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, calc(100% - 22px) 100%, 0 100%);
+  padding: 1rem 3rem;
+  color: #080b0b;
+  cursor: pointer;
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  font-weight: 950;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.checkButton:hover {
+  background: #42d8e8;
+  transform: translateY(-2px);
+}
+
+.checkButton:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+.checkButton:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.error {
+  margin-top: 0.8rem;
+  color: #fda4af;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.noDate {
+  width: fit-content;
+  margin: 1.6rem 0 0;
+  border-top: 1px solid rgb(255 255 255 / 24%);
+  padding-top: 0.8rem;
+  color: #f8f1e8;
+  font-size: 0.95rem;
+}
+
+.noDate a {
+  margin-left: 0.55rem;
+  color: #42d8e8;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.success,
+.outcome {
+  max-width: 1120px;
+}
+
+.success {
+  background: rgb(4 7 7 / 88%);
+}
+
+.success :global([data-availability-role="confirmation"]) {
+  border: 0;
+  border-left: 4px solid #42d8e8;
+  border-radius: 0;
+  background: transparent;
+}
+
+.success :global([data-availability-role="headline"]) {
+  max-width: 960px;
+  font-size: clamp(2.1rem, 5vw, 4.6rem);
+  font-weight: 950;
+  letter-spacing: -0.045em;
+  line-height: 0.96;
+  text-transform: uppercase;
+  text-shadow: 5px 5px 0 #124ee8;
+}
+
+.success :global([data-availability-role="supporting-narrative"]) {
+  max-width: 720px;
+  font-size: 1.05rem;
+  color: rgb(255 255 255 / 82%);
+}
+
+.success :global([data-availability-role="action"]) {
+  max-width: 700px;
+  background: transparent;
+  padding-bottom: 0;
+  text-align: left;
+}
+
+.success :global([data-availability-role="cta-support"]) {
+  margin-left: 0;
+  text-align: left;
+}
+
+.success :global([data-availability-role="primary-cta"]) {
+  max-width: 440px;
+  border-radius: 0;
+  background: #f5d71f;
+  color: #080b0b;
+  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, calc(100% - 22px) 100%, 0 100%);
+  text-transform: uppercase;
+}
+
+.success :global([data-availability-role="proof"]) {
+  max-width: 650px;
+  margin-top: 1.5rem;
+  border-top: 4px solid #ef3340;
+  background: rgb(4 7 7 / 70%);
+  padding: 1.2rem;
+}
+
+.inquiry {
+  margin-top: 1.5rem;
+  clip-path: none;
+}
+
+@media (max-width: 760px) {
+  .flow {
+    margin-top: 0;
+  }
+
+  .datePanel,
+  .checking,
+  .success,
+  .outcome,
+  .inquiry {
+    padding: 1.45rem 1rem 1.65rem;
+    clip-path: polygon(0 4%, 96% 0, 100% 5%, 96% 97%, 0 100%);
+  }
+
+  .controls {
+    display: block;
+  }
+
+  .dateInputs {
+    gap: 1.15rem;
+  }
+
+  .dateInput {
+    font-size: 1.75rem;
+  }
+
+  .checkButton {
+    width: 100%;
+    min-width: 0;
+    min-height: 4.8rem;
+    margin-top: 2rem;
+    font-size: 1.25rem;
+  }
+
+  .noDate {
+    font-size: 0.88rem;
+  }
+
+  .noDate a {
+    display: inline-block;
+    margin-left: 0.35rem;
+  }
+
+  .success :global([data-availability-role="headline"]) {
+    font-size: clamp(2rem, 10vw, 3.15rem);
+    text-shadow: 4px 4px 0 #124ee8;
+  }
+}

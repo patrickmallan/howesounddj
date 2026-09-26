@@ -1,0 +1,4 @@
+@media (max-width: 359px) {
+  .headerInner { padding-inline: 8px !important; }
+  .wordmark { width: 112px !important; margin-right: 0 !important; }
+}

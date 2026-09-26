@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { CompactAvailabilityChecker } from "@/components/compact-availability-checker";
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
@@ -9,7 +10,7 @@ import { CTA_PILL_FLEX_CENTER } from "@/lib/cta-alignment";
 import { headlineVariantPayload } from "@/lib/experiment";
 
 const triggerClass =
-  `${CTA_PILL_FLEX_CENTER} motion-interactive min-h-[44px] shrink-0 items-center justify-center rounded-full bg-amber-300 px-2.5 text-center text-xs font-semibold leading-tight text-neutral-950 transition hover:scale-[1.02] sm:min-h-0 sm:px-4 sm:py-2.5 sm:text-sm xl:px-5`;
+  `${CTA_PILL_FLEX_CENTER} hsdj-header-cue motion-interactive min-h-[54px] min-w-[54px] shrink-0 items-center justify-center text-center text-[0.62rem] font-black uppercase leading-[0.9] text-white transition hover:scale-[1.04] sm:min-h-[62px] sm:min-w-[62px]`;
 
 const backdropClass =
   "fixed inset-0 z-[90] cursor-default border-0 bg-black/65 p-0 backdrop-blur-md xl:bg-black/55 xl:backdrop-blur-sm";
@@ -199,7 +200,7 @@ export function HeaderCheckAvailability({ onPanelOpen }: Props) {
       : null;
 
   return (
-    <div className="relative shrink-0">
+    <div className="hsdj-header-cue-shell relative shrink-0">
       <button
         ref={triggerRef}
         type="button"
@@ -209,7 +210,14 @@ export function HeaderCheckAvailability({ onPanelOpen }: Props) {
         aria-haspopup="dialog"
         onClick={togglePanel}
       >
-        Check Availability
+        <Image
+          src="/images/hsdj-redesign/controls/buttons/cue-round.png"
+          alt=""
+          width={76}
+          height={76}
+          className="hsdj-header-cue__hardware"
+        />
+        <span className="hsdj-header-cue__label">Check<br />date</span>
       </button>
       {overlay}
     </div>

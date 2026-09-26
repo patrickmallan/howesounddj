@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+const IS_DEVELOPMENT = process.env.NODE_ENV === "development";
+
 /**
  * CSP is not set anywhere else in this repo (no middleware, vercel.json, or layout meta).
  * Inline scripts used by the app: JSON-LD (`JsonLd`), GA bootstrap (`google-analytics.tsx`),
@@ -15,6 +17,7 @@ const CONTENT_SECURITY_POLICY = [
     "https://www.google-analytics.com",
     "https://challenges.cloudflare.com",
     "'unsafe-inline'",
+    ...(IS_DEVELOPMENT ? ["'unsafe-eval'"] : []),
   ].join(" "),
   "style-src 'self' 'unsafe-inline'",
   [
@@ -58,6 +61,10 @@ const RETIRED_OUT_OF_AREA_PATHS = [
 ];
 
 const nextConfig: NextConfig = {
+  // The local review workflow uses both localhost and 127.0.0.1. Next 16 blocks
+  // dev assets across those hostnames unless the alternate origin is explicit.
+  allowedDevOrigins: ["127.0.0.1"],
+
   async headers() {
     return [
       {
@@ -81,6 +88,7 @@ const nextConfig: NextConfig = {
     // Next.js 16: `next/image` requires an explicit pattern for local `src` URLs that include a query string
     // (e.g. cache-busting `?v=` on files under `public/images/`).
     localPatterns: [{ pathname: "/images/**" }],
+    qualities: [75, 90, 92],
   },
 
   /** Legacy URLs (e.g. old Google sitelinks) → closest live route. Permanent (308), no chains. */

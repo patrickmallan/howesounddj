@@ -4,12 +4,15 @@ import { AvailabilityJourneyTracker } from "@/components/availability-journey-tr
 import { JsonLd } from "@/components/json-ld";
 import { ConditionalSiteFinalDecisionZone } from "@/components/conditional-site-final-decision-zone";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
+import { HomepageScrollFader } from "@/components/homepage-scroll-fader";
+import { HeadingLetterFlashController } from "@/components/heading-letter-flash-controller";
 import { SITE_PUBLIC_NAME, SITE_SHORT_NAME } from "@/config/site-brand";
 import { organizationJsonLd } from "@/lib/json-ld";
+import { isIsolatedPreview } from "@/lib/is-isolated-preview";
 import "./globals.css";
 
 const siteDescription =
-  "Versatile Squamish wedding DJ mixing drum & bass, tech house, hip-hop, disco, country and everything between. Your taste, mixed live.";
+  "Versatile Squamish wedding DJ for ceremony sound, dinner music, speeches, and dance floors that go well beyond the usual wedding playlist.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.howesounddj.com"),
@@ -45,8 +48,8 @@ export const metadata: Metadata = {
     images: ["/og-share.jpg"],
   },
   robots: {
-    index: true,
-    follow: true,
+    index: !isIsolatedPreview(),
+    follow: !isIsolatedPreview(),
   },
 };
 
@@ -69,6 +72,13 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        <link
+          rel="preload"
+          href="/fonts/hsdj-meter-matrix-v6.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="flex min-h-full flex-col bg-neutral-950 text-white">
         <JsonLd data={organizationJsonLd()} />
@@ -79,6 +89,8 @@ export default function RootLayout({
           Skip to content
         </a>
         <SiteHeader />
+        <HomepageScrollFader />
+        <HeadingLetterFlashController />
         <div id="main-content" className="flex flex-1 flex-col" tabIndex={-1}>
           {children}
         </div>

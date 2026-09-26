@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import "../../guides/article-liner-notes.css";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
@@ -12,12 +14,13 @@ const STORY_TITLE = "What a Sunwolf Riverside Wedding Reception Feels Like";
 const STORY_DATE = "2026-05-23";
 
 const metaDesc =
-  "Editorial reflection from Howe Sound DJ: why Sunwolf Riverside Resort receptions often feel strongest when pacing is focused, riverside calm builds into earned dance-floor energy, and the night stays one coherent arc.";
+  "Editorial reflection from Howe Sound DJ: why Sunwolf Riverside Resort receptions often feel strongest when the direction is focused, riverside ease builds into earned dance-floor energy, and the night stays one coherent arc.";
 
 export const metadata: Metadata = {
   title: STORY_TITLE,
   description: metaDesc,
   openGraph: {
+    images: ["/og-share.jpg"],
     title: `${STORY_TITLE} | Howe Sound DJ`,
     description: metaDesc,
     url: `/stories/${STORY_SLUG}`,
@@ -45,7 +48,7 @@ function Block({ eyebrow, title, children }: { eyebrow: string; title: string; c
 
 export default function StorySunwolfRiversideReceptionPage() {
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
+    <main className="hsdj-interior hsdj-editorial-page hsdj-story-detail-page hsdj-story-sunwolf min-h-screen bg-neutral-950 text-white">
       <JsonLd data={storyArticleBreadcrumbJsonLd(STORY_TITLE, STORY_SLUG)} />
       <JsonLd
         data={storyArticleJsonLd({
@@ -56,7 +59,7 @@ export default function StorySunwolfRiversideReceptionPage() {
         })}
       />
 
-      <article>
+      <article className="hsdj-interior-flow">
         <header className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.12),transparent_55%)]" />
           <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
@@ -83,7 +86,7 @@ export default function StorySunwolfRiversideReceptionPage() {
               </span>
               Howe Sound DJ
             </p>
-            <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl">{STORY_TITLE}</h1>
+            <MeterMatrixHeading text={STORY_TITLE} className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl" />
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/70">
               This is not a recap of a named wedding. It is an observational piece about a pattern that shows up often in Squamish: receptions that feel complete because the emotional arc was shaped with
               care, not because the clock was pushed as late as possible.
@@ -98,12 +101,6 @@ export default function StorySunwolfRiversideReceptionPage() {
               </Link>
               .
             </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
-            </div>
           </div>
         </header>
 
@@ -131,7 +128,7 @@ export default function StorySunwolfRiversideReceptionPage() {
             evening felt like one story. That memory rarely comes from sheer hours. It comes from pacing that respected where people actually were emotionally.
           </p>
           <p>
-            Longer is not automatically better. Louder is not automatically better. Later is not automatically better. What matters is whether the celebration had a shape: calm where calm belonged, lift
+            Longer is not automatically better. Louder is not automatically better. Later is not automatically better. What matters is whether the celebration had a shape: space where the day needed it, lift
             where lift was ready, and a dance section that arrived because the room had been listening, not because a schedule insisted.
           </p>
         </Block>
@@ -143,7 +140,7 @@ export default function StorySunwolfRiversideReceptionPage() {
               connected to daylight, more willing to stand outside, more settled into conversation before anyone asks them to perform celebration.
             </p>
             <p>
-              That grounding is an asset. It also sets expectations. The reception should not fight the calm that brought people there. Music and hosting work best when they honor the transition from
+              That grounding is an asset. It also sets expectations. The reception should not fight the ease that brought people there. Music and hosting work best when they honor the transition from
               open air and river light into an evening that still feels human, not like the day was reset to “party mode” on a timer.
             </p>
           </Block>
@@ -209,7 +206,7 @@ export default function StorySunwolfRiversideReceptionPage() {
               >
                 Sea to Sky Gondola atmosphere
               </Link>{" "}
-              explores a different environmental cue set. Riverside receptions reward patience with calm; mountaintop receptions reward patience with awe.
+              explores a different environmental cue set. Riverside receptions reward patience with intimacy; mountaintop receptions reward patience with awe.
             </p>
           </Block>
         </SectionReveal>
@@ -252,17 +249,14 @@ export default function StorySunwolfRiversideReceptionPage() {
           <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
             <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
               <div className="mx-auto w-full max-w-3xl">
-                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">When the fit matters</div>
+                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">When the details matter</div>
                 <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">If this pacing sounds like your day</h2>
                 <p className="mt-4 text-lg leading-8 text-white/70">
-                  The same consult and availability paths apply across the site. Bring your venue, your rough timeline, and how you want guests to feel when the river day turns into evening. No need for a
-                  perfect brief.
+                  Check your date first. If it is available, book a consult and bring your venue, your rough timeline, and how you want guests to feel when the river day turns into evening. No need for a perfect
+                  brief.
                 </p>
                 <div className="mt-8 max-w-xl space-y-4">
                   <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-                  <p className="text-sm leading-relaxed text-white/60">
-                    45 minutes &bull; No pressure &bull; Just clarity
-                  </p>
                   <p className="text-sm text-white/45">
                     <Link href="/stories" className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                       Back to Stories

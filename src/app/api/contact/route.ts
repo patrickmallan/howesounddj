@@ -9,6 +9,7 @@ import {
   type InquiryPayload,
 } from "@/lib/inquiry-email";
 import { verifyTurnstileToken } from "@/lib/turnstile";
+import { isIsolatedPreview } from "@/lib/is-isolated-preview";
 import type { ContactApiResponse } from "@/types/contact-api";
 
 export const runtime = "nodejs";
@@ -40,7 +41,7 @@ function getAutoReplyPlainText(): string {
   return [
     "Hey, thanks for reaching out. I've got your message and will be in touch soon.",
     "",
-    "In the meantime, you can Book a Consult or Check Availability from the same page here:",
+    "In the meantime, check your date. If it is available, you can book a consult from the same page:",
     "",
     AUTO_REPLY_CONTACT_URL,
     "",
@@ -54,7 +55,7 @@ function getAutoReplyHtml(): string {
   const url = AUTO_REPLY_CONTACT_URL;
   return `<html><body>
 <p>Hey, thanks for reaching out. I've got your message and will be in touch soon.</p>
-<p>In the meantime, you can Book a Consult or Check Availability from the same page here:</p>
+<p>In the meantime, check your date. If it is available, you can book a consult from the same page:</p>
 <p><a href="${url}">${url}</a></p>
 <p>Excited to hear more about your plans.</p>
 <p>Howe Sound DJ</p>
@@ -77,6 +78,12 @@ function logContact(stage: string, data?: Record<string, unknown>) {
 }
 
 export async function POST(request: Request) {
+  if (isIsolatedPreview()) {
+    return NextResponse.json<ContactApiResponse>(
+      { success: false, message: "This protected preview does not send messages." },
+      { status: 503, headers: { "Cache-Control": "no-store" } },
+    );
+  }
   logContact("request_received");
   const rateLimit = await checkApiRateLimit(request, RATE_LIMIT_IDS.contact);
   if (rateLimit !== "allowed") {

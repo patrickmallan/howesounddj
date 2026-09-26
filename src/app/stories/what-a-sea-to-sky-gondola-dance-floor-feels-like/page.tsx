@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import "../../guides/article-liner-notes.css";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
@@ -19,6 +21,7 @@ export const metadata: Metadata = {
   title: STORY_TITLE,
   description: metaDesc,
   openGraph: {
+    images: ["/og-share.jpg"],
     title: `${STORY_TITLE} | Howe Sound DJ`,
     description: metaDesc,
     url: `/stories/${STORY_SLUG}`,
@@ -46,7 +49,7 @@ function Block({ eyebrow, title, children }: { eyebrow: string; title: string; c
 
 export default function StorySeaToSkyGondolaDanceFloorPage() {
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
+    <main className="hsdj-interior hsdj-editorial-page hsdj-story-detail-page hsdj-story-gondola min-h-screen bg-neutral-950 text-white">
       <JsonLd data={storyArticleBreadcrumbJsonLd(STORY_TITLE, STORY_SLUG)} />
       <JsonLd
         data={storyArticleJsonLd({
@@ -57,7 +60,7 @@ export default function StorySeaToSkyGondolaDanceFloorPage() {
         })}
       />
 
-      <article>
+      <article className="hsdj-interior-flow">
         <header className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.12),transparent_55%)]" />
           <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
@@ -84,7 +87,7 @@ export default function StorySeaToSkyGondolaDanceFloorPage() {
               </span>
               Howe Sound DJ
             </p>
-            <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl">{STORY_TITLE}</h1>
+            <MeterMatrixHeading text={STORY_TITLE} className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl" />
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/70">
               This is not a recap of a named wedding. It is an observational piece about what changes when you celebrate on a ridge above Howe Sound: how guests arrive emotionally, how the landscape
               does part of the storytelling, and why the path into dancing often looks different here than in a ground-level ballroom.
@@ -99,12 +102,6 @@ export default function StorySeaToSkyGondolaDanceFloorPage() {
               </Link>
               .
             </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
-            </div>
           </div>
         </header>
 
@@ -148,7 +145,7 @@ export default function StorySeaToSkyGondolaDanceFloorPage() {
             </p>
             <p>
               After dark, the corridor feels quieter in the distance and louder in the room. That contrast can make dancing arrive as relief: as warmth shared in one place while the mountains sit
-              outside as a calm witness. The floor does not need to shout if the night has already earned attention.
+              outside as a quiet witness. The floor does not need to shout if the night has already earned attention.
             </p>
           </Block>
         </SectionReveal>
@@ -191,7 +188,7 @@ export default function StorySeaToSkyGondolaDanceFloorPage() {
           <Block eyebrow="Place" title="Why local familiarity matters on this corridor">
             <p>
               The highway, the weather windows, load-in reality, and how Squamish weekends actually breathe. All of that shapes what is reasonable to expect from a timeline. Someone who plans in this lane
-              is not discovering those constraints on your clock. For couples marrying in Squamish and nearby mountain settings, that calm operational literacy is part of the emotional safety guests pick
+              is not discovering those constraints on your clock. For couples marrying in Squamish and nearby mountain settings, that operational fluency is part of the confidence guests pick
               up on without knowing the vocabulary.
             </p>
             <p>
@@ -231,17 +228,13 @@ export default function StorySeaToSkyGondolaDanceFloorPage() {
           <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
             <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
               <div className="mx-auto w-full max-w-3xl">
-                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">When the fit matters</div>
+                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">When the details matter</div>
                 <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">If this atmosphere sounds like your day</h2>
                 <p className="mt-4 text-lg leading-8 text-white/70">
-                  The same consult and availability paths apply across the site. Bring your venue, your rough timeline, and how you want guests to feel when the light changes. No need for a perfect
-                  brief.
+                  Check your date first. If it is available, book a consult and bring your venue, your rough timeline, and how you want guests to feel when the light changes. No need for a perfect brief.
                 </p>
                 <div className="mt-8 max-w-xl space-y-4">
                   <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-                  <p className="text-sm leading-relaxed text-white/60">
-                    45 minutes &bull; No pressure &bull; Just clarity
-                  </p>
                   <p className="text-sm text-white/45">
                     <Link href="/stories" className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                       Back to Stories

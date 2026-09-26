@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { ANALYTICS_EVENTS, consultClickEventParams, trackEvent } from "@/lib/analytics";
 import { CTA_PILL_FLEX_CENTER } from "@/lib/cta-alignment";
-import { CONSULT_CALENDLY_URL, PUBLIC_SOUND_CHECK_CTA_LABEL } from "@/lib/consult-calendly";
+import { PUBLIC_SOUND_CHECK_CTA_LABEL } from "@/lib/consult-calendly";
 
 export type BookConsultSurface =
   | "hero"
@@ -22,7 +22,7 @@ export type BookConsultSurface =
 const BOOK_CONSULT_PRIMARY_PILL_BASE =
   "inline-flex items-center justify-center min-h-[44px] rounded-full bg-amber-300 px-6 py-3 text-sm font-semibold text-black shadow-[0_18px_45px_rgba(250,204,21,0.2)] transition hover:bg-amber-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-200 focus-visible:ring-offset-2 focus-visible:ring-offset-black";
 
-/** Re-export for `<a href={CONSULT_CALENDLY_URL}>` (e.g. availability form) so Calendly matches the tracked link. */
+/** Shared presentation for the scheduling handoff link. */
 export const bookConsultPrimaryButtonClassName = BOOK_CONSULT_PRIMARY_PILL_BASE;
 
 /** Secondary CTA, matches outline pills used next to primary Check Availability across the site. */
@@ -51,7 +51,7 @@ export function BookConsultTrackedLink({ surface, className, children }: Props) 
 
   return (
     <a
-      href={CONSULT_CALENDLY_URL}
+      href="/go/consult"
       target="_blank"
       rel="noopener noreferrer"
       className={merged}

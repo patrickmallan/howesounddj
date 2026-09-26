@@ -1,0 +1,183 @@
+.page {
+  --contact-cyan: #42d8e8;
+  --contact-yellow: #f5d71f;
+  --contact-red: #ef3340;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #070909;
+  color: #f8f1e8;
+}
+
+.stage {
+  position: relative;
+  isolation: isolate;
+  min-height: min(900px, calc(100svh - 72px));
+  overflow: hidden;
+  border-bottom: 1px solid rgb(255 255 255 / 12%);
+}
+
+.artwork,
+.stageShade {
+  position: absolute;
+  inset: 0;
+}
+
+.artwork {
+  z-index: -3;
+  background-image: url("/images/hsdj-redesign/contact/mixer-wedding-floor-art-v1.webp");
+  background-position: center center;
+  background-size: cover;
+  transform: scale(1.015);
+}
+
+.stageShade {
+  z-index: -2;
+  background: rgb(2 5 5 / 18%);
+}
+
+.signalTop {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 2;
+  height: 8px;
+  border-top: 5px solid var(--contact-yellow);
+  border-bottom: 3px solid #124ee8;
+  clip-path: polygon(0 0, 59% 0, 64% 100%, 100% 100%, 100% 0);
+}
+
+.stageInner {
+  width: min(100%, 1440px);
+  min-height: inherit;
+  margin: 0 auto;
+  padding: clamp(3.2rem, 6vw, 6rem) clamp(1.25rem, 4.5vw, 4rem) 3.25rem;
+}
+
+.stageInner:has([data-contact-state="available"]) .intro,
+.stageInner:has([data-contact-state="manual"]) .intro,
+.stageInner:has([data-contact-state="unavailable"]) .intro {
+  display: none;
+}
+
+.stageInner:has([data-contact-state="available"]),
+.stageInner:has([data-contact-state="manual"]),
+.stageInner:has([data-contact-state="unavailable"]) {
+  padding-top: clamp(2.5rem, 5vw, 5rem);
+}
+
+.intro {
+  position: relative;
+  width: min(690px, 58vw);
+  padding: 1.45rem 1.25rem 1.8rem 0;
+}
+
+.intro::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -1rem -4rem -1.5rem -4rem;
+  background: rgb(3 6 6 / 76%);
+  clip-path: polygon(0 3%, 89% 0, 100% 14%, 93% 91%, 78% 100%, 0 94%);
+}
+
+.intro::after {
+  content: "";
+  position: absolute;
+  top: -0.45rem;
+  left: 0;
+  width: min(18rem, 62%);
+  height: 5px;
+  background: var(--contact-cyan);
+}
+
+.eyebrow {
+  margin: 0 0 clamp(2.25rem, 5vw, 4.25rem);
+  color: var(--contact-cyan);
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display), Impact, sans-serif;
+  font-size: clamp(4rem, 6.8vw, 6.45rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 0.84;
+  text-transform: uppercase;
+  text-shadow: 7px 7px 0 #124ee8;
+  font-palette: --hsdj-cold-booth;
+}
+
+.title > span {
+  display: block;
+}
+
+.lede {
+  width: min(31rem, 90%);
+  margin: 2.25rem 0 0;
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  font-weight: 750;
+  line-height: 1.45;
+}
+
+.signalWave {
+  width: min(54rem, 92vw);
+  height: 36px;
+  margin-top: 1.6rem;
+  background: var(--contact-yellow);
+  clip-path: polygon(0 45%, 8% 21%, 17% 44%, 25% 68%, 34% 55%, 43% 17%, 52% 35%, 61% 72%, 70% 52%, 79% 35%, 88% 52%, 100% 28%, 100% 38%, 88% 62%, 79% 45%, 70% 62%, 61% 82%, 52% 45%, 43% 27%, 34% 65%, 25% 78%, 17% 54%, 8% 31%, 0 55%);
+}
+
+@media (max-width: 760px) {
+  .stage {
+    min-height: auto;
+  }
+
+  .artwork {
+    background-image: url("/images/hsdj-redesign/contact/mixer-wedding-floor-art-v1-mobile-optimized.webp");
+    background-position: 55% center;
+    transform: none;
+  }
+
+  .stageShade {
+    background: rgb(2 5 5 / 24%);
+  }
+
+  .stageInner {
+    padding: 2.25rem 1.25rem 2.75rem;
+  }
+
+  .intro {
+    width: 100%;
+    padding-top: 1.2rem;
+  }
+
+  .intro::before {
+    inset: -0.5rem -1.5rem -1rem -1.5rem;
+    clip-path: polygon(0 2%, 96% 0, 100% 13%, 94% 95%, 0 100%);
+  }
+
+  .eyebrow {
+    margin-bottom: 2.2rem;
+    font-size: 0.64rem;
+  }
+
+  .title {
+    font-size: clamp(3.25rem, 13.2vw, 4.25rem);
+    line-height: 0.88;
+    text-shadow: 4px 4px 0 #124ee8;
+  }
+
+  .lede {
+    width: 95%;
+    margin-top: 1.7rem;
+    font-size: 1rem;
+  }
+
+  .signalWave {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}

@@ -1,27 +1,29 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import CTADuo from "@/components/cta-duo";
-import { SectionReveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { ACTIVE_VENUE_PAGES } from "@/config/venue-pages";
 import { venuesHubBreadcrumbJsonLd } from "@/lib/json-ld";
+import "./venue-journey.css";
 
-const hubDesc =
-  "Sea-to-Sky and Squamish wedding venue guides: planning-focused DJ context for mountain, farm, brewery, and corridor celebrations, without generic filler. Howe Sound DJ.";
+const description =
+  "Explore Squamish wedding venues through the music, sound, and reception-flow questions each setting brings to the day.";
 
 export const metadata: Metadata = {
   title: "Wedding Venues · Sea-to-Sky & Squamish DJ Planning",
-  description: hubDesc,
+  description,
   openGraph: {
+    images: ["/og-share.jpg"],
     title: "Wedding Venues · Sea-to-Sky & Squamish DJ Planning | Howe Sound DJ",
-    description: hubDesc,
+    description,
     url: "/venues",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Wedding Venues · Sea-to-Sky & Squamish DJ Planning | Howe Sound DJ",
-    description: hubDesc,
+    description,
     images: ["/og-share.jpg"],
   },
   alternates: { canonical: "/venues" },
@@ -29,141 +31,70 @@ export const metadata: Metadata = {
 
 export default function VenuesHubPage() {
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
+    <main className="hsdj-interior hsdj-venues-page hsdj-venue-journey min-h-screen text-white">
       <JsonLd data={venuesHubBreadcrumbJsonLd()} />
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.14),transparent_50%)]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
-          <div className="max-w-3xl">
-            <div className="mb-4 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-amber-200">
-              Venues
-            </div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Squamish · Sea-to-Sky corridor</div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">Wedding venue guides built for real planning decisions</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              These pages are not generic “SEO shells.” Each guide connects a named venue to the kinds of music, pacing, and sound-thinking questions that matter for Sea-to-Sky weddings, from
-              mountaintop receptions to downtown Squamish gatherings, then routes you into the same availability and inquiry flow as the rest of the site.
-            </p>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
-              Howe Sound DJ is wedding-focused and Squamish-rooted. Venue guides use confident local language and planning intelligence, not invented operational claims about private venue
-              relationships.
-            </p>
-            <div className="mt-8 max-w-xl space-y-4">
-              <CTADuo bookSurface="venues_hub" checkSurface="venues_hub" />
-              <p className="text-sm leading-relaxed text-white/60">
-                45 minutes &bull; No pressure &bull; Just clarity
-              </p>
-              <div className="flex flex-wrap items-center gap-3 gap-y-3">
-                <Link
-                  href="/weddings"
-                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                >
-                  Wedding DJ Services
-                </Link>
-                <Link
-                  href="/packages"
-                  className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                >
-                  Wedding DJ Packages
-                </Link>
-              </div>
-            </div>
-          </div>
+      <section className="venue-journey-hero" aria-labelledby="venue-journey-title">
+        <Image
+          src="/images/hsdj-redesign/packages/packages-ceremony-clue-v2.webp"
+          alt="Wedding guests looking toward a mountain ceremony"
+          fill
+          sizes="100vw"
+          className="venue-journey-hero-image"
+          priority
+        />
+        <div className="venue-journey-hero-content">
+          <p className="venue-journey-kicker">Squamish / Sea-to-Sky / Your room</p>
+          <MeterMatrixHeading
+            id="venue-journey-title"
+            text="Every room changes the music."
+            lines={["Every room", "changes the", "music."]}
+          />
+          <p className="venue-journey-lede">
+            A gondola, a riverside lodge, a farm, a brewery. Same wedding, completely different energy.
+            Pick the place you&apos;re picturing and follow the questions that setting brings to the party.
+          </p>
+          <a className="venue-journey-cue" href="#venue-route">Follow the venue route <span aria-hidden="true">↓</span></a>
         </div>
+        <div className="venue-journey-side-note" aria-hidden="true">THE SETTING IS PART OF THE SET</div>
       </section>
 
-      <SectionReveal as="section" className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-        <div className="max-w-3xl">
-          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Browse by venue</div>
-          <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Corridor venues and Squamish favourites</h2>
-          <p className="mt-4 text-lg leading-8 text-white/70">
-            Open a guide for planning context tailored to the setting, then check your date first when you are ready. For questions that apply across venues, the{" "}
-            <Link href="/faq" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              FAQ
-            </Link>{" "}
-            is the fastest path. For reception pacing and dance floor philosophy, see{" "}
-            <Link href="/guides" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              Wedding Planning Guides
-            </Link>
-            . For Squamish-rooted context across the local ecosystem, read the{" "}
-            <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              Squamish wedding DJ pillar
-            </Link>
-            . Editorial dance-floor proof lives in{" "}
-            <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
-              Sea-to-Sky wedding stories
-            </Link>
-            .
-          </p>
-        </div>
-
-        <StaggerGroup className="mt-12 grid list-none gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {ACTIVE_VENUE_PAGES.map((v) => (
-            <StaggerItem key={v.slug}>
-              <article className="premium-surface flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
-                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/85">{v.locationLabel}</div>
-                <div className="mt-1 text-xs text-white/45">{v.venueType}</div>
-                <h3 className="mt-4 text-xl font-semibold leading-snug text-white">
-                  <Link
-                    href={`/venues/${v.slug}`}
-                    className="rounded-md transition hover:text-amber-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
-                  >
-                    {v.name}
-                  </Link>
-                </h3>
-                <p className="mt-3 flex-1 text-sm leading-7 text-white/65">{v.shortSummary}</p>
-                <div className="mt-6 flex flex-col gap-2 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
-                  <Link
-                    href={`/venues/${v.slug}`}
-                    className="text-sm font-semibold text-amber-300 transition hover:text-amber-200"
-                  >
-                    Read the guide →
-                  </Link>
-                  <a
-                    href={v.officialUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-white/45 transition hover:text-white/65"
-                  >
-                    Official site<span className="sr-only"> (opens in new tab)</span>
-                  </a>
-                </div>
-              </article>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-      </SectionReveal>
-
-      <SectionReveal
-        as="section"
-        className="border-t border-white/10 bg-white/[0.03]"
-      >
-        <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-          <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-white/5 p-8 lg:p-12">
-            <div className="mx-auto w-full max-w-3xl">
-              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Next step</div>
-              <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">Your next move: your date, your details, or both</h2>
-              <p className="mt-4 text-lg leading-8 text-white/70">
-                Venue guides help you think in advance; the contact flow is where availability, your plans, and coverage come together, the same path used across the site.
-              </p>
-              <div className="mt-8 max-w-xl space-y-4">
-                <CTADuo bookSurface="venues_hub" checkSurface="venues_hub" />
-                <p className="text-sm leading-relaxed text-white/60">
-                  45 minutes &bull; No pressure &bull; Just clarity
-                </p>
-                <div className="flex flex-wrap items-center gap-3 gap-y-3">
-                  <Link
-                    href="/faq"
-                    className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-center text-sm font-medium text-white/75 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
-                  >
-                    FAQ
-                  </Link>
-                </div>
-              </div>
-            </div>
+      <section id="venue-route" className="venue-route-section" aria-labelledby="venue-route-title">
+        <div className="venue-route-intro">
+          <span className="venue-route-led" aria-hidden="true" />
+          <div>
+            <p className="venue-route-overline">The corridor, venue by venue</p>
+            <h2 id="venue-route-title">Find your room. Hear the possibilities.</h2>
+            <p>Each stop opens a guide to the sound, transitions, and guest flow worth thinking through there.</p>
           </div>
         </div>
-      </SectionReveal>
+        <ol className="venue-route-list">
+          {ACTIVE_VENUE_PAGES.map((venue, index) => (
+            <li key={venue.slug} className="venue-route-stop">
+              <span className="venue-route-spindle" aria-hidden="true"><span /></span>
+              <div className="venue-route-stop-content">
+                <div className="venue-route-meta">
+                  <span>{venue.locationLabel}</span>
+                  <span>{venue.venueType}</span>
+                </div>
+                <h3><Link href={`/venues/${venue.slug}`}>{venue.name}</Link></h3>
+                <p>{venue.shortSummary}</p>
+                <div className="venue-route-actions">
+                  <Link href={`/venues/${venue.slug}`}>Step into this venue <span aria-hidden="true">↗</span></Link>
+                  <a href={venue.officialUrl} target="_blank" rel="noopener noreferrer">Official venue site <span className="sr-only">(opens in a new tab)</span></a>
+                </div>
+              </div>
+              {index % 3 === 1 ? <span className="venue-route-scratch" aria-hidden="true" /> : null}
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="venue-journey-outro">
+        <p className="venue-route-overline">The place is picked. What about the music?</p>
+        <h2>Let&apos;s see if your date is open.</h2>
+        <p>Start with the date. If I&apos;m available, we can talk through what this particular room needs from the DJ.</p>
+        <Link href="/contact">Check your date <span aria-hidden="true">↗</span></Link>
+      </section>
     </main>
   );
 }
