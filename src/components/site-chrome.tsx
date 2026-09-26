@@ -620,7 +620,18 @@ export function SiteFooter() {
   const footerLinks = flattenNavForFooter(navTree);
   const primaryRoutes = new Set(["/weddings", "/packages", "/reviews", "/venues", "/contact"]);
   const primaryLinks = footerLinks.filter((item) => primaryRoutes.has(item.href));
-  const indexLinks = footerLinks.filter((item) => !primaryRoutes.has(item.href) && item.href !== "/vancouver-wedding-dj");
+  const planningRoutes = new Set(["/faq", "/squamish-wedding-dj", "/vancouver-wedding-dj"]);
+  const discoverRoutes = new Set(["/guides", "/stories", "/about"]);
+  const planningLinks = footerLinks.filter((item) => planningRoutes.has(item.href));
+  const discoverLinks = footerLinks.filter((item) => discoverRoutes.has(item.href));
+  const footerLabels: Record<string, string> = {
+    "/faq": "Common questions",
+    "/squamish-wedding-dj": "Squamish weddings",
+    "/vancouver-wedding-dj": "Planning from Vancouver",
+    "/guides": "Planning guides",
+    "/stories": "Wedding stories",
+    "/about": "About Patrick",
+  };
   return (
     <footer className="hsdj-site-footer mt-auto">
       <div className="hsdj-site-footer__collage" aria-hidden="true">
@@ -650,21 +661,26 @@ export function SiteFooter() {
             </Link>
           ))}
         </nav>
-        <nav className="hsdj-site-footer__index" aria-label="More pages">
-          {indexLinks.map((item) => (
-            <Link key={item.href} href={item.href} onClick={onTrustNavClick(item.href)}>
-              {item.footerLabel ?? item.label}
-            </Link>
-          ))}
-        </nav>
-        <p className="hsdj-site-footer__route">
-          <Link href="/vancouver-wedding-dj">
-            Planning from Vancouver · Marrying in Squamish
-          </Link>
-        </p>
+        <div className="hsdj-site-footer__secondary">
+          <nav className="hsdj-site-footer__link-group" aria-label="Wedding planning">
+            <span>Plan your wedding</span>
+            {planningLinks.map((item) => (
+              <Link key={item.href} href={item.href} onClick={onTrustNavClick(item.href)}>
+                {footerLabels[item.href]} <b aria-hidden="true">→</b>
+              </Link>
+            ))}
+          </nav>
+          <nav className="hsdj-site-footer__link-group" aria-label="Learn more about Howe Sound DJ">
+            <span>Learn more</span>
+            {discoverLinks.map((item) => (
+              <Link key={item.href} href={item.href} onClick={onTrustNavClick(item.href)}>
+                {footerLabels[item.href]} <b aria-hidden="true">→</b>
+              </Link>
+            ))}
+          </nav>
+        </div>
         <div className="hsdj-site-footer__legal">
-          <div>© {year} {SITE_PUBLIC_NAME}. Squamish, BC.</div>
-          <div>Serving weddings and selected events in Squamish.</div>
+          © {year} {SITE_PUBLIC_NAME} · Squamish, BC · Weddings and selected events
         </div>
       </div>
     </footer>

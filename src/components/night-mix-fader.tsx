@@ -46,7 +46,7 @@ const STAGES = [
   },
   {
     title: "First dance",
-    word: "THIS ONE MATTERS",
+    word: "THIS ONE\nMATTERS",
     line: "Your version starts clean and plays as long as you want it to. If you have had enough of the spotlight, give me the nod.",
     bpm: 76,
     spectrum: { energy: .58, low: .52, mid: .68, high: .4 },

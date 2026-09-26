@@ -156,6 +156,7 @@ test("the mobile night scene leads with its photograph instead of oversized text
       sceneHeight: sceneBounds.height,
       headingSize: Number.parseFloat(getComputedStyle(heading).fontSize),
       headingPanelSlack: headingBounds.width - headingText.getBoundingClientRect().width,
+      headingLines: heading.innerText.split("\n").length,
       photoWindow: descriptionBounds.top - headingBounds.bottom,
       spectrumDisplay: getComputedStyle(spectrum).display,
     };
@@ -164,6 +165,7 @@ test("the mobile night scene leads with its photograph instead of oversized text
   expect(composition.sceneHeight).toBeLessThanOrEqual(350);
   expect(composition.headingSize).toBeLessThanOrEqual(33);
   expect(composition.headingPanelSlack).toBeLessThan(36);
+  expect(composition.headingLines).toBe(2);
   expect(composition.photoWindow).toBeGreaterThan(70);
   expect(composition.spectrumDisplay).toBe("none");
 });
@@ -198,18 +200,28 @@ test("mobile section transitions and footer navigation stay compact", async ({ p
   const layout = await page.evaluate(() => {
     const service = document.querySelector<HTMLElement>('[data-testid="home-services-section"]');
     const serviceHeading = service?.querySelector<HTMLElement>("h2");
+    const servicePaper = service?.querySelector<HTMLElement>(":scope > div:last-child");
+    const nextSectionHeading = document.querySelector<HTMLElement>("#read-room-heading");
     const footerLinks = document.querySelector<HTMLElement>(".hsdj-site-footer__signal-path");
-    if (!service || !serviceHeading || !footerLinks) throw new Error("Missing compact-layout landmarks");
+    const footer = document.querySelector<HTMLElement>(".hsdj-site-footer");
+    const footerGroups = document.querySelectorAll<HTMLElement>(".hsdj-site-footer__link-group");
+    if (!service || !serviceHeading || !servicePaper || !nextSectionHeading || !footerLinks || !footer) throw new Error("Missing compact-layout landmarks");
     const serviceBounds = service.getBoundingClientRect();
     const headingBounds = serviceHeading.getBoundingClientRect();
     return {
       serviceLeadIn: headingBounds.top - serviceBounds.top,
+      serviceHandoff: nextSectionHeading.getBoundingClientRect().top - servicePaper.getBoundingClientRect().bottom,
       footerColumns: getComputedStyle(footerLinks).gridTemplateColumns.split(" ").length,
+      footerGroups: footerGroups.length,
+      footerHeight: footer.getBoundingClientRect().height,
     };
   });
 
   expect(layout.serviceLeadIn).toBeLessThan(65);
+  expect(layout.serviceHandoff).toBeLessThan(70);
   expect(layout.footerColumns).toBe(2);
+  expect(layout.footerGroups).toBe(2);
+  expect(layout.footerHeight).toBeLessThan(900);
 });
 
 test("the complete mobile experience remains alive with the iPhone motion setting enabled", async ({ browser }) => {
