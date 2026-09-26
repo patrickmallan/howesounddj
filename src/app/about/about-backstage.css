@@ -117,10 +117,10 @@
   .hsdj-backstage .about-close h2 { font-size: clamp(4.2rem, 12vw, 6.5rem) !important; }
 }
 @media (max-width: 440px) {
-  #main-content .hsdj-backstage .about-hero { min-height: 980px; padding-top: 9.5rem; padding-bottom: 21rem; }
+  #main-content .hsdj-backstage .about-hero { min-height: 900px; padding-top: 6rem; padding-bottom: 20rem; }
   .about-hero-actions { align-items: flex-start; }
   .about-hero-actions a { font-size: .78rem; }
-  .about-hero-portrait { width: 79vw; }
+  .about-hero-portrait { width: 72vw; }
   .about-hero-groove-media { max-height: 370px; }
   .about-story-photo { width: 100%; }
   .hsdj-backstage .about-close h2 { font-size: clamp(3.5rem, 12vw, 5rem) !important; }

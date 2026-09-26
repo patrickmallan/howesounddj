@@ -1,0 +1,119 @@
+import { expect, test } from "@playwright/test";
+
+for (const width of [320, 390, 430]) {
+  test(`homepage keeps its mobile sections connected at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto("/");
+
+    const measurements = await page.evaluate(() => {
+      const box = (selector: string) => {
+        const element = document.querySelector(selector);
+        if (!element) throw new Error(`Missing ${selector}`);
+        const bounds = element.getBoundingClientRect();
+        return { top: bounds.top + scrollY, bottom: bounds.bottom + scrollY, height: bounds.height };
+      };
+      return {
+        overflow: document.documentElement.scrollWidth - innerWidth,
+        hero: box('main section[class*="arrival__"]'),
+        meter: box('[class*="arrivalVu"]'),
+        build: box('main section[class*="build__"]'),
+        review: box('[class*="reviewDeck__"]'),
+        photo: box('[class*="operatorPhoto"]'),
+        aboutCopy: box('[class*="operatorCopy"]'),
+        dateCopy: box('[class*="encoreCopy"]'),
+        dateDeck: box('[class*="encore-cassette-deck_machine"]'),
+      };
+    });
+
+    expect(measurements.overflow).toBeLessThanOrEqual(1);
+    expect(measurements.hero.height).toBeLessThan(850);
+    expect(measurements.meter.height).toBeLessThan(300);
+    expect(measurements.build.height).toBeLessThan(1000);
+    expect(measurements.review.height).toBeLessThan(700);
+    expect(measurements.photo.height).toBeGreaterThan(390);
+    expect(measurements.aboutCopy.top - measurements.photo.bottom).toBeLessThan(40);
+    expect(measurements.dateDeck.top - measurements.dateCopy.bottom).toBeLessThan(60);
+
+    await page.getByRole("button", { name: /04 first dance/i }).click();
+    await expect(page.getByText("THIS ONE MATTERS", { exact: true }).last()).toBeVisible();
+    await expect(page.getByText("First dance", { exact: true }).last()).toBeVisible();
+  });
+}
+
+test("the compact mobile VU meter visibly changes while the hero is in view", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await page.waitForFunction(() => document.querySelectorAll(".hsdj-vu-leds .is-lit").length > 0);
+  const samples: number[] = [];
+  for (let index = 0; index < 8; index += 1) {
+    samples.push(await page.locator(".hsdj-vu-leds .is-lit").count());
+    await page.waitForTimeout(300);
+  }
+  expect(new Set(samples).size).toBeGreaterThan(1);
+});
+
+test("review collage waits for its section and appears when approached", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const collageRequests: string[] = [];
+  page.on("request", (request) => {
+    if (request.url().includes("review-couples-collage-v1.webp")) collageRequests.push(request.url());
+  });
+  await page.goto("/");
+  await page.waitForTimeout(600);
+  expect(collageRequests).toHaveLength(0);
+  await page.locator('[class*="remembersArt"]').scrollIntoViewIfNeeded();
+  await expect.poll(() => collageRequests.length).toBeGreaterThan(0);
+  await expect(page.locator('[class*="remembersArt"] img')).toBeVisible();
+});
+
+test("review collage remains available without JavaScript", async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false });
+  try {
+    const page = await context.newPage();
+    await page.goto(`${process.env.HSDJ_TEST_BASE_URL ?? "http://127.0.0.1:3000"}/`);
+    await page.locator('[class*="remembersArt"]').scrollIntoViewIfNeeded();
+    await expect(page.locator('[class*="remembersArt"] img')).toBeVisible();
+  } finally {
+    await context.close();
+  }
+});
+
+test("the mobile review fader changes the adjacent quote and stays on the chosen review", async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  try {
+    const page = await context.newPage();
+    await page.goto(`${process.env.HSDJ_TEST_BASE_URL ?? "http://127.0.0.1:3000"}/`);
+    const fader = page.getByRole("slider", { name: "Choose a customer review" });
+    await fader.scrollIntoViewIfNeeded();
+    const cap = await page.locator('[class*="faderCap"]').boundingBox();
+    if (!cap) throw new Error("Review fader handle is missing");
+    const x = cap.x + cap.width / 2;
+    const y = cap.y + cap.height / 2;
+    const input = await context.newCDPSession(page);
+    await input.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x, y }] });
+    for (let step = 1; step <= 9; step += 1) {
+      await input.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x, y: y - step * 19 }] });
+    }
+    await input.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
+    await expect(fader).toHaveAttribute("aria-valuenow", "3");
+    await expect(page.getByText("Matthew Bundala", { exact: true }).first()).toBeVisible();
+    await page.waitForTimeout(6000);
+    await expect(fader).toHaveAttribute("aria-valuenow", "3");
+
+    const track = await fader.boundingBox();
+    if (!track) throw new Error("Review fader track is missing");
+    const scrollBefore = await page.evaluate(() => scrollY);
+    const trackX = track.x + track.width / 2;
+    const trackY = track.y + track.height - 25;
+    await input.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x: trackX, y: trackY }] });
+    for (let step = 1; step <= 8; step += 1) {
+      await input.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x: trackX, y: trackY - step * 16 }] });
+      await page.waitForTimeout(20);
+    }
+    await input.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
+    await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(scrollBefore + 40);
+    await expect(fader).toHaveAttribute("aria-valuenow", "3");
+  } finally {
+    await context.close();
+  }
+});

@@ -27,6 +27,8 @@
   background-size: 43px 47px, auto;
 }
 
+.mobileGuide { display: none; }
+
 .display { display: flex; height: 100%; min-width: 0; min-height: 0; padding-right: 1rem; flex-direction: column; justify-content: center; overflow: hidden; }
 .display blockquote { min-height: 0; margin: 0; }
 .display blockquote p { max-width: 820px; margin: 0; font: 950 clamp(2.2rem, 4.2vw, 4.8rem)/.94 Impact, sans-serif; letter-spacing: -.025em; text-transform: uppercase; text-wrap: balance; animation: review-in 380ms cubic-bezier(.2, .8, .2, 1) both; }
@@ -77,22 +79,29 @@
 }
 
 @media (max-width: 700px) {
-  .deck { height: 830px; min-height: 830px; padding: 2rem 1.1rem 1.7rem; grid-template-columns: minmax(0, 1fr) 104px; grid-template-rows: minmax(0, 1fr) auto; gap: 1rem .7rem; box-shadow: 9px 9px 0 #0847ff, -6px -6px 0 #ef2727; }
-  .display blockquote p { font-size: clamp(2rem, 9.8vw, 3rem); }
-  .display blockquote.mediumQuote p { font-size: clamp(1.55rem, 7.5vw, 2.35rem); }
-  .display blockquote.longQuote p { font-size: clamp(1.25rem, 6vw, 1.85rem); line-height: 1; }
+  .deck { height: auto; min-height: 0; padding: 1.45rem .85rem 1.15rem; grid-template-columns: minmax(0, 1fr) 76px; grid-template-rows: auto auto auto; gap: .85rem .45rem; box-shadow: 9px 9px 0 #0847ff, -6px -6px 0 #ef2727; }
+  .mobileGuide { display: flex; grid-column: 1 / -1; align-items: baseline; flex-wrap: wrap; gap: .2rem .35rem; margin: 0; padding: .2rem .25rem .55rem; border-bottom: 2px solid #ffe000; color: #e9f8ff; font: 700 .72rem/1.25 var(--font-geist-sans), Arial, sans-serif; }
+  .mobileGuide b { color: #ffe000; text-transform: uppercase; }
+  .mobileGuide span { margin-left: auto; color: #45ef68; font: 900 .62rem/1.2 var(--font-geist-mono), monospace; text-transform: uppercase; }
+  .display { grid-column: 1; grid-row: 2; min-height: 235px; }
+  .display blockquote p { font-size: clamp(1.55rem, 7.4vw, 2.4rem); line-height: .98; }
+  .display blockquote.mediumQuote p { font-size: clamp(1.3rem, 6.1vw, 2rem); }
+  .display blockquote.longQuote p { font-size: clamp(1.12rem, 5.2vw, 1.7rem); line-height: 1.04; }
   .display cite { font-size: .58rem; line-height: 1.2; }
-  .display { padding-right: 0; }
-  .channelStrip { min-height: 390px; padding: .55rem .4rem; grid-template-columns: 38px 1fr; gap: .55rem .35rem; }
-  .meter, .upFader { min-height: 320px; }
-  .meter { grid-template-columns: 12px 1fr; gap: .2rem; padding-inline: .15rem; }
-  .meterScale { font-size: .33rem; }
-  .meterLeds { min-width: 11px; gap: 2px; }
-  .faderCap { width: 47px; height: 31px; padding: 5px 6px; gap: 2px; }
-  .trackList { grid-row: 2; grid-template-columns: 1fr 1fr; align-content: stretch; }
-  .compactTracks { grid-template-columns: 1fr; }
-  .trackList button { grid-template-columns: 1.8rem 1fr; padding: .36rem .15rem; }
-  .trackList button b { font-size: .53rem; }
+  .display { padding-right: .1rem; }
+  .channelStrip { grid-column: 2; grid-row: 2; height: 210px; min-height: 0; padding: .45rem .25rem; align-self: center; grid-template-columns: 21px 1fr; gap: .2rem; }
+  .meter, .upFader { min-height: 0; }
+  .meter { grid-template-columns: 1fr; gap: .2rem; padding-inline: .1rem; }
+  .meterScale { display: none; }
+  .meterLeds { min-width: 10px; gap: 1px; }
+  .verticalRail { width: 9px; }
+  .verticalRail::after { right: -12px; left: -12px; }
+  .faderCap { width: 44px; height: 40px; padding: 6px 5px; gap: 2px; touch-action: none; }
+  .upFader { touch-action: pan-y; }
+  .trackList { grid-column: 1 / -1; grid-row: 3; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto; grid-auto-flow: row; gap: .25rem; }
+  .compactTracks { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .trackList button { min-height: 44px; padding: .35rem .2rem; grid-template-columns: 1fr; align-content: center; gap: .18rem; }
+  .trackList button b { font-size: .52rem; white-space: normal; overflow-wrap: anywhere; }
 }
 
 @media (prefers-reduced-motion: reduce) {

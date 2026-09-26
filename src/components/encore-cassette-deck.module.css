@@ -137,8 +137,12 @@
   .reel { width: 42px; }
 }
 
+@media (max-width: 700px) {
+  .machine { position: relative; right: auto; bottom: auto; left: auto; width: 100%; }
+}
+
 @media (max-width: 560px) {
-  .machine { bottom: 2%; padding: .55rem; box-shadow: 0 20px 40px #000d, inset 0 2px 0 #91969c55, inset 0 -4px 0 #020203, 5px 5px 0 #0847ff; }
+  .machine { position: relative; right: auto; bottom: auto; left: auto; width: 100%; padding: .55rem; box-shadow: 0 20px 40px #000d, inset 0 2px 0 #91969c55, inset 0 -4px 0 #020203, 5px 5px 0 #0847ff; }
   .topline { padding-left: 3.55rem; font-size: .46rem; }
   .powerIndicator { top: .58rem; left: .55rem; font-size: .34rem; }
   .powerIndicator i { width: 7px; height: 7px; }

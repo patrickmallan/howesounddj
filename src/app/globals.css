@@ -917,9 +917,13 @@ body {
   :where(main section[id], main [data-testid]) { scroll-margin-top: 8.25rem; }
   .hsdj-wordmark { width: 11.25rem; height: auto; box-shadow: 3px 3px 0 var(--hsdj-red), -2px 2px 0 var(--hsdj-signal); }
   .hsdj-control-duo { gap: 0.35rem; }
-  .hsdj-vu-meter { padding-inline: .32rem; }
+  .hsdj-vu-meter { padding: .4rem .2rem .3rem; }
+  .hsdj-vu-header { display: grid; justify-content: center; gap: .22rem; padding-bottom: .3rem; text-align: center; }
+  .hsdj-vu-label { font-size: .4rem; letter-spacing: .08em; }
+  .hsdj-vu-status { display: flex; justify-content: center; font-size: .36rem; }
   .hsdj-vu-well { grid-template-columns: 1fr 1fr; gap: .2rem; }
-  .hsdj-vu-scale, .hsdj-vu-status { display: none; }
+  .hsdj-vu-leds { gap: 1px; }
+  .hsdj-vu-scale { display: none; }
   .hsdj-physical-cta { min-height: 72px !important; }
   .hsdj-physical-cta::before { inset: 10% 1%; }
   .hsdj-physical-cta__hardware { left: 0.1rem; width: 3.65rem; height: 3.65rem; }
