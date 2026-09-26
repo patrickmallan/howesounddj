@@ -34,7 +34,8 @@
 
 .weddingScene { min-height:900px; margin-top:-2rem; padding:5rem 2% 6rem; }
 .weddingScene::before { position:absolute; inset:2rem -10vw 0; z-index:-2; content:""; background:linear-gradient(112deg,var(--bone) 0 37%,transparent 37.2% 100%); clip-path:polygon(0 5%,100% 0,96% 92%,4% 100%); }
-.collageWindow { position:absolute; top:3rem; right:-4vw; z-index:-1; width:72%; height:620px; background:url('/images/hsdj-redesign/packages/packages-ceremony-clue-v2.webp') center/cover no-repeat; clip-path:polygon(9% 0,100% 3%,96% 87%,81% 87%,81% 100%,51% 91%,0 100%,5% 63%,0 35%); filter:contrast(1.03) saturate(.94); }
+.collageWindow { position:absolute; top:3rem; right:-4vw; z-index:-1; width:72%; height:620px; clip-path:polygon(9% 0,100% 3%,96% 87%,81% 87%,81% 100%,51% 91%,0 100%,5% 63%,0 35%); filter:contrast(1.03) saturate(.94); }
+.collageWindow img,.celebrationPhoto img { object-fit:cover; object-position:center; }
 .collageWindow::after { position:absolute; inset:0; content:""; background:linear-gradient(90deg,#56e1ed 0,transparent 18%),linear-gradient(0deg,#090b0b 0,transparent 15%); }
 .weddingCopy { position:relative; z-index:2; width:46%; margin:2rem 0 0 2%; padding:1.6rem 1.9rem 1.8rem; color:var(--ink); border:3px solid var(--ink); background:#56e1edf2; box-shadow:-10px 10px 0 var(--blue); transform:rotate(-1deg); }
 .page .weddingCopy h2,.page .ticketBody h2 { color:var(--ink)!important; font-family:var(--font-geist-sans),Arial,sans-serif!important; font-weight:950; letter-spacing:-.055em!important; line-height:.9!important; }
@@ -51,7 +52,7 @@
 
 .celebrationScene { min-height:720px; margin-top:-3rem; padding:5rem 1% 4rem; }
 .celebrationScene::before { position:absolute; inset:2rem -10vw 0; z-index:-3; content:""; background:linear-gradient(150deg,#080a0a 30%,#3d1034 100%); clip-path:polygon(0 8%,93% 0,100% 86%,8% 100%); }
-.celebrationPhoto { position:absolute; top:1rem; left:-4vw; z-index:-1; width:64%; height:650px; background:url('/images/hsdj-redesign/packages/packages-dinner-clue-v2.webp') center/cover no-repeat; clip-path:polygon(0 7%,19% 7%,19% 0,58% 9%,92% 0,100% 88%,72% 88%,72% 100%,10% 93%,3% 60%); filter:contrast(1.06) saturate(.98); }
+.celebrationPhoto { position:absolute; top:1rem; left:-4vw; z-index:-1; width:64%; height:650px; clip-path:polygon(0 7%,19% 7%,19% 0,58% 9%,92% 0,100% 88%,72% 88%,72% 100%,10% 93%,3% 60%); filter:contrast(1.06) saturate(.98); }
 .celebrationPhoto::after { position:absolute; inset:0; content:""; background:linear-gradient(90deg,transparent 70%,#090b0b),linear-gradient(0deg,#090b0b,transparent 22% 82%,#090b0b); }
 .ticket { position:relative; width:59%; margin:4rem 0 0 auto; color:var(--ink); filter:drop-shadow(12px 13px 0 #0847ff); transform:rotate(1.3deg); }
 .ticketBody { padding:2.1rem 2.4rem; background:var(--bone); clip-path:polygon(0 0,100% 2%,98% 95%,1% 100%); }
@@ -72,7 +73,8 @@
 
 .upgradeScene { margin-top:-1rem; padding:3rem 2% 2rem; }
 .upgradeScene::before { position:absolute; inset:0 -10vw; z-index:-2; content:""; background:#0b0e0e; clip-path:polygon(0 2%,100% 0,98% 100%,3% 97%); }
-.equipmentArt { position:absolute; top:0; right:-4vw; bottom:0; z-index:-1; width:64%; background:url('/images/hsdj-redesign/packages/packages-dance-gear-clue-v2.webp') center/cover no-repeat; clip-path:polygon(13% 0,100% 0,100% 100%,0 100%); opacity:.78; filter:contrast(1.08) saturate(.92); }
+.equipmentArt { position:absolute; top:0; right:-4vw; bottom:0; z-index:-1; width:64%; clip-path:polygon(13% 0,100% 0,100% 100%,0 100%); opacity:.78; filter:contrast(1.08) saturate(.92); }
+.equipmentArt img,.afterBackground img { object-fit:cover; }
 .equipmentArt::after { position:absolute; inset:0; content:""; background:linear-gradient(90deg,#0b0e0e 0,transparent 40%),linear-gradient(0deg,#0b0e0e 0,transparent 28%); }
 .patchHeader { position:relative; z-index:1; max-width:64%; }
 .patchHeader>p { max-width:37rem; margin:1rem 0 0; padding:.75rem 1rem; color:#fff; border-left:6px solid var(--cyan); background:#050707ec; font-weight:750; line-height:1.4; }
@@ -88,7 +90,9 @@
 .patch p { margin:0; color:#f0f5f3; font-size:.95rem; font-weight:700; line-height:1.35; }
 
 .afterScene { display:grid; grid-template-columns:minmax(0,34%) minmax(0,1fr); margin-top:-1rem; padding:3rem 3% 1.25rem; column-gap:5%; color:#fff; isolation:isolate; }
-.afterScene::before { position:absolute; inset:0 -10vw; z-index:-2; content:""; background:linear-gradient(90deg,#06131fef 0 25%,#06131fd1 55%,#06131fdb 100%),url('/images/hsdj-redesign/packages/packages-signal-journey-v1.webp') center 58%/cover no-repeat; clip-path:polygon(0 2%,100% 0,100% 100%,0 100%); }
+.afterBackground { position:absolute; inset:0 -10vw; z-index:-2; clip-path:polygon(0 2%,100% 0,100% 100%,0 100%); }
+.afterBackground img { object-position:center 58%; }
+.afterBackground::after { position:absolute; inset:0; content:""; background:linear-gradient(90deg,#06131fef 0 25%,#06131fd1 55%,#06131fdb 100%); }
 .afterHeading { position:relative; min-width:0; padding:1rem 0 0; }
 .afterHeading h2 { max-width:11ch; font-size:clamp(2.5rem,4vw,4.7rem); }
 .afterHeading>p { max-width:28rem; color:#dceef2; font-size:1.08rem; font-weight:750; line-height:1.45; }

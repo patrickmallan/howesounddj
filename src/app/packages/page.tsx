@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { preload } from "react-dom";
 import CTADuo from "@/components/cta-duo";
@@ -95,7 +96,9 @@ export default function PackagesPage() {
         </div>
 
         <div className={`${styles.scene} ${styles.weddingScene}`} id="complete-wedding">
-          <div className={styles.collageWindow} role="img" aria-label="A wedding day moving from a mountain ceremony through dinner and dancing" />
+          <div className={styles.collageWindow} role="img" aria-label="A wedding day moving from a mountain ceremony through dinner and dancing">
+            <Image src="/images/hsdj-redesign/packages/packages-ceremony-clue-v2.webp" alt="" fill loading="lazy" sizes="(max-width: 820px) 100vw, 70vw" />
+          </div>
           <div className={styles.weddingCopy}>
             <div className={styles.kicker}>THE ONE MOST COUPLES NEED</div>
             <h2>Complete Wedding</h2>
@@ -116,7 +119,9 @@ export default function PackagesPage() {
         </div>
 
         <div className={`${styles.scene} ${styles.celebrationScene}`} id="celebration">
-          <div className={styles.celebrationPhoto} aria-hidden="true" />
+          <div className={styles.celebrationPhoto} aria-hidden="true">
+            <Image src="/images/hsdj-redesign/packages/packages-dinner-clue-v2.webp" alt="" fill loading="lazy" sizes="(max-width: 820px) 100vw, 65vw" />
+          </div>
           <div className={styles.ticket}>
             <div className={styles.ticketBody}>
               <div className={styles.kicker}>BIRTHDAYS / ANNIVERSARIES / WORK PARTIES</div>
@@ -147,7 +152,9 @@ export default function PackagesPage() {
         </div>
 
         <div className={`${styles.scene} ${styles.upgradeScene}`}>
-          <div className={styles.equipmentArt} aria-hidden="true" />
+          <div className={styles.equipmentArt} aria-hidden="true">
+            <Image src="/images/hsdj-redesign/packages/packages-dance-gear-clue-v2.webp" alt="" fill loading="lazy" sizes="(max-width: 820px) 100vw, 65vw" />
+          </div>
           <div className={styles.patchHeader}>
             <div><div className={styles.kicker}>ONLY IF IT HELPS</div><h2 className="hsdj-lightboard-heading">Need another layer?</h2></div>
             <p>These are additions, not automatic upgrades. We use the ones that solve a real problem or make the room more fun.</p>
@@ -162,6 +169,9 @@ export default function PackagesPage() {
         </div>
 
         <div className={`${styles.scene} ${styles.afterScene}`}>
+          <div className={styles.afterBackground} aria-hidden="true">
+            <Image src="/images/hsdj-redesign/packages/packages-signal-journey-v1.webp" alt="" fill loading="lazy" sizes="100vw" />
+          </div>
           <div className={styles.afterHeading}>
             <div className={styles.kicker}>THE NEXT TRACK</div>
             <h2>One date. One conversation. Your call.</h2>

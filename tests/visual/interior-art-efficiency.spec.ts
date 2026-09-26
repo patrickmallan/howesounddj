@@ -30,3 +30,25 @@ test("planning guide uses the existing optimized mixer hero", async ({ page }) =
   expect(background).toContain("djm-a9-topdown-optimized.webp");
   expect(background).not.toContain("djm-a9-topdown.jpg");
 });
+
+test("Packages keeps its later scene art available as visitors scroll", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/packages", { waitUntil: "domcontentloaded" });
+
+  for (const artwork of [
+    "packages-ceremony-clue-v2.webp",
+    "packages-dinner-clue-v2.webp",
+    "packages-dance-gear-clue-v2.webp",
+    "packages-signal-journey-v1.webp",
+  ]) {
+    const image = page.locator(`img[src*="${artwork}"]`);
+    await expect(image).toHaveAttribute("loading", "lazy");
+    await image.scrollIntoViewIfNeeded();
+    const width = await image.evaluate(async (element) => {
+      const photo = element as HTMLImageElement;
+      await photo.decode();
+      return photo.naturalWidth;
+    });
+    expect(width).toBeGreaterThan(0);
+  }
+});
