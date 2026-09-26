@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { preload } from "react-dom";
 import CTADuo from "@/components/cta-duo";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { SectionReveal } from "@/components/motion";
@@ -47,6 +48,11 @@ const upgrades = [
 ];
 
 export default function PackagesPage() {
+  preload("/images/hsdj-redesign/footer/footer-dj-mixer-collage-v2-optimized.webp", {
+    as: "image",
+    fetchPriority: "high",
+  });
+
   return (
     <main className={`${styles.page} hsdj-interior`}>
       <section className={styles.hero}>

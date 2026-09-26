@@ -5,7 +5,7 @@
   display: flex;
   align-items: flex-end;
   border-bottom: 9px solid #ffe12c;
-  background-image: linear-gradient(90deg, #080d12 3%, #080d12e8 46%, #080d1288), url('/images/hsdj-redesign/deck-surfaces/djm-a9-topdown.jpg') !important;
+  background-image: linear-gradient(90deg, #080d12 3%, #080d12e8 46%, #080d1288), url('/images/hsdj-redesign/deck-surfaces/djm-a9-topdown-optimized.webp') !important;
   background-position: center, center;
   background-size: cover;
 }

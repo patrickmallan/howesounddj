@@ -9,7 +9,7 @@
 .about-hero-copy { position: relative; z-index: 4; width: min(53%, 42rem); transform: translateY(-4rem); }
 .hsdj-backstage .about-hero h1 { max-width: 10ch; margin: 0; color: #fff !important; font: 1000 clamp(4.2rem, 6.8vw, 7rem)/.86 Impact, "Arial Narrow", sans-serif !important; letter-spacing: -.025em; text-shadow: 6px 7px 0 #060a13; }
 .about-hero h1 span { display: block; color: var(--about-yellow); }
-.about-hero-intro { max-width: 38rem; margin: 1.8rem 0 0; padding: 1.1rem 1.35rem; border-left: .5rem solid var(--about-pink); background: #09101df0; color: #fff !important; font-size: clamp(1.05rem, 1.45vw, 1.38rem); font-weight: 750; line-height: 1.55; }
+#main-content .hsdj-backstage .about-hero-intro { max-width: 38rem; margin: 1.8rem 0 0; padding: 1.1rem 1.35rem; border-left: .5rem solid var(--about-pink); background: #09101df0; color: #fff !important; font-size: clamp(1.05rem, 1.45vw, 1.38rem); font-weight: 750; line-height: 1.55; }
 .about-hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 1.6rem; }
 .about-hero-actions a, .about-close-copy > a { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: .9rem 1.2rem; color: #07101b; background: var(--about-yellow); font: 950 .95rem/1.2 system-ui, sans-serif; text-transform: uppercase; text-decoration: none; box-shadow: 6px 6px 0 var(--about-blue); transition: transform .2s ease, box-shadow .2s ease; }
 .about-hero-actions a:nth-child(2) { background: var(--about-cyan); box-shadow: 6px 6px 0 var(--about-pink); }

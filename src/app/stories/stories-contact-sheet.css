@@ -7,7 +7,7 @@
 .contact-sheet-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #0b0a1288 0%, #0b0a1250 46%, #0b0a1200 100%), linear-gradient(0deg, #0b0a1299, transparent 45%); }
 .contact-sheet-hero-copy { position: relative; z-index: 2; width: min(100%, 34rem); }
 .hsdj-contact-sheet .contact-sheet-hero h1 { max-width: 100%; line-height: .93; }
-.contact-sheet-hero-copy > p:last-child { max-width: 42rem; padding: 1.3rem; margin: 2rem 0 0; border-left: 8px solid #ff4c91; background: #0c0b13ec; color: #fff !important; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 750; line-height: 1.55; }
+#main-content .hsdj-contact-sheet .contact-sheet-hero-copy > p:last-child { max-width: 42rem; padding: 1.3rem; margin: 2rem 0 0; border-left: 8px solid #ff4c91; background: #0c0b13ec; color: #fff !important; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 750; line-height: 1.55; }
 .contact-sheet-hero-mark { position: absolute; z-index: 2; right: 4%; top: 27%; max-width: 8ch; padding: 1.1rem 1.35rem; color: #090f17; background: #ff4d91; font: 1000 clamp(1.7rem, 3.4vw, 3.5rem)/.87 system-ui, sans-serif; text-align: left; text-transform: uppercase; transform: rotate(8deg); box-shadow: 12px 12px 0 #ffe11b; }
 .contact-sheet-hero-mark span { color: #ffe11b; }
 #main-content .hsdj-contact-sheet .contact-sheet-night-notes { position: relative; overflow: hidden; padding: clamp(5rem, 8vw, 8rem) max(4vw, calc((100vw - 92rem)/2)) clamp(5rem, 8vw, 8rem); background: linear-gradient(#070b14aa, #070b1477), url('/images/stories/diary-notes/afterparty-floor-v1.webp') center center / cover no-repeat, #100c0d !important; }

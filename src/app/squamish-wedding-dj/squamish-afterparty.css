@@ -10,7 +10,7 @@
 .sq-hero::after { content: ''; position: absolute; z-index: 0; inset: 0; background: linear-gradient(90deg,#071017de 0 38%,#07101788 63%,#07101700 100%),linear-gradient(0deg,#071017b8,transparent 36%); pointer-events: none; }
 .sq-hero-copy { position: relative; z-index: 1; max-width: min(66rem,100%); }
 .sq-hero-copy h1 { margin: .9rem 0 1.5rem; }
-.sq-hero-copy > p { max-width: 39rem; padding: 1.1rem 1.3rem; margin: 1rem 0 1.8rem; background: #081017e9; border-left: 8px solid #ff3f89; color: #fff; font-size: clamp(1.1rem,1.5vw,1.4rem); font-weight: 750; line-height: 1.55; }
+#main-content .hsdj-squamish-afterparty .sq-hero-copy > p { max-width: 39rem; padding: 1.1rem 1.3rem; margin: 1rem 0 1.8rem; background: #081017e9; border-left: 8px solid #ff3f89; color: #fff; font-size: clamp(1.1rem,1.5vw,1.4rem); font-weight: 750; line-height: 1.55; }
 .sq-hero-copy > a,.sq-outro > a { display: inline-flex; align-items: center; gap: 2rem; padding: .95rem 1.25rem; color: #0b1118; background: #ffe02a; box-shadow: 7px 7px 0 #1455ff; font-weight: 950; text-decoration: none; text-transform: uppercase; }
 
 #main-content .hsdj-squamish-afterparty .sq-place { padding-top: clamp(5rem,8vw,9rem); background: #0c111a !important; }
