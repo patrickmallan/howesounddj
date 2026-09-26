@@ -27,25 +27,6 @@ export function LivingVUMeter({ className = "", label = "MASTER", peak = false }
 
     const channels = Array.from(meter.querySelectorAll<HTMLElement>(".hsdj-vu-channel"));
     const channelSegments = channels.map((channel) => Array.from(channel.querySelectorAll<HTMLElement>(".hsdj-vu-leds i")));
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (reduceMotion) {
-      // A level meter still needs to read as live when the visitor requests
-      // reduced motion. Use a calm stepped programme instead of rapid peaks.
-      const calmLevels = [[18, 17], [21, 19], [18, 22], [20, 18]] as const;
-      let calmStep = 0;
-      const renderCalmLevel = () => {
-        channelSegments.forEach((lights, channelIndex) => {
-          lights.forEach((light, index) => light.classList.toggle("is-lit", index < calmLevels[calmStep][channelIndex]));
-        });
-      };
-      renderCalmLevel();
-      const calmFrame = window.setInterval(() => {
-        calmStep = (calmStep + 1) % calmLevels.length;
-        renderCalmLevel();
-      }, 650);
-      return () => window.clearInterval(calmFrame);
-    }
 
     let frame = 0;
     let previous = performance.now();
