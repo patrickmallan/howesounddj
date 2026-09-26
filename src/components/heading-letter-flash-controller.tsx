@@ -4,6 +4,11 @@ import { useEffect } from "react";
 import styles from "./heading-letter-flash-controller.module.css";
 
 const HEADING_SELECTOR = "main h2:not(.sr-only):not(.no-letter-flash)";
+const INITIAL_HOLD_MS = 700;
+const LETTER_OFF_MS = 170;
+const BETWEEN_LETTERS_MS = 55;
+const FULL_HEADING_HOLD_MS = 1450;
+
 function wrapHeadingLetters(heading: HTMLHeadingElement) {
   if (heading.dataset.letterFlashReady === "true") return 0;
   if (!heading.hasAttribute("aria-label")) {
@@ -33,8 +38,6 @@ function wrapHeadingLetters(heading: HTMLHeadingElement) {
       [...part].forEach((character) => {
         const letter = document.createElement("span");
         letter.className = styles.character;
-        letter.style.setProperty("--hsdj-letter-index", String(letterIndex));
-        letter.style.setProperty("--hsdj-letter-delay", `${700 + letterIndex * 68}ms`);
         letter.textContent = character;
         word.append(letter);
         letterIndex += 1;
@@ -49,18 +52,49 @@ function wrapHeadingLetters(heading: HTMLHeadingElement) {
 
 export function HeadingLetterFlashController() {
   useEffect(() => {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
     const observed = new WeakSet<Element>();
     const visible = new Set<HTMLHeadingElement>();
+    const running = new Map<HTMLHeadingElement, () => void>();
+
     const stopSequence = (heading: HTMLHeadingElement) => {
+      running.get(heading)?.();
+      running.delete(heading);
       heading.dataset.letterFlash = "paused";
+      heading.querySelectorAll(`.${styles.off}`).forEach((letter) => letter.classList.remove(styles.off));
     };
 
     const startSequence = (heading: HTMLHeadingElement) => {
-      if (document.hidden) return;
+      if (running.has(heading) || document.hidden) return;
       wrapHeadingLetters(heading);
+      const letters = [...heading.querySelectorAll<HTMLElement>(`.${styles.character}`)];
+      if (!letters.length) return;
+
+      let stopped = false;
+      let letterIndex = 0;
+      let timer = 0;
+      const cueLetter = () => {
+        if (stopped) return;
+        const letter = letters[letterIndex];
+        letter.classList.add(styles.off);
+        timer = window.setTimeout(() => {
+          letter.classList.remove(styles.off);
+          letterIndex += 1;
+          if (letterIndex >= letters.length) {
+            letterIndex = 0;
+            timer = window.setTimeout(cueLetter, FULL_HEADING_HOLD_MS);
+            return;
+          }
+          timer = window.setTimeout(cueLetter, BETWEEN_LETTERS_MS);
+        }, LETTER_OFF_MS);
+      };
+
       heading.dataset.letterFlash = "running";
+      timer = window.setTimeout(cueLetter, INITIAL_HOLD_MS);
+      running.set(heading, () => {
+        stopped = true;
+        window.clearTimeout(timer);
+        letters.forEach((letter) => letter.classList.remove(styles.off));
+      });
     };
 
     const intersection = new IntersectionObserver((entries) => {
@@ -102,6 +136,7 @@ export function HeadingLetterFlashController() {
     document.addEventListener("visibilitychange", onVisibilityChange);
 
     return () => {
+      [...running.keys()].forEach(stopSequence);
       intersection.disconnect();
       mutation.disconnect();
       document.removeEventListener("visibilitychange", onVisibilityChange);
