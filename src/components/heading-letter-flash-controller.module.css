@@ -3,11 +3,20 @@
 .character {
   display: inline-block;
   opacity: 1;
-  transition: opacity 70ms linear;
 }
 
-.off { opacity: .14; }
+@media (prefers-reduced-motion: no-preference) {
+  :global([data-letter-flash="running"]) .character {
+    animation: letter-cue 4.8s steps(1, end) infinite;
+    animation-delay: calc(700ms + var(--hsdj-letter-index) * 68ms);
+  }
+}
+
+@keyframes letter-cue {
+  0%, 3.75% { opacity: .12; }
+  3.8%, 100% { opacity: 1; }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .character { transition: none; }
+  .character { animation: none; }
 }

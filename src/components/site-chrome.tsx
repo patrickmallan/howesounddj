@@ -620,14 +620,10 @@ export function SiteFooter() {
   const footerLinks = flattenNavForFooter(navTree);
   const primaryRoutes = new Set(["/weddings", "/packages", "/reviews", "/venues", "/contact"]);
   const primaryLinks = footerLinks.filter((item) => primaryRoutes.has(item.href));
-  const planningRoutes = new Set(["/faq", "/squamish-wedding-dj", "/vancouver-wedding-dj"]);
-  const discoverRoutes = new Set(["/guides", "/stories", "/about"]);
-  const planningLinks = footerLinks.filter((item) => planningRoutes.has(item.href));
-  const discoverLinks = footerLinks.filter((item) => discoverRoutes.has(item.href));
+  const secondaryRoutes = new Set(["/faq", "/guides", "/stories", "/about"]);
+  const secondaryLinks = footerLinks.filter((item) => secondaryRoutes.has(item.href));
   const footerLabels: Record<string, string> = {
     "/faq": "Common questions",
-    "/squamish-wedding-dj": "Squamish weddings",
-    "/vancouver-wedding-dj": "Planning from Vancouver",
     "/guides": "Planning guides",
     "/stories": "Wedding stories",
     "/about": "About Patrick",
@@ -662,17 +658,9 @@ export function SiteFooter() {
           ))}
         </nav>
         <div className="hsdj-site-footer__secondary">
-          <nav className="hsdj-site-footer__link-group" aria-label="Wedding planning">
-            <span>Plan your wedding</span>
-            {planningLinks.map((item) => (
-              <Link key={item.href} href={item.href} onClick={onTrustNavClick(item.href)}>
-                {footerLabels[item.href]} <b aria-hidden="true">→</b>
-              </Link>
-            ))}
-          </nav>
-          <nav className="hsdj-site-footer__link-group" aria-label="Learn more about Howe Sound DJ">
-            <span>Learn more</span>
-            {discoverLinks.map((item) => (
+          <nav className="hsdj-site-footer__link-group" aria-label="More from Howe Sound DJ">
+            <span>More from Howe Sound</span>
+            {secondaryLinks.map((item) => (
               <Link key={item.href} href={item.href} onClick={onTrustNavClick(item.href)}>
                 {footerLabels[item.href]} <b aria-hidden="true">→</b>
               </Link>
