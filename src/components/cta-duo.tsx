@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 import {
   BookConsultTrackedLink,
   bookConsultOutlineButtonClassName,
@@ -48,8 +49,25 @@ export default function CTADuo({
   bookSurface = "page_cta",
   checkSurface = "page_cta",
 }: Props) {
+  const machineRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const machine = machineRef.current;
+    if (!machine) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        machine.dataset.artReady = "true";
+        observer.disconnect();
+      },
+      { rootMargin: "600px 0px" },
+    );
+    observer.observe(machine);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className={`${styles.machine} ${className}`.trim()}>
+    <div ref={machineRef} className={`${styles.machine} ${className}`.trim()}>
       <div className={styles.topline} aria-hidden="true">
         <span className={styles.power}><i /> Power</span>
         <b>Howe Sound Wedding DJ</b>

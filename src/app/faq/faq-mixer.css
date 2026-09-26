@@ -8,6 +8,12 @@
   padding: clamp(3rem, 5vw, 5rem) max(5vw, calc((100vw - 84rem) / 2)) clamp(3rem, 5vw, 5rem);
   overflow: hidden; border: 0 !important; background: #081015 !important;
 }
+
+/* The hero already has the full wedding-mixer artwork. The shared interior
+   collage behind the short intro only adds a competing image download. */
+.hsdj-faq-mixer .faq-mixer-hero h1 + .faq-mixer-hero-lede {
+  background: linear-gradient(96deg, #030506ed, #06080ad4 70%, #030506ec);
+}
 .faq-mixer-hero > img { z-index: -2; object-fit: cover; object-position: center 50%; filter: saturate(1.22) contrast(1.08) brightness(1.08); }
 .faq-mixer-hero::after {
   position: absolute; z-index: -1; inset: 0; content: ""; pointer-events: none;

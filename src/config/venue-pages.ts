@@ -470,17 +470,17 @@ export const VENUE_PAGES: readonly VenuePage[] = [
     locationLabel: "Squamish, BC",
     area: "squamish",
     venueType: "Campus & flexible event rooms",
-    cardDescription: "Squamish campus with bright, flexible rooms for receptions and community gatherings.",
+    cardDescription: "Squamish campus with bookable meeting and event spaces.",
     shortSummary:
-      "Squamish campus flexibility, useful when you want bright rooms and a practical, contemporary setting for celebrations and gatherings.",
+      "A Squamish campus with meeting and event spaces. Confirm your event format and room booking directly with CapU before planning sound around it.",
     metaDescription:
       "Capilano University Squamish campus event DJ support: flexible Squamish spaces with professional sound and personalized music. Howe Sound DJ.",
     whyFit: [
       "Flexible rooms can shift layouts and guest flow; music works best when it matches the format, seated dinner vs. mingling vs. dance-forward.",
-      "The venue may read contemporary and practical; the celebration can still feel deeply personal with the right pacing.",
+      "If CapU approves your event and room, the music can still feel personal in a contemporary, practical setting.",
     ],
     planningFocus: [
-      "Clarity on room setup, speech locations, and dance-floor placement prevents last-minute scrambling, especially in flexible spaces.",
+      "Once CapU confirms the room and permitted setup, clarity on speech locations and any dance-floor placement prevents last-minute scrambling.",
       "Playlist direction should match the formality you want: modern, warm, high-energy, or blended.",
     ],
     localExpertise: [

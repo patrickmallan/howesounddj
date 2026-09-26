@@ -16,14 +16,24 @@ export function AmbientDanceMontage({ fingerprintClassName, logoClassName }: Amb
     if (!video) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (reducedMotion.matches) {
-      video.pause();
-      return;
-    }
+    const source = video.querySelector("source");
+    const prepare = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        video.poster = "/images/home/hsdj-hero-montage-poster-v1.jpg";
+        if (!reducedMotion.matches && source) {
+          source.src = "/videos/hsdj-hero-montage-web-v1.mp4";
+          video.load();
+        }
+        prepare.disconnect();
+      },
+      { rootMargin: "600px 0px" },
+    );
+    prepare.observe(video);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !reducedMotion.matches && source?.src) {
           void video.play().catch(() => undefined);
         } else {
           video.pause();
@@ -33,7 +43,10 @@ export function AmbientDanceMontage({ fingerprintClassName, logoClassName }: Amb
     );
 
     observer.observe(video);
-    return () => observer.disconnect();
+    return () => {
+      prepare.disconnect();
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -43,12 +56,11 @@ export function AmbientDanceMontage({ fingerprintClassName, logoClassName }: Amb
         muted
         loop
         playsInline
-        preload="metadata"
-        poster="/images/home/hsdj-hero-montage-poster-v1.jpg"
+        preload="none"
         aria-hidden="true"
         tabIndex={-1}
       >
-        <source src="/videos/hsdj-hero-montage-web-v1.mp4" type="video/mp4" />
+        <source type="video/mp4" />
       </video>
       <div className={logoClassName} aria-hidden="true">
         <Image

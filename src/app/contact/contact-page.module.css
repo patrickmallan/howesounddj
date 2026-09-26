@@ -8,6 +8,26 @@
   color: #f8f1e8;
 }
 
+/* This page supplies its own full-stage art; avoid fetching the shared interior
+   mixer image beneath it on the initial viewport. */
+:global(.hsdj-interior).page::before {
+  background-image:
+    linear-gradient(90deg, transparent 0 8%, #ffffff08 8% 8.1%, transparent 8.1% 91.9%, #ffffff08 91.9% 92%, transparent 92%),
+    repeating-linear-gradient(90deg, transparent 0 7.95rem, #ffffff05 7.95rem 8rem) !important;
+}
+
+:global(.hsdj-interior).page > .stage:first-of-type {
+  background: #050607 !important;
+}
+
+:global(.hsdj-interior).page > section:nth-of-type(2) {
+  background: linear-gradient(120deg, #06171d, #10111c 62%, #070b0f) !important;
+}
+
+:global(.hsdj-interior).page .lede {
+  background: linear-gradient(96deg, #030506ed, #06080ad4 70%, #030506ec);
+}
+
 .stage {
   position: relative;
   isolation: isolate;
