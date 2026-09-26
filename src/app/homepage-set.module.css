@@ -258,24 +258,26 @@
   .buildHeading h2 { display: block; width: 100%; max-width: 98%; font-size: clamp(1.05rem, 4.6vw, 1.28rem) !important; line-height: .98; letter-spacing: .015em; text-size-adjust: none; -webkit-text-size-adjust: none; zoom: .72; }
   .buildHeading h2 span, .buildHeading h2 strong { display: inline; }
 
-  .readRoom { min-height: 900px; }
+  .readRoom { min-height: 820px; }
   .readRoom::before { background-position: 61% center; }
   .readRoom::after { background: linear-gradient(0deg, #030405f5 0 38%, #030405b8 64%, #0304056b 100%); }
   .roomCopy { top: .5%; right: 5%; left: 5%; width: 90%; }
   .roomCopy h2 { margin-top: .35rem; font-size: 2.35rem; line-height: .94; }
   .roomManifesto { margin-left: 0; padding: .75rem .65rem .55rem .9rem; }
   .roomManifesto p { font-size: .88rem; }
-  .roomStamp { top: 42%; right: 4%; font-size: .65rem; }
-  .roomPhotos { right: 1rem; bottom: 3%; left: 1rem; display: block; height: 50%; }
+  .roomStamp { top: 29%; right: 4%; font-size: .65rem; }
+  .roomPhotos { right: 1rem; bottom: 2%; left: 1rem; display: block; height: 63%; }
   .roomPhotos figure { position: absolute; width: 76%; height: 42%; }
   .roomPhotos figure:nth-child(1) { top: 0; left: 0; width: 72%; height: 43%; transform: rotate(-2deg); }
   .roomPhotos figure:nth-child(2) { top: 29%; right: 0; left: auto; z-index: 2; width: 78%; height: 43%; transform: rotate(1.5deg); }
   .roomPhotos figure:nth-child(3) { right: auto; bottom: 0; left: 3%; z-index: 3; width: 78%; height: 42%; transform: rotate(-1deg); }
 
-  .playback { min-height: 330px; padding: 1.9rem 1rem; }
-  .playbackVideo { width: 100%; padding: .35rem; border-top-width: 5px; border-left-width: 5px; box-shadow: -7px 8px 0 var(--blue); }
-  .playbackVideoLogo { inset: .35rem; }
-  .playbackVideoLogo > img { width: 100%; max-width: none; height: 100%; opacity: .66; }
+  .playback { min-height: 430px; padding: 1.1rem .65rem 1.3rem; }
+  .playbackVideo { width: 100%; padding: .3rem; border-top-width: 5px; border-left-width: 5px; box-shadow: -7px 8px 0 var(--blue); }
+  .playbackVideo video { min-height: 390px; aspect-ratio: 4 / 5; object-position: 52% center; }
+  .playbackVideoLogo { inset: .3rem; display: block; background: linear-gradient(0deg, #0007, transparent 38%); }
+  .playbackVideoLogo > img { position: absolute; right: .45rem; bottom: .55rem; width: 52%; max-width: 225px; height: auto; opacity: .46; }
+  .playbackFingerprint { top: .75rem; left: .75rem; width: 14%; opacity: .72; }
 
   .operator { padding: 1.9rem 1rem 2.1rem; }
   .operatorPaper { display: flex; width: calc(100vw - 2rem); height: auto; padding: 1rem 1rem 1.8rem; flex-direction: column; gap: 1.25rem; box-shadow: -7px 9px 0 var(--yellow), 8px -7px 0 var(--red); }

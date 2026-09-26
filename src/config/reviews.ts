@@ -223,6 +223,13 @@ export const HOMEPAGE_FEATURED_REVIEW_IDS = [
   "vanessa-pocock",
   "natasha-beaudry",
   "matthew-bundala",
+  "stephen-henry",
+  "molly-finn",
+  "lauren-steeles",
+  "cassandra-wilding",
+  "matias-fontecilla",
+  "danya-karras",
+  "ellen-selby",
 ] as const;
 
 export const AUTHORITY_PROOF_STRIP_REVIEW_IDS = [

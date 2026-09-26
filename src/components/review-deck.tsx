@@ -8,6 +8,7 @@ type ReviewTrack = {
   id: string;
   reviewerName: string;
   quote: string;
+  compactExcerpt?: string;
   venue?: string;
 };
 
@@ -23,24 +24,20 @@ export function ReviewDeck({ reviews }: Props) {
   const [userSelected, setUserSelected] = useState(false);
   const [dragLevel, setDragLevel] = useState<number | null>(null);
   const guideId = useId();
-  const last = Math.max(0, reviews.length - 1);
-  const review = reviews[active];
+  const reviewPairs = Array.from({ length: Math.ceil(reviews.length / 2) }, (_, index) => reviews.slice(index * 2, index * 2 + 2));
+  const last = Math.max(0, reviewPairs.length - 1);
+  const activePair = reviewPairs[active];
   const reviewLevel = last > 0 ? 8 + (active / last) * 84 : 74;
   const level = dragLevel ?? reviewLevel;
   const litSegments = Math.round((level / 100) * METER_SEGMENTS);
-  const quoteSizeClass = review.quote.length > 230
-    ? styles.longQuote
-    : review.quote.length > 150
-      ? styles.mediumQuote
-      : "";
 
   useEffect(() => {
-    if (paused || userSelected || dragLevel !== null || reviews.length < 2) return;
-    const timer = window.setInterval(() => setActive((current) => (current + 1) % reviews.length), 5600);
+    if (paused || userSelected || dragLevel !== null || reviewPairs.length < 2) return;
+    const timer = window.setInterval(() => setActive((current) => (current + 1) % reviewPairs.length), 5600);
     return () => window.clearInterval(timer);
-  }, [dragLevel, paused, reviews.length, userSelected]);
+  }, [dragLevel, paused, reviewPairs.length, userSelected]);
 
-  if (!review) return null;
+  if (!activePair?.length) return null;
 
   const selectFromFader = (event: ReactPointerEvent<HTMLDivElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -54,27 +51,28 @@ export function ReviewDeck({ reviews }: Props) {
   const handleFaderKey = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "ArrowUp" || event.key === "ArrowRight") {
       event.preventDefault();
-      setActive((current) => (current + 1) % reviews.length);
+      setActive((current) => (current + 1) % reviewPairs.length);
       setUserSelected(true);
     }
     if (event.key === "ArrowDown" || event.key === "ArrowLeft") {
       event.preventDefault();
-      setActive((current) => (current - 1 + reviews.length) % reviews.length);
+      setActive((current) => (current - 1 + reviewPairs.length) % reviewPairs.length);
       setUserSelected(true);
     }
   };
 
   return (
     <div className={`${styles.deck} ${dragLevel === null ? "" : styles.isDragging}`.trim()} onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
-      <p className={styles.mobileGuide} id={guideId}><b>Slide the channel fader</b> to hear another couple. <span>Review {active + 1} of {reviews.length}</span></p>
-      <div className={styles.display}>
-        <blockquote className={quoteSizeClass} key={review.id}>
-          <p>“{review.quote}”</p>
-          <cite>{review.reviewerName}{review.venue ? ` / ${review.venue}` : ""}</cite>
-        </blockquote>
-      </div>
-
-      <div className={styles.channelStrip} style={{ "--review-level": `${level}%` } as CSSProperties}>
+      <p className={styles.mobileGuide} id={guideId}><b>Slide the channel fader</b> to hear two more couples. <span>Pair {active + 1} of {reviewPairs.length} / {reviews.length} reviews</span></p>
+      <div className={styles.reviewStage}>
+        {activePair.map((review, index) => (
+          <blockquote className={styles.reviewCard} key={review.id} style={{ "--channel": index === 0 ? "#ffe000" : "#45ef68" } as CSSProperties}>
+            <span className={styles.channelLabel}>Channel {index === 0 ? "A" : "B"}</span>
+            <p>“{review.compactExcerpt ?? review.quote}”</p>
+            <cite>{review.reviewerName}{review.venue ? ` / ${review.venue}` : ""}</cite>
+          </blockquote>
+        ))}
+        <div className={styles.channelStrip} style={{ "--review-level": `${level}%` } as CSSProperties}>
         <div className={styles.meter} aria-hidden="true">
           <span className={styles.meterScale}><i>+6</i><i>0</i><i>-6</i><i>-12</i><i>-24</i></span>
           <span className={styles.meterLeds}>
@@ -88,9 +86,9 @@ export function ReviewDeck({ reviews }: Props) {
           aria-label="Choose a customer review"
           aria-describedby={guideId}
           aria-valuemin={1}
-          aria-valuemax={reviews.length}
+          aria-valuemax={reviewPairs.length}
           aria-valuenow={active + 1}
-          aria-valuetext={`${review.reviewerName}, level ${level}`}
+          aria-valuetext={`${activePair.map((review) => review.reviewerName).join(" and ")}, pair ${active + 1} of ${reviewPairs.length}`}
           tabIndex={0}
           onKeyDown={handleFaderKey}
           onPointerDown={(event) => {
@@ -112,12 +110,13 @@ export function ReviewDeck({ reviews }: Props) {
           <span className={styles.faderCap} aria-hidden="true"><i /><i /><i /><i /><i /></span>
         </div>
       </div>
+      </div>
 
-      <div className={`${styles.trackList} ${reviews.length <= 3 ? styles.compactTracks : ""}`.trim()} aria-label="Customer review tracks">
-        {reviews.map((item, index) => (
-          <button className={index === active ? styles.active : ""} key={item.id} type="button" onClick={() => { setActive(index); setUserSelected(true); }} aria-pressed={index === active}>
+      <div className={styles.trackList} aria-label="Customer review pairs">
+        {reviewPairs.map((pair, index) => (
+          <button className={index === active ? styles.active : ""} key={pair.map((review) => review.id).join("-")} type="button" onClick={() => { setActive(index); setUserSelected(true); }} aria-pressed={index === active}>
             <span>{String(index + 1).padStart(2, "0")}</span>
-            <b>{item.reviewerName}</b>
+            <b>{pair.map((review) => review.reviewerName.split(" ")[0]).join(" + ")}</b>
           </button>
         ))}
       </div>
