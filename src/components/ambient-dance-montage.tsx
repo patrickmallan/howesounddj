@@ -80,7 +80,15 @@ export function AmbientDanceMontage({ fingerprintClassName, logoClassName }: Amb
           width={1600}
           height={900}
           sizes="(max-width: 700px) 100vw, 1240px"
+          data-video-overlay-lockup
         />
+        <span data-video-overlay-mountains>
+          <Image src="/images/logo/elements/hsdj-mountain-backdrop-v3-transparent.png" alt="" fill sizes="100vw" />
+        </span>
+        <span data-video-overlay-sasquatch>
+          <Image src="/images/logo/characters/hsdj-sasquatch-patrick-pose-v1-transparent.png" alt="" fill sizes="70vw" />
+        </span>
+        <span data-video-overlay-title><b>Howe Sound</b><i>Wedding DJ</i></span>
         <span className={fingerprintClassName}>
           <Image
             src="/images/logo/elements/hsdj-fingerprint-disc-v1.png"
