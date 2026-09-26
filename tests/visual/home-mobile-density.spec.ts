@@ -52,6 +52,17 @@ test("the compact mobile VU meter visibly changes while the hero is in view", as
   expect(new Set(samples).size).toBeGreaterThan(1);
 });
 
+test("the VU meter arrives lit before JavaScript hydrates", async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 390, height: 650 }, javaScriptEnabled: false });
+  try {
+    const page = await context.newPage();
+    await page.goto(`${process.env.HSDJ_TEST_BASE_URL ?? "http://127.0.0.1:3000"}/`);
+    await expect(page.locator(".hsdj-vu-leds .is-lit")).toHaveCount(35);
+  } finally {
+    await context.close();
+  }
+});
+
 test("the complete mobile hook and VU meter clear a short Safari-like first screen", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 650 });
   await page.goto("/");

@@ -10,6 +10,7 @@ type Props = {
 
 const SEGMENT_COUNT = 36;
 const FRAME_INTERVAL_MS = 1000 / 30;
+const INITIAL_LIT_SEGMENTS = [18, 17] as const;
 const segments = Array.from({ length: SEGMENT_COUNT }, (_, index) => index);
 
 function pulse(phase: number, position: number, width: number) {
@@ -39,7 +40,9 @@ export function LivingVUMeter({ className = "", label = "MASTER", peak = false }
     const level = [0.42, 0.44];
     const heldPeak = [0.5, 0.52];
     const holdUntil = [0, 0];
-    const renderedLights = [0, 0];
+    // The server-rendered meter is already lit so it never flashes "off" while
+    // a mobile browser downloads and hydrates the interactive component.
+    const renderedLights = channelSegments.map((lights) => lights.filter((light) => light.classList.contains("is-lit")).length);
     const renderedPeaks = [-1, -1];
     let lastBeat = -1;
     let lastPhrase = -1;
@@ -160,11 +163,13 @@ export function LivingVUMeter({ className = "", label = "MASTER", peak = false }
       <div className="hsdj-vu-header"><span className="hsdj-vu-label">{label}</span><span className="hsdj-vu-status"><i /> LIVE</span></div>
       <div className="hsdj-vu-well">
         <span className="hsdj-vu-scale"><i>+6</i><i>0</i><i>-6</i><i>-12</i><i>-24</i><i>-∞</i></span>
-        {["L", "R"].map((channel) => (
+        {["L", "R"].map((channel, channelIndex) => (
           <div className="hsdj-vu-strip" key={channel}>
             <div className="hsdj-vu-channel">
               <span className="hsdj-vu-peak-marker" />
-              <span className="hsdj-vu-leds">{segments.map((segment) => <i key={segment} />)}</span>
+              <span className="hsdj-vu-leds">
+                {segments.map((segment) => <i className={segment < INITIAL_LIT_SEGMENTS[channelIndex] ? "is-lit" : undefined} key={segment} />)}
+              </span>
             </div>
             <b>{channel}</b>
           </div>
