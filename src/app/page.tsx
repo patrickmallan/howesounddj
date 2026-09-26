@@ -87,9 +87,9 @@ export default async function HoweSoundDJHomepage() {
       <section id="room" className={`${styles.chapter} ${styles.readRoom}`} aria-labelledby="read-room-heading">
         <div className={styles.roomCopy}><p className={styles.tapeLabel}>Your music sets the direction</p><h2 id="read-room-heading" className="hsdj-meter--paper"><span>I build the</span><span>night from</span><span>there.</span></h2><div className={styles.roomManifesto}><span>Must plays</span><span>No-go tracks</span><span>Requests</span><p>Tell me what you love, what never gets played, and what makes your people move. That gives me the starting point. From there, I watch what lands and decide where to go next.</p></div></div>
         <div className={styles.roomPhotos}>
-          <figure><Image src="/images/hsdj-redesign/wedding-story/ceremony-mountains.jpg" alt="A couple exchanging vows outdoors with mountains beyond the ceremony" fill quality={90} sizes="(max-width: 700px) 92vw, 31vw" /><figcaption><b>01</b> The vows</figcaption></figure>
-          <figure><Image src="/images/hsdj-redesign/wedding-story/cocktail-toast.jpg" alt="A bride raising a glass with friends at the reception" fill quality={90} sizes="(max-width: 700px) 92vw, 34vw" /><figcaption><b>02</b> Cocktails</figcaption></figure>
-          <figure><Image src="/images/hsdj-redesign/wedding-story/reception-dance.jpg" alt="Newlyweds sharing a first dance beneath string lights" fill quality={92} sizes="(max-width: 700px) 92vw, 31vw" /><figcaption><b>03</b> Reception</figcaption></figure>
+          <figure><Image src="/images/hsdj-redesign/wedding-story/ceremony-mountains.jpg" alt="A couple exchanging vows outdoors with mountains beyond the ceremony" fill quality={90} sizes="(max-width: 700px) 92vw, 31vw" /></figure>
+          <figure><Image src="/images/hsdj-redesign/wedding-story/cocktail-toast.jpg" alt="A bride raising a glass with friends at the reception" fill quality={90} sizes="(max-width: 700px) 92vw, 34vw" /></figure>
+          <figure><Image src="/images/hsdj-redesign/wedding-story/reception-dance.jpg" alt="Newlyweds sharing a first dance beneath string lights" fill quality={92} sizes="(max-width: 700px) 92vw, 31vw" /></figure>
         </div>
         <p className={styles.roomStamp}>Wedding is the event.<br /><b>The music is yours.</b></p>
       </section>
