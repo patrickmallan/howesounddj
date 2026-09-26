@@ -1686,6 +1686,14 @@ body {
   .hsdj-venue-detail-page > section:nth-of-type(2) > div,
   .hsdj-editorial-page .hsdj-interior-flow > section > div[class*="max-w"] { margin-left: auto; padding-left: 1.5rem; border-left-width: 5px; }
   .hsdj-faq-page details:nth-child(n) { margin-left: 0; }
+
+  /* Mobile headings should introduce a scene, not become the whole scene.
+     Individual page art and typography can keep their character beneath this
+     shared ceiling, while photographs and supporting copy stay visible in the
+     same phone viewport. */
+  #main-content :is(section, article) h2:not(.sr-only) {
+    font-size: clamp(1.75rem, 8.5vw, 2.25rem) !important;
+  }
 }
 
 /* Retire decorative micro-tags across the site. Keep headings, navigation and

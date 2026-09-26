@@ -108,8 +108,8 @@ test("the complete mobile hook and VU meter clear a short Safari-like first scre
   expect(geometry.meter.width).toBeGreaterThanOrEqual(62);
 });
 
-test("the mobile graphic equalizer stays live when reduced motion is enabled", async ({ browser }) => {
-  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
+test("the desktop graphic equalizer stays live when reduced motion is enabled", async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: "reduce" });
   try {
     const page = await context.newPage();
     await page.goto(`${process.env.HSDJ_TEST_BASE_URL ?? "http://127.0.0.1:3000"}/`);
@@ -129,6 +129,39 @@ test("the mobile graphic equalizer stays live when reduced motion is enabled", a
   } finally {
     await context.close();
   }
+});
+
+test("the mobile night scene leads with its photograph instead of oversized text", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 650 });
+  await page.goto("/");
+  const scene = page.getByTestId("night-scene");
+  await scene.scrollIntoViewIfNeeded();
+  await page.getByRole("button", { name: /04 first dance/i }).click();
+
+  const composition = await page.evaluate(() => {
+    const bounds = (selector: string) => {
+      const element = document.querySelector(selector);
+      if (!element) throw new Error(`Missing ${selector}`);
+      return element.getBoundingClientRect();
+    };
+    const sceneBounds = bounds('[data-testid="night-scene"]');
+    const headingBounds = bounds('[data-testid="night-scene-heading"]');
+    const descriptionBounds = bounds('[data-testid="night-scene-description"]');
+    const heading = document.querySelector<HTMLElement>('[data-testid="night-scene-heading"]');
+    const spectrum = document.querySelector<HTMLElement>('[data-testid="night-spectrum"]');
+    if (!heading || !spectrum) throw new Error("Missing mobile scene content");
+    return {
+      sceneHeight: sceneBounds.height,
+      headingSize: Number.parseFloat(getComputedStyle(heading).fontSize),
+      photoWindow: descriptionBounds.top - headingBounds.bottom,
+      spectrumDisplay: getComputedStyle(spectrum).display,
+    };
+  });
+
+  expect(composition.sceneHeight).toBeLessThanOrEqual(350);
+  expect(composition.headingSize).toBeLessThanOrEqual(33);
+  expect(composition.photoWindow).toBeGreaterThan(70);
+  expect(composition.spectrumDisplay).toBe("none");
 });
 
 test("the crossfader keeps its changing scene visible beside the mobile control", async ({ page }) => {

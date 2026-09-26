@@ -207,7 +207,7 @@ export function NightMixFader() {
 
   return (
     <div className={styles.console} style={customProperties}>
-      <div className={styles.scene} key={stage.title}>
+      <div className={styles.scene} data-testid="night-scene" key={stage.title}>
         <Image
           src={stage.image}
           alt={stage.alt}
@@ -222,8 +222,8 @@ export function NightMixFader() {
         </div>
         <div className={styles.sceneCopy} aria-live="polite">
           <p className={styles.stageName}>{stage.title}</p>
-          <strong className={styles.stageWord}>{stage.word}</strong>
-          <p className={styles.stageLine}>{stage.line}</p>
+          <strong className={styles.stageWord} data-testid="night-scene-heading">{stage.word}</strong>
+          <p className={styles.stageLine} data-testid="night-scene-description">{stage.line}</p>
           <div className={styles.moves}>{stage.moves.map((move, index) => <span key={move}><b>0{index + 1}</b>{move}</span>)}</div>
         </div>
       </div>

@@ -115,12 +115,13 @@
   .faq-mixer-selector a span { width: 1.85rem; height: 1.85rem; font-size: .61rem; }
   #main-content .hsdj-faq-mixer .faq-mixer-channel { scroll-margin-top: 8.5rem; padding: 2.3rem 1rem !important; }
   .faq-mixer-channel-dial { width: 3rem; height: 3rem; }
-  #main-content .hsdj-faq-mixer .faq-mixer-channel h2 { font-size: clamp(2.45rem, 10vw, 3.6rem) !important; }
+  #main-content .hsdj-faq-mixer .faq-mixer-channel h2 { font-size: clamp(1.75rem, 8.5vw, 2.25rem) !important; }
   .faq-mixer-channel-list { padding: .5rem; }
   #main-content .hsdj-faq-mixer .faq-mixer-question summary { grid-template-columns: 2.1rem minmax(0, 1fr) 1.55rem; gap: .5rem; padding: .65rem; font-size: .9rem; }
   .faq-mixer-question-index { width: 2.05rem; height: 2.05rem; font-size: .58rem; }
   .faq-mixer-question-toggle { width: 1.5rem; height: 1.5rem; }
   .faq-mixer-answer { padding: .1rem .9rem 1.1rem 1rem; }
   #main-content .hsdj-faq-mixer .faq-mixer-finale { padding: 2.8rem 1rem !important; }
+  #main-content .hsdj-faq-mixer .faq-mixer-finale h2 { width: fit-content; max-width: 100% !important; font-size: clamp(1.75rem, 8.5vw, 2.25rem) !important; overflow-wrap: anywhere; }
   .faq-mixer-finale-actions { padding: 1rem; }
 }

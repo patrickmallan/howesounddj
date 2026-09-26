@@ -25,7 +25,10 @@ const ROUTES = [
 ] as const;
 
 const VIEWPORTS = [
+  { name: "mobile-narrow", width: 320, height: 650 },
+  { name: "mobile-short", width: 390, height: 650 },
   { name: "mobile", width: 390, height: 844 },
+  { name: "mobile-wide", width: 430, height: 932 },
   { name: "tablet", width: 768, height: 1024 },
   { name: "desktop", width: 1440, height: 900 },
 ] as const;
@@ -38,7 +41,7 @@ function routeName(route: string) {
 
 async function materializePage(page: Page) {
   await page.addStyleTag({
-    content: ".below-fold-content { content-visibility: visible !important; contain-intrinsic-size: none !important; }",
+    content: "section, .below-fold-content, [class*='chapter'] { content-visibility: visible !important; contain-intrinsic-size: none !important; }",
   });
   const sections = await page.locator("main section").all();
   for (const section of sections) await section.scrollIntoViewIfNeeded();
@@ -81,11 +84,23 @@ test("public routes remain readable and contained at mobile, tablet, and desktop
             };
           })
           .filter((heading) => heading.left < -2 || heading.right > window.innerWidth + 2);
+        const dominantHeadings = [...document.querySelectorAll("main h2:not(.sr-only)")]
+          .filter(visible)
+          .map((element) => {
+            const box = element.getBoundingClientRect();
+            return {
+              text: element.textContent?.trim().replace(/\s+/g, " ").slice(0, 80) ?? "",
+              fontSize: Number.parseFloat(getComputedStyle(element).fontSize),
+              height: box.height,
+            };
+          })
+          .filter((heading) => heading.fontSize > 37 || heading.height > window.innerHeight * .42);
 
         return {
           bodyWidth: document.body.scrollWidth,
           documentWidth: document.documentElement.scrollWidth,
           h1Count: [...document.querySelectorAll("main h1")].filter(visible).length,
+          dominantHeadings,
           outOfBoundsHeadings,
           viewportWidth: window.innerWidth,
         };
@@ -97,6 +112,12 @@ test("public routes remain readable and contained at mobile, tablet, and desktop
         `${route} has horizontal overflow at ${viewport.name}`,
       ).toBeLessThanOrEqual(geometry.viewportWidth + 2);
       expect(geometry.outOfBoundsHeadings, `${route} has clipped headings at ${viewport.name}`).toEqual([]);
+      if (viewport.width <= 430) {
+        expect(
+          geometry.dominantHeadings,
+          `${route} lets a section heading overwhelm the ${viewport.name} viewport`,
+        ).toEqual([]);
+      }
       expect(runtimeErrors, `${route} has runtime errors at ${viewport.name}`).toEqual([]);
 
       await page.screenshot({
