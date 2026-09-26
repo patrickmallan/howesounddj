@@ -82,10 +82,11 @@
 }
 
 @media (max-width: 700px) {
-  .deck { height: auto; min-height: 0; padding: 1.25rem .65rem 1rem; gap: .75rem; box-shadow: 9px 9px 0 #0847ff, -6px -6px 0 #ef2727; }
-  .mobileGuide { gap: .18rem .3rem; padding: .1rem .2rem .5rem; border-bottom-width: 2px; font-size: .68rem; }
+  .deck { height: auto; min-height: 0; padding: .8rem .45rem .35rem; gap: .4rem; overflow: visible; border: 0; background: transparent; box-shadow: none; clip-path: none; }
+  .deck::before { display: none; }
+  .mobileGuide { gap: .18rem .3rem; margin: 0 -.05rem; padding: .65rem .55rem .55rem; border-bottom-width: 2px; background: #05070be8; font-size: .68rem; }
   .mobileGuide span { width: 100%; margin-left: 0; font-size: .57rem; }
-  .reviewStage { min-height: 218px; grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr); align-items: start; gap: .25rem; }
+  .reviewStage { min-height: 206px; grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr); align-items: start; gap: .25rem; }
   .reviewCard { height: fit-content; min-height: 0; padding: .65rem .45rem .7rem; align-self: start; justify-content: flex-start; }
   .channelLabel { margin-bottom: .55rem; font-size: .48rem; }
   .reviewCard p { font-size: clamp(.95rem, 4.25vw, 1.15rem); line-height: 1; overflow-wrap: anywhere; }
@@ -99,7 +100,7 @@
   .verticalRail::after { right: -12px; left: -12px; }
   .faderCap { width: 44px; height: 40px; padding: 6px 5px; gap: 2px; touch-action: none; }
   .upFader { touch-action: pan-y; }
-  .trackList { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .15rem; }
+  .trackList { padding: .3rem .25rem .35rem; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .15rem; background: #05070bd9; }
   .trackList button { min-height: 44px; padding: .35rem .2rem; grid-template-columns: 1fr; align-content: center; gap: .18rem; }
   .trackList button b { font-size: .46rem; white-space: normal; overflow-wrap: anywhere; }
 }

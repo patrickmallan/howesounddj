@@ -34,6 +34,7 @@ function wrapHeadingLetters(heading: HTMLHeadingElement) {
         const letter = document.createElement("span");
         letter.className = styles.character;
         letter.style.setProperty("--hsdj-letter-index", String(letterIndex));
+        letter.style.setProperty("--hsdj-letter-delay", `${700 + letterIndex * 68}ms`);
         letter.textContent = character;
         word.append(letter);
         letterIndex += 1;

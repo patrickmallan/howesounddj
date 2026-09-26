@@ -8,7 +8,7 @@
 @media (prefers-reduced-motion: no-preference) {
   :global([data-letter-flash="running"]) .character {
     animation: letter-cue 4.8s steps(1, end) infinite;
-    animation-delay: calc(700ms + var(--hsdj-letter-index) * 68ms);
+    animation-delay: var(--hsdj-letter-delay, 700ms);
   }
 }
 
