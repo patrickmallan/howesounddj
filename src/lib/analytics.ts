@@ -125,8 +125,6 @@ type TrackEventOptions = {
    * Fires at most once; no-ops if GA env is unset or gtag never appears.
    */
   deferUntilGtag?: boolean;
-  /** Extend the wait for late-loaded GA on slow pages; defaults to four seconds. */
-  deferTimeoutMs?: number;
 };
 
 /**
@@ -182,7 +180,7 @@ export function trackEvent(
 
   if (options?.deferUntilGtag) {
     let attempts = 0;
-    const maxAttempts = Math.ceil((options.deferTimeoutMs ?? 4_000) / 50);
+    const maxAttempts = 80;
     const intervalMs = 50;
     const run = () => {
       if (typeof window.gtag === "function") {

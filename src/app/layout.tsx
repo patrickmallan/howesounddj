@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@/components/google-analytics";
-import { WebVitalsReporter } from "@/components/web-vitals-reporter";
 import { AvailabilityJourneyTracker } from "@/components/availability-journey-tracker";
 import { JsonLd } from "@/components/json-ld";
 import { ConditionalSiteFinalDecisionZone } from "@/components/conditional-site-final-decision-zone";
@@ -98,7 +97,6 @@ export default function RootLayout({
         <ConditionalSiteFinalDecisionZone />
         <SiteFooter />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
-        <WebVitalsReporter />
         <AvailabilityJourneyTracker />
       </body>
     </html>
