@@ -47,7 +47,7 @@ function getServerSnapshot() {
 export function HeaderCheckAvailability({ onPanelOpen }: Props) {
   const pathname = usePathname() ?? "";
   const panelId = useId();
-  const triggerRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLAnchorElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const [panelRequested, setPanelRequested] = useState(false);
   const [openForPath, setOpenForPath] = useState<string | null>(null);
@@ -201,14 +201,20 @@ export function HeaderCheckAvailability({ onPanelOpen }: Props) {
 
   return (
     <div className="hsdj-header-cue-shell relative shrink-0">
-      <button
+      <a
         ref={triggerRef}
-        type="button"
+        href="/contact#availability"
         className={triggerClass}
         aria-expanded={open}
         aria-controls={panelId}
         aria-haspopup="dialog"
-        onClick={togglePanel}
+        onClick={(event) => {
+          // Before hydration this is still a useful route to the date checker.
+          // After hydration, ordinary activation opens the faster inline panel.
+          if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          togglePanel();
+        }}
       >
         <Image
           src="/images/hsdj-redesign/controls/buttons/cue-round.png"
@@ -218,7 +224,7 @@ export function HeaderCheckAvailability({ onPanelOpen }: Props) {
           className="hsdj-header-cue__hardware"
         />
         <span className="hsdj-header-cue__label">Check<br />date</span>
-      </button>
+      </a>
       {overlay}
     </div>
   );

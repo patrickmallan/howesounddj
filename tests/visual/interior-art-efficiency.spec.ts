@@ -23,6 +23,14 @@ test("Packages prioritizes its first-screen collage without duplicate preload li
   await expect(page.locator('link[rel="preload"][as="image"][href="/images/hsdj-redesign/footer/footer-dj-mixer-collage-v2-optimized.webp"]')).toHaveCount(1);
 });
 
+test("Squamish prioritizes its visible hero collage once", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/squamish-wedding-dj", { waitUntil: "domcontentloaded" });
+  await expect(page.locator('link[rel="preload"][as="image"][href="/images/hsdj-redesign/new-editorial/squamish-night-collage-v3-optimized.webp"]')).toHaveCount(1);
+  const background = await page.locator(".sq-hero").evaluate((element) => getComputedStyle(element).backgroundImage);
+  expect(background).toContain("squamish-night-collage-v3-optimized.webp");
+});
+
 test("planning guide uses the existing optimized mixer hero", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/guides/how-to-choose-a-wedding-dj-in-squamish", { waitUntil: "domcontentloaded" });

@@ -6,7 +6,7 @@
 .hsdj-squamish-afterparty h2 { text-wrap: balance; }
 .sq-place h2,.sq-local h2,.sq-music h2,.sq-venue h2,.sq-outro h2 { margin: 0; font: 1000 clamp(3.2rem,6vw,7rem)/.88 Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif; letter-spacing: -.025em; text-transform: uppercase; }
 
-#main-content .hsdj-squamish-afterparty .sq-hero { display: flex; align-items: end; min-height: min(920px,100svh); padding: clamp(10rem,15vw,15rem) max(5vw,calc((100vw - 80rem)/2)) 5rem; overflow: hidden; background: #081118 url('/images/hsdj-redesign/new-editorial/squamish-night-collage-v3.webp') center 42% / cover no-repeat !important; }
+#main-content .hsdj-squamish-afterparty .sq-hero { display: flex; align-items: end; min-height: min(920px,100svh); padding: clamp(10rem,15vw,15rem) max(5vw,calc((100vw - 80rem)/2)) 5rem; overflow: hidden; background: #081118 url('/images/hsdj-redesign/new-editorial/squamish-night-collage-v3-optimized.webp') center 42% / cover no-repeat !important; }
 .sq-hero::after { content: ''; position: absolute; z-index: 0; inset: 0; background: linear-gradient(90deg,#071017de 0 38%,#07101788 63%,#07101700 100%),linear-gradient(0deg,#071017b8,transparent 36%); pointer-events: none; }
 .sq-hero-copy { position: relative; z-index: 1; max-width: min(66rem,100%); }
 .sq-hero-copy h1 { margin: .9rem 0 1.5rem; }

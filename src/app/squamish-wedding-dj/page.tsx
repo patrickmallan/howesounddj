@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { preload } from "react-dom";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { squamishWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
@@ -18,6 +19,11 @@ export const metadata: Metadata = {
 };
 
 export default function SquamishWeddingDjPage() {
+  preload("/images/hsdj-redesign/new-editorial/squamish-night-collage-v3-optimized.webp", {
+    as: "image",
+    fetchPriority: "high",
+  });
+
   return (
     <main className="hsdj-interior hsdj-squamish-afterparty min-h-screen text-white">
       <JsonLd data={squamishWeddingDjBreadcrumbJsonLd()} />
