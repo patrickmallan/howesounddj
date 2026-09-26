@@ -14,20 +14,20 @@ for (const width of [320, 390, 430]) {
       };
       return {
         overflow: document.documentElement.scrollWidth - innerWidth,
-        hero: box('main section[class*="arrival__"]'),
+        hero: box("main section:first-of-type"),
         meter: box('[class*="arrivalVu"]'),
-        build: box('main section[class*="build__"]'),
-        review: box('[class*="reviewDeck__"]'),
+        build: box("main section#night"),
+        review: box('[class*="reviewDeck"]'),
         photo: box('[class*="operatorPhoto"]'),
         aboutCopy: box('[class*="operatorCopy"]'),
         dateCopy: box('[class*="encoreCopy"]'),
-        dateDeck: box('[class*="encore-cassette-deck_machine"]'),
+        dateDeck: box('[data-testid="home-finale-section"] > div'),
       };
     });
 
     expect(measurements.overflow).toBeLessThanOrEqual(1);
     expect(measurements.hero.height).toBeLessThan(850);
-    expect(measurements.meter.height).toBeLessThan(300);
+    expect(measurements.meter.height).toBeLessThan(320);
     expect(measurements.build.height).toBeLessThan(1000);
     expect(measurements.review.height).toBeLessThan(700);
     expect(measurements.photo.height).toBeGreaterThan(390);
@@ -50,6 +50,34 @@ test("the compact mobile VU meter visibly changes while the hero is in view", as
     await page.waitForTimeout(300);
   }
   expect(new Set(samples).size).toBeGreaterThan(1);
+});
+
+test("the complete mobile hook and VU meter clear a short Safari-like first screen", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 650 });
+  await page.goto("/");
+
+  const geometry = await page.evaluate(() => {
+    const bounds = (selector: string) => {
+      const element = document.querySelector(selector);
+      if (!element) throw new Error(`Missing ${selector}`);
+      const rect = element.getBoundingClientRect();
+      return { top: rect.top, bottom: rect.bottom, width: rect.width, height: rect.height };
+    };
+
+    return {
+      viewportHeight: innerHeight,
+      header: bounds("header"),
+      hero: bounds("main section:first-of-type"),
+      headline: bounds("h1"),
+      meter: bounds(".hsdj-vu-meter"),
+    };
+  });
+
+  expect(geometry.hero.bottom).toBeLessThanOrEqual(geometry.viewportHeight + 1);
+  expect(geometry.headline.bottom).toBeLessThan(geometry.viewportHeight - 90);
+  expect(geometry.meter.top).toBeGreaterThanOrEqual(geometry.header.bottom);
+  expect(geometry.meter.bottom).toBeLessThan(geometry.viewportHeight - 55);
+  expect(geometry.meter.width).toBeGreaterThanOrEqual(62);
 });
 
 test("review collage waits for its section and appears when approached", async ({ page }) => {

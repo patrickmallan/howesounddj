@@ -226,17 +226,20 @@
 
 @media (max-width: 700px) {
   .chapter { min-height: 0; }
-  .arrival { min-height: 740px; }
+  /* Keep the full opening message inside the usable iPhone viewport. Safari's
+     controls reduce the first-screen canvas considerably, so a fixed 740px
+     hero leaves the headline and meter hidden behind the bottom toolbar. */
+  .arrival { min-height: clamp(520px, calc(100svh - 126px), 680px); }
   .arrivalYellow { display: none; }
   .arrivalArt { inset: 0; clip-path: none; }
-  .arrivalArt img { object-position: 43% center; }
+  .arrivalArt img { object-position: 43% center; transform: translateY(-8%) scale(1.14); transform-origin: 43% top; }
   .arrivalArt::after { background: linear-gradient(0deg, #070708f7 0%, #070708b8 54%, transparent 76%); }
-  .arrivalCopy { min-height: 740px; padding: 21rem 1.15rem 2.4rem 4.4rem; justify-content: flex-end; }
+  .arrivalCopy { min-height: inherit; padding: 0 1rem clamp(4rem, 10svh, 5.25rem) 5.55rem; justify-content: flex-end; }
   .heroHeadline { max-width: 100%; transform: none; }
   .heroHeadline h1 { margin-top: .8rem; font-size: clamp(2.05rem, 9.4vw, 2.95rem); line-height: .94; text-shadow: 2px 2px 0 var(--red), -1px -1px 0 var(--blue); }
-  .heroHeadline h1 + p { font-size: .86rem; }
+  .heroHeadline h1 + p { margin-top: .65rem; padding: .62rem .85rem .68rem .72rem; font-size: .8rem; line-height: 1.25; }
   .arrivalActions { width: 100%; margin-left: 0; }
-  .arrivalVu { top: auto; bottom: 2.3rem; left: .2rem; width: 52px; height: 250px; min-height: 0; opacity: .98; }
+  .arrivalVu { top: auto; bottom: clamp(4rem, 10svh, 5.25rem); left: .3rem; width: clamp(62px, 18vw, 72px); height: clamp(270px, 47svh, 310px); min-height: 0; opacity: 1; }
 
   .soundCheck { padding: 2.5rem 1rem 2.75rem; }
   .soundPaper { display: flex; width: calc(100vw - 2rem); min-height: 0; padding: 1.8rem 1.1rem 1.4rem; flex-direction: column; gap: 1.15rem; box-shadow: 8px 9px 0 var(--blue), -6px -6px 0 var(--yellow); }
