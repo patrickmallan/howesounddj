@@ -11,7 +11,7 @@
 .scene {
   position: relative;
   overflow: hidden;
-  min-height: 520px;
+  min-height: 455px;
   border: 1px solid #ffffff4a;
   background: #08090b;
   clip-path: polygon(0 3%, 12% 0, 27% 2.5%, 43% .5%, 59% 3%, 76% .5%, 91% 2.5%, 100% 0, 99% 96%, 82% 100%, 65% 97%, 49% 100%, 31% 97%, 14% 100%, 1% 96%);
@@ -32,15 +32,11 @@
 .sceneImage { object-fit: cover; object-position: var(--image-position, center); filter: contrast(1.08) saturate(.94); animation: image-arrive 620ms cubic-bezier(.2,.75,.15,1) both; }
 .sceneWash { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, #030405f8 0 18%, color-mix(in srgb, var(--stage-wash) 78%, transparent) 48%, transparent 79%), linear-gradient(0deg, #020304df, transparent 58%); mix-blend-mode: multiply; transition: background 360ms ease; }
 
-.sceneCopy { position: absolute; z-index: 5; top: 9%; bottom: 10%; left: 5%; display: flex; width: min(47%, 630px); flex-direction: column; align-items: flex-start; }
+.sceneCopy { position: absolute; z-index: 5; top: 9%; bottom: 15%; left: 5%; display: flex; width: min(47%, 630px); flex-direction: column; align-items: flex-start; }
 .stageName { margin: .35rem 0 .3rem; color: var(--stage-accent); font: 900 .78rem/1 var(--font-geist-mono), monospace; letter-spacing: .16em; text-transform: uppercase; }
 .stageWord { width: fit-content; max-width: 100%; margin-left: -.025em; padding: .16em .2em .2em; border: 1px solid #ffffff24; border-left: 6px solid var(--stage-accent); color: #f7f2e8; background: linear-gradient(104deg, #020405f8, #080a0de8 86%, #080a0db8); box-shadow: 7px 8px 0 #0008, inset 0 1px 0 #ffffff0d; font: 950 clamp(3rem, 5.2vw, 5.8rem)/1.02 var(--display), Impact, sans-serif; font-palette: --hsdj-paper-light; letter-spacing: .035em; text-shadow: none; text-wrap: balance; filter: drop-shadow(0 0 .055em color-mix(in srgb, var(--stage-accent) 42%, transparent)); animation: word-arrive 420ms cubic-bezier(.16,.84,.26,1) both; }
 .stageLine { position: relative; width: fit-content; max-width: 590px; margin: 1.2rem 0 0; padding: .92rem 1.15rem 1.28rem; overflow: hidden; border: 0; color: #fff8e8; background: linear-gradient(96deg, #050709e8 0 30%, #050709c4 70%, #050709e8), url('/images/hsdj-redesign/footer/footer-dj-mixer-collage-v2-optimized.webp') center 54% / cover no-repeat; box-shadow: none; font-size: clamp(.9rem, 1.2vw, 1.12rem); font-weight: 800; line-height: 1.45; text-shadow: 0 2px 5px #000; clip-path: polygon(0 8%, 97% 0, 100% 82%, 0 100%); isolation: isolate; }
 .stageLine::after { position: absolute; right: 5%; bottom: .16rem; left: 12%; height: 4px; content: ""; background: #ef2727; clip-path: polygon(0 30%, 70% 0, 100% 45%, 62% 100%, 8% 72%); }
-.moves { display: grid; width: 100%; margin-top: auto; grid-template-columns: repeat(3, 1fr); gap: .45rem; }
-.moves span { display: grid; min-height: 62px; padding: .55rem .65rem; align-content: center; border-top: 3px solid var(--stage-accent); background: #050607dc; font: 800 .65rem/1.2 var(--font-geist-mono), monospace; text-transform: uppercase; animation: move-arrive 380ms calc(var(--move-delay, 0) * 70ms) ease-out both; }
-.moves b { margin-bottom: .25rem; color: var(--stage-accent); font-size: .55rem; letter-spacing: .14em; }
-
 .signalField { position: absolute; z-index: 4; right: 3%; bottom: 10%; display: flex; width: 43%; height: 31%; padding: 1.7rem 0 1.15rem; align-items: stretch; justify-content: flex-end; gap: clamp(2px, .22vw, 4px); overflow: visible; border: 0; background: transparent; box-shadow: none; filter: drop-shadow(0 5px 5px #000b); }
 .signalField::after { position: absolute; right: 0; bottom: 1.05rem; left: 0; height: 3px; content: ""; background: linear-gradient(90deg, transparent, var(--stage-accent) 8% 92%, transparent); box-shadow: 0 0 8px color-mix(in srgb, var(--stage-accent) 70%, transparent); }
 .signalField i { --spectrum-level: .08; --peak-level: .1; position: relative; width: 100%; height: 100%; min-width: 2px; opacity: .8; will-change: opacity; }
@@ -48,11 +44,10 @@
 .signalField i::after { position: absolute; right: 0; bottom: calc(1.15rem + var(--peak-level) * 100%); left: 0; height: 2px; content: ""; background: #fff; box-shadow: 0 0 5px #fff, 0 0 7px var(--stage-accent); transition: bottom 55ms linear; }
 .frequencyScale { position: absolute; right: 0; bottom: 0; left: 0; display: flex; justify-content: space-between; color: #d7d9db; font: 800 .42rem/1 var(--font-geist-mono), monospace; letter-spacing: .08em; text-shadow: 0 2px 4px #000; }
 
-.controlSurface { position: relative; z-index: 8; width: 91%; margin: -2.5rem auto 0; padding: 1.25rem 1.8rem 1.35rem; border: 1px solid #656a70; background: linear-gradient(102deg, #08090af7, #1b1e22f4 45%, #070809fa), url('/images/hsdj-redesign/deck-surfaces/djm-a9-topdown-optimized.webp') center 72% / cover; box-shadow: -10px 11px 0 #ef2727; transform: rotate(-.35deg); }
+.controlSurface { position: relative; z-index: 8; width: 91%; margin: -4.25rem auto 0; padding: 1.05rem 1.8rem 1.2rem; border: 1px solid #656a70; background: linear-gradient(102deg, #08090af7, #1b1e22f4 45%, #070809fa), url('/images/hsdj-redesign/deck-surfaces/djm-a9-topdown-optimized.webp') center 72% / cover; box-shadow: -10px 11px 0 #ef2727; transform: rotate(-.35deg); }
 .instruction { margin: 0 0 .45rem; color: white; font: 900 .7rem/1 var(--font-geist-mono), monospace; letter-spacing: .14em; text-transform: uppercase; }
 .instruction span { margin-left: .8rem; color: var(--stage-accent); }
 .mobileInstruction { display: none; }
-.mobileNowPlaying { display: none; }
 .fader { position: relative; height: 72px; margin: 0 1.8rem; }
 .rail { position: absolute; top: 50%; right: 0; left: 0; height: 14px; border: 1px solid #73777c; background: linear-gradient(#050505, #303337 45%, #050505 54%, #17191b); box-shadow: inset 0 2px 5px #000, 0 0 0 9px #090a0b; transform: translateY(-50%); }
 .rail::after { position: absolute; inset: -21px 0; content: ""; opacity: .68; background: repeating-linear-gradient(90deg, #d6d6d6 0 2px, transparent 2px calc(25% - 1px), #d6d6d6 calc(25% - 1px) calc(25% + 1px)); }
@@ -68,32 +63,22 @@
 
 @keyframes image-arrive { from { opacity: .45; transform: scale(1.035); } to { opacity: 1; transform: scale(1); } }
 @keyframes word-arrive { from { opacity: 0; transform: translateX(-.18em) skewX(-8deg); } to { opacity: 1; transform: none; } }
-@keyframes move-arrive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 @media (max-width: 700px) {
   .console { width: calc(100vw - 1.5rem); filter: drop-shadow(8px 9px 0 #0847ff); }
-  .scene { min-height: 340px; }
+  .scene { min-height: 305px; }
   .sceneImage { object-position: var(--image-position, center); }
   .sceneWash { background: linear-gradient(0deg, #030405fa 0 35%, #030405b8 48%, transparent 70%), linear-gradient(180deg, #030405c9 0 18%, transparent 38%); mix-blend-mode: normal; }
-  .sceneCopy { top: 4%; right: 5%; bottom: 5%; left: 5%; width: auto; }
+  .sceneCopy { top: 4%; right: 5%; bottom: 12%; left: 5%; width: auto; }
   .stageName { margin-bottom: .2rem; font-size: .62rem; }
   .stageWord { max-width: 94%; padding: .12em .22em .16em; border-left-width: 4px; font-size: clamp(1.55rem, 7vw, 2.05rem); line-height: 1; }
   .stageLine { max-width: 100%; margin-top: auto; padding: .65rem .75rem .82rem; font-size: .72rem; line-height: 1.34; }
   .signalField { display: none; }
-  .moves { margin-top: .35rem; gap: .18rem; }
-  .moves span { min-height: 43px; padding: .35rem .32rem; border-top-width: 2px; font-size: .43rem; line-height: 1.13; }
-  .moves b { margin-bottom: .16rem; font-size: .46rem; }
-  .controlSurface { width: 95%; margin-top: -.75rem; padding: .8rem .65rem .7rem; }
+  .controlSurface { width: 95%; margin-top: -1.45rem; padding: .72rem .65rem .65rem; }
   .instruction { padding-inline: .3rem; line-height: 1.35; }
   .instruction span { display: block; margin: .25rem 0 0; }
   .instruction .desktopInstruction { display: none; }
   .instruction .mobileInstruction { display: block; margin-left: 0; font-size: .62rem; letter-spacing: .04em; text-transform: none; }
-  .mobileNowPlaying { position: relative; display: grid; min-height: 76px; margin: .45rem .25rem .05rem; padding: .55rem .65rem .5rem; align-content: end; grid-template-columns: auto 1fr; gap: .16rem .5rem; overflow: hidden; border-left: 5px solid var(--stage-accent); color: white; background: #020405; box-shadow: inset 0 0 0 1px #ffffff1f; font-family: var(--font-geist-mono), monospace; text-transform: uppercase; isolation: isolate; }
-  .mobileNowPlaying::after { position: absolute; inset: 0; z-index: -1; content: ""; background: linear-gradient(90deg, #020405f5 0 35%, #020405a6 70%, #020405d9), linear-gradient(0deg, #020405e8, transparent 80%); }
-  .mobilePreviewImage { z-index: -2; object-fit: cover; object-position: var(--image-position, center); filter: saturate(.9) contrast(1.08); animation: image-arrive 420ms ease-out both; }
-  .mobileNowPlaying span { color: #c4ccd2; font-size: .5rem; letter-spacing: .1em; }
-  .mobileNowPlaying b { color: var(--stage-accent); font-size: .62rem; }
-  .mobileNowPlaying strong { grid-column: 1 / -1; font-size: .95rem; line-height: 1; text-shadow: 0 2px 4px #000; }
-  .fader { height: 60px; margin: 0 .8rem; }
+  .fader { height: 56px; margin: 0 .8rem; }
   .cap { width: 70px; }
   .stages { gap: .12rem; }
   .stages button { padding-inline: .15rem; }

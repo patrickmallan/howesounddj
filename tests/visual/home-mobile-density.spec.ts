@@ -168,23 +168,23 @@ test("the crossfader keeps its changing scene visible beside the mobile control"
   await page.setViewportSize({ width: 390, height: 650 });
   await page.goto("/");
   const fader = page.getByRole("slider", { name: "Explore how the music changes through the wedding night" });
-  const preview = page.getByTestId("night-mobile-preview");
+  const scene = page.getByTestId("night-scene");
   await fader.scrollIntoViewIfNeeded();
 
   await expect(fader).toBeVisible();
-  await expect(preview).toBeVisible();
+  await expect(scene).toBeVisible();
   await fader.fill("4");
-  await expect(preview.getByText("Open floor", { exact: true })).toBeVisible();
-  await expect(preview.getByText("NOW WE GO", { exact: true })).toBeVisible();
+  await expect(scene.getByText("Open floor", { exact: true })).toBeVisible();
+  await expect(scene.getByText("NOW WE GO", { exact: true })).toBeVisible();
 
   const geometry = await page.evaluate(() => {
     const control = document.querySelector('[aria-label="Explore how the music changes through the wedding night"]')?.getBoundingClientRect();
-    const feedback = document.querySelector('[data-testid="night-mobile-preview"]')?.getBoundingClientRect();
+    const feedback = document.querySelector('[data-testid="night-scene"]')?.getBoundingClientRect();
     if (!control || !feedback) throw new Error("Missing crossfader feedback geometry");
     return { controlTop: control.top, feedbackBottom: feedback.bottom, feedbackTop: feedback.top };
   });
-  expect(geometry.controlTop - geometry.feedbackBottom).toBeLessThan(20);
-  expect(geometry.feedbackTop).toBeGreaterThanOrEqual(-1);
+  expect(geometry.controlTop - geometry.feedbackBottom).toBeLessThan(45);
+  expect(geometry.controlTop - geometry.feedbackTop).toBeLessThan(390);
 });
 
 test("mobile section transitions and footer navigation stay compact", async ({ page }) => {

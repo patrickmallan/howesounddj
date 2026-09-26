@@ -12,7 +12,6 @@ const STAGES = [
     title: "Ceremony",
     word: "HEARD",
     line: "Clear microphones, the right songs, and every cue handled. You stay in the moment while I take care of the sound.",
-    moves: ["Guests hear every word", "Music starts on cue", "No tech distractions"],
     bpm: 72,
     spectrum: { energy: .22, low: .12, mid: .72, high: .18 },
     image: "/images/hsdj-redesign/wedding-story/night-stage-ceremony-v1.webp",
@@ -25,7 +24,6 @@ const STAGES = [
     title: "Cocktails",
     word: "EASE IN",
     line: "Good records, easy volume. Enough lift for a drink, never enough to shout over.",
-    moves: ["Good records, low volume", "People can still talk", "A little shoulder bounce"],
     bpm: 104,
     spectrum: { energy: .44, low: .4, mid: .52, high: .34 },
     image: "/images/hsdj-redesign/wedding-story/night-stage-cocktails-v1.webp",
@@ -38,7 +36,6 @@ const STAGES = [
     title: "Dinner",
     word: "DON'T RUSH IT",
     line: "Dinner still gets good music. The volume stays comfortable, requests are welcome, and the speech mic is ready.",
-    moves: ["Play the good stuff", "Speech mic ready", "Keep the volume comfortable"],
     bpm: 92,
     spectrum: { energy: .34, low: .3, mid: .46, high: .2 },
     image: "/images/hsdj-redesign/wedding-story/night-stage-dinner-v1.webp",
@@ -51,7 +48,6 @@ const STAGES = [
     title: "First dance",
     word: "THIS ONE MATTERS",
     line: "Your version starts clean and plays as long as you want it to. If you have had enough of the spotlight, give me the nod.",
-    moves: ["Your exact version", "Starts clean, right on cue", "Full song or early fade"],
     bpm: 76,
     spectrum: { energy: .58, low: .52, mid: .68, high: .4 },
     image: "/images/hsdj-redesign/wedding-story/night-stage-first-dance-v1.webp",
@@ -64,7 +60,6 @@ const STAGES = [
     title: "Open floor",
     word: "NOW WE GO",
     line: "I watch what lands, follow the room, and choose the next track to keep the energy moving.",
-    moves: ["Watch what lands", "Follow the room", "Keep the energy moving"],
     bpm: 128,
     spectrum: { energy: .94, low: .96, mid: .78, high: .84 },
     image: "/images/hsdj-redesign/wedding-story/night-stage-open-floor-v1.webp",
@@ -224,23 +219,11 @@ export function NightMixFader() {
           <p className={styles.stageName}>{stage.title}</p>
           <strong className={styles.stageWord} data-testid="night-scene-heading">{stage.word}</strong>
           <p className={styles.stageLine} data-testid="night-scene-description">{stage.line}</p>
-          <div className={styles.moves}>{stage.moves.map((move, index) => <span key={move}><b>0{index + 1}</b>{move}</span>)}</div>
         </div>
       </div>
 
       <div className={styles.controlSurface}>
-        <p className={styles.instruction}>Move through the night <span className={styles.desktopInstruction}>The job changes with the room.</span><span className={styles.mobileInstruction}>Slide or tap a moment. The preview changes as you move.</span></p>
-        <div className={styles.mobileNowPlaying} data-testid="night-mobile-preview" aria-live="polite">
-          <Image
-            key={stage.image}
-            src={stage.image}
-            alt=""
-            fill
-            sizes="(max-width: 700px) 100vw, 60vw"
-            className={styles.mobilePreviewImage}
-          />
-          <span>Now playing</span><b>{stage.title}</b><strong>{stage.word}</strong>
-        </div>
+        <p className={styles.instruction}>Move through the night <span className={styles.desktopInstruction}>The scene changes with the room.</span><span className={styles.mobileInstruction}>Slide or tap a moment.</span></p>
         <div className={styles.fader}>
           <div className={styles.rail} aria-hidden="true" />
           <Image className={styles.cap} src="/images/hsdj-redesign/controls/faders/crossfader-cap.png" alt="" width={116} height={66} />
