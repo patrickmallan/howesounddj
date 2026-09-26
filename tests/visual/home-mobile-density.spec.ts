@@ -108,6 +108,29 @@ test("the complete mobile hook and VU meter clear a short Safari-like first scre
   expect(geometry.meter.width).toBeGreaterThanOrEqual(62);
 });
 
+test("the mobile graphic equalizer stays live when reduced motion is enabled", async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
+  try {
+    const page = await context.newPage();
+    await page.goto(`${process.env.HSDJ_TEST_BASE_URL ?? "http://127.0.0.1:3000"}/`);
+    const spectrum = page.getByTestId("night-spectrum");
+    await spectrum.scrollIntoViewIfNeeded();
+    await expect(spectrum).toBeVisible();
+
+    const samples: string[] = [];
+    for (let index = 0; index < 12; index += 1) {
+      samples.push(await spectrum.locator("i").evaluateAll((bars) => bars
+        .map((bar) => (bar as HTMLElement).style.getPropertyValue("--spectrum-level"))
+        .join(",")));
+      await page.waitForTimeout(150);
+    }
+
+    expect(new Set(samples).size).toBeGreaterThan(5);
+  } finally {
+    await context.close();
+  }
+});
+
 test("review collage waits for its section and appears when approached", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   const collageRequests: string[] = [];

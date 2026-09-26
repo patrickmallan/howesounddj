@@ -91,24 +91,6 @@ export function NightMixFader() {
     if (!spectrum) return;
 
     const bars = Array.from(spectrum.querySelectorAll<HTMLElement>("i"));
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (reduceMotion) {
-      bars.forEach((bar, index) => {
-        const frequency = index / Math.max(1, bars.length - 1);
-        const profile = stage.spectrum;
-        const lowShape = Math.exp(-Math.pow((frequency - .12) / .2, 2)) * profile.low;
-        const midShape = Math.exp(-Math.pow((frequency - .5) / .32, 2)) * profile.mid;
-        const highShape = Math.exp(-Math.pow((frequency - .88) / .2, 2)) * profile.high;
-        const quietLift = .16 + Math.sqrt(profile.energy) * .16;
-        const level = quietLift + profile.energy * (.08 + lowShape * .38 + midShape * .31 + highShape * .22);
-        const boundedLevel = Math.max(.06, Math.min(.94, level));
-        bar.style.setProperty("--spectrum-level", String(boundedLevel));
-        bar.style.setProperty("--peak-level", String(Math.min(.97, boundedLevel + .035)));
-      });
-      return;
-    }
-
     const current = bars.map(() => .08);
     const peaks = bars.map(() => .1);
     const peakHoldUntil = bars.map(() => 0);
@@ -204,12 +186,17 @@ export function NightMixFader() {
       if (entry.isIntersecting && !document.hidden) start();
       else stop();
     }, { rootMargin: "180px" });
+    const isNearViewport = () => {
+      const bounds = spectrum.getBoundingClientRect();
+      return bounds.bottom >= -180 && bounds.top <= window.innerHeight + 180;
+    };
     const onVisibilityChange = () => {
       if (document.hidden) stop();
-      else if (spectrum.getBoundingClientRect().bottom >= -180 && spectrum.getBoundingClientRect().top <= window.innerHeight + 180) start();
+      else if (isNearViewport()) start();
     };
 
     observer.observe(spectrum);
+    if (!document.hidden && isNearViewport()) start();
     document.addEventListener("visibilitychange", onVisibilityChange);
     return () => {
       stop();
@@ -229,7 +216,7 @@ export function NightMixFader() {
           className={styles.sceneImage}
         />
         <div className={styles.sceneWash} />
-        <div className={styles.signalField} ref={spectrumRef} aria-hidden="true">
+        <div className={styles.signalField} data-testid="night-spectrum" ref={spectrumRef} aria-hidden="true">
           {Array.from({ length: SPECTRUM_BANDS }, (_, index) => <i key={index} />)}
           <div className={styles.frequencyScale}><span>60</span><span>250</span><span>1K</span><span>4K</span><span>12K</span></div>
         </div>
