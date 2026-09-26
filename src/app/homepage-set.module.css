@@ -284,11 +284,12 @@
   .playbackVideoLogo [data-video-overlay-mountains],
   .playbackVideoLogo [data-video-overlay-sasquatch],
   .playbackVideoLogo [data-video-overlay-title] { position: absolute; display: block; pointer-events: none; }
-  .playbackVideoLogo [data-video-overlay-mountains] { z-index: 1; right: -13%; bottom: 2%; left: -13%; height: 68%; opacity: .34; }
-  .playbackVideoLogo [data-video-overlay-mountains] img { object-fit: cover; object-position: center bottom; }
-  .playbackVideoLogo [data-video-overlay-sasquatch] { z-index: 2; bottom: -4%; left: 16%; width: 68%; height: 84%; opacity: .38; }
-  .playbackVideoLogo [data-video-overlay-sasquatch] img { object-fit: contain; object-position: center bottom; }
-  .playbackVideoLogo [data-video-overlay-title] { z-index: 3; top: 9%; right: 4%; left: 4%; color: rgb(255 248 232 / 55%); filter: drop-shadow(0 3px 4px #000a); font-family: var(--display); text-align: center; text-transform: uppercase; }
+  .playbackVideoLogo [data-video-overlay-mountains] { z-index: 1; inset: -3% -28% -2%; opacity: .3; }
+  .playbackVideoLogo [data-video-overlay-mountains] img { object-fit: cover; object-position: center bottom; transform: scale(1.35); transform-origin: center bottom; }
+  .playbackVideoLogo [data-video-overlay-sasquatch] { z-index: 2; bottom: -3%; left: 5%; width: 90%; height: 101%; opacity: .68; filter: drop-shadow(0 10px 24px #000d); }
+  .playbackVideoLogo [data-video-overlay-sasquatch]::before { position: absolute; inset: 12% 12% 0; z-index: -1; content: ""; background: radial-gradient(ellipse at 50% 58%, #020306b8 0 18%, #02030673 43%, transparent 72%); filter: blur(14px); }
+  .playbackVideoLogo [data-video-overlay-sasquatch] img { object-fit: contain; object-position: center bottom; filter: brightness(.64) contrast(1.24) saturate(.88); }
+  .playbackVideoLogo [data-video-overlay-title] { z-index: 3; top: 6%; right: 4%; left: 4%; color: rgb(255 248 232 / 62%); filter: drop-shadow(0 3px 4px #000c); font-family: var(--display); text-align: center; text-transform: uppercase; }
   .playbackVideoLogo [data-video-overlay-title] b { display: block; font-size: clamp(2.1rem, 10.5vw, 2.8rem); font-style: normal; line-height: .85; letter-spacing: .015em; }
   .playbackVideoLogo [data-video-overlay-title] i { display: block; margin-top: .45rem; color: rgb(255 248 232 / 48%); font: 900 clamp(.82rem, 4.1vw, 1.05rem)/1 var(--technical); letter-spacing: .24em; }
   .playbackFingerprint { top: .75rem; left: .75rem; width: 14%; opacity: .72; }
