@@ -63,6 +63,22 @@ test("the VU meter arrives lit before JavaScript hydrates", async ({ browser }) 
   }
 });
 
+test("the VU meter keeps a calm live signal when reduced motion is enabled", async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 390, height: 650 }, reducedMotion: "reduce" });
+  try {
+    const page = await context.newPage();
+    await page.goto(`${process.env.HSDJ_TEST_BASE_URL ?? "http://127.0.0.1:3000"}/`);
+    const samples: number[] = [];
+    for (let index = 0; index < 5; index += 1) {
+      samples.push(await page.locator(".hsdj-vu-leds .is-lit").count());
+      await page.waitForTimeout(700);
+    }
+    expect(new Set(samples).size).toBeGreaterThan(1);
+  } finally {
+    await context.close();
+  }
+});
+
 test("the complete mobile hook and VU meter clear a short Safari-like first screen", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 650 });
   await page.goto("/");

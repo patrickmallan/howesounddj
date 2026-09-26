@@ -30,8 +30,21 @@ export function LivingVUMeter({ className = "", label = "MASTER", peak = false }
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (reduceMotion) {
-      channelSegments.forEach((lights, channelIndex) => lights.forEach((light, index) => light.classList.toggle("is-lit", index < (channelIndex ? 17 : 18))));
-      return;
+      // A level meter still needs to read as live when the visitor requests
+      // reduced motion. Use a calm stepped programme instead of rapid peaks.
+      const calmLevels = [[18, 17], [21, 19], [18, 22], [20, 18]] as const;
+      let calmStep = 0;
+      const renderCalmLevel = () => {
+        channelSegments.forEach((lights, channelIndex) => {
+          lights.forEach((light, index) => light.classList.toggle("is-lit", index < calmLevels[calmStep][channelIndex]));
+        });
+      };
+      renderCalmLevel();
+      const calmFrame = window.setInterval(() => {
+        calmStep = (calmStep + 1) % calmLevels.length;
+        renderCalmLevel();
+      }, 650);
+      return () => window.clearInterval(calmFrame);
     }
 
     let frame = 0;
@@ -144,12 +157,20 @@ export function LivingVUMeter({ className = "", label = "MASTER", peak = false }
       if (entry.isIntersecting && !document.hidden) start();
       else stop();
     }, { rootMargin: "100px" });
+    const isNearViewport = () => {
+      const bounds = meter.getBoundingClientRect();
+      return bounds.bottom >= -100 && bounds.top <= window.innerHeight + 100;
+    };
     const onVisibilityChange = () => {
       if (document.hidden) stop();
-      else if (meter.getBoundingClientRect().bottom >= -100 && meter.getBoundingClientRect().top <= window.innerHeight + 100) start();
+      else if (isNearViewport()) start();
     };
 
     observer.observe(meter);
+    // The homepage meter is already visible at hydration time. Start it now
+    // rather than depending on an observer callback that older iOS WebKit can
+    // defer until the page scrolls.
+    if (!document.hidden && isNearViewport()) start();
     document.addEventListener("visibilitychange", onVisibilityChange);
     return () => {
       stop();
