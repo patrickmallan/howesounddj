@@ -150,9 +150,12 @@ test("the mobile night scene leads with its photograph instead of oversized text
     const heading = document.querySelector<HTMLElement>('[data-testid="night-scene-heading"]');
     const spectrum = document.querySelector<HTMLElement>('[data-testid="night-spectrum"]');
     if (!heading || !spectrum) throw new Error("Missing mobile scene content");
+    const headingText = document.createRange();
+    headingText.selectNodeContents(heading);
     return {
       sceneHeight: sceneBounds.height,
       headingSize: Number.parseFloat(getComputedStyle(heading).fontSize),
+      headingPanelSlack: headingBounds.width - headingText.getBoundingClientRect().width,
       photoWindow: descriptionBounds.top - headingBounds.bottom,
       spectrumDisplay: getComputedStyle(spectrum).display,
     };
@@ -160,6 +163,7 @@ test("the mobile night scene leads with its photograph instead of oversized text
 
   expect(composition.sceneHeight).toBeLessThanOrEqual(350);
   expect(composition.headingSize).toBeLessThanOrEqual(33);
+  expect(composition.headingPanelSlack).toBeLessThan(36);
   expect(composition.photoWindow).toBeGreaterThan(70);
   expect(composition.spectrumDisplay).toBe("none");
 });

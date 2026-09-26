@@ -56,7 +56,7 @@ export default async function HoweSoundDJHomepage() {
 
       <section className={`${styles.chapter} ${styles.build}`} id="night" aria-labelledby="build-heading">
         <DeferredArt className={styles.buildDeck} desktopSrc="/images/hsdj-redesign/wedding-story/night-section-art-v1-optimized.webp" mobileSrc="/images/hsdj-redesign/wedding-story/night-section-art-mobile-v1-optimized.webp" />
-        <header className={styles.buildHeading}><p>From ceremony to dance floor</p><h2 id="build-heading" className="hsdj-meter--paper"><span>The music changes</span><strong>throughout the day.</strong></h2></header>
+        <header className={styles.buildHeading}><p>From ceremony to dance floor</p><h2 id="build-heading" className="hsdj-meter--paper"><span>The music changes</span>{" "}<strong>throughout the day.</strong></h2></header>
         <div className={styles.nightFader}><NightMixFader /></div>
       </section>
 

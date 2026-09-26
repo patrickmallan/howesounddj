@@ -255,8 +255,8 @@
   .buildDeck img { object-position: center top; }
   .buildHeading { display: block; width: 100%; margin-bottom: 1rem; padding: 0 .6rem; }
   .buildHeading > p { margin-bottom: .9rem; }
-  .buildHeading h2 { display: block; max-width: 98%; font-size: clamp(1.8rem, 8vw, 2.45rem); }
-  .buildHeading h2 strong { display: block; }
+  .buildHeading h2 { display: block; width: 100%; max-width: 98%; font-size: clamp(1.05rem, 4.6vw, 1.28rem) !important; line-height: .98; letter-spacing: .015em; text-size-adjust: none; -webkit-text-size-adjust: none; zoom: .72; }
+  .buildHeading h2 span, .buildHeading h2 strong { display: inline; }
 
   .readRoom { min-height: 920px; }
   .readRoom::before { background-position: 61% center; }
