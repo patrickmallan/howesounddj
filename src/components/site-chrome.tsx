@@ -114,6 +114,7 @@ const navTree: SiteNavItem[] = [
 ];
 
 const MOBILE_PRIMARY_NAV_ID = "site-mobile-primary-nav";
+const MOBILE_PRIMARY_DETAILS_ID = "site-mobile-primary-details";
 
 const navPadByLabel: Record<string, string> = {
   Weddings: "/images/hsdj-redesign/controls/pads/cyan.png",
@@ -280,26 +281,22 @@ function DesktopDropdown({
 type MobileAccordionProps = {
   group: SiteNavGroup;
   pathname: string;
-  expanded: boolean;
-  onToggle: () => void;
   onNavigate: () => void;
 };
 
 /** Mobile drawer accordion section. Inside the existing right-side panel, no second-level overlay. */
-function MobileAccordion({ group, pathname, expanded, onToggle, onNavigate }: MobileAccordionProps) {
+function MobileAccordion({ group, pathname, onNavigate }: MobileAccordionProps) {
   const panelId = useId();
   const active = isActiveItem(pathname, group);
 
   const triggerColor = active ? "text-amber-300" : "text-white/85";
 
   return (
-    <div>
-      <button
-        type="button"
-        aria-expanded={expanded}
+    <details className={narrowHeaderStyles.mobileAccordion} name="hsdj-mobile-nav">
+      <summary
+        role="button"
         aria-controls={panelId}
-        onClick={onToggle}
-        className={`relative z-10 flex w-full items-center justify-between px-4 py-3 text-left text-sm transition hover:bg-white/5 ${triggerColor}`}
+        className={`${narrowHeaderStyles.mobileSummary} relative z-10 flex w-full cursor-pointer items-center justify-between px-4 py-3 text-left text-sm transition hover:bg-white/5 ${triggerColor}`}
       >
         <span>{group.label}</span>
         <svg
@@ -307,7 +304,7 @@ function MobileAccordion({ group, pathname, expanded, onToggle, onNavigate }: Mo
           width="10"
           height="6"
           viewBox="0 0 10 6"
-          className={`transition-transform duration-150 ${expanded ? "rotate-180" : ""}`}
+          className={`${narrowHeaderStyles.mobileChevron} transition-transform duration-150`}
         >
           <path
             d="M1 1l4 4 4-4"
@@ -318,60 +315,70 @@ function MobileAccordion({ group, pathname, expanded, onToggle, onNavigate }: Mo
             fill="none"
           />
         </svg>
-      </button>
-      {expanded ? (
-        <div id={panelId} className="bg-white/[0.02]">
-          {group.children.map((child) => {
-            const childActive = isActiveNavHref(pathname, child.href);
-            return (
-              <Link
-                key={child.href}
-                href={child.href}
-                onClick={onTrustNavClick(child.href, onNavigate)}
-                aria-current={childActive ? "page" : undefined}
-                className={`relative z-10 block px-7 py-2.5 text-left text-sm transition hover:bg-white/5 ${
-                  childActive ? "text-amber-300 hover:text-amber-200" : "text-white/80 hover:text-white"
-                }`}
-              >
-                <div className="leading-snug">{child.label}</div>
-                {child.description ? (
-                  <div className="mt-0.5 text-xs leading-snug text-white/45">
-                    {child.description}
-                  </div>
-                ) : null}
-              </Link>
-            );
-          })}
-        </div>
-      ) : null}
-    </div>
+      </summary>
+      <div id={panelId} className="bg-white/[0.02]">
+        {group.children.map((child) => {
+          const childActive = isActiveNavHref(pathname, child.href);
+          return (
+            <Link
+              key={child.href}
+              href={child.href}
+              onClick={onTrustNavClick(child.href, onNavigate)}
+              aria-current={childActive ? "page" : undefined}
+              className={`relative z-10 block px-7 py-2.5 text-left text-sm transition hover:bg-white/5 ${
+                childActive ? "text-amber-300 hover:text-amber-200" : "text-white/80 hover:text-white"
+              }`}
+            >
+              <div className="leading-snug">{child.label}</div>
+              {child.description ? (
+                <div className="mt-0.5 text-xs leading-snug text-white/45">
+                  {child.description}
+                </div>
+              ) : null}
+            </Link>
+          );
+        })}
+      </div>
+    </details>
   );
 }
 
 export function SiteHeader() {
   const pathname = usePathname() ?? "";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileMenuTop, setMobileMenuTop] = useState(0);
+  const [mobileMenuTop, setMobileMenuTop] = useState<number | null>(null);
   const [openMenuLabel, setOpenMenuLabel] = useState<string | null>(null);
-  const [mobileExpandedGroup, setMobileExpandedGroup] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement | null>(null);
-  const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const mobileMenuButtonRef = useRef<HTMLElement | null>(null);
+  const previousPathRef = useRef(pathname);
 
-  /** Closes the drawer and collapses any expanded accordion section in one batched update. */
+  /** Native disclosures keep the menu usable before React hydrates. */
   const closeMobileMenu = useCallback(() => {
+    const details = document.getElementById(MOBILE_PRIMARY_DETAILS_ID) as HTMLDetailsElement | null;
+    if (details) {
+      details.open = false;
+      details.querySelectorAll<HTMLDetailsElement>('details[name="hsdj-mobile-nav"]').forEach((group) => { group.open = false; });
+    }
     setMobileMenuOpen(false);
-    setMobileExpandedGroup(null);
   }, []);
 
-  /** Close every menu when the route changes, regardless of which surface triggered the navigation. */
   useEffect(() => {
     const id = requestAnimationFrame(() => {
-      setMobileMenuOpen(false);
-      setMobileExpandedGroup(null);
+      setMobileMenuOpen((document.getElementById(MOBILE_PRIMARY_DETAILS_ID) as HTMLDetailsElement | null)?.open ?? false);
+    });
+    return () => cancelAnimationFrame(id);
+  }, []);
+
+  /** Close on route changes, but preserve a menu opened before hydration. */
+  useEffect(() => {
+    if (previousPathRef.current === pathname) return;
+    previousPathRef.current = pathname;
+    const id = requestAnimationFrame(() => {
+      closeMobileMenu();
       setOpenMenuLabel(null);
     });
     return () => cancelAnimationFrame(id);
-  }, [pathname]);
+  }, [pathname, closeMobileMenu]);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -403,13 +410,12 @@ export function SiteHeader() {
     const mq = window.matchMedia("(min-width: 1280px)");
     const onMq = () => {
       if (mq.matches) {
-        setMobileMenuOpen(false);
-        setMobileExpandedGroup(null);
+        closeMobileMenu();
       }
     };
     mq.addEventListener("change", onMq);
     return () => mq.removeEventListener("change", onMq);
-  }, []);
+  }, [closeMobileMenu]);
 
   /** Click outside the header closes any open desktop dropdown (focus-traversal still allowed inside the header). */
   useEffect(() => {
@@ -486,88 +492,74 @@ export function SiteHeader() {
               );
             })}
           </nav>
-          <button
-            ref={mobileMenuButtonRef}
-            type="button"
-            className="hsdj-mobile-pad inline-grid min-h-[50px] min-w-[50px] cursor-pointer place-items-center border-0 bg-transparent p-0 text-[0.62rem] font-black uppercase text-white outline-none xl:hidden"
-            aria-expanded={mobileMenuOpen}
-            aria-controls={mobileMenuOpen ? MOBILE_PRIMARY_NAV_ID : undefined}
-            aria-haspopup="menu"
-            onClick={() => {
-              setMobileMenuTop(headerRef.current?.getBoundingClientRect().bottom ?? 0);
-              setMobileMenuOpen((open) => !open);
+          <details
+            id={MOBILE_PRIMARY_DETAILS_ID}
+            className="relative xl:hidden"
+            onToggle={(event) => {
+              const open = event.currentTarget.open;
+              setMobileMenuOpen(open);
+              if (open) setMobileMenuTop(headerRef.current?.getBoundingClientRect().bottom ?? null);
             }}
           >
-            <Image src="/images/hsdj-redesign/controls/pads/blue.png" alt="" width={58} height={58} />
-            <span>Menu</span>
-          </button>
+            <summary
+              ref={mobileMenuButtonRef}
+              role="button"
+              className={`${narrowHeaderStyles.mobileSummary} hsdj-mobile-pad inline-grid min-h-[50px] min-w-[50px] cursor-pointer place-items-center border-0 bg-transparent p-0 text-[0.62rem] font-black uppercase text-white outline-none`}
+              aria-controls={MOBILE_PRIMARY_NAV_ID}
+              aria-haspopup="menu"
+            >
+              <Image src="/images/hsdj-redesign/controls/pads/blue.png" alt="" width={58} height={58} />
+              <span>Menu</span>
+            </summary>
+            <div
+              className="fixed inset-x-0 bottom-0 z-[80]"
+              style={{ top: mobileMenuTop ?? "8rem" }}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Site menu"
+            >
+              <button
+                type="button"
+                className="absolute inset-0 z-40 cursor-default border-0 bg-black/50 p-0"
+                aria-label="Close menu"
+                onClick={closeMobileMenu}
+              />
+              <nav
+                id={MOBILE_PRIMARY_NAV_ID}
+                className="hsdj-mobile-menu absolute right-3 top-2 z-50 flex max-h-[min(calc(100%-1rem),34rem)] w-[min(calc(100vw-1.5rem),20rem)] max-w-[20rem] flex-col divide-y divide-white/10 overflow-y-auto overflow-x-hidden border border-white/15 bg-neutral-950/95 shadow-xl shadow-black/40"
+                aria-label="Mobile primary"
+              >
+                {navTree.map((item) => {
+                  if (isGroup(item)) {
+                    return <MobileAccordion key={item.label} group={item} pathname={pathname} onNavigate={closeMobileMenu} />;
+                  }
+                  const active = isActiveNavHref(pathname, item.href);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={onTrustNavClick(item.href, closeMobileMenu)}
+                      aria-current={active ? "page" : undefined}
+                      className={active ? `${mobileLinkBase} text-amber-300 hover:text-amber-200` : `${mobileLinkBase} text-white/85 hover:text-white`}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+                <div className="relative z-10 border-t border-white/10 p-3">
+                  <CheckAvailabilityTrackedLink
+                    surface="header"
+                    href="/contact#availability"
+                    onClick={closeMobileMenu}
+                    className="hsdj-mobile-availability relative z-10 inline-flex min-h-[50px] w-full items-center justify-center bg-amber-300 px-4 text-sm font-black uppercase text-neutral-950 transition hover:translate-x-1"
+                  />
+                </div>
+              </nav>
+            </div>
+          </details>
           <HeaderCheckAvailability onPanelOpen={() => setOpenMenuLabel(null)} />
         </div>
       </div>
-
-      {mobileMenuOpen ? (
-        <div
-          className="fixed inset-x-0 bottom-0 z-[80] xl:hidden"
-          style={{ top: mobileMenuTop }}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Site menu"
-        >
-          <button
-            type="button"
-            className="absolute inset-0 z-40 cursor-default border-0 bg-black/50 p-0"
-            aria-label="Close menu"
-            onClick={closeMobileMenu}
-          />
-          <nav
-            id={MOBILE_PRIMARY_NAV_ID}
-            className="hsdj-mobile-menu absolute right-3 top-2 z-50 flex max-h-[min(calc(100%-1rem),34rem)] w-[min(calc(100vw-1.5rem),20rem)] max-w-[20rem] flex-col divide-y divide-white/10 overflow-y-auto overflow-x-hidden border border-white/15 bg-neutral-950/95 shadow-xl shadow-black/40"
-            aria-label="Mobile primary"
-          >
-            {navTree.map((item) => {
-              if (isGroup(item)) {
-                const expanded = mobileExpandedGroup === item.label;
-                return (
-                  <MobileAccordion
-                    key={item.label}
-                    group={item}
-                    pathname={pathname}
-                    expanded={expanded}
-                    onToggle={() =>
-                      setMobileExpandedGroup((current) => (current === item.label ? null : item.label))
-                    }
-                    onNavigate={closeMobileMenu}
-                  />
-                );
-              }
-              const active = isActiveNavHref(pathname, item.href);
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={onTrustNavClick(item.href, closeMobileMenu)}
-                  aria-current={active ? "page" : undefined}
-                  className={
-                    active
-                      ? `${mobileLinkBase} text-amber-300 hover:text-amber-200`
-                      : `${mobileLinkBase} text-white/85 hover:text-white`
-                  }
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-            <div className="relative z-10 border-t border-white/10 p-3">
-              <CheckAvailabilityTrackedLink
-                surface="header"
-                href="/contact#availability"
-                onClick={closeMobileMenu}
-                className="hsdj-mobile-availability relative z-10 inline-flex min-h-[50px] w-full items-center justify-center bg-amber-300 px-4 text-sm font-black uppercase text-neutral-950 transition hover:translate-x-1"
-              />
-            </div>
-          </nav>
-        </div>
-      ) : null}
     </header>
   );
 }
