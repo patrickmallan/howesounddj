@@ -187,6 +187,27 @@ test("the crossfader keeps its changing scene visible beside the mobile control"
   expect(geometry.feedbackTop).toBeGreaterThanOrEqual(-1);
 });
 
+test("mobile section transitions and footer navigation stay compact", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 650 });
+  await page.goto("/");
+
+  const layout = await page.evaluate(() => {
+    const service = document.querySelector<HTMLElement>('[data-testid="home-services-section"]');
+    const serviceHeading = service?.querySelector<HTMLElement>("h2");
+    const footerLinks = document.querySelector<HTMLElement>(".hsdj-site-footer__signal-path");
+    if (!service || !serviceHeading || !footerLinks) throw new Error("Missing compact-layout landmarks");
+    const serviceBounds = service.getBoundingClientRect();
+    const headingBounds = serviceHeading.getBoundingClientRect();
+    return {
+      serviceLeadIn: headingBounds.top - serviceBounds.top,
+      footerColumns: getComputedStyle(footerLinks).gridTemplateColumns.split(" ").length,
+    };
+  });
+
+  expect(layout.serviceLeadIn).toBeLessThan(65);
+  expect(layout.footerColumns).toBe(2);
+});
+
 test("the complete mobile experience remains alive with the iPhone motion setting enabled", async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
   try {
