@@ -17,9 +17,3 @@ tsconfig.tsbuildinfo
 playwright.config.ts
 playwright.cross-browser.config.ts
 vitest.config.ts
-public/videos/hsdj-flow-cuts/
-public/videos/flow-dance-floor-test-01.mp4
-public/videos/flow-dance-floor-test-02.mp4
-public/videos/hsdj-hero-montage-master-v1.mp4
-public/videos/hsdj-sasquatch-dance-source-v1.mp4
-public/videos/hsdj-sasquatch-dance-clean-source-v1.mp4
