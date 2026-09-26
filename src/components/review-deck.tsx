@@ -35,7 +35,7 @@ export function ReviewDeck({ reviews }: Props) {
       : "";
 
   useEffect(() => {
-    if (paused || userSelected || dragLevel !== null || reviews.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (paused || userSelected || dragLevel !== null || reviews.length < 2) return;
     const timer = window.setInterval(() => setActive((current) => (current + 1) % reviews.length), 5600);
     return () => window.clearInterval(timer);
   }, [dragLevel, paused, reviews.length, userSelected]);

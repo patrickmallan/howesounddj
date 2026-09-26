@@ -15,15 +15,22 @@ export function AmbientDanceMontage({ fingerprintClassName, logoClassName }: Amb
     const video = videoRef.current;
     if (!video) return;
 
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const source = video.querySelector("source");
+    const isVisible = () => {
+      const bounds = video.getBoundingClientRect();
+      return bounds.bottom > 0 && bounds.top < window.innerHeight && !document.hidden;
+    };
+    const playIfVisible = () => {
+      if (source?.getAttribute("src") && isVisible()) void video.play().catch(() => undefined);
+    };
     const prepare = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
         video.poster = "/images/home/hsdj-hero-montage-poster-v1.jpg";
-        if (!reducedMotion.matches && source) {
+        if (source) {
           source.src = "/videos/hsdj-hero-montage-web-v1.mp4";
           video.load();
+          playIfVisible();
         }
         prepare.disconnect();
       },
@@ -33,8 +40,8 @@ export function AmbientDanceMontage({ fingerprintClassName, logoClassName }: Amb
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !reducedMotion.matches && source?.src) {
-          void video.play().catch(() => undefined);
+        if (entry.isIntersecting && source?.src) {
+          playIfVisible();
         } else {
           video.pause();
         }
@@ -43,9 +50,13 @@ export function AmbientDanceMontage({ fingerprintClassName, logoClassName }: Amb
     );
 
     observer.observe(video);
+    video.addEventListener("canplay", playIfVisible);
+    document.addEventListener("visibilitychange", playIfVisible);
     return () => {
       prepare.disconnect();
       observer.disconnect();
+      video.removeEventListener("canplay", playIfVisible);
+      document.removeEventListener("visibilitychange", playIfVisible);
     };
   }, []);
 

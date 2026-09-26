@@ -229,8 +229,18 @@ export function NightMixFader() {
       </div>
 
       <div className={styles.controlSurface}>
-        <p className={styles.instruction}>Move through the night <span className={styles.desktopInstruction}>The job changes with the room.</span><span className={styles.mobileInstruction}>Slide or tap a moment to change the scene above.</span></p>
-        <p className={styles.mobileNowPlaying} aria-live="polite"><span>Now playing</span><b>{stage.title}</b><strong>{stage.word}</strong></p>
+        <p className={styles.instruction}>Move through the night <span className={styles.desktopInstruction}>The job changes with the room.</span><span className={styles.mobileInstruction}>Slide or tap a moment. The preview changes as you move.</span></p>
+        <div className={styles.mobileNowPlaying} data-testid="night-mobile-preview" aria-live="polite">
+          <Image
+            key={stage.image}
+            src={stage.image}
+            alt=""
+            fill
+            sizes="(max-width: 700px) 100vw, 60vw"
+            className={styles.mobilePreviewImage}
+          />
+          <span>Now playing</span><b>{stage.title}</b><strong>{stage.word}</strong>
+        </div>
         <div className={styles.fader}>
           <div className={styles.rail} aria-hidden="true" />
           <Image className={styles.cap} src="/images/hsdj-redesign/controls/faders/crossfader-cap.png" alt="" width={116} height={66} />

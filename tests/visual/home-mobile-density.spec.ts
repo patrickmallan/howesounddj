@@ -131,6 +131,52 @@ test("the mobile graphic equalizer stays live when reduced motion is enabled", a
   }
 });
 
+test("the crossfader keeps its changing scene visible beside the mobile control", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 650 });
+  await page.goto("/");
+  const fader = page.getByRole("slider", { name: "Explore how the music changes through the wedding night" });
+  const preview = page.getByTestId("night-mobile-preview");
+  await fader.scrollIntoViewIfNeeded();
+
+  await expect(fader).toBeVisible();
+  await expect(preview).toBeVisible();
+  await fader.fill("4");
+  await expect(preview.getByText("Open floor", { exact: true })).toBeVisible();
+  await expect(preview.getByText("NOW WE GO", { exact: true })).toBeVisible();
+
+  const geometry = await page.evaluate(() => {
+    const control = document.querySelector('[aria-label="Explore how the music changes through the wedding night"]')?.getBoundingClientRect();
+    const feedback = document.querySelector('[data-testid="night-mobile-preview"]')?.getBoundingClientRect();
+    if (!control || !feedback) throw new Error("Missing crossfader feedback geometry");
+    return { controlTop: control.top, feedbackBottom: feedback.bottom, feedbackTop: feedback.top };
+  });
+  expect(geometry.controlTop - geometry.feedbackBottom).toBeLessThan(20);
+  expect(geometry.feedbackTop).toBeGreaterThanOrEqual(-1);
+});
+
+test("the complete mobile experience remains alive with the iPhone motion setting enabled", async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
+  try {
+    const page = await context.newPage();
+    await page.goto(`${process.env.HSDJ_TEST_BASE_URL ?? "http://127.0.0.1:3000"}/`);
+
+    const montage = page.locator('[data-testid="home-video-proof-inner"] video');
+    await montage.scrollIntoViewIfNeeded();
+    await expect.poll(() => montage.evaluate((video: HTMLVideoElement) => video.currentTime)).toBeGreaterThan(.1);
+
+    const reviewFader = page.getByRole("slider", { name: "Choose a customer review" });
+    await reviewFader.scrollIntoViewIfNeeded();
+    const firstReview = await reviewFader.getAttribute("aria-valuenow");
+    await expect.poll(() => reviewFader.getAttribute("aria-valuenow"), { timeout: 7_000 }).not.toBe(firstReview);
+
+    const finale = page.getByTestId("home-finale-section");
+    await finale.scrollIntoViewIfNeeded();
+    await expect.poll(() => finale.evaluate((element) => element.getAnimations({ subtree: true }).length)).toBeGreaterThan(0);
+  } finally {
+    await context.close();
+  }
+});
+
 test("review collage waits for its section and appears when approached", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   const collageRequests: string[] = [];

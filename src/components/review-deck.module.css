@@ -103,8 +103,3 @@
   .trackList button { min-height: 44px; padding: .35rem .2rem; grid-template-columns: 1fr; align-content: center; gap: .18rem; }
   .trackList button b { font-size: .52rem; white-space: normal; overflow-wrap: anywhere; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .display blockquote p { animation: none; }
-  .faderCap, .meterLeds i { transition: none; }
-}

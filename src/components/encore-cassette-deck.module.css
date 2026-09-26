@@ -168,7 +168,3 @@
   .volume img { width: 40px; height: 40px; }
   .lowerStrip p { font-size: .65rem; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .ready i, .transport i, .deckAction::after, .reel, .ctaButton::before, .ctaButton i { animation: none; }
-}

@@ -35,10 +35,6 @@
   76%, 100% { opacity: 1; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .line { animation: none; }
-}
-
 @media (max-width: 700px) {
   .line { background-image: url('/images/hsdj-redesign/hero/home-headline-complete-mobile-optimized.webp'); }
 }
