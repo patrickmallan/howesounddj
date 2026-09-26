@@ -85,12 +85,12 @@
   .deck { height: auto; min-height: 0; padding: 1.25rem .65rem 1rem; gap: .75rem; box-shadow: 9px 9px 0 #0847ff, -6px -6px 0 #ef2727; }
   .mobileGuide { gap: .18rem .3rem; padding: .1rem .2rem .5rem; border-bottom-width: 2px; font-size: .68rem; }
   .mobileGuide span { width: 100%; margin-left: 0; font-size: .57rem; }
-  .reviewStage { min-height: 218px; grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr); gap: .25rem; }
-  .reviewCard { padding: .65rem .45rem .7rem; justify-content: flex-start; }
+  .reviewStage { min-height: 218px; grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr); align-items: start; gap: .25rem; }
+  .reviewCard { height: fit-content; min-height: 0; padding: .65rem .45rem .7rem; align-self: start; justify-content: flex-start; }
   .channelLabel { margin-bottom: .55rem; font-size: .48rem; }
   .reviewCard p { font-size: clamp(.95rem, 4.25vw, 1.15rem); line-height: 1; overflow-wrap: anywhere; }
   .reviewCard cite { margin-top: .75rem; padding: .42rem .32rem; border-left-width: 3px; font-size: .45rem; line-height: 1.18; letter-spacing: .045em; overflow-wrap: anywhere; }
-  .channelStrip { height: 206px; min-height: 0; margin-block: auto; padding: .4rem .2rem; grid-template-columns: 17px 1fr; gap: .12rem; }
+  .channelStrip { height: 206px; min-height: 0; margin-block: 0; padding: .4rem .2rem; grid-template-columns: 17px 1fr; gap: .12rem; }
   .meter, .upFader { min-height: 0; }
   .meter { grid-template-columns: 1fr; gap: .2rem; padding-inline: .1rem; }
   .meterScale { display: none; }
