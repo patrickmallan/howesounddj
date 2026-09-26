@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>HSDJ Controller-Native Interface Primitives V1</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="prototype.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to prototype</a>
+
+    <header class="faceplate prototype-header">
+      <div class="maker-mark">
+        <span>HOWE SOUND DJ</span>
+        <small>CONTROLLER-NATIVE INTERFACE TEST / RESEARCH ONLY</small>
+      </div>
+      <div class="status-readout" aria-label="Prototype status">
+        <span class="status-led" aria-hidden="true"></span>
+        PRODUCTION LOCKED
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="primitive primitive-pads" id="primitive-01" aria-labelledby="title-01">
+        <div class="primitive-id" aria-hidden="true">01</div>
+        <div class="control-caption">
+          <p>PERFORMANCE PAD / NAVIGATION</p>
+          <h1 id="title-01">THE NAV IS THE INSTRUMENT.</h1>
+        </div>
+
+        <nav class="pad-bank" aria-label="Prototype navigation">
+          <a class="performance-pad pad-cyan is-active" href="#primitive-02" aria-current="page">
+            <span class="pad-function">HOT CUE</span>
+            <strong>WEDDINGS</strong>
+            <span class="pad-route">01 / THE NIGHT</span>
+          </a>
+          <a class="performance-pad pad-magenta" href="#primitive-03">
+            <span class="pad-function">BEAT LOOP</span>
+            <strong>THE APPROACH</strong>
+            <span class="pad-route">02 / THE WORK</span>
+          </a>
+          <a class="performance-pad pad-yellow" href="#primitive-04">
+            <span class="pad-function">SLIP LOOP</span>
+            <strong>REAL NIGHTS</strong>
+            <span class="pad-route">03 / THE PROOF</span>
+          </a>
+          <span class="performance-pad pad-disabled" aria-disabled="true">
+            <span class="pad-function">SAMPLER</span>
+            <strong>JOURNAL</strong>
+            <span class="pad-route">DISABLED STATE</span>
+          </span>
+        </nav>
+
+        <p class="interaction-note">TAB THROUGH / PRESS / FOLLOW THE LIT ROUTE</p>
+      </section>
+
+      <section class="primitive primitive-cue" id="primitive-02" aria-labelledby="title-02">
+        <div class="cue-copy">
+          <p class="eyebrow">02 / PRIMARY ACTION</p>
+          <h2 id="title-02">THE ONE CONTROL<br />THAT MATTERS.</h2>
+          <p class="cue-support">Your date first. Then we find out what the night could become.</p>
+        </div>
+
+        <div class="cue-cluster">
+          <span class="hardware-label">CUE</span>
+          <button class="cue-button" type="button" data-state="idle" aria-describedby="cue-instruction cue-status">
+            <span class="cue-light" aria-hidden="true"></span>
+            <span class="cue-button-label">CHECK YOUR DATE</span>
+          </button>
+          <span class="cue-legend">MASTER ACTION / PRESSABLE / KEYBOARD READY</span>
+          <span id="cue-instruction" class="sr-only">Activate to preview loading and success states.</span>
+          <span id="cue-status" class="sr-only" role="status" aria-live="polite"></span>
+        </div>
+      </section>
+
+      <section class="primitive primitive-rotary" id="primitive-03" aria-labelledby="title-03">
+        <div class="primitive-id" aria-hidden="true">03</div>
+        <div class="rotary-heading">
+          <p class="eyebrow">ROTARY INFORMATION MARKERS</p>
+          <h2 id="title-03">ONE NIGHT.<br />THREE LIVE DECISIONS.</h2>
+        </div>
+
+        <ol class="rotary-sequence">
+          <li>
+            <span class="rotary rotary-a" aria-hidden="true"><i></i></span>
+            <div><b>READ THE ROOM</b><p>The plan gives us direction. The people tell us where to go next.</p></div>
+          </li>
+          <li>
+            <span class="rotary rotary-b" aria-hidden="true"><i></i></span>
+            <div><b>BUILD THE PRESSURE</b><p>Not every favourite belongs at the same moment. Timing makes it land.</p></div>
+          </li>
+          <li>
+            <span class="rotary rotary-c" aria-hidden="true"><i></i></span>
+            <div><b>LET IT BREAK OPEN</b><p>When the room is ready, the night stops feeling planned.</p></div>
+          </li>
+        </ol>
+        <p class="semantic-note">POSITION COMMUNICATES SEQUENCE — THESE ARE MARKERS, NOT EDITABLE DIALS.</p>
+      </section>
+
+      <section class="primitive primitive-vu" id="primitive-04" aria-labelledby="title-04">
+        <div class="vu-copy">
+          <p class="eyebrow">04 / STEREO VU SYSTEM</p>
+          <h2 id="title-04">A ROOM<br />IN MOTION.</h2>
+          <p>Fast attack. Slower decay. Two channels moving together, never cloned. Red is earned, not wallpaper.</p>
+          <span class="motion-state">SIMULATED INTERFACE ENERGY / NO AUDIO INPUT</span>
+        </div>
+
+        <div class="vu-hardware" aria-hidden="true">
+          <div class="vu-scale"><span>+12</span><span>+6</span><span>0</span><span>-6</span><span>-12</span><span>-24</span><span>-∞</span></div>
+          <div class="vu-channel" data-channel="left"></div>
+          <div class="vu-channel" data-channel="right"></div>
+          <div class="vu-channel-labels"><span>L</span><span>R</span></div>
+        </div>
+      </section>
+
+      <section class="primitive primitive-fader" id="primitive-05" aria-labelledby="title-05">
+        <div class="fader-architecture" aria-hidden="true">
+          <span class="fader-tick fader-tick-1"></span>
+          <span class="fader-tick fader-tick-2"></span>
+          <span class="fader-tick fader-tick-3"></span>
+          <span class="fader-tick fader-tick-4"></span>
+          <span class="fader-tick fader-tick-5"></span>
+          <span class="fader-cap"></span>
+        </div>
+        <div class="fader-word fader-word-a">PLANNED</div>
+        <article class="fader-copy">
+          <p class="eyebrow">05 / CHANNEL-RAIL ARCHITECTURE</p>
+          <h2 id="title-05">THE LINE ISN’T A BORDER.<br />IT SHOWS WHERE YOU ARE.</h2>
+          <p>The rail divides the promise from the proof. Its cap locates progress through this research prototype.</p>
+        </article>
+        <div class="fader-word fader-word-b">LIVE</div>
+      </section>
+
+      <section class="primitive primitive-backgrounds" id="primitive-06" aria-labelledby="title-06">
+        <header class="background-heading">
+          <p class="eyebrow">06 / PHOTOGRAPHIC CONTROLLER BACKGROUND SYSTEM</p>
+          <h2 id="title-06">THE DECK BECOMES<br />THE ENVIRONMENT.</h2>
+          <p>Three page-fragment studies. No controller wallpaper. No image trapped inside a polite card.</p>
+        </header>
+
+        <article class="fragment fragment-substrate">
+          <div class="fragment-copy">
+            <span class="fragment-code">A / MIXER SUBSTRATE</span>
+            <h3>MUSIC WITH<br />A POINT OF VIEW.</h3>
+            <p>Deep hardware crop becomes the reading field. Copy occupies the negative space created by the machine.</p>
+          </div>
+        </article>
+
+        <article class="fragment fragment-intrusion">
+          <div class="intrusion-type" aria-hidden="true">FULL<br />SEND</div>
+          <div class="fragment-copy">
+            <span class="fragment-code">B / HARDWARE INTRUSION</span>
+            <h3>THE CONTROL<br />EXCEEDS THE PAGE.</h3>
+            <p>One physical system breaks the frame and replaces the expected section edge.</p>
+          </div>
+        </article>
+
+        <article class="fragment fragment-collision">
+          <img src="../../public/images/brand-editorial/hsdj-hero-crowd-behind-mountains-editorial.webp" alt="Patrick DJing with his hand raised and a wedding crowd behind him" />
+          <div class="collision-hardware" aria-hidden="true"></div>
+          <div class="fragment-copy">
+            <span class="fragment-code">C / HUMAN × MACHINE</span>
+            <h3>REAL PEOPLE.<br />LIVE JUDGMENT.</h3>
+            <p>Patrick carries the truth. Hardware supplies pressure, scale and interruption—never a fake shared scene.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="faceplate prototype-footer">
+      <span>SIX PRIMITIVES / THREE BACKGROUND FRAGMENTS / ZERO PRODUCTION MUTATIONS</span>
+      <span>PATRICK_CREATIVE_APPROVAL: PENDING</span>
+    </footer>
+  </body>
+</html>

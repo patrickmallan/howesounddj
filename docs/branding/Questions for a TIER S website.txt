@@ -1,0 +1,331 @@
+The governing rule should be simple: every section must earn its place. It should communicate one useful idea, strengthen the Howe Sound DJ identity, and move the right couple closer to checking their date or booking a consult.
+
+## Questions to ask of every section
+
+### 1. What is this section’s single job?
+
+Complete this sentence:
+
+> “After seeing this section, the visitor should understand, feel, or do ______.”
+
+If the answer contains several unrelated goals, the section needs to be divided or simplified.
+
+### 2. What visitor question does it answer?
+
+Examples:
+
+- Will this DJ understand our music?
+- Can he handle the ceremony and speeches properly?
+- Will our dance floor actually feel alive?
+- Does he know our venue and the Sea-to-Sky area?
+- What makes him different from another wedding DJ?
+- What happens after we inquire?
+- Can we trust him with an important night?
+
+If a section answers no meaningful question, it is likely decoration or filler.
+
+### 3. Does it bring the visitor closer to booking?
+
+A section should accomplish at least one of these:
+
+- Create desire.
+- Establish trust.
+- Explain the service.
+- Demonstrate expertise.
+- Remove an objection.
+- Provide proof.
+- Make the next step feel easier.
+
+A section that does none of these should be reworked, combined with another section, or removed.
+
+### 4. Could another DJ company say the same thing?
+
+This is the fastest test for generic copy.
+
+Statements such as “We create unforgettable memories,” “Your day, your way,” or “Professional service from start to finish” could belong to almost anyone.
+
+Howe Sound DJ copy should sound connected to:
+
+- Patrick’s actual personality.
+- Live mixing and reading the room.
+- Wide-ranging musical knowledge.
+- Squamish and Sea-to-Sky weddings.
+- Proper sound and production experience.
+- The difference between playing songs and building a dance floor.
+- Couples who care about both their music and their guests.
+
+### 5. Is it written like a DJ company—or like marketing software?
+
+Read it aloud. Remove anything Patrick would never naturally say to a couple.
+
+Watch for:
+
+- Abstract language without a concrete meaning.
+- Too many references to “flow,” “pacing,” “journeys,” “chapters” or “energy arcs.”
+- Sentences that sound profound but communicate very little.
+- Repeated promises using slightly different wording.
+- Overly polished phrases that lack personality.
+- Claims without an example, explanation or proof.
+
+The language should be confident, musical, direct and human.
+
+### 6. Is the strongest idea immediately visible?
+
+A visitor should not need to read a paragraph to discover the point.
+
+Check:
+
+- Does the headline communicate something meaningful?
+- Can it be understood without the supporting paragraph?
+- Is the most valuable line visually dominant?
+- Can someone skim the section and still understand it?
+- Are important words being broken across lines?
+- Is the supporting text short enough to invite reading?
+
+### 7. Does the artwork reinforce the message?
+
+DJ equipment should not merely decorate every section. Its purpose should be intentional.
+
+Ask:
+
+- Does the selected equipment relate to the subject?
+- Does it help frame the text or compete with it?
+- Is the text still effortless to read?
+- Is this artwork meaningfully different from the previous section?
+- Are we repeating the same mixer, card treatment or composition too often?
+- Does the visual feel like Howe Sound DJ, or like a generic nightclub template?
+
+The homepage establishes the creative vocabulary. Interior pages should speak that language without recreating the homepage composition.
+
+### 8. Is there enough proof?
+
+Important promises should be supported by something tangible:
+
+- A real review.
+- A named venue.
+- A specific planning detail.
+- Patrick’s audio-production background.
+- A photograph from an actual wedding.
+- A clear example of how he handles a situation.
+- A concrete service inclusion.
+
+Instead of saying “excellent communication,” show what that means: fast replies, clear next steps and no wondering who is handling what.
+
+### 9. Is the next step appropriate?
+
+Not every section needs a large booking button, but the visitor should never reach a dead end.
+
+Possible next steps include:
+
+- Check your date.
+- Book a consult.
+- See what is included.
+- Read relevant reviews.
+- Explore a specific venue.
+- Understand packages.
+- Hear more about Patrick.
+
+Links should feel like the natural continuation of the section—not SEO links dropped into a paragraph.
+
+### 10. Does it work on a phone?
+
+Every section should be judged at mobile width, not merely checked after the desktop design is finished.
+
+Verify:
+
+- Headlines do not dominate the entire screen.
+- Words are not chopped.
+- Text does not collide with equipment.
+- The reading order is obvious.
+- Buttons remain easy to press.
+- Decorative elements do not push the useful content too far down.
+- The visitor can understand the section without excessive scrolling.
+
+## Themes the entire website should reinforce
+
+The site should repeatedly communicate these ideas without repeating identical sentences:
+
+- Your music genuinely leads the night.
+- Patrick mixes for the people in the room.
+- Musical range is a strength, not an unfocused playlist.
+- Strong preparation makes the wedding easier to enjoy.
+- Professional audio matters during vows, speeches and dancing.
+- Squamish knowledge is practical—not merely a local marketing claim.
+- A wedding DJ can be polished without feeling formal or generic.
+- The dance floor is built live, not prescribed in advance.
+- Patrick is someone couples can talk to and trust.
+- The experience is personal, skilled and distinctly different.
+
+## Examine every page as a complete journey
+
+Individual sections can be good while the overall page still fails. Each page should have a deliberate sequence:
+
+1. **Orientation:** What page am I on, and is it relevant to me?
+2. **Desire:** Why should I want this experience?
+3. **Difference:** Why Howe Sound DJ?
+4. **Understanding:** What do I receive and how does it work?
+5. **Proof:** Why should I believe these claims?
+6. **Objection removal:** What might stop me from inquiring?
+7. **Action:** What is the clearest next step?
+
+Not every page requires seven separate sections, but the page should cover the necessary stages without repeating itself.
+
+## Practical review tests
+
+Use these tests during every audit:
+
+- **Five-second test:** After five seconds, can someone explain the section’s purpose?
+- **Skim test:** Do the headlines alone tell a coherent story?
+- **Delete test:** If the section disappeared, would the sales journey become weaker? If not, remove it.
+- **Competitor-swap test:** Could another DJ replace the logo and keep all the words?
+- **Read-aloud test:** Does it sound like Patrick speaking naturally?
+- **Proof test:** What makes each important claim believable?
+- **Objection test:** Which concern does this section resolve?
+- **Visual competition test:** Are the artwork and words supporting each other?
+- **Mobile-thumb test:** Can the section be understood and acted upon comfortably on a phone?
+- **Repetition test:** Has this idea already been communicated more effectively elsewhere?
+
+## Final keep, rework or remove decision
+
+Every section should receive one outcome:
+
+- **Keep:** It has one clear purpose, communicates it well and strengthens the booking journey.
+- **Rework:** The purpose is valuable, but the writing, presentation, proof or next step is weak.
+- **Combine:** It repeats another section and would be stronger as part of it.
+- **Remove:** It provides no meaningful value or exists mainly to fill space.
+
+This framework should become the editorial standard for the whole website. It prevents us from asking only, “Does this look impressive?” and forces the more important question: “Does this make the right couple understand, trust and want Howe Sound DJ?”
+
+This document should become the website’s editorial constitution—not copy that appears on the site, and not merely a reference we occasionally remember.
+
+Going forward, we should use it in five ways.
+
+## 1. Before creating or redesigning a page
+
+Every page should begin with a short page brief:
+
+- Who is this page for?
+- What brought them here?
+- What is their main question or concern?
+- What should they understand by the end?
+- What is the page’s primary conversion action?
+- What proof will make that action feel safe?
+- What information belongs elsewhere?
+
+This prevents us from filling pages with visually impressive sections that lack a clear business purpose.
+
+## 2. Before creating every section
+
+Each proposed section should receive a short “section contract”:
+
+- **Single job:** After seeing this, the visitor should understand, feel or do what?
+- **Visitor question:** What real question does it answer?
+- **Business contribution:** Does it create desire, trust, understanding, proof or action?
+- **Distinctive message:** Why could this only belong to Howe Sound DJ?
+- **Evidence:** What makes the claim believable?
+- **Next step:** Where should the visitor naturally go afterward?
+- **Visual role:** What should the design help communicate?
+
+If we cannot answer those questions clearly, we should not design the section yet.
+
+## 3. As the acceptance test for completed work
+
+A section is not finished because it looks polished. It is finished only when it passes four gates:
+
+### Strategic gate
+
+- It has one clear mission.
+- It belongs on this particular page.
+- It contributes to the booking journey.
+- Removing it would make the page weaker.
+
+### Writing gate
+
+- Patrick could comfortably say it aloud.
+- It avoids generic wedding-industry language.
+- It does not overuse “flow,” “pacing,” “journey,” “energy arc” or similar filler.
+- The headline communicates something meaningful on its own.
+- The claim is concrete and preferably supported by proof.
+
+### Design gate
+
+- The visual treatment supports the message.
+- DJ equipment is used intentionally rather than automatically.
+- The section is visually distinct from its neighbours.
+- Text remains more important than decoration.
+- Nothing is clipped, overcrowded or unnecessarily difficult to read.
+
+### Conversion gate
+
+- The visitor understands what to do next.
+- Links are contextually useful rather than inserted for SEO.
+- The section removes friction instead of adding more decisions.
+- The next action matches the visitor’s readiness.
+
+## 4. During whole-page reviews
+
+We should audit pages in two passes.
+
+The first pass examines only the headlines. If the headlines do not tell a clear, persuasive story by themselves, the page structure is not ready.
+
+The second pass examines the complete visitor journey:
+
+1. Where am I?
+2. Is this relevant to my wedding?
+3. Why should I want this?
+4. Why Patrick?
+5. What exactly am I receiving?
+6. What proves he can deliver it?
+7. What concern might still stop me?
+8. What should I do next?
+
+This is important because ten individually attractive sections can still produce a confusing or repetitive page.
+
+## 5. During sitewide audits
+
+We should maintain a simple decision record for every section:
+
+- Keep
+- Rework
+- Combine
+- Remove
+
+Each decision should include a one-sentence reason. This gives us a strategic map of the website and prevents removed filler from quietly returning in another form.
+
+## How it should change our actual workflow
+
+For future website work, the order should be:
+
+1. Define the page’s audience, mission and primary action.
+2. Inventory its existing sections.
+3. assign each section a single job.
+4. Remove or combine sections that repeat one another.
+5. Rewrite the content in Patrick’s natural voice.
+6. Match each section with purposeful imagery and equipment.
+7. Build the desktop and mobile presentation together.
+8. Perform the skim, read-aloud, proof, competitor-swap and delete tests.
+9. Verify that the page ends with a logical conversion path.
+10. Review the finished page against the document before calling it complete.
+
+## What the document should not cause
+
+It should not result in every page using the same formula, artwork or number of sections. The questions stay consistent; the answers should change according to the page.
+
+For example:
+
+- The Weddings page should establish fit, explain the experience and reduce uncertainty.
+- The Reviews page should primarily provide proof.
+- The About page should create personal connection and professional confidence.
+- The Venues pages should demonstrate useful local knowledge.
+- The Packages page should make comparison and decision-making easier.
+- The Contact page should reduce friction and make taking action feel straightforward.
+
+## Making it persistent
+
+At the moment, the document exists in the branding folder, but future development work will not automatically follow it. The strongest next step is to convert its essential rules into:
+
+- A persistent project rule that every future website task must follow.
+- A reusable section-audit template.
+- A short Howe Sound DJ voice and banned-language checklist.
+
+The original document would remain the full source of truth, while those smaller tools would make it operational during everyday development.

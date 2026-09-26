@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HSDJ V2 Isolation Proof — Rejected</title>
+  <style>
+    :root { color-scheme:dark; --yellow:#ffd21c; --paper:#efede6; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#0d0d0c; color:var(--paper); font-family:Arial,Helvetica,sans-serif; }
+    header { min-height:62vh; padding:6vw; display:flex; flex-direction:column; justify-content:end; border-bottom:1px solid #3c3c39; }
+    p { max-width:56rem; font-size:1.15rem; line-height:1.5; }
+    .signal { color:var(--yellow); font-size:.75rem; font-weight:800; letter-spacing:.2em; }
+    .rejected { position:sticky; top:0; z-index:10; padding:1rem 6vw; background:#ff321f; color:#080808; font-weight:900; letter-spacing:.12em; text-align:center; }
+    h1 { margin:.5rem 0 1rem; font-size:clamp(4rem,10vw,10rem); line-height:.82; letter-spacing:-.075em; }
+    main { display:grid; grid-template-columns:1.2fr .8fr; }
+    figure { margin:0; min-height:82vh; padding:5vw; display:flex; flex-direction:column; justify-content:space-between; border-right:1px solid #3c3c39; border-bottom:1px solid #3c3c39; overflow:hidden; }
+    figure:nth-child(2),figure:nth-child(3) { background:#1629dc; }
+    figure:nth-child(4) { background:var(--yellow); color:#111; }
+    img { width:min(100%,760px); height:58vh; object-fit:contain; object-position:center; filter:drop-shadow(0 2rem 1.4rem rgba(0,0,0,.5)); }
+    figcaption { font-size:.75rem; font-weight:800; letter-spacing:.16em; }
+    .audit { padding:6vw; min-height:45vh; }
+    .audit strong { color:var(--yellow); }
+    @media(max-width:700px){ main{display:block} figure{min-height:72vh;border-right:0} img{height:52vh} }
+  </style>
+</head>
+<body>
+  <div class="rejected">REJECTED — WRONG CAMERA AXIS — DO NOT USE</div>
+  <header>
+    <span class="signal">FAILED PROOF / RETAINED AS EVIDENCE</span>
+    <h1>WRONG<br>VIEWPOINT.</h1>
+    <p>These masks are unusable for mixer-native composition. The objects were photographed at conflicting angles and cannot sit on a directly overhead mixer faceplate.</p>
+  </header>
+  <main>
+    <figure><img src="assets/macro-filter-knob.png" alt="Isolated photographic DJ filter knob"><figcaption>FILTER KNOB / 4K–7K SOURCE / CONTOUR MASK</figcaption></figure>
+    <figure><img src="assets/macro-cue-button.png" alt="Isolated photographic CUE button"><figcaption>CUE / 4K–7K SOURCE / CONTOUR MASK</figcaption></figure>
+    <figure><img src="assets/macro-green-pad.png" alt="Isolated photographic green performance pad"><figcaption>GREEN PAD / 4K–7K SOURCE / CONTOUR MASK</figcaption></figure>
+    <figure><img src="assets/macro-fader-cap.png" alt="Isolated photographic fader cap"><figcaption>FADER CAP / 4K–7K SOURCE / CONTOUR MASK</figcaption></figure>
+  </main>
+  <section class="audit">
+    <span class="signal">REPLACEMENT ACCEPTANCE GATE</span>
+    <p><strong>Directly overhead only:</strong> every source must come from a top-down mixer/controller master with a parallel camera plane. <strong>Required:</strong> true transparent contour, no surrounding panel, no upscaling, no clipped bezel, no perspective correction, and a 1:1 inspection on both black and light backgrounds.</p>
+  </section>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="1000" viewBox="0 0 1440 1000" role="img" aria-label="Static Contact composition B at desktop size: conversation first, date check on a separate line">
+  <defs><clipPath id="photo"><path d="M76 182 L502 139 L554 693 L76 716 Z"/></clipPath></defs>
+  <rect width="1440" height="1000" fill="#151515"/>
+  <rect width="1440" height="117" fill="#090b0c"/>
+  <text x="87" y="67" fill="#f2dfd9" font-size="25" font-family="Arial" font-weight="700" letter-spacing="3">HOWE SOUND WEDDING DJ</text>
+  <text x="1070" y="66" fill="#bed1d2" font-size="17" font-family="Arial">WEDDINGS   ABOUT   CONTACT</text>
+  <path d="M0 117 H1440" stroke="#f1d236" stroke-width="3"/>
+  <image xlink:href="../../public/images/hsdj-redesign/wedding-story/patrick-live-light-trails.webp" x="76" y="139" width="478" height="577" preserveAspectRatio="xMidYMid slice" clip-path="url(#photo)"/>
+  <text x="617" y="202" fill="#f1d236" font-size="17" font-family="Arial" font-weight="700" letter-spacing="2">PATRICK  /  HOWE SOUND WEDDING DJ</text>
+  <text x="613" y="327" fill="#f7f1e9" font-size="60" font-family="Arial" font-weight="800">Tell me what you</text>
+  <text x="613" y="396" fill="#f7f1e9" font-size="60" font-family="Arial" font-weight="800">know so far.</text>
+  <text x="618" y="450" fill="#cfd2ce" font-size="25" font-family="Arial">Your date, venue, music, or just a question.</text>
+  <text x="618" y="486" fill="#cfd2ce" font-size="25" font-family="Arial">We can start there.</text>
+  <rect x="618" y="546" width="422" height="82" fill="#f1d236"/>
+  <text x="671" y="599" fill="#141414" font-size="25" font-family="Arial" font-weight="800">BOOK A CONSULT  ↗</text>
+  <path d="M76 757 H1364" stroke="#626462" stroke-width="1"/>
+  <text x="85" y="813" fill="#f7f1e9" font-size="29" font-family="Arial" font-weight="700">Already have a date?</text>
+  <text x="85" y="858" fill="#c0c1bc" font-size="21" font-family="Arial">Check Patrick’s calendar before we talk.</text>
+  <text x="940" y="831" fill="#70d8e8" font-size="23" font-family="Arial" font-weight="700">CHECK AVAILABILITY  →</text>
+  <text x="85" y="925" fill="#8d9692" font-size="19" font-family="Arial">Rather write? Send a message.</text>
+  <text x="76" y="978" fill="#6d7775" font-size="15" font-family="Arial">STATIC STUDY B · DESKTOP 1440 × 1000 · NOT APPROVED COPY OR UI</text>
+</svg>

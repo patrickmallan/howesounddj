@@ -1,0 +1,452 @@
+[
+  {
+    "id": "DRV-EQP-001",
+    "category": "faders",
+    "file": "cue-fader-andrew.jpg",
+    "sourceId": "SRC-EQP-002",
+    "source": "pexels-andrew-hawkes-2288355-4028924.jpg",
+    "crop": [
+      0.13,
+      0.18,
+      0.58,
+      0.7
+    ],
+    "title": "CUE / fader / brushed deck",
+    "strength": "Physical depth, wear, typography and control hierarchy",
+    "pixelCrop": {
+      "left": 780,
+      "top": 720,
+      "width": 3480,
+      "height": 2800
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/faders/cue-fader-andrew.jpg",
+    "designUse": "Progression / pacing / comparison / directional movement",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-002",
+    "category": "knobs",
+    "file": "eq-grid-anna.jpg",
+    "sourceId": "SRC-EQP-003",
+    "source": "pexels-anna-pou-8132448.jpg",
+    "crop": [
+      0.08,
+      0.24,
+      0.84,
+      0.6
+    ],
+    "title": "Analogue knob field",
+    "strength": "Colour-coded rotary rhythm and imperfect alignment",
+    "pixelCrop": {
+      "left": 320,
+      "top": 1440,
+      "width": 3360,
+      "height": 3600
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/knobs/eq-grid-anna.jpg",
+    "designUse": "Local focus / counter-rhythm / controlled intensity",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-003",
+    "category": "faders",
+    "file": "sound-colour-fader-boris.jpg",
+    "sourceId": "SRC-EQP-004",
+    "source": "pexels-borishamer-16645406.jpg",
+    "crop": [
+      0.34,
+      0.14,
+      0.62,
+      0.68
+    ],
+    "title": "Sound Colour FX strip",
+    "strength": "Labels, rail, cap and shallow hardware shadows",
+    "pixelCrop": {
+      "left": 2285,
+      "top": 627,
+      "width": 4166,
+      "height": 3046
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/faders/sound-colour-fader-boris.jpg",
+    "designUse": "Progression / pacing / comparison / directional movement",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-004",
+    "category": "buttons",
+    "file": "cue-play-pad-jake.jpg",
+    "sourceId": "SRC-EQP-005",
+    "source": "pexels-jake-l-davies-42710276-15262989.jpg",
+    "crop": [
+      0.05,
+      0.48,
+      0.9,
+      0.41
+    ],
+    "title": "CUE / play / performance pads",
+    "strength": "Recognizable illuminated controls with club colour",
+    "pixelCrop": {
+      "left": 182,
+      "top": 2627,
+      "width": 3283,
+      "height": 2244
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/buttons/cue-play-pad-jake.jpg",
+    "designUse": "Action control / navigation trigger / sectional punctuation",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-005",
+    "category": "jog-wheels",
+    "file": "green-jog-ring-jake.jpg",
+    "sourceId": "SRC-EQP-005",
+    "source": "pexels-jake-l-davies-42710276-15262989.jpg",
+    "crop": [
+      0.08,
+      0.24,
+      0.84,
+      0.42
+    ],
+    "title": "Green jog-wheel ring",
+    "strength": "Large circular geometry and credible LED spill",
+    "pixelCrop": {
+      "left": 292,
+      "top": 1313,
+      "width": 3064,
+      "height": 2298
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/jog-wheels/green-jog-ring-jake.jpg",
+    "designUse": "Large anchor / grid break / cropped circular scale",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-006",
+    "category": "jog-wheels",
+    "file": "green-jog-denon.jpg",
+    "sourceId": "SRC-EQP-006",
+    "source": "pexels-jo-seph-2693533-17225445.jpg",
+    "crop": [
+      0.08,
+      0.34,
+      0.86,
+      0.52
+    ],
+    "title": "Denon jog-wheel macro",
+    "strength": "Bold circular anchor with real edge and surface texture",
+    "pixelCrop": {
+      "left": 358,
+      "top": 2285,
+      "width": 3853,
+      "height": 3494
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/jog-wheels/green-jog-denon.jpg",
+    "designUse": "Large anchor / grid break / cropped circular scale",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-007",
+    "category": "knobs",
+    "file": "tone-knob-julia.jpg",
+    "sourceId": "SRC-EQP-007",
+    "source": "pexels-julia-fuchs-19936537-7394229.jpg",
+    "crop": [
+      0.07,
+      0.06,
+      0.78,
+      0.79
+    ],
+    "title": "TONE rotary macro",
+    "strength": "Exceptional material, concentric form, marking and wear",
+    "pixelCrop": {
+      "left": 271,
+      "top": 233,
+      "width": 3023,
+      "height": 3062
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/knobs/tone-knob-julia.jpg",
+    "designUse": "Local focus / counter-rhythm / controlled intensity",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-008",
+    "category": "buttons",
+    "file": "load-prep-pads-kiril.jpg",
+    "sourceId": "SRC-EQP-008",
+    "source": "pexels-kiril-georgiev-3492134-11900594.jpg",
+    "crop": [
+      0.16,
+      0.15,
+      0.73,
+      0.76
+    ],
+    "title": "LOAD PREP / pad bank",
+    "strength": "Orange and white illumination with dense printed labels",
+    "pixelCrop": {
+      "left": 960,
+      "top": 600,
+      "width": 4380,
+      "height": 3040
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/buttons/load-prep-pads-kiril.jpg",
+    "designUse": "Action control / navigation trigger / sectional punctuation",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-009",
+    "category": "buttons",
+    "file": "tactile-pad-grid-lynde.jpg",
+    "sourceId": "SRC-EQP-009",
+    "source": "pexels-lynde-2123295-4693261.jpg",
+    "crop": [
+      0.03,
+      0.19,
+      0.94,
+      0.73
+    ],
+    "title": "Tactile performance pad grid",
+    "strength": "Finger-scale controls, coloured caps and deep bezels",
+    "pixelCrop": {
+      "left": 180,
+      "top": 760,
+      "width": 5640,
+      "height": 2920
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/buttons/tactile-pad-grid-lynde.jpg",
+    "designUse": "Action control / navigation trigger / sectional punctuation",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-010",
+    "category": "meters",
+    "file": "cue-on-led-rail-pixabay.jpg",
+    "sourceId": "SRC-EQP-010",
+    "source": "pexels-pixabay-164746.jpg",
+    "crop": [
+      0.04,
+      0.24,
+      0.92,
+      0.66
+    ],
+    "title": "CUE / ON / channel indicators",
+    "strength": "Warm physical buttons, meter lights and marked fader rails",
+    "pixelCrop": {
+      "left": 147,
+      "top": 588,
+      "width": 3384,
+      "height": 1618
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/meters/cue-on-led-rail-pixabay.jpg",
+    "designUse": "Signal / tempo / motion / transition language",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-011",
+    "category": "labels",
+    "file": "labelled-pad-bank-quirva.jpg",
+    "sourceId": "SRC-EQP-011",
+    "source": "pexels-quirva-14540963.jpg",
+    "crop": [
+      0.05,
+      0.26,
+      0.9,
+      0.53
+    ],
+    "title": "Labelled illuminated controls",
+    "strength": "Dense operator language and stage-light colour",
+    "pixelCrop": {
+      "left": 169,
+      "top": 1560,
+      "width": 3038,
+      "height": 3180
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/labels/labelled-pad-bank-quirva.jpg",
+    "designUse": "Metadata / operator language / annotated information surface",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-012",
+    "category": "buttons",
+    "file": "cue-play-pads-robert.jpg",
+    "sourceId": "SRC-EQP-012",
+    "source": "pexels-robert-dan-2759534-12467361.jpg",
+    "crop": [
+      0.06,
+      0.39,
+      0.89,
+      0.49
+    ],
+    "title": "Red pads / CUE / play",
+    "strength": "Aggressive colour and unmistakable playable hardware",
+    "pixelCrop": {
+      "left": 360,
+      "top": 1560,
+      "width": 5340,
+      "height": 1960
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/buttons/cue-play-pads-robert.jpg",
+    "designUse": "Action control / navigation trigger / sectional punctuation",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-013",
+    "category": "faders",
+    "file": "fader-bank-scott.jpg",
+    "sourceId": "SRC-EQP-013",
+    "source": "pexels-scott-platt-529822-6134554.jpg",
+    "crop": [
+      0.13,
+      0.23,
+      0.74,
+      0.67
+    ],
+    "title": "Mixing-console fader bank",
+    "strength": "Mechanical repetition, rails and irregular cap positions",
+    "pixelCrop": {
+      "left": 899,
+      "top": 1061,
+      "width": 5118,
+      "height": 3089
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/faders/fader-bank-scott.jpg",
+    "designUse": "Progression / pacing / comparison / directional movement",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-014",
+    "category": "knobs",
+    "file": "cue-low-high-tony.jpg",
+    "sourceId": "SRC-EQP-014",
+    "source": "pexels-tony-entz-6229418-30859665.jpg",
+    "crop": [
+      0.09,
+      0.16,
+      0.84,
+      0.75
+    ],
+    "title": "CUE / LOW–HI rotary",
+    "strength": "Blue light, oversized dial and tactile button depth",
+    "pixelCrop": {
+      "left": 629,
+      "top": 746,
+      "width": 5867,
+      "height": 3495
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/knobs/cue-low-high-tony.jpg",
+    "designUse": "Local focus / counter-rhythm / controlled intensity",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-015",
+    "category": "labels",
+    "file": "master-cue-jog-tstudio.jpg",
+    "sourceId": "SRC-EQP-015",
+    "source": "pexels-tstudio-34805588-14745818.jpg",
+    "crop": [
+      0.24,
+      0.08,
+      0.72,
+      0.78
+    ],
+    "title": "MASTER / CUE / jog edge",
+    "strength": "Layered controls and credible functional labelling",
+    "pixelCrop": {
+      "left": 960,
+      "top": 320,
+      "width": 2880,
+      "height": 3120
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/labels/master-cue-jog-tstudio.jpg",
+    "designUse": "Metadata / operator language / annotated information surface",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-016",
+    "category": "faders",
+    "file": "illuminated-fader-row-tstudio.jpg",
+    "sourceId": "SRC-EQP-016",
+    "source": "pexels-tstudio-34805588-9871953.jpg",
+    "crop": [
+      0.15,
+      0.18,
+      0.72,
+      0.66
+    ],
+    "title": "Illuminated fader row",
+    "strength": "Strong perspective, turquoise lights and mechanical density",
+    "pixelCrop": {
+      "left": 506,
+      "top": 1080,
+      "width": 2431,
+      "height": 3960
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/faders/illuminated-fader-row-tstudio.jpg",
+    "designUse": "Progression / pacing / comparison / directional movement",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-017",
+    "category": "cables",
+    "file": "xlr-connectors-reference.png",
+    "sourceId": "SRC-EQP-017",
+    "source": "Screenshot 2026-09-10 at 10.52.10 PM.png",
+    "crop": [
+      0.01,
+      0.08,
+      0.98,
+      0.84
+    ],
+    "title": "XLR connector reference",
+    "strength": "Useful connector silhouette; provenance prevents production use",
+    "pixelCrop": {
+      "left": 8,
+      "top": 48,
+      "width": 813,
+      "height": 506
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/cables/xlr-connectors-reference.png",
+    "designUse": "Physical assembly / working-life evidence / path-making",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "DRV-EQP-018",
+    "category": "meters",
+    "file": "software-waveform-reference.png",
+    "sourceId": "SRC-EQP-018",
+    "source": "Screenshot 2026-09-10 at 10.54.15 PM.png",
+    "crop": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "title": "DJ waveform reference",
+    "strength": "Authentic density and cue markers; provenance prevents production use",
+    "pixelCrop": {
+      "left": 0,
+      "top": 0,
+      "width": 1913,
+      "height": 184
+    },
+    "output": "design-research/physical-visual-vocabulary-v1/extracted/meters/software-waveform-reference.png",
+    "designUse": "Signal / tempo / motion / transition language",
+    "transform": "rotation normalization; rectangular documentary crop; proportional resize only; no generative fill; no retouching",
+    "approval": "RESEARCH_ONLY"
+  }
+]

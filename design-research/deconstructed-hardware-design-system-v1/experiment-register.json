@@ -1,0 +1,92 @@
+[
+  {
+    "id": "EXP-01",
+    "number": 1,
+    "slug": "chapter-seam",
+    "title": "CHAPTER SEAM",
+    "principle": "Rail = progression · cap = current chapter · seam carries state",
+    "output": "design-research/deconstructed-hardware-design-system-v1/experiments/exp-01-chapter-seam.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-02",
+    "number": 2,
+    "slug": "tactile-action",
+    "title": "TACTILE ACTION",
+    "principle": "A photographed control performs the action; glow and depth carry affordance",
+    "output": "design-research/deconstructed-hardware-design-system-v1/experiments/exp-02-tactile-action.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-03",
+    "number": 3,
+    "slug": "energy-meter",
+    "title": "ENERGY HAS A SCALE",
+    "principle": "Meter = truthful progression and chapter intensity, never decorative bars",
+    "output": "design-research/deconstructed-hardware-design-system-v1/experiments/exp-03-energy-meter.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-04",
+    "number": 4,
+    "slug": "platter-mask",
+    "title": "THE ROOM INSIDE THE PLATTER",
+    "principle": "Platter = photographic aperture and hard page interruption",
+    "output": "design-research/deconstructed-hardware-design-system-v1/experiments/exp-04-platter-mask.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-05",
+    "number": 5,
+    "slug": "selector",
+    "title": "RANGE WITHOUT A GENRE WALL",
+    "principle": "Rotary = preference selector; the control changes meaning, not decoration",
+    "output": "design-research/deconstructed-hardware-design-system-v1/experiments/exp-05-selector.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-06",
+    "number": 6,
+    "slug": "navigation-rhythm",
+    "title": "NAVIGATION AS A BEAT",
+    "principle": "Real illuminated controls create state rhythm; one active light names location",
+    "output": "design-research/deconstructed-hardware-design-system-v1/experiments/exp-06-navigation-rhythm.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-07",
+    "number": 7,
+    "slug": "type-overprint",
+    "title": "TYPE TAKES THE LABEL",
+    "principle": "Printed equipment language becomes an overprint and hierarchy interruption",
+    "output": "design-research/deconstructed-hardware-design-system-v1/experiments/exp-07-type-overprint.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-08",
+    "number": 8,
+    "slug": "panel-spine",
+    "title": "THE PANEL BECOMES THE GRID",
+    "principle": "Channel strip = page spine; seams and screws replace generic card borders",
+    "output": "design-research/deconstructed-hardware-design-system-v1/experiments/exp-08-panel-spine.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-09",
+    "number": 9,
+    "slug": "patrick-control",
+    "title": "HUMAN / MACHINE: PATRICK",
+    "principle": "Patrick remains documentary; hardware crosses the image as active structure",
+    "output": "design-research/deconstructed-hardware-design-system-v1/experiments/exp-09-patrick-control.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-10",
+    "number": 10,
+    "slug": "wedding-collision",
+    "title": "HUMAN / MACHINE: RELEASE",
+    "principle": "Documentary energy, control depth and overprint collide without pretending to be one photograph",
+    "output": "design-research/deconstructed-hardware-design-system-v1/experiments/exp-10-wedding-collision.png",
+    "approval": "RESEARCH_ONLY"
+  }
+]

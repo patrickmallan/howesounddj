@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HSDJ PAR Lens Headline Study V1</title>
+  <style>
+    :root {
+      --ink: #050708;
+      --paper: #f4efe5;
+      --cyan: #32e7ff;
+      --pink: #ff48b3;
+      --violet: #a56bff;
+      --amber: #ffd433;
+      --green: #58f08c;
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--ink); }
+    body { margin: 0; color: var(--paper); background: #050708; font-family: Inter, Arial, sans-serif; }
+    button { font: inherit; }
+
+    .lab-header {
+      position: relative;
+      min-height: 42rem;
+      display: grid;
+      place-items: end start;
+      padding: clamp(2rem, 6vw, 6rem);
+      overflow: hidden;
+      border-bottom: 5px solid var(--cyan);
+      background:
+        linear-gradient(90deg, #040607 0 42%, rgb(4 6 7 / 80%) 60%, rgb(4 6 7 / 10%)),
+        linear-gradient(0deg, #040607, transparent 72%),
+        url("../../public/images/hsdj-redesign/hero/approved-ch00-collage-v3.png") center 40% / cover;
+    }
+
+    .lab-header::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 78% 29%, rgb(50 231 255 / 22%), transparent 19%),
+        radial-gradient(circle at 68% 72%, rgb(255 72 179 / 16%), transparent 22%);
+      mix-blend-mode: screen;
+    }
+
+    .intro { position: relative; z-index: 2; width: min(900px, 100%); }
+    .eyebrow, .cue-label, .readout, .status, .control {
+      font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+      font-weight: 850;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .eyebrow { margin: 0 0 1.2rem; color: var(--cyan); font-size: .72rem; }
+    h1 { max-width: 780px; margin: 0; font: 950 clamp(4rem, 8.6vw, 8.4rem)/.8 Impact, "Arial Black", sans-serif; letter-spacing: -.035em; text-transform: uppercase; }
+    .intro > p:last-child { max-width: 43rem; margin: 1.6rem 0 0; color: rgb(244 239 229 / 76%); font-size: clamp(1rem, 1.35vw, 1.2rem); font-weight: 680; line-height: 1.5; }
+
+    .control-room {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .8rem clamp(1rem, 5vw, 5rem);
+      border-bottom: 1px solid rgb(255 255 255 / 13%);
+      background: rgb(4 6 7 / 94%);
+      backdrop-filter: blur(14px);
+    }
+    .status { color: rgb(244 239 229 / 56%); font-size: .6rem; }
+    .status b { color: var(--green); }
+    .control { padding: .65rem .9rem; border: 1px solid rgb(255 255 255 / 25%); color: var(--paper); background: #101517; cursor: pointer; font-size: .58rem; }
+    .control[aria-pressed="false"] { color: #111; background: var(--amber); }
+
+    main { overflow: hidden; }
+    .study { position: relative; min-height: 100vh; padding: clamp(4rem, 7vw, 7rem) clamp(1rem, 5vw, 5rem); border-bottom: 1px solid rgb(255 255 255 / 13%); }
+    .study::before { position: absolute; inset: 0; content: ""; pointer-events: none; opacity: .24; background-image: radial-gradient(rgb(255 255 255 / 14%) .7px, transparent .8px); background-size: 8px 8px; }
+    .study-head { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr minmax(280px, 35rem); align-items: end; gap: 3rem; margin: 0 auto 3rem; width: min(1300px, 100%); }
+    .cue-label { margin: 0 0 .7rem; color: var(--cyan); font-size: .65rem; }
+    .study h2 { margin: 0; font: 900 clamp(2.3rem, 5vw, 5.2rem)/.9 Impact, "Arial Black", sans-serif; text-transform: uppercase; }
+    .study-head > p:last-child { margin: 0; color: rgb(244 239 229 / 68%); font-size: 1rem; line-height: 1.6; }
+
+    .rig {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(230px, 310px);
+      width: min(1300px, 100%);
+      margin: auto;
+      border: 1px solid #30393c;
+      background: #080b0c;
+      box-shadow: 18px 18px 0 #10151a, 20px 20px 0 #1d56ff;
+    }
+    .stage {
+      position: relative;
+      min-height: 590px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgb(4 6 7 / 94%) 0 15%, rgb(4 6 7 / 75%) 58%, rgb(4 6 7 / 93%)),
+        url("../../public/images/hsdj-redesign/hero/approved-ch00-collage-v3.png") center / cover;
+    }
+    .stage::after { position: absolute; inset: 0; content: ""; pointer-events: none; background: linear-gradient(180deg, rgb(0 0 0 / 16%), transparent 44%, rgb(0 0 0 / 48%)); }
+    canvas { position: absolute; z-index: 2; inset: 0; display: block; width: 100%; height: 100%; }
+    .stage-copy { position: absolute; z-index: 3; right: 2.25rem; bottom: 1.8rem; left: 2.25rem; display: flex; justify-content: space-between; gap: 1rem; border-top: 1px solid rgb(255 255 255 / 22%); padding-top: .8rem; pointer-events: none; }
+    .stage-copy p { margin: 0; color: rgb(244 239 229 / 68%); font: 750 .72rem/1.4 "SFMono-Regular", Menlo, monospace; text-transform: uppercase; }
+    .stage-copy b { color: var(--paper); }
+    .readout { color: var(--cyan); font-size: .56rem; text-align: right; }
+
+    .console { display: grid; align-content: start; gap: 1px; padding: 1px; background: #283034; }
+    .console article { padding: 1.25rem; background: linear-gradient(145deg, #14191b, #080b0c); }
+    .console h3 { margin: 0 0 .55rem; color: var(--paper); font: 850 .7rem/1.2 "SFMono-Regular", Menlo, monospace; letter-spacing: .11em; text-transform: uppercase; }
+    .console p { margin: 0; color: rgb(244 239 229 / 58%); font-size: .8rem; line-height: 1.48; }
+    .signal { display: grid; grid-template-columns: repeat(12, 1fr); align-items: end; height: 74px; margin-top: 1rem; gap: 3px; }
+    .signal i { display: block; min-height: 8px; height: var(--h); background: linear-gradient(to top, var(--green) 0 58%, var(--amber) 58% 78%, var(--pink) 78%); opacity: .8; }
+
+    .bank .cue-label { color: var(--pink); }
+    .bank .rig { box-shadow: 18px 18px 0 #10151a, 20px 20px 0 var(--pink); }
+    .pulse .cue-label { color: var(--amber); }
+    .pulse .rig { box-shadow: 18px 18px 0 #10151a, 20px 20px 0 var(--amber); }
+
+    .verdict { padding: clamp(4rem, 7vw, 7rem) clamp(1rem, 5vw, 5rem); color: #050708; background: var(--paper); }
+    .verdict > div { width: min(1200px, 100%); margin: auto; }
+    .verdict .eyebrow { color: #e52474; }
+    .verdict h2 { max-width: 900px; margin: 0; font: 950 clamp(3rem, 7vw, 7rem)/.82 Impact, "Arial Black", sans-serif; text-transform: uppercase; }
+    .verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 3rem; background: #111; }
+    .verdict-grid p { margin: 0; padding: 1.5rem; background: var(--paper); font-size: .95rem; line-height: 1.55; }
+    .verdict-grid b { display: block; margin-bottom: .5rem; font-family: "SFMono-Regular", Menlo, monospace; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+
+    @media (max-width: 850px) {
+      .lab-header { min-height: 35rem; padding: 3rem 1.2rem; }
+      .study { min-height: auto; padding: 4rem 1rem 5rem; }
+      .study-head, .rig { grid-template-columns: 1fr; }
+      .study-head { gap: 1.2rem; }
+      .stage { min-height: min(570px, 118vw); }
+      .console { grid-template-columns: 1fr 1fr; }
+      .console article:last-child { grid-column: 1 / -1; }
+      .rig { box-shadow: 8px 8px 0 #10151a, 10px 10px 0 #1d56ff; }
+      .bank .rig { box-shadow: 8px 8px 0 #10151a, 10px 10px 0 var(--pink); }
+      .pulse .rig { box-shadow: 8px 8px 0 #10151a, 10px 10px 0 var(--amber); }
+      .verdict-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .control { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="lab-header">
+    <div class="intro">
+      <p class="eyebrow">Howe Sound Wedding DJ / PAR lens headline study V1</p>
+      <h1>Letters built from light.</h1>
+      <p>The square message-board cell is gone. These letters use circular fixtures with visible housings, retained off-state rings and broad lighting cues that move like a programmed rig.</p>
+    </div>
+  </header>
+
+  <div class="control-room">
+    <span class="status"><b>●</b> Three cues running / one shared renderer</span>
+    <button class="control" type="button" aria-pressed="true">Pause lighting</button>
+  </div>
+
+  <main>
+    <section class="study orbit" aria-labelledby="orbit-heading">
+      <div class="study-head">
+        <div><p class="cue-label">Cue A / Rotating colour wash</p><h2 id="orbit-heading">The fixture moves. The letters stay put.</h2></div>
+        <p>A wide colour bank travels around the centre of the headline. Every lit cell keeps a visible lens and housing, so the word never collapses when the colour passes.</p>
+      </div>
+      <div class="rig">
+        <div class="stage">
+          <canvas data-mode="orbit" aria-label="Your wedding. A variety of the best."></canvas>
+          <div class="stage-copy"><p><b>PAR lens alphabet</b><br />Circular cell / dark housing / retained pilot ring</p><span class="readout">Cue 01<br />14 BPM</span></div>
+        </div>
+        <aside class="console">
+          <article><h3>Movement</h3><p>One broad wash rotates across the rig. No single travelling dot and no snake.</p></article>
+          <article><h3>Readability</h3><p>White pilot light remains inside every active letter cell.</p></article>
+          <article><h3>Signal</h3><div class="signal" aria-hidden="true"></div></article>
+        </aside>
+      </div>
+    </section>
+
+    <section class="study bank" aria-labelledby="bank-heading">
+      <div class="study-head">
+        <div><p class="cue-label">Cue B / Alternating fixture banks</p><h2 id="bank-heading">The lighting operator's choice.</h2></div>
+        <p>Whole groups of lenses come up together in cyan, violet and pink. The change reads as a deliberate cue instead of a decorative animation.</p>
+      </div>
+      <div class="rig">
+        <div class="stage">
+          <canvas data-mode="bank" aria-label="Your wedding. A variety of the best."></canvas>
+          <div class="stage-copy"><p><b>Three lighting banks</b><br />Grouped cue / clean hold / soft crossfade</p><span class="readout">Cue 02<br />16 BPM</span></div>
+        </div>
+        <aside class="console">
+          <article><h3>Movement</h3><p>Letters change in banks, the way a real row of fixtures would be programmed.</p></article>
+          <article><h3>Readability</h3><p>The complete glyph stays lit while intensity changes behind it.</p></article>
+          <article><h3>Signal</h3><div class="signal" aria-hidden="true"></div></article>
+        </aside>
+      </div>
+    </section>
+
+    <section class="study pulse" aria-labelledby="pulse-heading">
+      <div class="study-head">
+        <div><p class="cue-label">Cue C / Slow musical pulse</p><h2 id="pulse-heading">Less movement. More pressure.</h2></div>
+        <p>The entire headline breathes together with a small colour drift. It is the calmest option and the easiest to use over complicated artwork.</p>
+      </div>
+      <div class="rig">
+        <div class="stage">
+          <canvas data-mode="pulse" aria-label="Your wedding. A variety of the best."></canvas>
+          <div class="stage-copy"><p><b>Full-rig pulse</b><br />Shared intensity / restrained colour drift</p><span class="readout">Cue 03<br />10 BPM</span></div>
+        </div>
+        <aside class="console">
+          <article><h3>Movement</h3><p>All fixtures breathe as one rig. Nothing races through the words.</p></article>
+          <article><h3>Readability</h3><p>The quiet state remains bright enough to read immediately.</p></article>
+          <article><h3>Signal</h3><div class="signal" aria-hidden="true"></div></article>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <section class="verdict">
+    <div>
+      <p class="eyebrow">Art direction / first call</p>
+      <h2>Advance the banks. Borrow the lens from all three.</h2>
+      <div class="verdict-grid">
+        <p><b>Strongest identity</b>Alternating banks feel most like an actual lighting cue. They are organized, physical and noticeably different from an LED sign.</p>
+        <p><b>Best for difficult artwork</b>The musical pulse creates the least competition when the background already carries colour and movement.</p>
+        <p><b>Use carefully</b>The rotating wash has energy, but it belongs on only the largest H1. Smaller headings should keep the circular lens static.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const glyphs = {
+      A:["01110","10001","10001","11111","10001","10001","10001"], B:["11110","10001","10001","11110","10001","10001","11110"],
+      C:["01111","10000","10000","10000","10000","10000","01111"], D:["11110","10001","10001","10001","10001","10001","11110"],
+      E:["11111","10000","10000","11110","10000","10000","11111"], F:["11111","10000","10000","11110","10000","10000","10000"],
+      G:["01111","10000","10000","10111","10001","10001","01111"], H:["10001","10001","10001","11111","10001","10001","10001"],
+      I:["11111","00100","00100","00100","00100","00100","11111"], J:["00111","00010","00010","00010","10010","10010","01100"],
+      K:["10001","10010","10100","11000","10100","10010","10001"], L:["10000","10000","10000","10000","10000","10000","11111"],
+      M:["10001","11011","10101","10101","10001","10001","10001"], N:["10001","11001","10101","10011","10001","10001","10001"],
+      O:["01110","10001","10001","10001","10001","10001","01110"], P:["11110","10001","10001","11110","10000","10000","10000"],
+      R:["11110","10001","10001","11110","10100","10010","10001"], S:["01111","10000","10000","01110","00001","00001","11110"],
+      T:["11111","00100","00100","00100","00100","00100","00100"], U:["10001","10001","10001","10001","10001","10001","01110"],
+      V:["10001","10001","10001","10001","10001","01010","00100"], W:["10001","10001","10001","10101","10101","11011","10001"],
+      Y:["10001","10001","01010","00100","00100","00100","00100"], ".":["0","0","0","0","0","0","1"]
+    };
+
+    const lines = ["YOUR WEDDING.", "A VARIETY OF", "THE BEST."];
+    const canvases = [...document.querySelectorAll("canvas[data-mode]")];
+    const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let playing = !reduceMotion;
+    let start = performance.now();
+    let frame = 0;
+
+    document.querySelectorAll(".signal").forEach((signal, group) => {
+      for (let i = 0; i < 12; i += 1) {
+        const bar = document.createElement("i");
+        bar.style.setProperty("--h", `${18 + ((i * 19 + group * 13) % 53)}px`);
+        signal.append(bar);
+      }
+    });
+
+    const hexToRgb = (hex) => {
+      const value = Number.parseInt(hex.slice(1), 16);
+      return [(value >> 16) & 255, (value >> 8) & 255, value & 255];
+    };
+    const mix = (a, b, amount) => a.map((value, index) => Math.round(value + (b[index] - value) * amount));
+    const palette = ["#32e7ff", "#a56bff", "#ff48b3", "#ffd433", "#58f08c"].map(hexToRgb);
+
+    function lineUnits(text) {
+      return [...text].reduce((total, char) => total + (char === " " ? 3.2 : (glyphs[char]?.[0].length ?? 5) + 1), -1);
+    }
+
+    function lighting(mode, x, y, letter, time) {
+      if (mode === "bank") {
+        const bank = letter % 3;
+        const phase = (time * .34 + bank / 3) % 1;
+        const intensity = .46 + .54 * Math.pow((Math.cos(phase * Math.PI * 2) + 1) / 2, 1.8);
+        return { color: palette[bank], intensity };
+      }
+      if (mode === "pulse") {
+        const pulse = .5 + .5 * Math.sin(time * 1.05);
+        return { color: mix(palette[0], palette[2], .25 + pulse * .38), intensity: .65 + pulse * .35 };
+      }
+      const angle = Math.atan2(y - .5, x - .5);
+      const phase = (angle / (Math.PI * 2) + time * .11 + 1) % 1;
+      const palettePosition = phase * palette.length;
+      const first = Math.floor(palettePosition) % palette.length;
+      return { color: mix(palette[first], palette[(first + 1) % palette.length], palettePosition % 1), intensity: .68 + .32 * Math.pow(Math.cos((phase - .5) * Math.PI), 2) };
+    }
+
+    function draw(canvas, now) {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.min(devicePixelRatio || 1, 1.5);
+      const pixelWidth = Math.round(rect.width * dpr);
+      const pixelHeight = Math.round(rect.height * dpr);
+      if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
+        canvas.width = pixelWidth;
+        canvas.height = pixelHeight;
+      }
+      const ctx = canvas.getContext("2d");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, rect.width, rect.height);
+
+      const paddingX = Math.max(24, rect.width * .055);
+      const paddingTop = Math.max(42, rect.height * .12);
+      const usableWidth = rect.width - paddingX * 2;
+      const maxUnits = Math.max(...lines.map(lineUnits));
+      const cell = Math.min(usableWidth / maxUnits, (rect.height * .67) / 24.5);
+      const step = cell;
+      const radius = cell * .34;
+      const lineGap = cell * 1.35;
+      const totalHeight = 7 * cell * 3 + lineGap * 2;
+      let top = paddingTop + Math.max(0, (rect.height * .68 - totalHeight) * .25);
+      let letterIndex = 0;
+      const time = playing ? (now - start) / 1000 : 1.8;
+
+      lines.forEach((text) => {
+        let left = paddingX;
+        [...text].forEach((char) => {
+          if (char === " ") { left += cell * 3.2; return; }
+          const pattern = glyphs[char] ?? glyphs.E;
+          const columns = pattern[0].length;
+          pattern.forEach((row, rowIndex) => {
+            [...row].forEach((value, columnIndex) => {
+              const x = left + columnIndex * step + cell * .5;
+              const y = top + rowIndex * step + cell * .5;
+              const normalizedX = x / rect.width;
+              const normalizedY = y / rect.height;
+
+              ctx.beginPath();
+              ctx.arc(x, y, radius * 1.18, 0, Math.PI * 2);
+              ctx.fillStyle = "rgba(2,5,5,.92)";
+              ctx.fill();
+              ctx.lineWidth = Math.max(1, cell * .055);
+              ctx.strokeStyle = value === "1" ? "rgba(214,240,235,.26)" : "rgba(121,151,142,.14)";
+              ctx.stroke();
+
+              ctx.beginPath();
+              ctx.arc(x, y, radius * .82, 0, Math.PI * 2);
+              if (value === "1") {
+                const light = lighting(canvas.dataset.mode, normalizedX, normalizedY, letterIndex, time);
+                const [red, green, blue] = light.color;
+                const glow = ctx.createRadialGradient(x - radius * .2, y - radius * .25, radius * .08, x, y, radius * .82);
+                glow.addColorStop(0, `rgba(255,255,255,${.88 * light.intensity})`);
+                glow.addColorStop(.24, `rgba(${red},${green},${blue},${light.intensity})`);
+                glow.addColorStop(1, `rgba(${Math.round(red * .2)},${Math.round(green * .2)},${Math.round(blue * .2)},.88)`);
+                ctx.fillStyle = glow;
+                ctx.fill();
+                ctx.lineWidth = Math.max(1, cell * .07);
+                ctx.strokeStyle = `rgba(${red},${green},${blue},${.58 + light.intensity * .34})`;
+                ctx.stroke();
+
+                // One restrained shared glow per lens, rendered on a single
+                // canvas rather than hundreds of DOM box shadows.
+                ctx.save();
+                ctx.globalCompositeOperation = "lighter";
+                ctx.beginPath();
+                ctx.arc(x, y, radius * (1.05 + light.intensity * .3), 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(${red},${green},${blue},${.07 * light.intensity})`;
+                ctx.lineWidth = radius * .3;
+                ctx.stroke();
+                ctx.restore();
+              } else {
+                ctx.fillStyle = "rgba(12,23,20,.82)";
+                ctx.fill();
+                ctx.strokeStyle = "rgba(100,137,125,.11)";
+                ctx.stroke();
+              }
+            });
+          });
+          left += cell * (columns + 1);
+          letterIndex += 1;
+        });
+        top += cell * 7 + lineGap;
+      });
+    }
+
+    const visible = new Set(canvases);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.isIntersecting ? visible.add(entry.target) : visible.delete(entry.target));
+    }, { rootMargin: "100px" });
+    canvases.forEach((canvas) => observer.observe(canvas));
+
+    function animate(now) {
+      visible.forEach((canvas) => draw(canvas, now));
+      if (playing) frame = requestAnimationFrame(animate);
+    }
+    canvases.forEach((canvas) => draw(canvas, start));
+    if (playing) frame = requestAnimationFrame(animate);
+
+    const control = document.querySelector(".control");
+    control.addEventListener("click", () => {
+      playing = !playing;
+      control.setAttribute("aria-pressed", String(playing));
+      control.textContent = playing ? "Pause lighting" : "Run lighting";
+      cancelAnimationFrame(frame);
+      if (playing) {
+        start = performance.now();
+        frame = requestAnimationFrame(animate);
+      } else {
+        canvases.forEach((canvas) => draw(canvas, performance.now()));
+      }
+    });
+
+    addEventListener("resize", () => canvases.forEach((canvas) => draw(canvas, performance.now())), { passive: true });
+    document.addEventListener("visibilitychange", () => {
+      cancelAnimationFrame(frame);
+      if (!document.hidden && playing) frame = requestAnimationFrame(animate);
+    });
+  </script>
+</body>
+</html>

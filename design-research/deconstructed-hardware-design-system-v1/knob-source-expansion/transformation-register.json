@@ -1,0 +1,38 @@
+[
+  {
+    "id": "TX-KNB-01",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/transformations/scale-yellow-pressure.png",
+    "note": "Scale becomes a loud structural arc.",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY"
+  },
+  {
+    "id": "TX-KNB-02",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/transformations/body-photocopy.png",
+    "note": "Body becomes a hard photocopy mass.",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY"
+  },
+  {
+    "id": "TX-KNB-03",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/transformations/bezel-magenta.png",
+    "note": "Bezel becomes a photographic interruption.",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY"
+  },
+  {
+    "id": "TX-KNB-04",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/transformations/indicator-cyan.png",
+    "note": "Indicator becomes directional signal.",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY"
+  },
+  {
+    "id": "TX-KNB-05",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/transformations/ticks-red-threshold.png",
+    "note": "Minute scale fragment becomes an aggressive margin event.",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY"
+  },
+  {
+    "id": "TX-KNB-06",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/transformations/triple-eq-high-colour.png",
+    "note": "EQ rhythm gains three distinct narrative states.",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY"
+  }
+]

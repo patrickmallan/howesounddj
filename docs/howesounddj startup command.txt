@@ -1,0 +1,1 @@
+cd /Users/patrickmallan/Desktop/howesounddj && npm run dev

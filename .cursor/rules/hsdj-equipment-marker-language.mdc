@@ -1,0 +1,15 @@
+---
+description: Keeps list markers and repeated navigation details inside the approved HSDJ equipment language
+alwaysApply: true
+---
+
+# HSDJ Equipment Marker Language
+
+- Do not introduce generic numbered bullets, dot bullets, chevrons, or stock icons on public website surfaces when an approved HSDJ hardware marker can communicate the same hierarchy.
+- Use the standard black EQ knob with its white indicator at twelve o'clock for list markers and repeated primary navigation markers.
+- Keep the accompanying text semantic, visible, and understandable without recognizing the equipment reference.
+- Hardware markers are decorative and must be hidden from assistive technology.
+- A knob, pad, fader, meter, switch, or transport control must come from the shared HSDJ visual vocabulary and retain a consistent physical treatment across routes.
+- Do not add DJ equipment merely to fill space. It must establish hierarchy, indicate state, support navigation, or explain a real relationship.
+- Preserve visible focus, keyboard operation, touch targets, readable labels, mobile composition, and reduced-motion behavior.
+- Reuse the system grammar across the site without stamping the same composition onto every page.

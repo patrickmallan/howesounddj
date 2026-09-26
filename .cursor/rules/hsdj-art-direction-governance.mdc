@@ -1,0 +1,35 @@
+---
+description: Enforces the HSDJ redesign governance and separates visual exploration from production approval
+alwaysApply: true
+---
+
+# HSDJ Art-Direction Governance
+
+Before any HSDJ website art-direction, copy, prototype, or production work, read:
+
+1. `docs/branding/HOWE_SOUND_DJ_BRAND_DNA_REPORT_V1.md`
+2. `docs/branding/HOWE_SOUND_DJ_EMOTIONAL_CONVERSION_ENGINE_V1.md`
+3. `docs/branding/HSDJ_WEBSITE_REDESIGN_CREATIVE_CONSTITUTION_V1.md`
+4. `docs/branding/HSDJ_CREATIVE_CONSTITUTION_V1_1.md`
+5. `docs/branding/HSDJ_ANTI_TEMPLATE_DESIGN_EXECUTION_PROTOCOL_V1.md`
+6. `docs/branding/HSDJ_SOURCE_LIBRARY_GAP_REPORT_V1.md`
+
+V1.1 governs where it explicitly amends V1.
+
+The creative system is:
+
+`DJ machinery × gig-poster culture × real wedding documentary × Squamish`
+
+`THE WEBSITE IS THE DECK. THE DECK HAS BEEN FLY-POSTED.`
+
+For the authorized full-homepage research mission, also read `docs/branding/HSDJ_FULL_HOMEPAGE_ART_DIRECTION_PROTOTYPE_V1.md`.
+
+- Full CH00–CH07 exploration is allowed only inside the designated `design-research/` prototype area.
+- Production remains frozen until the exact chapter and viewport receive Patrick's explicit creative approval.
+- Full-page visual-system approval is not chapter accreditation.
+- Do not modify production during pre-code research.
+- Do not create eight versions of CH00 or style familiar web sections with DJ decoration.
+- Use real, traceable HSDJ sources before invented material.
+- Treat the CH00 headline as `PROVISIONAL / REWRITE REQUIRED`.
+- Preserve plain-language conversion, accessibility, reduced motion, performance, and rights constraints.
+- Patrick retains final taste authority.

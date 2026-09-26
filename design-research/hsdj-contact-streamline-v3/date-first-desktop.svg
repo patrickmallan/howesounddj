@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="1000" viewBox="0 0 1440 1000" role="img" aria-label="Streamlined Contact desktop study with date check as the single primary action">
+  <defs><clipPath id="art"><path d="M950 115H1440V1000H1120L1010 850L1080 640L955 510Z"/></clipPath></defs>
+  <rect width="1440" height="1000" fill="#0b0e0f"/>
+  <rect width="1440" height="116" fill="#070909"/>
+  <text x="70" y="65" fill="#f1e5dc" font-family="Arial" font-size="25" font-weight="700" letter-spacing="2">HOWE SOUND WEDDING DJ</text>
+  <text x="1080" y="65" fill="#bac8c5" font-family="Arial" font-size="17">WEDDINGS · ABOUT · CONTACT</text>
+  <path d="M0 116H1440" stroke="#49d4e5" stroke-width="3"/>
+  <image xlink:href="../../public/images/hsdj-redesign/wedding-story/night-section-art-v1.webp" x="720" y="108" width="1100" height="900" preserveAspectRatio="xMidYMid slice" clip-path="url(#art)"/>
+  <rect x="0" y="116" width="1010" height="884" fill="#0b0e0f"/>
+  <path d="M1010 116L1010 510L1080 640L1010 850L1120 1000H930V116Z" fill="#0b0e0f"/>
+  <text x="90" y="202" fill="#49d4e5" font-family="Arial" font-size="16" font-weight="700" letter-spacing="3">CONTACT / SQUAMISH + SEA-TO-SKY</text>
+  <text x="85" y="333" fill="#f8f1e8" font-family="Arial" font-size="83" font-weight="800">Have a wedding date?</text>
+  <text x="91" y="382" fill="#d3d4cd" font-family="Arial" font-size="25">Check it here. If I’m free, you can book a consult right away.</text>
+  <path d="M92 431H856" stroke="#f2d53c" stroke-width="4"/>
+  <text x="92" y="480" fill="#b9c3bf" font-family="Arial" font-size="15" font-weight="700" letter-spacing="2">WEDDING DATE</text>
+  <rect x="92" y="502" width="200" height="86" fill="#1a1f1f" stroke="#8f9b97"/>
+  <rect x="304" y="502" width="145" height="86" fill="#1a1f1f" stroke="#8f9b97"/>
+  <rect x="461" y="502" width="145" height="86" fill="#1a1f1f" stroke="#8f9b97"/>
+  <text x="143" y="556" fill="#f8f1e8" font-family="Arial" font-size="31">YYYY</text>
+  <text x="349" y="556" fill="#f8f1e8" font-family="Arial" font-size="31">MM</text>
+  <text x="507" y="556" fill="#f8f1e8" font-family="Arial" font-size="31">DD</text>
+  <rect x="92" y="621" width="514" height="89" fill="#f2d53c"/>
+  <text x="226" y="677" fill="#101414" font-family="Arial" font-size="27" font-weight="800">CHECK MY DATE</text>
+  <path d="M92 769H856" stroke="#465250"/>
+  <text x="92" y="814" fill="#f8f1e8" font-family="Arial" font-size="22">No date yet?</text>
+  <text x="238" y="814" fill="#49d4e5" font-family="Arial" font-size="22" font-weight="700">SEND ME A MESSAGE ↗</text>
+  <text x="92" y="951" fill="#7f8d88" font-family="Arial" font-size="13" letter-spacing="1">STATIC CONTACT STUDY · DESKTOP · RESEARCH ONLY</text>
+</svg>

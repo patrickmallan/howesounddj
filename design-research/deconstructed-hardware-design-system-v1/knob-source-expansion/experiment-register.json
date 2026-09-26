@@ -1,0 +1,72 @@
+[
+  {
+    "id": "EXP-KNB-01",
+    "title": "THE SCALE CUTS THE FRAME",
+    "verdict": "STRONG — scale defines the crop; it is not decoration",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/experiments/exp-knb-01-photo-interrupt.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-KNB-02",
+    "title": "THE INDICATOR BECOMES DIRECTION",
+    "verdict": "STRONG — a knob detail becomes navigation and sequence",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/experiments/exp-knb-02-directional-index.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-KNB-03",
+    "title": "THREE MOVES. ONE NIGHT.",
+    "verdict": "STRONG — rotary repetition structures content without cards",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/experiments/exp-knb-03-eq-rhythm.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-KNB-04",
+    "title": "TYPE RIDES THE SCALE",
+    "verdict": "PROMISING — typography becomes physical position",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/experiments/exp-knb-04-type-on-arc.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-KNB-05",
+    "title": "THE CONTROL EXCEEDS THE PAGE",
+    "verdict": "STRONGEST — scale and body become architecture at extreme size",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/experiments/exp-knb-05-offscreen-knob.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-KNB-06",
+    "title": "SET THE DIRECTION",
+    "verdict": "CONDITIONAL — legitimate only when the choice changes the brief",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/experiments/exp-knb-06-real-selector.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-KNB-07",
+    "title": "LINEAR / ROTARY COLLISION",
+    "verdict": "STRONG — fader locates chapter; rotary scale frames intensity",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/experiments/exp-knb-07-rail-rotary.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-KNB-08",
+    "title": "THE ROOM / THE SCALE",
+    "verdict": "PROMISING — platter carries image; rotary ticks supply controlled friction",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/experiments/exp-knb-08-platter-scale-photo.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-KNB-09",
+    "title": "TOO MANY CONTROLS",
+    "verdict": "INTENTIONAL OVER-PUSH — reject the rotary wallpaper effect",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/experiments/exp-knb-09-rotary-swarm.png",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "EXP-KNB-10",
+    "title": "EVERY SCALE AT ONCE",
+    "verdict": "INTENTIONAL OVER-PUSH — hierarchy collapses into controller theatre",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/experiments/exp-knb-10-scale-collision.png",
+    "approval": "RESEARCH_ONLY"
+  }
+]

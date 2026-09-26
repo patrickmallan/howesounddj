@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1500" viewBox="0 0 1600 1500">
+  <defs>
+    <linearGradient id="knobMetal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#faf7f0"/><stop offset=".25" stop-color="#858b91"/><stop offset=".5" stop-color="#f0ece2"/><stop offset=".78" stop-color="#5b6168"/><stop offset="1" stop-color="#dad6cc"/>
+    </linearGradient>
+    <radialGradient id="knobFace" cx="34%" cy="28%" r="74%">
+      <stop offset="0" stop-color="#626971"/><stop offset=".3" stop-color="#24282e"/><stop offset=".77" stop-color="#090b0d"/><stop offset="1" stop-color="#020304"/>
+    </radialGradient>
+    <pattern id="paper" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="4" r="1" fill="#0c0e12" opacity=".08"/><circle cx="12" cy="10" r=".8" fill="#0c0e12" opacity=".06"/>
+    </pattern>
+    <g id="knob">
+      <circle r="66" fill="#111318"/>
+      <circle r="61" fill="none" stroke="#f4efe4" stroke-width="8"/>
+      <circle r="53" fill="none" stroke="url(#knobMetal)" stroke-width="6"/>
+      <circle r="45" fill="url(#knobFace)"/>
+      <path d="M0-39V-9" stroke="#f4efe4" stroke-width="9" stroke-linecap="round"/>
+      <path d="M-29-28A41 41 0 0 1 29-28" fill="none" stroke="#fff" stroke-width="3" opacity=".3"/>
+      <circle r="6" fill="#020304"/>
+    </g>
+    <g id="wordKnobs">
+      <use href="#knob" transform="translate(282 0)"/>
+      <use href="#knob" transform="translate(1013 0)"/>
+    </g>
+  </defs>
+
+  <rect width="1600" height="1500" fill="#f1ebdf"/>
+  <rect width="1600" height="1500" fill="url(#paper)"/>
+  <text x="64" y="72" fill="#0b0d11" font-family="Geist Mono, Menlo, monospace" font-size="23" font-weight="700" letter-spacing="5">HOWE SOUND / WORDMARK TYPE AUDITION 01</text>
+  <text x="1536" y="72" text-anchor="end" fill="#ff4f55" font-family="Geist Mono, Menlo, monospace" font-size="18" font-weight="700" letter-spacing="3">FONT FIRST / NO OVERLAY CHANGES</text>
+
+  <g transform="translate(0 105)">
+    <rect x="35" y="0" width="1530" height="205" rx="3" fill="#fffaf0" stroke="#111318" stroke-width="3"/>
+    <text x="65" y="39" fill="#0754ff" font-family="Geist Mono, Menlo, monospace" font-size="18" font-weight="800" letter-spacing="4">01 / AFTERHOURS GROTESK</text>
+    <g fill="#101217" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="143" font-weight="900" letter-spacing="-6">
+      <text x="114" y="171">H</text><text x="375" y="171">WE</text><text x="818" y="171">S</text><text x="1102" y="171">UND</text>
+    </g>
+    <use href="#wordKnobs" transform="translate(0 125)"/>
+  </g>
+
+  <g transform="translate(0 325)">
+    <rect x="35" y="0" width="1530" height="205" rx="3" fill="#111318"/>
+    <text x="65" y="39" fill="#ff615f" font-family="Geist Mono, Menlo, monospace" font-size="18" font-weight="800" letter-spacing="4">02 / CONTROL-DECK CONDENSED</text>
+    <g fill="#f4efe4" font-family="DIN Condensed, Avenir Next Condensed, Impact, sans-serif" font-size="154" font-weight="900" letter-spacing="1">
+      <text x="130" y="174">H</text><text x="378" y="174">WE</text><text x="837" y="174">S</text><text x="1105" y="174">UND</text>
+    </g>
+    <use href="#wordKnobs" transform="translate(0 127)"/>
+  </g>
+
+  <g transform="translate(0 545)">
+    <rect x="35" y="0" width="1530" height="205" rx="3" fill="#ff5b5f"/>
+    <text x="65" y="39" fill="#111318" font-family="Geist Mono, Menlo, monospace" font-size="18" font-weight="800" letter-spacing="4">03 / GEOMETRIC FLOOR</text>
+    <g fill="#f5efe3" stroke="#111318" stroke-width="4" paint-order="stroke" font-family="Futura, Avenir, sans-serif" font-size="136" font-weight="800" letter-spacing="7">
+      <text x="116" y="166">H</text><text x="371" y="166">WE</text><text x="820" y="166">S</text><text x="1090" y="166">UND</text>
+    </g>
+    <use href="#wordKnobs" transform="translate(0 122)"/>
+  </g>
+
+  <g transform="translate(0 765)">
+    <rect x="35" y="0" width="1530" height="205" rx="3" fill="#0754ff"/>
+    <text x="65" y="39" fill="#f4efe4" font-family="Geist Mono, Menlo, monospace" font-size="18" font-weight="800" letter-spacing="4">04 / HUMANIST SIGNAL</text>
+    <g fill="#f4efe4" font-family="Avenir Next Condensed, Avenir Next, sans-serif" font-size="150" font-weight="900" letter-spacing="0">
+      <text x="124" y="172">H</text><text x="378" y="172">WE</text><text x="830" y="172">S</text><text x="1103" y="172">UND</text>
+    </g>
+    <use href="#wordKnobs" transform="translate(0 126)"/>
+  </g>
+
+  <g transform="translate(0 985)">
+    <rect x="35" y="0" width="1530" height="205" rx="3" fill="#fffaf0" stroke="#111318" stroke-width="3"/>
+    <text x="65" y="39" fill="#ff4f55" font-family="Geist Mono, Menlo, monospace" font-size="18" font-weight="800" letter-spacing="4">05 / EDITORIAL CONTRAST</text>
+    <g fill="#111318" font-family="Bodoni 72 Smallcaps, Bodoni 72, Didot, serif" font-size="144" font-weight="900" letter-spacing="1">
+      <text x="116" y="171">H</text><text x="372" y="171">WE</text><text x="822" y="171">S</text><text x="1094" y="171">UND</text>
+    </g>
+    <use href="#wordKnobs" transform="translate(0 124)"/>
+  </g>
+
+  <g transform="translate(0 1205)">
+    <rect x="35" y="0" width="1530" height="205" rx="3" fill="#171a20"/>
+    <text x="65" y="39" fill="#29e0d0" font-family="Geist Mono, Menlo, monospace" font-size="18" font-weight="800" letter-spacing="4">06 / CUT-SIGNAL CUSTOM</text>
+    <g fill="#f4efe4" stroke="#050608" stroke-width="5" paint-order="stroke" font-family="Arial Black, Helvetica Neue, sans-serif" font-size="138" font-weight="900" letter-spacing="-7">
+      <text x="108" y="169">H</text><text x="370" y="169">WE</text><text x="817" y="169">S</text><text x="1090" y="169">UND</text>
+    </g>
+    <use href="#wordKnobs" transform="translate(0 123)"/>
+    <g stroke-width="9"><path d="M116 109h73M116 136h45M405 93h83M540 137h72M842 111h70M1132 139h72M1307 95h76M1466 126h61" stroke="#ff4f55"/><path d="M116 124h49M429 124h58M560 108h51M849 137h48M1140 113h59M1320 127h64M1471 101h53" stroke="#0754ff"/></g>
+  </g>
+
+  <text x="800" y="1464" text-anchor="middle" fill="#60646b" font-family="Geist Mono, Menlo, monospace" font-size="17" font-weight="700" letter-spacing="3">THE KNOBS AND SPACING ARE HELD CONSISTENT SO ONLY THE LETTER CHARACTER CHANGES.</text>
+</svg>

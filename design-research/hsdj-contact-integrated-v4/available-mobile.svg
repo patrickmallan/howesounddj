@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="Integrated HSDJ available-date mobile result study">
+  <defs><filter id="shadow"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#124ee8"/></filter></defs>
+  <rect width="390" height="844" fill="#080a0a"/>
+  <image xlink:href="../../public/images/hsdj-redesign/wedding-story/night-section-art-mobile-v1.webp" x="0" y="82" width="390" height="762" preserveAspectRatio="xMidYMid slice"/>
+  <image xlink:href="../../public/images/hsdj-redesign/deck-surfaces/djm-a9-topdown.jpg" x="-70" y="491" width="580" height="426" preserveAspectRatio="xMidYMid slice" opacity="0.6"/>
+  <rect x="0" y="82" width="390" height="762" fill="#020606" opacity="0.5"/>
+  <rect width="390" height="82" fill="#070909" opacity="0.97"/>
+  <text x="20" y="34" fill="#f3e9df" font-family="Arial" font-size="15" font-weight="800" letter-spacing="1.2">HOWE SOUND</text>
+  <text x="20" y="54" fill="#f3e9df" font-family="Arial" font-size="15" font-weight="800" letter-spacing="1.2">WEDDING DJ</text>
+  <text x="343" y="45" fill="#42d8e8" font-family="Arial" font-size="24" font-weight="800">☰</text>
+  <path d="M0 82H390" stroke="#f5d71f" stroke-width="5"/>
+  <path d="M0 87H245L283 104H390" stroke="#124ee8" stroke-width="3" fill="none"/>
+  <path d="M11 111H379L355 151L378 505L336 530L12 548Z" fill="#050707" opacity="0.79"/>
+  <text x="20" y="139" fill="#42d8e8" font-family="Arial" font-size="10" font-weight="800" letter-spacing="1.3">SATURDAY, SEPTEMBER 12, 2027</text>
+  <text x="19" y="198" fill="#fbf4ea" font-family="Arial" font-size="35" font-weight="900" letter-spacing="-1.5" filter="url(#shadow)">THIS IS THE</text>
+  <text x="19" y="235" fill="#fbf4ea" font-family="Arial" font-size="35" font-weight="900" letter-spacing="-1.5" filter="url(#shadow)">ANSWER YOU WERE</text>
+  <text x="19" y="272" fill="#fbf4ea" font-family="Arial" font-size="35" font-weight="900" letter-spacing="-1.5" filter="url(#shadow)">HOPING FOR.</text>
+  <text x="20" y="329" fill="#f5d71f" font-family="Arial" font-size="28" font-weight="900">YOUR DATE IS</text>
+  <text x="20" y="360" fill="#f5d71f" font-family="Arial" font-size="28" font-weight="900">AVAILABLE.</text>
+  <text x="21" y="401" fill="#f3eee7" font-family="Arial" font-size="14" font-weight="700">Book a 45-minute consult and tell me what</text>
+  <text x="21" y="421" fill="#f3eee7" font-family="Arial" font-size="14" font-weight="700">you’re planning. We’ll talk about the wedding,</text>
+  <text x="21" y="441" fill="#f3eee7" font-family="Arial" font-size="14" font-weight="700">the music, and whether I’m the right DJ for it.</text>
+  <path d="M20 471C91 450 145 489 205 466S310 451 373 470" fill="none" stroke="#42d8e8" stroke-width="3"/>
+  <path d="M20 495H352L373 515L351 574H20Z" fill="#f5d71f"/>
+  <text x="78" y="547" fill="#080b0b" font-family="Arial" font-size="21" font-weight="900">BOOK A CONSULT ↗</text>
+  <path d="M14 622L374 592L383 762L6 789Z" fill="#070909" opacity="0.83"/>
+  <path d="M18 620L166 608" stroke="#ef3340" stroke-width="4"/>
+  <text x="26" y="654" fill="#f7f1e9" font-family="Arial" font-size="15" font-weight="700">“We would get married all over again just so</text>
+  <text x="26" y="676" fill="#f7f1e9" font-family="Arial" font-size="15" font-weight="700">we could hangout and work with Patrick. He’s</text>
+  <text x="26" y="698" fill="#f7f1e9" font-family="Arial" font-size="15" font-weight="700">a talented DJ and a truly caring person.”</text>
+  <text x="26" y="733" fill="#f5d71f" font-family="Arial" font-size="11" font-weight="900" letter-spacing="1.5">STEPHEN HENRY</text>
+  <text x="20" y="817" fill="#d7dedb" font-family="Arial" font-size="9" font-weight="800" letter-spacing="1.2">AVAILABLE RESULT V4 · RESEARCH ONLY</text>
+</svg>

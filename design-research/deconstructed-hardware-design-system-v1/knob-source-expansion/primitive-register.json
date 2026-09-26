@@ -1,0 +1,172 @@
+[
+  {
+    "id": "ATOM-KNOB-01",
+    "title": "Deep black rotary body",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/primitives/knob-body-deep-black.png",
+    "parts": [
+      "cylindrical face",
+      "bevel",
+      "material depth"
+    ],
+    "uses": [
+      "focus anchor",
+      "selector body"
+    ],
+    "lineage": "Original HSDJ reconstruction informed by SRC-KNB-002/003/009/011/012; no manufacturer marks or copied product layout",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-KNOB-02",
+    "title": "Position indicator",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/primitives/indicator-line.png",
+    "parts": [
+      "high-contrast line",
+      "rotation",
+      "endpoint"
+    ],
+    "uses": [
+      "direction",
+      "current position"
+    ],
+    "lineage": "Original HSDJ reconstruction informed by SRC-KNB-002/003/009/011/012; no manufacturer marks or copied product layout",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-KNOB-03",
+    "title": "Open radial scale",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/primitives/open-radial-scale.png",
+    "parts": [
+      "arc",
+      "17 ticks",
+      "open bottom"
+    ],
+    "uses": [
+      "range",
+      "bounded choice"
+    ],
+    "lineage": "Original HSDJ reconstruction informed by SRC-KNB-002/003/009/011/012; no manufacturer marks or copied product layout",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-KNOB-04",
+    "title": "Recessed bezel",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/primitives/recessed-bezel.png",
+    "parts": [
+      "outer lip",
+      "inner shadow",
+      "hard circle"
+    ],
+    "uses": [
+      "depth",
+      "image aperture"
+    ],
+    "lineage": "Original HSDJ reconstruction informed by SRC-KNB-002/003/009/011/012; no manufacturer marks or copied product layout",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-KNOB-05",
+    "title": "Physical shadow field",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/primitives/physical-shadow.png",
+    "parts": [
+      "offset ellipse",
+      "soft falloff"
+    ],
+    "uses": [
+      "overlap",
+      "material separation"
+    ],
+    "lineage": "Original HSDJ reconstruction informed by SRC-KNB-002/003/009/011/012; no manufacturer marks or copied product layout",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-KNOB-06",
+    "title": "Neutral HSDJ rotary",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/primitives/neutral-rotary-composite.png",
+    "parts": [
+      "body",
+      "bezel",
+      "indicator",
+      "scale"
+    ],
+    "uses": [
+      "real selector",
+      "oversized interruption"
+    ],
+    "lineage": "Original HSDJ reconstruction informed by SRC-KNB-002/003/009/011/012; no manufacturer marks or copied product layout",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-KNOB-07",
+    "title": "Triple EQ rhythm",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/primitives/triple-eq-rhythm.png",
+    "parts": [
+      "three controls",
+      "shared baseline",
+      "vertical hierarchy"
+    ],
+    "uses": [
+      "section rhythm",
+      "three-part narrative"
+    ],
+    "lineage": "Original HSDJ reconstruction informed by SRC-KNB-002/003/009/011/012; no manufacturer marks or copied product layout",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-KNOB-08",
+    "title": "Split balance scale",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/primitives/split-balance-scale.png",
+    "parts": [
+      "centre zero",
+      "opposed halves",
+      "hard index"
+    ],
+    "uses": [
+      "balance",
+      "two-sided choice"
+    ],
+    "lineage": "Original HSDJ reconstruction informed by SRC-KNB-002/003/009/011/012; no manufacturer marks or copied product layout",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-KNOB-09",
+    "title": "Radial type carrier",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/primitives/radial-type-carrier.png",
+    "parts": [
+      "orbital baseline",
+      "position labels",
+      "open centre"
+    ],
+    "uses": [
+      "chapter labels",
+      "circular annotation"
+    ],
+    "lineage": "Original HSDJ reconstruction informed by SRC-KNB-002/003/009/011/012; no manufacturer marks or copied product layout",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-KNOB-10",
+    "title": "Micro tick fragment",
+    "output": "design-research/deconstructed-hardware-design-system-v1/knob-source-expansion/primitives/micro-tick-fragment.png",
+    "parts": [
+      "uneven lengths",
+      "partial arc",
+      "minute index"
+    ],
+    "uses": [
+      "margin annotation",
+      "section punctuation"
+    ],
+    "lineage": "Original HSDJ reconstruction informed by SRC-KNB-002/003/009/011/012; no manufacturer marks or copied product layout",
+    "classification": "ORIGINAL HSDJ TRANSFORMATION / RESEARCH_ONLY",
+    "approval": "RESEARCH_ONLY"
+  }
+]

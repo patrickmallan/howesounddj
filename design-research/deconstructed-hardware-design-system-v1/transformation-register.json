@@ -1,0 +1,65 @@
+[
+  {
+    "id": "TX-01",
+    "sourcePrimitive": "ATOM-FADER-02",
+    "output": "design-research/deconstructed-hardware-design-system-v1/transformations/fader-rail-yellow-duotone.png",
+    "note": "Duotone rail for a high-contrast page seam.",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "TX-02",
+    "sourcePrimitive": "ATOM-BUTTON-01",
+    "output": "design-research/deconstructed-hardware-design-system-v1/transformations/cue-button-yellow-overprint.png",
+    "note": "Yellow conversion-state overprint preserving photographed depth.",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "TX-03",
+    "sourcePrimitive": "ATOM-BUTTON-01",
+    "output": "design-research/deconstructed-hardware-design-system-v1/transformations/cue-button-disabled.png",
+    "note": "Disabled state created by light reduction, not redrawing.",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "TX-04",
+    "sourcePrimitive": "ATOM-PLATTER-01",
+    "output": "design-research/deconstructed-hardware-design-system-v1/transformations/platter-ring-magenta.png",
+    "note": "Colour-shifted ring for an extreme photographic interruption.",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "TX-05",
+    "sourcePrimitive": "ATOM-ROTARY-01",
+    "output": "design-research/deconstructed-hardware-design-system-v1/transformations/tone-rotary-photocopy.png",
+    "note": "High-contrast photocopy treatment retaining the concentric source structure.",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "TX-06",
+    "sourcePrimitive": "ATOM-METER-01",
+    "output": "design-research/deconstructed-hardware-design-system-v1/transformations/meter-column-high-contrast.png",
+    "note": "High-contrast meter column for small-scale signal legibility.",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "TX-07",
+    "sourcePrimitive": "ATOM-PANEL-01",
+    "output": "design-research/deconstructed-hardware-design-system-v1/transformations/master-panel-monochrome.png",
+    "note": "Monochrome panel spine for structural use.",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "TX-08",
+    "sourcePrimitive": "ATOM-LED-01",
+    "output": "design-research/deconstructed-hardware-design-system-v1/transformations/led-row-red-shift.png",
+    "note": "Red-shifted operational rhythm for active navigation.",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "TX-09",
+    "sourcePrimitive": "ATOM-TEXTURE-01",
+    "output": "design-research/deconstructed-hardware-design-system-v1/transformations/brushed-panel-blue-overprint.png",
+    "note": "Blue material field for typography and overprint.",
+    "approval": "RESEARCH_ONLY"
+  }
+]

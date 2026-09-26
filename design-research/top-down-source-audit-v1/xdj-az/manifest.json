@@ -1,0 +1,520 @@
+[
+  {
+    "index": 1,
+    "filename": "001-1200x630.jpg",
+    "width": 1200,
+    "height": 630,
+    "url": "https://alphatheta.com/wp-content/uploads/2023/08/AlphaTheta-brand-logo-ogp-1200x630-1.jpg"
+  },
+  {
+    "index": 2,
+    "filename": "002-32x32.png",
+    "width": 32,
+    "height": 32,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2023/12/cropped-favicon_AT_circle-32x32.png"
+  },
+  {
+    "index": 3,
+    "filename": "003-192x192.png",
+    "width": 192,
+    "height": 192,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2023/12/cropped-favicon_AT_circle-192x192.png"
+  },
+  {
+    "index": 4,
+    "filename": "004-180x180.png",
+    "width": 180,
+    "height": 180,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2023/12/cropped-favicon_AT_circle-180x180.png"
+  },
+  {
+    "index": 5,
+    "filename": "005-270x270.png",
+    "width": 270,
+    "height": 270,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2023/12/cropped-favicon_AT_circle-270x270.png"
+  },
+  {
+    "index": 6,
+    "filename": "006-80x80.webp",
+    "width": 80,
+    "height": 80,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2025/08/s2.webp"
+  },
+  {
+    "index": 7,
+    "filename": "007-80x80.webp",
+    "width": 80,
+    "height": 80,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2025/08/s1.webp"
+  },
+  {
+    "index": 8,
+    "filename": "008-80x80.webp",
+    "width": 80,
+    "height": 80,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2025/08/s3.webp"
+  },
+  {
+    "index": 9,
+    "filename": "009-80x80.webp",
+    "width": 80,
+    "height": 80,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2025/08/s4.webp"
+  },
+  {
+    "index": 10,
+    "filename": "010-80x80.webp",
+    "width": 80,
+    "height": 80,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2025/08/s5.webp"
+  },
+  {
+    "index": 11,
+    "filename": "011-80x80.webp",
+    "width": 80,
+    "height": 80,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2025/08/s6.webp"
+  },
+  {
+    "index": 12,
+    "filename": "012-80x80.webp",
+    "width": 80,
+    "height": 80,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2025/08/s7.webp"
+  },
+  {
+    "index": 13,
+    "filename": "013-2098x724.webp",
+    "width": 2098,
+    "height": 724,
+    "url": "https://assets.alphatheta.com/static-assets/images/menu/support/help-center.webp"
+  },
+  {
+    "index": 14,
+    "filename": "014-1049x361.webp",
+    "width": 1049,
+    "height": 361,
+    "url": "https://assets.alphatheta.com/static-assets/images/menu/support/tech-riders.webp"
+  },
+  {
+    "index": 15,
+    "filename": "015-207x208.png",
+    "width": 207,
+    "height": 208,
+    "url": "https://assets.alphatheta.com/static-assets/images/account/photo_default02.png"
+  },
+  {
+    "index": 16,
+    "filename": "016-2560x1578.webp",
+    "width": 2560,
+    "height": 1578,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/XDJ-AZ_CGI_Angle_3300x2034-scaled.webp"
+  },
+  {
+    "index": 17,
+    "filename": "017-2560x1544.webp",
+    "width": 2560,
+    "height": 1544,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/XDJ-AZ_CGI_Top_3300x1990-scaled.webp"
+  },
+  {
+    "index": 18,
+    "filename": "018-2560x1141.webp",
+    "width": 2560,
+    "height": 1141,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/XDJ-AZ_CGI_Frontangle_3300x1471-scaled.webp"
+  },
+  {
+    "index": 19,
+    "filename": "019-2560x579.webp",
+    "width": 2560,
+    "height": 579,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/XDJ-AZ_CGI_Front_3300x747-scaled.webp"
+  },
+  {
+    "index": 20,
+    "filename": "020-2560x579.webp",
+    "width": 2560,
+    "height": 579,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/XDJ-AZ_CGI_Rear_3300x747-scaled.webp"
+  },
+  {
+    "index": 21,
+    "filename": "021-2560x1440.jpg",
+    "width": 2560,
+    "height": 1440,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/10/XDJ-AZ-Walkthrough-Video-thumbnail-scaled.jpg"
+  },
+  {
+    "index": 22,
+    "filename": "022-2560x1280.jpg",
+    "width": 2560,
+    "height": 1280,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2025/03/alphatheta.com-2880x1440KV-4-pc-scaled.jpg"
+  },
+  {
+    "index": 23,
+    "filename": "023-1440x1440.jpg",
+    "width": 1440,
+    "height": 1440,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/10/Key-Feature-1-1-Thumbnail-1.jpg"
+  },
+  {
+    "index": 24,
+    "filename": "024-1440x1440.jpg",
+    "width": 1440,
+    "height": 1440,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/10/Key-Feature-1-2-Thumbnail.jpg"
+  },
+  {
+    "index": 25,
+    "filename": "025-1920x546.png",
+    "width": 1920,
+    "height": 546,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2025/10/OneLibrary-PC-1920%C3%97546px.png"
+  },
+  {
+    "index": 26,
+    "filename": "026-1440x1440.jpg",
+    "width": 1440,
+    "height": 1440,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/key-feature-02-01-1440%C3%971440-for-SP.jpg"
+  },
+  {
+    "index": 27,
+    "filename": "027-1440x1440.jpg",
+    "width": 1440,
+    "height": 1440,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/key-feature-02-02-1440%C3%971440.jpg"
+  },
+  {
+    "index": 28,
+    "filename": "028-1053x1053.webp",
+    "width": 1053,
+    "height": 1053,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2026/03/product_xdj-az_black_260313.webp"
+  },
+  {
+    "index": 29,
+    "filename": "029-1440x1440.jpg",
+    "width": 1440,
+    "height": 1440,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/key-feature-03-01-1440%C3%971440.jpg"
+  },
+  {
+    "index": 30,
+    "filename": "030-1280x800.jpg",
+    "width": 1280,
+    "height": 800,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/XDJ-AZ_GUI_Main-screen_BROWSE_1280x800.jpg"
+  },
+  {
+    "index": 31,
+    "filename": "031-480x300.jpg",
+    "width": 480,
+    "height": 300,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/hotspot-GUI-01-01-1.jpg"
+  },
+  {
+    "index": 32,
+    "filename": "032-480x300.jpg",
+    "width": 480,
+    "height": 300,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/hotspot-GUI-01-02.jpg"
+  },
+  {
+    "index": 33,
+    "filename": "033-480x300.jpg",
+    "width": 480,
+    "height": 300,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/hotspot-GUI-01-03-1.jpg"
+  },
+  {
+    "index": 34,
+    "filename": "034-1143x689.jpg",
+    "width": 1143,
+    "height": 689,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/hotspot-GUI-01-04.jpg"
+  },
+  {
+    "index": 35,
+    "filename": "035-480x300.jpg",
+    "width": 480,
+    "height": 300,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/hotspot-GUI-01-05.jpg"
+  },
+  {
+    "index": 36,
+    "filename": "036-1280x800.jpg",
+    "width": 1280,
+    "height": 800,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/XDJ-AZ_GUI_Main-screen_WAVEFORM_1280x800.jpg"
+  },
+  {
+    "index": 37,
+    "filename": "037-480x300.jpg",
+    "width": 480,
+    "height": 300,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/hotspot-GUI-02-01.jpg"
+  },
+  {
+    "index": 38,
+    "filename": "038-480x300.jpg",
+    "width": 480,
+    "height": 300,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/hotspot-GUI-02-03.jpg"
+  },
+  {
+    "index": 39,
+    "filename": "039-480x300.jpg",
+    "width": 480,
+    "height": 300,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/hotspot-GUI-02-04.jpg"
+  },
+  {
+    "index": 40,
+    "filename": "040-480x300.jpg",
+    "width": 480,
+    "height": 300,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/hotspot-GUI-02-05.jpg"
+  },
+  {
+    "index": 41,
+    "filename": "041-480x300.jpg",
+    "width": 480,
+    "height": 300,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/hotspot-GUI-02-06.jpg"
+  },
+  {
+    "index": 42,
+    "filename": "042-480x300.jpg",
+    "width": 480,
+    "height": 300,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/hotspot-GUI-02-07.jpg"
+  },
+  {
+    "index": 43,
+    "filename": "043-480x300.jpg",
+    "width": 480,
+    "height": 300,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/hotspot-GUI-02-08.jpg"
+  },
+  {
+    "index": 44,
+    "filename": "044-480x300.jpg",
+    "width": 480,
+    "height": 300,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/hotspot-GUI-02-09.jpg"
+  },
+  {
+    "index": 45,
+    "filename": "045-480x300.jpg",
+    "width": 480,
+    "height": 300,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/hotspot-GUI-02-10.jpg"
+  },
+  {
+    "index": 46,
+    "filename": "046-1440x1440.jpg",
+    "width": 1440,
+    "height": 1440,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/key-feature-04-01-1440%C3%971440.jpg"
+  },
+  {
+    "index": 47,
+    "filename": "047-1440x1440.jpg",
+    "width": 1440,
+    "height": 1440,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/10/Key-Feature-5-Thumbnail.jpg"
+  },
+  {
+    "index": 48,
+    "filename": "048-1440x1440.jpg",
+    "width": 1440,
+    "height": 1440,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/10/key-feature-06-01-1440%C3%971440-1.jpg"
+  },
+  {
+    "index": 49,
+    "filename": "049-1440x1440.jpg",
+    "width": 1440,
+    "height": 1440,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/key-feature-06-02-1440%C3%971440.jpg"
+  },
+  {
+    "index": 50,
+    "filename": "050-1440x1440.jpg",
+    "width": 1440,
+    "height": 1440,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/key-feature-06-03-1440%C3%971440.jpg"
+  },
+  {
+    "index": 51,
+    "filename": "051-280x280.webp",
+    "width": 280,
+    "height": 280,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/08/USB_Hardware_Unlock_280%C3%97280.webp"
+  },
+  {
+    "index": 52,
+    "filename": "052-280x280.webp",
+    "width": 280,
+    "height": 280,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/08/Serato_DJ_Pro_280%C3%97280.webp"
+  },
+  {
+    "index": 53,
+    "filename": "053-280x280.webp",
+    "width": 280,
+    "height": 280,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/08/USB_ports_280%C3%97280.webp"
+  },
+  {
+    "index": 54,
+    "filename": "054-280x280.webp",
+    "width": 280,
+    "height": 280,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/08/LINK_EXPORT_280%C3%97280.webp"
+  },
+  {
+    "index": 55,
+    "filename": "055-280x280.webp",
+    "width": 280,
+    "height": 280,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/08/Performance_pads_280%C3%97280.webp"
+  },
+  {
+    "index": 56,
+    "filename": "056-280x280.webp",
+    "width": 280,
+    "height": 280,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/08/Gate_Cue_280%C3%97280.webp"
+  },
+  {
+    "index": 57,
+    "filename": "057-280x280.webp",
+    "width": 280,
+    "height": 280,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/08/Easy_to_carry_280%C3%97280.webp"
+  },
+  {
+    "index": 58,
+    "filename": "058-280x280.webp",
+    "width": 280,
+    "height": 280,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/08/High_quality_audio_280%C3%97280.webp"
+  },
+  {
+    "index": 59,
+    "filename": "059-280x280.webp",
+    "width": 280,
+    "height": 280,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/01/Firmware-Update-Manager.webp"
+  },
+  {
+    "index": 60,
+    "filename": "060-280x280.webp",
+    "width": 280,
+    "height": 280,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/01/AlphaTheta-Care.webp"
+  },
+  {
+    "index": 61,
+    "filename": "061-1210x807.jpg",
+    "width": 1210,
+    "height": 807,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/lifestyle-01-1210-807.jpg"
+  },
+  {
+    "index": 62,
+    "filename": "062-1210x807.jpg",
+    "width": 1210,
+    "height": 807,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/lifestyle-02-1210-807.jpg"
+  },
+  {
+    "index": 63,
+    "filename": "063-1210x807.jpg",
+    "width": 1210,
+    "height": 807,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/lifestyle-06-1210-807-1.jpg"
+  },
+  {
+    "index": 64,
+    "filename": "064-1210x807.jpg",
+    "width": 1210,
+    "height": 807,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/lifestyle-03-1210-807.jpg"
+  },
+  {
+    "index": 65,
+    "filename": "065-1210x807.jpg",
+    "width": 1210,
+    "height": 807,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/lifestyle-04-1210-807.jpg"
+  },
+  {
+    "index": 66,
+    "filename": "066-1210x807.jpg",
+    "width": 1210,
+    "height": 807,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/lifestyle-05-1210-807.jpg"
+  },
+  {
+    "index": 67,
+    "filename": "067-2560x1829.webp",
+    "width": 2560,
+    "height": 1829,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/XDJ-AZ_CGI_Set-4_3000x2143-scaled.webp"
+  },
+  {
+    "index": 68,
+    "filename": "068-2560x1830.webp",
+    "width": 2560,
+    "height": 1830,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/XDJ-AZ_CGI_Set-5_3000x2144-scaled.webp"
+  },
+  {
+    "index": 69,
+    "filename": "069-2560x1306.webp",
+    "width": 2560,
+    "height": 1306,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/XDJ-AZ_CGI_Set-2_3000x1530-scaled.webp"
+  },
+  {
+    "index": 70,
+    "filename": "070-2560x1306.webp",
+    "width": 2560,
+    "height": 1306,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/XDJ-AZ_CGI_Set-3_3000x1530-scaled.webp"
+  },
+  {
+    "index": 71,
+    "filename": "071-1200x630.png",
+    "width": 1200,
+    "height": 630,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2025/01/support-thumbnail.png"
+  },
+  {
+    "index": 72,
+    "filename": "072-1200x630.jpg",
+    "width": 1200,
+    "height": 630,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2025/03/alphatheta.com-1200x630thumbnail.jpg"
+  },
+  {
+    "index": 73,
+    "filename": "073-1200x630.jpg",
+    "width": 1200,
+    "height": 630,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/11/XDJ-AZ_Key-visual_Serato-DJ-Pro-compatibility_1200x630.jpg"
+  },
+  {
+    "index": 74,
+    "filename": "074-1200x630.jpg",
+    "width": 1200,
+    "height": 630,
+    "url": "https://assets.alphatheta.com/wp-content/uploads/2024/09/XDJ-AZ_Key-visual_no-logo_1200x630.jpg"
+  }
+]

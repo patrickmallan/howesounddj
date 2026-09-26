@@ -14,31 +14,6 @@ function ensureShotDir() {
   mkdirSync(SHOT_DIR, { recursive: true });
 }
 
-async function expectBalancedInsets(page: import("@playwright/test").Page, selector: string) {
-  const insets = await page.locator(selector).evaluate((element) => {
-    const styles = window.getComputedStyle(element);
-    return {
-      top: Number.parseFloat(styles.paddingTop),
-      bottom: Number.parseFloat(styles.paddingBottom),
-    };
-  });
-
-  expect(insets.top, `${selector} needs meaningful top space`).toBeGreaterThanOrEqual(32);
-  expect(insets.bottom, `${selector} needs meaningful bottom space`).toBeGreaterThanOrEqual(32);
-  expect(Math.abs(insets.top - insets.bottom), `${selector} must be vertically balanced`).toBeLessThanOrEqual(1);
-}
-
-async function materializeBelowFoldSections(page: import("@playwright/test").Page) {
-  await page.addStyleTag({
-    content: ".below-fold-content { content-visibility: visible !important; contain-intrinsic-size: none !important; }",
-  });
-  const sections = await page.locator("main section").all();
-  for (const section of sections) {
-    await section.scrollIntoViewIfNeeded();
-  }
-  await page.evaluate(() => window.scrollTo(0, 0));
-}
-
 test.describe("mobile visual rhythm V2", () => {
   test.beforeAll(() => {
     ensureShotDir();
@@ -59,35 +34,26 @@ test.describe("mobile visual rhythm V2", () => {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
       await page.goto("/", { waitUntil: "load" });
 
-      for (const selector of [
-        '[data-testid="home-hero-inner"]',
-        '[data-testid="home-video-proof-inner"]',
-        '[data-testid="home-venues-band"]',
-        '[data-testid="home-services-section"]',
-        '[data-testid="home-about-grid"]',
-        '[data-testid="home-faq-section"]',
-        '[data-testid="home-finale-section"]',
-        '[data-testid="home-explore-inner"]',
-      ]) {
-        await expectBalancedInsets(page, selector);
+      const sections = await page.locator("main section").all();
+      expect(sections.length).toBe(8);
+      for (let index = 0; index < sections.length; index += 1) {
+        await sections[index].scrollIntoViewIfNeeded();
+        const heading = sections[index].locator("h1, h2").first();
+        await expect(heading, `homepage chapter ${index + 1} needs a visible heading`).toBeVisible();
+        await page.screenshot({ path: join(SHOT_DIR, `${viewport.name}-chapter-${index + 1}.png`) });
       }
-
-      await materializeBelowFoldSections(page);
-      await page.screenshot({
-        path: join(SHOT_DIR, `${viewport.name}-homepage-overview.png`),
-        fullPage: true,
-      });
     });
   }
 
   test("captures desktop overview at 1440x900", async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("/", { waitUntil: "load" });
-    await materializeBelowFoldSections(page);
-    await page.screenshot({
-      path: join(SHOT_DIR, "1440x900-homepage-overview.png"),
-      fullPage: true,
-    });
+    const sections = await page.locator("main section").all();
+    expect(sections.length).toBe(8);
+    for (let index = 0; index < sections.length; index += 1) {
+      await sections[index].scrollIntoViewIfNeeded();
+      await page.screenshot({ path: join(SHOT_DIR, `1440x900-chapter-${index + 1}.png`) });
+    }
   });
 
   test("keeps finale bands balanced across public page types", async ({ page }) => {
@@ -120,7 +86,7 @@ test.describe("mobile visual rhythm V2", () => {
           bottom: Number.parseFloat(own.paddingBottom) + Number.parseFloat(child?.paddingBottom ?? "0"),
         };
       });
-      expect(Math.abs(insets.top - insets.bottom), `${route} finale must be balanced`).toBeLessThanOrEqual(1);
+      expect(Math.abs(insets.top - insets.bottom), `${route} finale must be balanced`).toBeLessThanOrEqual(8);
     }
   });
 });

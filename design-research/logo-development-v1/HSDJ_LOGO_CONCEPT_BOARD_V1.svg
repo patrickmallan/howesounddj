@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Howe Sound Wedding DJ logo concept board, version one</title>
+  <desc id="desc">Three original logo directions: Signal Route, Channel Splice, and Load-In Stamp.</desc>
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="8" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.7"/>
+    </filter>
+    <style>
+      .display { font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-weight: 900; }
+      .sans { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 800; }
+      .tech { font-family: 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif; font-weight: 700; letter-spacing: 5px; }
+      .note { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 19px; font-weight: 600; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1200" fill="#efe5d2"/>
+  <path d="M0 0H1600V18H0z" fill="#ffe000"/>
+  <path d="M0 18H1080V25H0z" fill="#0847ff"/>
+  <text x="70" y="82" class="tech" font-size="18" fill="#0847ff">HOWE SOUND WEDDING DJ / IDENTITY STUDY 01</text>
+  <text x="68" y="151" class="display" font-size="70" fill="#09090a">NO MOUNTAINS. BUILD THE SIGNAL.</text>
+  <text x="72" y="187" class="note" fill="#333">Three distinct physical ancestors. One must survive in a single colour before refinement.</text>
+
+  <!-- CONCEPT 01 -->
+  <g transform="translate(65 235)">
+    <path d="M0 18L22 0H1458L1470 20V281L1450 299H11L0 281Z" fill="#08090a"/>
+    <text x="33" y="42" class="tech" font-size="15" fill="#ffe000">01 / SIGNAL ROUTE</text>
+
+    <!-- Fader-H / routed-S monogram -->
+    <g transform="translate(40 66)">
+      <path d="M20 0V178M150 0V178M20 88H150" fill="none" stroke="#f6f0e4" stroke-width="24" stroke-linecap="square"/>
+      <path d="M66 22C129 3 164 24 156 58C150 86 82 80 78 110C74 142 118 153 170 132" fill="none" stroke="#ffe000" stroke-width="13" stroke-linecap="square"/>
+      <rect x="2" y="67" width="36" height="42" fill="#0847ff" stroke="#f6f0e4" stroke-width="5"/>
+      <circle cx="156" cy="58" r="7" fill="#f3262d"/>
+    </g>
+
+    <g transform="translate(300 64)">
+      <text x="0" y="90" class="display" font-size="116" letter-spacing="1" fill="#f6f0e4">HOWE SOUND</text>
+      <path d="M2 111H855" stroke="#f6f0e4" stroke-width="5"/>
+      <rect x="538" y="98" width="62" height="31" fill="#0847ff" stroke="#f6f0e4" stroke-width="4"/>
+      <text x="2" y="165" class="tech" font-size="27" fill="#ffe000">WEDDING DJ · SQUAMISH BC</text>
+    </g>
+    <text x="1180" y="257" class="note" font-size="16" fill="#aaa">Mixer rail × signal cable</text>
+  </g>
+
+  <!-- CONCEPT 02 -->
+  <g transform="translate(65 565)">
+    <path d="M0 0H1470V300H0Z" fill="#f6f0e4" stroke="#09090a" stroke-width="5"/>
+    <path d="M0 0H17V300H0Z" fill="#f3262d"/>
+    <text x="34" y="42" class="tech" font-size="15" fill="#0847ff">02 / CHANNEL SPLICE</text>
+
+    <g transform="translate(42 72)">
+      <text x="0" y="79" class="display" font-size="105" letter-spacing="-1" fill="#09090a">HOWE</text>
+      <text x="319" y="79" class="display" font-size="105" letter-spacing="-1" fill="#09090a">SOUND</text>
+      <path d="M0 104H995" stroke="#09090a" stroke-width="13"/>
+      <path d="M0 104H995" stroke="#ffe000" stroke-width="5"/>
+      <rect x="442" y="83" width="96" height="42" rx="2" fill="#09090a" stroke="#f6f0e4" stroke-width="5"/>
+      <path d="M462 104H518" stroke="#ffe000" stroke-width="5"/>
+      <text x="0" y="171" class="sans" font-size="46" letter-spacing="9" fill="#09090a">WEDDING DJ</text>
+      <text x="667" y="169" class="tech" font-size="17" fill="#09090a">LIVE MIX / LOCAL SIGNAL</text>
+    </g>
+    <g transform="translate(1185 64)">
+      <path d="M0 0H206V178H0Z" fill="#09090a"/>
+      <text x="20" y="64" class="display" font-size="70" fill="#f6f0e4">HS</text>
+      <path d="M18 91H184" stroke="#ffe000" stroke-width="7"/>
+      <rect x="83" y="75" width="45" height="31" fill="#0847ff" stroke="#f6f0e4" stroke-width="4"/>
+      <text x="21" y="149" class="tech" font-size="16" fill="#f6f0e4">DJ / 01</text>
+    </g>
+    <text x="1170" y="270" class="note" font-size="16" fill="#444">Crossfader × wordmark</text>
+  </g>
+
+  <!-- CONCEPT 03 -->
+  <g transform="translate(65 895)">
+    <path d="M0 12L73 0L182 10L307 2L421 13L548 3L671 11L808 0L931 12L1061 2L1187 11L1325 0L1470 14V278L1377 291L1235 280L1110 298L968 282L824 294L684 281L531 299L390 282L241 294L108 280L0 290Z" fill="#0847ff"/>
+    <path d="M21 34H1446V266H21Z" fill="#09090a" filter="url(#rough)"/>
+    <text x="42" y="63" class="tech" font-size="15" fill="#ffe000">03 / LOAD-IN STAMP</text>
+
+    <g transform="translate(46 79)">
+      <text x="0" y="82" class="display" font-size="103" letter-spacing="2" fill="#f6f0e4">HOWE</text>
+      <text x="331" y="82" class="display" font-size="103" letter-spacing="2" fill="#f6f0e4">SOUND</text>
+      <path d="M318 2V98" stroke="#f3262d" stroke-width="12"/>
+      <text x="3" y="151" class="display" font-size="57" letter-spacing="6" fill="#ffe000">WEDDING DJ</text>
+      <path d="M3 166H934" stroke="#f6f0e4" stroke-width="4" stroke-dasharray="34 9 8 9"/>
+    </g>
+
+    <g transform="translate(1090 70)">
+      <path d="M0 0H310V155H0Z" fill="#f6f0e4"/>
+      <text x="22" y="49" class="tech" font-size="16" fill="#09090a">OUTPUT / SQUAMISH</text>
+      <text x="20" y="112" class="display" font-size="70" fill="#09090a">HSDJ</text>
+      <path d="M22 128H285" stroke="#f3262d" stroke-width="8"/>
+    </g>
+    <text x="1144" y="252" class="note" font-size="16" fill="#f6f0e4">Flight case × fly poster</text>
+  </g>
+</svg>

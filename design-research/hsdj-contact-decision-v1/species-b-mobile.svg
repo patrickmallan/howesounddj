@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="Static Contact composition B at mobile size: Patrick photograph, conversation first, date path below">
+  <defs><clipPath id="photo"><path d="M20 100 L370 100 L370 308 L20 286 Z"/></clipPath></defs>
+  <rect width="390" height="844" fill="#151515"/>
+  <rect width="390" height="75" fill="#090b0c"/>
+  <text x="18" y="34" fill="#f2dfd9" font-size="15" font-family="Arial" font-weight="700" letter-spacing="1">HOWE SOUND</text>
+  <text x="18" y="54" fill="#f2dfd9" font-size="13" font-family="Arial" letter-spacing="2">WEDDING DJ</text>
+  <text x="338" y="46" fill="#f1d236" font-size="22" font-family="Arial">≡</text>
+  <path d="M0 75 H390" stroke="#f1d236" stroke-width="3"/>
+  <image xlink:href="../../public/images/hsdj-redesign/wedding-story/patrick-live-light-trails.webp" x="20" y="100" width="350" height="208" preserveAspectRatio="xMidYMid slice" clip-path="url(#photo)"/>
+  <text x="22" y="343" fill="#f1d236" font-size="11" font-family="Arial" font-weight="700" letter-spacing="1">PATRICK  /  HOWE SOUND WEDDING DJ</text>
+  <text x="19" y="402" fill="#f7f1e9" font-size="36" font-family="Arial" font-weight="800">Tell me what you</text>
+  <text x="19" y="446" fill="#f7f1e9" font-size="36" font-family="Arial" font-weight="800">know so far.</text>
+  <text x="22" y="482" fill="#cfd2ce" font-size="16" font-family="Arial">Your date, venue, music, or a question.</text>
+  <rect x="22" y="514" width="346" height="67" fill="#f1d236"/>
+  <text x="80" y="556" fill="#141414" font-size="19" font-family="Arial" font-weight="800">BOOK A CONSULT</text>
+  <path d="M22 626 H368" stroke="#626462" stroke-width="1"/>
+  <text x="22" y="662" fill="#f7f1e9" font-size="22" font-family="Arial" font-weight="700">Already have a date?</text>
+  <text x="22" y="695" fill="#c0c1bc" font-size="16" font-family="Arial">Check Patrick’s calendar.</text>
+  <path d="M22 728 H368" stroke="#70d8e8" stroke-width="2"/>
+  <text x="22" y="755" fill="#70d8e8" font-size="17" font-family="Arial" font-weight="700">CHECK AVAILABILITY  →</text>
+  <text x="22" y="795" fill="#9ca3a0" font-size="15" font-family="Arial">Rather write? Send a message.</text>
+  <text x="22" y="831" fill="#6d7775" font-size="10" font-family="Arial">STATIC STUDY B · MOBILE · NOT APPROVED UI</text>
+</svg>

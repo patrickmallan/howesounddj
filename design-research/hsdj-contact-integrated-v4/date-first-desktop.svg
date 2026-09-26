@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="1000" viewBox="0 0 1440 1000" role="img" aria-label="Integrated HSDJ Contact desktop study where the date checker and artwork form one composition">
+  <defs>
+    <filter id="mono"><feColorMatrix type="saturate" values="0.72"/></filter>
+    <filter id="shadow"><feDropShadow dx="8" dy="7" stdDeviation="0" flood-color="#124ee8" flood-opacity="1"/></filter>
+    <clipPath id="mixer"><path d="M570 552L1440 466V1000H508L548 807Z"/></clipPath>
+  </defs>
+  <rect width="1440" height="1000" fill="#080a0a"/>
+  <image xlink:href="../../public/images/hsdj-redesign/wedding-story/night-section-art-v1.webp" x="0" y="106" width="1440" height="894" preserveAspectRatio="xMidYMid slice" filter="url(#mono)"/>
+  <rect x="0" y="106" width="1440" height="894" fill="#020606" opacity="0.47"/>
+  <image xlink:href="../../public/images/hsdj-redesign/deck-surfaces/djm-a9-topdown.jpg" x="492" y="437" width="1030" height="756" preserveAspectRatio="xMidYMid slice" clip-path="url(#mixer)" opacity="0.68"/>
+  <path d="M0 106H1440" stroke="#f5d71f" stroke-width="7"/>
+  <path d="M0 113H916L980 149H1440" stroke="#124ee8" stroke-width="5" fill="none"/>
+  <rect width="1440" height="106" fill="#070909" opacity="0.96"/>
+  <text x="63" y="62" fill="#f3e9df" font-family="Arial" font-size="25" font-weight="800" letter-spacing="2">HOWE SOUND WEDDING DJ</text>
+  <text x="1082" y="62" fill="#d7dfdc" font-family="Arial" font-size="16" font-weight="700">WEDDINGS · ABOUT · CONTACT</text>
+
+  <path d="M49 167H992L944 215H1008L954 513L884 551H44Z" fill="#050707" opacity="0.79"/>
+  <path d="M44 167H328" stroke="#42d8e8" stroke-width="5"/>
+  <text x="62" y="202" fill="#42d8e8" font-family="Arial" font-size="15" font-weight="800" letter-spacing="3">CONTACT / SQUAMISH + SEA-TO-SKY</text>
+  <text x="60" y="331" fill="#fbf4ea" font-family="Arial" font-size="92" font-weight="900" letter-spacing="-3" filter="url(#shadow)">HAVE A WEDDING</text>
+  <text x="60" y="421" fill="#fbf4ea" font-family="Arial" font-size="92" font-weight="900" letter-spacing="-3" filter="url(#shadow)">DATE?</text>
+  <text x="66" y="475" fill="#f4eee6" font-family="Arial" font-size="23" font-weight="700">Check it here. If I’m free, you can book a consult right away.</text>
+  <path d="M67 508C215 489 336 532 480 507S738 484 888 515S1136 489 1376 504" fill="none" stroke="#f5d71f" stroke-width="4"/>
+
+  <path d="M45 555L936 532L1003 590L922 784L45 815Z" fill="#070909" opacity="0.85"/>
+  <text x="68" y="598" fill="#42d8e8" font-family="Arial" font-size="14" font-weight="800" letter-spacing="3">YOUR WEDDING DATE</text>
+  <text x="68" y="674" fill="#f8f1e8" font-family="Arial" font-size="42" font-weight="800">YYYY</text>
+  <text x="298" y="674" fill="#f8f1e8" font-family="Arial" font-size="42" font-weight="800">MM</text>
+  <text x="473" y="674" fill="#f8f1e8" font-family="Arial" font-size="42" font-weight="800">DD</text>
+  <path d="M68 699H242" stroke="#42d8e8" stroke-width="5"/>
+  <path d="M298 699H419" stroke="#f5d71f" stroke-width="5"/>
+  <path d="M473 699H594" stroke="#ef3340" stroke-width="5"/>
+  <path d="M594 699H706" stroke="#f5d71f" stroke-width="5"/>
+  <path d="M706 699L731 674H1040V748H706Z" fill="#f5d71f"/>
+  <text x="750" y="720" fill="#080b0b" font-family="Arial" font-size="24" font-weight="900">CHECK MY DATE</text>
+  <path d="M68 777H462" stroke="#66706d" stroke-width="1"/>
+  <text x="68" y="805" fill="#f5eee5" font-family="Arial" font-size="18">No date yet?</text>
+  <text x="188" y="805" fill="#42d8e8" font-family="Arial" font-size="18" font-weight="800">SEND ME A MESSAGE ↗</text>
+
+  <text x="1064" y="603" fill="#f5d71f" font-family="Arial" font-size="14" font-weight="800" letter-spacing="3">ONE DATE.</text>
+  <text x="1064" y="633" fill="#f4eee6" font-family="Arial" font-size="14" font-weight="800" letter-spacing="3">ONE ANSWER.</text>
+  <path d="M1048 655H1369" stroke="#42d8e8" stroke-width="3"/>
+  <path d="M1098 864C1162 824 1208 903 1270 855S1355 842 1416 873" fill="none" stroke="#ef3340" stroke-width="5"/>
+  <text x="68" y="952" fill="#a6b1ae" font-family="Arial" font-size="12" letter-spacing="2">CONTACT COMPOSITION V4 · RESEARCH ONLY</text>
+</svg>

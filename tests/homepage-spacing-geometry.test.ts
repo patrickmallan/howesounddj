@@ -29,32 +29,56 @@ describe("HSDJ sitewide spacing geometry contracts", () => {
     expect(MEDIA_COPY_GRID_GAP).toBe("gap-8 md:gap-10 lg:gap-12");
   });
 
-  it("homepage applies balanced transitions for reported layout defects", () => {
+  it("homepage implements the eight-chapter deck instead of the old section stack", () => {
     const page = readSource("src/app/page.tsx");
-    const video = readSource("src/components/home-video-proof.tsx");
 
-    expect(page).toContain("HOMEPAGE_HERO_PADDING");
+    expect(page).toContain("styles.arrivalCopy");
+    expect(readSource("src/app/layout.tsx")).toContain("HomepageScrollFader");
+    expect(page).toContain("styles.soundCheck");
+    expect(page).toContain("styles.build");
+    expect(page).toContain("styles.readRoom");
+    expect(page).toContain("styles.playback");
+    expect(page).toContain("styles.operator");
+    expect(page).toContain("styles.remembers");
+    expect(page).toContain("styles.encore");
+    expect(page).toContain("LivingVUMeter");
+    expect(page).toContain("NightMixFader");
+    expect(readSource("src/components/night-mix-fader.tsx")).toContain("crossfader-cap.png");
+    expect(page).not.toContain("channel-fader-rail.png");
+    expect(page).not.toContain("styles.faderBank");
     expect(page).toContain('data-testid="home-venues-band"');
-    expect(page).toContain("SECTION_BAND_BORDER_TOP");
-    expect(page).toContain("SECTION_TRANSITION_OUT");
-    expect(page).toContain("SECTION_TRANSITION_IN");
-    expect(page).toContain("SECTION_BAND_BORDER_FOLLOW");
-    expect(page).toContain("SECTION_BAND_TOP");
-    expect(page).toContain("HOMEPAGE_FINALE_SECTION");
-    expect(page).not.toContain("HOMEPAGE_FINALE_INNER_TOP");
-
-    expect(video).toContain("SECTION_TRANSITION_IN");
-    expect(video).toContain("SECTION_BAND_BOTTOM");
-    expect(video).toContain('data-testid="home-video-proof-eyebrow"');
   });
 
-  it("homepage about band preserves portrait rhythm tokens", () => {
+  it("renders both VU channels as efficient bottom-up LED signals", () => {
+    const meter = readSource("src/components/living-vu-meter.tsx");
+    const globalCss = readSource("src/app/globals.css");
+
+    expect(meter).toContain("hsdj-vu-leds");
+    expect(meter).toContain("is-lit");
+    expect(meter).toContain("IntersectionObserver");
+    expect(meter).not.toContain("hsdj-vu-segment");
+    expect(globalCss).toContain(".hsdj-vu-leds");
+    expect(globalCss).toContain(".hsdj-vu-leds i.is-lit");
+    expect(globalCss).not.toContain("hsdj-vu-level-a");
+    expect(globalCss).not.toContain("hsdj-vu-level-b");
+  });
+
+  it("homepage operator chapter preserves the portrait and first-person route", () => {
     const page = readSource("src/app/page.tsx");
     expect(page).toContain('data-testid="home-about-grid"');
-    expect(page).toContain("MEDIA_COPY_GRID_GAP");
-    expect(page).toContain("MEDIA_CARD_PAD");
-    expect(page).toMatch(/className="!m-0 !space-y-0"/);
-    expect(page).toMatch(/className="flex flex-col justify-center"/);
+    expect(page).toContain("styles.operatorPaper");
+    expect(page).toContain("I&apos;m Patrick");
+    expect(page).toContain('href="/about"');
+  });
+
+  it("uses one locked twelve-o-clock knob for every informational marker", () => {
+    const marker = readSource("src/components/hardware-list-marker.tsx");
+    const homepage = readSource("src/app/page.tsx");
+
+    expect(marker).toContain("controls/rotary/eq-black.png");
+    expect(marker).not.toContain("rotation");
+    expect(homepage).not.toContain("kind=");
+    expect(homepage).not.toContain("rotation=");
   });
 
   it("does not wire Availability Success into homepage spacing edits", () => {

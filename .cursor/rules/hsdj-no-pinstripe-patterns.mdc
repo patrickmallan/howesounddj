@@ -1,0 +1,13 @@
+---
+description: Prevents decorative pinstripe patterns from returning to the HSDJ website
+alwaysApply: true
+---
+
+# No Decorative Pinstripes
+
+- Do not use pinstripes, lined-paper textures, repeated parallel-line backgrounds, or decorative `repeating-linear-gradient` patterns in public website compositions.
+- Do not recreate pinstripes through SVG, images, pseudo-elements, masks, borders, or canvas effects.
+- Preserve repeated tick marks only when they are a functional and recognizable part of real DJ hardware, such as a fader scale or meter calibration.
+- Use photography, torn collage edges, light, grain, shadow, hardware, or broad geometric fields to create depth instead.
+- Yellow remains an accent colour. Do not use bright solid-yellow cards behind small text.
+- Small labels must use readable type, strong contrast, comfortable padding, and a dark or warm-ivory physical-material treatment.

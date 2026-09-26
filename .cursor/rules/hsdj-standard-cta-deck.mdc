@@ -1,0 +1,14 @@
+---
+description: Standardizes paired booking and date-check CTAs as Howe Sound stereo controls
+alwaysApply: true
+---
+
+# Standard Paired CTA Deck
+
+- Use the shared `CTADuo` component whenever “Book a consult” and “Check your date” appear together.
+- Present the shared pair as the compact Howe Sound Wedding DJ dual cassette deck with its powered display, tape windows, transport controls, and ticker.
+- Do not create route-specific visual variants of the paired CTA.
+- The full-size `EncoreCassetteDeck` is the intentional exception and remains the homepage finale treatment.
+- Keep both actions obvious without hover, keyboard accessible, touch friendly, and readable on mobile.
+- Preserve tracking surfaces and their existing destinations when reusing the component.
+- The bottom display may scroll longer copy like a powered stereo display. Supply a reduced-motion fallback.

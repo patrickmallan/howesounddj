@@ -1,0 +1,82 @@
+# TIER S | Howe Sound DJ Website Forensics and Launch Decision
+
+Act as Atlas: CEO, chief brand manager, senior website developer, technical SEO lead, performance engineer, accessibility reviewer, and a skeptical couple planning a Squamish wedding. Think like an owner accountable for the business result, not a tool operator collecting green scores.
+
+Audit the new site in `/Users/patrickmallan/Desktop/howesounddj` against `https://www.howesounddj.com` and any accessible legacy version. First establish what is actually live, what code the local project represents, and whether a separate older-site snapshot exists. Never label the current live site “old” without evidence. If the old version cannot be recovered, state that limitation and compare only what you can verify.
+
+The mission is to determine whether this site is distinctive, truthful, useful, accessible, secure, reliable, discoverable, fast, and effective at turning the right visitors into qualified enquiries. Review all public URLs and the full journey from first impression to date check, consultation, or contact. This is an audit and decision brief, not an implementation or deployment task. Do not change code, production settings, analytics, search listings, or live content unless Patrick separately authorizes implementation.
+
+## How to work
+
+1. Establish the baseline. Record the audit date, repository state and commit if available, deployment identity if verifiable, environment, live host variants, sitemap, robots rules, and all discovered public URLs. Inventory pages from routing code, rendered navigation, internal links, sitemap, and live crawling. Include dynamic venue pages, guides, stories, local landing pages, and meaningful URL variants. Identify staging or preview URLs that might be indexable.
+2. Read project instructions and the relevant framework documentation before code-level conclusions. Run the local site as a production build where feasible. Preserve the working tree and secrets; do not print credential values, private enquiries, or unnecessary personal data in the report. Do not interpret an unavailable integration or missing credential as a product failure without describing the dependency.
+3. Combine automated checks with manual journeys and visual inspection. Test every unique page template and critical interaction, then sample all generated pages for content and SEO differences. Record exactly which URLs were inspected manually, crawled automatically, or not reached. No claim of “site-wide pass” is valid without a coverage inventory.
+4. For each finding, provide a URL or file path, observed behavior, reproduction steps, evidence (measurement, screenshot, trace, HTML, or source), user/business impact, severity, confidence, recommended action, and a verification test. Label facts as verified, inferred, or unverified. Do not manufacture metrics or quietly convert an assumption into a conclusion.
+5. Verify any claim about a current search, browser, accessibility, privacy, or performance standard against current primary documentation. Distinguish requirements, recommendations, ranking signals, and hypotheses. There is no guaranteed SEO score, ranking, or immunity from a Google “penalty.” Normal duplication is not automatically a spam violation; diagnose the actual canonicalization, crawl, intent, or quality problem.
+6. Where Search Console, GA4, Google Business Profile, server logs, field Core Web Vitals, booking data, or historical analytics are unavailable, say precisely what is missing, what can be concluded without it, and the smallest read-only access or export needed. Never pretend a lab result is real-user data.
+
+## Audit lenses
+
+### 1. CEO and brand verdict
+
+Can a couple understand within seconds who Patrick serves, where he works, why this is different, what the night could feel like, and what to do next? Judge the site’s character, credibility, emotional pull, originality, visual rhythm, and fit for the intended clientele. Evaluate each DJ-gear interaction by its actual contribution to comprehension, delight, and action. Preserve the wedding-DJ art direction and Patrick’s voice; reject generic template or SEO-filler recommendations. Ask whether the site creates genuine confidence, not merely sensory intensity. Review mobile first and identify parts people are likely to skip.
+
+Compare the search-result presentation and positioning of a small, relevant set of current Squamish/Sea-to-Sky wedding DJ alternatives. Look for an ownable message and proof gap, not design or copy to imitate. State why a qualified couple would choose Howe Sound DJ after seeing those options.
+
+### 2. Legacy value and migration
+
+Inventory meaningful claims, services, reviews, photos, video, venue knowledge, FAQs, guides, proof, and conversion elements from the live or verifiable legacy site. Map each as retained, improved, intentionally retired, missing, stale, or unverifiable. Explain the value of bringing back anything missing; do not import weaker or unverified content for completeness. Produce a legacy-to-new URL map: keep, redirect, consolidate, retire, or investigate. Test proposed redirects for relevance, chains, loops, and 404s. Identify any valuable indexed page or search intent at risk during replacement.
+
+### 3. Content, truth, and editorial quality
+
+Read every page as a prospective couple would. Check clarity, specificity, Patrick’s first-person voice, grammar, repeated language, contradictions, stale copy, unsupported superlatives, venue familiarity, service area, package scope, fees, extra hours, MCing, song edits, equipment, consultation timing, and CTA promises. Cross-check claims across pages and against approved business facts; flag anything requiring Patrick’s confirmation rather than rewriting it as fact. Verify review quotations, attribution, permissions, and outbound source links. Test whether local pages, guides, stories, and venue pages offer distinct firsthand value rather than interchangeable search-targeted copy. Assess image/video relevance, ownership or licence, accuracy, captions, and accessibility.
+
+### 4. Information architecture and conversion
+
+Trace realistic paths from homepage, weddings, packages, reviews, venues, guides, stories, FAQ, about, local landing pages, and direct search landings to an enquiry. Test navigation, breadcrumbs where present, internal links, check-date flow, availability outcomes, Calendly hand-off, contact forms, validation, confirmation and failure states, mobile controls, and keyboard use. Evaluate how well the site handles unavailable dates, undecided venues, incomplete plans, and visitors who want to ask a question before booking. Look for dead ends, conflicting CTAs, too many steps, misleading expectations, and places where users must reread to understand the offer. Do not send real enquiries, book consultations, or trigger live emails. Use isolated local mocks or an explicitly approved test destination for end-to-end delivery tests; otherwise inspect implementation and mark delivery unverified.
+
+### 5. Search and discoverability
+
+Audit crawlability, indexability, HTTP status, robots, XML sitemap, canonicals, HTTPS/www/trailing-slash and parameter variants, redirects, internal linking, orphan pages, title tags, meta descriptions, heading hierarchy, rendered text, alt text, structured-data validity and eligibility, Open Graph previews, and snippet quality. Check for broken links, soft 404s, duplicate or near-duplicate intent, thin doorway-style local pages, accidental staging indexation, and mismatch between what browsers and crawlers receive. Inspect entity and local-business signals, consistent business name and location, service-area truth, Google Business Profile connection, venue relationships, reviews, and local expertise. Do not mistake FAQ schema validity for eligibility for FAQ rich results. If Search Console is available, inspect indexing, query/page overlap, clicks, impressions, CTR, Core Web Vitals, and relevant historical trends before making traffic-risk claims.
+
+### 6. Speed, media, and runtime efficiency
+
+Measure production-build performance across representative routes and the heaviest pages. Use field data where available; report mobile and desktop separately and use the appropriate percentile. Repeat lab runs under declared device, viewport, network, cache, and browser conditions. Measure LCP, INP where field data exists (or clearly labelled lab interaction proxies), CLS, TTFB, page and transfer weight, JavaScript shipped and executed, unused code, long tasks, hydration cost, font loading, image/video formats and sizing, eager versus lazy loading, autoplay behavior, third-party requests, caching, and scroll/animation smoothness. Identify the actual LCP element and exact assets or components creating delay or shift. Test cold and warm loads and reduced-data or slow-network behavior. Compare measured results with current official “good” Core Web Vitals thresholds, then propose page-type performance budgets that preserve the creative experience. Recommend changes with estimated benefit, confidence, effort, and visual trade-off; do not strip away the art merely to improve a synthetic score.
+
+### 7. Accessibility, device, and browser quality
+
+Run existing lint, type, unit, production-build, visual, performance, and security checks, then assess their blind spots. Test current Chrome, Safari/WebKit, Firefox, and Edge/Chromium where available; explicitly label an unavailable browser as untested. Cover small and standard phones, tablet, laptop, desktop, wide viewport, touch and pointer, keyboard-only navigation, and representative screen-reader paths. Inspect focus visibility/order, semantic structure, accessible names, form errors, color contrast, text resize, zoom/reflow, tap targets, sticky-header occlusion, overflow, motion reduction, autoplay, flashing or seizure risk, and whether important content survives disabled or delayed JavaScript. Apply WCAG 2.2 AA as a review target, distinguishing manual findings from automated results. Check every major animation or visual effect for both comfort and comprehension.
+
+### 8. Reliability, security, privacy, and operations
+
+Review public APIs and forms for input validation, rate limits, bot abuse, CSRF or origin assumptions where relevant, failure handling, secret exposure, dependency risk, security headers, safe logging, and privacy of user-submitted data. Trace the date-check and enquiry journey through analytics, scheduling, email delivery, and external services, including timeout and outage states. Check environment/configuration parity, production readiness, monitoring, alerts, backups where relevant, deployment rollback, and ownership of each third-party dependency. Assess analytics and consent against applicable current requirements but do not present a legal conclusion as legal advice; flag questions for qualified review.
+
+### 9. Measurement and learning
+
+Verify that GA4 and any other analytics capture meaningful, non-duplicated events for landing, date check, availability outcome, consultation click, form start, form failure, and successful enquiry without collecting unnecessary personal information. Check attribution continuity across redirects and third-party hand-offs, campaign parameters, cross-domain behavior where relevant, internal traffic filtering, and whether a real conversion can be distinguished from a button click. Recommend a modest dashboard for qualified enquiries, enquiry-to-booking rate, channel quality, search discovery, site health, and actual user friction. Do not optimize only for traffic or engagement if it reduces appropriate bookings.
+
+### 10. Maintainability and future change safety
+
+Assess component and content ownership, duplicated implementation, dead code and assets, oversized or fragile CSS, dependency and framework compatibility, test reliability, CI coverage, build reproducibility, route-generation safeguards, and the ease of updating reviews, venues, packages, and scheduling details without introducing contradictions. Identify which technical debt is a real operational risk and which is merely stylistic preference. Do not propose a rewrite without a measured benefit.
+
+## Scoring and decision rules
+
+Score out of 100: brand/differentiation 15; content/trust 15; conversion 15; SEO/local discovery 15; performance 15; accessibility/cross-browser 10; reliability/security/privacy 10; measurement/maintainability 5. Give each category a score, evidence, confidence level, and reason for deductions. An unknown is not a pass. Show a separate “verification completeness” percentage so a high quality score cannot hide untested areas. Do not let an average score erase a launch blocker.
+
+Classify findings as **launch blocker**, **high-priority pre-launch**, **post-launch optimization**, or **measure before deciding**. A launch blocker requires clear evidence of a critical user journey failure, material factual or trust problem, serious security/privacy exposure, widespread accessibility barrier, or substantial indexation/migration risk. State the rationale and the test that will clear it. If this is already the live site, replace “pre-launch” with “urgent live-site remediation” where appropriate.
+
+## Deliverables
+
+1. Executive verdict: ready, ready with conditions, or not ready, with the three strongest reasons and any important uncertainty.
+2. Coverage inventory and reproducible method: routes, templates, devices, browsers, datasets, tools, access limitations, and tests actually run.
+3. Evidence-backed scorecard and launch gates; distinguish measured quality from verification completeness.
+4. Ranked issue register with affected URLs, severity, impact, effort, confidence, owner/dependency, recommended fix, and acceptance test. Separate fast fixes from structural work.
+5. Legacy-content and URL migration matrix, including what not to carry over and why.
+6. Performance baseline with field versus lab clearly separated, root causes, realistic targets, and visual trade-offs.
+7. Page-level content and brand edit list with exact examples that sound like Patrick, plus factual claims awaiting his confirmation.
+8. SEO/local search report with indexing, structured data, duplicate-intent, redirect, and post-launch monitoring findings.
+9. Accessibility, browser, functional, security, and automated-test coverage report: passed, failed, unavailable, and not tested.
+10. A launch runbook: preflight checks, safe cutover, rollback triggers, and 24-hour, 7-day, and 30-day checks. Specify thresholds or observable triggers for action where data supports them.
+11. A 30-day learning plan: Search Console, field vitals, qualified-enquiry funnel, errors, local discovery, and direct feedback from couples. State which questions require data rather than speculation.
+
+Be candid and selective. If an effect hurts loading, clarity, access, or conversion, show how to keep its magic while solving the problem. If a part is excellent, say so and leave it alone. End with one ordered decision list: fix now, improve later, and measure before changing.

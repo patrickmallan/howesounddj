@@ -1,0 +1,476 @@
+[
+  {
+    "id": "ATOM-FADER-01",
+    "sourceId": "SRC-EQP-016",
+    "source": "pexels-tstudio-34805588-9871953.jpg",
+    "file": "fader-cap.png",
+    "category": "faders",
+    "crop": [
+      0.51,
+      0.34,
+      0.31,
+      0.28
+    ],
+    "mode": "fader-cap",
+    "title": "Fader cap",
+    "parts": [
+      "cap body",
+      "indicator stripe",
+      "edge wear",
+      "cast shadow"
+    ],
+    "uses": [
+      "current-position marker",
+      "draggable control",
+      "chapter indicator"
+    ],
+    "pixelCrop": {
+      "left": 1722,
+      "top": 2040,
+      "width": 1047,
+      "height": 1680
+    },
+    "cropPath": "design-research/deconstructed-hardware-design-system-v1/source-crops/atom-fader-01-fader-cap.png",
+    "output": "design-research/deconstructed-hardware-design-system-v1/primitives/faders/fader-cap.png",
+    "transform": "source crop; source-pixel alpha mask (fader-cap); no generative fill; no redrawing",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-FADER-02",
+    "sourceId": "SRC-EQP-016",
+    "source": "pexels-tstudio-34805588-9871953.jpg",
+    "file": "fader-rail.png",
+    "category": "faders",
+    "crop": [
+      0.51,
+      0.34,
+      0.31,
+      0.28
+    ],
+    "mode": "fader-rail",
+    "title": "Fader rail",
+    "parts": [
+      "rail",
+      "slot",
+      "tick texture",
+      "end stops"
+    ],
+    "uses": [
+      "chapter progress",
+      "page seam",
+      "image/type boundary"
+    ],
+    "pixelCrop": {
+      "left": 1722,
+      "top": 2040,
+      "width": 1047,
+      "height": 1680
+    },
+    "cropPath": "design-research/deconstructed-hardware-design-system-v1/source-crops/atom-fader-02-fader-rail.png",
+    "output": "design-research/deconstructed-hardware-design-system-v1/primitives/faders/fader-rail.png",
+    "transform": "source crop; source-pixel alpha mask (fader-rail); no generative fill; no redrawing",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-BUTTON-01",
+    "sourceId": "SRC-EQP-014",
+    "source": "pexels-tony-entz-6229418-30859665.jpg",
+    "file": "cue-button-blue.png",
+    "category": "buttons",
+    "crop": [
+      0.17,
+      0.49,
+      0.28,
+      0.29
+    ],
+    "mode": "soft-quad",
+    "title": "Blue CUE button",
+    "parts": [
+      "face",
+      "bezel",
+      "label",
+      "blue spill",
+      "panel shadow"
+    ],
+    "uses": [
+      "primary action",
+      "selected navigation",
+      "story trigger"
+    ],
+    "pixelCrop": {
+      "left": 1187,
+      "top": 2283,
+      "width": 1956,
+      "height": 1351
+    },
+    "cropPath": "design-research/deconstructed-hardware-design-system-v1/source-crops/atom-button-01-cue-button-blue.png",
+    "output": "design-research/deconstructed-hardware-design-system-v1/primitives/buttons/cue-button-blue.png",
+    "transform": "source crop; source-pixel alpha mask (soft-quad); no generative fill; no redrawing",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-BUTTON-02",
+    "sourceId": "SRC-EQP-008",
+    "source": "pexels-kiril-georgiev-3492134-11900594.jpg",
+    "file": "load-prep-button.png",
+    "category": "buttons",
+    "crop": [
+      0.48,
+      0.32,
+      0.29,
+      0.28
+    ],
+    "mode": "soft-quad",
+    "title": "LOAD PREP control",
+    "parts": [
+      "button face",
+      "orange bezel",
+      "legend",
+      "neighbour label",
+      "light falloff"
+    ],
+    "uses": [
+      "secondary action",
+      "preparation state",
+      "metadata switch"
+    ],
+    "pixelCrop": {
+      "left": 2880,
+      "top": 1280,
+      "width": 1740,
+      "height": 1120
+    },
+    "cropPath": "design-research/deconstructed-hardware-design-system-v1/source-crops/atom-button-02-load-prep-button.png",
+    "output": "design-research/deconstructed-hardware-design-system-v1/primitives/buttons/load-prep-button.png",
+    "transform": "source crop; source-pixel alpha mask (soft-quad); no generative fill; no redrawing",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-PAD-01",
+    "sourceId": "SRC-EQP-005",
+    "source": "pexels-jake-l-davies-42710276-15262989.jpg",
+    "file": "cue-play-pad-cluster.png",
+    "category": "buttons",
+    "crop": [
+      0.17,
+      0.57,
+      0.47,
+      0.29
+    ],
+    "mode": "soft-quad",
+    "title": "CUE / play control cluster",
+    "parts": [
+      "CUE face",
+      "play face",
+      "bezels",
+      "headphone jack",
+      "surface glow"
+    ],
+    "uses": [
+      "paired CTA",
+      "binary choice",
+      "conversion action"
+    ],
+    "pixelCrop": {
+      "left": 620,
+      "top": 3119,
+      "width": 1715,
+      "height": 1587
+    },
+    "cropPath": "design-research/deconstructed-hardware-design-system-v1/source-crops/atom-pad-01-cue-play-pad-cluster.png",
+    "output": "design-research/deconstructed-hardware-design-system-v1/primitives/buttons/cue-play-pad-cluster.png",
+    "transform": "source crop; source-pixel alpha mask (soft-quad); no generative fill; no redrawing",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-ROTARY-01",
+    "sourceId": "SRC-EQP-007",
+    "source": "pexels-julia-fuchs-19936537-7394229.jpg",
+    "file": "tone-rotary-face.png",
+    "category": "rotaries",
+    "crop": [
+      0.13,
+      0.11,
+      0.59,
+      0.66
+    ],
+    "mode": "ellipse",
+    "title": "Concentric TONE rotary",
+    "parts": [
+      "machined face",
+      "indicator",
+      "ridged body",
+      "scale",
+      "wear"
+    ],
+    "uses": [
+      "selector",
+      "focus anchor",
+      "circular type path"
+    ],
+    "pixelCrop": {
+      "left": 504,
+      "top": 426,
+      "width": 2287,
+      "height": 2558
+    },
+    "cropPath": "design-research/deconstructed-hardware-design-system-v1/source-crops/atom-rotary-01-tone-rotary-face.png",
+    "output": "design-research/deconstructed-hardware-design-system-v1/primitives/rotaries/tone-rotary-face.png",
+    "transform": "source crop; source-pixel alpha mask (ellipse); no generative fill; no redrawing",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-ROTARY-02",
+    "sourceId": "SRC-EQP-014",
+    "source": "pexels-tony-entz-6229418-30859665.jpg",
+    "file": "low-hi-rotary.png",
+    "category": "rotaries",
+    "crop": [
+      0.33,
+      0.21,
+      0.33,
+      0.56
+    ],
+    "mode": "ellipse-wide",
+    "title": "LOW–HI rotary + scale",
+    "parts": [
+      "body",
+      "indicator line",
+      "range arc",
+      "LOW/HI labels",
+      "blue light"
+    ],
+    "uses": [
+      "preference selector",
+      "intensity control",
+      "section anchor"
+    ],
+    "pixelCrop": {
+      "left": 2305,
+      "top": 979,
+      "width": 2305,
+      "height": 2610
+    },
+    "cropPath": "design-research/deconstructed-hardware-design-system-v1/source-crops/atom-rotary-02-low-hi-rotary.png",
+    "output": "design-research/deconstructed-hardware-design-system-v1/primitives/rotaries/low-hi-rotary.png",
+    "transform": "source crop; source-pixel alpha mask (ellipse-wide); no generative fill; no redrawing",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-PLATTER-01",
+    "sourceId": "SRC-EQP-005",
+    "source": "pexels-jake-l-davies-42710276-15262989.jpg",
+    "file": "green-platter-ring.png",
+    "category": "platters",
+    "crop": [
+      0.12,
+      0.25,
+      0.66,
+      0.38
+    ],
+    "mode": "ring",
+    "title": "Illuminated platter ring",
+    "parts": [
+      "outer ring",
+      "centre",
+      "edge",
+      "green spill",
+      "partial deck"
+    ],
+    "uses": [
+      "photo mask",
+      "page interruption",
+      "circular transition"
+    ],
+    "pixelCrop": {
+      "left": 438,
+      "top": 1368,
+      "width": 2408,
+      "height": 2079
+    },
+    "cropPath": "design-research/deconstructed-hardware-design-system-v1/source-crops/atom-platter-01-green-platter-ring.png",
+    "output": "design-research/deconstructed-hardware-design-system-v1/primitives/platters/green-platter-ring.png",
+    "transform": "source crop; source-pixel alpha mask (ring); no generative fill; no redrawing",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-METER-01",
+    "sourceId": "SRC-EQP-010",
+    "source": "pexels-pixabay-164746.jpg",
+    "file": "channel-meter-column.png",
+    "category": "meters",
+    "crop": [
+      0.44,
+      0.34,
+      0.21,
+      0.55
+    ],
+    "mode": "soft-strip",
+    "title": "Channel indicator column",
+    "parts": [
+      "LED dots",
+      "scale values",
+      "source labels",
+      "active state"
+    ],
+    "uses": [
+      "chapter intensity",
+      "navigation rhythm",
+      "progress signal"
+    ],
+    "pixelCrop": {
+      "left": 1618,
+      "top": 834,
+      "width": 772,
+      "height": 1349
+    },
+    "cropPath": "design-research/deconstructed-hardware-design-system-v1/source-crops/atom-meter-01-channel-meter-column.png",
+    "output": "design-research/deconstructed-hardware-design-system-v1/primitives/meters/channel-meter-column.png",
+    "transform": "source crop; source-pixel alpha mask (soft-strip); no generative fill; no redrawing",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-PANEL-01",
+    "sourceId": "SRC-EQP-015",
+    "source": "pexels-tstudio-34805588-14745818.jpg",
+    "file": "master-panel-strip.png",
+    "category": "panels",
+    "crop": [
+      0.35,
+      0.02,
+      0.29,
+      0.94
+    ],
+    "mode": "soft-strip",
+    "title": "MASTER panel strip",
+    "parts": [
+      "panel seam",
+      "MASTER label",
+      "CUE control",
+      "screws",
+      "channel marks"
+    ],
+    "uses": [
+      "page spine",
+      "navigation rail",
+      "chapter divider"
+    ],
+    "pixelCrop": {
+      "left": 1400,
+      "top": 80,
+      "width": 1160,
+      "height": 3760
+    },
+    "cropPath": "design-research/deconstructed-hardware-design-system-v1/source-crops/atom-panel-01-master-panel-strip.png",
+    "output": "design-research/deconstructed-hardware-design-system-v1/primitives/panels/master-panel-strip.png",
+    "transform": "source crop; source-pixel alpha mask (soft-strip); no generative fill; no redrawing",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-LABEL-01",
+    "sourceId": "SRC-EQP-002",
+    "source": "pexels-andrew-hawkes-2288355-4028924.jpg",
+    "file": "cue-label-stencil.png",
+    "category": "labels",
+    "crop": [
+      0.3,
+      0.46,
+      0.16,
+      0.14
+    ],
+    "mode": "threshold-light",
+    "title": "CUE label stencil",
+    "parts": [
+      "printed legend",
+      "button outline",
+      "source grain"
+    ],
+    "uses": [
+      "annotation",
+      "overprint",
+      "state label"
+    ],
+    "pixelCrop": {
+      "left": 1800,
+      "top": 1840,
+      "width": 960,
+      "height": 560
+    },
+    "cropPath": "design-research/deconstructed-hardware-design-system-v1/source-crops/atom-label-01-cue-label-stencil.png",
+    "output": "design-research/deconstructed-hardware-design-system-v1/primitives/labels/cue-label-stencil.png",
+    "transform": "source crop; greyscale; contrast normalisation; threshold; yellow overprint; alpha from source luminance",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-TEXTURE-01",
+    "sourceId": "SRC-EQP-002",
+    "source": "pexels-andrew-hawkes-2288355-4028924.jpg",
+    "file": "brushed-panel-texture.png",
+    "category": "textures",
+    "crop": [
+      0.46,
+      0.3,
+      0.33,
+      0.46
+    ],
+    "mode": "texture",
+    "title": "Brushed black panel",
+    "parts": [
+      "grain",
+      "printed marks",
+      "shallow scratch",
+      "uneven reflection"
+    ],
+    "uses": [
+      "type surface",
+      "section field",
+      "overprint material"
+    ],
+    "pixelCrop": {
+      "left": 2760,
+      "top": 1200,
+      "width": 1980,
+      "height": 1840
+    },
+    "cropPath": "design-research/deconstructed-hardware-design-system-v1/source-crops/atom-texture-01-brushed-panel-texture.png",
+    "output": "design-research/deconstructed-hardware-design-system-v1/primitives/textures/brushed-panel-texture.png",
+    "transform": "source crop; greyscale; contrast normalisation",
+    "approval": "RESEARCH_ONLY"
+  },
+  {
+    "id": "ATOM-LED-01",
+    "sourceId": "SRC-EQP-016",
+    "source": "pexels-tstudio-34805588-9871953.jpg",
+    "file": "turquoise-led-row.png",
+    "category": "meters",
+    "crop": [
+      0.04,
+      0.7,
+      0.32,
+      0.28
+    ],
+    "mode": "soft-strip",
+    "title": "Turquoise LED rhythm",
+    "parts": [
+      "individual light",
+      "repetition",
+      "bloom",
+      "panel edge"
+    ],
+    "uses": [
+      "navigation rhythm",
+      "chapter beats",
+      "motion cadence"
+    ],
+    "pixelCrop": {
+      "left": 135,
+      "top": 4200,
+      "width": 1080,
+      "height": 1680
+    },
+    "cropPath": "design-research/deconstructed-hardware-design-system-v1/source-crops/atom-led-01-turquoise-led-row.png",
+    "output": "design-research/deconstructed-hardware-design-system-v1/primitives/meters/turquoise-led-row.png",
+    "transform": "source crop; source-pixel alpha mask (soft-strip); no generative fill; no redrawing",
+    "approval": "RESEARCH_ONLY"
+  }
+]

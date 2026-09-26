@@ -96,8 +96,15 @@ describe("HSO SEO indexation URL contract", () => {
     }
   });
 
-  it("allows sitewide indexing in robots metadata", () => {
+  it("allows live indexing but blocks protected preview indexing", () => {
     const layout = readSource("src/app/layout.tsx");
-    expect(layout).toMatch(/robots:\s*\{[\s\S]*index:\s*true[\s\S]*follow:\s*true/);
+    const robots = readSource("src/app/robots.ts");
+    const isolation = readSource("src/lib/is-isolated-preview.ts");
+    expect(layout).toMatch(/index:\s*!isIsolatedPreview\(\)/);
+    expect(layout).toMatch(/follow:\s*!isIsolatedPreview\(\)/);
+    expect(robots).toMatch(/if \(isIsolatedPreview\(\)\)/);
+    expect(isolation).toContain('process.env.HSDJ_ISOLATED_PREVIEW === "1"');
+    expect(isolation).toContain('process.env.VERCEL_ENV === "preview"');
+    expect(robots).toMatch(/disallow:\s*"\/"/);
   });
 });

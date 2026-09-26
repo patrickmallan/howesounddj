@@ -1,0 +1,450 @@
+[
+  {
+    "file": "assets/pads/red.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 101,
+    "nativeHeight": 101,
+    "sourceCoordinates": {
+      "left": 451,
+      "top": 1577,
+      "width": 101,
+      "height": 101
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/pads/cyan.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 101,
+    "nativeHeight": 101,
+    "sourceCoordinates": {
+      "left": 559,
+      "top": 1577,
+      "width": 101,
+      "height": 101
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/pads/lime.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 101,
+    "nativeHeight": 101,
+    "sourceCoordinates": {
+      "left": 667,
+      "top": 1577,
+      "width": 101,
+      "height": 101
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/pads/purple.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 101,
+    "nativeHeight": 101,
+    "sourceCoordinates": {
+      "left": 775,
+      "top": 1577,
+      "width": 101,
+      "height": 101
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/pads/green.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 101,
+    "nativeHeight": 101,
+    "sourceCoordinates": {
+      "left": 451,
+      "top": 1684,
+      "width": 101,
+      "height": 101
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/pads/orange.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 101,
+    "nativeHeight": 101,
+    "sourceCoordinates": {
+      "left": 559,
+      "top": 1684,
+      "width": 101,
+      "height": 101
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/pads/blue.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 101,
+    "nativeHeight": 101,
+    "sourceCoordinates": {
+      "left": 667,
+      "top": 1684,
+      "width": 101,
+      "height": 101
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/pads/yellow.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 101,
+    "nativeHeight": 101,
+    "sourceCoordinates": {
+      "left": 775,
+      "top": 1684,
+      "width": 101,
+      "height": 101
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/buttons/hot-cue-mode.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 94,
+    "nativeHeight": 26,
+    "sourceCoordinates": {
+      "left": 454,
+      "top": 1517,
+      "width": 94,
+      "height": 26
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/buttons/beat-loop-mode.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 94,
+    "nativeHeight": 26,
+    "sourceCoordinates": {
+      "left": 562,
+      "top": 1517,
+      "width": 94,
+      "height": 26
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/buttons/slip-loop-mode.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 94,
+    "nativeHeight": 26,
+    "sourceCoordinates": {
+      "left": 670,
+      "top": 1517,
+      "width": 94,
+      "height": 26
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/buttons/beat-jump-mode.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 94,
+    "nativeHeight": 26,
+    "sourceCoordinates": {
+      "left": 778,
+      "top": 1517,
+      "width": 94,
+      "height": 26
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/buttons/gate-cue-mode.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 94,
+    "nativeHeight": 19,
+    "sourceCoordinates": {
+      "left": 454,
+      "top": 1548,
+      "width": 94,
+      "height": 19
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/buttons/beat-loop-2-mode.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 94,
+    "nativeHeight": 19,
+    "sourceCoordinates": {
+      "left": 562,
+      "top": 1548,
+      "width": 94,
+      "height": 19
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/buttons/key-shift-mode.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 94,
+    "nativeHeight": 19,
+    "sourceCoordinates": {
+      "left": 670,
+      "top": 1548,
+      "width": 94,
+      "height": 19
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/buttons/beat-jump-2-mode.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 94,
+    "nativeHeight": 19,
+    "sourceCoordinates": {
+      "left": 778,
+      "top": 1548,
+      "width": 94,
+      "height": 19
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/buttons/cue-round.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 130,
+    "nativeHeight": 130,
+    "sourceCoordinates": {
+      "left": 190,
+      "top": 1504,
+      "width": 130,
+      "height": 130
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/buttons/play-pause-round.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 130,
+    "nativeHeight": 130,
+    "sourceCoordinates": {
+      "left": 190,
+      "top": 1657,
+      "width": 130,
+      "height": 130
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/rotary/trim-gray.png",
+    "source": "004-1053x1053.jpg",
+    "nativeWidth": 82,
+    "nativeHeight": 82,
+    "sourceCoordinates": {
+      "left": 110,
+      "top": 86,
+      "width": 82,
+      "height": 82
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/rotary/eq-black.png",
+    "source": "004-1053x1053.jpg",
+    "nativeWidth": 76,
+    "nativeHeight": 76,
+    "sourceCoordinates": {
+      "left": 113,
+      "top": 269,
+      "width": 76,
+      "height": 76
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/rotary/color-silver.png",
+    "source": "004-1053x1053.jpg",
+    "nativeWidth": 86,
+    "nativeHeight": 86,
+    "sourceCoordinates": {
+      "left": 108,
+      "top": 907,
+      "width": 86,
+      "height": 86
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/rotary/input-selector.png",
+    "source": "026-480x300.png",
+    "nativeWidth": 110,
+    "nativeHeight": 110,
+    "sourceCoordinates": {
+      "left": 187,
+      "top": 96,
+      "width": 110,
+      "height": 110
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/faders/channel-fader-cap.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 69,
+    "nativeHeight": 29,
+    "sourceCoordinates": {
+      "left": 1355,
+      "top": 1524,
+      "width": 69,
+      "height": 29
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/faders/channel-fader-rail.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 126,
+    "nativeHeight": 233,
+    "sourceCoordinates": {
+      "left": 1334,
+      "top": 1443,
+      "width": 126,
+      "height": 233
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/faders/tempo-fader-cap.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 68,
+    "nativeHeight": 76,
+    "sourceCoordinates": {
+      "left": 1059,
+      "top": 1477,
+      "width": 68,
+      "height": 76
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/faders/tempo-fader-rail.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 88,
+    "nativeHeight": 454,
+    "sourceCoordinates": {
+      "left": 1049,
+      "top": 1329,
+      "width": 88,
+      "height": 454
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/faders/crossfader-cap.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 62,
+    "nativeHeight": 61,
+    "sourceCoordinates": {
+      "left": 1571,
+      "top": 1713,
+      "width": 62,
+      "height": 61
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/faders/crossfader-rail.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 230,
+    "nativeHeight": 77,
+    "sourceCoordinates": {
+      "left": 1485,
+      "top": 1705,
+      "width": 230,
+      "height": 77
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/meters/channel-meter.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 28,
+    "nativeHeight": 344,
+    "sourceCoordinates": {
+      "left": 1310,
+      "top": 845,
+      "width": 28,
+      "height": 344
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/buttons/channel-cue-orange.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 83,
+    "nativeHeight": 35,
+    "sourceCoordinates": {
+      "left": 1350,
+      "top": 1323,
+      "width": 83,
+      "height": 35
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/buttons/fx-low-blue.png",
+    "source": "xdj-az-top-3300.webp",
+    "nativeWidth": 57,
+    "nativeHeight": 35,
+    "sourceCoordinates": {
+      "left": 1933,
+      "top": 1065,
+      "width": 57,
+      "height": 35
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  },
+  {
+    "file": "assets/meters/djm-a9-master-meter.png",
+    "source": "002-1792x1316.png",
+    "nativeWidth": 70,
+    "nativeHeight": 210,
+    "sourceCoordinates": {
+      "left": 1110,
+      "top": 305,
+      "width": 70,
+      "height": 210
+    },
+    "cameraAxis": "directly-overhead",
+    "upscaled": false
+  }
+]

@@ -53,10 +53,13 @@ describe("HSDJ-WEB-SCHEDULING-01 Sound Check public cutover", () => {
     expect(consultCalendly).not.toMatch(/https:\/\/calendly\.com/);
   });
 
-  it("wires principal direct-scheduling CTAs to the canonical URL", () => {
+  it("wires principal scheduling CTAs through the controlled handoff", () => {
     const trackedLink = readSource("src/components/book-consult-tracked-link.tsx");
-    expect(trackedLink).toMatch(/href=\{CONSULT_CALENDLY_URL\}/);
+    expect(trackedLink).toMatch(/href="\/go\/consult"/);
     expect(trackedLink).toMatch(/PUBLIC_SOUND_CHECK_CTA_LABEL/);
+
+    const handoff = readSource("src/app/go/consult/route.ts");
+    expect(handoff).toMatch(/new URL\(CONSULT_CALENDLY_URL\)/);
 
     const availabilityForm = readSource("src/components/contact-availability-form.tsx");
     expect(availabilityForm).toMatch(/PostAvailabilitySuccess/);

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="1000" viewBox="0 0 1440 1000" role="img" aria-label="About credibility species A desktop: a speech-check editorial spread, mixer crop, and attributed review, no equal card grid">
+  <defs><clipPath id="mix"><path d="M930 194H1330V704H1000L930 650Z"/></clipPath></defs>
+  <rect width="1440" height="1000" fill="#0c1011"/>
+  <path d="M70 103H1370" stroke="#47616a" stroke-width="2"/>
+  <text x="84" y="80" fill="#81d9e8" font-family="Arial" font-size="16" font-weight="700" letter-spacing="3">ABOUT / THE WORK YOU DON'T SEE</text>
+  <text x="85" y="210" fill="#f5f0e8" font-family="Arial" font-size="65" font-weight="800">Before a speech,</text>
+  <text x="85" y="283" fill="#f5f0e8" font-family="Arial" font-size="65" font-weight="800">I check four things.</text>
+  <path d="M87 345H815" stroke="#f5d537" stroke-width="4"/>
+  <text x="88" y="411" fill="#f5f0e8" font-family="Arial" font-size="27">The coordinator says go.</text>
+  <path d="M88 438H807" stroke="#384346"/>
+  <text x="88" y="493" fill="#f5f0e8" font-family="Arial" font-size="27">Photo and video are ready.</text>
+  <path d="M88 520H807" stroke="#384346"/>
+  <text x="88" y="575" fill="#f5f0e8" font-family="Arial" font-size="27">The wireless mic signal is good.</text>
+  <path d="M88 602H807" stroke="#384346"/>
+  <text x="88" y="657" fill="#f5f0e8" font-family="Arial" font-size="27">The person speaking is ready.</text>
+  <image xlink:href="../../public/images/hsdj-redesign/deck-surfaces/djm-a9-topdown.jpg" x="700" y="0" width="800" height="800" preserveAspectRatio="xMidYMid slice" clip-path="url(#mix)"/>
+  <path d="M930 704H1330" stroke="#81d9e8" stroke-width="5"/>
+  <text x="90" y="735" fill="#aab9b9" font-family="Arial" font-size="17">OIART graduate · exact credential wording to verify</text>
+  <path d="M82 783H1358" stroke="#6a7270" stroke-width="2"/>
+  <text x="88" y="846" fill="#f5f0e8" font-family="Arial" font-size="32" font-style="italic">“The dance floor was packed at all times!”</text>
+  <text x="90" y="887" fill="#81d9e8" font-family="Arial" font-size="18" font-weight="700" letter-spacing="1">CASSANDRA WILDING · PUBLISHED REVIEW EXCERPT</text>
+  <text x="90" y="969" fill="#85918e" font-family="Arial" font-size="13" letter-spacing="1">STATIC ABOUT STUDY A · 1440 × 1000 · RESEARCH ONLY</text>
+</svg>

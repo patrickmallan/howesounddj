@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="Streamlined Contact available-date mobile study with consult action before testimonial">
+  <defs><clipPath id="art"><path d="M0 75H390V168L299 185L214 156L105 190L0 164Z"/></clipPath></defs>
+  <rect width="390" height="844" fill="#0b0e0f"/>
+  <rect width="390" height="75" fill="#070909"/>
+  <text x="20" y="33" fill="#f1e5dc" font-family="Arial" font-size="15" font-weight="700" letter-spacing="1">HOWE SOUND</text>
+  <text x="20" y="53" fill="#f1e5dc" font-family="Arial" font-size="13" letter-spacing="2">WEDDING DJ</text>
+  <text x="344" y="47" fill="#49d4e5" font-family="Arial" font-size="23">≡</text>
+  <image xlink:href="../../public/images/hsdj-redesign/wedding-story/night-section-art-v1.webp" x="0" y="68" width="420" height="170" preserveAspectRatio="xMidYMid slice" clip-path="url(#art)"/>
+  <path d="M0 75H390" stroke="#49d4e5" stroke-width="3"/>
+  <text x="22" y="220" fill="#f2d53c" font-family="Arial" font-size="11" font-weight="700">JUNE 15, 2028 IS AVAILABLE</text>
+  <text x="311" y="220" fill="#b5c0bc" font-family="Arial" font-size="11">Edit date</text>
+  <path d="M22 238H368" stroke="#f2d53c" stroke-width="2"/>
+  <text x="21" y="287" fill="#f8f1e8" font-family="Arial" font-size="29" font-weight="800">This is the answer</text>
+  <text x="21" y="323" fill="#f8f1e8" font-family="Arial" font-size="29" font-weight="800">you were hoping for.</text>
+  <text x="21" y="370" fill="#f8f1e8" font-family="Arial" font-size="27" font-weight="800">Your wedding date</text>
+  <text x="21" y="404" fill="#f8f1e8" font-family="Arial" font-size="27" font-weight="800">is available.</text>
+  <text x="22" y="446" fill="#d3d4cd" font-family="Arial" font-size="14">Book a 45-minute consult and tell me what</text>
+  <text x="22" y="467" fill="#d3d4cd" font-family="Arial" font-size="14">you’re planning. We’ll talk about the wedding,</text>
+  <text x="22" y="488" fill="#d3d4cd" font-family="Arial" font-size="14">the music, and whether I’m the right DJ for it.</text>
+  <rect x="22" y="516" width="346" height="69" fill="#f2d53c"/>
+  <text x="93" y="559" fill="#101414" font-family="Arial" font-size="20" font-weight="800">BOOK A CONSULT ↗</text>
+  <path d="M22 622H368" stroke="#465250"/>
+  <text x="22" y="659" fill="#f8f1e8" font-family="Arial" font-size="15" font-style="italic">“We would get married all over again just</text>
+  <text x="22" y="681" fill="#f8f1e8" font-family="Arial" font-size="15" font-style="italic">so we could hangout and work with Patrick.</text>
+  <text x="22" y="703" fill="#f8f1e8" font-family="Arial" font-size="15" font-style="italic">He’s a talented DJ and a truly caring person.”</text>
+  <text x="22" y="740" fill="#49d4e5" font-family="Arial" font-size="11" font-weight="700">STEPHEN HENRY · SEA TO SKY GONDOLA</text>
+  <text x="22" y="820" fill="#7f8d88" font-family="Arial" font-size="10">STATIC AVAILABLE STATE · COPY CHANGE PENDING</text>
+</svg>

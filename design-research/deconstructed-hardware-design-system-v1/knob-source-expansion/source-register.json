@@ -1,0 +1,156 @@
+[
+  {
+    "id": "SRC-KNB-001",
+    "file": "Screenshot 2026-09-10 at 11.31.38 PM.png",
+    "dimensions": "477×250",
+    "classification": "THIRD-PARTY VISUAL RESEARCH / REFERENCE",
+    "origin": "Screenshot supplied by Patrick; described as obtained from Pioneer website",
+    "rights": "Permission unknown; not production-cleared; reference use only",
+    "subject": "FADER BANK",
+    "characteristics": "4 caps · 0–10 ticks · assign toggles",
+    "knobReadiness": "ADJACENT / USEFUL"
+  },
+  {
+    "id": "SRC-KNB-002",
+    "file": "Screenshot 2026-09-10 at 11.32.11 PM.png",
+    "dimensions": "362×374",
+    "classification": "THIRD-PARTY VISUAL RESEARCH / REFERENCE",
+    "origin": "Screenshot supplied by Patrick; described as obtained from Pioneer website",
+    "rights": "Permission unknown; not production-cleared; reference use only",
+    "subject": "CHANNEL STRIPS",
+    "characteristics": "TRIM · HI/MID/LOW · dotted arcs · meters",
+    "knobReadiness": "PRIMARY"
+  },
+  {
+    "id": "SRC-KNB-003",
+    "file": "Screenshot 2026-09-10 at 11.32.28 PM.png",
+    "dimensions": "133×423",
+    "classification": "THIRD-PARTY VISUAL RESEARCH / REFERENCE",
+    "origin": "Screenshot supplied by Patrick; described as obtained from Pioneer website",
+    "rights": "Permission unknown; not production-cleared; reference use only",
+    "subject": "MASTER LEVEL",
+    "characteristics": "open arc · -∞/+5 dB · L/R meter",
+    "knobReadiness": "PRIMARY"
+  },
+  {
+    "id": "SRC-KNB-004",
+    "file": "Screenshot 2026-09-10 at 11.34.03 PM.png",
+    "dimensions": "153×229",
+    "classification": "THIRD-PARTY VISUAL RESEARCH / REFERENCE",
+    "origin": "Screenshot supplied by Patrick; described as obtained from Pioneer website",
+    "rights": "Permission unknown; not production-cleared; reference use only",
+    "subject": "TRANSPORT PAIR",
+    "characteristics": "lit rings · metal faces · ribbed field",
+    "knobReadiness": "ADJACENT / USEFUL"
+  },
+  {
+    "id": "SRC-KNB-005",
+    "file": "Screenshot 2026-09-10 at 11.34.15 PM.png",
+    "dimensions": "311×198",
+    "classification": "THIRD-PARTY VISUAL RESEARCH / REFERENCE",
+    "origin": "Screenshot supplied by Patrick; described as obtained from Pioneer website",
+    "rights": "Permission unknown; not production-cleared; reference use only",
+    "subject": "PAD BANK",
+    "characteristics": "2×4 rhythm · coloured edge states",
+    "knobReadiness": "ADJACENT / USEFUL"
+  },
+  {
+    "id": "SRC-KNB-006",
+    "file": "Screenshot 2026-09-10 at 11.34.33 PM.png",
+    "dimensions": "401×409",
+    "classification": "THIRD-PARTY VISUAL RESEARCH / REFERENCE",
+    "origin": "Screenshot supplied by Patrick; described as obtained from Pioneer website",
+    "rights": "Permission unknown; not production-cleared; reference use only",
+    "subject": "PLATTER",
+    "characteristics": "concentric depth · orbital labels · edge rhythm",
+    "knobReadiness": "ADJACENT / USEFUL"
+  },
+  {
+    "id": "SRC-KNB-007",
+    "file": "Screenshot 2026-09-10 at 11.34.54 PM.png",
+    "dimensions": "214×78",
+    "classification": "THIRD-PARTY VISUAL RESEARCH / REFERENCE",
+    "origin": "Screenshot supplied by Patrick; described as obtained from Pioneer website",
+    "rights": "Permission unknown; not production-cleared; reference use only",
+    "subject": "LOOP BUTTONS",
+    "characteristics": "orange face · bezel · micro labels",
+    "knobReadiness": "ADJACENT / USEFUL"
+  },
+  {
+    "id": "SRC-KNB-008",
+    "file": "Screenshot 2026-09-10 at 11.35.09 PM.png",
+    "dimensions": "107×319",
+    "classification": "THIRD-PARTY VISUAL RESEARCH / REFERENCE",
+    "origin": "Screenshot supplied by Patrick; described as obtained from Pioneer website",
+    "rights": "Permission unknown; not production-cleared; reference use only",
+    "subject": "TEMPO FADER",
+    "characteristics": "rail · ticks · centre zero · cap",
+    "knobReadiness": "ADJACENT / USEFUL"
+  },
+  {
+    "id": "SRC-KNB-009",
+    "file": "Screenshot 2026-09-10 at 11.35.25 PM.png",
+    "dimensions": "258×429",
+    "classification": "THIRD-PARTY VISUAL RESEARCH / REFERENCE",
+    "origin": "Screenshot supplied by Patrick; described as obtained from Pioneer website",
+    "rights": "Permission unknown; not production-cleared; reference use only",
+    "subject": "FULL MIXER STRIP",
+    "characteristics": "paired EQ towers · colour rotaries · meter",
+    "knobReadiness": "PRIMARY"
+  },
+  {
+    "id": "SRC-KNB-010",
+    "file": "Screenshot 2026-09-10 at 11.36.41 PM.png",
+    "dimensions": "525×162",
+    "classification": "THIRD-PARTY VISUAL RESEARCH / REFERENCE",
+    "origin": "Screenshot supplied by Patrick; described as obtained from Pioneer website",
+    "rights": "Permission unknown; not production-cleared; reference use only",
+    "subject": "PAD MODES",
+    "characteristics": "state labels · colour cadence · hard grid",
+    "knobReadiness": "ADJACENT / USEFUL"
+  },
+  {
+    "id": "SRC-KNB-011",
+    "file": "Screenshot 2026-09-10 at 11.37.08 PM.png",
+    "dimensions": "88×133",
+    "classification": "THIRD-PARTY VISUAL RESEARCH / REFERENCE",
+    "origin": "Screenshot supplied by Patrick; described as obtained from Pioneer website",
+    "rights": "Permission unknown; not production-cleared; reference use only",
+    "subject": "LEVEL PAIR",
+    "characteristics": "MASTER/BOOTH · shared scale grammar",
+    "knobReadiness": "PRIMARY"
+  },
+  {
+    "id": "SRC-KNB-012",
+    "file": "Screenshot 2026-09-10 at 11.37.22 PM.png",
+    "dimensions": "89×68",
+    "classification": "THIRD-PARTY VISUAL RESEARCH / REFERENCE",
+    "origin": "Screenshot supplied by Patrick; described as obtained from Pioneer website",
+    "rights": "Permission unknown; not production-cleared; reference use only",
+    "subject": "METAL ROTARY",
+    "characteristics": "radial machining · double bezel",
+    "knobReadiness": "PRIMARY"
+  },
+  {
+    "id": "SRC-KNB-013",
+    "file": "Screenshot 2026-09-10 at 11.38.02 PM.png",
+    "dimensions": "95×77",
+    "classification": "THIRD-PARTY VISUAL RESEARCH / REFERENCE",
+    "origin": "Screenshot supplied by Patrick; described as obtained from Pioneer website",
+    "rights": "Permission unknown; not production-cleared; reference use only",
+    "subject": "TRANSPORT DISC",
+    "characteristics": "concave black face · green centre mark",
+    "knobReadiness": "ADJACENT / USEFUL"
+  },
+  {
+    "id": "SRC-KNB-014",
+    "file": "Screenshot 2026-09-10 at 11.38.57 PM.png",
+    "dimensions": "302×167",
+    "classification": "THIRD-PARTY VISUAL RESEARCH / REFERENCE",
+    "origin": "Screenshot supplied by Patrick; described as obtained from Pioneer website",
+    "rights": "Permission unknown; not production-cleared; reference use only",
+    "subject": "FADERS + METER",
+    "characteristics": "symmetry · level column · hierarchy",
+    "knobReadiness": "ADJACENT / USEFUL"
+  }
+]

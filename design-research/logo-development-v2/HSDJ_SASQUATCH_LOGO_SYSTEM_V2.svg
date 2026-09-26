@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="1600" viewBox="0 0 1600 1600">
+  <defs>
+    <linearGradient id="signalWash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071d30"/>
+      <stop offset="0.52" stop-color="#111"/>
+      <stop offset="1" stop-color="#ed1f5d"/>
+    </linearGradient>
+    <filter id="soften"><feGaussianBlur stdDeviation="1.2"/></filter>
+    <mask id="sasquatchMask" mask-type="alpha">
+      <image xlink:href="sasquatch-dj-emblem-study-ai-v1-cropped.png" x="0" y="0" width="1130" height="1020" preserveAspectRatio="xMidYMid meet"/>
+    </mask>
+    <g id="eqKnobDark">
+      <path d="M0,-48 L9,-45 L17,-44 L24,-39 L33,-35 L37,-26 L44,-19 L44,-10 L48,0 L44,10 L44,19 L37,26 L33,35 L24,39 L17,44 L9,45 L0,48 L-9,45 L-17,44 L-24,39 L-33,35 L-37,26 L-44,19 L-44,10 L-48,0 L-44,-10 L-44,-19 L-37,-26 L-33,-35 L-24,-39 L-17,-44 L-9,-45 Z" fill="#111"/>
+      <circle r="38" fill="#1c1c1d" stroke="#050505" stroke-width="4"/>
+      <path d="M0,-33 L0,-5" stroke="#f7f0e4" stroke-width="7" stroke-linecap="round"/>
+      <path d="M-25,-28 A38,38 0 0 1 25,-28" fill="none" stroke="#555" stroke-width="3" opacity=".7"/>
+    </g>
+    <g id="eqKnobLight">
+      <path d="M0,-48 L9,-45 L17,-44 L24,-39 L33,-35 L37,-26 L44,-19 L44,-10 L48,0 L44,10 L44,19 L37,26 L33,35 L24,39 L17,44 L9,45 L0,48 L-9,45 L-17,44 L-24,39 L-33,35 L-37,26 L-44,19 L-44,10 L-48,0 L-44,-10 L-44,-19 L-37,-26 L-33,-35 L-24,-39 L-17,-44 L-9,-45 Z" fill="#f7f0e4"/>
+      <circle r="38" fill="#19191a" stroke="#f7f0e4" stroke-width="4"/>
+      <path d="M0,-33 L0,-5" stroke="#f7f0e4" stroke-width="7" stroke-linecap="round"/>
+      <path d="M-25,-28 A38,38 0 0 1 25,-28" fill="none" stroke="#777" stroke-width="3" opacity=".75"/>
+    </g>
+    <g id="crossfaderDark">
+      <rect x="0" y="0" width="650" height="76" rx="7" fill="#111"/>
+      <g stroke="#777" stroke-width="2">
+        <path d="M28,13v14 M68,13v14 M108,13v14 M148,13v14 M188,13v14 M228,13v14 M268,13v14 M308,13v14 M342,13v14 M382,13v14 M422,13v14 M462,13v14 M502,13v14 M542,13v14 M582,13v14 M622,13v14"/>
+      </g>
+      <rect x="27" y="37" width="596" height="8" rx="4" fill="#050505" stroke="#666" stroke-width="2"/>
+      <path d="M307,9 h36 l8,8 v42 l-8,8 h-36 l-8,-8 v-42 z" fill="#e9e9e9" stroke="#080808" stroke-width="5"/>
+      <path d="M316,16 v44 M325,14 v48 M334,16 v44" stroke="#7d7d7d" stroke-width="3"/>
+      <text x="16" y="67" font-family="Arial, sans-serif" font-size="16" font-weight="800" fill="#f7f0e4">A</text>
+      <text x="624" y="67" font-family="Arial, sans-serif" font-size="16" font-weight="800" fill="#f7f0e4">B</text>
+    </g>
+    <g id="crossfaderLight">
+      <rect x="0" y="0" width="650" height="76" rx="7" fill="#f7f0e4"/>
+      <g stroke="#777" stroke-width="2">
+        <path d="M28,13v14 M68,13v14 M108,13v14 M148,13v14 M188,13v14 M228,13v14 M268,13v14 M308,13v14 M342,13v14 M382,13v14 M422,13v14 M462,13v14 M502,13v14 M542,13v14 M582,13v14 M622,13v14"/>
+      </g>
+      <rect x="27" y="37" width="596" height="8" rx="4" fill="#080808"/>
+      <path d="M307,9 h36 l8,8 v42 l-8,8 h-36 l-8,-8 v-42 z" fill="#222" stroke="#f7f0e4" stroke-width="4"/>
+      <path d="M316,16 v44 M325,14 v48 M334,16 v44" stroke="#777" stroke-width="3"/>
+      <text x="16" y="67" font-family="Arial, sans-serif" font-size="16" font-weight="800" fill="#111">A</text>
+      <text x="624" y="67" font-family="Arial, sans-serif" font-size="16" font-weight="800" fill="#111">B</text>
+    </g>
+  </defs>
+
+  <rect width="1600" height="1200" fill="#101011"/>
+  <text x="54" y="68" fill="#ffe000" font-family="Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="5">HSDJ / LOGO SYSTEM 02</text>
+  <text x="54" y="112" fill="#f7f0e4" font-family="Arial Black, Impact, sans-serif" font-size="48" font-weight="900">SASQUATCH AT THE CONTROLS.</text>
+  <text x="1546" y="68" fill="#a9a9ab" text-anchor="end" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2">ONE IDENTITY / THREE JOBS</text>
+
+  <!-- Full vertical video-overlay lockup -->
+  <g transform="translate(54 150)">
+    <rect width="920" height="990" fill="url(#signalWash)"/>
+    <image xlink:href="../../public/images/home/hsdj-hero-montage-poster-v1.jpg" x="0" y="0" width="920" height="990" preserveAspectRatio="xMidYMid slice" opacity=".22" filter="url(#soften)"/>
+    <rect width="920" height="990" fill="url(#signalWash)" opacity=".52"/>
+    <text x="34" y="44" fill="#6dff65" font-family="Arial, sans-serif" font-size="13" font-weight="900" letter-spacing="3">PRIMARY / VIDEO OVERLAY</text>
+    <g transform="translate(180 80) scale(.50)">
+      <rect width="1130" height="1020" fill="#f7f0e4" mask="url(#sasquatchMask)"/>
+    </g>
+
+    <g transform="translate(115 610)">
+      <text x="0" y="0" fill="#f7f0e4" font-family="Arial Black, Impact, sans-serif" font-size="112" font-weight="900" letter-spacing="-5">H</text>
+      <use xlink:href="#eqKnobLight" transform="translate(114 -37)"/>
+      <text x="170" y="0" fill="#f7f0e4" font-family="Arial Black, Impact, sans-serif" font-size="112" font-weight="900" letter-spacing="-5">WE</text>
+      <text x="402" y="0" fill="#f7f0e4" font-family="Arial Black, Impact, sans-serif" font-size="112" font-weight="900" letter-spacing="-5">S</text>
+      <use xlink:href="#eqKnobLight" transform="translate(510 -37)"/>
+      <text x="566" y="0" fill="#f7f0e4" font-family="Arial Black, Impact, sans-serif" font-size="112" font-weight="900" letter-spacing="-5">UND</text>
+      <use xlink:href="#crossfaderLight" transform="translate(0 35)"/>
+      <text x="325" y="185" fill="#ffe000" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="64" font-weight="900" letter-spacing="12">WEDDING DJ</text>
+      <text x="325" y="226" fill="#f7f0e4" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="800" letter-spacing="5">SQUAMISH, BC / LIVE IN THE ROOM</text>
+    </g>
+    <path d="M0,0h190" stroke="#12d8ff" stroke-width="8"/><path d="M730,990h190" stroke="#ff3151" stroke-width="8"/>
+  </g>
+
+  <!-- Standalone emblem -->
+  <g transform="translate(1010 150)">
+    <rect width="536" height="530" fill="#f2e9da"/>
+    <text x="28" y="40" fill="#1247ff" font-family="Arial, sans-serif" font-size="13" font-weight="900" letter-spacing="3">STANDALONE EMBLEM</text>
+    <g transform="translate(28 66) scale(.425)">
+      <rect width="1130" height="1020" fill="#111" mask="url(#sasquatchMask)"/>
+    </g>
+    <rect x="28" y="461" width="480" height="45" fill="#111"/>
+    <text x="268" y="492" fill="#ffe000" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="28" font-weight="900" letter-spacing="4">HSDJ / SQUAMISH</text>
+  </g>
+
+  <!-- Horizontal lockup -->
+  <g transform="translate(1010 710)">
+    <rect width="536" height="270" fill="#ed1f5d"/>
+    <text x="28" y="38" fill="#111" font-family="Arial, sans-serif" font-size="13" font-weight="900" letter-spacing="3">HORIZONTAL / SMALL FORMAT</text>
+    <g transform="translate(25 58) scale(.19)">
+      <rect width="1130" height="1020" fill="#111" mask="url(#sasquatchMask)"/>
+    </g>
+    <g transform="translate(245 106) scale(.39)">
+      <text x="0" y="0" fill="#111" font-family="Arial Black, Impact, sans-serif" font-size="112" font-weight="900" letter-spacing="-5">H</text>
+      <use xlink:href="#eqKnobDark" transform="translate(114 -37)"/>
+      <text x="170" y="0" fill="#111" font-family="Arial Black, Impact, sans-serif" font-size="112" font-weight="900" letter-spacing="-5">WE</text>
+      <text x="0" y="125" fill="#111" font-family="Arial Black, Impact, sans-serif" font-size="112" font-weight="900" letter-spacing="-5">S</text>
+      <use xlink:href="#eqKnobDark" transform="translate(108 88)"/>
+      <text x="164" y="125" fill="#111" font-family="Arial Black, Impact, sans-serif" font-size="112" font-weight="900" letter-spacing="-5">UND</text>
+    </g>
+    <text x="507" y="237" text-anchor="end" fill="#f7f0e4" font-family="Arial, sans-serif" font-size="15" font-weight="900" letter-spacing="4">WEDDING DJ</text>
+  </g>
+
+  <!-- one-colour reduction -->
+  <g transform="translate(1010 1010)">
+    <rect width="536" height="130" fill="#f2e9da"/>
+    <text x="22" y="30" fill="#777" font-family="Arial, sans-serif" font-size="12" font-weight="900" letter-spacing="3">ONE-COLOUR REDUCTION</text>
+    <g transform="translate(18 40) scale(.072)"><rect width="1130" height="1020" fill="#111" mask="url(#sasquatchMask)"/></g>
+    <text x="112" y="95" fill="#111" font-family="Arial Black, Impact, sans-serif" font-size="48" font-weight="900" letter-spacing="-2">HSDJ</text>
+    <line x1="254" y1="74" x2="490" y2="74" stroke="#111" stroke-width="6"/>
+    <rect x="360" y="54" width="28" height="40" rx="4" fill="#111"/>
+  </g>
+
+  <g transform="translate(54 1180)">
+    <rect width="1492" height="366" fill="#19191a" stroke="#38383a" stroke-width="2"/>
+    <text x="30" y="52" fill="#ffe000" font-family="Arial, sans-serif" font-size="15" font-weight="900" letter-spacing="4">THE PHYSICAL LOGIC</text>
+
+    <g transform="translate(34 92)">
+      <use xlink:href="#eqKnobLight" transform="translate(74 82) scale(1.35)"/>
+      <text x="170" y="45" fill="#f7f0e4" font-family="Arial Black, Impact, sans-serif" font-size="22" font-weight="900">THE “O” IS AN EQ KNOB</text>
+      <text x="170" y="78" fill="#aaa" font-family="Arial, sans-serif" font-size="15">Fluted grip · recessed face · fixed indicator</text>
+      <text x="170" y="105" fill="#aaa" font-family="Arial, sans-serif" font-size="15">Both knobs remain at neutral twelve o’clock.</text>
+    </g>
+
+    <line x1="500" y1="82" x2="500" y2="330" stroke="#38383a" stroke-width="2"/>
+    <g transform="translate(540 106)">
+      <use xlink:href="#crossfaderDark" transform="scale(.58)"/>
+      <text x="0" y="105" fill="#f7f0e4" font-family="Arial Black, Impact, sans-serif" font-size="22" font-weight="900">A REAL CROSSFADER</text>
+      <text x="0" y="138" fill="#aaa" font-family="Arial, sans-serif" font-size="15">Horizontal rail · vertical tactile cap · centre detent.</text>
+      <text x="0" y="165" fill="#aaa" font-family="Arial, sans-serif" font-size="15">The cap lands between HOWE and SOUND.</text>
+    </g>
+
+    <line x1="990" y1="82" x2="990" y2="330" stroke="#38383a" stroke-width="2"/>
+    <g transform="translate(1030 105)">
+      <text x="0" y="20" fill="#12d8ff" font-family="Arial Black, Impact, sans-serif" font-size="22" font-weight="900">WHY IT REPLACES THE OLD MARK</text>
+      <text x="0" y="60" fill="#f7f0e4" font-family="Arial, sans-serif" font-size="16" font-weight="700">The Sasquatch becomes the memory.</text>
+      <text x="0" y="92" fill="#f7f0e4" font-family="Arial, sans-serif" font-size="16" font-weight="700">The hardware becomes the language.</text>
+      <text x="0" y="124" fill="#f7f0e4" font-family="Arial, sans-serif" font-size="16" font-weight="700">The tall lockup masks the AI footage.</text>
+      <text x="0" y="180" fill="#aaa" font-family="Arial, sans-serif" font-size="14">No mountain. No generic DJ icon.</text>
+      <text x="0" y="208" fill="#aaa" font-family="Arial, sans-serif" font-size="14">One character can move, stamp, crop and reduce.</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,2571 @@
+================================================================================
+TIER-S EXECUTION BLOCK
+HSDJ — DO NOT PRESS → DROP!
+POST-AVAILABILITY INTERACTIVE BRAND EXPERIENCE V1
+================================================================================
+
+ROLE / AUTHORITY
+================================================================================
+
+Atlas — act as:
+
+- CEO / Product Lead for Howe Sound Wedding DJ
+- Senior Brand Director
+- Senior Conversion Experience Designer
+- Senior Frontend / Next.js Engineer
+- Interaction / Game Designer
+- Accessibility Engineer
+- Web Performance Engineer
+- Analytics Architect
+- Product Validation Lead
+- QA / Visual Certification Lead
+
+You are operating directly inside the current Howe Sound Wedding DJ website:
+
+~/Desktop/howesounddj
+
+Production:
+
+https://www.howesounddj.com
+
+Protected separate operational authority:
+
+~/Developer/HSDJ_Operations
+
+HSDJ Operations MUST NOT be modified.
+
+This is an IMPLEMENTATION tranche.
+
+You are authorized to:
+
+- inspect current repository truth;
+- inspect relevant accepted handoffs/contracts;
+- design the final interaction within the governed concept below;
+- implement production-quality frontend code;
+- create lightweight original visual assets in code where needed;
+- create a tiny original audio asset only if it materially improves the experience
+  and can be generated/owned locally without licensing ambiguity;
+- add bounded analytics through the existing analytics authority;
+- add deterministic tests;
+- add screenshot / visual-proof tooling where appropriate;
+- measure bundle/performance impact;
+- iterate locally until the experience satisfies the acceptance criteria;
+- produce final implementation/design handoff evidence.
+
+You are NOT authorized to deploy.
+
+Patrick must review the rendered experience before production deployment.
+
+Do not stop at:
+
+- architecture proposal;
+- pseudocode;
+- wireframe;
+- design document;
+- component skeleton;
+- static mockup.
+
+The mission is to BUILD the locally working experience, validate it, render it,
+red-team it, and return reviewable evidence.
+
+================================================================================
+PRODUCT THESIS
+================================================================================
+
+A visitor checking wedding-date availability is at one of the highest-intent
+moments on the Howe Sound Wedding DJ website.
+
+The current success experience answers:
+
+"Is Patrick available?"
+
+But some visitors may then immediately continue comparing other DJs without
+booking a consultation.
+
+We want to create an optional, surprising, genuinely fun micro-experience that:
+
+1. rewards the visitor's curiosity;
+2. keeps them engaged with Howe Sound DJ longer;
+3. demonstrates the playful/music-first personality of the brand;
+4. makes the website memorable;
+5. differentiates Howe Sound DJ from conventional wedding-DJ websites;
+6. creates a natural emotional bridge from:
+
+   "Patrick is available"
+
+   to:
+
+   "This guy/site is fun and different."
+
+   to:
+
+   "We should actually talk to Patrick."
+
+The experience MUST NOT rely on:
+
+- fake scarcity;
+- fake competition;
+- monetary bribery;
+- deceptive "winning";
+- fake prizes;
+- forced interaction;
+- conversion hostage-taking;
+- casino mechanics;
+- manipulative variable rewards;
+- fabricated social proof;
+- dark patterns.
+
+The objective is NOT addiction in a manipulative sense.
+
+The objective is:
+
+FUN
++
+CURIOSITY
++
+MASTERY
++
+MUSIC
++
+MEMORABILITY
++
+NATURAL CONSULTATION MOMENTUM.
+
+================================================================================
+WORKING CONCEPT — LOCKED
+================================================================================
+
+Canonical concept:
+
+DO NOT PRESS → DROP!
+
+The interaction has TWO primary stages.
+
+-------------------------------------------------------------------------------
+STAGE 1 — DO NOT PRESS
+-------------------------------------------------------------------------------
+
+After a visitor receives a truthful AVAILABLE result, the normal Availability
+Success experience remains intact.
+
+An optional, visually irresistible DJ-controller-style performance pad appears.
+
+Initial label:
+
+DO NOT
+PRESS
+
+There should be little or no explanation.
+
+The curiosity itself is the invitation.
+
+The visitor may:
+
+- ignore it completely;
+- continue normally to the consultation CTA;
+- press it.
+
+The game MUST NOT be required to reach the booking CTA.
+
+When pressed:
+
+the success experience "wakes up."
+
+Possible bounded effects:
+
+- performance pad illumination;
+- VU meters wake;
+- waveform/display activates;
+- crowd silhouettes become visible/alive;
+- controller LEDs activate;
+- subtle deck/record movement;
+- optional tiny audio build becomes available after user interaction.
+
+Then reveal concise copy such as:
+
+OH, YOU PRESSED IT.
+
+Think you can nail the drop?
+
+The same primary hardware control should transition to:
+
+PLAY
+
+-------------------------------------------------------------------------------
+STAGE 2 — DROP!
+-------------------------------------------------------------------------------
+
+Visitor presses PLAY.
+
+A short 3–2–1 / build sequence begins.
+
+A lightweight waveform / timing visualization moves toward a drop.
+
+The primary control becomes:
+
+DROP
+
+The visitor taps/clicks/presses the control when they believe the musical drop
+will occur.
+
+Desktop should also support an intuitive keyboard interaction such as Space
+while the game itself has focus.
+
+The game measures timing error relative to the target.
+
+Immediate feedback occurs in this order:
+
+1. visual/audio crowd reaction;
+2. VU-meter / controller response;
+3. short score/reaction copy.
+
+The visitor may immediately:
+
+TRY AGAIN
+
+or continue to the existing consultation path through copy conceptually like:
+
+LET'S TALK ABOUT YOUR ACTUAL DANCE FLOOR
+
+The exact rendered CTA wording may be refined during implementation if required
+for clarity and brand fit, but MUST preserve the existing scheduling authority
+and MUST NOT create a second Calendly destination.
+
+================================================================================
+CORE GAME LOOP
+================================================================================
+
+Canonical loop:
+
+AVAILABLE
+→ curiosity
+→ DO NOT PRESS
+→ site wakes up
+→ challenge revealed
+→ PLAY
+→ short build
+→ DROP tap
+→ crowd reaction
+→ timing result
+→ replay OR consultation
+
+Target single attempt duration:
+
+approximately 4–7 seconds after PLAY.
+
+Target first-interaction comprehension:
+
+near-zero instruction.
+
+Target replay reset:
+
+effectively immediate.
+
+The visitor should naturally understand:
+
+"I need to hit DROP at the right moment."
+
+================================================================================
+PRODUCT EXPERIENCE PRINCIPLE
+================================================================================
+
+DO NOT PRESS is NOT the game.
+
+DO NOT PRESS is the curiosity mechanism that UNLOCKS the game.
+
+DROP! is the game.
+
+This distinction is important.
+
+Do not present:
+
+"Play our wedding DJ game!"
+
+Do not explain the entire mechanic before interaction.
+
+The desired emotional sequence is:
+
+"What is that?"
+→ press
+→ "Oh!"
+→ "There's a game?"
+→ attempt
+→ reaction
+→ "I can do better."
+→ replay
+→ "This DJ is fun."
+→ consultation opportunity.
+
+================================================================================
+GAME FEEDBACK
+================================================================================
+
+Timing must be genuine.
+
+Do NOT secretly classify everybody as a winner.
+
+Create bounded score bands based on absolute timing error.
+
+Exact thresholds should be tuned during implementation/testing rather than
+blindly copied from this specification.
+
+Conceptual response bands:
+
+VERY FAR:
+"You panicked."
+
+EARLY/LATE:
+"Too soon."
+"Too late."
+
+CLOSE:
+"OOOH. SO CLOSE."
+
+GOOD:
+"NAILED IT."
+
+EXCEPTIONAL:
+"PERFECT DROP."
+
+Potential exceptional easter egg:
+
+"ARE YOU A DJ?"
+
+or similarly concise brand-consistent copy.
+
+Do not over-write the experience.
+
+Reaction copy should be short enough to comprehend immediately.
+
+Where useful, show actual timing:
+
+67ms early
+
+or:
+
+0.067s early
+
+Choose the format that is clearest in rendered testing.
+
+The score must be based on actual timing, not fabricated randomness.
+
+================================================================================
+MASTERY / REPLAY
+================================================================================
+
+The replay loop is central.
+
+Preserve the visitor's best score during the current mounted experience.
+
+Example:
+
+BEST: 67ms
+
+Do not require:
+
+- account;
+- login;
+- email;
+- form submission;
+- cookie;
+- persistent identifier.
+
+Do not introduce persistent tracking merely for game state.
+
+Do not create a public leaderboard in V1.
+
+Do not compare visitors against fabricated population statistics.
+
+Do not create fake achievements based on nonexistent player data.
+
+A legitimate local achievement for an exceptionally accurate result is allowed.
+
+Example:
+
+PERFECT DROP
+THE ONE
+
+The reward is mastery and amusement.
+
+There is NO monetary reward in V1.
+
+There is NO $100 discount mechanic in V1.
+
+================================================================================
+ANTI-MEMORIZATION RULE
+================================================================================
+
+Do not make every attempt a fixed timer that can be solved by waiting exactly
+N seconds.
+
+Use bounded variation in the build/drop timing.
+
+The variation must still feel fair.
+
+The visitor should receive sufficient:
+
+- visual anticipation;
+- rhythmic cueing;
+- optional audio cueing;
+
+to react rather than guess randomly.
+
+Use deterministic bounded ranges appropriate to a 4–7 second attempt.
+
+Testing must be able to control randomness through injection, seed, fake clock,
+or equivalent deterministic mechanism.
+
+================================================================================
+AUDIO STRATEGY
+================================================================================
+
+Audio is OPTIONAL for initial implementation but should be seriously evaluated.
+
+The interaction MUST work without audio.
+
+If audio materially improves the experience, use only:
+
+- original HSDJ-created audio;
+- programmatically generated audio;
+- properly owned/licensed local asset with documented authority.
+
+DO NOT use copyrighted commercial music.
+
+DO NOT pull a random sample from an online library without explicit licensing
+evidence.
+
+Preferred architecture:
+
+AVAILABLE result:
+- no audio dependency;
+- no audio preload required for initial success render.
+
+DO NOT PRESS interaction:
+- user gesture provides browser audio authorization;
+- tiny asset may then be lazy-loaded or Web Audio initialized.
+
+Game:
+- short original build/riser/drop cue.
+
+Failure:
+- visual game remains completely functional.
+
+Respect:
+
+- browser autoplay restrictions;
+- muted devices;
+- reduced-motion preferences;
+- accessibility;
+- performance budget.
+
+Do not make sound essential to knowing whether the user succeeded.
+
+================================================================================
+VISUAL DIRECTION
+================================================================================
+
+This must feel like HOWE SOUND DJ.
+
+It should support the broader website-redesign direction:
+
+- DJ controller hardware;
+- performance pads;
+- faders;
+- waveforms;
+- VU meters;
+- deck language;
+- tactile controls;
+- musical energy;
+- unconventional wedding-DJ presentation.
+
+It must NOT look like:
+
+- generic mobile game;
+- casino interface;
+- children's game;
+- SaaS gamification widget;
+- random Pong embed;
+- wedding-template animation;
+- generic confetti celebration;
+- retro arcade UI unless the current redesign explicitly supports that visual
+  language.
+
+The central control should resemble a real backlit controller/performance pad,
+not a cartoon arcade button.
+
+Preferred control-state continuity:
+
+DO NOT PRESS
+→ PLAY
+→ DROP
+
+One physical control.
+Three states.
+
+This reduces cognitive load and strengthens the hardware metaphor.
+
+================================================================================
+CROWD REPRESENTATION
+================================================================================
+
+The crowd is part of the emotional payoff.
+
+Keep it lightweight.
+
+Preferred implementations:
+
+- CSS silhouettes;
+- small inline SVG;
+- simple geometric figures;
+- existing lightweight visual primitives if already present in the redesign.
+
+Do NOT introduce:
+
+- video;
+- large raster crowd imagery;
+- canvas game engines unless conclusively justified;
+- Three.js;
+- WebGL;
+- external animation libraries solely for this interaction.
+
+Crowd response should scale with score.
+
+Examples:
+
+MISS:
+small/confused reaction
+
+CLOSE:
+visible energy
+
+NAILED:
+crowd jumps / hands / meters spike
+
+PERFECT:
+maximum bounded reaction
+
+Do not imply that the visitor is actually selecting music for a real crowd.
+
+================================================================================
+PERFORMANCE CONSTITUTION
+================================================================================
+
+This experience exists to retain attention.
+
+It must therefore NEVER make the availability success state meaningfully slower.
+
+Hard architectural requirements:
+
+1. Availability result renders independently of game enhancement.
+2. Game cannot block truthful availability rendering.
+3. Game cannot block the existing consultation CTA.
+4. No large initial asset payload.
+5. No game engine.
+6. No remote runtime dependency.
+7. No video.
+8. No remote font dependency introduced by this feature.
+9. Audio, if any, loads/initializes only after interaction where practical.
+10. JavaScript work remains bounded.
+11. Animation must not create continuous unnecessary CPU/GPU work while idle.
+12. No permanent requestAnimationFrame loop while the game is dormant.
+13. Game resources should be code-split/lazy-loaded where that materially protects
+    the initial success experience without introducing visible interaction delay.
+
+Measure actual implementation cost.
+
+Return:
+
+GAME_JS_DELTA:
+GAME_CSS_DELTA:
+GAME_ASSET_DELTA:
+INITIAL_ROUTE_DELTA:
+LAZY_LOADED_DELTA:
+
+Use compressed/build output where practical.
+
+Target philosophy:
+
+TENS OF KB, NOT HUNDREDS OF KB OR MB.
+
+If implementation becomes materially heavy, simplify it.
+
+================================================================================
+PROGRESSIVE ENHANCEMENT / FAILURE MODEL
+================================================================================
+
+Availability Success remains the product.
+
+DROP! is enhancement.
+
+If:
+
+- JavaScript enhancement fails;
+- audio fails;
+- animation APIs are unavailable;
+- reduced motion is requested;
+- browser capability is limited;
+
+the visitor MUST still receive:
+
+- truthful availability result;
+- existing proof;
+- consultation CTA;
+- Edit date behavior;
+- accessibility;
+- normal conversion path.
+
+Game failure must be invisible or gracefully degraded.
+
+No game exception may break Availability Success.
+
+Use an error boundary or equivalent containment if appropriate to the current
+architecture.
+
+================================================================================
+ACCESSIBILITY
+================================================================================
+
+The experience must be genuinely operable, not merely visually exciting.
+
+Requirements:
+
+- real `<button>` controls;
+- keyboard accessible;
+- visible focus;
+- appropriate accessible names as control state changes;
+- game result communicated through an appropriate polite live region;
+- no essential information conveyed only by colour;
+- no essential information conveyed only by sound;
+- touch targets approximately >=44×44 CSS px;
+- mobile scrolling must remain normal;
+- game must not trap focus;
+- Escape must not be hijacked from existing dialog behavior;
+- existing Availability Success focus-management remains authoritative.
+
+Reduced motion:
+
+If `prefers-reduced-motion: reduce`:
+
+- eliminate unnecessary crowd/deck movement;
+- preserve understandable game mechanics;
+- use restrained state changes;
+- score/result remains fully understandable.
+
+Timing accessibility:
+
+A timing challenge is inherently motor-dependent.
+
+The game is OPTIONAL.
+
+No business functionality, discount, booking access, information, or advantage
+may depend on succeeding at the timing challenge.
+
+A visitor who cannot or does not want to play can proceed directly to the normal
+consultation CTA without penalty.
+
+================================================================================
+MOBILE-FIRST REQUIREMENT
+================================================================================
+
+Primary device assumption:
+
+phone.
+
+The game must work comfortably with one thumb.
+
+Required widths:
+
+320
+375
+390
+393
+430
+
+Also verify:
+
+768
+1280
+1440
+1512
+
+No horizontal overflow.
+
+No interaction should require hover.
+
+Desktop hover effects may enhance hardware feel but cannot reveal required
+functionality.
+
+The game must not create a fixed-height trap inside the compact availability
+surface.
+
+If compact geometry becomes constrained, adapt/reflow the game rather than
+hiding the scheduling CTA below an inaccessible region.
+
+================================================================================
+AVAILABILITY SUCCESS PROTECTED CONTINUITY
+================================================================================
+
+The existing Availability Success architecture is protected.
+
+Preserve:
+
+- same-origin `/api/availability`;
+- HSDJ Operations availability authority;
+- fail-closed semantics;
+- truthful AVAILABLE classification;
+- state replacement;
+- persistent compact action architecture where currently implemented;
+- Stephen Henry proof;
+- governed testimonial copy;
+- review SSOT;
+- venue attribution;
+- Calendly authority;
+- Edit date behavior;
+- focus to success heading;
+- factual live-region announcement;
+- existing analytics event names;
+- operator availability notification via `next/server after()`;
+- contact-form behavior.
+
+DO NOT:
+
+- modify availability decision logic;
+- modify HSDJ Operations;
+- delay AVAILABLE rendering until game code is ready;
+- require playing before scheduling;
+- replace Stephen proof with the game;
+- remove the existing CTA;
+- make the game the availability authority;
+- create a new Calendly URL owner.
+
+================================================================================
+CURRENT DESIGN CONTEXT
+================================================================================
+
+The site is undergoing broader visual redesign / rhythm work.
+
+Inspect CURRENT repository truth before implementation.
+
+Do not blindly implement against historical V3.5 assumptions if the repository
+has legitimately evolved.
+
+However, preserve the protected behavioral architecture unless explicit current
+authority supersedes it.
+
+Identify actual current owners for:
+
+- PostAvailabilitySuccess;
+- compact availability checker;
+- contact availability form;
+- availability-success styles;
+- analytics;
+- Calendly destination;
+- shared redesigned controller visual primitives, if any.
+
+Reuse existing visual language where appropriate.
+
+Do not duplicate components already created by the redesign.
+
+================================================================================
+PHASE 0 — FORENSIC INTEGRATION AUDIT
+================================================================================
+
+Before mutation, inspect:
+
+~/Desktop/howesounddj
+
+Determine:
+
+CURRENT_SUCCESS_COMPONENT:
+COMPACT_OWNER:
+FULL_OWNER:
+STYLE_OWNER:
+ANALYTICS_OWNER:
+CALENDLY_OWNER:
+MOTION_LIBRARY:
+CURRENT_VISUAL_PRIMITIVES:
+CURRENT_TESTS:
+CURRENT_SCREENSHOT_TOOLING:
+CURRENT_BUNDLE_ANALYSIS_CAPABILITY:
+
+Read only relevant handoffs/contracts.
+
+Do not perform broad repository archaeology.
+
+Focus on owners necessary for this integration.
+
+Record the pre-change baseline.
+
+================================================================================
+PHASE 1 — EXPERIENCE IMPLEMENTATION
+================================================================================
+
+Implement the smallest high-fidelity production-quality experience inside the
+actual website architecture.
+
+Do NOT build a disconnected prototype that then has to be rewritten.
+
+Prefer production-quality component boundaries from the beginning.
+
+Conceptual ownership might resemble:
+
+PostAvailabilitySuccess
+→ optional DropExperience
+
+DropExperience
+→ DoNotPressPad
+→ reveal state
+→ DropGame
+→ Result
+→ Replay / existing scheduling action
+
+Actual file structure must follow repository conventions.
+
+Do not force these exact component names if better current ownership exists.
+
+================================================================================
+PHASE 2 — STATE MACHINE
+================================================================================
+
+Implement an explicit bounded state model.
+
+Conceptual states:
+
+LOCKED
+AWAKENING
+READY
+COUNTDOWN
+BUILDING
+RESOLVED
+
+Potential transitions:
+
+LOCKED
+  press
+→ AWAKENING
+
+AWAKENING
+  initialization complete
+→ READY
+
+READY
+  play
+→ COUNTDOWN
+
+COUNTDOWN
+→ BUILDING
+
+BUILDING
+  drop press
+→ RESOLVED
+
+RESOLVED
+  replay
+→ READY
+
+If another state is genuinely required, document why.
+
+Avoid ad-hoc boolean soup such as:
+
+isGame
+isStarted
+isPlaying
+isDone
+isAgain
+showResult
+etc.
+
+Use a discriminated union, reducer, or explicit state-machine pattern consistent
+with current TypeScript architecture.
+
+All:
+
+- timers;
+- animation frames;
+- audio nodes;
+- event listeners;
+
+must clean up correctly on state transition/unmount.
+
+================================================================================
+PHASE 3 — TIMING ENGINE
+================================================================================
+
+Create a deterministic timing engine separated from presentation.
+
+It should own:
+
+- randomized target duration within bounded range;
+- countdown;
+- build start;
+- target timestamp;
+- player input timestamp;
+- signed error;
+- absolute error;
+- score band;
+- best score;
+- attempt number.
+
+Use an appropriate monotonic browser timing source such as:
+
+performance.now()
+
+Do not use Date.now() for precision gameplay timing unless conclusively
+justified.
+
+Testing must inject/fake:
+
+- clock;
+- randomness;
+
+or use an equivalent deterministic seam.
+
+Do not let frame rate determine score.
+
+The game should score based on actual timestamps, not animation-frame position.
+
+================================================================================
+PHASE 4 — VISUAL ENGINE
+================================================================================
+
+Create lightweight visual feedback using existing React/CSS/SVG capabilities.
+
+Potential elements:
+
+- controller pad;
+- waveform;
+- VU meters;
+- crowd;
+- deck indicator;
+- build progress;
+- score/result state.
+
+Animations should preferably use:
+
+- CSS transforms;
+- opacity;
+- bounded SVG transforms;
+
+rather than layout-heavy animation.
+
+Avoid repeated forced reflow.
+
+Do not run a permanent requestAnimationFrame loop while the game is idle.
+
+Visual effects should stop when:
+
+- attempt  completes;
+- the game returns to READY;
+- the component unmounts;
+- the browser tab becomes hidden where appropriate.
+
+The idle LOCKED and READY states should consume effectively no continuous
+animation-loop resources.
+
+If CSS animation is used for subtle idle hardware illumination, keep it bounded
+and inexpensive.
+
+================================================================================
+PHASE 5 — AUDIO EXPERIMENT
+================================================================================
+
+First certify the complete interaction visually.
+
+Then evaluate whether audio materially improves:
+
+- anticipation;
+- timing comprehension;
+- emotional payoff;
+- replay desire;
+- brand/music connection.
+
+Do not let audio experimentation delay or destabilize the visual implementation.
+
+Preferred decision sequence:
+
+1. Build visual-only DROP! completely.
+2. Validate timing and gameplay.
+3. Test a tiny original/programmatic audio enhancement.
+4. Compare experience and performance.
+5. Keep audio only if the improvement is substantial.
+
+Return:
+
+AUDIO_V1:
+ENABLED / DEFERRED
+
+AUDIO_IMPLEMENTATION:
+NONE / WEB_AUDIO / LOCAL_ASSET / OTHER
+
+AUDIO_INITIAL_PAYLOAD:
+<bytes or N/A>
+
+AUDIO_POST_INTERACTION_PAYLOAD:
+<bytes or N/A>
+
+AUDIO_LICENSE_AUTHORITY:
+<original/programmatic/local-owned/N/A>
+
+RATIONALE:
+
+If enabled, audio must be initialized only after a legitimate visitor gesture.
+
+No autoplay workaround.
+
+No hidden pre-play.
+
+No remote streaming dependency.
+
+If Web Audio is used, clean up AudioContext/nodes appropriately and avoid
+creating a new uncontrolled graph every attempt.
+
+If a local asset is used, keep it extremely small and document ownership.
+
+================================================================================
+PHASE 6 — BUSINESS BRIDGE
+================================================================================
+
+A resolved game attempt must not become a dead-end score screen.
+
+After the emotional payoff, create a graceful bridge back to the actual wedding.
+
+Conceptual copy:
+
+Now let's talk about your actual dance floor.
+
+Then expose/use the EXISTING consultation action.
+
+The business transition should feel like the natural conclusion of the joke/game,
+not a sales interruption.
+
+Desired sequence:
+
+FUN
+→ SMILE
+→ SCORE
+→ MAYBE ONE MORE
+→ REMEMBER THIS IS A WEDDING DJ
+→ TALK TO PATRICK
+
+Not:
+
+FUN
+→ MODAL
+→ SALES PITCH
+→ PRESSURE.
+
+The existing scheduling CTA must remain available independently of gameplay.
+
+A visitor should never think:
+
+"I have to finish this before I can book."
+
+================================================================================
+PHASE 7 — ANALYTICS
+================================================================================
+
+We need to know whether this experience works.
+
+Use the EXISTING analytics architecture.
+
+Do NOT:
+
+- create another analytics client;
+- add GTM;
+- duplicate GA4 initialization;
+- rename existing events;
+- create high-cardinality analytics unnecessarily.
+
+The current canonical analytics architecture remains:
+
+website code
+→ direct gtag / GA4
+→ HSDJ SEO Intelligence / GA4 Data API
+
+Inspect actual event naming conventions before finalizing new names.
+
+Recommended conceptual event family:
+
+post_availability_game_reveal
+post_availability_game_start
+post_availability_game_attempt
+post_availability_game_replay
+post_availability_game_consult_click
+
+If repository conventions indicate better canonical names, use them and document
+the mapping.
+
+Useful NON-PII properties may include:
+
+game_variant: "do_not_press_drop_v1"
+surface: compact / contact
+attempt_number_bucket
+score_band
+timing_error_bucket
+reduced_motion
+audio_enabled
+
+Do NOT send:
+
+- visitor name;
+- visitor email;
+- visitor phone;
+- IP address;
+- exact wedding date unless already governed and explicitly necessary;
+- testimonial content;
+- exact raw timing value if a bucket is sufficient;
+- persistent player identifier.
+
+Avoid analytics-cardinality explosion.
+
+================================================================================
+MEASUREMENT QUESTION
+================================================================================
+
+Primary product question:
+
+DO VISITORS WHO ENGAGE WITH DROP! PROCEED TO CONSULTATION AT A MEANINGFULLY
+DIFFERENT RATE?
+
+Secondary product questions:
+
+- What percentage of AVAILABLE visitors press DO NOT PRESS?
+- What percentage of reveal visitors press PLAY?
+- What percentage complete at least one DROP attempt?
+- How many attempts are typically made?
+- What percentage replay?
+- What percentage click the consultation CTA after gameplay?
+- Does game engagement correlate with consultation click?
+- Does the game increase or decrease abandonment?
+- Does the game materially change time spent in the success experience?
+- Does compact/mobile behavior differ materially from full/contact behavior?
+- Does reduced-motion behavior materially affect engagement?
+- Does audio, if enabled, materially affect engagement?
+
+Do NOT claim causality from observational funnel data.
+
+In V1, analytics establish behavioral evidence.
+
+A later controlled experiment may be required to establish causal conversion
+impact.
+
+================================================================================
+ANALYTICS FUNNEL MODEL
+================================================================================
+
+Preserve the existing availability funnel.
+
+Extend it observationally:
+
+availability_check_completed
+→ post_availability_success_view
+→ optional game reveal
+→ optional game start
+→ optional attempt
+→ optional replay
+→ book_consult_click / calendly_click
+
+Do not make game participation a prerequisite funnel stage.
+
+There are TWO legitimate paths:
+
+PATH A:
+AVAILABLE
+→ consultation
+
+PATH B:
+AVAILABLE
+→ DROP!
+→ consultation
+
+Both must remain first-class.
+
+================================================================================
+PHASE 8 — COMPACT VS FULL-SURFACE INTEGRATION
+================================================================================
+
+The game must be evaluated independently in:
+
+1. compact/header availability success;
+2. full contact-page availability success.
+
+Do not assume identical presentation is appropriate.
+
+The core game logic should be shared.
+
+Presentation may adapt.
+
+-------------------------------------------------------------------------------
+COMPACT SURFACE
+-------------------------------------------------------------------------------
+
+Highest risk:
+
+geometry.
+
+The existing compact architecture intentionally keeps the consultation action
+available without recreating the historical below-the-fold defect.
+
+Therefore:
+
+- game content must not push the primary CTA into an inaccessible region;
+- persistent action-footer ownership must remain intact where currently used;
+- game may live in the scrollable success body;
+- game should collapse/reflow efficiently;
+- replay must not increase container height indefinitely;
+- result state should replace game-state content rather than append endlessly.
+
+At required compact viewports verify:
+
+CTA_INITIALLY_VISIBLE:
+YES
+
+FORM_VISIBLE_AFTER_SUCCESS:
+NO
+
+HORIZONTAL_OVERFLOW:
+NO
+
+GAME_CAUSES_NESTED_SCROLL_TRAP:
+NO
+
+-------------------------------------------------------------------------------
+FULL CONTACT SURFACE
+-------------------------------------------------------------------------------
+
+The full surface has more vertical room.
+
+Do not exploit that by making the game unnecessarily larger or more elaborate.
+
+The same interaction should feel like the same product.
+
+Maintain:
+
+- shared state/timing logic;
+- shared score semantics;
+- shared analytics semantics;
+- shared accessibility behavior.
+
+================================================================================
+PHASE 9 — COPY / BRAND POLISH
+================================================================================
+
+Treat copy in this block as conceptual authority, not necessarily final punctuation.
+
+The following ideas ARE protected:
+
+DO NOT PRESS
+
+OH, YOU PRESSED IT.
+
+Think you can nail the drop?
+
+PLAY
+
+DROP
+
+TRY AGAIN
+
+The exact reaction-copy set may be refined.
+
+Brand requirements:
+
+- concise;
+- playful;
+- confident;
+- not try-hard;
+- not "fellow kids";
+- not corporate;
+- not casino/gaming language;
+- not wedding-industry cliché;
+- not AI-polished marketing language.
+
+Avoid:
+
+"Congratulations! You've unlocked..."
+"Level up your wedding..."
+"You're a winner!"
+"Claim your reward!"
+"Limited-time bonus!"
+"Spin to win!"
+"Gamified experience!"
+
+The humour should come from the interaction itself.
+
+================================================================================
+PHASE 10 — SCORE-BAND CALIBRATION
+================================================================================
+
+Do not choose score thresholds solely because they produce visually neat numbers.
+
+Create an initial evidence-based calibration and test it manually.
+
+The game should satisfy:
+
+- most first attempts are not PERFECT;
+- PERFECT is achievable by a human;
+- CLOSE feels genuinely close;
+- misses are not humiliating;
+- the game encourages replay;
+- the game does not feel random;
+- score distribution does not classify nearly everyone identically.
+
+Use deterministic simulation to inspect threshold distribution across synthetic
+timing errors.
+
+Then perform human/manual interaction testing.
+
+Document final bands:
+
+PERFECT:
+<= ___ ms
+
+NAILED:
+<= ___ ms
+
+CLOSE:
+<= ___ ms
+
+MISS:
+> ___ ms
+
+If early/late copy differs, preserve signed timing error.
+
+Do not manipulate scores after seeing analytics merely to manufacture engagement.
+
+================================================================================
+PHASE 11 — PERFORMANCE CERTIFICATION
+================================================================================
+
+Measure BEFORE and AFTER.
+
+At minimum determine:
+
+- relevant route/client JS impact;
+- game chunk size if code-split;
+- CSS delta;
+- asset delta;
+- audio delta if enabled;
+- initial success-render dependency;
+- whether game code is lazy;
+- whether game introduces layout shift;
+- whether idle animation consumes continuous work.
+
+Where project tooling supports it, compare:
+
+BUILD_BEFORE
+BUILD_AFTER
+
+and/or route chunk output.
+
+Return:
+
+INITIAL_AVAILABILITY_PATH_REGRESSION:
+NONE / ACCEPTABLE / FAIL
+
+GAME_JS_DELTA:
+<measured>
+
+GAME_CSS_DELTA:
+<measured or best available evidence>
+
+GAME_ASSET_DELTA:
+<measured>
+
+LAZY_LOADED_DELTA:
+<measured>
+
+AUDIO_DELTA:
+<measured/N/A>
+
+LAYOUT_SHIFT_OBSERVED:
+YES / NO
+
+IDLE_CONTINUOUS_LOOP:
+YES / NO
+
+The experience FAILS performance certification if it materially slows the
+availability success moment merely to provide optional entertainment.
+
+================================================================================
+PHASE 12 — DETERMINISTIC TESTING
+================================================================================
+
+Add bounded tests for the actual implementation.
+
+Required coverage:
+
+1. LOCKED renders DO NOT PRESS.
+2. Initial consultation CTA remains available before interaction.
+3. DO NOT PRESS transitions to AWAKENING/READY correctly.
+4. PLAY starts exactly one attempt.
+5. Countdown transitions correctly.
+6. DROP records exactly one result.
+7. Timing score uses injected/fake monotonic time.
+8. Random target duration is bounded.
+9. Identical injected conditions produce deterministic result.
+10. PERFECT threshold works.
+11. NAILED threshold works.
+12. CLOSE threshold works.
+13. MISS threshold works.
+14. Signed early/late result is correct.
+15. Replay increments/reset state correctly.
+16. Best score persists during mounted experience.
+17. Worse replay does not overwrite better best score.
+18. Unmount cleans timers/listeners/animation work.
+19. Reduced-motion path remains playable.
+20. Keyboard interaction works when game owns focus.
+21. Space does not globally hijack unrelated page interaction.
+22. Game cannot modify availability result.
+23. Game cannot modify wedding date.
+24. Game cannot modify Calendly destination.
+25. Game analytics do not contain prohibited PII.
+26. Consult click after game uses existing scheduling authority.
+27. Failure/degraded path preserves normal success CTA.
+28. Compact result does not remount the availability form.
+29. Existing Availability Success tests remain green.
+30. Existing operator-notification tests remain green.
+
+If audio is enabled add:
+
+31. audio is not required for scoring;
+32. audio initialization occurs only after user gesture;
+33. audio failure does not fail game;
+34. repeated attempts do not leak uncontrolled audio nodes/contexts.
+
+================================================================================
+PHASE 13 — GEOMETRY CERTIFICATION
+================================================================================
+
+The game changes success-state geometry.
+
+Therefore previous Availability Success geometry evidence is NOT sufficient.
+
+Recertify.
+
+Required compact viewport matrix:
+
+1280×720
+1512×982
+390×844
+375×812
+
+Additional game-specific mobile:
+
+320×568 or nearest supported small-device equivalent
+393×852
+430×932
+
+For each required state capture geometry for:
+
+A. AVAILABLE / LOCKED
+B. READY
+C. BUILDING
+D. RESOLVED
+
+Record where practical:
+
+viewport
+surface
+state
+game_top
+game_bottom
+cta_top
+cta_bottom
+cta_initially_visible
+body_scroll_height
+container_height
+horizontal_overflow
+form_visible
+focus_target
+
+PASS requires:
+
+- no horizontal overflow;
+- no form after AVAILABLE;
+- no CTA loss;
+- no fixed-height trap;
+- no result-state runaway growth;
+- no game-induced page/container corruption.
+
+If compact CTA cannot remain initially visible with the game in LOCKED state:
+
+the design must be revised.
+
+Do NOT simply weaken the existing CTA-visibility requirement.
+
+================================================================================
+PHASE 14 — SCREENSHOT / VISUAL EVIDENCE
+================================================================================
+
+Rendered evidence is mandatory.
+
+Automated tests alone cannot certify this experience.
+
+Use existing visual tooling if present.
+
+If the repository already has:
+
+npm run test:visual
+
+or equivalent, extend/reuse it.
+
+Capture at minimum:
+
+MOBILE:
+375×812
+390×844
+430×932
+
+DESKTOP:
+1440×900
+
+For both compact and full surface where practical.
+
+Capture these states:
+
+1. normal AVAILABLE result before game interaction;
+2. DO NOT PRESS / LOCKED;
+3. awakened READY state;
+4. BUILDING / DROP state;
+5. MISS result;
+6. NAILED/PERFECT result;
+7. replay-ready result;
+8. reduced-motion result where visually distinct.
+
+Screenshots should make it possible for Patrick to judge:
+
+- whether the hardware feels real enough;
+- whether DO NOT PRESS creates curiosity;
+- whether the game visually belongs to the redesigned HSDJ site;
+- whether crowd/VU/waveform treatment feels premium;
+- whether it looks cheap/gimmicky;
+- whether CTA remains clear;
+- whether the compact surface feels crowded.
+
+Store under the repository's existing handoff screenshot convention.
+
+Suggested only if consistent with repository conventions:
+
+docs/handoff/screenshots/do-not-press-drop-v1/
+
+================================================================================
+PHASE 15 — HUMAN-EXPERIENCE RED TEAM
+================================================================================
+
+Perform an explicit red-team review.
+
+Ask:
+
+1. Does this look like a gimmick?
+2. Does it cheapen a premium wedding service?
+3. Does it feel like Howe Sound DJ?
+4. Is DO NOT PRESS genuinely tempting?
+5. Is the reveal surprising?
+6. Is PLAY obvious without instruction?
+7. Is DROP timing understandable?
+8. Does the result feel satisfying?
+9. Does a miss make the visitor want to replay rather than leave?
+10. Is PERFECT difficult enough to feel earned?
+11. Is the game fun without audio?
+12. If audio exists, is it materially better?
+13. Does the consultation transition feel natural?
+14. Does the CTA feel secondary while playing but immediately available when
+    desired?
+15. Does the game dominate the success experience too much?
+16. Does Stephen's proof still have enough presence?
+17. Does the visitor still clearly understand that their DATE IS AVAILABLE?
+18. Does the experience work one-handed?
+19. Does desktop feel equally intentional rather than a stretched mobile game?
+20. Would someone plausibly show this to their partner?
+
+Any "NO" that materially undermines the product thesis requires iteration before
+PASS.
+
+================================================================================
+PHASE 16 — BRAND RED TEAM
+================================================================================
+
+Reject implementation if it resembles:
+
+- slot machine;
+- spin-to-win;
+- coupon unlock;
+- childish arcade;
+- generic browser minigame;
+- novelty widget unrelated to DJing;
+- nightclub site inappropriate for weddings;
+- over-designed tech demo;
+- fake DJ controller with meaningless decoration.
+
+The target is:
+
+A WEDDING DJ WEBSITE THAT MOMENTARILY FEELS LIKE YOU TOUCHED THE DJ CONTROLLER.
+
+That sentence is the visual/interaction north star.
+
+================================================================================
+PHASE 17 — CONVERSION RED TEAM
+================================================================================
+
+Protect against the game accidentally reducing consultation conversion.
+
+Verify:
+
+- consultation CTA exists before game;
+- consultation CTA exists after game;
+- visitor can abandon game and schedule;
+- game never covers CTA with an overlay;
+- game does not open a second modal over the availability modal;
+- game does not require completion;
+- game does not redirect;
+- game does not introduce form fields;
+- game does not collect contact information;
+- game does not create a second funnel authority.
+
+If game engagement becomes visually dominant enough that consultation becomes
+harder to find, revise hierarchy.
+
+The objective is:
+
+MORE ENGAGEMENT WITHOUT LESS CLARITY.
+
+================================================================================
+PHASE 18 — ACCESSIBILITY RED TEAM
+================================================================================
+
+Manually verify:
+
+KEYBOARD:
+- tab reaches game control;
+- Enter/Space operate appropriately;
+- focus remains visible;
+- focus order remains logical;
+- replay is accessible;
+- consultation remains accessible.
+
+SCREEN READER:
+- DO NOT PRESS has meaningful accessible label;
+- state changes do not create excessive announcements;
+- game result is announced;
+- timing value is understandable;
+- decorative crowd/waveform elements do not create noise.
+
+REDUCED MOTION:
+- no unnecessary movement;
+- game remains understandable;
+- no loss of result semantics.
+
+ZOOM / TEXT:
+- 200% zoom does not destroy interaction;
+- text enlargement does not overlap controller UI.
+
+MOTOR:
+- game remains optional;
+- failure carries no disadvantage;
+- no business value is gated behind precision.
+
+================================================================================
+PHASE 19 — PERFORMANCE / FAILURE RED TEAM
+================================================================================
+
+Simulate or test where practical:
+
+- audio unavailable;
+- Web Audio rejected;
+- reduced motion;
+- slow CPU;
+- narrow viewport;
+- repeated rapid tapping;
+- double-click/touch;
+- pressing DROP before valid BUILDING state;
+- pressing PLAY repeatedly;
+- replay spam;
+- component unmount during countdown;
+- component unmount during BUILDING;
+- navigation away;
+- Edit date while game is active.
+
+Expected:
+
+NO CRASH
+NO DUPLICATE ATTEMPT
+NO DUPLICATE ANALYTICS EXPLOSION
+NO ORPHAN TIMER
+NO AUDIO LEAK
+NO AVAILABILITY CORRUPTION
+
+Edit date must safely terminate/reset game state.
+
+================================================================================
+PHASE 20 — ANALYTICS CONTRACT TEST
+================================================================================
+
+Document the final event contract.
+
+For each new event:
+
+EVENT_NAME
+TRIGGER
+ONCE_PER_WHAT
+PROPERTIES
+PII_STATUS
+CARDINALITY_RISK
+
+Example:
+
+EVENT:
+post_availability_game_reveal
+
+TRIGGER:
+first transition LOCKED → AWAKENING
+
+ONCE_PER_WHAT:
+once per mounted success experience
+
+PROPERTIES:
+game_variant
+surface
+reduced_motion
+
+PII:
+NONE
+
+Do this for all game events.
+
+Ensure rapid tapping cannot emit duplicate starts/results unintentionally.
+
+================================================================================
+PHASE 21 — EXISTING GA4 ARCHITECTURE PROTECTION
+================================================================================
+
+The website currently uses direct GA4 / gtag integration.
+
+Do NOT introduce Google Tag Manager.
+
+Do NOT add another GA initialization.
+
+Do NOT duplicate page_view measurement.
+
+Game analytics must flow through the existing analytics abstraction.
+
+Protected architectural decision:
+
+DIRECT_GTAG_GA4_ARCHITECTURE
+
+unless explicit later authority supersedes it.
+
+================================================================================
+PHASE 22 — PRODUCT EVIDENCE / EXPERIMENT READINESS
+================================================================================
+
+V1 does NOT need a formal A/B-testing platform.
+
+But implementation should make future comparison possible.
+
+Define:
+
+GAME_VARIANT:
+do_not_press_drop_v1
+
+Existing success variant must remain separately identifiable.
+
+Do not change the success variant identifier merely because the optional game
+exists unless current analytics architecture requires an additive property.
+
+Future evidence should permit analysis of:
+
+AVAILABLE visitors who never interact with game
+
+versus:
+
+AVAILABLE visitors who reveal/start/play game
+
+without pretending this observational comparison proves causality.
+
+If later traffic supports it, a controlled experiment may be introduced as a SEPARATE future tranche.
+
+Do not build experimentation infrastructure in V1.
+
+================================================================================
+PHASE 23 — EXISTING WEBSITE REGRESSION CERTIFICATION
+================================================================================
+
+DROP! is being integrated into a functioning production website.
+
+Therefore certify that unrelated critical systems remain intact.
+
+At minimum re-prove:
+
+AVAILABILITY:
+- AVAILABLE remains truthful;
+- UNAVAILABLE remains truthful;
+- MANUAL / fail-closed behavior remains truthful;
+- game renders ONLY for the governed AVAILABLE success experience;
+- game cannot promote another availability state to AVAILABLE.
+
+OPERATOR NOTIFICATION:
+- existing `next/server after()` notification architecture remains unchanged;
+- availability checks still schedule exactly one operator notification;
+- game interactions do NOT generate availability-check emails.
+
+CONTACT:
+- contact form behavior unchanged.
+
+CALENDLY:
+- existing destination authority unchanged;
+- pre-game and post-game consultation actions resolve through the same owner.
+
+ANALYTICS:
+- existing events remain intact;
+- no duplicate GA initialization;
+- no GTM;
+- no duplicate page_view.
+
+ACCESSIBILITY:
+- existing success-heading focus behavior preserved;
+- Edit date focus restoration preserved;
+- factual availability live-region behavior preserved.
+
+REVIEW SSOT:
+- Stephen Henry canonical review unchanged;
+- governed excerpt unchanged unless separately authorized;
+- venue metadata unchanged.
+
+HSDJ OPERATIONS:
+- NO mutation.
+
+================================================================================
+PHASE 24 — VALIDATION COMMANDS
+================================================================================
+
+Run the repository-standard validation suite.
+
+At minimum:
+
+npm run typecheck
+npm run lint
+npm test
+npm run build
+
+Run applicable visual/geometry tooling, including existing:
+
+npm run test:visual
+
+if currently available and authoritative.
+
+If another canonical command supersedes one above, use repository truth and
+document the substitution.
+
+Do not silently ignore failures.
+
+Classify every failure:
+
+GAME_REGRESSION
+PRE_EXISTING_UNRELATED
+TOOLING_FAILURE
+UNKNOWN
+
+A pre-existing unrelated failure may be documented rather than repaired only if
+there is strong evidence it predates this tranche and is not touched by the
+implementation.
+
+The game itself must introduce ZERO new validation failures.
+
+================================================================================
+PHASE 25 — ACCEPTANCE CRITERIA
+================================================================================
+
+V1 may receive a PASS only if ALL mandatory criteria below are satisfied.
+
+-------------------------------------------------------------------------------
+PRODUCT
+-------------------------------------------------------------------------------
+
+[ ] AVAILABLE success remains immediately understandable.
+[ ] DO NOT PRESS is optional.
+[ ] DO NOT PRESS creates genuine curiosity.
+[ ] Pressing it reveals DROP! rather than immediately exposing the entire concept.
+[ ] PLAY → DROP interaction is understandable without a tutorial.
+[ ] One attempt takes approximately 4–7 seconds.
+[ ] Timing result is genuine.
+[ ] Replay is immediate.
+[ ] Best score works.
+[ ] The experience is enjoyable without a monetary reward.
+[ ] No fake winner mechanic exists.
+[ ] Consultation remains available before gameplay.
+[ ] Consultation remains available after gameplay.
+[ ] Business bridge feels natural.
+
+-------------------------------------------------------------------------------
+BRAND
+-------------------------------------------------------------------------------
+
+[ ] Looks like HSDJ / DJ hardware.
+[ ] Does not look like a casino.
+[ ] Does not look childish.
+[ ] Does not look like generic gamification.
+[ ] Does not cheapen the wedding service.
+[ ] Crowd/waveform/VU elements have actual interaction meaning.
+[ ] Visual treatment is consistent with current redesign direction.
+[ ] "A wedding DJ website that momentarily feels like you touched the DJ
+    controller" is achieved.
+
+-------------------------------------------------------------------------------
+ENGINEERING
+-------------------------------------------------------------------------------
+
+[ ] Explicit bounded state model.
+[ ] Deterministic timing engine.
+[ ] Monotonic timing source.
+[ ] Randomized target cannot be trivially memorized.
+[ ] Timers clean up.
+[ ] Animation work cleans up.
+[ ] No idle permanent animation loop.
+[ ] Rapid tapping cannot duplicate attempts.
+[ ] Edit date safely terminates game.
+[ ] No runtime exception can break Availability Success.
+[ ] No remote game dependency.
+[ ] No game engine.
+[ ] No large asset dependency.
+
+-------------------------------------------------------------------------------
+PERFORMANCE
+-------------------------------------------------------------------------------
+
+[ ] Initial availability rendering does not depend on game readiness.
+[ ] Initial consultation CTA does not depend on game readiness.
+[ ] Measured JS/CSS/asset deltas documented.
+[ ] Optional audio does not burden initial success rendering.
+[ ] No material layout shift.
+[ ] No material initial-route regression.
+[ ] Implementation remains within the lightweight philosophy.
+
+-------------------------------------------------------------------------------
+ACCESSIBILITY
+-------------------------------------------------------------------------------
+
+[ ] Real button semantics.
+[ ] Keyboard operable.
+[ ] Focus visible.
+[ ] Space does not hijack the page globally.
+[ ] Result announced accessibly.
+[ ] No essential audio-only information.
+[ ] No essential colour-only information.
+[ ] Reduced-motion path works.
+[ ] Game remains optional.
+[ ] Precision performance gates no business benefit.
+[ ] Existing success focus behavior preserved.
+
+-------------------------------------------------------------------------------
+GEOMETRY
+-------------------------------------------------------------------------------
+
+[ ] 320 mobile passes.
+[ ] 375 mobile passes.
+[ ] 390 mobile passes.
+[ ] 393 mobile passes.
+[ ] 430 mobile passes.
+[ ] Required desktop widths pass.
+[ ] No horizontal overflow.
+[ ] No compact fixed-height trap.
+[ ] CTA remains initially accessible.
+[ ] Form remains absent after AVAILABLE.
+[ ] Result/replay does not progressively increase layout height.
+
+-------------------------------------------------------------------------------
+ANALYTICS
+-------------------------------------------------------------------------------
+
+[ ] Existing GA4 architecture preserved.
+[ ] No GTM.
+[ ] New events use existing analytics authority.
+[ ] No PII in game events.
+[ ] Event cardinality bounded.
+[ ] Reveal tracked.
+[ ] Start tracked.
+[ ] Attempt tracked.
+[ ] Replay tracked.
+[ ] Consultation-from-game tracked.
+[ ] Duplicate rapid interactions do not duplicate events incorrectly.
+
+-------------------------------------------------------------------------------
+PROTECTED CONTINUITY
+-------------------------------------------------------------------------------
+
+[ ] `/api/availability` topology unchanged.
+[ ] HSDJ Operations unchanged.
+[ ] Availability authority unchanged.
+[ ] Fail-closed semantics unchanged.
+[ ] Operator notification architecture unchanged.
+[ ] Calendly authority unchanged.
+[ ] Stephen SSOT unchanged.
+[ ] Existing analytics event names unchanged.
+[ ] Contact form unchanged.
+[ ] No deployment.
+
+================================================================================
+PHASE 26 — REQUIRED ARTIFACTS
+================================================================================
+
+Persist evidence according to existing repository conventions.
+
+At minimum create/update:
+
+1. IMPLEMENTATION HANDOFF
+
+Suggested path if consistent with current convention:
+
+docs/handoff/HSDJ_DO_NOT_PRESS_DROP_V1_IMPLEMENTATION.md
+
+2. SCREENSHOTS
+
+Suggested directory:
+
+docs/handoff/screenshots/do-not-press-drop-v1/
+
+3. GEOMETRY PROOF
+
+Suggested path:
+
+research/availability-success-v3/do-not-press-drop-v1-geometry-proof.json
+
+If the current repository has moved beyond the availability-success-v3 research
+tree, use the current canonical research/evidence location instead.
+
+4. ANALYTICS CONTRACT
+
+Either:
+
+- document inside the implementation handoff; or
+- extend the existing analytics contract owner.
+
+Do not create redundant documentation merely to satisfy this block.
+
+5. PERFORMANCE EVIDENCE
+
+Record measured deltas in the implementation handoff or existing performance
+artifact structure.
+
+6. TEST EVIDENCE
+
+Record:
+
+- commands;
+- pass/fail;
+- test count;
+- relevant new tests;
+- any pre-existing unrelated failure.
+
+================================================================================
+PHASE 27 — REQUIRED SCREENSHOT SET
+================================================================================
+
+Patrick's review must not depend on imagination.
+
+Provide a concise screenshot index containing the most useful rendered states.
+
+Minimum Patrick-review set:
+
+MOBILE 390×844:
+1. AVAILABLE + DO NOT PRESS
+2. READY — "Think you can nail the drop?"
+3. BUILDING — DROP control
+4. CLOSE / NAILED result
+5. PERFECT result
+6. replay + consultation bridge
+
+MOBILE 375×812:
+7. LOCKED geometry
+8. RESOLVED geometry
+
+MOBILE 430×932:
+9. LOCKED
+10. RESOLVED
+
+DESKTOP 1440×900:
+11. LOCKED
+12. BUILDING
+13. RESOLVED
+
+FULL CONTACT SURFACE:
+14. representative LOCKED
+15. representative RESOLVED
+
+REDUCED MOTION:
+16. representative playable state
+
+Do not create dozens of redundant screenshots if these prove the experience.
+
+================================================================================
+PHASE 28 — PATRICK REVIEW QUESTIONS
+================================================================================
+
+The final handoff must explicitly ask Patrick to judge the rendered experience
+against these questions:
+
+1. Does DO NOT PRESS make you want to press it?
+2. Does the reveal feel surprising enough?
+3. Does the controller hardware feel believable?
+4. Does DROP! make immediate sense?
+5. Is the timing challenge actually fun?
+6. Does the crowd reaction feel satisfying?
+7. Does PERFECT feel earned?
+8. Do you want to press TRY AGAIN?
+9. Does the interaction feel musical?
+10. Does it feel like Howe Sound DJ?
+11. Does it make the website more memorable?
+12. Does any part feel cheesy?
+13. Does any part feel too "gamey" for a wedding service?
+14. Is the normal consultation path still obvious?
+15. Would you be comfortable putting this in front of a real prospective couple?
+
+Do NOT deploy until Patrick answers the visual/product review positively or
+authorizes bounded refinements.
+
+================================================================================
+PHASE 29 — SOURCE CONTROL / CUSTODY
+================================================================================
+
+Before implementation:
+
+record current branch / HEAD.
+
+After implementation:
+
+report exact changed files.
+
+Do not:
+
+- clean unrelated working-tree changes;
+- overwrite unrelated work;
+- revert spacing V2 work;
+- alter unrelated SEO Intelligence work;
+- modify HSDJ Operations.
+
+If existing uncommitted work overlaps directly with required files:
+
+inspect carefully and preserve it.
+
+Do not blindly checkout/reset.
+
+If ownership conflict cannot be resolved safely:
+
+STOP and report:
+
+BLOCKED_WORKTREE_OWNERSHIP_AMBIGUOUS
+
+================================================================================
+PHASE 30 — DEPLOYMENT BOUNDARY
+================================================================================
+
+THIS TRANCHE MUST NOT DEPLOY.
+
+Do not:
+
+- push production deployment;
+- invoke Vercel production deployment;
+- merge solely to trigger production;
+- change production environment variables;
+- mutate production analytics configuration.
+
+Allowed:
+
+- local development;
+- local production build;
+- local screenshot tooling;
+- local automated tests;
+- local visual certification.
+
+Terminal deployment state must be:
+
+NOT_DEPLOYED
+
+================================================================================
+PHASE 31 — POST-IMPLEMENTATION DECISION TREE
+================================================================================
+
+After implementation:
+
+IF:
+
+- engineering PASS;
+- performance PASS;
+- accessibility PASS;
+- geometry PASS;
+- screenshots PASS;
+- brand red-team PASS;
+
+THEN:
+
+return:
+
+READY_FOR_PATRICK_VISUAL_PRODUCT_REVIEW
+
+Do NOT deploy.
+
+IF Patrick later approves without changes:
+
+next tranche:
+
+HSDJ_DO_NOT_PRESS_DROP_V1_PRODUCTION_DEPLOYMENT_AND_LIVE_REPROOF
+
+IF Patrick requests visual/gameplay changes:
+
+next tranche:
+
+HSDJ_DO_NOT_PRESS_DROP_V1_BOUNDED_REFINEMENT
+
+IF performance fails:
+
+simplify before review.
+
+IF compact geometry fails:
+
+redesign the compact presentation rather than weakening the CTA invariant.
+
+IF the experience feels gimmicky:
+
+STOP.
+
+Do not rationalize it into production because engineering is complete.
+
+================================================================================
+PHASE 32 — FUTURE WORK — EXPLICITLY NOT V1
+================================================================================
+
+Do NOT implement any of the following in this tranche:
+
+- $100 discount;
+- coupon codes;
+- spin-to-win;
+- leaderboard;
+- accounts;
+- saved cross-session scores;
+- social login;
+- multiplayer;
+- public score ranking;
+- prizes;
+- referral mechanics;
+- share-to-unlock;
+- forced email capture;
+- A/B infrastructure;
+- personalization based on identity;
+- third-party game SDK;
+- GTM;
+- Meta Pixel;
+- ad retargeting changes;
+- generalized game framework;
+- multiple minigames.
+
+Potential future ideas must not contaminate V1.
+
+V1 proves ONE thing:
+
+DO NOT PRESS → DROP!
+
+================================================================================
+PHASE 33 — IMPLEMENTATION RESTRAINT
+================================================================================
+
+Do not over-engineer.
+
+This is a tiny game inside a wedding-DJ conversion experience.
+
+It does not need:
+
+- a game framework;
+- global state management;
+- database persistence;
+- backend service;
+- API route;
+- WebSocket;
+- server action;
+- new dependency unless conclusively justified;
+- generalized plugin architecture.
+
+Preferred implementation:
+
+small
++
+local
++
+deterministic
++
+testable
++
+beautiful.
+
+If the implementation begins looking like a software platform:
+
+STOP AND SIMPLIFY.
+
+================================================================================
+PHASE 34 — FINAL RED-TEAM VERDICT
+================================================================================
+
+Before declaring completion, Atlas must answer:
+
+A. WOULD I SHIP THIS IF THERE WERE NO ANALYTICS?
+
+The interaction must be intrinsically good.
+
+B. WOULD I STILL LIKE THIS IF I SAW IT ON ANOTHER DJ'S WEBSITE?
+
+If it only feels good because we built it, red-team harder.
+
+C. DOES THIS INCREASE PATRICK'S PERCEIVED VALUE OR DECREASE IT?
+
+If it feels cheap, gimmicky, desperate, or coupon-like:
+
+FAIL.
+
+D. DOES IT MAKE THE VISITOR CURIOUS ABOUT PATRICK?
+
+The game is not the product.
+
+Patrick is the product relationship.
+
+E. IS THE WEBSITE MORE MEMORABLE AFTER THIS?
+
+If no:
+
+the feature has failed its central thesis.
+
+================================================================================
+REQUIRED TERMINAL REPORT
+================================================================================
+
+Return one complete report with the following structure.
+
+## 1. EXECUTIVE VERDICT
+
+Choose exactly one:
+
+PASS_DO_NOT_PRESS_DROP_V1_LOCALLY_CERTIFIED_READY_FOR_PATRICK_REVIEW
+
+PASS_IMPLEMENTED_ENGINEERING_CERTIFIED_VISUAL_REFINEMENT_REQUIRED
+
+BLOCKED_WORKTREE_OWNERSHIP_AMBIGUOUS
+
+BLOCKED_EXISTING_ARCHITECTURE_CONFLICT
+
+FAIL_GAMEPLAY_NOT_COMPELLING
+
+FAIL_BRAND_GIMMICK_RISK
+
+FAIL_COMPACT_GEOMETRY
+
+FAIL_PERFORMANCE
+
+FAIL_ACCESSIBILITY
+
+FAIL_VALIDATION
+
+## 2. WHAT WAS BUILT
+
+Concise description of final interaction.
+
+## 3. FINAL EXPERIENCE FLOW
+
+Return actual implemented sequence:
+
+AVAILABLE
+→ ...
+→ consultation
+
+## 4. CURRENT OWNERSHIP
+
+Return:
+
+SUCCESS_COMPONENT:
+GAME_COMPONENT:
+TIMING_ENGINE:
+STYLE_OWNER:
+ANALYTICS_OWNER:
+CALENDLY_OWNER:
+
+## 5. GAMEPLAY
+
+Return:
+
+TARGET_DURATION_RANGE:
+COUNTDOWN:
+SCORE_BANDS:
+BEST_SCORE:
+REPLAY_BEHAVIOR:
+KEYBOARD_BEHAVIOR:
+REDUCED_MOTION_BEHAVIOR:
+
+## 6. AUDIO
+
+Return:
+
+AUDIO_V1:
+AUDIO_IMPLEMENTATION:
+PAYLOAD:
+LICENSE_AUTHORITY:
+FAILURE_FALLBACK:
+
+## 7. PERFORMANCE
+
+Return:
+
+GAME_JS_DELTA:
+GAME_CSS_DELTA:
+GAME_ASSET_DELTA:
+INITIAL_ROUTE_DELTA:
+LAZY_LOADED_DELTA:
+AUDIO_DELTA:
+LAYOUT_SHIFT:
+IDLE_LOOP:
+VERDICT:
+
+## 8. ANALYTICS CONTRACT
+
+List final events and bounded properties.
+
+## 9. COMPACT GEOMETRY
+
+Return results for required viewports.
+
+Explicitly answer:
+
+CTA_INITIALLY_VISIBLE:
+FORM_VISIBLE:
+HORIZONTAL_OVERFLOW:
+NESTED_SCROLL_TRAP:
+
+## 10. FULL-SURFACE GEOMETRY
+
+Return representative results.
+
+## 11. ACCESSIBILITY
+
+Return:
+
+KEYBOARD:
+SCREEN_READER:
+REDUCED_MOTION:
+MOTOR_ACCESS:
+FOCUS:
+VERDICT:
+
+## 12. TEST EVIDENCE
+
+Return:
+
+TYPECHECK:
+LINT:
+TESTS:
+BUILD:
+VISUAL:
+GEOMETRY:
+
+Include exact test counts.
+
+## 13. VISUAL RED TEAM
+
+Return concise findings for:
+
+CURIOSITY:
+SURPRISE:
+HARDWARE_REALISM:
+GAMEPLAY_CLARITY:
+REPLAY_DESIRE:
+BRAND_FIT:
+GIMMICK_RISK:
+CONSULTATION_CLARITY:
+
+## 14. SCREENSHOT INDEX
+
+List the best files Patrick should inspect first.
+
+## 15. FILES CHANGED
+
+Exact paths and purposes.
+
+## 16. PROTECTED CONTINUITY
+
+Explicitly confirm:
+
+AVAILABILITY_AUTHORITY_UNCHANGED:
+HSDJ_OPERATIONS_UNCHANGED:
+FAIL_CLOSED_UNCHANGED:
+CALENDLY_AUTHORITY_UNCHANGED:
+STEPHEN_SSOT_UNCHANGED:
+OPERATOR_NOTIFICATION_UNCHANGED:
+DIRECT_GTAG_GA4_UNCHANGED:
+CONTACT_FORM_UNCHANGED:
+
+## 17. DEPLOYMENT
+
+Must state:
+
+NOT_DEPLOYED
+
+## 18. REMAINING RISKS
+
+Only real unresolved risks.
+
+## 19. PATRICK REVIEW REQUIRED
+
+Return the exact screenshots/states Patrick should review.
+
+## 20. EXACT NEXT STEP
+
+Choose:
+
+READY_FOR_PATRICK_VISUAL_PRODUCT_REVIEW
+
+or a bounded remediation tranche.
+
+================================================================================
+TERMINAL SUCCESS STATE
+================================================================================
+
+The desired terminal state is:
+
+DO_NOT_PRESS_DROP_V1
+=
+IMPLEMENTED
++
+DETERMINISTIC
++
+LIGHTWEIGHT
++
+ACCESSIBLE
++
+MOBILE_CERTIFIED
++
+BRAND_COHERENT
++
+ANALYTICS_INSTRUMENTED
++
+AVAILABILITY_SAFE
++
+NOT_DEPLOYED
++
+READY_FOR_PATRICK_REVIEW
+
+================================================================================
+FINAL IMPLEMENTATION PRINCIPLE
+================================================================================
+
+The visitor came to ask:
+
+"Is Patrick available?"
+
+They should leave the success experience thinking:
+
+"Yes — and this guy is different."
+
+The game succeeds only if it strengthens that second thought.
+
+Build the smallest, fastest, most delightful version that achieves it.
+
+Do not build technology for its own sake.
+
+================================================================================
+END — HSDJ DO NOT PRESS → DROP! V1 TIER-S EXECUTION BLOCK
+================================================================================

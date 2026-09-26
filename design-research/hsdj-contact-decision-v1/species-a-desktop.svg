@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="1000" viewBox="0 0 1440 1000" role="img" aria-label="Static Contact composition A at desktop size: date check first, consult in a narrow margin">
+  <defs><clipPath id="photo"><path d="M1002 173 L1260 173 L1308 628 L978 628 Z"/></clipPath></defs>
+  <rect width="1440" height="1000" fill="#101111"/>
+  <rect width="1440" height="118" fill="#090b0c"/>
+  <text x="88" y="68" fill="#f2dfd9" font-size="25" font-family="Arial" font-weight="700" letter-spacing="3">HOWE SOUND WEDDING DJ</text>
+  <text x="1070" y="66" fill="#bed1d2" font-size="17" font-family="Arial">WEDDINGS   ABOUT   CONTACT</text>
+  <path d="M0 118 H1440" stroke="#70d8e8" stroke-width="3"/>
+  <text x="92" y="197" fill="#70d8e8" font-size="17" font-family="Arial" font-weight="700" letter-spacing="3">CONTACT  /  SQUAMISH + SEA-TO-SKY</text>
+  <text x="86" y="323" fill="#f7f1e9" font-size="86" font-family="Arial" font-weight="800">Have a date?</text>
+  <text x="92" y="372" fill="#d2d0c9" font-size="27" font-family="Arial">Check it against Patrick’s calendar.</text>
+  <path d="M90 426 H857" stroke="#666a69" stroke-width="2"/>
+  <text x="92" y="468" fill="#bbbdb7" font-size="16" font-family="Arial" font-weight="700" letter-spacing="2">YOUR WEDDING DATE</text>
+  <rect x="91" y="493" width="190" height="90" fill="#1c1d1d" stroke="#90938e"/>
+  <rect x="290" y="493" width="131" height="90" fill="#1c1d1d" stroke="#90938e"/>
+  <rect x="430" y="493" width="131" height="90" fill="#1c1d1d" stroke="#90938e"/>
+  <text x="139" y="550" fill="#f7f1e9" font-size="37" font-family="Arial">YYYY</text>
+  <text x="326" y="550" fill="#f7f1e9" font-size="37" font-family="Arial">MM</text>
+  <text x="468" y="550" fill="#f7f1e9" font-size="37" font-family="Arial">DD</text>
+  <rect x="90" y="610" width="471" height="87" fill="#f1d236"/>
+  <text x="133" y="664" fill="#111111" font-size="28" font-family="Arial" font-weight="800">CHECK AVAILABILITY</text>
+  <text x="91" y="739" fill="#9ba2a0" font-size="18" font-family="Arial">A date check is not a booking.</text>
+  <image xlink:href="../../public/images/hsdj-redesign/wedding-story/patrick-live-light-trails.webp" x="969" y="173" width="340" height="455" preserveAspectRatio="xMidYMid slice" clip-path="url(#photo)"/>
+  <path d="M978 628 L1308 628" stroke="#70d8e8" stroke-width="4"/>
+  <text x="975" y="686" fill="#70d8e8" font-size="16" font-family="Arial" font-weight="700" letter-spacing="2">RATHER TALK FIRST?</text>
+  <text x="974" y="731" fill="#f7f1e9" font-size="23" font-family="Arial">Book a consult with Patrick.</text>
+  <path d="M974 752 H1310" stroke="#f1d236" stroke-width="2"/>
+  <text x="975" y="787" fill="#f1d236" font-size="22" font-family="Arial" font-weight="700">BOOK A CONSULT  ↗</text>
+  <path d="M90 846 H1310" stroke="#5a5e5b" stroke-width="1"/>
+  <text x="91" y="891" fill="#c6c6bf" font-size="21" font-family="Arial">No date yet? You can still send a message.</text>
+  <text x="90" y="939" fill="#6d7775" font-size="15" font-family="Arial" letter-spacing="1">STATIC STUDY A · DESKTOP 1440 × 1000 · NOT APPROVED COPY OR UI</text>
+</svg>

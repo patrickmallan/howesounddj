@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HSDJ Headline Typography Lab V1</title>
+  <style>
+    :root {
+      --ink: #07090a;
+      --paper: #f2ede3;
+      --yellow: #ffdb05;
+      --cyan: #27d8ee;
+      --red: #ff3154;
+      --blue: #164dff;
+      --green: #52ed7e;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--ink); color: var(--paper); }
+    body { margin: 0; overflow-x: hidden; font-family: Arial, Helvetica, sans-serif; background: #07090a; }
+
+    .lab-header {
+      position: relative;
+      min-height: 42rem;
+      display: grid;
+      align-content: end;
+      padding: clamp(2rem, 6vw, 6rem);
+      overflow: hidden;
+      border-bottom: 10px solid var(--yellow);
+      background:
+        linear-gradient(90deg, #07090a 0 48%, transparent 78%),
+        linear-gradient(0deg, #07090a 0, transparent 65%),
+        url("../../public/images/hsdj-redesign/deck-surfaces/djm-a9-topdown.jpg") center 35% / cover;
+    }
+
+    .lab-header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(90deg, transparent 0 11.8%, rgb(39 216 238 / 12%) 12% 12.1%, transparent 12.2% 20%);
+      mix-blend-mode: screen;
+    }
+
+    .kicker, .meta, .decision, .alphabet, .ancestry {
+      font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .lab-header .kicker { position: relative; z-index: 2; margin: 0 0 1.4rem; color: var(--cyan); font-size: .78rem; }
+    .lab-header h1 { position: relative; z-index: 2; max-width: 1000px; margin: 0; font: 950 clamp(4.6rem, 11vw, 10rem)/.78 Impact, "Arial Black", sans-serif; letter-spacing: -.045em; text-transform: uppercase; }
+    .lab-header h1 span { display: block; }
+    .lab-header p:last-child { position: relative; z-index: 2; max-width: 56rem; margin: 2rem 0 0; color: rgb(242 237 227 / 78%); font-size: clamp(1rem, 1.5vw, 1.25rem); font-weight: 700; line-height: 1.5; }
+
+    .specimen { position: relative; min-height: 1000px; padding: clamp(4rem, 7vw, 7rem) clamp(1.3rem, 6vw, 6rem); overflow: hidden; border-bottom: 1px solid rgb(255 255 255 / 15%); }
+    .specimen-head { position: relative; z-index: 5; display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: clamp(4rem, 8vw, 8rem); }
+    .specimen-head h2 { margin: 0; font-size: clamp(1.5rem, 3vw, 2.8rem); text-transform: uppercase; }
+    .specimen-head .meta { margin: 0 0 .5rem; color: var(--yellow); font-size: .67rem; }
+    .specimen-head .decision { max-width: 28rem; margin: 0; color: rgb(242 237 227 / 68%); font-size: .62rem; line-height: 1.7; text-align: right; }
+
+    .crossfader { background: var(--ink); }
+    .crossfader::before {
+      content: "";
+      position: absolute;
+      top: 23rem;
+      right: -5vw;
+      left: 28vw;
+      height: 12px;
+      border: 2px solid #394047;
+      background: linear-gradient(90deg, #1e2429, #050607 45%, #303840);
+      box-shadow: 0 5px 0 #000, inset 0 2px 4px #000;
+      transform: rotate(-2deg);
+    }
+
+    .xf-title { position: relative; z-index: 2; width: min(1120px, 100%); margin: 0; text-transform: uppercase; }
+    .xf-line { position: relative; display: block; width: max-content; max-width: 100%; font: 950 clamp(5.8rem, 12.7vw, 12.8rem)/.73 Impact, "Arial Black", sans-serif; letter-spacing: -.055em; transform: scaleX(.78); transform-origin: left center; }
+    .xf-line:nth-child(2) { margin-left: 7vw; color: var(--yellow); transform: scaleX(.84) rotate(-1deg); }
+    .xf-line:nth-child(3) { margin-left: 1vw; }
+    .xf-line::before, .xf-line::after { content: attr(data-text); position: absolute; inset: 0; pointer-events: none; }
+    .xf-line::before { z-index: -1; color: var(--red); clip-path: inset(0 0 57% 0); transform: translate(7px, -3px); }
+    .xf-line::after { z-index: -1; color: var(--blue); clip-path: inset(56% 0 0 0); transform: translate(-8px, 5px); }
+    .xf-line > span { position: relative; display: block; clip-path: polygon(0 0, 100% 0, 100% 42%, 98.5% 42%, 98.5% 46%, 100% 46%, 100% 100%, 0 100%, 0 62%, 1.5% 62%, 1.5% 58%, 0 58%); }
+
+    .type-notes { position: relative; z-index: 3; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; width: min(960px, 92%); margin: 5rem 0 0 auto; background: #384047; border: 1px solid #384047; transform: rotate(.7deg); }
+    .type-notes p { margin: 0; padding: 1.1rem 1.3rem; color: #d8dde0; background: #0b0e10; font: 750 .75rem/1.45 "SFMono-Regular", Menlo, monospace; text-transform: uppercase; }
+    .type-notes b { display: block; margin-bottom: .45rem; color: var(--cyan); }
+
+    .channel { color: #090b0c; background: var(--paper); }
+    .channel::before { content: ""; position: absolute; inset: 0; opacity: .13; background-image: radial-gradient(#07090a 1px, transparent 1.3px); background-size: 12px 12px; }
+    .channel .specimen-head .decision { color: rgb(7 9 10 / 66%); }
+    .channel .specimen-head .meta { color: #d51d39; }
+    .channel-panel { position: relative; z-index: 2; margin-inline: auto; width: min(1180px, 100%); padding: 2rem 0 4rem; }
+    .channel-panel::before { content: ""; position: absolute; top: 0; bottom: 0; left: 19%; width: 9px; background: var(--red); box-shadow: 20px 0 0 var(--blue); }
+    .channel-line { position: relative; display: block; width: max-content; max-width: 100%; margin: 0; color: #080a0b; font: 950 clamp(5.1rem, 10.6vw, 10.8rem)/.78 Impact, "Arial Black", sans-serif; letter-spacing: -.04em; text-transform: uppercase; -webkit-mask-image: linear-gradient(to bottom, #000 0 39%, transparent 39% 42%, #000 42% 69%, transparent 69% 71.5%, #000 71.5% 100%); mask-image: linear-gradient(to bottom, #000 0 39%, transparent 39% 42%, #000 42% 69%, transparent 69% 71.5%, #000 71.5% 100%); }
+    .channel-line:nth-child(2) { margin-left: 17%; color: var(--blue); transform: skewX(-6deg); }
+    .channel-line:nth-child(3) { margin-left: 5%; }
+    .channel-line:nth-child(4) { margin-left: 28%; color: #d91f3e; }
+    .channel-rail { position: absolute; z-index: 3; top: 47%; right: -7%; width: 67%; height: 5px; background: #090b0c; transform: rotate(3deg); }
+    .channel-rail::after { content: ""; position: absolute; top: 50%; left: 37%; width: 88px; height: 38px; border: 4px solid #090b0c; background: var(--yellow); transform: translate(-50%, -50%); }
+    .channel .alphabet { position: relative; z-index: 3; max-width: 72rem; margin: 4rem auto 0; padding: 1.4rem 1.8rem; color: var(--paper); background: #090b0c; font-size: clamp(.62rem, 1.2vw, .9rem); line-height: 2; }
+
+    .meter { background: #050707; }
+    .meter::before { content: ""; position: absolute; inset: 0; opacity: .22; background: url("../../public/images/hsdj-redesign/controls/meters/djm-a9-master-meter.png") right -6rem top 8rem / auto 78% no-repeat; filter: saturate(1.25); }
+    .matrix-field { position: relative; z-index: 2; width: min(1240px, 100%); margin: 0 auto; }
+    .matrix-line { display: flex; flex-wrap: nowrap; gap: clamp(7px, .75vw, 12px); margin-bottom: clamp(10px, 1vw, 18px); }
+    .matrix-line:nth-child(2) { margin-left: 4vw; }
+    .matrix-line:nth-child(3) { margin-left: 1vw; }
+    .matrix-letter { --cell: clamp(8px, 1.03vw, 15px); display: grid; flex: 0 0 auto; grid-template-columns: repeat(5, var(--cell)); grid-template-rows: repeat(7, var(--cell)); gap: calc(var(--cell) * .19); }
+    .matrix-cell { width: var(--cell); height: var(--cell); background: #17201b; box-shadow: inset 0 1px rgb(255 255 255 / 5%); clip-path: polygon(9% 0, 91% 0, 100% 15%, 100% 85%, 91% 100%, 9% 100%, 0 85%, 0 15%); }
+    .matrix-cell.on { background: var(--green); box-shadow: 0 0 9px rgb(82 237 126 / 58%), inset 0 1px rgb(255 255 255 / 65%); }
+    .matrix-line:nth-child(2) .matrix-cell.on { background: var(--yellow); box-shadow: 0 0 9px rgb(255 219 5 / 55%), inset 0 1px rgb(255 255 255 / 65%); }
+    .matrix-line:nth-child(3) .matrix-cell.on { background: var(--red); box-shadow: 0 0 9px rgb(255 49 84 / 55%), inset 0 1px rgb(255 255 255 / 65%); }
+    .matrix-space { width: clamp(16px, 2vw, 30px); flex: 0 0 auto; }
+    .meter-caption { position: relative; z-index: 3; display: flex; justify-content: space-between; gap: 2rem; width: min(1160px, 100%); margin: 5rem auto 0; padding-top: 1rem; border-top: 3px solid var(--green); color: #cdd6d0; }
+    .meter-caption p { max-width: 32rem; margin: 0; font-size: .85rem; line-height: 1.6; }
+    .meter-caption .ancestry { color: var(--green); font-size: .65rem; }
+
+    .verdicts { padding: 5rem clamp(1.3rem, 6vw, 6rem) 7rem; color: #111416; background: var(--yellow); }
+    .verdicts h2 { max-width: 900px; margin: 0 0 3rem; font: 950 clamp(3rem, 6vw, 6rem)/.85 Impact, "Arial Black", sans-serif; text-transform: uppercase; }
+    .verdict-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 2px; background: #111416; }
+    .verdict-grid article { padding: 2rem; background: var(--paper); }
+    .verdict-grid h3 { margin: 0 0 1rem; font-size: 1rem; text-transform: uppercase; }
+    .verdict-grid p { margin: 0; line-height: 1.55; }
+    .verdict-grid b { color: #e11e3d; }
+
+    @media (max-width: 760px) {
+      .lab-header { min-height: 38rem; padding: 3rem 1.25rem; }
+      .lab-header h1 { font-size: clamp(4rem, 20vw, 6.1rem); }
+      .specimen { min-height: 844px; padding: 3.5rem 1.1rem; }
+      .specimen-head { display: block; margin-bottom: 4rem; }
+      .specimen-head .decision { margin-top: 1rem; text-align: left; }
+      .xf-line { font-size: clamp(4.1rem, 20vw, 6.2rem); line-height: .78; }
+      .xf-line:nth-child(2) { margin-left: 0; }
+      .type-notes { grid-template-columns: 1fr; width: 94%; margin-top: 4rem; }
+      .channel-panel { padding-top: 1rem; }
+      .channel-line { font-size: clamp(3.7rem, 18vw, 5.6rem); }
+      .channel-line:nth-child(2), .channel-line:nth-child(4) { margin-left: 6%; }
+      .channel-line:nth-child(3) { margin-left: 0; }
+      .channel-panel::before { left: 7%; width: 5px; box-shadow: 11px 0 0 var(--blue); }
+      .channel-rail { right: -18%; width: 90%; }
+      .matrix-line { gap: 3px; }
+      .matrix-letter { --cell: clamp(4px, 1.9vw, 7px); gap: 1px; }
+      .matrix-space { width: 7px; }
+      .meter-caption { display: block; margin-top: 3rem; }
+      .meter-caption p { margin-top: 1rem; }
+      .verdict-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="lab-header">
+    <p class="kicker">Howe Sound Wedding DJ / Type laboratory V1</p>
+    <h1><span>Not a DJ font.</span><span>An HSDJ font.</span></h1>
+    <p>Three headline species built from fader rails, channel interruptions, meter segments, fly-posted type and the pressure of a room with the system turned up. These are research specimens, not production fonts.</p>
+  </header>
+
+  <main>
+    <section class="specimen crossfader" aria-labelledby="crossfader-title">
+      <div class="specimen-head">
+        <div><p class="meta">Species A / Crossfader Grotesk</p><h2 id="crossfader-title">Condensed, physical, interrupted</h2></div>
+        <p class="decision">Designed to carry the biggest HSDJ headlines without turning every word into a novelty effect.</p>
+      </div>
+      <h3 class="xf-title" aria-label="You don't need to build the whole playlist">
+        <span class="xf-line" data-text="YOU DON'T NEED"><span>YOU DON&apos;T NEED</span></span>
+        <span class="xf-line" data-text="TO BUILD THE"><span>TO BUILD THE</span></span>
+        <span class="xf-line" data-text="WHOLE PLAYLIST"><span>WHOLE PLAYLIST</span></span>
+      </h3>
+      <div class="type-notes">
+        <p><b>Hardware move</b>One narrow signal break cuts through the letterforms instead of decorating the outside.</p>
+        <p><b>Poster move</b>Red and cobalt registration drift appears only at the loudest scale.</p>
+        <p><b>Restraint</b>The underlying letter shapes stay readable enough for real service headlines.</p>
+      </div>
+    </section>
+
+    <section class="specimen channel" aria-labelledby="channel-title">
+      <div class="specimen-head">
+        <div><p class="meta">Species B / Channel Stencil</p><h2 id="channel-title">Cut twice. Printed hard.</h2></div>
+        <p class="decision">More punk handbill than club logo. The breaks behave like printed channel separations, not military stencil cosplay.</p>
+      </div>
+      <div class="channel-panel" aria-label="Dinner music can still be good">
+        <span class="channel-line">Dinner</span>
+        <span class="channel-line">music can</span>
+        <span class="channel-line">still be</span>
+        <span class="channel-line">good.</span>
+        <span class="channel-rail" aria-hidden="true"></span>
+      </div>
+      <p class="alphabet">ABCDEFGHIJKLMNOPQRSTUVWXYZ &nbsp; 0123456789 &nbsp; SQUAMISH / WEDDINGS / DANCE FLOOR</p>
+    </section>
+
+    <section class="specimen meter" aria-labelledby="meter-title">
+      <div class="specimen-head">
+        <div><p class="meta">Species C / Meter Matrix</p><h2 id="meter-title">A real modular alphabet</h2></div>
+        <p class="decision">Built from individual meter segments. Strong HSDJ ancestry, but intentionally tested as a limited accent rather than the default headline voice.</p>
+      </div>
+      <div class="matrix-field" role="img" aria-label="Your music. Your people. One very good night.">
+        <div class="matrix-line" data-matrix="YOUR MUSIC"></div>
+        <div class="matrix-line" data-matrix="YOUR PEOPLE"></div>
+        <div class="matrix-line" data-matrix="ONE VERY GOOD NIGHT"></div>
+      </div>
+      <div class="meter-caption">
+        <span class="ancestry">Ancestor / DJM master meter</span>
+        <p>This is the only specimen whose letters are genuinely constructed rather than treated. Its risk is obvious: too much becomes an arcade, festival, or gaming identity instead of a wedding DJ with taste.</p>
+      </div>
+    </section>
+
+    <section class="verdicts" aria-labelledby="verdict-heading">
+      <h2 id="verdict-heading">The first call: build from A, steal carefully from B, keep C rare.</h2>
+      <div class="verdict-grid">
+        <article><h3>Designer</h3><p><b>Advance Crossfader Grotesk.</b> It has enough hardware ancestry to belong here without forcing every headline to perform a trick. Channel Stencil can supply alternates and shorter section hits. Meter Matrix belongs on numbers, one-word peaks, and equipment labels.</p></article>
+        <article><h3>Anti-Design Auditor</h3><p>Species A still begins with a familiar condensed grotesk. It only advances if the final glyphs are actually redrawn, the cuts vary intelligently by character, and the registration effect is optional—not the identity.</p></article>
+        <article><h3>Conversion Guardian</h3><p>All three read at headline scale. A is safest for longer language. B needs careful mobile line breaks. C fails for paragraph-length headlines and must never carry essential instructions or buttons.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const glyphs = {
+      A:["01110","10001","10001","11111","10001","10001","10001"],
+      B:["11110","10001","10001","11110","10001","10001","11110"],
+      C:["01111","10000","10000","10000","10000","10000","01111"],
+      D:["11110","10001","10001","10001","10001","10001","11110"],
+      E:["11111","10000","10000","11110","10000","10000","11111"],
+      F:["11111","10000","10000","11110","10000","10000","10000"],
+      G:["01111","10000","10000","10111","10001","10001","01111"],
+      H:["10001","10001","10001","11111","10001","10001","10001"],
+      I:["11111","00100","00100","00100","00100","00100","11111"],
+      J:["00111","00010","00010","00010","10010","10010","01100"],
+      K:["10001","10010","10100","11000","10100","10010","10001"],
+      L:["10000","10000","10000","10000","10000","10000","11111"],
+      M:["10001","11011","10101","10101","10001","10001","10001"],
+      N:["10001","11001","10101","10011","10001","10001","10001"],
+      O:["01110","10001","10001","10001","10001","10001","01110"],
+      P:["11110","10001","10001","11110","10000","10000","10000"],
+      Q:["01110","10001","10001","10001","10101","10010","01101"],
+      R:["11110","10001","10001","11110","10100","10010","10001"],
+      S:["01111","10000","10000","01110","00001","00001","11110"],
+      T:["11111","00100","00100","00100","00100","00100","00100"],
+      U:["10001","10001","10001","10001","10001","10001","01110"],
+      V:["10001","10001","10001","10001","10001","01010","00100"],
+      W:["10001","10001","10001","10101","10101","11011","10001"],
+      X:["10001","10001","01010","00100","01010","10001","10001"],
+      Y:["10001","10001","01010","00100","00100","00100","00100"],
+      Z:["11111","00001","00010","00100","01000","10000","11111"]
+    };
+
+    document.querySelectorAll("[data-matrix]").forEach((line) => {
+      [...line.dataset.matrix].forEach((char) => {
+        if (char === " ") {
+          line.append(Object.assign(document.createElement("span"), { className: "matrix-space" }));
+          return;
+        }
+        const letter = Object.assign(document.createElement("span"), { className: "matrix-letter" });
+        (glyphs[char] || glyphs.X).join("").split("").forEach((value) => {
+          letter.append(Object.assign(document.createElement("i"), { className: `matrix-cell ${value === "1" ? "on" : ""}` }));
+        });
+        line.append(letter);
+      });
+    });
+  </script>
+</body>
+</html>

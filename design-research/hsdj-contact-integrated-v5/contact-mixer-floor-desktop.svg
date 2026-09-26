@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="1000" viewBox="0 0 1440 1000" role="img" aria-label="Contact study with the mixer transformed into a miniature wedding dance floor">
+  <defs>
+    <filter id="headline"><feDropShadow dx="7" dy="7" stdDeviation="0" flood-color="#124ee8"/></filter>
+  </defs>
+  <rect width="1440" height="1000" fill="#070909"/>
+  <image xlink:href="mixer-wedding-floor-art-v1.png" x="0" y="106" width="1440" height="811" preserveAspectRatio="xMidYMid slice"/>
+  <rect x="0" y="106" width="1440" height="811" fill="#030505" opacity="0.18"/>
+  <rect width="1440" height="106" fill="#070909" opacity="0.98"/>
+  <text x="62" y="62" fill="#f3e9df" font-family="Arial" font-size="25" font-weight="800" letter-spacing="2">HOWE SOUND WEDDING DJ</text>
+  <text x="1081" y="62" fill="#d7dfdc" font-family="Arial" font-size="16" font-weight="700">WEDDINGS · ABOUT · CONTACT</text>
+  <path d="M0 106H1440" stroke="#f5d71f" stroke-width="7"/>
+  <path d="M0 113H823L905 147H1440" stroke="#124ee8" stroke-width="5" fill="none"/>
+
+  <path d="M42 157L650 135L730 213L676 532L612 566L42 604Z" fill="#040606" opacity="0.76"/>
+  <path d="M43 158H330" stroke="#42d8e8" stroke-width="5"/>
+  <text x="61" y="196" fill="#42d8e8" font-family="Arial" font-size="15" font-weight="800" letter-spacing="3">CONTACT / SQUAMISH + SEA-TO-SKY</text>
+  <text x="58" y="309" fill="#fbf4ea" font-family="Arial" font-size="78" font-weight="900" letter-spacing="-3" filter="url(#headline)">HAVE A</text>
+  <text x="58" y="385" fill="#fbf4ea" font-family="Arial" font-size="78" font-weight="900" letter-spacing="-3" filter="url(#headline)">WEDDING DATE?</text>
+  <text x="63" y="444" fill="#f4eee6" font-family="Arial" font-size="21" font-weight="700">Check it here. If I’m free, you can book</text>
+  <text x="63" y="474" fill="#f4eee6" font-family="Arial" font-size="21" font-weight="700">a consult right away.</text>
+  <path d="M63 518C192 493 304 546 422 512S591 497 708 521S912 492 1089 515S1261 493 1404 508" fill="none" stroke="#f5d71f" stroke-width="4"/>
+
+  <path d="M42 592L1289 516L1377 574L1326 827L44 878Z" fill="#050707" opacity="0.78"/>
+  <text x="65" y="636" fill="#42d8e8" font-family="Arial" font-size="14" font-weight="800" letter-spacing="3">YOUR WEDDING DATE</text>
+  <text x="65" y="708" fill="#fbf4ea" font-family="Arial" font-size="40" font-weight="900">YYYY</text>
+  <text x="288" y="708" fill="#fbf4ea" font-family="Arial" font-size="40" font-weight="900">MM</text>
+  <text x="456" y="708" fill="#fbf4ea" font-family="Arial" font-size="40" font-weight="900">DD</text>
+  <path d="M65 731H232" stroke="#42d8e8" stroke-width="5"/>
+  <path d="M288 731H402" stroke="#f5d71f" stroke-width="5"/>
+  <path d="M456 731H570" stroke="#ef3340" stroke-width="5"/>
+  <path d="M570 731H670" stroke="#f5d71f" stroke-width="5"/>
+  <path d="M670 731L701 701H1046V782H670Z" fill="#f5d71f"/>
+  <text x="728" y="754" fill="#080b0b" font-family="Arial" font-size="25" font-weight="900">CHECK YOUR DATE</text>
+  <path d="M66 809H474" stroke="#818986"/>
+  <text x="66" y="842" fill="#f5eee5" font-family="Arial" font-size="18">No date yet?</text>
+  <text x="188" y="842" fill="#42d8e8" font-family="Arial" font-size="18" font-weight="800">SEND ME A MESSAGE ↗</text>
+  <path d="M1080 706C1148 671 1204 742 1268 695S1355 686 1427 721" fill="none" stroke="#ef3340" stroke-width="5"/>
+  <rect x="0" y="917" width="1440" height="83" fill="#070909" opacity="0.96"/>
+  <text x="64" y="964" fill="#a6b1ae" font-family="Arial" font-size="12" letter-spacing="2">MIXER WEDDING FLOOR · CONTACT STUDY V5 · RESEARCH ONLY</text>
+</svg>

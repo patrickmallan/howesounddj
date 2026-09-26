@@ -74,7 +74,7 @@ describe("review SSOT", () => {
   });
 });
 
-describe("post-availability copy authority (V3.1 preserved through V3.4)", () => {
+describe("post-availability copy authority (V3 compact plus approved Contact V5 full surface)", () => {
   const copySurfaces = [
     POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD,
     POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION,
@@ -123,10 +123,8 @@ describe("post-availability copy authority (V3.1 preserved through V3.4)", () =>
     }
   });
 
-  it("uses the required full primary CTA label", () => {
-    expect(POST_AVAILABILITY_PRIMARY_CTA_LABEL).toBe(
-      "Reserve My Complimentary Wedding Planning Session",
-    );
+  it("uses the approved direct Contact V5 primary CTA label", () => {
+    expect(POST_AVAILABILITY_PRIMARY_CTA_LABEL).toBe("Book a Consult");
   });
 });
 
@@ -201,7 +199,7 @@ describe("post-availability composition cohesion (V3.3)", () => {
 
 describe("post-availability final editorial closure (V3.4)", () => {
   const STEPHEN_EXCERPT =
-    "We would get married all over again just so we could hangout and work with Patrick. He's a talented DJ and a truly caring person.";
+    "We would get married all over again just so we could hangout and work with Patrick again. He's a talented DJ and a truly caring person.";
   const STEPHEN_CANONICAL =
     "We would get married all over again just so we could hangout and work with Patrick again. He's a talented DJ and a truly caring person.";
 
@@ -211,10 +209,10 @@ describe("post-availability final editorial closure (V3.4)", () => {
     expect(stephen?.quote).toContain("Patrick again");
   });
 
-  it("governs Patrick-approved Availability Success excerpt separately", () => {
+  it("keeps the Availability Success excerpt verbatim with its canonical source", () => {
     const stephen = getReviewById("stephen-henry");
     expect(stephen?.availabilitySuccessExcerpt).toBe(STEPHEN_EXCERPT);
-    expect(stephen?.availabilitySuccessExcerpt).not.toContain("Patrick again");
+    expect(stephen?.availabilitySuccessExcerpt).toBe(stephen?.quote);
   });
 
   it("selects excerpt for Availability Success without hardcoding in component", () => {
@@ -274,7 +272,7 @@ describe("post-availability final editorial closure (V3.4)", () => {
 
 describe("post-availability final polish and design freeze (V3.5)", () => {
   const STEPHEN_EXCERPT =
-    "We would get married all over again just so we could hangout and work with Patrick. He's a talented DJ and a truly caring person.";
+    "We would get married all over again just so we could hangout and work with Patrick again. He's a talented DJ and a truly caring person.";
   const OPENING_QUOTE = "\u201C";
   const CLOSING_QUOTE = "\u201D";
 
@@ -424,10 +422,11 @@ describe("post-availability calendly URL", () => {
         weddingDate: "2028-06-15",
         surface: "contact_form",
       }),
+      "https://www.howesounddj.com",
     );
+    expect(url.pathname).toBe("/go/consult");
     expect(url.searchParams.get("month")).toBe("2028-06");
-    expect(url.searchParams.get("utm_medium")).toBe("post_availability");
-    expect(url.searchParams.get("utm_content")).toBe("contact_form");
+    expect(url.searchParams.get("surface")).toBe("contact_form");
   });
 });
 
