@@ -64,7 +64,10 @@ export function ReviewDeck({ reviews }: Props) {
 
   return (
     <div className={`${styles.deck} ${dragLevel === null ? "" : styles.isDragging}`.trim()} onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
-      <p className={styles.mobileGuide} id={guideId}><b>Slide the channel fader</b> to hear two more couples. <span>Pair {active + 1} of {reviewPairs.length} / {reviews.length} reviews</span></p>
+      <p className={styles.mobileGuide} id={guideId}>
+        <b>Slide the channel fader</b>
+        <span>to hear two more couples.</span>
+      </p>
       <div
         className={styles.reviewStage}
         style={{ "--review-shift": `${reviewShiftRem}rem` } as CSSProperties}
