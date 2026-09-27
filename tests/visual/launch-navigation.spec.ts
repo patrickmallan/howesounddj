@@ -16,7 +16,7 @@ for (const width of [320, 390, 768]) {
     });
     expect(hit).toBe(true);
     await weddings.click();
-    await expect(menu.getByRole("link", { name: /Packages Coverage/ })).toBeVisible();
+    await expect(menu.locator('a[href="/packages"]')).toBeVisible();
     await page.keyboard.press("Escape");
     await expect(menu).toBeHidden();
     await expect(trigger).toBeFocused();

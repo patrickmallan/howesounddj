@@ -44,7 +44,9 @@ async function materializePage(page: Page) {
     content: "section, .below-fold-content, [class*='chapter'] { content-visibility: visible !important; contain-intrinsic-size: none !important; }",
   });
   const sections = await page.locator("main section").all();
-  for (const section of sections) await section.scrollIntoViewIfNeeded();
+  for (const section of sections) {
+    if (await section.isVisible()) await section.scrollIntoViewIfNeeded();
+  }
   await page.evaluate(() => window.scrollTo(0, 0));
 }
 

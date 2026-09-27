@@ -54,7 +54,7 @@ export default function PackagesPage() {
         <div className={styles.heroInner}>
           <div className={styles.eyebrow}>PACKAGES / SQUAMISH, BC</div>
           <h1 className={styles.heroHeading}>
-            <span>Tell me what kind of</span>
+            <span>Tell me what kind of</span>{" "}
             <span>day you are having.</span>
           </h1>
           <div className={styles.heroNote}>

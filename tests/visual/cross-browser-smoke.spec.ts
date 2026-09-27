@@ -8,7 +8,7 @@ test("mobile navigation and date-check entry remain reachable", async ({ page })
   const menu = page.getByRole("dialog", { name: "Site menu" });
   await expect(menu).toBeVisible();
   await menu.getByRole("button", { name: "Weddings" }).click();
-  await menu.getByRole("link", { name: /Packages Coverage/ }).click();
+  await menu.locator('a[href="/packages"]').click();
   await expect(page).toHaveURL(/\/packages$/);
   await page.goto("/contact#availability", { waitUntil: "domcontentloaded" });
   await expect(page.getByRole("heading", { name: "Have a wedding date?" })).toBeVisible();
