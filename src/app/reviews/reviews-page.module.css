@@ -480,17 +480,14 @@
   .displayTrack span:last-child { width: 100%; margin-left: 0; }
   .displayBottomline span:last-child { display: none; }
 }
-@keyframes record-turn { from { transform: rotate(-12deg); } to { transform: rotate(348deg); } }
 @keyframes waveform-travel { to { transform: translateX(-100vw); } }
 @media (prefers-reduced-motion: no-preference) {
-  .recordArt { animation: record-turn 36s linear infinite; }
   .waveTrack { animation: waveform-travel 17s linear infinite; }
   .waveDeckB .waveTrack { animation-duration: 20s; animation-direction: reverse; }
-  .recordArt:hover { animation-play-state: paused; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .recordArt, .firstCopy, .peopleQuotes .quote, .dayPhoto, .dayQuotes .quote, .floorQuotes .quote, .outroDeck { transform: none; }
-  .recordArt, .waveTrack { animation: none; }
+  .firstCopy, .peopleQuotes .quote, .dayPhoto, .dayQuotes .quote, .floorQuotes .quote, .outroDeck { transform: none; }
+  .waveTrack { animation: none; }
 }
 
 /* Featured reviews: a physical deck with a selectable CDJ-inspired display. */
@@ -598,8 +595,7 @@
   from { transform: translate3d(0, 0, 0) rotate(0deg); }
   to { transform: translate3d(0, 0, 0) rotate(360deg); }
 }
-@media (prefers-reduced-motion: no-preference) { .recordArt { animation: record-turn 1.8s linear infinite; } .recordArt:hover { animation-play-state: running; } }
-@media (prefers-reduced-motion: reduce) { .recordArt { animation: none; } .firstCopy { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .firstCopy { animation: none; } }
 @media (max-width: 1050px) { .deckBody { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); } .platterHousing { min-height: 380px; } .tonearm { right: 0; } }
 @media (max-width: 720px) {
   .deckBody { grid-template-columns: 1fr; }
@@ -654,8 +650,12 @@
 .recordArt {
   background: repeating-radial-gradient(circle, #12141b 0 2px, #262b34 2px 3px, #0b0e13 3px 5px);
   box-shadow: 0 0 0 4px #080b11, 0 0 0 8px #62727c, 0 12px 28px #000d, inset 0 0 0 12px #060911;
+  animation: record-turn 3.6s linear infinite;
+  transform-origin: 50% 50%;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   will-change: transform;
+  contain: paint;
 }
 .recordArt::before { z-index: 1; inset: 4%; border: 2px solid #eadb8c75; box-shadow: inset 0 0 0 2px #000; pointer-events: none; }
 .recordArt::after {
@@ -692,6 +692,6 @@
   .deckTopline { min-height: 3.3rem; padding-inline: .7rem; }
   .recordLabel strong { font-size: clamp(.4rem, 2vw, .68rem); }
 }
-@media (max-width: 720px) and (prefers-reduced-motion: no-preference) {
-  .recordArt { animation: record-turn 1.8s linear infinite !important; animation-play-state: running !important; }
+@media (prefers-reduced-motion: reduce) {
+  .recordArt { animation-duration: 14s; }
 }
