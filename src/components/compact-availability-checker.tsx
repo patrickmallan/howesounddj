@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useState } from "react";
 import { WeddingDateFields } from "@/components/wedding-date-fields";
 import {
   AvailabilityCheckingState,
@@ -50,6 +50,14 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useLayoutEffect(() => {
+    if (phase.kind === "idle" || phase.kind === "loading") return;
+    const dialog = document.querySelector<HTMLElement>(
+      '[role="dialog"][aria-label="Check wedding date availability"]',
+    );
+    if (dialog) dialog.scrollTop = 0;
+  }, [phase.kind]);
+
   async function handleCheck() {
     if (!date.weddingDate) {
       date.setDateError("Choose a wedding date first.");
@@ -94,10 +102,21 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
     );
   }
 
+  if ((phase.kind === "unavailable" || phase.kind === "manual") && date.weddingDate) {
+    return (
+      <PostAvailabilityOutcome
+        kind={phase.kind}
+        weddingDate={date.weddingDate}
+        canonicalStatusMessage={phase.message}
+        onTryAnotherDate={resetChecker}
+        className={`hsdj-availability-result hsdj-availability-result--${phase.kind} !rounded-xl !p-5`}
+      />
+    );
+  }
+
   return (
     <div className="hsdj-availability-checker space-y-4" data-phase={phase.kind}>
       <div className="hsdj-availability-intro">
-        <p className="hsdj-availability-console-label"><span aria-hidden="true" /> Date line // live</p>
         <h3 className="hsdj-availability-title">Check your wedding date</h3>
         <p className="hsdj-availability-subtitle mt-1.5 text-sm leading-relaxed text-white/50">
           Quickly see if your date is open before starting the conversation.
@@ -137,25 +156,6 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
 
       {phase.kind === "loading" ? <AvailabilityCheckingState className="!p-4 !rounded-xl" /> : null}
 
-      {phase.kind === "unavailable" && date.weddingDate ? (
-        <PostAvailabilityOutcome
-          kind="unavailable"
-          weddingDate={date.weddingDate}
-          canonicalStatusMessage={phase.message}
-          onTryAnotherDate={resetChecker}
-          className="hsdj-availability-result hsdj-availability-result--unavailable !rounded-xl !p-4"
-        />
-      ) : null}
-
-      {phase.kind === "manual" && date.weddingDate ? (
-        <PostAvailabilityOutcome
-          kind="manual"
-          weddingDate={date.weddingDate}
-          canonicalStatusMessage={phase.message}
-          onTryAnotherDate={resetChecker}
-          className="hsdj-availability-result hsdj-availability-result--manual !rounded-xl !p-4"
-        />
-      ) : null}
     </div>
   );
 }

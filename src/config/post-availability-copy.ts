@@ -10,10 +10,10 @@ export const POST_AVAILABILITY_COPY_VARIANT = "human_connection_v3" as const;
 export const POST_AVAILABILITY_PRIMARY_CTA_LABEL =
   "Book a Consult" as const;
 
-export const POST_AVAILABILITY_COMPACT_CTA_LABEL = "Choose a Time" as const;
+export const POST_AVAILABILITY_COMPACT_CTA_LABEL = "Let's Talk About Your Wedding" as const;
 
 export const POST_AVAILABILITY_CTA_SUPPORT =
-  "Your next best step is to book a chat with Patrick." as const;
+  "A relaxed chat about your wedding, your music, and whether it feels right." as const;
 
 export const POST_AVAILABILITY_FULL_CTA_SUPPORT = "Pick a time that works." as const;
 
@@ -28,6 +28,12 @@ export const POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD =
 /** Shared headline confirmation line (compact + full). */
 export const POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION =
   "Your wedding date is available." as const;
+
+/** Header popup only: a quieter, more personal path into the consultation. */
+export const POST_AVAILABILITY_COMPACT_HEADLINE_LEAD = "Your date is open." as const;
+
+export const POST_AVAILABILITY_COMPACT_HEADLINE_CONFIRMATION =
+  "Let's talk about the night." as const;
 
 /** Full contact surface only : one planning-session explanation. */
 export const POST_AVAILABILITY_FULL_PLANNING_SESSION =

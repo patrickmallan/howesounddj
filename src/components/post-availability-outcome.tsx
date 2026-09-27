@@ -54,7 +54,6 @@ export function PostAvailabilityOutcome(props: Props) {
     >
       <p className="sr-only">{srStatus}</p>
       <p className="sr-only">{props.canonicalStatusMessage}</p>
-      <p className="hsdj-result-signal"><span aria-hidden="true" /> Date signal received</p>
       <h3 className="hsdj-result-headline text-lg font-semibold text-white/90">{copy.headline}</h3>
       <p className="mt-3 text-sm leading-relaxed text-white/70">{copy.body}</p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

@@ -605,29 +605,6 @@ body {
 
 .hsdj-availability-intro { padding-right: 2.5rem; }
 
-.hsdj-availability-console-label,
-.hsdj-result-signal {
-  display: flex;
-  align-items: center;
-  gap: .45rem;
-  margin-bottom: .55rem;
-  color: #67f27f;
-  font: 900 .58rem/1 var(--font-geist-mono), monospace;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  text-shadow: 0 0 7px #45ef68a8;
-}
-
-.hsdj-availability-console-label > span,
-.hsdj-result-signal > span {
-  width: .46rem;
-  height: .46rem;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  background: #45ef68;
-  box-shadow: 0 0 5px #45ef68, 0 0 12px #45ef68;
-}
-
 .hsdj-availability-title {
   color: #fff7d9;
   font-family: var(--font-geist-sans), sans-serif;
@@ -730,28 +707,23 @@ body {
 
 .hsdj-availability-result--success {
   overflow: hidden;
-  padding: 1rem;
-  border: 2px solid #45ef68 !important;
+  padding: 1.1rem;
+  border: 1px solid #f3e7c43d !important;
+  border-top: 3px solid #45ef68 !important;
   border-radius: 12px;
-  background: radial-gradient(circle at 50% 0%, #45ef6820, transparent 44%), linear-gradient(145deg, #0a160df5, #050608f8) !important;
-  box-shadow: inset 0 0 20px #45ef6812, 0 0 16px #45ef6848, 0 0 30px #ffe0001c;
-}
-
-.hsdj-result-signal--win {
-  margin-bottom: -.25rem;
-  color: #7cff91;
-  font-size: .64rem;
-  text-shadow: 0 0 8px #45ef68, 0 0 15px #45ef6880;
+  background: linear-gradient(155deg, #101813f8 0%, #090b0dfb 42%, #0d0b08fa 100%) !important;
+  box-shadow: inset 0 1px 0 #ffffff18, 0 16px 34px #0009;
 }
 
 .hsdj-availability-result--success [data-availability-role="confirmation"] {
-  border-color: #45ef6866;
-  background: #45ef6812;
+  border-color: #45ef6845;
+  border-left: 3px solid #45ef68;
+  background: #45ef680a;
 }
 
 .hsdj-availability-result--success [data-availability-role="confirmation"] p {
-  color: #f5fff6;
-  font-size: 1rem;
+  color: #eff8f0;
+  font-size: .94rem;
   line-height: 1.35;
 }
 
@@ -762,33 +734,33 @@ body {
 
 .hsdj-availability-result--success [data-availability-role="headline"] {
   color: #fff7d9;
-  padding: .1rem 0 .2rem;
+  padding: .15rem 0 0;
   font-family: var(--font-geist-sans), sans-serif;
-  font-size: clamp(1.32rem, 5.7vw, 1.58rem);
-  font-weight: 900;
-  letter-spacing: -.022em;
-  line-height: 1.03;
-  text-transform: uppercase;
-  -webkit-text-stroke: .2px #fff;
-  text-shadow: 0 2px 0 #000, 0 0 11px #45ef6838;
+  font-size: clamp(1.48rem, 6.2vw, 1.8rem);
+  font-weight: 800;
+  letter-spacing: -.035em;
+  line-height: 1.08;
+  text-transform: none;
+  -webkit-text-stroke: 0;
+  text-shadow: 0 1px 0 #000;
 }
 
 .hsdj-availability-result--success [data-availability-role="proof"] {
-  padding: .75rem;
-  border-left: 3px solid #ffe000;
-  background: #050708b8;
+  padding: .2rem 0 .2rem .85rem;
+  border-left: 1px solid #f2e7ca52;
+  background: transparent;
 }
 
 .hsdj-availability-result--success [data-availability-role="testimonial"] {
-  color: #f5f5f2;
-  font-size: .98rem;
-  line-height: 1.55;
+  color: #e7e7e1;
+  font-size: .9rem;
+  line-height: 1.48;
 }
 
 .hsdj-availability-result--success [data-availability-role="attribution"] span { color: #e7e8e3; font-size: .83rem; }
-.hsdj-availability-result--success [data-availability-role="cta-support"] { color: #eef0eb; font-size: 1rem; line-height: 1.5; }
+.hsdj-availability-result--success [data-availability-role="cta-support"] { color: #d6d8d3; font-size: .91rem; line-height: 1.45; }
 
-.hsdj-availability-result--success [data-availability-role="action"] { background: transparent; }
+.hsdj-availability-result--success [data-availability-role="action"] { padding-top: 1rem; background: transparent; }
 
 .hsdj-availability-result--success [data-availability-role="primary-cta"],
 .hsdj-result-primary,
@@ -804,9 +776,13 @@ body {
 }
 
 .hsdj-availability-result--success [data-availability-role="primary-cta"] {
-  color: #fffbd8 !important;
-  box-shadow: inset 0 0 12px #ffe00024, inset 0 2px 0 #ffffff34, 0 4px 0 #8e7407, 0 0 16px #ffe00080 !important;
-  text-shadow: 0 0 4px #fff, 0 0 10px #ffe000;
+  border-color: #f6d84f !important;
+  color: #171407 !important;
+  background: linear-gradient(180deg, #fff1a1, #f3d54a 58%, #cda819) !important;
+  box-shadow: inset 0 1px 0 #fffbd9, inset 0 -2px 0 #9d7a00, 0 4px 0 #735b00, 0 7px 14px #0009 !important;
+  font-size: .8rem;
+  letter-spacing: .045em;
+  text-shadow: none;
 }
 
 .hsdj-result-secondary { border-color: #19dfff !important; color: #bff8ff !important; box-shadow: inset 0 2px 0 #ffffff24, 0 4px 0 #086f7e, 0 0 12px #19dfff4d !important; text-shadow: 0 0 7px #19dfff; }

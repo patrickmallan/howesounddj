@@ -4,6 +4,8 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   POST_AVAILABILITY_COMPACT_CTA_LABEL,
+  POST_AVAILABILITY_COMPACT_HEADLINE_CONFIRMATION,
+  POST_AVAILABILITY_COMPACT_HEADLINE_LEAD,
   POST_AVAILABILITY_CTA_SUPPORT,
   POST_AVAILABILITY_EDIT_DATE_LABEL,
   POST_AVAILABILITY_FULL_PLANNING_SESSION,
@@ -193,6 +195,14 @@ export function PostAvailabilitySuccess({
     variant === "compact" ? POST_AVAILABILITY_COMPACT_CTA_LABEL : POST_AVAILABILITY_PRIMARY_CTA_LABEL;
   const ctaClassName = variant === "compact" ? compactCtaClassName : fullCtaClassName;
   const headlineLine = roleHeadlineLine();
+  const headlineLead =
+    variant === "compact"
+      ? POST_AVAILABILITY_COMPACT_HEADLINE_LEAD
+      : POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD;
+  const headlineConfirmation =
+    variant === "compact"
+      ? POST_AVAILABILITY_COMPACT_HEADLINE_CONFIRMATION
+      : POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION;
   const proofBlock = proof && proofQuote ? (
     <figure className={roleProofGroup()} data-availability-role="proof">
       <blockquote className={roleTestimonial()} data-availability-role="testimonial">
@@ -227,11 +237,6 @@ export function PostAvailabilitySuccess({
         }
       >
         <div className={roleContentGroups(variant)}>
-          {variant === "compact" ? (
-            <p className="hsdj-result-signal hsdj-result-signal--win" aria-hidden="true">
-              <span /> Date open // signal green
-            </p>
-          ) : null}
           {/* GROUP 1 : Confirmation */}
           <div className={roleConfirmationBar(variant)} data-availability-role="confirmation">
             <p className={`min-w-0 ${roleConfirmationDate()}`}>
@@ -257,8 +262,8 @@ export function PostAvailabilitySuccess({
             className={roleHeadline(variant)}
             data-availability-role="headline"
           >
-            <span className={headlineLine}>{POST_AVAILABILITY_SUCCESS_HEADLINE_LEAD}</span>
-            <span className={headlineLine}>{POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION}</span>
+            <span className={headlineLine}>{headlineLead}</span>
+            <span className={headlineLine}>{headlineConfirmation}</span>
           </h3>
 
           {variant === "full" ? (

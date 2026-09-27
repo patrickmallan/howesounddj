@@ -3,6 +3,8 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   POST_AVAILABILITY_COMPACT_CTA_LABEL,
+  POST_AVAILABILITY_COMPACT_HEADLINE_CONFIRMATION,
+  POST_AVAILABILITY_COMPACT_HEADLINE_LEAD,
   POST_AVAILABILITY_COPY_VARIANT,
   POST_AVAILABILITY_CTA_SUPPORT,
   POST_AVAILABILITY_EDIT_DATE_LABEL,
@@ -80,6 +82,8 @@ describe("post-availability copy authority (V3 compact plus approved Contact V5 
     POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION,
     POST_AVAILABILITY_FULL_PLANNING_SESSION,
     POST_AVAILABILITY_COMPACT_CTA_LABEL,
+    POST_AVAILABILITY_COMPACT_HEADLINE_LEAD,
+    POST_AVAILABILITY_COMPACT_HEADLINE_CONFIRMATION,
     POST_AVAILABILITY_PRIMARY_CTA_LABEL,
     POST_AVAILABILITY_CTA_SUPPORT,
     POST_AVAILABILITY_EDIT_DATE_LABEL,
@@ -104,10 +108,14 @@ describe("post-availability copy authority (V3 compact plus approved Contact V5 
     expect(copyFile).not.toMatch(/From a couple who worked with Patrick/);
   });
 
-  it("uses compact CTA Choose a Time and CTA support copy", () => {
-    expect(POST_AVAILABILITY_COMPACT_CTA_LABEL).toBe("Choose a Time");
+  it("uses the warmer compact consultation CTA and support copy", () => {
+    expect(POST_AVAILABILITY_COMPACT_CTA_LABEL).toBe("Let's Talk About Your Wedding");
     expect(POST_AVAILABILITY_CTA_SUPPORT).toBe(
-      "Your next best step is to book a chat with Patrick.",
+      "A relaxed chat about your wedding, your music, and whether it feels right.",
+    );
+    expect(POST_AVAILABILITY_COMPACT_HEADLINE_LEAD).toBe("Your date is open.");
+    expect(POST_AVAILABILITY_COMPACT_HEADLINE_CONFIRMATION).toBe(
+      "Let's talk about the night.",
     );
   });
 
@@ -257,9 +265,9 @@ describe("post-availability final editorial closure (V3.4)", () => {
     expect(success).toMatch(/roleActionFooter/);
     expect(success).toMatch(/buildPostAvailabilityCalendlyUrl/);
     expect(POST_AVAILABILITY_CTA_SUPPORT).toBe(
-      "Your next best step is to book a chat with Patrick.",
+      "A relaxed chat about your wedding, your music, and whether it feels right.",
     );
-    expect(POST_AVAILABILITY_COMPACT_CTA_LABEL).toBe("Choose a Time");
+    expect(POST_AVAILABILITY_COMPACT_CTA_LABEL).toBe("Let's Talk About Your Wedding");
   });
 
   it("preserves full-surface planning session and email fallback", () => {
@@ -332,9 +340,9 @@ describe("post-availability final polish and design freeze (V3.5)", () => {
     const success = readSource("src/components/post-availability-success.tsx");
     expect(success).not.toMatch(/Let's see if we're a great fit for each other/);
     expect(POST_AVAILABILITY_CTA_SUPPORT).toBe(
-      "Your next best step is to book a chat with Patrick.",
+      "A relaxed chat about your wedding, your music, and whether it feels right.",
     );
-    expect(POST_AVAILABILITY_COMPACT_CTA_LABEL).toBe("Choose a Time");
+    expect(POST_AVAILABILITY_COMPACT_CTA_LABEL).toBe("Let's Talk About Your Wedding");
     expect(success).toMatch(/buildPostAvailabilityCalendlyUrl/);
     expect(success).toMatch(/aria-live="polite"/);
     expect(success).toMatch(/headingRef/);
