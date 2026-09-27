@@ -327,6 +327,8 @@ body {
 .hsdj-mobile-pad span { position: relative; z-index: 2; display: grid; min-width: 2rem; min-height: 1.45rem; padding: .15rem; place-items: center; border: 1px solid #ffffff2c; border-radius: 2px; background: #080a0ccf; box-shadow: inset 0 1px #ffffff1f, inset 0 -2px 4px #000; font-family: var(--font-geist-sans), sans-serif; letter-spacing: .06em; text-shadow: 0 -1px #000, 0 1px #ffffff20; }
 
 .hsdj-mobile-menu {
+  width: min(calc(100vw - 1.5rem), 13.1rem);
+  max-width: calc(100vw - 1.5rem);
   padding: .65rem;
   border-radius: 5px;
   background:
@@ -343,6 +345,7 @@ body {
   z-index: 2;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
+  justify-items: end;
   gap: .4rem;
   padding: .5rem;
   border: 1px solid #050607;
@@ -353,13 +356,13 @@ body {
 
 .hsdj-mobile-menu .hsdj-mobile-cue-bank > :last-child {
   grid-column: auto;
-  width: 100%;
+  width: auto;
   max-width: none;
-  justify-self: stretch;
+  justify-self: end;
 }
 
 .hsdj-mobile-menu .hsdj-mobile-nav-cue {
-  width: 100%;
+  width: auto;
   height: 3.25rem;
   min-width: 0;
   color: #fff;
@@ -428,6 +431,64 @@ body {
 .hsdj-mobile-menu .hsdj-mobile-nav-cue:active {
   transform: translateY(3px);
 }
+
+.hsdj-mobile-availability-row {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  padding: .7rem .5rem .55rem;
+  border-top: 1px solid #ffffff12;
+}
+
+.hsdj-mobile-availability {
+  --pad-glow: #ffd42a;
+  display: inline-flex;
+  width: fit-content;
+  min-height: 2.5rem;
+  padding: .62rem 1rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid color-mix(in srgb, var(--pad-glow) 78%, #fff 22%);
+  border-radius: 6px;
+  color: color-mix(in srgb, var(--pad-glow) 85%, #fff 15%);
+  background: linear-gradient(165deg, #292b28 0%, #080907 52%, #191914 100%);
+  box-shadow:
+    inset 0 2px 0 #ffffff28,
+    inset 2px 0 0 #ffffff12,
+    inset -2px 0 0 #0009,
+    inset 0 -3px 4px #000d,
+    0 4px 0 color-mix(in srgb, var(--pad-glow) 67%, #000 33%),
+    0 7px 6px #000c,
+    0 0 13px color-mix(in srgb, var(--pad-glow) 64%, transparent);
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: .7rem;
+  font-weight: 950;
+  letter-spacing: .075em;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-text-stroke: .22px color-mix(in srgb, var(--pad-glow) 58%, #fff 42%);
+  text-shadow: 0 1px 1px #000, 0 0 4px var(--pad-glow), 0 0 10px color-mix(in srgb, var(--pad-glow) 78%, transparent);
+  transition: transform 90ms ease, box-shadow 120ms ease, filter 120ms ease;
+}
+
+.hsdj-mobile-availability:hover,
+.hsdj-mobile-availability:focus-visible {
+  color: #fff;
+  outline: none;
+  filter: brightness(1.08);
+  box-shadow:
+    inset 0 0 14px color-mix(in srgb, var(--pad-glow) 25%, transparent),
+    inset 0 2px 0 #ffffff38,
+    0 4px 0 color-mix(in srgb, var(--pad-glow) 74%, #000 26%),
+    0 7px 6px #000c,
+    0 0 18px color-mix(in srgb, var(--pad-glow) 82%, transparent);
+  text-shadow: 0 1px 1px #000, 0 0 5px #fff, 0 0 12px var(--pad-glow);
+}
+
+.hsdj-mobile-availability:active { transform: translateY(3px); }
 
 .hsdj-mobile-channel-panel {
   position: relative;

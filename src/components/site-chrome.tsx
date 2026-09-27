@@ -511,7 +511,7 @@ export function SiteHeader() {
               />
               <nav
                 id={MOBILE_PRIMARY_NAV_ID}
-                className="hsdj-mobile-menu absolute right-3 top-2 z-50 max-h-[min(calc(100%-1rem),36rem)] w-[min(calc(100vw-1.5rem),20rem)] max-w-[20rem] overflow-y-auto overflow-x-hidden border border-white/15 bg-neutral-950/95 shadow-xl shadow-black/40"
+                className="hsdj-mobile-menu absolute right-3 top-2 z-50 max-h-[min(calc(100%-1rem),36rem)] overflow-y-auto overflow-x-hidden border border-white/15 bg-neutral-950/95 shadow-xl shadow-black/40"
                 aria-label="Mobile primary"
               >
                 <div className="hsdj-mobile-cue-bank">
@@ -563,12 +563,12 @@ export function SiteHeader() {
                     })}
                   </div>
                 ) : null}
-                <div className="relative z-10 border-t border-white/10 p-3">
+                <div className="hsdj-mobile-availability-row">
                   <CheckAvailabilityTrackedLink
                     surface="header"
                     href="/contact#availability"
                     onClick={closeMobileMenu}
-                    className="hsdj-mobile-availability relative z-10 inline-flex min-h-[50px] w-full items-center justify-center bg-amber-300 px-4 text-sm font-black uppercase text-neutral-950 transition hover:translate-x-1"
+                    className="hsdj-mobile-availability"
                   />
                 </div>
               </nav>
