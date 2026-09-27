@@ -9,22 +9,14 @@
   grid-template-rows: auto minmax(0, 1fr) auto;
   gap: .8rem;
   color: white;
-  background: #08090a;
-  border-block: 1px solid #ffffff50;
-  box-shadow: 18px 18px 0 #0847ff, -10px -10px 0 #ef2727;
-  clip-path: polygon(0 3%, 12% 0, 27% 2%, 41% .5%, 58% 3%, 73% 0, 88% 2.5%, 100% 1%, 99% 96%, 84% 100%, 69% 97%, 51% 100%, 33% 97%, 17% 100%, 1% 97%);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  clip-path: none;
 }
 
 .deck::before {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  content: "";
-  opacity: .28;
-  background:
-    radial-gradient(circle at 17% 26%, #ffffff15 0 1px, transparent 2px),
-    linear-gradient(90deg, transparent 0 68%, #0847ff99);
-  background-size: 43px 47px, auto;
+  display: none;
 }
 
 .mobileGuide { display: flex; align-items: baseline; flex-wrap: wrap; gap: .25rem .45rem; margin: 0; padding: 0 0 .65rem; border-bottom: 3px solid #ffe000; color: #e9f8ff; font: 700 .82rem/1.25 var(--font-geist-sans), Arial, sans-serif; }
@@ -32,13 +24,14 @@
 .mobileGuide span { margin-left: auto; color: #45ef68; font: 900 .7rem/1.2 var(--font-geist-mono), monospace; text-transform: uppercase; }
 
 .reviewStage { display: grid; min-height: 390px; grid-template-columns: minmax(0, 1fr) 150px minmax(0, 1fr); align-items: center; gap: 1.15rem; }
-.reviewCard { position: relative; display: flex; min-width: 0; height: fit-content; min-height: 0; margin: 0; padding: 1.35rem 1.15rem 1.4rem; align-self: center; flex-direction: column; justify-content: flex-start; overflow: hidden; border-top: 4px solid var(--channel); border-bottom: 1px solid #ffffff2b; background: linear-gradient(145deg, #12151af5, #050607 72%); box-shadow: inset 0 0 0 1px #ffffff13; }
+.reviewCard { position: relative; display: flex; min-width: 0; height: fit-content; min-height: 0; margin: 0; padding: 1.35rem 1.15rem 1.4rem; align-self: center; flex-direction: column; justify-content: flex-start; overflow: hidden; border-top: 4px solid var(--channel); border-bottom: 1px solid #ffffff2b; background: linear-gradient(145deg, #12151af5, #050607 72%); box-shadow: inset 0 0 0 1px #ffffff13, 0 14px 30px #0008; transform: translateY(var(--review-shift)); transition: transform 420ms cubic-bezier(.22, 1, .36, 1); }
 .reviewCard:first-child { grid-column: 1; grid-row: 1; }
 .reviewCard:nth-child(2) { grid-column: 3; grid-row: 1; }
 .reviewCard::after { position: absolute; right: -18%; bottom: -20%; width: 72%; aspect-ratio: 1; content: ""; border-radius: 50%; background: color-mix(in srgb, var(--channel) 16%, transparent); filter: blur(34px); }
 .channelLabel { position: relative; z-index: 1; margin-bottom: .75rem; color: var(--channel); font: 900 .64rem/1 var(--font-geist-mono), monospace; letter-spacing: .14em; text-transform: uppercase; }
 .reviewCard p { position: relative; z-index: 1; margin: 0; font: 950 clamp(1.65rem, 3vw, 3.2rem)/.95 Impact, sans-serif; letter-spacing: -.02em; text-transform: uppercase; text-wrap: balance; animation: review-in 380ms cubic-bezier(.2, .8, .2, 1) both; }
 .isDragging .reviewCard p { animation: none; }
+.isDragging .reviewCard { transition: none; }
 .reviewCard p::first-letter { color: var(--channel); }
 .reviewCard cite { position: relative; z-index: 1; display: inline-block; width: fit-content; margin-top: 1rem; padding: .55rem .7rem; border: 1px solid #ffffff59; border-left: 5px solid var(--channel); color: #fff8e8; background: #14171bf2; font: normal 900 clamp(.68rem, .75vw, .8rem)/1.15 Arial Narrow, Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
 
@@ -77,8 +70,8 @@
 .upFader.dragging .faderCap { transition: none; }
 
 @keyframes review-in {
-  from { opacity: 0; transform: translateX(8%) skewX(-3deg); }
-  to { opacity: 1; transform: translateX(0) skewX(0); }
+  from { opacity: 0; translate: 8% 0; }
+  to { opacity: 1; translate: 0 0; }
 }
 
 @media (max-width: 700px) {
@@ -87,7 +80,7 @@
   .mobileGuide { gap: .18rem .3rem; margin: 0 -.05rem; padding: .65rem .55rem .55rem; border-bottom-width: 2px; background: #05070be8; font-size: .68rem; }
   .mobileGuide span { width: 100%; margin-left: 0; font-size: .57rem; }
   .reviewStage { min-height: 206px; grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr); align-items: start; gap: .25rem; }
-  .reviewCard { height: fit-content; min-height: 0; padding: .65rem .45rem .7rem; align-self: start; justify-content: flex-start; }
+  .reviewCard { height: fit-content; min-height: 0; padding: .65rem .45rem .7rem; align-self: start; justify-content: flex-start; transform: none; }
   .channelLabel { margin-bottom: .55rem; font-size: .48rem; }
   .reviewCard p { font-size: clamp(.95rem, 4.25vw, 1.15rem); line-height: 1; overflow-wrap: anywhere; }
   .reviewCard cite { margin-top: .75rem; padding: .42rem .32rem; border-left-width: 3px; font-size: .45rem; line-height: 1.18; letter-spacing: .045em; overflow-wrap: anywhere; }

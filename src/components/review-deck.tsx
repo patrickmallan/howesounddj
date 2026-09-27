@@ -29,6 +29,7 @@ export function ReviewDeck({ reviews }: Props) {
   const activePair = reviewPairs[active];
   const reviewLevel = last > 0 ? 8 + (active / last) * 84 : 74;
   const level = dragLevel ?? reviewLevel;
+  const reviewShiftRem = ((50 - level) / 42) * 5.5;
   const litSegments = Math.round((level / 100) * METER_SEGMENTS);
 
   useEffect(() => {
@@ -64,7 +65,10 @@ export function ReviewDeck({ reviews }: Props) {
   return (
     <div className={`${styles.deck} ${dragLevel === null ? "" : styles.isDragging}`.trim()} onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
       <p className={styles.mobileGuide} id={guideId}><b>Slide the channel fader</b> to hear two more couples. <span>Pair {active + 1} of {reviewPairs.length} / {reviews.length} reviews</span></p>
-      <div className={styles.reviewStage}>
+      <div
+        className={styles.reviewStage}
+        style={{ "--review-shift": `${reviewShiftRem}rem` } as CSSProperties}
+      >
         {activePair.map((review, index) => (
           <blockquote className={styles.reviewCard} key={review.id} style={{ "--channel": index === 0 ? "#ffe000" : "#45ef68" } as CSSProperties}>
             <span className={styles.channelLabel}>Channel {index === 0 ? "A" : "B"}</span>
