@@ -222,7 +222,7 @@
 .danceFloor .stageCopy h3 span:nth-child(2) { font-palette: --hsdj-violet-light; }
 
 .stageCopy h3 {
-  width: fit-content;
+  width: max-content;
   margin: 0;
   padding: .25em .31em .3em;
   border-left: 4px solid currentColor;

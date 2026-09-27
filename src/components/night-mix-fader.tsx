@@ -34,7 +34,7 @@ const STAGES = [
   },
   {
     title: "Dinner",
-    word: "DON'T RUSH IT",
+    word: "DON'T\nRUSH IT",
     line: "Dinner still gets good music. The volume stays comfortable, requests are welcome, and the speech mic is ready.",
     bpm: 92,
     spectrum: { energy: .34, low: .3, mid: .46, high: .2 },
