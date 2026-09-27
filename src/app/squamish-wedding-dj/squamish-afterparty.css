@@ -9,7 +9,17 @@
   filter: none !important;
   -webkit-font-smoothing: antialiased;
 }
-.sq-place h2,.sq-local h2,.sq-music h2,.sq-venue h2,.sq-outro h2 { margin: 0; font: 1000 clamp(3.2rem,6vw,7rem)/.88 Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif; letter-spacing: -.025em; text-transform: uppercase; }
+#main-content .hsdj-squamish-afterparty :is(.sq-place,.sq-local,.sq-music,.sq-venue,.sq-outro) h2 {
+  margin: 0;
+  font-family: var(--font-display),var(--font-geist-sans),sans-serif !important;
+  font-size: clamp(3.2rem,6vw,7rem);
+  font-palette: --hsdj-paper-light;
+  font-synthesis: none;
+  font-weight: 800;
+  letter-spacing: .035em;
+  line-height: 1.02;
+  text-transform: uppercase;
+}
 
 #main-content .hsdj-squamish-afterparty .sq-hero { display: flex; align-items: end; min-height: min(920px,100svh); padding: clamp(10rem,15vw,15rem) max(5vw,calc((100vw - 80rem)/2)) 5rem; overflow: hidden; background: #081118 url('/images/hsdj-redesign/new-editorial/squamish-night-collage-v3-optimized.webp') center 42% / cover no-repeat !important; }
 .sq-hero::after { content: ''; position: absolute; z-index: 0; inset: 0; background: linear-gradient(90deg,#071017de 0 38%,#07101788 63%,#07101700 100%),linear-gradient(0deg,#071017b8,transparent 36%); pointer-events: none; }
@@ -48,7 +58,7 @@
 .sq-place-art img { object-fit: cover; }
 .sq-place-after { position: relative; display: flex; align-items: end; gap: 4rem; padding: clamp(4rem,7vw,8rem) max(5vw,calc((100vw - 80rem)/2)); }
 .sq-place-after::after { content: ''; position: absolute; right: 3%; bottom: 0; width: 30vw; height: 30vw; border: 2px dashed #17d7e558; transform: rotate(12deg); pointer-events: none; }
-.sq-place-after strong { flex: 1.1; color: #ffe12b; font: 1000 clamp(3rem,5.5vw,6rem)/.86 Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif; text-transform: uppercase; transform: rotate(-3deg); }
+.sq-place-after > strong { flex: 1.1; color: #ffe12b; font: 1000 clamp(3rem,5.5vw,6rem)/.86 Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif; text-transform: uppercase; transform: rotate(-3deg); }
 .sq-place-after p { flex: .9; max-width: 37rem; margin: 0; color: #fff; font-size: clamp(1.15rem,1.55vw,1.4rem); line-height: 1.6; }
 .sq-field-note {
   padding: clamp(1.35rem,2.5vw,2.15rem) !important;
@@ -60,7 +70,7 @@
   font-weight: 760;
   transform: rotate(1deg);
 }
-.sq-field-note strong { display: block; margin-top: .75rem; font-weight: 950; }
+.sq-field-note strong { display: block; margin-top: .75rem; color: #0a1117; font: inherit; font-weight: 950; text-transform: none; transform: none; }
 
 #main-content .hsdj-squamish-afterparty .sq-local { min-height: 780px; padding: clamp(5rem,9vw,9rem) max(5vw,calc((100vw - 80rem)/2)); overflow: hidden; background: linear-gradient(115deg,#0b1821 0 68%,#2d2448 68% 69%,#081017 69%) !important; }
 .sq-local-copy { position: relative; z-index: 1; max-width: 46rem; }

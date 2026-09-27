@@ -39,7 +39,7 @@ export default function SquamishWeddingDjPage() {
 
       <section id="sq-place" className="sq-place" aria-labelledby="sq-place-title">
         <div className="sq-place-intro">
-          <h2 id="sq-place-title" className="no-letter-flash">This place gets under your skin.</h2>
+          <h2 id="sq-place-title">This place gets under your skin.</h2>
           <p className="sq-place-copy">
             <span>Coast Mountains above you.</span>
             <span>Howe Sound close by.</span>
@@ -58,7 +58,7 @@ export default function SquamishWeddingDjPage() {
 
       <section className="sq-local" aria-labelledby="sq-local-title">
         <div className="sq-local-copy">
-          <h2 id="sq-local-title" className="no-letter-flash">I get to call Squamish home.</h2>
+          <h2 id="sq-local-title">I get to call Squamish home.</h2>
           <div className="sq-local-notes">
             <p>That means I am not discovering the Sea-to-Sky corridor on your wedding day. I know the landscape is more than a backdrop: weather can turn, outdoor sound can travel, and the right room changes everything.</p>
             <p>I plan for the celebration you are actually having here. <strong>Practical local attention, then music that feels as alive as the place.</strong> No imported, one-size-fits-all wedding script.</p>
@@ -70,7 +70,7 @@ export default function SquamishWeddingDjPage() {
 
       <section className="sq-music" aria-labelledby="sq-music-title">
         <div className="sq-music-intro">
-          <h2 id="sq-music-title" className="no-letter-flash">The mix can go anywhere. It still sounds like you.</h2>
+          <h2 id="sq-music-title">The mix can go anywhere. It still sounds like you.</h2>
           <p className="sq-music-copy">
             <strong><span>Disco</span><span>Hip-hop</span><span>Country</span><span>Drum &amp; bass</span><span>Indie</span></strong>
             <span>None is a mandatory stop. They are different doors into the same room.</span>
@@ -90,14 +90,14 @@ export default function SquamishWeddingDjPage() {
       <section className="sq-venue" aria-labelledby="sq-venue-title">
         <div className="sq-venue-arrow" aria-hidden="true">↘</div>
         <div>
-          <h2 id="sq-venue-title" className="no-letter-flash">The room changes the record.</h2>
+          <h2 id="sq-venue-title">The room changes the record.</h2>
           <p className="sq-venue-copy"><span>A brewery.</span><span>A ranch.</span><span>A mountaintop.</span><strong>Each asks something different of the sound.</strong> If you are choosing a setting, the venue route is where those differences belong.</p>
           <Link href="/venues">Explore the Sea-to-Sky venue route <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
 
       <section className="sq-outro" aria-labelledby="sq-outro-title">
-        <h2 id="sq-outro-title" className="no-letter-flash">Got a date? Let&apos;s see where this goes.</h2>
+        <h2 id="sq-outro-title">Got a date? Let&apos;s see where this goes.</h2>
         <p className="sq-outro-copy"><span>The calendar answers right away.</span><strong>If I am open, book a consult and tell me about the music, your people, and the kind of night you want.</strong></p>
         <Link href="/contact">Check your date <span aria-hidden="true">↗</span></Link>
       </section>

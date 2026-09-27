@@ -2336,7 +2336,7 @@ body {
     color: #fff8e8 !important;
     background: rgb(3 7 9 / 94%);
     box-shadow: 5px 6px 0 rgb(25 76 255 / 68%);
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", var(--font-geist-sans), sans-serif !important;
+    font-family: var(--font-display), var(--font-geist-sans), sans-serif !important;
     font-size: clamp(1.75rem, 8.5vw, 2.25rem) !important;
     font-palette: --hsdj-paper-light;
     font-synthesis: none;
