@@ -42,7 +42,7 @@ const alwaysIncluded = [
 
 const upgrades = [
   { code: "LUX", title: "More light", text: "Give a dark room or dance floor the lift it actually needs." },
-  { code: "2-ZONE", title: "More rooms", text: "Clean sound across a ceremony, patio, or awkward venue layout." },
+  { code: "3+ ZONES", title: "More rooms", text: "Clean sound across a ceremony, patio, or awkward venue layout." },
   { code: "3-CH", title: "Silent disco", text: "Headphones, multiple channels, and one delightfully strange dance floor." },
   { code: "CUE", title: "Custom audio", text: "Build one entrance or moment around an audio idea that is yours." },
   { code: "FLASH", title: "Photo booth", text: "If it adds to the party, we will choose a setup that belongs there." },
@@ -65,13 +65,19 @@ export default function PackagesPage() {
             className={styles.heroHeading}
           />
           <div className={styles.heroNote}>
-            <p>
-              Most people do not arrive knowing which DJ package they need. You
-              should not have to. Tell me the venue, the rough guest count,
-              whether the ceremony is there too, and how late you want to go. I
-              will tell you what makes sense. If you do not need something, it
-              will not be in the quote.
-            </p>
+            <div className={styles.heroNoteTop}>
+              <span>NO PACKAGE HOMEWORK</span>
+              <span aria-hidden="true">INPUT / 04</span>
+            </div>
+            <h2>You tell me the shape of the day.</h2>
+            <p className={styles.heroNoteIntro}>Most people do not arrive knowing which DJ package they need. You should not have to.</p>
+            <div className={styles.heroInputs}>
+              <details><summary><span>01</span>Venue</summary><p>The rooms and layout tell us what sound actually belongs there.</p></details>
+              <details><summary><span>02</span>Guest count</summary><p>Enough sound for your people, without turning gear into a spectacle.</p></details>
+              <details><summary><span>03</span>Ceremony too?</summary><p>This decides whether the vows need their own sound and microphone plan.</p></details>
+              <details><summary><span>04</span>How late?</summary><p>Coverage should match your party, not an arbitrary package limit.</p></details>
+            </div>
+            <p className={styles.heroPromise}>Give me those four things. I will tell you what makes sense. If you do not need something, it will not be in the quote.</p>
           </div>
         </div>
       </section>
@@ -154,9 +160,9 @@ export default function PackagesPage() {
             </div>
           </div>
           <ol className={styles.setList}>
-            {alwaysIncluded.map(({ title, text }, index) => (
+            {alwaysIncluded.map(({ title, text }) => (
               <li key={title}>
-                <span className={styles.setNumber} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <span className={styles.setLoopButton} aria-hidden="true" />
                 <div>
                   <h3>{title}</h3>
                   <p>{text}</p>
@@ -175,12 +181,11 @@ export default function PackagesPage() {
             <p>These are additions, not automatic upgrades. We use the ones that solve a real problem or make the room more fun.</p>
           </div>
           <div className={styles.patchBay}>
-            {upgrades.map(({ code, title, text }, index) => (
+            {upgrades.map(({ code, title, text }) => (
               <article className={styles.patch} key={title}>
                 <div className={styles.patchControl} aria-hidden="true">
                   <span className={styles.patchCode}>{code}</span>
                   <span className={styles.patchDial}><i /></span>
-                  <span className={styles.patchLive}>{String(index + 1).padStart(2, "0")}</span>
                 </div>
                 <h3>{title}</h3><p>{text}</p>
               </article>
