@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { DeferredArt } from "@/components/deferred-art";
 import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import styles from "./weddings-overview.module.css";
@@ -21,28 +22,28 @@ const stages = [
     name: "Ceremony",
     title: <><span>The exact version</span><span>you chose. Obviously.</span></>,
     body: "Processional songs, microphones, and timing are confirmed before anyone starts walking.",
-    image: "/images/hsdj-redesign/weddings-overview/ceremony-crowd-art-v2.png",
+    image: "/images/hsdj-redesign/weddings-overview/ceremony-crowd-art-v2-960.webp",
     className: styles.ceremony,
   },
   {
     name: "Speeches",
     title: <span>No tapping the mic and hoping.</span>,
     body: "The mic is checked, the speaker knows where to stand, and the photographer gets a heads-up.",
-    image: "/images/hsdj-redesign/weddings-overview/speeches-signal-art-v1.png",
+    image: "/images/hsdj-redesign/weddings-overview/speeches-signal-art-v1-960.webp",
     className: styles.speeches,
   },
   {
     name: "Dinner",
     title: <span>Dinner music can still be good.</span>,
     body: "Good records at a level where everyone can still talk. No sleepy background playlist required.",
-    image: "/images/hsdj-redesign/weddings-overview/dinner-joy-art-v2.png",
+    image: "/images/hsdj-redesign/weddings-overview/dinner-joy-art-v2-960.webp",
     className: styles.dinner,
   },
   {
     name: "Dance floor",
     title: <><span>Now let&apos;s see what</span><span>your people dance to.</span></>,
     body: "Requests come in, plans change, and I pay attention to what keeps people on the floor.",
-    image: "/images/hsdj-redesign/weddings-overview/celebration-joy-art-v2.png",
+    image: "/images/hsdj-redesign/weddings-overview/celebration-joy-art-v2-960.webp",
     className: styles.danceFloor,
   },
 ];
@@ -52,7 +53,7 @@ export default function WeddingsPage() {
     <main className={styles.page}>
       <section className={styles.hero} aria-labelledby="weddings-title">
         <div className={styles.heroPortrait} aria-hidden="true">
-          <Image src="/images/about/patrick-live-light-trails-retouched-v1.png" alt="" fill priority sizes="(max-width: 760px) 68vw, 48vw" className={styles.coverImage} />
+          <Image src="/images/about/patrick-live-light-trails-retouched-v1.webp" alt="" fill priority sizes="(max-width: 760px) 68vw, 48vw" className={styles.coverImage} />
         </div>
         <div className={styles.heroShade} aria-hidden="true" />
         <div className={styles.heroInner}>
@@ -83,9 +84,7 @@ export default function WeddingsPage() {
           <div className={styles.stageGrid}>
             {stages.map((stage) => (
               <article key={stage.name} className={`${styles.stage} ${stage.className}`}>
-                <div className={styles.stageArtwork} aria-hidden="true">
-                  <Image src={stage.image} alt="" fill sizes="(max-width: 760px) 92vw, 48vw" className={styles.coverImage} />
-                </div>
+                <DeferredArt className={styles.stageArtwork} desktopSrc={stage.image} sizes="(max-width: 760px) 92vw, 48vw" />
                 <div className={styles.stageInk} aria-hidden="true" />
                 <div className={styles.stageCopy}>
                   <p className={styles.stageLabel}>{stage.name}</p>
@@ -148,7 +147,7 @@ export default function WeddingsPage() {
       <section className={styles.packageHandoff} aria-labelledby="packages-heading">
         <div>
           <p id="packages-heading">Want the details?</p>
-          <Link href="/packages">See packages <span aria-hidden="true">→</span></Link>
+          <Link href="/packages" prefetch={false}>See packages <span aria-hidden="true">→</span></Link>
         </div>
       </section>
     </main>
