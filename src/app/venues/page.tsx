@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { ACTIVE_VENUE_PAGES } from "@/config/venue-pages";
@@ -49,10 +50,10 @@ export default function VenuesHubPage() {
             text="Every room changes the music."
             lines={["Every room", "changes the", "music."]}
           />
-          <p className="venue-journey-lede">
+          <HeroSignalCopy className="venue-journey-lede" tone="green">
             A gondola, a riverside lodge, a farm, a brewery. Same wedding, completely different energy.
             Pick the place you&apos;re picturing and follow the questions that setting brings to the party.
-          </p>
+          </HeroSignalCopy>
           <a className="venue-journey-cue" href="#venue-route">Follow the venue route <span aria-hidden="true">↓</span></a>
         </div>
         <div className="venue-journey-side-note" aria-hidden="true">THE SETTING IS PART OF THE SET</div>

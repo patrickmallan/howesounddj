@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import styles from "./weddings-overview.module.css";
 
@@ -64,9 +65,9 @@ export default function WeddingsPage() {
               className={styles.heroTitle}
             />
           </div>
-          <p className={styles.heroCopy}>
+          <HeroSignalCopy className={styles.heroCopy} tone="yellow">
             Tell me the songs you love, the ones you cannot stand, and the tracks already tied to the ceremony. I&apos;ll build from there, take requests seriously, and make the calls as the night goes.
-          </p>
+          </HeroSignalCopy>
         </div>
       </section>
 

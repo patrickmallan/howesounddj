@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../../guides/article-liner-notes.css";
+import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import type { ReactNode } from "react";
 import Link from "next/link";
@@ -88,10 +89,10 @@ export default function StorySeaToSkyGondolaDanceFloorPage() {
               Howe Sound DJ
             </p>
             <MeterMatrixHeading text={STORY_TITLE} className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl" />
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-white/70">
+            <HeroSignalCopy className="mt-6 max-w-3xl text-lg leading-8 text-white/70">
               This is not a recap of a named wedding. It is an observational piece about what changes when you celebrate on a ridge above Howe Sound: how guests arrive emotionally, how the landscape
               does part of the storytelling, and why the path into dancing often looks different here than in a ground-level ballroom.
-            </p>
+            </HeroSignalCopy>
             <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/50">
               For planning specifics tied to the property, start with the{" "}
               <Link

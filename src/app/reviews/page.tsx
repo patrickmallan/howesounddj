@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image, { getImageProps } from "next/image";
 import Link from "next/link";
+import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { FeaturedReviewDeck } from "@/components/featured-review-deck";
 import { CANONICAL_REVIEWS, type CanonicalReview } from "@/config/reviews";
@@ -144,7 +145,7 @@ export default function ReviewsPage() {
             text="They booked me. Here's what they said."
             className={styles.heroTitle}
           />
-          <p className={styles.heroIntro}>Some talk about the planning. Others go straight to the dance floor.</p>
+          <HeroSignalCopy className={styles.heroIntro}>Some talk about the planning. Others go straight to the dance floor.</HeroSignalCopy>
           <a className={styles.readLink} href="#first-review">Start reading <span aria-hidden="true">↓</span></a>
         </div>
         <div className={styles.heroEdge} aria-hidden="true" />

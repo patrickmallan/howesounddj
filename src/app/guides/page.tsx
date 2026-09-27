@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { guidesHubBreadcrumbJsonLd } from "@/lib/json-ld";
@@ -27,7 +28,7 @@ export default function GuidesHubPage() {
       <section className="guides-deck-hero" aria-labelledby="guides-deck-title">
         <div className="guides-deck-hero-copy">
           <MeterMatrixHeading id="guides-deck-title" text="Good parties are made on purpose." lines={["Good parties", "are made", "on purpose."]} />
-          <p>Two questions behind a night people remember: who do you trust with the music, and how do you get everyone onto the floor?</p>
+          <HeroSignalCopy>Two questions behind a night people remember: who do you trust with the music, and how do you get everyone onto the floor?</HeroSignalCopy>
           <nav className="guides-deck-hero-routes" aria-label="Choose a planning question">
             <a href="#guide-one">Build the dance floor <span aria-hidden="true">↘</span></a>
             <a href="#guide-two">Choose your DJ <span aria-hidden="true">↘</span></a>

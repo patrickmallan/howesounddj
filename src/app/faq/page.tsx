@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
@@ -178,9 +179,9 @@ export default function FaqPage() {
           <div className="faq-mixer-hero-copy">
             <div className="faq-mixer-hero-label">THE QUESTIONS BEFORE THE PARTY</div>
             <MeterMatrixHeading text="Questions couples actually ask." className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl" />
-            <p className="faq-mixer-hero-lede">
+            <HeroSignalCopy className="faq-mixer-hero-lede" tone="yellow">
               Music, microphones, timing, the odd &quot;what if&quot;: here&apos;s what people ask me before we get together.
-            </p>
+            </HeroSignalCopy>
             <nav className="faq-mixer-selector" aria-label="Jump to a question channel">
               {groups.map((group, index) => <a key={group.id} href={`#${group.id}`}><span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>{group.eyebrow}</a>)}
             </nav>

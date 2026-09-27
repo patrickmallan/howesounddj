@@ -16,7 +16,18 @@ for (const width of [320, 390, 768]) {
     });
     expect(hit).toBe(true);
     await weddings.click();
-    await expect(menu.locator('a[href="/packages"]')).toBeVisible();
+    const packages = menu.locator('a[href="/packages"]');
+    await expect(packages).toBeVisible();
+    const [weddingsBox, packagesBox, squamishBox] = await Promise.all([
+      weddings.boundingBox(),
+      packages.boundingBox(),
+      menu.getByRole("button", { name: "Squamish" }).boundingBox(),
+    ]);
+    expect(weddingsBox).not.toBeNull();
+    expect(packagesBox).not.toBeNull();
+    expect(squamishBox).not.toBeNull();
+    expect(packagesBox!.y).toBeGreaterThan(weddingsBox!.y + weddingsBox!.height);
+    expect(packagesBox!.y + packagesBox!.height).toBeLessThanOrEqual(squamishBox!.y + 1);
     await page.keyboard.press("Escape");
     await expect(menu).toBeHidden();
     await expect(trigger).toBeFocused();

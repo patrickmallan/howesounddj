@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import type { ReactNode } from "react";
 import Link from "next/link";
@@ -86,10 +87,10 @@ export default function GuideChooseWeddingDjSquamishPage() {
               Howe Sound DJ
             </p>
             <MeterMatrixHeading text={ARTICLE_TITLE} className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl" />
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-white/70">
+            <HeroSignalCopy className="mt-6 max-w-3xl text-lg leading-8 text-white/70" tone="yellow">
               Choosing a wedding DJ is not only about songs. It is about trust, timing, sound, guest momentum, and whether the person in front of you understands the atmosphere you want for a Squamish or
               Sea-to-Sky celebration.
-            </p>
+            </HeroSignalCopy>
           </div>
         </header>
 

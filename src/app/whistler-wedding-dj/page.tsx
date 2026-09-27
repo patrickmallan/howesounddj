@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
@@ -92,10 +93,10 @@ export default function WhistlerWeddingDjPage() {
             </div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Sea-to-Sky · Squamish-based</div>
             <MeterMatrixHeading text="Whistler wedding DJ for elegant mountain celebrations" className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl" />
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
+            <HeroSignalCopy className="mt-6 max-w-2xl text-lg leading-8 text-white/70" tone="yellow">
               For couples marrying in Whistler who want clear planning, polished sound, and a dance floor that feels alive without feeling forced. Howe Sound DJ works in the Sea-to-Sky wedding atmosphere
               lane: ceremony-to-dance-floor thinking, room-reading, and guest momentum that matches mountain settings.
-            </p>
+            </HeroSignalCopy>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/55">
               For dance floor philosophy, read{" "}
               <Link

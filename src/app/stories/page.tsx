@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { storiesHubBreadcrumbJsonLd } from "@/lib/json-ld";
@@ -143,7 +144,7 @@ export default function StoriesHubPage() {
         <Image src="/images/hsdj-redesign/new-editorial/stories-after-set-collage-v1.webp" alt="Editorial collage of mountain wedding dance-floor moments, DJ equipment and string lights" fill sizes="100vw" priority />
         <div className="contact-sheet-hero-copy">
           <MeterMatrixHeading id="contact-sheet-title" text="What the room felt like." lines={["What the", "room felt", "like."]} />
-          <p>There is a point when guests stop watching the dance floor and become it. These are stories about the music, timing, and people that get a room there.</p>
+          <HeroSignalCopy tone="pink">There is a point when guests stop watching the dance floor and become it. These are stories about the music, timing, and people that get a room there.</HeroSignalCopy>
         </div>
         <div className="contact-sheet-hero-mark" aria-hidden="true">THE NIGHT<br />WENT OFF<span>.</span></div>
       </section>

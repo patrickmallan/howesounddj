@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { AboutHeroGroove } from "./about-hero-groove";
 import { AboutMusicConsole } from "./about-music-console";
 import "./about-backstage.css";
@@ -43,7 +44,7 @@ export default function AboutPage() {
         <div className="about-hero-copy">
           <p className="about-eyebrow">Howe Sound Wedding DJ / Squamish, BC</p>
           <h1 id="about-title">Hi. I&apos;m <span>Patrick.</span></h1>
-          <p className="about-hero-intro">I&apos;m the person you&apos;ll plan the music with and the one behind the decks on your wedding day. I love a reason to celebrate. What better reason than your wedding? You&apos;ll notice my attention to the finer details before I play a single song.</p>
+          <HeroSignalCopy className="about-hero-intro" tone="pink">I&apos;m the person you&apos;ll plan the music with and the one behind the decks on your wedding day. I love a reason to celebrate. What better reason than your wedding? You&apos;ll notice my attention to the finer details before I play a single song.</HeroSignalCopy>
           <div className="about-hero-actions">
             <a href="#about-story">Meet the human <span aria-hidden="true">↘</span></a>
             <Link href="/contact">Check your date <span aria-hidden="true">↗</span></Link>

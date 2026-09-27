@@ -11,7 +11,7 @@ test("mobile navigation works without hydration", async ({ browser }) => {
     const menu = page.getByRole("dialog", { name: "Site menu" });
     await expect(menu).toBeVisible();
     await menu.getByRole("button", { name: "Weddings" }).click();
-    const packages = menu.getByRole("link", { name: /Packages Coverage/ });
+    const packages = menu.locator('a[href="/packages"]');
     await expect(packages).toBeVisible();
     await packages.click();
     await expect(page).toHaveURL(/\/packages$/);

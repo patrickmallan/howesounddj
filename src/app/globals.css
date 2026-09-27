@@ -344,6 +344,15 @@ body {
   background: transparent;
 }
 
+.hsdj-mobile-nav-group {
+  display: grid;
+  width: 100%;
+  justify-items: end;
+}
+
+.hsdj-mobile-nav-group > summary { list-style: none; }
+.hsdj-mobile-nav-group > summary::-webkit-details-marker { display: none; }
+
 .hsdj-mobile-menu .hsdj-mobile-cue-bank > :last-child {
   grid-column: auto;
   width: auto;
@@ -405,7 +414,8 @@ body {
 .hsdj-mobile-menu .hsdj-mobile-nav-cue:hover .hsdj-nav-pad__label,
 .hsdj-mobile-menu .hsdj-mobile-nav-cue:focus-visible .hsdj-nav-pad__label,
 .hsdj-mobile-menu .hsdj-mobile-nav-cue.is-active .hsdj-nav-pad__label,
-.hsdj-mobile-menu .hsdj-mobile-nav-cue[aria-expanded="true"] .hsdj-nav-pad__label {
+.hsdj-mobile-menu .hsdj-mobile-nav-cue[aria-expanded="true"] .hsdj-nav-pad__label,
+.hsdj-mobile-menu .hsdj-mobile-nav-group[open] > .hsdj-mobile-nav-cue .hsdj-nav-pad__label {
   color: #fff;
   border-color: var(--pad-glow);
   background: linear-gradient(165deg, color-mix(in srgb, var(--pad-glow) 18%, #282d31), #07090b 60%);
@@ -484,9 +494,96 @@ body {
   z-index: 2;
   display: grid;
   gap: .35rem;
-  margin: .8rem .15rem .35rem;
+  width: 100%;
+  margin: .55rem 0 .15rem;
   padding: 0;
   background: transparent;
+}
+
+/* Shared hero copy treatment: a compact signal plate, not another paragraph box. */
+.hsdj-hero-signal-copy {
+  --hero-signal: #29ddeb;
+  position: relative;
+  display: grid;
+  width: fit-content;
+  max-width: min(100%, 44rem);
+  grid-template-columns: 2.1rem minmax(0, 1fr);
+  gap: .9rem;
+  margin: clamp(1.35rem, 2.6vw, 2.25rem) 0;
+  padding: 1rem 1.2rem 1.15rem .85rem;
+  align-items: end;
+  border: 1px solid #ffffff25;
+  border-left: 7px solid var(--hero-signal);
+  color: #fff;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--hero-signal) 11%, transparent), transparent 35%),
+    linear-gradient(112deg, #04080ced, #0a1016e8 76%, #030608d9);
+  box-shadow: 7px 8px 0 #164dff, inset 0 1px 0 #ffffff12;
+  clip-path: polygon(0 0, calc(100% - 1.1rem) 0, 100% 1.1rem, 100% 100%, .45rem 100%, 0 calc(100% - .45rem));
+}
+
+.hsdj-hero-signal-copy--yellow { --hero-signal: #ffe021; }
+.hsdj-hero-signal-copy--pink { --hero-signal: #ff438d; }
+.hsdj-hero-signal-copy--green { --hero-signal: #51ed7d; }
+
+.hsdj-hero-signal-copy__meter {
+  display: flex;
+  height: 2.6rem;
+  align-items: end;
+  gap: .16rem;
+  border-bottom: 2px solid var(--hero-signal);
+}
+
+.hsdj-hero-signal-copy__meter i {
+  width: .22rem;
+  height: var(--meter-height, 45%);
+  background: var(--hero-signal);
+  box-shadow: 0 0 7px color-mix(in srgb, var(--hero-signal) 76%, transparent);
+  transform-origin: bottom;
+  animation: hsdj-hero-meter 2.4s steps(2, end) infinite;
+}
+
+.hsdj-hero-signal-copy__meter i:nth-child(2) { --meter-height: 72%; animation-delay: -.7s; }
+.hsdj-hero-signal-copy__meter i:nth-child(3) { --meter-height: 100%; animation-delay: -1.5s; }
+.hsdj-hero-signal-copy__meter i:nth-child(4) { --meter-height: 61%; animation-delay: -.35s; }
+.hsdj-hero-signal-copy__meter i:nth-child(5) { --meter-height: 84%; animation-delay: -1.05s; }
+
+#main-content .hsdj-hero-signal-copy > p {
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  color: #f8f4ed !important;
+  background: none !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+  font-size: clamp(.98rem, 1.35vw, 1.23rem);
+  font-weight: 760;
+  line-height: 1.48;
+  text-wrap: pretty;
+}
+
+#main-content .hsdj-hero-signal-copy > p::before,
+#main-content .hsdj-hero-signal-copy > p::after { content: none !important; }
+
+@keyframes hsdj-hero-meter {
+  0%, 100% { transform: scaleY(.62); opacity: .7; }
+  45% { transform: scaleY(1); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+  .hsdj-hero-signal-copy {
+    grid-template-columns: 1.55rem minmax(0, 1fr);
+    gap: .7rem;
+    padding: .9rem .9rem 1rem .7rem;
+    box-shadow: 5px 6px 0 #164dff;
+  }
+  .hsdj-hero-signal-copy__meter { height: 2.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hsdj-hero-signal-copy__meter i { animation: none; }
 }
 
 .hsdj-mobile-channel-panel__label {

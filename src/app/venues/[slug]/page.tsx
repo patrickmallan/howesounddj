@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { getVenueBySlug, getAllVenueSlugs } from "@/config/venue-pages";
@@ -47,7 +48,7 @@ export default async function VenueDetailPage({ params }: Props) {
           <nav aria-label="Breadcrumb"><Link href="/venues">← Back to the venue route</Link></nav>
           <p className="venue-dossier-overline">{venue.locationLabel} / {venue.venueType}</p>
           <MeterMatrixHeading id="venue-dossier-title" text={`The room: ${venue.name}.`} lines={["The room:", `${venue.name}.`]} />
-          <p>{venue.shortSummary}</p>
+          <HeroSignalCopy tone="green">{venue.shortSummary}</HeroSignalCopy>
           <a href={venue.officialUrl} target="_blank" rel="noopener noreferrer">Visit the official venue site <span className="sr-only">(opens in a new tab)</span> ↗</a>
         </div>
         <div className="venue-dossier-stage-plot" aria-hidden="true">

@@ -251,7 +251,17 @@
   line-height: 1.45;
 }
 
-.truthsInner { padding-top: 2rem; padding-bottom: 2.6rem; }
+.truthsInner { padding-top: .75rem; padding-bottom: 2.6rem; }
+.truths .sectionLabel {
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
+  padding: .58rem .75rem .62rem;
+  border-left: 5px solid var(--cyan);
+  color: #fff;
+  background: #05090bea;
+  box-shadow: 6px 7px 0 var(--blue);
+}
 .truthsIntro { max-width: 26ch; margin: .6rem 0 0; color: #fff; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", var(--font-geist-sans), sans-serif; font-size: clamp(2.2rem, 3.2vw, 3.8rem); line-height: .99; text-transform: uppercase; }
 .truthComposition {
   position: relative;
@@ -425,7 +435,7 @@
   .eyebrow { max-width: 15rem; margin-bottom: 1.5rem; font-size: 0.61rem; }
   .heroTitleFrame { width: 100%; }
   .heroCopy { width: 100%; margin-top: 1.8rem; padding: 1.15rem 1rem 1.15rem 1.4rem; font-size: 0.95rem; }
-  .journeyInner { padding: 3.8rem 1rem 3rem 2.15rem; }
+  .journeyInner { padding: 3.8rem 1rem .75rem 2.15rem; }
   .signalLead { left: 1.1rem; width: 180px; }
   .sectionLabel { font-size: 0.6rem; }
   .signalPath { inset: 5rem auto 2rem 0.65rem; width: 26px; height: calc(100% - 7rem); }
@@ -433,7 +443,7 @@
   .mobileSignal { display: block; stroke-width: 4; stroke-dasharray: 15 7; }
   .stageGrid { display: block; margin-top: 4.2rem; }
   .stage { min-height: 335px; margin-bottom: 3.5rem; }
-  .stage:last-child { margin-bottom: 1rem; }
+  .stage:last-child { margin-bottom: 0; }
   .ceremony, .dinner { transform: rotate(-1.6deg); }
   .speeches, .danceFloor { transform: rotate(1.5deg); }
   .stage:hover { transform: translateY(-3px) rotate(0deg); }
@@ -442,7 +452,7 @@
   .stageLabel { font-size: 0.61rem; }
   .stageCopy h3 { font-size: clamp(1.45rem, 6.7vw, 2.05rem); }
   .stageBody { margin-top: 0.75rem; font-size: 0.78rem; }
-  .truthsInner { padding: 1.6rem 1rem 2.5rem 2.15rem; }
+  .truthsInner { padding: .45rem 1rem 2.5rem 2.15rem; }
   .truthsIntro { font-size: clamp(2rem, 9vw, 3rem); }
   .truthComposition { grid-template-columns: minmax(0, 1fr); margin-top: 1rem; gap: .95rem; }
   .truthComposition > * { grid-column: 1; grid-row: auto; margin: 0; }

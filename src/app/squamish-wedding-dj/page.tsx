@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { preload } from "react-dom";
+import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { squamishWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
@@ -31,7 +32,7 @@ export default function SquamishWeddingDjPage() {
       <section className="sq-hero" aria-labelledby="sq-hero-title">
         <div className="sq-hero-copy">
           <MeterMatrixHeading id="sq-hero-title" text="Your Squamish wedding, without the standard wedding-DJ playlist." />
-          <p>Wedding is the event format, not the genre. I build the music around what you love, then pay attention to what your people actually do when it plays.</p>
+          <HeroSignalCopy tone="pink">Wedding is the event format, not the genre. I build the music around what you love, then pay attention to what your people actually do when it plays.</HeroSignalCopy>
           <a href="#sq-place">Feel this place <span aria-hidden="true">↓</span></a>
         </div>
       </section>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { SITE_PUBLIC_NAME } from "@/config/site-brand";
@@ -292,36 +292,44 @@ type MobileAccordionProps = {
   group: SiteNavGroup;
   pathname: string;
   isOpen: boolean;
-  onToggle: () => void;
+  onOpenChange: (open: boolean) => void;
+  panelId: string;
+  children: ReactNode;
 };
 
-/** Mobile category cue. Its child channels render in one shared panel below the pad bank. */
-function MobileAccordion({ group, pathname, isOpen, onToggle }: MobileAccordionProps) {
+/** Mobile category cue. Its child channels render immediately below the cue. */
+function MobileAccordion({ group, pathname, isOpen, onOpenChange, panelId, children }: MobileAccordionProps) {
   const active = isActiveItem(pathname, group);
 
   return (
-    <button
-      type="button"
-      aria-expanded={isOpen}
-      aria-controls={`${MOBILE_PRIMARY_NAV_ID}-channels`}
-      onClick={onToggle}
-      className={`hsdj-nav-pad hsdj-mobile-nav-cue ${active ? "is-active" : ""}`}
-      style={{ "--pad-glow": navPadGlowByLabel[group.label] } as CSSProperties}
+    <details
+      name="hsdj-mobile-nav"
+      open={isOpen}
+      className="hsdj-mobile-nav-group"
+      onToggle={(event) => onOpenChange(event.currentTarget.open)}
     >
-      <span className="hsdj-nav-pad__label">
-        {group.label}
-        <svg
-          aria-hidden="true"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          className={`hsdj-nav-pad__deck-open ${isOpen ? "is-open" : ""}`}
-        >
-          <path className="hsdj-nav-pad__deck-triangle" d="M3 5h10L8 11z" />
-          <path className="hsdj-nav-pad__deck-line" d="M2 13h12" />
-        </svg>
-      </span>
-    </button>
+      <summary
+        role="button"
+        aria-controls={panelId}
+        className={`hsdj-nav-pad hsdj-mobile-nav-cue ${active ? "is-active" : ""}`}
+        style={{ "--pad-glow": navPadGlowByLabel[group.label] } as CSSProperties}
+      >
+        <span className="hsdj-nav-pad__label">
+          {group.label}
+          <svg
+            aria-hidden="true"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            className={`hsdj-nav-pad__deck-open ${isOpen ? "is-open" : ""}`}
+          >
+            <path className="hsdj-nav-pad__deck-triangle" d="M3 5h10L8 11z" />
+            <path className="hsdj-nav-pad__deck-line" d="M2 13h12" />
+          </svg>
+        </span>
+      </summary>
+      {children}
+    </details>
   );
 }
 
@@ -413,10 +421,6 @@ export function SiteHeader() {
     window.addEventListener("mousedown", onMouseDown);
     return () => window.removeEventListener("mousedown", onMouseDown);
   }, [openMenuLabel]);
-
-  const openMobileGroup = navTree.find(
-    (item): item is SiteNavGroup => isGroup(item) && item.label === openMobileMenuLabel,
-  );
 
   return (
     <header
@@ -518,14 +522,37 @@ export function SiteHeader() {
                 <div className="hsdj-mobile-cue-bank">
                   {navTree.map((item) => {
                     if (isGroup(item)) {
+                      const isOpen = openMobileMenuLabel === item.label;
+                      const panelId = `${MOBILE_PRIMARY_NAV_ID}-${item.label.toLowerCase()}-channels`;
                       return (
                         <MobileAccordion
                           key={item.label}
                           group={item}
                           pathname={pathname}
-                          isOpen={openMobileMenuLabel === item.label}
-                          onToggle={() => setOpenMobileMenuLabel((current) => current === item.label ? null : item.label)}
-                        />
+                          isOpen={isOpen}
+                          panelId={panelId}
+                          onOpenChange={(open) => setOpenMobileMenuLabel((current) => open ? item.label : current === item.label ? null : current)}
+                        >
+                          <div id={panelId} className="hsdj-mobile-channel-panel" aria-label={`${item.label} pages`}>
+                            <span className="hsdj-mobile-channel-panel__label">{item.label} channels</span>
+                            {item.children.map((child, index) => {
+                              const childActive = isActiveNavHref(pathname, child.href);
+                              return (
+                                <Link
+                                  key={child.href}
+                                  href={child.href}
+                                  onClick={onTrustNavClick(child.href, closeMobileMenu)}
+                                  aria-current={childActive ? "page" : undefined}
+                                  className={`hsdj-mobile-channel-link ${childActive ? "is-active" : ""}`}
+                                >
+                                  <span>{String(index + 1).padStart(2, "0")}</span>
+                                  <strong>{child.label}</strong>
+                                  {child.description ? <small>{child.description}</small> : null}
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </MobileAccordion>
                       );
                     }
                     const active = isActiveNavHref(pathname, item.href);
@@ -543,27 +570,6 @@ export function SiteHeader() {
                     );
                   })}
                 </div>
-                {openMobileGroup ? (
-                  <div id={MOBILE_PRIMARY_NAV_ID + "-channels"} className="hsdj-mobile-channel-panel" aria-label={`${openMobileGroup.label} pages`}>
-                    <span className="hsdj-mobile-channel-panel__label">{openMobileGroup.label} channels</span>
-                    {openMobileGroup.children.map((child, index) => {
-                      const childActive = isActiveNavHref(pathname, child.href);
-                      return (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={onTrustNavClick(child.href, closeMobileMenu)}
-                          aria-current={childActive ? "page" : undefined}
-                          className={`hsdj-mobile-channel-link ${childActive ? "is-active" : ""}`}
-                        >
-                          <span>{String(index + 1).padStart(2, "0")}</span>
-                          <strong>{child.label}</strong>
-                          {child.description ? <small>{child.description}</small> : null}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                ) : null}
                 <div className="hsdj-mobile-availability-row">
                   <CheckAvailabilityTrackedLink
                     surface="header"

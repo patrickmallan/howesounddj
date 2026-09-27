@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../article-liner-notes.css";
+import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import type { ReactNode } from "react";
 import Link from "next/link";
@@ -95,10 +96,10 @@ export default function GuideDanceFloorPackedPage() {
               Howe Sound DJ
             </p>
             <MeterMatrixHeading text={ARTICLE_TITLE} className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl" />
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-white/70">
+            <HeroSignalCopy className="mt-6 max-w-3xl text-lg leading-8 text-white/70" tone="green">
               A packed dance floor is not luck and it is not only volume. In Sea-to-Sky weddings, the setting already does emotional work: mountains, forest, farm fields, or a lodge at elevation. Your
               reception music has to earn the room in that context, with pacing that respects the day you actually planned.
-            </p>
+            </HeroSignalCopy>
           </div>
         </header>
 

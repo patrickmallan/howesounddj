@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { CANONICAL_REVIEWS } from "@/config/reviews";
@@ -42,7 +43,7 @@ export default function VancouverWeddingDjPage() {
             text="Vancouver plans. Squamish party."
             lines={["Vancouver", "plans. Squamish", "party."]}
           />
-          <p>Live in Vancouver and getting married in Squamish? We can plan the music from your side of the bridge. I&apos;m Patrick, a Squamish-based wedding DJ. When the day arrives, I&apos;m already local.</p>
+          <HeroSignalCopy tone="pink">Live in Vancouver and getting married in Squamish? We can plan the music from your side of the bridge. I&apos;m Patrick, a Squamish-based wedding DJ. When the day arrives, I&apos;m already local.</HeroSignalCopy>
           <div className="vancouver-route-hero-actions">
             <Link href="/contact">Check your Squamish date <span aria-hidden="true">↗</span></Link>
             <a href="#planning-from-vancouver">See how we plan <span aria-hidden="true">↓</span></a>
