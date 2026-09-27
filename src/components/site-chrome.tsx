@@ -505,13 +505,13 @@ export function SiteHeader() {
             >
               <button
                 type="button"
-                className="absolute inset-0 z-40 cursor-default border-0 bg-black/50 p-0"
+                className="absolute inset-0 z-40 cursor-default border-0 bg-transparent p-0"
                 aria-label="Close menu"
                 onClick={closeMobileMenu}
               />
               <nav
                 id={MOBILE_PRIMARY_NAV_ID}
-                className="hsdj-mobile-menu absolute right-3 top-2 z-50 max-h-[min(calc(100%-1rem),36rem)] overflow-y-auto overflow-x-hidden border border-white/15 bg-neutral-950/95 shadow-xl shadow-black/40"
+                className="hsdj-mobile-menu absolute right-3 top-2 z-50 max-h-[min(calc(100%-1rem),36rem)] overflow-y-auto overflow-x-hidden"
                 aria-label="Mobile primary"
               >
                 <div className="hsdj-mobile-cue-bank">
