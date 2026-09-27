@@ -49,12 +49,6 @@ function VinylMandala() {
 function Waveform({ active }: { active: number }) {
   return (
     <div className={styles.waveformStack} aria-hidden="true">
-      <div className={styles.waveOverview}>
-        {Array.from({ length: 90 }, (_, index) => (
-          <i key={index} style={{ height: `${20 + ((index * 17 + index * index * 3 + active * 19) % 72)}%` }} />
-        ))}
-        <span className={styles.waveOverviewPlayhead} />
-      </div>
       <div className={styles.waveform}>
         {Array.from({ length: 53 }, (_, index) => {
           const height = 17 + ((index * 23 + index * index * 7 + active * 29) % 76);
@@ -97,12 +91,7 @@ export function FeaturedReviewDeck({ reviews }: { reviews: readonly DeckReview[]
 
       <div className={styles.screenBay}>
         <div className={styles.displayFrame}>
-          <div className={styles.displayTopline} aria-hidden="true"><span>HOT CUE {String(active + 1).padStart(2, "0")}</span><span className={styles.signalBars}><i /><i /><i /><i /><i /></span><span>USB • HSDJ</span></div>
-          <div className={styles.displayTrack}>
-            <div className={styles.trackArtwork} aria-hidden="true"><span>H</span></div>
-            <div className={styles.trackText}><strong>{selected.trackName}</strong><span>{selected.reviewerName}</span></div>
-            <div className={styles.trackReadout} aria-hidden="true"><span>124.0 <small>BPM</small></span><span>8A <small>KEY</small></span></div>
-          </div>
+          <div className={styles.displayTopline} aria-hidden="true"><span>HSDJ</span></div>
           <Waveform active={active} />
           <div className={styles.firstCopy} key={selected.id} aria-live="polite">
             <span className={styles.quoteMark} aria-hidden="true">“</span>
@@ -112,11 +101,9 @@ export function FeaturedReviewDeck({ reviews }: { reviews: readonly DeckReview[]
             </figure>
             {selected.sourceHref ? <a className={styles.reviewSource} href={selected.sourceHref} target="_blank" rel="noopener noreferrer">Read on Google <span aria-hidden="true">↗</span></a> : null}
           </div>
-          <div className={styles.displayBottomline} aria-hidden="true"><span>MASTER • HOWE SOUND DJ</span><span>04:12 REMAIN</span></div>
         </div>
         <div className={styles.cuePanel}>
-          <div className={styles.cuePanelHeading}><span>HOT CUES</span><span>PRESS A PAD TO LOAD ANOTHER REVIEW</span></div>
-          <div className={styles.screenControls} aria-label="Choose a couple's review">
+          <div className={styles.screenControls} role="group" aria-label="Choose a couple's review">
             {reviews.map((item, index) => (
               <button
                 key={item.id}
@@ -128,7 +115,6 @@ export function FeaturedReviewDeck({ reviews }: { reviews: readonly DeckReview[]
                 aria-pressed={active === index}
               >
                 <span className={styles.cueNumber}>{String(index + 1).padStart(2, "0")}</span>
-                <span className={styles.cueName}>{item.cueName}</span>
               </button>
             ))}
           </div>

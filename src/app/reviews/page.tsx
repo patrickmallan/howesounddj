@@ -157,14 +157,6 @@ export default function ReviewsPage() {
             <span className={styles.powerLight}>ON AIR</span>
           </div>
           <FeaturedReviewDeck reviews={deckReviews} />
-          <nav className={styles.topicNav} aria-label="Jump to reviews by topic">
-            <p>Find the part you want to hear about:</p>
-            <div>
-              <a href="#planning-reviews"><span aria-hidden="true" />Planning &amp; people</a>
-              <a href="#whole-day-reviews"><span aria-hidden="true" />The whole day</a>
-              <a href="#dance-floor-reviews"><span aria-hidden="true" />Dance floor</a>
-            </div>
-          </nav>
         </div>
       </section>
 
@@ -198,7 +190,7 @@ export default function ReviewsPage() {
               fill
               sizes="(max-width: 720px) 80vw, 34vw"
             />
-            <span>ONE DAY / EVERY MOMENT</span>
+            <span>YOU ENJOY IT / I GOT THIS</span>
           </div>
         </div>
         <div className={styles.dayQuotes}>
