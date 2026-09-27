@@ -307,18 +307,19 @@ function MobileAccordion({ group, pathname, isOpen, onToggle }: MobileAccordionP
       className={`hsdj-nav-pad hsdj-mobile-nav-cue ${active ? "is-active" : ""}`}
       style={{ "--pad-glow": navPadGlowByLabel[group.label] } as CSSProperties}
     >
-      <Image src={navPadByLabel[group.label]} alt="" width={76} height={76} />
-      <span className="hsdj-nav-pad__label">{group.label}</span>
-      <svg
-        aria-hidden="true"
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        className={`hsdj-nav-pad__deck-open ${isOpen ? "is-open" : ""}`}
-      >
-        <path className="hsdj-nav-pad__deck-triangle" d="M3 5h10L8 11z" />
-        <path className="hsdj-nav-pad__deck-line" d="M2 13h12" />
-      </svg>
+      <span className="hsdj-nav-pad__label">
+        {group.label}
+        <svg
+          aria-hidden="true"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          className={`hsdj-nav-pad__deck-open ${isOpen ? "is-open" : ""}`}
+        >
+          <path className="hsdj-nav-pad__deck-triangle" d="M3 5h10L8 11z" />
+          <path className="hsdj-nav-pad__deck-line" d="M2 13h12" />
+        </svg>
+      </span>
     </button>
   );
 }
@@ -536,7 +537,6 @@ export function SiteHeader() {
                         className={`hsdj-nav-pad hsdj-mobile-nav-cue ${active ? "is-active" : ""}`}
                         style={{ "--pad-glow": navPadGlowByLabel[item.label] } as CSSProperties}
                       >
-                        <Image src={navPadByLabel[item.label]} alt="" width={76} height={76} />
                         <span className="hsdj-nav-pad__label">{item.label}</span>
                       </Link>
                     );
