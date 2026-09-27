@@ -9,6 +9,45 @@ const LETTER_OFF_MS = 170;
 const BETWEEN_LETTERS_MS = 55;
 const FULL_HEADING_HOLD_MS = 1450;
 
+function hasVisibleBackplate(heading: HTMLHeadingElement) {
+  const style = window.getComputedStyle(heading);
+  const backgroundIsVisible = style.backgroundImage !== "none"
+    || (style.backgroundColor !== "transparent" && !style.backgroundColor.endsWith(", 0)"));
+  return backgroundIsVisible || Number.parseFloat(style.borderLeftWidth) > 1;
+}
+
+function fitBackplateToRenderedLines(heading: HTMLHeadingElement) {
+  heading.style.removeProperty("width");
+  if (!hasVisibleBackplate(heading)) return;
+
+  const headingRect = heading.getBoundingClientRect();
+  const scale = heading.offsetWidth > 0 ? headingRect.width / heading.offsetWidth : 1;
+  const words = [...heading.querySelectorAll<HTMLElement>(`.${styles.word}`)];
+  if (!words.length || !headingRect.width || !scale) return;
+
+  const lines: Array<{ top: number; left: number; right: number }> = [];
+  words.forEach((word) => {
+    const rect = word.getBoundingClientRect();
+    const line = lines.find((candidate) => Math.abs(candidate.top - rect.top) < 2);
+    if (line) {
+      line.left = Math.min(line.left, rect.left);
+      line.right = Math.max(line.right, rect.right);
+      return;
+    }
+    lines.push({ top: rect.top, left: rect.left, right: rect.right });
+  });
+
+  const widestLine = Math.max(...lines.map((line) => line.right - line.left)) / scale;
+  const style = window.getComputedStyle(heading);
+  const chrome = Number.parseFloat(style.paddingLeft)
+    + Number.parseFloat(style.paddingRight)
+    + Number.parseFloat(style.borderLeftWidth)
+    + Number.parseFloat(style.borderRightWidth);
+  const naturalWidth = headingRect.width / scale;
+  const fittedWidth = Math.min(naturalWidth, Math.ceil(widestLine + chrome + 2));
+  heading.style.setProperty("width", `${fittedWidth}px`, "important");
+}
+
 function wrapHeadingLetters(heading: HTMLHeadingElement) {
   if (heading.dataset.letterFlashReady === "true") return 0;
   if (!heading.hasAttribute("aria-label")) {
@@ -55,6 +94,13 @@ export function HeadingLetterFlashController() {
     const observed = new WeakSet<Element>();
     const visible = new Set<HTMLHeadingElement>();
     const running = new Map<HTMLHeadingElement, () => void>();
+    let resizeTimer = 0;
+
+    const scheduleBackplateFit = (heading: HTMLHeadingElement) => {
+      window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
+        if (heading.isConnected) fitBackplateToRenderedLines(heading);
+      }));
+    };
 
     const stopSequence = (heading: HTMLHeadingElement) => {
       running.get(heading)?.();
@@ -66,6 +112,7 @@ export function HeadingLetterFlashController() {
     const startSequence = (heading: HTMLHeadingElement) => {
       if (running.has(heading) || document.hidden) return;
       wrapHeadingLetters(heading);
+      scheduleBackplateFit(heading);
       const letters = [...heading.querySelectorAll<HTMLElement>(`.${styles.character}`)];
       if (!letters.length) return;
 
@@ -133,13 +180,22 @@ export function HeadingLetterFlashController() {
       }
       visible.forEach(startSequence);
     };
+    const onResize = () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => visible.forEach((heading) => {
+        fitBackplateToRenderedLines(heading);
+      }), 120);
+    };
     document.addEventListener("visibilitychange", onVisibilityChange);
+    window.addEventListener("resize", onResize, { passive: true });
 
     return () => {
+      window.clearTimeout(resizeTimer);
       [...running.keys()].forEach(stopSequence);
       intersection.disconnect();
       mutation.disconnect();
       document.removeEventListener("visibilitychange", onVisibilityChange);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 
