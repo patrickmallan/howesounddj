@@ -67,7 +67,6 @@ export default function PackagesPage() {
           <div className={styles.heroNote}>
             <div className={styles.heroNoteTop}>
               <span>NO PACKAGE HOMEWORK</span>
-              <span aria-hidden="true">INPUT / 04</span>
             </div>
             <h2>You tell me the shape of the day.</h2>
             <p className={styles.heroNoteIntro}>Most people do not arrive knowing which DJ package they need. You should not have to.</p>
@@ -116,7 +115,7 @@ export default function PackagesPage() {
           </div>
           <div className={styles.dayPath}>
             <div className={styles.dayPathTop}>
-              <span>YOUR DAY / FOUR LIVE CHANNELS</span>
+              <span>COMPLETE WEDDING COVERAGE, START TO FINISH</span>
               <span className={styles.daySignal} aria-hidden="true"><i /><i /><i /><i /><i /><i /><i /></span>
             </div>
             {weddingIncludes.map(({ cue, title, text, payoff }) => (
