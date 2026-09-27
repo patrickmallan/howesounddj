@@ -290,7 +290,7 @@
   .roomPhotos figure:nth-child(2) { top: 29%; right: 0; left: auto; z-index: 2; width: 78%; height: 43%; transform: rotate(1.5deg); }
   .roomPhotos figure:nth-child(3) { right: auto; bottom: 0; left: 3%; z-index: 3; width: 78%; height: 42%; transform: rotate(-1deg); }
 
-  .playback { min-height: 430px; padding: 1.1rem .65rem 1.3rem; }
+  .playback { display: none; }
   .playbackVideo { box-sizing: border-box; width: 100%; max-width: 100%; margin-inline: auto; padding: .3rem; border: 5px solid transparent; border-color: var(--red) var(--red) var(--blue) var(--yellow); box-shadow: -6px 7px 0 var(--blue); transform: none; }
   .playbackVideo video { min-height: 390px; aspect-ratio: 4 / 5; object-position: 52% center; filter: saturate(1.18) contrast(1.04) brightness(.82); }
   .playbackVideoLogo { inset: .3rem; display: block; background: linear-gradient(110deg, #071a362e, transparent 46%, #7d172f2b), linear-gradient(0deg, #02040a70 0, transparent 32%); backdrop-filter: blur(.4px) saturate(1.08); }

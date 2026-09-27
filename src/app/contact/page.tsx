@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactAvailabilityForm } from "@/components/contact-availability-form";
 import { ContactMessageDrawer } from "@/components/contact-message-drawer";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
+import { ResponsiveAmbientDanceMontage } from "@/components/responsive-ambient-dance-montage";
 import styles from "./contact-page.module.css";
 
 /** Read Turnstile at request time so local and hosted environments use their current key. */
@@ -54,6 +55,17 @@ export default function ContactPage() {
       </section>
 
       <ContactMessageDrawer turnstileSiteKey={siteKey} />
+
+      <section className={styles.mobileMontage} aria-labelledby="contact-montage-heading">
+        <h2 id="contact-montage-heading" className="sr-only">Howe Sound DJ dance-floor atmosphere</h2>
+        <div className={styles.mobileMontageFrame}>
+          <ResponsiveAmbientDanceMontage
+            viewport="mobile"
+            fingerprintClassName={styles.mobileMontageFingerprint}
+            logoClassName={styles.mobileMontageOverlay}
+          />
+        </div>
+      </section>
     </main>
   );
 }

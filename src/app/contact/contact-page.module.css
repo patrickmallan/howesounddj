@@ -150,6 +150,10 @@
   clip-path: polygon(0 45%, 8% 21%, 17% 44%, 25% 68%, 34% 55%, 43% 17%, 52% 35%, 61% 72%, 70% 52%, 79% 35%, 88% 52%, 100% 28%, 100% 38%, 88% 62%, 79% 45%, 70% 62%, 61% 82%, 52% 45%, 43% 27%, 34% 65%, 25% 78%, 17% 54%, 8% 31%, 0 55%);
 }
 
+.mobileMontage {
+  display: none;
+}
+
 @media (max-width: 760px) {
   .stage {
     min-height: auto;
@@ -199,5 +203,171 @@
   .signalWave {
     width: 100%;
     margin-top: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .mobileMontage {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    min-height: 430px;
+    padding: 1.1rem .65rem 1.3rem;
+    place-items: center;
+    overflow: hidden;
+    background: #070708;
+  }
+
+  .mobileMontage::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    background: linear-gradient(104deg, #0847ff 0 1.2%, transparent 1.3% 97.7%, #f3262d 97.8% 100%);
+  }
+
+  .mobileMontageFrame {
+    position: relative;
+    width: 100%;
+    padding: .3rem;
+    overflow: hidden;
+    border: 5px solid transparent;
+    border-color: #f3262d #f3262d #124ee8 #ffe000;
+    background: #080808;
+    box-shadow: -6px 7px 0 #124ee8;
+  }
+
+  .mobileMontageFrame video {
+    display: block;
+    width: 100%;
+    min-height: 390px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 52% center;
+    filter: saturate(1.18) contrast(1.04) brightness(.82);
+  }
+
+  .mobileMontageOverlay {
+    position: absolute;
+    z-index: 2;
+    inset: .3rem;
+    display: block;
+    overflow: hidden;
+    pointer-events: none;
+    background: linear-gradient(110deg, #071a362e, transparent 46%, #7d172f2b), linear-gradient(0deg, #02040a70 0, transparent 32%);
+    backdrop-filter: blur(.4px) saturate(1.08);
+  }
+
+  .mobileMontageOverlay::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    opacity: .3;
+    background: repeating-linear-gradient(0deg, #ffffff14 0 1px, transparent 1px 5px);
+    mix-blend-mode: overlay;
+  }
+
+  .mobileMontageOverlay > img[data-video-overlay-lockup] {
+    display: none;
+  }
+
+  .mobileMontageOverlay [data-video-overlay-mountains],
+  .mobileMontageOverlay [data-video-overlay-sasquatch],
+  .mobileMontageOverlay [data-video-overlay-title] {
+    position: absolute;
+    display: block;
+    pointer-events: none;
+  }
+
+  .mobileMontageOverlay [data-video-overlay-mountains] {
+    z-index: 1;
+    inset: -5% -28% -2%;
+    opacity: .42;
+  }
+
+  .mobileMontageOverlay [data-video-overlay-mountains] img {
+    object-fit: cover;
+    object-position: center bottom;
+    filter: brightness(1.14) contrast(1.04);
+    transform: scale(1.35);
+    transform-origin: center bottom;
+  }
+
+  .mobileMontageOverlay [data-video-overlay-sasquatch] {
+    z-index: 2;
+    bottom: -3%;
+    left: 5%;
+    width: 90%;
+    height: 101%;
+    opacity: .68;
+    filter: drop-shadow(0 10px 24px #000d);
+  }
+
+  .mobileMontageOverlay [data-video-overlay-sasquatch]::before {
+    position: absolute;
+    inset: 12% 12% 0;
+    z-index: -1;
+    content: "";
+    background: radial-gradient(ellipse at 50% 58%, #020306b8 0 18%, #02030673 43%, transparent 72%);
+    filter: blur(14px);
+  }
+
+  .mobileMontageOverlay [data-video-overlay-sasquatch] img {
+    object-fit: contain;
+    object-position: center bottom;
+    filter: brightness(.64) contrast(1.24) saturate(.88);
+  }
+
+  .mobileMontageOverlay [data-video-overlay-title] {
+    z-index: 3;
+    top: 4.5%;
+    right: 3%;
+    left: 3%;
+    padding: .7rem .35rem .8rem;
+    color: #fff4dc;
+    font-family: var(--font-display), Impact, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .mobileMontageOverlay [data-video-overlay-title] b {
+    display: block;
+    font-palette: --hsdj-club-light;
+    font-size: clamp(2.1rem, 10.5vw, 2.8rem);
+    font-style: normal;
+    line-height: .85;
+    letter-spacing: .015em;
+    filter: drop-shadow(-1px 0 0 #050506) drop-shadow(1px 0 0 #050506) drop-shadow(0 -1px 0 #050506) drop-shadow(0 1px 0 #050506) drop-shadow(0 0 .08em rgb(255 60 172 / 72%));
+  }
+
+  .mobileMontageOverlay [data-video-overlay-title] i {
+    display: block;
+    margin-top: .5rem;
+    color: #fff8e8;
+    font: 950 clamp(.82rem, 4.1vw, 1.05rem)/1 var(--technical), monospace;
+    letter-spacing: .24em;
+    text-shadow: -1px -1px 0 #050506, 1px -1px 0 #050506, -1px 1px 0 #050506, 1px 1px 0 #050506, 0 0 10px rgb(255 226 168 / 64%);
+  }
+
+  .mobileMontageFingerprint {
+    position: absolute;
+    z-index: 0;
+    top: .75rem;
+    left: .75rem;
+    width: 14%;
+    aspect-ratio: 225 / 238;
+    overflow: hidden;
+    opacity: .72;
+    border: 1px solid rgb(244 239 228 / 32%);
+    border-radius: 50%;
+    background: #050608;
+    box-shadow: 0 5px 12px rgb(0 0 0 / 70%);
+  }
+
+  .mobileMontageFingerprint img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    opacity: .92;
   }
 }

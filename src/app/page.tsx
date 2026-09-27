@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { AmbientDanceMontage } from "@/components/ambient-dance-montage";
 import { DeferredArt } from "@/components/deferred-art";
 import { EncoreCassetteDeck } from "@/components/encore-cassette-deck";
 import { HardwareListMarker } from "@/components/hardware-list-marker";
@@ -11,6 +10,7 @@ import { LivingVUMeter } from "@/components/living-vu-meter";
 import { NightMixFader } from "@/components/night-mix-fader";
 import { ReviewDeck } from "@/components/review-deck";
 import { ReviewBackdropArt } from "@/components/review-backdrop-art";
+import { ResponsiveAmbientDanceMontage } from "@/components/responsive-ambient-dance-montage";
 import { HOMEPAGE_TITLE, SITE_ORIGIN } from "@/config/site-brand";
 import { CANONICAL_REVIEWS, HOMEPAGE_FEATURED_REVIEW_IDS } from "@/config/reviews";
 import { websiteJsonLd } from "@/lib/json-ld";
@@ -98,7 +98,11 @@ export default async function HoweSoundDJHomepage() {
       <section id="playback" className={`${styles.chapter} ${styles.playback}`} aria-labelledby="playback-heading">
         <h2 id="playback-heading" className="sr-only">Howe Sound DJ dance-floor atmosphere</h2>
         <div data-testid="home-video-proof-inner" className={styles.playbackVideo}>
-          <AmbientDanceMontage fingerprintClassName={styles.playbackFingerprint} logoClassName={styles.playbackVideoLogo} />
+          <ResponsiveAmbientDanceMontage
+            viewport="desktop"
+            fingerprintClassName={styles.playbackFingerprint}
+            logoClassName={styles.playbackVideoLogo}
+          />
         </div>
       </section>
 
