@@ -37,7 +37,7 @@
 .guides-deck-exit p { margin: 0 2rem 0 0; color: #fff; font-weight: 900; font-size: 1.2rem; }
 .guides-deck-exit a { color: #ffe027; font-weight: 800; }
 @media (max-width: 900px) {
-  #main-content .hsdj-guides-deck .guides-deck-hero { min-height: 700px; padding: 10rem 1.5rem 4rem; }
+  #main-content .hsdj-guides-deck .guides-deck-hero { min-height: 580px; padding: 8rem 1.5rem 3rem; }
   .guides-deck-world { width: 100vw; height: 1500px; opacity: .8; }
   .guides-deck-hero::after { background: linear-gradient(0deg, #080b10 5%, #080b10ba 55%, #080b1055 100%); }
   .guides-deck-hero-copy { align-self: end; }
@@ -49,7 +49,7 @@
   .guides-deck-choice .guides-deck-feature-copy { grid-column: 1; grid-row: 1; }
 }
 @media (max-width: 600px) {
-  #main-content .hsdj-guides-deck .guides-deck-hero { min-height: 660px; }
+  #main-content .hsdj-guides-deck .guides-deck-hero { min-height: 560px; }
   .hsdj-guides-deck .guides-deck-hero h1 { width: 100%; }
   .guides-deck-image, .guides-deck-choice-art { width: min(88vw, 430px); }
   .guides-deck-feature-copy { padding: 0; }

@@ -391,15 +391,15 @@
   }
 
   .vancouver-route-hero {
-    min-height: 36rem;
-    padding-block: 4rem;
+    min-height: 32rem;
+    padding-block: 3rem;
     background-position: 60% center;
   }
   .vancouver-route-hero::before { background: linear-gradient(0deg, #090e15ef 0, #090e15ca 48%, #090e1580 100%); }
   .vancouver-route-hero-copy > p { margin-top: 1.1rem; }
   .vancouver-route-hero-actions { align-items: flex-start; flex-direction: column; gap: 1.4rem; }
 
-  .vancouver-route-plan { min-height: 59rem; padding-block: 5rem; }
+  .vancouver-route-plan { min-height: 50rem; padding-block: 3.5rem; }
   .vancouver-route-mix-art { top: 0; right: -18%; left: -18%; height: 24rem; }
   .vancouver-route-plan-copy { margin: 15rem 0 0; }
   .vancouver-route-plan h2,
@@ -407,16 +407,16 @@
   .vancouver-route-finish h2 { font-size: clamp(3.5rem, 14vw, 5rem); }
   .vancouver-route-plan-aside { right: 7%; bottom: 8rem; max-width: 16rem; font-size: 1.4rem; }
 
-  .vancouver-route-local { min-height: 53rem; align-items: end; padding-block: 4rem 6rem; }
+  .vancouver-route-local { min-height: 45rem; align-items: end; padding-block: 3rem 4rem; }
   .vancouver-route-local-light { top: 2%; bottom: 30%; left: -55%; width: 150%; }
   .vancouver-route-local-copy { margin: 0; }
 
-  .vancouver-route-proof { min-height: 51rem; padding-block: 6rem; }
+  .vancouver-route-proof { min-height: 43rem; padding-block: 4rem; }
   .vancouver-route-proof h2 { max-width: 15rem; font-size: 2.7rem; }
   .vancouver-route-proof blockquote p { font-size: clamp(2.25rem, 9.5vw, 3.4rem); }
   .vancouver-route-proof > a { margin-left: 0; }
 
-  .vancouver-route-finish { min-height: 35rem; padding-block: 5rem; }
+  .vancouver-route-finish { min-height: 30rem; padding-block: 3.5rem; }
 }
 
 @media (prefers-reduced-motion: no-preference) {

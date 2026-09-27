@@ -104,6 +104,7 @@
   .faq-mixer-channel-list { margin-top: 1.75rem; }
   #main-content .hsdj-faq-mixer .faq-mixer-finale { padding: 3.5rem 1.4rem !important; }
   .faq-mixer-finale-inner { grid-template-columns: 1fr; }
+  .faq-mixer-finale-copy { min-width: 0; }
 }
 @media (max-width: 600px) {
   #main-content .hsdj-faq-mixer .faq-mixer-hero { padding: 2.5rem 1rem 2.7rem; }
@@ -122,6 +123,6 @@
   .faq-mixer-question-toggle { width: 1.5rem; height: 1.5rem; }
   .faq-mixer-answer { padding: .1rem .9rem 1.1rem 1rem; }
   #main-content .hsdj-faq-mixer .faq-mixer-finale { padding: 2.8rem 1rem !important; }
-  #main-content .hsdj-faq-mixer .faq-mixer-finale h2 { width: fit-content; max-width: 100% !important; font-size: clamp(1.75rem, 8.5vw, 2.25rem) !important; overflow-wrap: anywhere; }
+  #main-content .hsdj-faq-mixer .faq-mixer-finale h2 { width: fit-content; max-width: calc(100vw - 2rem) !important; font-size: clamp(1.75rem, 8.5vw, 2.25rem) !important; overflow-wrap: anywhere; }
   .faq-mixer-finale-actions { padding: 1rem; }
 }

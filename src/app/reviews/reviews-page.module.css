@@ -428,7 +428,7 @@
 @media (max-width: 720px) {
   .waveDeckEnd { display: none; }
   .waveDeckLabel { font-size: .57rem; letter-spacing: 0; }
-  .hero { align-items: end; min-height: 700px; padding: 6rem 5vw 5rem; }
+  .hero { align-items: end; min-height: 560px; padding: 4.5rem 5vw 3rem; }
   .heroArt img { object-position: 62% center; }
   .heroArt::after { background: linear-gradient(0deg, #050808 0, #050808ea 34%, #0508084d 83%), linear-gradient(90deg, #050808aa, transparent 75%); }
   .heroCopy { width: 100%; margin-top: 0; }
@@ -446,13 +446,13 @@
   .leadQuote blockquote { font-size: clamp(1.6rem, 5vw, 2.25rem); }
   .displayTrack { padding: .8rem 1rem .5rem; }
   .waveform { margin-inline: 1rem; }
-  .peopleIntro { grid-template-columns: 1fr; gap: 4rem; }
+  .peopleIntro { grid-template-columns: 1fr; gap: 2.25rem; }
   .cornerReview { max-width: 28rem; margin: 0 1rem 0 auto; }
-  .peopleQuotes { grid-template-columns: 1fr; gap: 2.7rem; }
+  .peopleQuotes { grid-template-columns: 1fr; gap: 1.5rem; }
   .peopleQuotes .peopleFeature { grid-row: auto; padding: 2rem 1.5rem; }
   .peopleQuotes .quote:nth-child(n) { margin: 0; }
   .dayPhoto { width: 82%; height: 230px; margin: 2rem auto 0; }
-  .dayQuotes { grid-template-columns: 1fr; gap: 2.5rem; }
+  .dayQuotes { grid-template-columns: 1fr; gap: 1.5rem; }
   .dayQuotes .quote,
   .dayQuotes .quote:first-child,
   .dayQuotes .quote:nth-child(3) { grid-column: auto; max-width: 100%; margin: 0; padding: 1.5rem; }
@@ -469,7 +469,7 @@
 }
 
 @media (max-width: 420px) {
-  .hero { min-height: 620px; }
+  .hero { min-height: 540px; }
   .heroIntro { font-size: 1rem; }
   .floorQuotes .floorFeature blockquote { font-size: 1.9rem; }
   .recordLabel { inset: 29%; border-width: 4px; }
@@ -608,7 +608,7 @@
   .screenControls { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .45rem; }
   .cueButton { min-height: 48px; }
   .cueName { font-size: .6rem; }
-  .firstCopy { min-height: 225px; }
+  .firstCopy { min-height: 0; }
   .leadQuote blockquote { font-size: clamp(1.2rem, 4.4vw, 1.7rem); }
 }
 @media (max-width: 420px) {

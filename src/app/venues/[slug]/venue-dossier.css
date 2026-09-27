@@ -38,7 +38,7 @@
 .venue-dossier-outro > p:not(.venue-dossier-overline) { max-width: 43rem; color: #081419 !important; font-size: 1.2rem; font-weight: 700; line-height: 1.6; }
 .venue-dossier-outro a { display: inline-block; padding: 1rem 1.4rem; color: #fff; background: #081419; font-weight: 900; text-transform: uppercase; box-shadow: 8px 8px 0 #1457ff; }
 @media (max-width: 900px) {
-  #main-content .hsdj-venue-dossier .venue-dossier-hero { grid-template-columns: 1fr; min-height: 0; padding: 10rem 1.4rem 5rem; }
+  #main-content .hsdj-venue-dossier .venue-dossier-hero { grid-template-columns: 1fr; min-height: 0; padding: 7.5rem 1.4rem 3rem; }
   .venue-dossier-stage-plot { max-width: 330px; justify-self: end; opacity: .85; }
   #main-content .hsdj-venue-dossier .venue-dossier-spread { grid-template-columns: 1fr; gap: 1.5rem; padding: 5rem 1.4rem; }
   .venue-dossier-spread-copy { padding-left: 1.3rem; }

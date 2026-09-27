@@ -88,7 +88,7 @@
   #main-content .hsdj-backstage .about-story { column-gap: 2rem; }
 }
 @media (max-width: 760px) {
-  #main-content .hsdj-backstage .about-hero { display: block; min-height: 1000px; padding: 11rem 1.35rem 25rem; }
+  #main-content .hsdj-backstage .about-hero { display: block; min-height: 820px; padding: 8rem 1.35rem 18rem; }
   .about-hero-atmosphere { object-position: 86% center; transform: translateY(240px); }
   .about-hero::after { background: linear-gradient(0deg, #080c17 0, #080c1766 45%, #080c17f2 85%); }
   .about-hero-copy { width: min(100%, 37rem); transform: none; }
@@ -98,7 +98,7 @@
   .about-hero-groove-media { max-height: 420px; }
   .about-portrait-tag { right: 2%; bottom: 15%; font-size: .78rem; }
   #main-content .hsdj-backstage .about-story { grid-template-columns: 1fr; padding: 5.5rem 1.35rem 4rem; }
-  .about-story-track { margin-top: 2rem; }
+  .about-story-track { margin-top: 1.25rem; }
   .about-story-photo { grid-column: 1; grid-row: auto; width: min(90%, 420px); margin: 3rem auto 0; }
   #main-content .hsdj-backstage .about-console-section { padding: 6rem 1.35rem; }
   .about-console { grid-template-columns: 1fr; }
@@ -107,17 +107,17 @@
   .about-console-channel-light { display: none; }
   .about-console-display { min-height: 27rem; }
   #main-content .hsdj-backstage .about-proof { padding: 6rem 1.35rem; }
-  .about-quote-cloud { display: block; margin-top: 3rem; }
+  .about-quote-cloud { display: block; margin-top: 1.75rem; }
   .about-quote { max-width: 34rem; margin: 0 auto 1rem; }
   .about-quote--pink { transform: rotate(3deg) translateX(1rem); }
   .about-quote--blue { transform: rotate(-3deg) translateX(-.5rem); }
-  #main-content .hsdj-backstage .about-close { grid-template-columns: 1fr; gap: 3rem; padding: 3.5rem 1.7rem 5rem; }
+  #main-content .hsdj-backstage .about-close { grid-template-columns: 1fr; gap: 1.75rem; padding: 2.5rem 1.4rem 3rem; }
   .about-close-photo { width: min(100%, 580px); justify-self: center; }
   .about-close-copy { width: min(100%, 580px); justify-self: center; padding: 0; }
   .hsdj-backstage .about-close h2 { font-size: clamp(4.2rem, 12vw, 6.5rem) !important; }
 }
 @media (max-width: 440px) {
-  #main-content .hsdj-backstage .about-hero { min-height: 900px; padding-top: 6rem; padding-bottom: 20rem; }
+  #main-content .hsdj-backstage .about-hero { min-height: 760px; padding-top: 5rem; padding-bottom: 15rem; }
   .about-hero-actions { align-items: flex-start; }
   .about-hero-actions a { font-size: .78rem; }
   .about-hero-portrait { width: 72vw; }

@@ -938,16 +938,16 @@ body {
   .hsdj-physical-cta__hardware { left: 0.1rem; width: 3.65rem; height: 3.65rem; }
   .hsdj-physical-cta__label { padding-left: 3.25rem; font-size: 0.62rem; }
   .hsdj-interior > section:first-of-type { min-height: 0; background-position: 64% center !important; }
-  .hsdj-interior > section:first-of-type > div[class*="max-w"] { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+  .hsdj-interior > section:first-of-type > div[class*="max-w"] { padding-top: 3.25rem !important; padding-bottom: 3.25rem !important; }
   .hsdj-interior > section:first-of-type h1 { max-width: 12ch; font-size: clamp(2.9rem, 13.5vw, 4.65rem); }
   .hsdj-interior > section:first-of-type h1 + p { margin-top: 1.5rem; padding: 1rem 1rem 1.1rem 1.25rem; border-left-width: .45rem; box-shadow: .35rem .4rem 0 #194cff99; }
   .hsdj-interior-flow > header { min-height: 0; background-position: 61% center !important; }
-  .hsdj-interior-flow > header > div[class*="max-w"] { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+  .hsdj-interior-flow > header > div[class*="max-w"] { padding-top: 3.25rem !important; padding-bottom: 3.25rem !important; }
   .hsdj-interior-flow > header h1 { max-width: 12ch; font-size: clamp(2.9rem, 13.5vw, 4.65rem); }
   .hsdj-interior-flow > header h1 + p { margin-top: 1.5rem; padding: 1rem 1rem 1.1rem 1.25rem; border-left-width: .45rem; box-shadow: .35rem .4rem 0 #194cff99; }
-  .hsdj-interior > section:not(:first-of-type) { padding-block: clamp(2.25rem, 8vw, 2.65rem) !important; }
-  .hsdj-interior-flow > section { padding-block: clamp(2.25rem, 8vw, 2.65rem) !important; }
-  .hsdj-interior section h2:not(.sr-only) { max-width: 15ch; font-size: clamp(1.85rem, 8.8vw, 3.35rem); text-shadow: .035em .03em 0 color-mix(in srgb, var(--interior-accent) 75%, #111); }
+  .hsdj-interior > section:not(:first-of-type) { padding-block: clamp(1.75rem, 6.5vw, 2.15rem) !important; }
+  .hsdj-interior-flow > section { padding-block: clamp(1.75rem, 6.5vw, 2.15rem) !important; }
+  .hsdj-interior section h2:not(.sr-only) { max-width: 15ch; font-size: clamp(1.85rem, 8.8vw, 3.35rem); text-shadow: none; }
   .hsdj-interior .premium-surface,
   .hsdj-interior .atmosphere-grain { border-left-width: 5px !important; box-shadow: 6px 7px 0 #194cff9e !important; clip-path: polygon(0 .3rem, 98% 0, 100% calc(100% - .4rem), 2% 100%, 0 91%); }
   .hsdj-interior::before { background-size: auto, 4rem 100%, auto 48rem; }
@@ -1713,8 +1713,36 @@ body {
      shared ceiling, while photographs and supporting copy stay visible in the
      same phone viewport. */
   #main-content :is(section, article) h2:not(.sr-only) {
+    display: block;
+    box-sizing: border-box;
+    width: fit-content;
+    max-width: min(16ch, calc(100vw - 2rem)) !important;
+    margin-block: 0 1rem;
+    padding: .48rem .62rem .58rem;
+    border: 1px solid rgb(255 255 255 / 20%);
+    border-left: 6px solid var(--scene-accent, var(--interior-accent, #56e4ed));
+    color: #fff8e8 !important;
+    background: rgb(3 7 9 / 94%);
+    box-shadow: 5px 6px 0 rgb(25 76 255 / 68%);
+    font-family: var(--font-display), var(--font-geist-sans), sans-serif !important;
     font-size: clamp(1.75rem, 8.5vw, 2.25rem) !important;
+    font-palette: --hsdj-paper-light;
+    font-synthesis: none;
+    font-weight: 800 !important;
+    letter-spacing: .035em !important;
+    line-height: 1.02 !important;
+    text-wrap: balance;
+    text-shadow: none !important;
+    filter: none !important;
   }
+
+  #main-content .hsdj-interior :is(h3, h4):not(.sr-only) {
+    text-shadow: none;
+    filter: none;
+  }
+
+  .hsdj-interior :is(section, article) > :first-child { margin-top: 0; }
+  .hsdj-interior :is(section, article) > :last-child { margin-bottom: 0; }
 }
 
 /* Retire decorative micro-tags across the site. Keep headings, navigation and
