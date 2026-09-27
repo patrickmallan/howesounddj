@@ -86,3 +86,41 @@ test("Squamish scene headings retain the crisp billboard face", async ({ page })
     await expect(heading).toHaveCSS("text-shadow", "none");
   }
 });
+
+test("H2 letter flashing survives client-side route changes", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await page.locator('footer a[href="/venues"]').click();
+  await expect(page).toHaveURL(/\/venues$/);
+
+  const heading = page.locator("#venue-route-title");
+  await heading.scrollIntoViewIfNeeded();
+  await expect(heading).toHaveAttribute("data-letter-flash-ready", "true");
+  await expect(heading).toHaveAttribute("data-letter-flash", "running");
+  await expect.poll(
+    () => heading.locator('span[class*="_off__"]').count(),
+    { timeout: 3_500, intervals: [40, 40, 40, 40, 40, 80] },
+  ).toBeGreaterThan(0);
+});
+
+for (const width of [320, 390]) {
+  test(`Venues route billboard stays inside its card at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto("/venues");
+
+    const heading = page.locator("#venue-route-title");
+    await heading.scrollIntoViewIfNeeded();
+    const measurements = await heading.evaluate((element) => {
+      const rect = element.getBoundingClientRect();
+      return {
+        clientWidth: element.clientWidth,
+        right: rect.right,
+        scrollWidth: element.scrollWidth,
+        viewportWidth: document.documentElement.clientWidth,
+      };
+    });
+
+    expect(measurements.scrollWidth).toBeLessThanOrEqual(measurements.clientWidth + 1);
+    expect(measurements.right).toBeLessThanOrEqual(measurements.viewportWidth + 1);
+  });
+}

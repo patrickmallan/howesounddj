@@ -91,7 +91,7 @@ function wrapHeadingLetters(heading: HTMLHeadingElement) {
 
 export function HeadingLetterFlashController() {
   useEffect(() => {
-    const observed = new WeakSet<Element>();
+    const observed = new Set<HTMLHeadingElement>();
     const visible = new Set<HTMLHeadingElement>();
     const running = new Map<HTMLHeadingElement, () => void>();
     let resizeTimer = 0;
@@ -157,22 +157,44 @@ export function HeadingLetterFlashController() {
       });
     }, { rootMargin: "8% 0px 8%", threshold: .08 });
 
+    const register = (heading: HTMLHeadingElement) => {
+      if (observed.has(heading)) return;
+      observed.add(heading);
+      intersection.observe(heading);
+    };
+
+    const headingsWithin = (root: ParentNode) => {
+      const headings = [...root.querySelectorAll<HTMLHeadingElement>(HEADING_SELECTOR)];
+      if (root instanceof HTMLHeadingElement && root.matches(HEADING_SELECTOR)) headings.unshift(root);
+      return headings;
+    };
+
     const scan = (root: ParentNode = document) => {
-      root.querySelectorAll<HTMLHeadingElement>(HEADING_SELECTOR).forEach((heading) => {
-        if (observed.has(heading)) return;
-        observed.add(heading);
-        intersection.observe(heading);
+      headingsWithin(root).forEach(register);
+    };
+
+    const unscan = (root: ParentNode) => {
+      headingsWithin(root).forEach((heading) => {
+        if (!observed.has(heading)) return;
+        visible.delete(heading);
+        stopSequence(heading);
+        intersection.unobserve(heading);
+        observed.delete(heading);
       });
     };
 
     scan();
     const mutation = new MutationObserver((records) => {
-      records.forEach((record) => record.addedNodes.forEach((node) => {
-        if (node instanceof Element) scan(node);
-      }));
+      records.forEach((record) => {
+        record.removedNodes.forEach((node) => {
+          if (node instanceof Element) unscan(node);
+        });
+        record.addedNodes.forEach((node) => {
+          if (node instanceof Element) scan(node);
+        });
+      });
     });
-    const main = document.querySelector("main");
-    if (main) mutation.observe(main, { childList: true, subtree: true });
+    mutation.observe(document.body, { childList: true, subtree: true });
     const onVisibilityChange = () => {
       if (document.hidden) {
         document.querySelectorAll<HTMLHeadingElement>(HEADING_SELECTOR).forEach(stopSequence);
@@ -191,7 +213,11 @@ export function HeadingLetterFlashController() {
 
     return () => {
       window.clearTimeout(resizeTimer);
-      [...running.keys()].forEach(stopSequence);
+      observed.forEach((heading) => {
+        stopSequence(heading);
+        intersection.unobserve(heading);
+      });
+      observed.clear();
       intersection.disconnect();
       mutation.disconnect();
       document.removeEventListener("visibilitychange", onVisibilityChange);
