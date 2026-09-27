@@ -74,7 +74,7 @@ export default async function HoweSoundDJHomepage() {
         <div className={styles.soundPaper}>
           <div className={styles.soundCopy}>
             <p className={styles.tapeLabel}>The work should disappear</p>
-            <h2 id="sound-check-heading" className="hsdj-meter--cold"><span>Nobody should</span><span>notice the microphone.</span></h2>
+            <h2 id="sound-check-heading" className="hsdj-meter--cold"><span>Nobody should</span><span>notice the</span><span>microphone.</span></h2>
             <p>They should hear every vow, every speech and every entrance without wondering how any of it works. I handle the sound, cues and handoffs so those moments can simply happen.</p>
           </div>
           <div className={styles.soundPortrait}><Image src="/images/hsdj-redesign/wedding-story/ceremony-mic-failure-crowd-v1.webp" alt="Wedding guests turning around after a microphone problem during a forest ceremony" fill sizes="(max-width: 700px) 70vw, 34vw" /></div>
