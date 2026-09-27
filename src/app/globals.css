@@ -500,90 +500,140 @@ body {
   background: transparent;
 }
 
-/* Shared hero copy treatment: a compact signal plate, not another paragraph box. */
+/* Shared hero copy treatment: paced editorial light lines, rendered with text and CSS only. */
 .hsdj-hero-signal-copy {
   --hero-signal: #29ddeb;
+  --hero-signal-two: #6d75ff;
   position: relative;
-  display: grid;
-  width: fit-content;
-  max-width: min(100%, 44rem);
-  grid-template-columns: 2.1rem minmax(0, 1fr);
-  gap: .9rem;
+  width: min(100%, 48rem);
   margin: clamp(1.35rem, 2.6vw, 2.25rem) 0;
-  padding: 1rem 1.2rem 1.15rem .85rem;
-  align-items: end;
-  border: 1px solid #ffffff25;
-  border-left: 7px solid var(--hero-signal);
   color: #fff;
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--hero-signal) 11%, transparent), transparent 35%),
-    linear-gradient(112deg, #04080ced, #0a1016e8 76%, #030608d9);
-  box-shadow: 7px 8px 0 #164dff, inset 0 1px 0 #ffffff12;
-  clip-path: polygon(0 0, calc(100% - 1.1rem) 0, 100% 1.1rem, 100% 100%, .45rem 100%, 0 calc(100% - .45rem));
+  isolation: isolate;
 }
 
-.hsdj-hero-signal-copy--yellow { --hero-signal: #ffe021; }
-.hsdj-hero-signal-copy--pink { --hero-signal: #ff438d; }
-.hsdj-hero-signal-copy--green { --hero-signal: #51ed7d; }
+.hsdj-hero-signal-copy--yellow { --hero-signal: #ffe021; --hero-signal-two: #ff8e35; }
+.hsdj-hero-signal-copy--pink { --hero-signal: #ff438d; --hero-signal-two: #b56cff; }
+.hsdj-hero-signal-copy--green { --hero-signal: #51ed7d; --hero-signal-two: #18d9e8; }
 
-.hsdj-hero-signal-copy__meter {
-  display: flex;
-  height: 2.6rem;
-  align-items: end;
-  gap: .16rem;
-  border-bottom: 2px solid var(--hero-signal);
-}
-
-.hsdj-hero-signal-copy__meter i {
-  width: .22rem;
-  height: var(--meter-height, 45%);
-  background: var(--hero-signal);
-  box-shadow: 0 0 7px color-mix(in srgb, var(--hero-signal) 76%, transparent);
-  transform-origin: bottom;
-  animation: hsdj-hero-meter 2.4s steps(2, end) infinite;
-}
-
-.hsdj-hero-signal-copy__meter i:nth-child(2) { --meter-height: 72%; animation-delay: -.7s; }
-.hsdj-hero-signal-copy__meter i:nth-child(3) { --meter-height: 100%; animation-delay: -1.5s; }
-.hsdj-hero-signal-copy__meter i:nth-child(4) { --meter-height: 61%; animation-delay: -.35s; }
-.hsdj-hero-signal-copy__meter i:nth-child(5) { --meter-height: 84%; animation-delay: -1.05s; }
-
-#main-content .hsdj-hero-signal-copy > p {
-  width: auto !important;
-  max-width: none !important;
+.hsdj-hero-signal-copy > p {
+  display: grid !important;
+  width: 100% !important;
+  max-width: 48rem !important;
   margin: 0 !important;
   padding: 0 !important;
+  gap: clamp(.62rem, 1.25vw, .9rem);
   border: 0 !important;
-  color: #f8f4ed !important;
   background: none !important;
   box-shadow: none !important;
   clip-path: none !important;
-  font-size: clamp(.98rem, 1.35vw, 1.23rem);
-  font-weight: 760;
-  line-height: 1.48;
-  text-wrap: pretty;
+  text-align: left !important;
 }
 
-#main-content .hsdj-hero-signal-copy > p::before,
-#main-content .hsdj-hero-signal-copy > p::after { content: none !important; }
+.hsdj-hero-signal-copy > p::before,
+.hsdj-hero-signal-copy > p::after { content: none !important; }
 
-@keyframes hsdj-hero-meter {
-  0%, 100% { transform: scaleY(.62); opacity: .7; }
-  45% { transform: scaleY(1); opacity: 1; }
+.hsdj-hero-signal-copy__beat {
+  --beat-light: var(--hero-signal);
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: min(100%, 62ch);
+  padding: .42em .7em .46em .82em;
+  color: #fffaf1;
+  font-size: clamp(1.08rem, 1.6vw, 1.42rem);
+  font-weight: 810;
+  line-height: 1.34;
+  letter-spacing: -.018em;
+  text-wrap: pretty;
+  text-shadow: 0 2px 8px #000d;
+  transition: color 180ms ease, transform 180ms ease, text-shadow 180ms ease;
+}
+
+.hsdj-hero-signal-copy__ink {
+  position: relative;
+  z-index: 1;
+}
+
+.hsdj-hero-signal-copy__beat::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  border-left: .24rem solid var(--beat-light);
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--beat-light) 30%, #05090e 70%) 0%,
+      color-mix(in srgb, var(--beat-light) 12%, #05090e 88%) 58%,
+      transparent 100%);
+  clip-path: polygon(0 0, 97.5% 5%, 100% 88%, 1.2% 100%);
+  opacity: .92;
+  transform: scaleX(.96);
+  transform-origin: left center;
+  transition: opacity 180ms ease, transform 220ms ease, filter 220ms ease;
+}
+
+.hsdj-hero-signal-copy__beat:nth-child(2n) {
+  --beat-light: var(--hero-signal-two);
+  margin-inline-start: clamp(.5rem, 4vw, 2.4rem);
+  color: color-mix(in srgb, var(--hero-signal) 82%, #fff 18%);
+  text-shadow: 0 0 13px color-mix(in srgb, var(--hero-signal) 38%, transparent), 0 2px 8px #000;
+}
+
+.hsdj-hero-signal-copy__beat:nth-child(3n) {
+  --beat-light: var(--hero-signal);
+  margin-inline-start: clamp(.15rem, 1.5vw, .85rem);
+  color: #fff;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hsdj-hero-signal-copy:hover .hsdj-hero-signal-copy__beat { opacity: .72; }
+  .hsdj-hero-signal-copy:hover .hsdj-hero-signal-copy__beat:hover {
+    color: #fff;
+    opacity: 1;
+    text-shadow: 0 0 13px color-mix(in srgb, var(--beat-light) 56%, transparent), 0 2px 8px #000;
+    transform: translateX(.32rem);
+  }
+  .hsdj-hero-signal-copy__beat:hover::before {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px color-mix(in srgb, var(--beat-light) 52%, transparent));
+    transform: scaleX(1);
+  }
 }
 
 @media (max-width: 600px) {
   .hsdj-hero-signal-copy {
-    grid-template-columns: 1.55rem minmax(0, 1fr);
-    gap: .7rem;
-    padding: .9rem .9rem 1rem .7rem;
-    box-shadow: 5px 6px 0 #164dff;
+    width: 100%;
+    margin-block: 1.2rem 1.55rem;
   }
-  .hsdj-hero-signal-copy__meter { height: 2.2rem; }
+  .hsdj-hero-signal-copy__beat {
+    max-width: 100%;
+    padding: .5em .62em .54em .76em;
+    font-size: clamp(1.12rem, 5.1vw, 1.28rem);
+    line-height: 1.34;
+  }
+  .hsdj-hero-signal-copy__beat:nth-child(2n) { margin-inline-start: clamp(.3rem, 4vw, 1rem); }
+}
+
+@supports (animation-timeline: view()) {
+  .hsdj-hero-signal-copy__beat {
+    animation: hsdj-hero-copy-arrive 1ms linear both;
+    animation-timeline: view(block);
+    animation-range: entry 8% entry 42%;
+  }
+}
+
+@keyframes hsdj-hero-copy-arrive {
+  from { opacity: .48; transform: translateY(.65rem); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hsdj-hero-signal-copy__meter i { animation: none; }
+  .hsdj-hero-signal-copy__beat {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 .hsdj-mobile-channel-panel__label {

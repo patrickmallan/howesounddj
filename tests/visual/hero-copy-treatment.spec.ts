@@ -20,6 +20,8 @@ for (const width of [320, 390, 768, 1440]) {
       await page.goto(route);
       const plate = page.locator(".hsdj-hero-signal-copy").first();
       await expect(plate).toBeAttached();
+      await expect(plate.locator(".hsdj-hero-signal-copy__meter")).toHaveCount(0);
+      expect(await plate.locator(".hsdj-hero-signal-copy__beat").count()).toBeGreaterThan(0);
       const box = await plate.boundingBox();
       expect(box, `${route} should render a signal plate`).not.toBeNull();
       expect(box!.x, `${route} starts inside viewport`).toBeGreaterThanOrEqual(-1);

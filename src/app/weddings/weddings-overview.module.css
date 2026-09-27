@@ -262,6 +262,17 @@
   background: #05090bea;
   box-shadow: 6px 7px 0 var(--blue);
 }
+
+/* This is a compact scene label, not a full display heading. */
+:global(#main-content) .truths .sectionLabel {
+  justify-self: start;
+  max-width: 100% !important;
+  padding: .58rem .75rem .62rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: clamp(.66rem, .9vw, .86rem) !important;
+  letter-spacing: .19em;
+  line-height: 1.2;
+}
 .truthsIntro { max-width: 26ch; margin: .6rem 0 0; color: #fff; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", var(--font-geist-sans), sans-serif; font-size: clamp(2.2rem, 3.2vw, 3.8rem); line-height: .99; text-transform: uppercase; }
 .truthComposition {
   position: relative;
@@ -453,6 +464,7 @@
   .stageCopy h3 { font-size: clamp(1.45rem, 6.7vw, 2.05rem); }
   .stageBody { margin-top: 0.75rem; font-size: 0.78rem; }
   .truthsInner { padding: .45rem 1rem 2.5rem 2.15rem; }
+  :global(#main-content) .truths .sectionLabel { font-size: .6rem !important; }
   .truthsIntro { font-size: clamp(2rem, 9vw, 3rem); }
   .truthComposition { grid-template-columns: minmax(0, 1fr); margin-top: 1rem; gap: .95rem; }
   .truthComposition > * { grid-column: 1; grid-row: auto; margin: 0; }
