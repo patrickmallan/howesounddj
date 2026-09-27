@@ -266,6 +266,7 @@ function DesktopDropdown({
             <Link
               key={child.href}
               href={child.href}
+              prefetch={isOpen ? null : false}
               role="menuitem"
               aria-current={childActive ? "page" : undefined}
               onClick={onTrustNavClick(child.href, onRequestClose)}

@@ -6,7 +6,9 @@
 .heroInner { width:min(1180px,calc(100% - 3rem)); margin:auto; padding:3.5rem 0 2.5rem; }
 .eyebrow,.kicker { width:fit-content; font:800 .76rem/1.2 var(--mono); letter-spacing:.18em; text-transform:uppercase; }
 .eyebrow { padding:.8rem 1rem; color:var(--yellow); border:1px solid #ffffff55; border-left:7px solid var(--pink); background:#080a0bd9; box-shadow:7px 7px 0 var(--blue); }
-.heroHeading { max-width:min(100%,800px) !important; margin-top:1.5rem; }
+.heroHeading { display:grid; width:fit-content; max-width:min(100%,920px); margin:1.5rem 0 0; color:#fff; font:800 clamp(2.7rem,6vw,6rem)/.84 var(--font-display),Impact,sans-serif; font-palette:--hsdj-club-light; letter-spacing:.018em; text-transform:uppercase; filter:drop-shadow(0 0 .06em #7d9dff70); }
+.heroHeading span { display:block; white-space:nowrap; }
+.heroHeading span:nth-child(2) { font-palette:--hsdj-signal-light; filter:drop-shadow(0 0 .05em #ffd21c70); }
 .heroNote { position:relative; width:min(900px,86%); margin:1.5rem 0 0 6%; padding:1.15rem; overflow:hidden; color:#fff; border:2px solid #64757b; border-radius:6px; background:repeating-linear-gradient(90deg,#ffffff05 0 1px,transparent 1px 7px),linear-gradient(145deg,#18262b,#070c0f 68%); box-shadow:0 8px 0 #020506,10px 14px 0 var(--pink),0 20px 44px #0009,inset 0 0 0 4px #090f12; transform:rotate(-.35deg); }
 .heroNote::before { position:absolute; top:0; right:0; left:0; height:5px; content:""; background:linear-gradient(90deg,var(--cyan),var(--yellow) 38%,var(--pink) 68%,var(--blue)); box-shadow:0 0 11px #22d8e899; }
 .heroNote::after { position:absolute; right:-9rem; bottom:1.6rem; width:11rem; height:3px; content:""; background:var(--cyan); box-shadow:0 0 10px var(--cyan); }
@@ -163,7 +165,7 @@
 .finalActions { width:100%; min-width:0; }
 
 @media (max-width:820px) {
- .hero{min-height:auto}.heroInner{width:calc(100% - 2rem);padding:3rem 0 3.25rem}.heroHeading{max-width:100% !important}.heroNote{width:96%;margin:1.2rem auto 0;padding:1rem;box-shadow:0 6px 0 #020506,7px 10px 0 var(--pink)}.heroNote::after{display:none}.heroInputs{grid-template-columns:repeat(2,minmax(0,1fr))}.heroInputs summary{min-height:3.25rem}.heroPromise{margin-top:.9rem}
+ .hero{min-height:auto}.heroInner{width:calc(100% - 2rem);padding:3rem 0 3.25rem}.heroHeading{max-width:100%;font-size:clamp(1rem,5.6vw,3.2rem)}.heroNote{width:96%;margin:1.2rem auto 0;padding:1rem;box-shadow:0 6px 0 #020506,7px 10px 0 var(--pink)}.heroNote::after{display:none}.heroInputs{grid-template-columns:repeat(2,minmax(0,1fr))}.heroInputs summary{min-height:3.25rem}.heroPromise{margin-top:.9rem}
  .scene{width:100%;min-height:0}
  .decisionScene{padding:2.75rem 1rem 3.5rem}.decisionCopy{width:94%;margin-left:1rem}.routeSplit{display:flex;gap:0;margin-top:2rem;flex-direction:column}.routeSplit::before{display:none}.routeSplit a{min-height:165px}.eventRoute{margin:.5rem 0 0 1rem}
  .weddingScene{margin-top:-2rem;padding:4rem 1rem 4rem}.weddingScene::before{inset:2rem -2rem 0;background:linear-gradient(165deg,var(--bone) 0 68%,transparent 68.2%)}.collageWindow{top:21rem;right:-1rem;width:100%;height:400px;opacity:.9}.weddingCopy{width:94%;margin:1.5rem auto 0;padding:1.3rem;box-shadow:-7px 8px 0 var(--blue)}.dayPath{position:relative;right:auto;bottom:auto;grid-template-columns:repeat(2,minmax(0,1fr));width:94%;margin:17rem auto 0;padding:2.8rem .55rem .55rem}.dayStop{grid-template-columns:2.2rem minmax(0,1fr);min-height:175px;padding:.8rem .65rem;gap:.55rem}.dayStopNumber{width:2.15rem;height:2.15rem}.dayStop::after{left:3.55rem}.dayStop p{font-size:.78rem}.dayStop small{font-size:.49rem}

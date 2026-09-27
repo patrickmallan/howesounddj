@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { preload } from "react-dom";
 import CTADuo from "@/components/cta-duo";
-import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { SectionReveal } from "@/components/motion";
 import styles from "./packages-page.module.css";
 
@@ -49,21 +47,16 @@ const upgrades = [
 ];
 
 export default function PackagesPage() {
-  preload("/images/hsdj-redesign/footer/footer-dj-mixer-collage-v2-optimized.webp", {
-    as: "image",
-    fetchPriority: "high",
-  });
-
   return (
-    <main className={`${styles.page} hsdj-interior`}>
+    <main className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.heroGrid} aria-hidden="true" />
         <div className={styles.heroInner}>
           <div className={styles.eyebrow}>PACKAGES / SQUAMISH, BC</div>
-          <MeterMatrixHeading
-            text="Tell me what kind of day you are having."
-            className={styles.heroHeading}
-          />
+          <h1 className={styles.heroHeading}>
+            <span>Tell me what kind of</span>
+            <span>day you are having.</span>
+          </h1>
           <div className={styles.heroNote}>
             <div className={styles.heroNoteTop}>
               <span>NO PACKAGE HOMEWORK</span>

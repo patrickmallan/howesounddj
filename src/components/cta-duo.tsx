@@ -56,11 +56,14 @@ export default function CTADuo({
     if (!machine) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) return;
-        machine.dataset.artReady = "true";
-        observer.disconnect();
+        if (entry.isIntersecting) {
+          machine.dataset.artReady = "true";
+          machine.dataset.motionActive = "true";
+          return;
+        }
+        delete machine.dataset.motionActive;
       },
-      { rootMargin: "600px 0px" },
+      { rootMargin: "300px 0px" },
     );
     observer.observe(machine);
     return () => observer.disconnect();

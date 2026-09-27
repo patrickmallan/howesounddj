@@ -14,13 +14,16 @@ for (const width of [320, 390, 768, 1440]) {
 
     const measurements = await page.evaluate(() => {
       const actionHeading = document.querySelector<HTMLElement>("[class*=signalEnd] h3")!;
+      const heroHeading = document.querySelector<HTMLElement>("[class*=heroHeading]")!;
       return {
         overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        heroHeadingRight: heroHeading.getBoundingClientRect().right,
         headingColor: getComputedStyle(actionHeading).color,
       };
     });
 
     expect(measurements.overflow).toBeLessThanOrEqual(0);
+    expect(measurements.heroHeadingRight).toBeLessThanOrEqual(width);
     expect(measurements.headingColor).toBe("rgb(9, 11, 11)");
   });
 }
