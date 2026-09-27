@@ -1,7 +1,13 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import { ContactSecondaryInquiryForm } from "@/components/contact-secondary-inquiry-form";
+
+const ContactSecondaryInquiryForm = dynamic(() =>
+  import("@/components/contact-secondary-inquiry-form").then(
+    (module) => module.ContactSecondaryInquiryForm,
+  ),
+);
 
 export function ContactMessageDrawer({ turnstileSiteKey }: { turnstileSiteKey: string }) {
   const [open, setOpen] = useState(false);

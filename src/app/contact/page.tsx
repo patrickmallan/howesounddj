@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { ContactAvailabilityForm } from "@/components/contact-availability-form";
 import { ContactMessageDrawer } from "@/components/contact-message-drawer";
-import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { ResponsiveAmbientDanceMontage } from "@/components/responsive-ambient-dance-montage";
 import styles from "./contact-page.module.css";
 
-/** Read Turnstile at request time so local and hosted environments use their current key. */
+/** Turnstile's public site key is captured by each production build. */
 function turnstileSiteKey(): string {
   return (
     process.env.TURNSTILE_SITE_KEY?.trim() ||
@@ -13,8 +12,6 @@ function turnstileSiteKey(): string {
     ""
   );
 }
-
-export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: { absolute: "Contact | Howe Sound DJ" },
@@ -43,7 +40,10 @@ export default function ContactPage() {
         <div className={styles.stageInner}>
           <header className={styles.intro}>
             <p className={styles.eyebrow}>Contact / Squamish + Sea-to-Sky</p>
-            <MeterMatrixHeading id="contact-title" text="Have a wedding date?" lines={["Have a", "wedding date?"]} className={styles.title} />
+            <h1 id="contact-title" className={styles.title}>
+              <span>Have a</span>{" "}
+              <span>Wedding date?</span>
+            </h1>
             <p className={styles.lede}>
               Check it here. If I&apos;m free, you can book a consult right away.
             </p>

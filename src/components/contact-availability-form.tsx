@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Script from "next/script";
 import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
@@ -8,7 +9,6 @@ import {
   AvailabilityCheckingState,
 } from "@/components/availability-checking-state";
 import { PostAvailabilityOutcome } from "@/components/post-availability-outcome";
-import { PostAvailabilitySuccess } from "@/components/post-availability-success";
 import { clearPostAvailabilityContext, getPostAvailabilityContext } from "@/lib/post-availability-context";
 import { recordAvailabilityJourneyEvent } from "@/lib/availability-journey-client";
 import { headlineVariantPayload } from "@/lib/experiment";
@@ -19,6 +19,12 @@ import {
 } from "@/lib/wedding-date-input";
 import type { ContactApiResponse } from "@/types/contact-api";
 import styles from "./contact-availability-form.module.css";
+
+const PostAvailabilitySuccess = dynamic(() =>
+  import("@/components/post-availability-success").then(
+    (module) => module.PostAvailabilitySuccess,
+  ),
+);
 
 function clientPagePath(): string | undefined {
   if (typeof window === "undefined") return undefined;
@@ -292,11 +298,13 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
 
   return (
     <div className={styles.flow} data-contact-state={availability.kind}>
-      <Script
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-        strategy="lazyOnload"
-        onLoad={() => setTurnstileReady(true)}
-      />
+      {showInquiry && turnstileSiteKeyResolved ? (
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          strategy="afterInteractive"
+          onLoad={() => setTurnstileReady(true)}
+        />
+      ) : null}
 
       {availability.kind === "checking" ? (
         <AvailabilityCheckingState className={styles.checking} />

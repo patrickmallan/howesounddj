@@ -6,9 +6,18 @@ import { useEffect, useRef } from "react";
 type AmbientDanceMontageProps = {
   fingerprintClassName: string;
   logoClassName: string;
+  posterSrc?: string;
+  showLockup?: boolean;
+  videoSrc?: string;
 };
 
-export function AmbientDanceMontage({ fingerprintClassName, logoClassName }: AmbientDanceMontageProps) {
+export function AmbientDanceMontage({
+  fingerprintClassName,
+  logoClassName,
+  posterSrc = "/images/home/hsdj-hero-montage-poster-v1.jpg",
+  showLockup = true,
+  videoSrc = "/videos/hsdj-hero-montage-web-v1.mp4",
+}: AmbientDanceMontageProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -26,15 +35,15 @@ export function AmbientDanceMontage({ fingerprintClassName, logoClassName }: Amb
     const prepare = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
-        video.poster = "/images/home/hsdj-hero-montage-poster-v1.jpg";
+        video.poster = posterSrc;
         if (source) {
-          source.src = "/videos/hsdj-hero-montage-web-v1.mp4";
+          source.src = videoSrc;
           video.load();
           playIfVisible();
         }
         prepare.disconnect();
       },
-      { rootMargin: "600px 0px" },
+      { rootMargin: "300px 0px" },
     );
     prepare.observe(video);
 
@@ -58,7 +67,7 @@ export function AmbientDanceMontage({ fingerprintClassName, logoClassName }: Amb
       video.removeEventListener("canplay", playIfVisible);
       document.removeEventListener("visibilitychange", playIfVisible);
     };
-  }, []);
+  }, [posterSrc, videoSrc]);
 
   return (
     <>
@@ -74,14 +83,16 @@ export function AmbientDanceMontage({ fingerprintClassName, logoClassName }: Amb
         <source type="video/mp4" />
       </video>
       <div className={logoClassName} aria-hidden="true">
-        <Image
-          src="/images/logo/lockups/hsdj-sasquatch-video-overlay-v14.webp"
-          alt=""
-          width={1600}
-          height={900}
-          sizes="(max-width: 700px) 100vw, 1240px"
-          data-video-overlay-lockup
-        />
+        {showLockup ? (
+          <Image
+            src="/images/logo/lockups/hsdj-sasquatch-video-overlay-v14.webp"
+            alt=""
+            width={1600}
+            height={900}
+            sizes="(max-width: 700px) 100vw, 1240px"
+            data-video-overlay-lockup
+          />
+        ) : null}
         <span data-video-overlay-mountains>
           <Image src="/images/logo/elements/hsdj-mountain-backdrop-v3-transparent.png" alt="" fill sizes="100vw" />
         </span>

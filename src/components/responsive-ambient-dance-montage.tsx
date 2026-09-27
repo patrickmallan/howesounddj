@@ -39,6 +39,9 @@ export function ResponsiveAmbientDanceMontage({
     <AmbientDanceMontage
       fingerprintClassName={fingerprintClassName}
       logoClassName={logoClassName}
+      posterSrc={viewport === "mobile" ? "/images/home/hsdj-hero-montage-poster-mobile-v1.webp" : undefined}
+      showLockup={viewport !== "mobile"}
+      videoSrc={viewport === "mobile" ? "/videos/hsdj-hero-montage-mobile-v1.mp4" : undefined}
     />
   );
 }
