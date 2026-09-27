@@ -28,10 +28,10 @@ export const metadata: Metadata = {
 };
 
 const soundCheck = [
-  ["Ceremony", "The vows are heard. The music starts where it should."],
-  ["Cocktails + dinner", "A different room needs a different pace."],
-  ["Speeches", "The microphones work and nobody has to think about them."],
-  ["Reception", "When the floor opens, the set can open with it."],
+  ["Ceremony", "You say the words. I’ll make sure every seat hears them."],
+  ["Cocktails + dinner", "Good music, easy volume. Nobody has to shout."],
+  ["Speeches", "You bring the stories. I’ll keep the mic behaving."],
+  ["Dance floor", "When your people are ready, I’m ready too."],
 ] as const;
 
 export default async function HoweSoundDJHomepage() {
@@ -79,6 +79,7 @@ export default async function HoweSoundDJHomepage() {
           </div>
           <div className={styles.soundPortrait}><Image src="/images/hsdj-redesign/wedding-story/ceremony-mic-failure-crowd-v1.webp" alt="Wedding guests turning around after a microphone problem during a forest ceremony" fill sizes="(max-width: 700px) 70vw, 34vw" /></div>
           <div className={styles.soundControls} role="list">
+            <p className={styles.soundControlsLabel}><strong>Sound, sorted.</strong><span>One less thing to worry about.</span></p>
             {soundCheck.map(([title, text]) => <div className={styles.soundControl} role="listitem" key={title}><HardwareListMarker /><div><h3>{title}</h3><p>{text}</p></div></div>)}
           </div>
         </div>
