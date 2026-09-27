@@ -212,6 +212,31 @@ export function venuesHubBreadcrumbJsonLd(): Record<string, unknown> {
   };
 }
 
+/** Search-readable version of the venue directory rendered on `/venues`. */
+export function venuesHubItemListJsonLd(
+  venues: ReadonlyArray<{ slug: string; name: string; shortSummary: string }>,
+): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${SITE_ORIGIN}/venues#venue-list`,
+    name: "Squamish and Sea-to-Sky wedding venues",
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    numberOfItems: venues.length,
+    itemListElement: venues.map((venue, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "WebPage",
+        "@id": `${SITE_ORIGIN}/venues/${venue.slug}`,
+        url: `${SITE_ORIGIN}/venues/${venue.slug}`,
+        name: venue.name,
+        description: venue.shortSummary,
+      },
+    })),
+  };
+}
+
 export function venueDetailBreadcrumbJsonLd(venueName: string, slug: string): Record<string, unknown> {
   return {
     "@context": "https://schema.org",

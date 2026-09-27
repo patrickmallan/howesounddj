@@ -5,7 +5,7 @@ import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { ACTIVE_VENUE_PAGES } from "@/config/venue-pages";
-import { venuesHubBreadcrumbJsonLd } from "@/lib/json-ld";
+import { venuesHubBreadcrumbJsonLd, venuesHubItemListJsonLd } from "@/lib/json-ld";
 import "./venue-journey.css";
 
 const description =
@@ -34,6 +34,7 @@ export default function VenuesHubPage() {
   return (
     <main className="hsdj-interior hsdj-venues-page hsdj-venue-journey min-h-screen text-white">
       <JsonLd data={venuesHubBreadcrumbJsonLd()} />
+      <JsonLd data={venuesHubItemListJsonLd(ACTIVE_VENUE_PAGES)} />
       <section className="venue-journey-hero" aria-labelledby="venue-journey-title">
         <Image
           src="/images/hsdj-redesign/packages/packages-ceremony-clue-v2.webp"
@@ -41,7 +42,7 @@ export default function VenuesHubPage() {
           fill
           sizes="100vw"
           className="venue-journey-hero-image"
-          priority
+          preload
         />
         <div className="venue-journey-hero-content">
           <p className="venue-journey-kicker">Squamish / Sea-to-Sky / Your room</p>
@@ -77,10 +78,10 @@ export default function VenuesHubPage() {
                   <span>{venue.locationLabel}</span>
                   <span>{venue.venueType}</span>
                 </div>
-                <h3><Link href={`/venues/${venue.slug}`}>{venue.name}</Link></h3>
+                <h3><Link href={`/venues/${venue.slug}`} prefetch={false}>{venue.name}</Link></h3>
                 <p>{venue.shortSummary}</p>
                 <div className="venue-route-actions">
-                  <Link href={`/venues/${venue.slug}`}>Step into this venue <span aria-hidden="true">↗</span></Link>
+                  <Link href={`/venues/${venue.slug}`} prefetch={false}>Step into this venue <span aria-hidden="true">↗</span></Link>
                   <a href={venue.officialUrl} target="_blank" rel="noopener noreferrer">Official venue site <span className="sr-only">(opens in a new tab)</span></a>
                 </div>
               </div>

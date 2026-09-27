@@ -14,9 +14,6 @@
   height: 100%;
   overflow: visible;
   shape-rendering: geometricPrecision;
-  /* Keep the many vector fixtures in one composited layer while the page scrolls. */
-  transform: translateZ(0);
-  will-change: transform;
 }
 
 .fixtureLine { --led-level: 1; }

@@ -668,6 +668,7 @@ export function SiteFooter() {
             <Link
               key={item.href}
               href={item.href}
+              prefetch={false}
               onClick={onTrustNavClick(item.href)}
             >
               <span className="hsdj-site-footer__knob" aria-hidden="true">
@@ -685,7 +686,7 @@ export function SiteFooter() {
           <nav className="hsdj-site-footer__link-group" aria-label="More from Howe Sound DJ">
             <span>More from Howe Sound</span>
             {secondaryLinks.map((item) => (
-              <Link key={item.href} href={item.href} onClick={onTrustNavClick(item.href)}>
+              <Link key={item.href} href={item.href} prefetch={false} onClick={onTrustNavClick(item.href)}>
                 {footerLabels[item.href]} <b aria-hidden="true">→</b>
               </Link>
             ))}

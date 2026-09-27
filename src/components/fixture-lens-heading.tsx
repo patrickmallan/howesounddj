@@ -250,16 +250,14 @@ export function FixtureLensHeading({ className = "", id, lines, text }: Props) {
       >
         <FixtureSymbols />
         {geometry.lines.map((line) => (
-          <g key={line.id} id={line.id} data-fixture-line={line.id} className={styles.fixtureLine}>
+          <g key={line.id} className={styles.fixtureLine}>
             {line.words.map((word) => (
-              <g key={word.id} id={word.id} data-fixture-word={word.id}>
+              <g key={word.id}>
                 {word.letters.map((letter) => (
-                  <g key={letter.id} id={letter.id} data-fixture-letter={letter.character.toUpperCase()}>
+                  <g key={letter.id}>
                     {letter.leds.map((led) => (
                       <use
                         key={led.id}
-                        id={led.id}
-                        data-led={led.id}
                         className={styles.fixture}
                         href={`#fixture-${line.palette}`}
                         x={stableCoordinate(led.x - 1)}
