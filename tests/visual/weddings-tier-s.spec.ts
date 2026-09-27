@@ -170,6 +170,7 @@ for (const width of [320, 390, 768, 1440]) {
     await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });
     await page.goto(route, { waitUntil: "domcontentloaded" });
 
+    const accessibilityTree = await page.locator("main").ariaSnapshot();
     const beforeScroll = await page.evaluate(() => ({
       h1Count: document.querySelectorAll("main h1").length,
       headings: [...document.querySelectorAll("main h1, main h2, main h3")].map((heading) => heading.textContent?.replace(/\s+/g, " ").trim()),
@@ -178,6 +179,8 @@ for (const width of [320, 390, 768, 1440]) {
     expect(beforeScroll.h1Count).toBe(1);
     expect(beforeScroll.headings).toContain("Wedding tidbits");
     expect(beforeScroll.packageLinkText).toContain("See packages");
+    expect(accessibilityTree).toContain('heading "Wedding tidbits" [level=2]');
+    expect(accessibilityTree).toContain('link "See packages"');
 
     await naturalScroll(page);
     const audit = await page.evaluate(() => {
