@@ -39,23 +39,30 @@ export default function SquamishWeddingDjPage() {
 
       <section id="sq-place" className="sq-place" aria-labelledby="sq-place-title">
         <div className="sq-place-intro">
-          <h2 id="sq-place-title">This place gets under your skin.</h2>
-          <p>Coast Mountains above you. Howe Sound close by. Forest, water, and a town that has its own energy beyond the view. Squamish makes a wedding feel like you brought your people somewhere worth being together.</p>
+          <h2 id="sq-place-title" className="no-letter-flash">This place gets under your skin.</h2>
+          <p className="sq-place-copy">
+            <span>Coast Mountains above you.</span>
+            <span>Howe Sound close by.</span>
+            <span>Forest, water, and a town with energy beyond the view.</span>
+            <strong>Squamish makes a wedding feel like you brought your people somewhere worth being together.</strong>
+          </p>
         </div>
         <div className="sq-place-art">
           <Image src="/images/hsdj-redesign/new-editorial/squamish-night-signal-v1.webp" alt="Editorial collage of a Squamish mountain ceremony, dinner lights, DJ equipment and a wedding dance floor" fill sizes="100vw" />
         </div>
         <div className="sq-place-after">
           <strong>Come for the setting.<br />Stay for the feeling.</strong>
-          <p>Guests can make a whole trip of it. Then the day narrows to one room, your favourite people, and a party that could only be yours. That contrast is what I love about playing weddings here.</p>
+          <p className="sq-field-note">Guests can make a whole trip of it. Then the day narrows to one room, your favourite people, and a party that could only be yours. <strong>That contrast is what I love about playing weddings here.</strong></p>
         </div>
       </section>
 
       <section className="sq-local" aria-labelledby="sq-local-title">
         <div className="sq-local-copy">
-          <h2 id="sq-local-title">I get to call Squamish home.</h2>
-          <p>That means I am not discovering the Sea-to-Sky corridor on your wedding day. I know the landscape is more than a backdrop: weather can turn, outdoor sound can travel, and the right room changes everything. I plan for the celebration you are actually having here.</p>
-          <p>What I bring is practical local attention, then music that feels as alive as the place. No imported, one-size-fits-all wedding script.</p>
+          <h2 id="sq-local-title" className="no-letter-flash">I get to call Squamish home.</h2>
+          <div className="sq-local-notes">
+            <p>That means I am not discovering the Sea-to-Sky corridor on your wedding day. I know the landscape is more than a backdrop: weather can turn, outdoor sound can travel, and the right room changes everything.</p>
+            <p>I plan for the celebration you are actually having here. <strong>Practical local attention, then music that feels as alive as the place.</strong> No imported, one-size-fits-all wedding script.</p>
+          </div>
           <Link href="/vancouver-wedding-dj">Planning from Vancouver? Follow that route <span aria-hidden="true">↗</span></Link>
         </div>
         <div className="sq-local-type" aria-hidden="true"><span>SEA</span><span>TO</span><span>SKY</span></div>
@@ -63,8 +70,12 @@ export default function SquamishWeddingDjPage() {
 
       <section className="sq-music" aria-labelledby="sq-music-title">
         <div className="sq-music-intro">
-          <h2 id="sq-music-title">The mix can go anywhere. It still sounds like you.</h2>
-          <p>Disco, hip-hop, country, drum &amp; bass, indie: none of them is a mandatory stop. They are different doors into the same room. Your taste starts the conversation; I watch the floor and know when to take it somewhere new.</p>
+          <h2 id="sq-music-title" className="no-letter-flash">The mix can go anywhere. It still sounds like you.</h2>
+          <p className="sq-music-copy">
+            <strong><span>Disco</span><span>Hip-hop</span><span>Country</span><span>Drum &amp; bass</span><span>Indie</span></strong>
+            <span>None is a mandatory stop. They are different doors into the same room.</span>
+            <span>Your taste starts the conversation; I watch the floor and know when to take it somewhere new.</span>
+          </p>
         </div>
         <div className="sq-music-art">
           <Image src="/images/hsdj-redesign/new-editorial/squamish-genre-mural-v1.webp" alt="Editorial music collage moving through disco, hip-hop, country, drum and bass, and indie visual styles at a Squamish wedding" fill sizes="100vw" />
@@ -79,15 +90,15 @@ export default function SquamishWeddingDjPage() {
       <section className="sq-venue" aria-labelledby="sq-venue-title">
         <div className="sq-venue-arrow" aria-hidden="true">↘</div>
         <div>
-          <h2 id="sq-venue-title">The room changes the record.</h2>
-          <p>A brewery, a ranch, and a mountaintop ask different things of the sound. If you are choosing a setting, the venue route is where those differences belong.</p>
+          <h2 id="sq-venue-title" className="no-letter-flash">The room changes the record.</h2>
+          <p className="sq-venue-copy"><span>A brewery.</span><span>A ranch.</span><span>A mountaintop.</span><strong>Each asks something different of the sound.</strong> If you are choosing a setting, the venue route is where those differences belong.</p>
           <Link href="/venues">Explore the Sea-to-Sky venue route <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
 
       <section className="sq-outro" aria-labelledby="sq-outro-title">
-        <h2 id="sq-outro-title">Got a date? Let&apos;s see where this goes.</h2>
-        <p>The calendar answers right away. If I am open, book a consult and tell me about the music, your people, and the kind of night you want.</p>
+        <h2 id="sq-outro-title" className="no-letter-flash">Got a date? Let&apos;s see where this goes.</h2>
+        <p className="sq-outro-copy"><span>The calendar answers right away.</span><strong>If I am open, book a consult and tell me about the music, your people, and the kind of night you want.</strong></p>
         <Link href="/contact">Check your date <span aria-hidden="true">↗</span></Link>
       </section>
     </main>
