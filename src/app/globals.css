@@ -1626,6 +1626,7 @@ body {
   background: #050506;
   filter: contrast(1.12) saturate(1.12) brightness(1.04);
 }
+.hsdj-site-footer__collage picture, .hsdj-site-footer__collage img { display: block; width: 100%; height: 100%; }
 .hsdj-site-footer__collage img { object-fit: cover; pointer-events: none; }
 
 .hsdj-site-footer::before {

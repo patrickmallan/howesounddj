@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { BookConsultTrackedLink } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
@@ -30,8 +31,40 @@ function TransportLights() {
 }
 
 export function EncoreCassetteDeck() {
+  const machine = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = machine.current;
+    if (!element || typeof IntersectionObserver === "undefined") {
+      element?.setAttribute("data-art-ready", "true");
+      element?.setAttribute("data-motion-active", "true");
+      return;
+    }
+
+    const artObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          element.setAttribute("data-art-ready", "true");
+          artObserver.disconnect();
+        }
+      },
+      { rootMargin: "300px 0px" },
+    );
+    const motionObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) element.setAttribute("data-motion-active", "true");
+      else element.removeAttribute("data-motion-active");
+    });
+
+    artObserver.observe(element);
+    motionObserver.observe(element);
+    return () => {
+      artObserver.disconnect();
+      motionObserver.disconnect();
+    };
+  }, []);
+
   return (
-    <div className={styles.machine}>
+    <div ref={machine} className={styles.machine}>
       <Speaker side="left" />
       <div className={styles.deckCore}>
         <div className={styles.topline}>

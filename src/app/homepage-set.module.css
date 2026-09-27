@@ -15,7 +15,6 @@
 }
 
 .chapter { position: relative; min-height: 900px; overflow: hidden; isolation: isolate; }
-.chapter:not(.arrival):not(.build) { content-visibility: auto; contain-intrinsic-size: auto 900px; }
 .tapeLabel, .machineLabel { position: relative; width: fit-content; margin: 0; padding: .62rem .9rem .58rem 1.1rem; border: 1px solid #ffffff54; color: #fff8e8; background: linear-gradient(104deg, #111419f5, #07090cf2); box-shadow: 7px 6px 0 #0847ff80; font: 900 clamp(.78rem, .85vw, .9rem)/1.15 var(--technical); letter-spacing: .12em; text-transform: uppercase; transform: rotate(-.6deg); }
 .tapeLabel::before, .machineLabel::before { position: absolute; top: 0; bottom: 0; left: 0; width: .42rem; content: ""; background: linear-gradient(var(--yellow) 0 48%, var(--red) 48% 74%, var(--blue) 74%); }
 
@@ -73,7 +72,9 @@
 .nightFader { position: relative; z-index: 8; }
 
 .readRoom { min-height: 1000px; color: white; background: #070708; }
-.readRoom::before { position: absolute; inset: 0; z-index: -2; content: ""; background: url('/images/hsdj-redesign/wedding-story/read-room-dancefloor-overhead-v1.webp') center 48% / cover no-repeat; filter: contrast(1.08) saturate(.92) brightness(.78); transform: scale(1.015); }
+.readRoomDeck { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+.readRoomDeck picture, .readRoomDeck img { display: block; width: 100%; height: 100%; }
+.readRoomDeck img { object-fit: cover; object-position: center 48%; filter: contrast(1.08) saturate(.92) brightness(.78); transform: scale(1.015); }
 .readRoom::after { position: absolute; inset: 0; z-index: -1; content: ""; background: linear-gradient(102deg, #030405f5 0 24%, #030405c9 40%, #0304053d 68%, #03040580 100%), linear-gradient(0deg, #030405d6 0, transparent 36% 70%, #0304058c 100%); }
 .roomCopy { position: absolute; z-index: 12; top: 11%; left: max(6vw, 4rem); width: min(860px, 58vw); }
 .roomCopy h2 { display: inline-grid; width: max-content; max-width: 1000px; margin: 1rem 0 1.2rem; padding: .2em .25em .24em; border: 1px solid #ffffff24; border-left: 7px solid #75f4ff; color: #f5f1e7; background: #030608f2; box-shadow: 8px 9px 0 #0008, inset 0 1px 0 #ffffff0d; font: 800 clamp(2.5rem, 4.7vw, 4.8rem)/.92 var(--display); letter-spacing: .025em; text-transform: uppercase; text-shadow: none; }
@@ -105,8 +106,10 @@
 .playbackFingerprint img { width: 100%; height: 100%; object-fit: fill; opacity: .92; }
 
 .operator { min-height: 860px; padding: 4rem 5vw; color: #fff; background: #070a12; }
-.operatorDeck { position: absolute; inset: 0; z-index: -2; background: url('/images/hsdj-redesign/afterparty/dancefloor-wave-collage-optimized.webp') center / cover no-repeat; }
-.operatorPaper { position: relative; width: min(1190px, 91vw); height: 720px; margin: auto; background: linear-gradient(90deg, #05071166, #070b13eb 48%, #070b13d9), url('/images/hsdj-redesign/afterparty/dancefloor-wave-collage-optimized.webp') center / cover no-repeat; border: 1px solid #7eeeff85; box-shadow: -12px 16px 0 #0b52d9, 12px -11px 0 #ff3880, 0 30px 70px #000c; clip-path: polygon(0 2%, 19% 0, 39% 2%, 60% .5%, 79% 2.5%, 100% 1%, 98% 94%, 81% 100%, 59% 96%, 36% 99%, 15% 96%, 1% 99%); transform: rotate(.4deg); }
+.operatorDeck { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+.operatorDeck picture, .operatorDeck img { display: block; width: 100%; height: 100%; }
+.operatorDeck img { object-fit: cover; object-position: center; }
+.operatorPaper { position: relative; width: min(1190px, 91vw); height: 720px; margin: auto; background: linear-gradient(90deg, #05071166, #070b13eb 48%, #070b13d9); border: 1px solid #7eeeff85; box-shadow: -12px 16px 0 #0b52d9, 12px -11px 0 #ff3880, 0 30px 70px #000c; clip-path: polygon(0 2%, 19% 0, 39% 2%, 60% .5%, 79% 2.5%, 100% 1%, 98% 94%, 81% 100%, 59% 96%, 36% 99%, 15% 96%, 1% 99%); transform: rotate(.4deg); }
 .operatorPaper::after { position: absolute; z-index: 1; right: 2%; bottom: 6%; width: 29%; height: 23%; content: ""; pointer-events: none; opacity: .8; background: repeating-linear-gradient(90deg, #6eeeff 0 7px, transparent 7px 18px, #ffe000 18px 25px, transparent 25px 40px, #ff3d86 40px 44px, transparent 44px 54px); clip-path: polygon(0 72%, 9% 38%, 16% 61%, 23% 5%, 30% 46%, 36% 22%, 43% 80%, 49% 48%, 58% 0, 67% 54%, 74% 28%, 82% 68%, 90% 34%, 100% 73%, 100% 100%, 0 100%); }
 .operatorPhoto { position: absolute; z-index: 2; top: 11%; bottom: 5%; left: 3%; width: 43%; border: 2px solid #6eeeff; background: #2bd7e9; box-shadow: -12px 11px 0 #0851eb, 0 20px 40px #000c; transform: rotate(-2deg); }
 .operatorPhoto img { object-fit: cover; object-position: center top; filter: grayscale(1) contrast(1.18); mix-blend-mode: multiply; clip-path: polygon(0 0, 100% 0, 100% 16%, 94% 24%, 100% 43%, 93% 62%, 100% 81%, 91% 100%, 0 100%); }
@@ -149,9 +152,7 @@
   padding: 1rem 1.2rem 1.35rem;
   border: 0;
   color: #fff8e8;
-  background:
-    linear-gradient(96deg, #050709ed 0 30%, #050709c9 70%, #050709ed),
-    url('/images/hsdj-redesign/footer/footer-dj-mixer-collage-v2-optimized.webp') center 54% / cover no-repeat;
+  background: linear-gradient(96deg, #050709f5 0 30%, #10151de8 70%, #050709f5);
   box-shadow: none;
   clip-path: polygon(0 8%, 97% 0, 100% 82%, 0 100%);
   text-shadow: 0 2px 5px #000;
@@ -276,7 +277,7 @@
   .buildHeading h2 > span, .buildHeading h2 > strong { display: block; width: auto; max-width: 100%; }
 
   .readRoom { min-height: 820px; }
-  .readRoom::before { background-position: 61% center; }
+  .readRoomDeck img { object-position: 61% center; }
   .readRoom::after { background: linear-gradient(0deg, #030405f5 0 38%, #030405b8 64%, #0304056b 100%); }
   .roomCopy { top: .5%; right: 5%; left: 5%; width: 90%; }
   .roomCopy h2 { display: inline-grid; width: max-content; max-width: calc(100vw - 3.8rem); margin-top: .35rem; font-size: 2.35rem; line-height: .94; }

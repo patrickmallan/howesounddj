@@ -16,9 +16,6 @@ import { CANONICAL_REVIEWS, HOMEPAGE_FEATURED_REVIEW_IDS } from "@/config/review
 import { websiteJsonLd } from "@/lib/json-ld";
 import styles from "./homepage-set.module.css";
 
-const HOMEPAGE_HEADLINE = "Your wedding. A variety of the best.";
-const HEADLINE_VARIANTS = { A: HOMEPAGE_HEADLINE, B: HOMEPAGE_HEADLINE, C: HOMEPAGE_HEADLINE } as const;
-
 export const metadata: Metadata = {
   title: { absolute: HOMEPAGE_TITLE },
   description: "Squamish wedding DJ Patrick Mallan handles ceremony sound, planning, speeches, dinner music, and a reception built around your music and your people.",
@@ -50,7 +47,7 @@ export default async function HoweSoundDJHomepage() {
         <LivingVUMeter className={styles.arrivalVu} />
         <div data-testid="home-hero-inner" className={styles.arrivalCopy}>
           <p className={styles.machineLabel}>Squamish wedding DJ / local by design</p>
-          <div id="home-arrival-heading" className={styles.heroHeadline}><HomepageHeroHeadline headlines={HEADLINE_VARIANTS} /></div>
+          <div id="home-arrival-heading" className={styles.heroHeadline}><HomepageHeroHeadline /></div>
         </div>
       </section>
 
@@ -66,7 +63,7 @@ export default async function HoweSoundDJHomepage() {
         <header className={styles.remembersHeading}><h2 id="remembers-heading" className="hsdj-meter--after-dark">What couples said after the last song.</h2></header>
         <p className={styles.reviewInstruction}>Turn it up.<br /><b>These people were actually there.</b></p>
         <div className={styles.reviewDeck}><ReviewDeck reviews={reviews} /></div>
-        <div className={styles.rememberLinks}><Link href="/reviews">Read all reviews →</Link><Link href="/venues">See Squamish venues →</Link></div>
+        <div className={styles.rememberLinks}><Link href="/reviews" prefetch={false}>Read all reviews →</Link><Link href="/venues" prefetch={false}>See Squamish venues →</Link></div>
       </section>
 
       <section id="services" data-testid="home-services-section" className={`${styles.chapter} ${styles.soundCheck}`} aria-labelledby="sound-check-heading">
@@ -86,6 +83,7 @@ export default async function HoweSoundDJHomepage() {
       </section>
 
       <section id="room" className={`${styles.chapter} ${styles.readRoom}`} aria-labelledby="read-room-heading">
+        <DeferredArt className={styles.readRoomDeck} desktopSrc="/images/hsdj-redesign/wedding-story/read-room-dancefloor-overhead-v1.webp" />
         <div className={styles.roomCopy}><p className={styles.tapeLabel}>Your music sets the direction</p><h2 id="read-room-heading" className="hsdj-meter--paper"><span>I build the</span><span>night from</span><span>there.</span></h2><div className={styles.roomManifesto}><span>Must plays</span><span>No-go tracks</span><span>Requests</span><p>Tell me what you love, what never gets played, and what makes your people move. That gives me the starting point. From there, I watch what lands and decide where to go next.</p></div></div>
         <div className={styles.roomPhotos}>
           <figure><Image src="/images/hsdj-redesign/wedding-story/ceremony-mountains.jpg" alt="A couple exchanging vows outdoors with mountains beyond the ceremony" fill quality={90} sizes="(max-width: 700px) 92vw, 31vw" /></figure>
@@ -107,10 +105,10 @@ export default async function HoweSoundDJHomepage() {
       </section>
 
       <section id="about" data-testid="home-about-grid" className={`${styles.chapter} ${styles.operator}`} aria-labelledby="operator-heading">
-        <div className={styles.operatorDeck} aria-hidden="true" />
+        <DeferredArt className={styles.operatorDeck} desktopSrc="/images/hsdj-redesign/afterparty/dancefloor-wave-collage-optimized.webp" />
         <div className={styles.operatorPaper}>
           <div className={styles.operatorPhoto}><Image src="/images/about/patrick-dj-action.webp" alt="Patrick DJing with one arm raised" fill sizes="(max-width: 700px) 100vw, 46vw" /></div>
-          <div className={styles.operatorCopy}><p className={styles.tapeLabel}>Patrick / Howe Sound DJ</p><h2 id="operator-heading" className="hsdj-meter--cold">The DJ you plan with is the DJ who shows up.</h2><p>I&apos;m Patrick. I&apos;ll be on the emails, at the setup, behind the ceremony microphones, and at the decks when the floor opens. No handoff to somebody you&apos;ve never met.</p><p>I come prepared. Then I pay attention to you, the timeline, and what the room is doing.</p><Link href="/about">Full story on About →</Link></div>
+          <div className={styles.operatorCopy}><p className={styles.tapeLabel}>Patrick / Howe Sound DJ</p><h2 id="operator-heading" className="hsdj-meter--cold">The DJ you plan with is the DJ who shows up.</h2><p>I&apos;m Patrick. I&apos;ll be on the emails, at the setup, behind the ceremony microphones, and at the decks when the floor opens. No handoff to somebody you&apos;ve never met.</p><p>I come prepared. Then I pay attention to you, the timeline, and what the room is doing.</p><Link href="/about" prefetch={false}>Full story on About →</Link></div>
         </div>
       </section>
 

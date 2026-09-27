@@ -25,6 +25,11 @@ export function AmbientDanceMontage({
     if (!video) return;
 
     const source = video.querySelector("source");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.poster = posterSrc;
+      return;
+    }
+
     const isVisible = () => {
       const bounds = video.getBoundingClientRect();
       return bounds.bottom > 0 && bounds.top < window.innerHeight && !document.hidden;
@@ -92,14 +97,17 @@ export function AmbientDanceMontage({
             sizes="(max-width: 700px) 100vw, 1240px"
             data-video-overlay-lockup
           />
-        ) : null}
-        <span data-video-overlay-mountains>
-          <Image src="/images/logo/elements/hsdj-mountain-backdrop-v3-transparent.png" alt="" fill sizes="100vw" />
-        </span>
-        <span data-video-overlay-sasquatch>
-          <Image src="/images/logo/characters/hsdj-sasquatch-patrick-pose-v1-transparent.png" alt="" fill sizes="70vw" />
-        </span>
-        <span data-video-overlay-title><b>Howe Sound</b><i>Wedding DJ</i></span>
+        ) : (
+          <>
+            <span data-video-overlay-mountains>
+              <Image src="/images/logo/elements/hsdj-mountain-backdrop-v3-transparent.png" alt="" fill sizes="100vw" />
+            </span>
+            <span data-video-overlay-sasquatch>
+              <Image src="/images/logo/characters/hsdj-sasquatch-patrick-pose-v1-transparent.png" alt="" fill sizes="70vw" />
+            </span>
+            <span data-video-overlay-title><b>Howe Sound</b><i>Wedding DJ</i></span>
+          </>
+        )}
         <span className={fingerprintClassName}>
           <Image
             src="/images/logo/elements/hsdj-fingerprint-disc-v1.png"

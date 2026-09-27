@@ -50,6 +50,18 @@ export function ReviewDeck({ reviews }: Props) {
   };
 
   const handleFaderKey = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Home") {
+      event.preventDefault();
+      setActive(0);
+      setUserSelected(true);
+      return;
+    }
+    if (event.key === "End") {
+      event.preventDefault();
+      setActive(last);
+      setUserSelected(true);
+      return;
+    }
     if (event.key === "ArrowUp" || event.key === "ArrowRight") {
       event.preventDefault();
       setActive((current) => (current + 1) % reviewPairs.length);

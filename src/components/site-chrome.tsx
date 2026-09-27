@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { SITE_PUBLIC_NAME } from "@/config/site-brand";
 import CTADuo from "@/components/cta-duo";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import { DeferredArt } from "@/components/deferred-art";
 import { HeaderCheckAvailability } from "@/components/header-check-availability";
 import { trackPostAvailabilityTrustClickFromHref } from "@/lib/post-availability-trust";
 import narrowHeaderStyles from "./site-chrome-narrow.module.css";
@@ -430,6 +431,7 @@ export function SiteHeader() {
       <div className={`${narrowHeaderStyles.headerInner} relative z-[70] mx-auto flex max-w-[90rem] items-center justify-between gap-2 px-4 py-2 sm:gap-3 sm:px-6 lg:px-8`}>
         <Link
           href="/"
+          prefetch={false}
           className={`${narrowHeaderStyles.wordmark} hsdj-wordmark mr-2 shrink transition hover:opacity-90 sm:mr-4`}
         >
           <Image
@@ -470,6 +472,7 @@ export function SiteHeader() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  prefetch={false}
                   aria-current={active ? "page" : undefined}
                   onClick={onTrustNavClick(item.href)}
                   onFocus={() => setOpenMenuLabel(null)}
@@ -541,6 +544,7 @@ export function SiteHeader() {
                                 <Link
                                   key={child.href}
                                   href={child.href}
+                                  prefetch={false}
                                   onClick={onTrustNavClick(child.href, closeMobileMenu)}
                                   aria-current={childActive ? "page" : undefined}
                                   className={`hsdj-mobile-channel-link ${childActive ? "is-active" : ""}`}
@@ -560,6 +564,7 @@ export function SiteHeader() {
                       <Link
                         key={item.href}
                         href={item.href}
+                        prefetch={false}
                         onClick={onTrustNavClick(item.href, closeMobileMenu)}
                         aria-current={active ? "page" : undefined}
                         className={`hsdj-nav-pad hsdj-mobile-nav-cue ${active ? "is-active" : ""}`}
@@ -615,6 +620,7 @@ export function SiteFinalDecisionZone() {
               <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-white/45">
                 <Link
                   href="/packages"
+                  prefetch={false}
                   onClick={onTrustNavClick("/packages")}
                   className="transition hover:text-white/65"
                 >
@@ -625,6 +631,7 @@ export function SiteFinalDecisionZone() {
                 </span>
                 <Link
                   href="/reviews"
+                  prefetch={false}
                   onClick={onTrustNavClick("/reviews")}
                   className="transition hover:text-white/65"
                 >
@@ -654,9 +661,7 @@ export function SiteFooter() {
   };
   return (
     <footer className="hsdj-site-footer mt-auto">
-      <div className="hsdj-site-footer__collage" aria-hidden="true">
-        <Image src="/images/hsdj-redesign/footer/footer-dj-mixer-collage-v2-optimized.webp" alt="" fill sizes="100vw" />
-      </div>
+      <DeferredArt className="hsdj-site-footer__collage" desktopSrc="/images/hsdj-redesign/footer/footer-dj-mixer-collage-v2-optimized.webp" />
       <div className="hsdj-site-footer__inner mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm lg:px-8">
         <div className="hsdj-site-footer__brand">
           <span className="hsdj-site-footer__eyebrow">Squamish, BC</span>

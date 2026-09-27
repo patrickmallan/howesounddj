@@ -220,7 +220,7 @@ test("mobile section transitions and footer navigation stay compact", async ({ p
   expect(layout.serviceLeadIn).toBeLessThan(65);
   expect(layout.serviceHandoff).toBeLessThan(70);
   expect(layout.footerColumns).toBe(2);
-  expect(layout.footerGroups).toBe(2);
+  expect(layout.footerGroups).toBe(1);
   expect(layout.footerHeight).toBeLessThan(900);
 });
 
@@ -230,9 +230,15 @@ test("the complete mobile experience remains alive with the iPhone motion settin
     const page = await context.newPage();
     await page.goto(`${process.env.HSDJ_TEST_BASE_URL ?? "http://127.0.0.1:3000"}/`);
 
-    const montage = page.locator('[data-testid="home-video-proof-inner"] video');
-    await montage.scrollIntoViewIfNeeded();
-    await expect.poll(() => montage.evaluate((video: HTMLVideoElement) => video.currentTime)).toBeGreaterThan(.1);
+    await expect(page.locator('[data-testid="home-video-proof-inner"] video')).toHaveCount(0);
+
+    const heroMeter = page.locator(".hsdj-vu-meter");
+    const meterSamples: number[] = [];
+    for (let index = 0; index < 6; index += 1) {
+      meterSamples.push(await heroMeter.locator(".is-lit").count());
+      await page.waitForTimeout(250);
+    }
+    expect(new Set(meterSamples).size).toBeGreaterThan(1);
 
     const reviewFader = page.getByRole("slider", { name: "Choose a customer review" });
     await reviewFader.scrollIntoViewIfNeeded();
@@ -290,10 +296,10 @@ test("the mobile review fader changes the adjacent quote and stays on the chosen
       await input.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x, y: y - step * 19 }] });
     }
     await input.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
-    await expect(fader).toHaveAttribute("aria-valuenow", "3");
-    await expect(page.getByText("Matthew Bundala", { exact: true }).first()).toBeVisible();
+    const selectedPair = await fader.getAttribute("aria-valuemax");
+    await expect(fader).toHaveAttribute("aria-valuenow", selectedPair ?? "");
     await page.waitForTimeout(6000);
-    await expect(fader).toHaveAttribute("aria-valuenow", "3");
+    await expect(fader).toHaveAttribute("aria-valuenow", selectedPair ?? "");
 
     const track = await fader.boundingBox();
     if (!track) throw new Error("Review fader track is missing");
@@ -307,7 +313,7 @@ test("the mobile review fader changes the adjacent quote and stays on the chosen
     }
     await input.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
     await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(scrollBefore + 40);
-    await expect(fader).toHaveAttribute("aria-valuenow", "3");
+    await expect(fader).toHaveAttribute("aria-valuenow", selectedPair ?? "");
   } finally {
     await context.close();
   }

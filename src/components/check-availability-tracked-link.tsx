@@ -85,7 +85,7 @@ export function CheckAvailabilityTrackedLink({
   const mergedClass = [alignClass, "motion-interactive", className].filter(Boolean).join(" ");
 
   return (
-    <Link href={href} className={mergedClass} onClick={handleClick}>
+    <Link href={href} prefetch={false} className={mergedClass} onClick={handleClick}>
       {children ?? "Check Availability"}
     </Link>
   );
