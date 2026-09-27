@@ -203,7 +203,7 @@
 .outro { padding-inline: max(5vw, calc((100vw - 1380px) / 2)); }
 .peopleScene {
   position: relative;
-  padding-top: clamp(2.5rem, 4vw, 4rem);
+  padding-top: clamp(1.5rem, 2.5vw, 2.5rem);
   padding-bottom: clamp(2.5rem, 4vw, 4rem);
   background: repeating-linear-gradient(90deg, #ffffff05 0 1px, transparent 1px 72px), #111515;
 }
@@ -327,7 +327,7 @@
 .floorHeading { position: relative; max-width: 890px; margin-bottom: clamp(3rem, 6vw, 6rem); }
 .floorHeading .sceneLabel { color: var(--yellow); }
 .floorHeading h2 { color: #fff; }
-.waveBanner { position: relative; left: 50%; width: 100vw; margin: 0 0 clamp(4rem, 7vw, 7rem) -50vw; overflow: hidden; border-top: 5px solid #0b141b; border-bottom: 5px solid #0b141b; color: #9ee9ee; background: #07121b; box-shadow: 0 14px 35px #0008; }
+.waveBanner { position: relative; left: 50%; width: 100vw; margin: 0 0 clamp(2rem, 3.5vw, 3.5rem) -50vw; overflow: hidden; border-top: 5px solid #0b141b; border-bottom: 5px solid #0b141b; color: #9ee9ee; background: #07121b; box-shadow: 0 14px 35px #0008; }
 .waveBannerHeader { display: flex; justify-content: space-between; gap: 1rem; padding: .55rem max(5vw, calc((100vw - 1380px) / 2)); border-bottom: 1px solid #29424d; color: #8eaeb7; font: 800 clamp(.54rem, .65vw, .7rem)/1.1 var(--font-mono, monospace); letter-spacing: .14em; }
 .waveDeck { --wave-outer: #f82c78; --wave-inner: #ffec9a; position: relative; display: flex; align-items: stretch; height: clamp(65px, 6vw, 86px); border-bottom: 1px solid #38535a; background: repeating-linear-gradient(90deg, transparent 0 99px, #91ccd027 99px 100px), linear-gradient(0deg, #07121b 49%, #32647566 50%, #07121b 51%); }
 .waveDeckB { --wave-outer: #14cfea; --wave-inner: #b9f5ff; }
@@ -335,7 +335,8 @@
 .waveDeckEnd { position: relative; z-index: 2; display: grid; place-items: center; flex: none; width: clamp(3.4rem, 5vw, 5rem); padding: .4rem; background: #091923ed; color: var(--wave-outer); font: 900 clamp(.7rem, .9vw, .9rem)/1 var(--font-mono, monospace); letter-spacing: .08em; white-space: nowrap; }
 .waveDeckEnd { font-size: .55rem; color: #86a9b2; }
 .waveViewport { position: relative; flex: 1; min-width: 0; overflow: hidden; }
-.waveTrack { display: flex; width: 200vw; height: 100%; transform: translate3d(0, 0, 0); backface-visibility: hidden; will-change: transform; contain: paint; }
+.waveTrack { display: flex; width: 200vw; height: 100%; animation: waveform-travel 17s linear infinite; transform: translate3d(0, 0, 0); backface-visibility: hidden; will-change: transform; contain: paint; }
+.waveDeckB .waveTrack { animation-duration: 20s; }
 .waveTrack svg { width: 100vw; height: 100%; flex: none; }
 .waveBody { opacity: .95; }
 .waveCore { fill: var(--wave-inner); opacity: .75; }
@@ -371,12 +372,13 @@
   background: #0a0e10;
 }
 .outro::before { position: absolute; top: 0; right: 0; left: 0; height: 8px; content: ""; background: linear-gradient(90deg, var(--cyan) 0 25%, var(--yellow) 25% 55%, #ff3f7e 55% 75%, var(--blue) 75%); }
-.outroDeck { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, .38fr); max-width: 1380px; margin: auto; color: var(--ink); border: 3px solid #080b12; background: var(--yellow); box-shadow: 14px 15px 0 var(--blue); transform: rotate(-.7deg); }
-.outroDeck::before { position: absolute; right: 26%; bottom: 0; width: 6px; height: 100%; content: ""; border-left: 2px dashed #080b1277; pointer-events: none; }
-.outroCopy { padding: clamp(2rem, 4vw, 4rem); }
-.outro .sceneLabel { color: #1648b9; }
+.outroDeck { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .38fr); max-width: 1380px; margin: auto; overflow: hidden; color: #fff; border: 2px solid #66757c; border-radius: 5px; background: repeating-linear-gradient(90deg, #ffffff05 0 1px, transparent 1px 7px), linear-gradient(145deg, #172126, #080d11 64%); box-shadow: 0 7px 0 #05080a, 0 20px 55px #0009, inset 0 0 0 4px #0b1115; }
+.outroDeck::before { position: absolute; top: 0; right: 0; left: 0; height: 5px; content: ""; background: linear-gradient(90deg, var(--cyan) 0 28%, var(--yellow) 28% 58%, #ff3f7e 58% 78%, var(--blue) 78%); box-shadow: 0 0 12px #22c9d766; pointer-events: none; }
+.outroDeck::after { position: absolute; top: 1.25rem; right: 1.25rem; width: 3.8rem; height: .45rem; content: ""; background: repeating-linear-gradient(90deg, #43f082 0 7px, transparent 7px 10px); filter: drop-shadow(0 0 5px #43f082); opacity: .75; pointer-events: none; }
+.outroCopy { padding: clamp(2.3rem, 4vw, 4rem); }
+.outro .sceneLabel { color: var(--cyan); }
 .outro h2 { max-width: 12ch; font-size: clamp(2.6rem, 5.2vw, 5.2rem); }
-.outro p { max-width: 37rem; margin: 1.2rem 0 0; font-size: 1.12rem; font-weight: 650; line-height: 1.45; }
+.outro p { max-width: 37rem; margin: 1.2rem 0 0; color: #d9e1e2; font-size: 1.12rem; font-weight: 650; line-height: 1.45; }
 .outroLink {
   position: relative;
   display: flex;
@@ -384,21 +386,26 @@
   align-items: center;
   justify-content: space-between;
   min-width: 0;
-  min-height: 100%;
-  padding: 2rem;
-  color: #fff;
-  background: #0b1218;
-  border: 0;
-  border-left: 9px solid var(--cyan);
+  min-height: calc(100% - 4rem);
+  margin: 2rem;
+  padding: 3.1rem 1.6rem 2.4rem;
+  color: #ffe86a;
+  background: linear-gradient(160deg, #20272b, #080b0d 48%, #15191b);
+  border: 2px solid #ffdf20;
+  border-radius: 6px;
+  box-shadow: 0 0 0 5px #080c0e, 0 0 0 7px #69757a, 0 7px 0 #b78f00, inset 0 1px #ffffff42, inset 0 -8px 18px #000b, 0 0 22px #ffdf2047;
   font-size: clamp(1.2rem, 1.9vw, 1.7rem);
-  font-weight: 900;
+  font-weight: 950;
+  letter-spacing: .04em;
+  text-shadow: 0 0 8px #ffe86aaa;
   text-decoration: none;
   text-transform: uppercase;
 }
-.outroLink::before { position: absolute; top: 1.3rem; left: 1rem; width: 1rem; height: 1rem; content: ""; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 0 4px #0b1218, 0 0 0 5px var(--cyan); }
-.outroLink span { color: var(--cyan); font-size: 2rem; }
+.outroLink::before { position: absolute; top: 1.15rem; left: 1.35rem; width: .7rem; height: .7rem; content: ""; border-radius: 50%; background: #47f38c; box-shadow: 0 0 0 3px #080c0e, 0 0 0 4px #47f38c, 0 0 12px #47f38c; }
+.outroLink::after { position: absolute; right: 1.35rem; bottom: 1rem; left: 1.35rem; height: 4px; content: ""; background: linear-gradient(90deg, var(--cyan), var(--yellow) 38%, #ff3f7e 67%, var(--blue)); box-shadow: 0 0 8px #22c9d78c; }
+.outroLink span { color: var(--cyan); font-size: 2rem; text-shadow: 0 0 9px #22c9d7; }
 .outroLink:hover,
-.outroLink:focus-visible { color: var(--ink); background: #fff; }
+.outroLink:focus-visible { color: #fff6ba; border-color: #fff6ba; outline: 3px solid var(--cyan); outline-offset: 6px; }
 
 @media (max-width: 1050px) {
   .hero { min-height: 660px; }
@@ -432,7 +439,9 @@
   .firstCopy { padding: 1.35rem 1rem 1.6rem; }
   .leadQuote blockquote { font-size: clamp(1.6rem, 5vw, 2.25rem); }
   .waveform { margin-inline: 1rem; }
-  .peopleIntro { grid-template-columns: 1fr; gap: 2.25rem; }
+  .firstScene { padding-bottom: 1rem; }
+  .peopleScene { padding-top: 1rem; }
+  .peopleIntro { grid-template-columns: 1fr; gap: 1.5rem; }
   .cornerReview { max-width: 28rem; margin: 0 1rem 0 auto; }
   .peopleQuotes { grid-template-columns: 1fr; gap: 1.5rem; }
   .peopleQuotes .peopleFeature { grid-row: auto; padding: 2rem 1.5rem; }
@@ -447,11 +456,11 @@
   .floorQuotes { grid-template-columns: 1fr; }
   .floorQuotes .floorFeature { grid-column: auto; width: 100%; margin: 0; padding: 2rem 1.5rem; }
   .floorQuotes .quote:nth-child(n) { margin-top: 0; }
+  .waveBanner { margin-bottom: 1.5rem; }
   .outroDeck { display: block; }
-  .outroDeck::before { display: none; }
   .outroCopy { padding: 2rem 1.5rem; }
-  .outroLink { min-height: 7rem; padding: 2.4rem 1.5rem 1rem; border-left: 0; border-top: 9px solid var(--cyan); }
-  .outroLink::before { top: .8rem; left: 1.5rem; }
+  .outroLink { min-height: 7rem; margin: 0 1.25rem 1.5rem; padding: 2.8rem 1.35rem 2rem; }
+  .outroLink::before { top: 1rem; left: 1.35rem; }
 }
 
 @media (max-width: 420px) {
@@ -463,18 +472,15 @@
   .recordLabel strong { font-size: clamp(.85rem, 4vw, 1.25rem); }
   .platterFoot > span:last-child { display: none; }
 }
-@keyframes waveform-travel { to { transform: translateX(-100vw); } }
-@media (prefers-reduced-motion: no-preference) {
-  .waveTrack { animation: waveform-travel 17s linear infinite; }
-  .waveDeckB .waveTrack { animation-duration: 20s; }
-}
+@keyframes waveform-travel { to { transform: translate3d(-100vw, 0, 0); } }
 @media (prefers-reduced-motion: reduce) {
   .firstCopy, .peopleQuotes .quote, .dayPhoto, .dayQuotes .quote, .floorQuotes .quote, .outroDeck { transform: none; }
-  .waveTrack { animation: none; }
+  .waveTrack { animation-duration: 48s; }
+  .waveDeckB .waveTrack { animation-duration: 56s; }
 }
 
 /* Featured reviews: a physical deck with a selectable CDJ-inspired display. */
-.firstScene { background: #101820; }
+.firstScene { padding-bottom: clamp(1.25rem, 2vw, 2rem); background: #101820; }
 .firstScene::before { opacity: .12; background-image: repeating-linear-gradient(0deg, #b0c5cd20 0 1px, transparent 1px 5px); }
 .firstSceneInner {
   border: 1px solid #67757a;
@@ -647,6 +653,7 @@
 .recordLabel strong { font: 950 clamp(.4rem, .82vw, .8rem)/.85 var(--font-geist-sans), Arial, sans-serif; letter-spacing: -.04em; }
 .recordSpindle { z-index: 3; inset: calc(50% - 3px); width: 6px; height: 6px; }
 @media (max-width: 720px) {
+  .firstScene { padding-bottom: 1rem; }
   .firstSceneInner { background-position: 36% center; }
   .platterBay { background-position: 25% center; }
   .screenBay { background-position: 80% center; }
