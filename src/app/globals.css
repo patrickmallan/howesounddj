@@ -327,8 +327,148 @@ body {
 .hsdj-mobile-pad span { position: relative; z-index: 2; display: grid; min-width: 2rem; min-height: 1.45rem; padding: .15rem; place-items: center; border: 1px solid #ffffff2c; border-radius: 2px; background: #080a0ccf; box-shadow: inset 0 1px #ffffff1f, inset 0 -2px 4px #000; font-family: var(--font-geist-sans), sans-serif; letter-spacing: .06em; text-shadow: 0 -1px #000, 0 1px #ffffff20; }
 
 .hsdj-mobile-menu {
+  padding: .65rem;
+  border-radius: 5px;
+  background:
+    radial-gradient(circle at 8px 8px, #858b91 0 1px, #050607 2px 4px, transparent 5px),
+    radial-gradient(circle at calc(100% - 8px) calc(100% - 8px), #858b91 0 1px, #050607 2px 4px, transparent 5px),
+    repeating-linear-gradient(90deg, #ffffff05 0 1px, transparent 1px 5px),
+    linear-gradient(180deg, #20252a, #090b0e 48%, #15191d) !important;
   clip-path: polygon(0 0, 94% 0, 100% 4%, 100% 96%, 93% 100%, 0 98%);
-  box-shadow: -8px 9px 0 var(--hsdj-cobalt), -13px 14px 0 var(--hsdj-red);
+  box-shadow: inset 0 1px 0 #ffffff38, inset 0 -4px 0 #020304, -8px 9px 0 var(--hsdj-cobalt), -13px 14px 0 var(--hsdj-red);
+}
+
+.hsdj-mobile-cue-bank {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .55rem;
+  padding: .5rem;
+  border: 1px solid #050607;
+  border-radius: 5px;
+  background: #06080ae8;
+  box-shadow: inset 0 0 16px #000, 0 1px 0 #ffffff1c;
+}
+
+.hsdj-mobile-menu .hsdj-mobile-cue-bank > :last-child {
+  grid-column: 1 / -1;
+  width: calc(50% - .275rem);
+  max-width: calc(50% - .275rem);
+  justify-self: center;
+}
+
+.hsdj-mobile-menu .hsdj-mobile-nav-cue {
+  width: 100%;
+  height: 5.2rem;
+  min-width: 0;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.hsdj-mobile-menu .hsdj-mobile-nav-cue > img {
+  z-index: 0;
+  filter: saturate(1.25) brightness(.9) drop-shadow(0 5px 6px #000b);
+}
+
+.hsdj-mobile-menu .hsdj-mobile-nav-cue::before {
+  inset: 18% 12%;
+  opacity: .5;
+}
+
+.hsdj-mobile-menu .hsdj-mobile-nav-cue .hsdj-nav-pad__label {
+  width: 61%;
+  min-height: 35%;
+  font-size: .63rem;
+}
+
+.hsdj-mobile-menu .hsdj-mobile-nav-cue .hsdj-nav-pad__deck-open {
+  right: .45rem;
+  bottom: .35rem;
+  color: #f6f7f4;
+}
+
+.hsdj-mobile-menu .hsdj-mobile-nav-cue:active {
+  transform: translateY(3px);
+}
+
+.hsdj-mobile-channel-panel {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: .35rem;
+  margin: .7rem .15rem .55rem;
+  padding: .7rem;
+  border: 1px solid #63727b;
+  border-top: 4px solid #19dfff;
+  background: linear-gradient(135deg, #111b22f5, #070b0ff7);
+  box-shadow: inset 0 0 0 3px #05080b, 5px 6px 0 #050608;
+}
+
+.hsdj-mobile-channel-panel__label {
+  padding: 0 .2rem .45rem;
+  border-bottom: 1px solid #52636c;
+  color: #8cecf2;
+  font: 900 .56rem/1 var(--font-geist-mono), monospace;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.hsdj-mobile-channel-link {
+  display: grid;
+  grid-template-columns: 2.2rem minmax(0, 1fr);
+  gap: .15rem .6rem;
+  min-height: 3.65rem;
+  padding: .55rem .65rem;
+  align-content: center;
+  border: 1px solid #39474f;
+  border-left: 5px solid #19dfff;
+  color: #f7f3e9;
+  background: linear-gradient(100deg, #14232b, #090d11);
+  box-shadow: inset 0 1px 0 #ffffff13, 0 3px 0 #030405;
+  text-decoration: none;
+}
+
+.hsdj-mobile-channel-link > span {
+  grid-row: 1 / span 2;
+  align-self: center;
+  color: #56e9f0;
+  font: 900 .7rem/1 var(--font-geist-mono), monospace;
+}
+
+.hsdj-mobile-channel-link strong {
+  font-size: .78rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.hsdj-mobile-channel-link small {
+  overflow: hidden;
+  color: #ffffff8f;
+  font-size: .63rem;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hsdj-mobile-channel-link:hover,
+.hsdj-mobile-channel-link:focus-visible,
+.hsdj-mobile-channel-link.is-active {
+  border-left-color: #ffe000;
+  color: #fff;
+  background: linear-gradient(100deg, #293324, #0b1113);
+  outline: none;
+  box-shadow: inset 0 0 12px #ffe0001c, 0 3px 0 #030405, 0 0 9px #ffe00025;
+}
+
+.hsdj-mobile-channel-link.is-active > span { color: #ffe000; }
+
+@media (max-width: 359px) {
+  .hsdj-mobile-menu { padding: .45rem; }
+  .hsdj-mobile-cue-bank { gap: .35rem; padding: .35rem; }
+  .hsdj-mobile-menu .hsdj-mobile-nav-cue { height: 4.65rem; }
+  .hsdj-mobile-menu .hsdj-mobile-nav-cue .hsdj-nav-pad__label { font-size: .56rem; }
 }
 
 /* A transformed sticky header becomes the containing block for the fixed menu. */

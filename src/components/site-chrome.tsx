@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { SITE_PUBLIC_NAME } from "@/config/site-brand";
@@ -122,6 +123,14 @@ const navPadByLabel: Record<string, string> = {
   Journal: "/images/hsdj-redesign/controls/pads/lime.png",
   About: "/images/hsdj-redesign/controls/pads/orange.png",
   Contact: "/images/hsdj-redesign/controls/pads/purple.png",
+};
+
+const navPadGlowByLabel: Record<string, string> = {
+  Weddings: "#19dfff",
+  Squamish: "#ff313f",
+  Journal: "#b6ff22",
+  About: "#ff8225",
+  Contact: "#a36cff",
 };
 
 /** True when this href is the current page or a nested segment (e.g. /contact/...), without false positives like /faq vs /faq-extra. */
@@ -281,65 +290,36 @@ function DesktopDropdown({
 type MobileAccordionProps = {
   group: SiteNavGroup;
   pathname: string;
-  onNavigate: () => void;
+  isOpen: boolean;
+  onToggle: () => void;
 };
 
-/** Mobile drawer accordion section. Inside the existing right-side panel, no second-level overlay. */
-function MobileAccordion({ group, pathname, onNavigate }: MobileAccordionProps) {
-  const panelId = useId();
+/** Mobile category cue. Its child channels render in one shared panel below the pad bank. */
+function MobileAccordion({ group, pathname, isOpen, onToggle }: MobileAccordionProps) {
   const active = isActiveItem(pathname, group);
 
-  const triggerColor = active ? "text-amber-300" : "text-white/85";
-
   return (
-    <details className={narrowHeaderStyles.mobileAccordion} name="hsdj-mobile-nav">
-      <summary
-        role="button"
-        aria-controls={panelId}
-        className={`${narrowHeaderStyles.mobileSummary} relative z-10 flex w-full cursor-pointer items-center justify-between px-4 py-3 text-left text-sm transition hover:bg-white/5 ${triggerColor}`}
+    <button
+      type="button"
+      aria-expanded={isOpen}
+      aria-controls={`${MOBILE_PRIMARY_NAV_ID}-channels`}
+      onClick={onToggle}
+      className={`hsdj-nav-pad hsdj-mobile-nav-cue ${active ? "is-active" : ""}`}
+      style={{ "--pad-glow": navPadGlowByLabel[group.label] } as CSSProperties}
+    >
+      <Image src={navPadByLabel[group.label]} alt="" width={76} height={76} />
+      <span className="hsdj-nav-pad__label">{group.label}</span>
+      <svg
+        aria-hidden="true"
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        className={`hsdj-nav-pad__deck-open ${isOpen ? "is-open" : ""}`}
       >
-        <span>{group.label}</span>
-        <svg
-          aria-hidden="true"
-          width="10"
-          height="6"
-          viewBox="0 0 10 6"
-          className={`${narrowHeaderStyles.mobileChevron} transition-transform duration-150`}
-        >
-          <path
-            d="M1 1l4 4 4-4"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-        </svg>
-      </summary>
-      <div id={panelId} className="bg-white/[0.02]">
-        {group.children.map((child) => {
-          const childActive = isActiveNavHref(pathname, child.href);
-          return (
-            <Link
-              key={child.href}
-              href={child.href}
-              onClick={onTrustNavClick(child.href, onNavigate)}
-              aria-current={childActive ? "page" : undefined}
-              className={`relative z-10 block px-7 py-2.5 text-left text-sm transition hover:bg-white/5 ${
-                childActive ? "text-amber-300 hover:text-amber-200" : "text-white/80 hover:text-white"
-              }`}
-            >
-              <div className="leading-snug">{child.label}</div>
-              {child.description ? (
-                <div className="mt-0.5 text-xs leading-snug text-white/45">
-                  {child.description}
-                </div>
-              ) : null}
-            </Link>
-          );
-        })}
-      </div>
-    </details>
+        <path className="hsdj-nav-pad__deck-triangle" d="M3 5h10L8 11z" />
+        <path className="hsdj-nav-pad__deck-line" d="M2 13h12" />
+      </svg>
+    </button>
   );
 }
 
@@ -347,6 +327,7 @@ export function SiteHeader() {
   const pathname = usePathname() ?? "";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileMenuTop, setMobileMenuTop] = useState<number | null>(null);
+  const [openMobileMenuLabel, setOpenMobileMenuLabel] = useState<string | null>(null);
   const [openMenuLabel, setOpenMenuLabel] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement | null>(null);
   const mobileMenuButtonRef = useRef<HTMLElement | null>(null);
@@ -360,6 +341,7 @@ export function SiteHeader() {
       details.querySelectorAll<HTMLDetailsElement>('details[name="hsdj-mobile-nav"]').forEach((group) => { group.open = false; });
     }
     setMobileMenuOpen(false);
+    setOpenMobileMenuLabel(null);
   }, []);
 
   useEffect(() => {
@@ -376,6 +358,7 @@ export function SiteHeader() {
     const id = requestAnimationFrame(() => {
       closeMobileMenu();
       setOpenMenuLabel(null);
+      setOpenMobileMenuLabel(null);
     });
     return () => cancelAnimationFrame(id);
   }, [pathname, closeMobileMenu]);
@@ -429,8 +412,9 @@ export function SiteHeader() {
     return () => window.removeEventListener("mousedown", onMouseDown);
   }, [openMenuLabel]);
 
-  const mobileLinkBase =
-    "relative z-10 block px-4 py-3 text-left text-sm transition hover:bg-white/5";
+  const openMobileGroup = navTree.find(
+    (item): item is SiteNavGroup => isGroup(item) && item.label === openMobileMenuLabel,
+  );
 
   return (
     <header
@@ -526,26 +510,59 @@ export function SiteHeader() {
               />
               <nav
                 id={MOBILE_PRIMARY_NAV_ID}
-                className="hsdj-mobile-menu absolute right-3 top-2 z-50 flex max-h-[min(calc(100%-1rem),34rem)] w-[min(calc(100vw-1.5rem),20rem)] max-w-[20rem] flex-col divide-y divide-white/10 overflow-y-auto overflow-x-hidden border border-white/15 bg-neutral-950/95 shadow-xl shadow-black/40"
+                className="hsdj-mobile-menu absolute right-3 top-2 z-50 max-h-[min(calc(100%-1rem),36rem)] w-[min(calc(100vw-1.5rem),20rem)] max-w-[20rem] overflow-y-auto overflow-x-hidden border border-white/15 bg-neutral-950/95 shadow-xl shadow-black/40"
                 aria-label="Mobile primary"
               >
-                {navTree.map((item) => {
-                  if (isGroup(item)) {
-                    return <MobileAccordion key={item.label} group={item} pathname={pathname} onNavigate={closeMobileMenu} />;
-                  }
-                  const active = isActiveNavHref(pathname, item.href);
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={onTrustNavClick(item.href, closeMobileMenu)}
-                      aria-current={active ? "page" : undefined}
-                      className={active ? `${mobileLinkBase} text-amber-300 hover:text-amber-200` : `${mobileLinkBase} text-white/85 hover:text-white`}
-                    >
-                      {item.label}
-                    </Link>
-                  );
-                })}
+                <div className="hsdj-mobile-cue-bank">
+                  {navTree.map((item) => {
+                    if (isGroup(item)) {
+                      return (
+                        <MobileAccordion
+                          key={item.label}
+                          group={item}
+                          pathname={pathname}
+                          isOpen={openMobileMenuLabel === item.label}
+                          onToggle={() => setOpenMobileMenuLabel((current) => current === item.label ? null : item.label)}
+                        />
+                      );
+                    }
+                    const active = isActiveNavHref(pathname, item.href);
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={onTrustNavClick(item.href, closeMobileMenu)}
+                        aria-current={active ? "page" : undefined}
+                        className={`hsdj-nav-pad hsdj-mobile-nav-cue ${active ? "is-active" : ""}`}
+                        style={{ "--pad-glow": navPadGlowByLabel[item.label] } as CSSProperties}
+                      >
+                        <Image src={navPadByLabel[item.label]} alt="" width={76} height={76} />
+                        <span className="hsdj-nav-pad__label">{item.label}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
+                {openMobileGroup ? (
+                  <div id={MOBILE_PRIMARY_NAV_ID + "-channels"} className="hsdj-mobile-channel-panel" aria-label={`${openMobileGroup.label} pages`}>
+                    <span className="hsdj-mobile-channel-panel__label">{openMobileGroup.label} channels</span>
+                    {openMobileGroup.children.map((child, index) => {
+                      const childActive = isActiveNavHref(pathname, child.href);
+                      return (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          onClick={onTrustNavClick(child.href, closeMobileMenu)}
+                          aria-current={childActive ? "page" : undefined}
+                          className={`hsdj-mobile-channel-link ${childActive ? "is-active" : ""}`}
+                        >
+                          <span>{String(index + 1).padStart(2, "0")}</span>
+                          <strong>{child.label}</strong>
+                          {child.description ? <small>{child.description}</small> : null}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                ) : null}
                 <div className="relative z-10 border-t border-white/10 p-3">
                   <CheckAvailabilityTrackedLink
                     surface="header"
