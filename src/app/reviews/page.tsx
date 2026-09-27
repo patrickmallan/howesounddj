@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import Link from "next/link";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { FeaturedReviewDeck } from "@/components/featured-review-deck";
@@ -10,6 +10,25 @@ import styles from "./reviews-page.module.css";
 const pageTitle = "Squamish & Sea-to-Sky Wedding DJ Reviews";
 const pageDescription =
   "Read what couples said about planning with Patrick, the full wedding day, and the dance floor with Howe Sound DJ.";
+
+const heroImageCommon = { alt: "", sizes: "100vw", quality: 84 } as const;
+const {
+  props: { srcSet: desktopHeroSrcSet },
+} = getImageProps({
+  ...heroImageCommon,
+  src: "/images/hsdj-redesign/reviews/reviews-hero-love-notes-desktop-v1.webp",
+  width: 1672,
+  height: 941,
+});
+const {
+  props: { srcSet: mobileHeroSrcSet, ...mobileHeroProps },
+} = getImageProps({
+  ...heroImageCommon,
+  src: "/images/hsdj-redesign/reviews/reviews-hero-love-notes-mobile-v1.webp",
+  width: 1024,
+  height: 1536,
+  fetchPriority: "high",
+});
 
 export const metadata: Metadata = {
   title: { absolute: pageTitle },
@@ -112,14 +131,11 @@ export default function ReviewsPage() {
     <main className={styles.page}>
       <section className={styles.hero} aria-labelledby="reviews-heading">
         <div className={styles.heroArt} aria-hidden="true">
-          <Image
-            src="/images/hsdj-redesign/reviews/review-dj-booth-after-set-v1.webp"
-            alt=""
-            fill
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-          />
+          <picture>
+            <source media="(min-width: 721px)" srcSet={desktopHeroSrcSet} />
+            <source media="(max-width: 720px)" srcSet={mobileHeroSrcSet} />
+            <img {...mobileHeroProps} alt="" />
+          </picture>
         </div>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>From the people who were there</p>

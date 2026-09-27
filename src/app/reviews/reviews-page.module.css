@@ -27,6 +27,7 @@
 }
 
 .heroArt { z-index: -1; }
+.heroArt picture { display: block; width: 100%; height: 100%; }
 .heroArt img { object-fit: cover; object-position: center; }
 .heroArt::after {
   content: "";
@@ -429,8 +430,8 @@
   .waveDeckEnd { display: none; }
   .waveDeckLabel { font-size: .57rem; letter-spacing: 0; }
   .hero { align-items: end; min-height: 560px; padding: 4.5rem 5vw 3rem; }
-  .heroArt img { object-position: 62% center; }
-  .heroArt::after { background: linear-gradient(0deg, #050808 0, #050808ea 34%, #0508084d 83%), linear-gradient(90deg, #050808aa, transparent 75%); }
+  .heroArt img { object-position: center top; }
+  .heroArt::after { background: linear-gradient(0deg, #050808 0, #050808f2 30%, #05080847 62%, transparent 86%); }
   .heroCopy { width: 100%; margin-top: 0; }
   .heroTitle { width: 100% !important; }
   .heroIntro { margin-top: 1.7rem; }
@@ -593,7 +594,10 @@
 .cueNumber { color: var(--cue-color); font: 900 .62rem/1 var(--font-mono, monospace); }
 .cueName { margin-top: .28rem; width: 100%; font-size: clamp(.55rem, .7vw, .7rem); font-weight: 850; white-space: nowrap; text-transform: uppercase; }
 @keyframes review-cue-in { from { opacity: .45; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes record-turn { to { transform: rotate(360deg); } }
+@keyframes record-turn {
+  from { transform: translate3d(0, 0, 0) rotate(0deg); }
+  to { transform: translate3d(0, 0, 0) rotate(360deg); }
+}
 @media (prefers-reduced-motion: no-preference) { .recordArt { animation: record-turn 1.8s linear infinite; } .recordArt:hover { animation-play-state: running; } }
 @media (prefers-reduced-motion: reduce) { .recordArt { animation: none; } .firstCopy { animation: none; } }
 @media (max-width: 1050px) { .deckBody { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); } .platterHousing { min-height: 380px; } .tonearm { right: 0; } }
@@ -650,8 +654,24 @@
 .recordArt {
   background: repeating-radial-gradient(circle, #12141b 0 2px, #262b34 2px 3px, #0b0e13 3px 5px);
   box-shadow: 0 0 0 4px #080b11, 0 0 0 8px #62727c, 0 12px 28px #000d, inset 0 0 0 12px #060911;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 .recordArt::before { z-index: 1; inset: 4%; border: 2px solid #eadb8c75; box-shadow: inset 0 0 0 2px #000; pointer-events: none; }
+.recordArt::after {
+  position: absolute;
+  z-index: 4;
+  top: 7%;
+  left: 47.5%;
+  width: 5%;
+  height: 12%;
+  content: "";
+  border-radius: 2px;
+  background: linear-gradient(90deg, #fff7c7, #ffdd13 48%, #ff3f7e 52%, #ff8fb4);
+  box-shadow: 0 0 8px #fff7c7a8;
+  transform: rotate(2deg);
+  pointer-events: none;
+}
 .recordMandala { position: absolute; inset: 6%; width: 88%; height: 88%; overflow: visible; border-radius: 50%; filter: saturate(1.15) contrast(1.1); }
 .recordLabel {
   z-index: 2;
@@ -671,4 +691,7 @@
   .screenBay { background-position: 80% center; }
   .deckTopline { min-height: 3.3rem; padding-inline: .7rem; }
   .recordLabel strong { font-size: clamp(.4rem, 2vw, .68rem); }
+}
+@media (max-width: 720px) and (prefers-reduced-motion: no-preference) {
+  .recordArt { animation: record-turn 1.8s linear infinite !important; animation-play-state: running !important; }
 }
