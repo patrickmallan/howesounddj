@@ -383,9 +383,10 @@ describe("shared post-availability success ownership (V3)", () => {
     expect(success).not.toMatch(/matthew-bundala|lauren-steeles/);
   });
 
-  it("header panel uses flex column overflow-hidden for sticky footer", () => {
+  it("header panel uses a flex column with vertical overflow available for long outcomes", () => {
     const header = readSource("src/components/header-check-availability.tsx");
-    expect(header).toMatch(/overflow-hidden/);
+    expect(header).toMatch(/overflow-x-hidden/);
+    expect(header).toMatch(/overflow-y-auto/);
     expect(header).toMatch(/flex-col/);
   });
 });

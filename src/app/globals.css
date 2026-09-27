@@ -571,6 +571,8 @@ body {
 /* Date check console: CSS-only light movement keeps the modal vivid without media or JS animation. */
 .hsdj-availability-panel {
   isolation: isolate;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   border-color: #ffe04770 !important;
   background:
     radial-gradient(circle at 14% 0%, #19dfff1c, transparent 34%),
@@ -628,17 +630,18 @@ body {
 
 .hsdj-availability-title {
   color: #fff7d9;
-  font-family: var(--font-geist-mono), monospace;
-  font-size: clamp(1.08rem, 5vw, 1.42rem);
-  font-weight: 950;
-  letter-spacing: -.035em;
-  line-height: 1.05;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(1.32rem, 5.8vw, 1.62rem);
+  font-weight: 900;
+  letter-spacing: -.025em;
+  line-height: 1.02;
   text-transform: uppercase;
-  text-shadow: 3px 3px 0 #154fff, 0 0 12px #ffffff25;
+  -webkit-text-stroke: .2px #fff;
+  text-shadow: 0 2px 0 #000, 0 0 10px #fff2b526;
 }
 
-.hsdj-availability-subtitle { max-width: 32ch; }
-.hsdj-date-label { color: #f4f0e7; font-family: var(--font-geist-mono), monospace; font-weight: 850; letter-spacing: .04em; text-transform: uppercase; }
+.hsdj-availability-subtitle { max-width: 32ch; color: #f3f5f2ba !important; font-size: 1rem !important; line-height: 1.55 !important; }
+.hsdj-date-label { color: #fffaf0; font-family: var(--font-geist-sans), sans-serif; font-size: .95rem !important; font-weight: 850; letter-spacing: .055em; text-transform: uppercase; text-shadow: 0 1px 0 #000; }
 
 .hsdj-date-port {
   position: relative;
@@ -674,7 +677,7 @@ body {
   box-shadow: inset 0 1px 0 #ffffff17, inset 0 -2px 6px #000;
   color: #fff6c9;
   font-family: var(--font-geist-mono), monospace;
-  font-size: 1rem;
+  font-size: 1.12rem;
   font-weight: 900;
   letter-spacing: .08em;
   text-shadow: 0 0 8px #ffe00090;
@@ -746,12 +749,28 @@ body {
   background: #45ef6812;
 }
 
+.hsdj-availability-result--success [data-availability-role="confirmation"] p {
+  color: #f5fff6;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.hsdj-availability-result--success [data-availability-role="confirmation"] button {
+  color: #d9e4da;
+  font-size: .95rem;
+}
+
 .hsdj-availability-result--success [data-availability-role="headline"] {
   color: #fff7d9;
-  font-family: var(--font-geist-mono), monospace;
-  font-weight: 950;
+  padding: .1rem 0 .2rem;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(1.32rem, 5.7vw, 1.58rem);
+  font-weight: 900;
+  letter-spacing: -.022em;
+  line-height: 1.03;
   text-transform: uppercase;
-  text-shadow: 2px 2px 0 #154fff, 0 0 12px #45ef6848;
+  -webkit-text-stroke: .2px #fff;
+  text-shadow: 0 2px 0 #000, 0 0 11px #45ef6838;
 }
 
 .hsdj-availability-result--success [data-availability-role="proof"] {
@@ -759,6 +778,15 @@ body {
   border-left: 3px solid #ffe000;
   background: #050708b8;
 }
+
+.hsdj-availability-result--success [data-availability-role="testimonial"] {
+  color: #f5f5f2;
+  font-size: .98rem;
+  line-height: 1.55;
+}
+
+.hsdj-availability-result--success [data-availability-role="attribution"] span { color: #e7e8e3; font-size: .83rem; }
+.hsdj-availability-result--success [data-availability-role="cta-support"] { color: #eef0eb; font-size: 1rem; line-height: 1.5; }
 
 .hsdj-availability-result--success [data-availability-role="action"] { background: transparent; }
 
@@ -782,7 +810,24 @@ body {
 }
 
 .hsdj-result-secondary { border-color: #19dfff !important; color: #bff8ff !important; box-shadow: inset 0 2px 0 #ffffff24, 0 4px 0 #086f7e, 0 0 12px #19dfff4d !important; text-shadow: 0 0 7px #19dfff; }
-.hsdj-result-headline { color: #fff7d9; font-family: var(--font-geist-mono), monospace; font-weight: 950; line-height: 1.05; text-transform: uppercase; text-shadow: 2px 2px 0 #154fff; }
+.hsdj-result-headline {
+  color: #fff7d9;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 1.28rem !important;
+  font-weight: 900;
+  letter-spacing: -.015em;
+  line-height: 1.03;
+  text-transform: uppercase;
+  -webkit-text-stroke: .18px #fff;
+  text-shadow: 0 2px 0 #000, 0 0 10px #19dfff30;
+}
+
+.hsdj-availability-result--unavailable > p:not(.sr-only):not(.hsdj-result-signal),
+.hsdj-availability-result--manual > p:not(.sr-only):not(.hsdj-result-signal) {
+  color: #eef0ed;
+  font-size: 1rem;
+  line-height: 1.55;
+}
 
 @keyframes hsdj-date-rope-spin { to { transform: rotate(1turn); } }
 
