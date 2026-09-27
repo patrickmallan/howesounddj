@@ -222,7 +222,9 @@
 .danceFloor .stageCopy h3 span:nth-child(2) { font-palette: --hsdj-violet-light; }
 
 .stageCopy h3 {
-  width: max-content;
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
   margin: 0;
   padding: .25em .31em .3em;
   border-left: 4px solid currentColor;
@@ -235,7 +237,10 @@
   line-height: 1.04;
   text-transform: uppercase;
   text-shadow: 0 0 .08em rgb(255 255 255 / 18%);
+  overflow-wrap: anywhere;
 }
+
+.stageCopy h3 span { max-width: 100%; white-space: normal; }
 
 .stageBody {
   max-width: 48rem;
