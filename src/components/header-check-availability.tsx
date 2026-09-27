@@ -16,7 +16,7 @@ const backdropClass =
   "fixed inset-0 z-[90] cursor-default border-0 bg-black/65 p-0 backdrop-blur-md xl:bg-black/55 xl:backdrop-blur-sm";
 
 const panelBaseClass =
-  "fixed z-[95] flex max-h-[min(calc(100dvh-5.5rem),34rem)] w-[min(calc(100vw-1.5rem),26rem)] flex-col overflow-hidden overscroll-contain rounded-2xl border border-white/10 bg-neutral-950/[0.98] p-5 pb-6 shadow-2xl shadow-black/55 backdrop-blur-sm transition duration-150 xl:max-h-[min(calc(100dvh-6rem),36rem)] xl:w-[min(calc(100vw-2rem),28rem)]";
+  "hsdj-availability-panel fixed z-[95] flex max-h-[min(calc(100dvh-5.5rem),34rem)] w-[min(calc(100vw-1.5rem),26rem)] flex-col overflow-hidden overscroll-contain rounded-2xl border border-white/10 bg-neutral-950/[0.98] p-5 pb-6 shadow-2xl shadow-black/55 backdrop-blur-sm transition duration-150 xl:max-h-[min(calc(100dvh-6rem),36rem)] xl:w-[min(calc(100vw-2rem),28rem)]";
 
 const panelMobileClass =
   "left-1/2 top-[max(4.75rem,calc(env(safe-area-inset-top,0px)+3.75rem))] -translate-x-1/2";
@@ -178,7 +178,7 @@ export function HeaderCheckAvailability({ onPanelOpen }: Props) {
               <button
                 type="button"
                 onClick={close}
-                className="absolute right-3 top-3 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-white/55 transition hover:bg-white/10 hover:text-white/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/50"
+                className="hsdj-availability-close absolute right-3 top-3 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-white/55 transition hover:bg-white/10 hover:text-white/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/50"
                 aria-label="Close availability check"
               >
                 <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden>

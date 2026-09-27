@@ -89,16 +89,17 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
         surface={ANALYTICS_SURFACE}
         canonicalStatusMessage={phase.message}
         onEditDate={handleEditDate}
-        className="min-h-0 flex-1"
+        className="hsdj-availability-result hsdj-availability-result--success min-h-0 flex-1"
       />
     );
   }
 
   return (
-    <div className="space-y-4">
-      <div>
-        <h3 className="text-base font-semibold text-white">Check your wedding date</h3>
-        <p className="mt-1.5 text-sm leading-relaxed text-white/50">
+    <div className="hsdj-availability-checker space-y-4" data-phase={phase.kind}>
+      <div className="hsdj-availability-intro">
+        <p className="hsdj-availability-console-label"><span aria-hidden="true" /> Date line // live</p>
+        <h3 className="hsdj-availability-title">Check your wedding date</h3>
+        <p className="hsdj-availability-subtitle mt-1.5 text-sm leading-relaxed text-white/50">
           Quickly see if your date is open before starting the conversation.
         </p>
       </div>
@@ -129,7 +130,7 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
         type="button"
         onClick={handleCheck}
         disabled={phase.kind === "loading"}
-        className="inline-flex w-full items-center justify-center rounded-full bg-amber-300 px-5 py-2.5 text-sm font-semibold text-neutral-950 transition hover:bg-amber-200 disabled:cursor-not-allowed disabled:opacity-60"
+        className="hsdj-availability-cue"
       >
         {phase.kind === "loading" ? availabilityCheckingButtonLabel() : "Check Availability"}
       </button>
@@ -142,7 +143,7 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
           weddingDate={date.weddingDate}
           canonicalStatusMessage={phase.message}
           onTryAnotherDate={resetChecker}
-          className="!rounded-xl !p-4"
+          className="hsdj-availability-result hsdj-availability-result--unavailable !rounded-xl !p-4"
         />
       ) : null}
 
@@ -152,7 +153,7 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
           weddingDate={date.weddingDate}
           canonicalStatusMessage={phase.message}
           onTryAnotherDate={resetChecker}
-          className="!rounded-xl !p-4"
+          className="hsdj-availability-result hsdj-availability-result--manual !rounded-xl !p-4"
         />
       ) : null}
     </div>

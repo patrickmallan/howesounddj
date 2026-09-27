@@ -227,6 +227,11 @@ export function PostAvailabilitySuccess({
         }
       >
         <div className={roleContentGroups(variant)}>
+          {variant === "compact" ? (
+            <p className="hsdj-result-signal hsdj-result-signal--win" aria-hidden="true">
+              <span /> Date open // signal green
+            </p>
+          ) : null}
           {/* GROUP 1 : Confirmation */}
           <div className={roleConfirmationBar(variant)} data-availability-role="confirmation">
             <p className={`min-w-0 ${roleConfirmationDate()}`}>
