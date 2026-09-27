@@ -25,27 +25,27 @@ export const metadata: Metadata = {
 };
 
 const weddingIncludes = [
-  ["Ceremony", "Music in the right places, wireless microphones, and vows people can actually hear."],
-  ["Cocktails + dinner", "Good music at a volume where the table beside you can still have a conversation."],
-  ["Speeches", "The microphone is ready, I know who has it next, and nobody is tapping it asking if it is on."],
-  ["Dance floor", "Your must-plays get us started. After that, I watch the room and build from what is working."],
+  { cue: "01", title: "Ceremony", text: "The right song lands. Every guest hears the vows.", payoff: "Clear from the first word" },
+  { cue: "02", title: "Cocktails + dinner", text: "Good music, warm room, conversation still possible.", payoff: "Present, never pushy" },
+  { cue: "03", title: "Speeches", text: "The mic is ready and the next person knows when to stand.", payoff: "No tapping. No scramble." },
+  { cue: "04", title: "Dance floor", text: "Your must-plays start the map. The room tells me where to go next.", payoff: "Built live, not on autopilot" },
 ];
 
 const alwaysIncluded = [
-  "Planning calls with me, not a handoff to whoever is available",
-  "A proper read through your timeline before the wedding",
-  "Your must-plays, absolutely-nots, requests, and musical curveballs",
-  "Sound that fits the room instead of simply being the biggest system possible",
-  "Set-up, soundcheck, pack-down, and the unglamorous work in between",
-  "MC help when it is useful; no radio voice and no unnecessary talking",
+  { title: "You plan with your DJ", text: "Every call is with me, so the person behind the booth already knows your people and the plan." },
+  { title: "Your timeline gets a soundcheck", text: "I look for microphone moves, room changes, and handoffs before they become wedding-day problems." },
+  { title: "Your music has guardrails", text: "Must-plays, hard noes, requests, and curveballs all have a place before I read the room." },
+  { title: "The sound fits the room", text: "The right system for the venue beats bringing the biggest pile of speakers every time." },
+  { title: "The quiet work is covered", text: "Setup, testing, pack-down, and the unglamorous details happen without becoming your job." },
+  { title: "The mic stays human", text: "I help with announcements when useful. No radio voice and no talking just to hear myself talk." },
 ];
 
 const upgrades = [
-  ["MORE LIGHT", "Extra dance-floor or room lighting when the venue needs a push."],
-  ["MORE ROOMS", "A second or third sound zone for ceremonies, patios, or awkward layouts."],
-  ["SILENT DISCO", "Headphones, channels, and the delightfully strange sight of a silent dance floor."],
-  ["CUSTOM AUDIO", "An audio message or a more involved production idea for one very specific entrance."],
-  ["PHOTO BOOTH", "If it belongs at your party, we can talk through the right setup."],
+  { code: "LUX", title: "More light", text: "Give a dark room or dance floor the lift it actually needs." },
+  { code: "2-ZONE", title: "More rooms", text: "Clean sound across a ceremony, patio, or awkward venue layout." },
+  { code: "3-CH", title: "Silent disco", text: "Headphones, multiple channels, and one delightfully strange dance floor." },
+  { code: "CUE", title: "Custom audio", text: "Build one entrance or moment around an audio idea that is yours." },
+  { code: "FLASH", title: "Photo booth", text: "If it adds to the party, we will choose a setup that belongs there." },
 ];
 
 export default function PackagesPage() {
@@ -109,10 +109,18 @@ export default function PackagesPage() {
             <p>This is the sensible starting point. We trim it or add to it after I see the venue and timeline.</p>
           </div>
           <div className={styles.dayPath}>
-            {weddingIncludes.map(([title, text]) => (
+            <div className={styles.dayPathTop}>
+              <span>YOUR DAY / FOUR LIVE CHANNELS</span>
+              <span className={styles.daySignal} aria-hidden="true"><i /><i /><i /><i /><i /><i /><i /></span>
+            </div>
+            {weddingIncludes.map(({ cue, title, text, payoff }) => (
               <article className={styles.dayStop} key={title}>
-                <h3>{title}</h3>
-                <p>{text}</p>
+                <span className={styles.dayStopNumber} aria-hidden="true">{cue}</span>
+                <div className={styles.dayStopCopy}>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                  <small>{payoff}</small>
+                </div>
               </article>
             ))}
           </div>
@@ -139,13 +147,20 @@ export default function PackagesPage() {
         <div className={`${styles.scene} ${styles.includedScene}`}>
           <div className={styles.includedTitle}>
             <div className={styles.kicker}>ON EVERY BOOKING</div>
-            <h2>The stuff I would not leave out.</h2>
-            <p>Package names change how much of the day I cover, not how much I care once I am there.</p>
+            <h2>What you can count on.</h2>
+            <p>Coverage can change. The standard of care does not. These are the six things I protect on every booking.</p>
+            <div className={styles.includedMeters} aria-hidden="true">
+              {Array.from({ length: 12 }, (_, index) => <i key={index} />)}
+            </div>
           </div>
           <ol className={styles.setList}>
-            {alwaysIncluded.map((item) => (
-              <li key={item}>
-                <p>{item}</p>
+            {alwaysIncluded.map(({ title, text }, index) => (
+              <li key={title}>
+                <span className={styles.setNumber} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </div>
               </li>
             ))}
           </ol>
@@ -160,8 +175,13 @@ export default function PackagesPage() {
             <p>These are additions, not automatic upgrades. We use the ones that solve a real problem or make the room more fun.</p>
           </div>
           <div className={styles.patchBay}>
-            {upgrades.map(([title, text]) => (
+            {upgrades.map(({ code, title, text }, index) => (
               <article className={styles.patch} key={title}>
+                <div className={styles.patchControl} aria-hidden="true">
+                  <span className={styles.patchCode}>{code}</span>
+                  <span className={styles.patchDial}><i /></span>
+                  <span className={styles.patchLive}>{String(index + 1).padStart(2, "0")}</span>
+                </div>
                 <h3>{title}</h3><p>{text}</p>
               </article>
             ))}
