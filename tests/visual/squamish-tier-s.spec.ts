@@ -84,3 +84,39 @@ test("Squamish actions use accessible DJ-gear controls", async ({ page }) => {
   await page.locator(".sq-gear-link--hero").click();
   await expect(page).toHaveURL(/#sq-place$/);
 });
+
+test("Squamish desktop keeps its hero and section hierarchy in proportion", async ({ page }) => {
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.goto(route);
+
+  const hero = page.locator(".sq-hero-title");
+  const heroBox = await hero.boundingBox();
+  expect(heroBox).not.toBeNull();
+  expect(heroBox!.width).toBeGreaterThanOrEqual(900);
+
+  const pairedScenes = [
+    [".sq-place-intro h2", ".sq-place-copy"],
+    [".sq-music-intro h2", ".sq-music-copy"],
+  ] as const;
+
+  for (const [headingSelector, copySelector] of pairedScenes) {
+    const heading = page.locator(headingSelector);
+    const copy = page.locator(copySelector);
+    const [headingBox, copyBox, fontSize] = await Promise.all([
+      heading.boundingBox(),
+      copy.boundingBox(),
+      heading.evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize)),
+    ]);
+    expect(headingBox).not.toBeNull();
+    expect(copyBox).not.toBeNull();
+    expect(fontSize).toBeLessThanOrEqual(77);
+    expect(Math.abs(
+      (headingBox!.y + headingBox!.height / 2) - (copyBox!.y + copyBox!.height / 2),
+    )).toBeLessThanOrEqual(40);
+  }
+
+  const venueHeading = page.locator(".sq-venue h2");
+  await venueHeading.scrollIntoViewIfNeeded();
+  await expect(venueHeading).toHaveCSS("background-color", "rgb(7, 16, 23)");
+  await expect(venueHeading).toHaveCSS("color", "rgb(255, 255, 255)");
+});
