@@ -647,6 +647,20 @@ export function SiteFinalDecisionZone() {
 }
 
 export function SiteFooter() {
+  const isHomepage = usePathname() === "/";
+  const footerRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    if (!isHomepage) return;
+    const section = document.querySelector<HTMLElement>("[data-footer-art-bleed]");
+    const footer = footerRef.current;
+    if (!section || !footer) return;
+    const updateBleed = () => footer.style.setProperty("--footer-art-bleed", `${section.getBoundingClientRect().height}px`);
+    updateBleed();
+    if (typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(updateBleed);
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [isHomepage]);
   const year = new Date().getFullYear();
   const footerLinks = flattenNavForFooter(navTree);
   const primaryRoutes = new Set(["/weddings", "/packages", "/reviews", "/venues", "/contact"]);
@@ -660,7 +674,7 @@ export function SiteFooter() {
     "/about": "About Patrick",
   };
   return (
-    <footer className="hsdj-site-footer mt-auto">
+    <footer ref={footerRef} className={`hsdj-site-footer mt-auto${isHomepage ? " hsdj-site-footer--home" : ""}`}>
       <DeferredArt className="hsdj-site-footer__collage" desktopSrc="/images/hsdj-redesign/footer/footer-dj-mixer-collage-v2-optimized.webp" />
       <div className="hsdj-site-footer__inner mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm lg:px-8">
         <div className="hsdj-site-footer__brand">

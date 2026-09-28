@@ -1629,6 +1629,10 @@ body {
 .hsdj-site-footer__collage picture, .hsdj-site-footer__collage img { display: block; width: 100%; height: 100%; }
 .hsdj-site-footer__collage img { object-fit: cover; pointer-events: none; }
 
+/* On the homepage, one footer image continues behind the final date-check chapter. */
+.hsdj-site-footer--home { z-index: 0; overflow: visible; border-top: 0; background: transparent; box-shadow: none; }
+.hsdj-site-footer--home .hsdj-site-footer__collage { top: calc(-1 * var(--footer-art-bleed, 850px)); }
+
 .hsdj-site-footer::before {
   position: absolute;
   inset: 0;
@@ -1677,6 +1681,7 @@ body {
 .hsdj-page-eyebrow { display: inline-flex; width: fit-content; margin-bottom: 1rem; padding: .62rem .9rem; border: 1px solid #ffffff52; border-left: 7px solid #ffe000; border-radius: 2px; color: #fff8e8; background: linear-gradient(104deg, #15181df2, #080a0de8); box-shadow: 6px 6px 0 #0847ff70; font-size: clamp(.78rem, .9vw, .9rem); font-weight: 850; line-height: 1.15; letter-spacing: .12em; text-transform: uppercase; }
 
 @media (max-width: 767px) {
+  .hsdj-site-footer--home .hsdj-site-footer__collage { top: calc(-1 * var(--footer-art-bleed, 680px)); }
   .hsdj-site-footer__collage { background-position: 72% center; filter: contrast(1.1) saturate(1.18) brightness(1.12); }
   .hsdj-site-footer::before { background: linear-gradient(90deg, #030405b8 0 18%, #03040559 60%, #03040592 100%), linear-gradient(0deg, #030405bf 0, transparent 40% 74%, #03040575 100%); }
   .hsdj-site-footer__inner { grid-template-columns: 1fr; gap: .65rem !important; padding-block: 1.6rem .85rem !important; }

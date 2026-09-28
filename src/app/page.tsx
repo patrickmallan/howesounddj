@@ -112,8 +112,7 @@ export default async function HoweSoundDJHomepage() {
         </div>
       </section>
 
-      <section id="faq" data-testid="home-faq-section" className={`${styles.chapter} ${styles.encore}`} aria-labelledby="encore-heading">
-        <div className={styles.encoreMachine} aria-hidden="true"><Image src="/images/hsdj-redesign/hero/approved-ch00-collage-v3.png" alt="" fill sizes="100vw" /></div>
+      <section id="faq" data-footer-art-bleed data-testid="home-faq-section" className={`${styles.chapter} ${styles.encore}`} aria-labelledby="encore-heading">
         <div className={styles.encoreCopy}><p className={styles.tapeLabel}>Ready when you are</p><h2 id="encore-heading" className="hsdj-meter--signal">Got a date? Let&apos;s make sure I do too.</h2><p>Check your wedding date below. If I&apos;m free, book a consult and tell me what you&apos;re planning. We&apos;ll have a relaxed chat and see if I&apos;m the right DJ for it.</p></div>
         <div data-testid="home-finale-section"><EncoreCassetteDeck /></div>
       </section>

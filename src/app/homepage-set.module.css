@@ -134,10 +134,8 @@
 .rememberLinks { position: absolute; z-index: 8; bottom: 9%; left: 5%; display: grid; gap: .7rem; }
 .rememberLinks a { width: fit-content; padding: .72rem .9rem; border: 1px solid #77eaff; border-left: 7px solid var(--yellow); color: #fff; background: #070d18ef; box-shadow: 6px 6px 0 var(--blue); font: 900 clamp(.78rem, .82vw, .88rem)/1 var(--technical); letter-spacing: .07em; text-decoration: none; text-transform: uppercase; transform: rotate(-.6deg); }
 
-.encore { min-height: 850px; color: white; background: #050506; scroll-margin-top: 190px; }
-.encoreMachine { position: absolute; inset: 0; z-index: -4; }
-.encoreMachine img { object-fit: cover; object-position: 54% center; filter: grayscale(.35) contrast(1.28) brightness(.28) saturate(.75); transform: scale(1.03); }
-.encore::before { position: absolute; z-index: -2; inset: 0; content: ""; background: linear-gradient(90deg, #050506f8 0 52%, #050506b2 76%, #050506e8 100%); }
+.encore { z-index: 1; min-height: 850px; color: white; background: transparent; scroll-margin-top: 190px; }
+.encore::before { position: absolute; z-index: -2; inset: 0; content: ""; background: linear-gradient(90deg, #050506e9 0 33%, #05050698 65%, #05050678 100%); }
 .encore::after { position: absolute; z-index: -1; top: 0; right: 0; bottom: 0; width: 42%; content: ""; opacity: .62; background: repeating-radial-gradient(circle at 82% 52%, transparent 0 46px, #ffffff17 47px 48px, transparent 49px 71px), conic-gradient(from 145deg at 82% 52%, transparent 0 44%, #ef272744 45% 47%, transparent 48% 70%, #ffe00045 71% 72%, transparent 73%); mask-image: linear-gradient(90deg, transparent, #000 35%); }
 .encoreCopy { position: absolute; z-index: 8; top: 7%; left: max(6vw, 4rem); width: min(59rem, 68%); }
 .encoreCopy h2 { max-width: 920px; margin: 1rem 0 1.1rem; font: 800 clamp(2.3rem, 4vw, 4.1rem)/.94 var(--display); letter-spacing: .025em; text-transform: uppercase; text-wrap: balance; }
