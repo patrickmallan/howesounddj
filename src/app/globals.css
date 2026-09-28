@@ -2373,8 +2373,6 @@ body {
 [class*="machineLabel"],
 [class*="stageLabel"],
 [class*="recordMeta"],
-.venue-dossier-overline,
-.venue-dossier-spread-label,
 .vancouver-route-handoff-label { display: none !important; }
 #main-content .hsdj-place-page > section:first-of-type::before,
 #main-content .hsdj-editorial-page .hsdj-interior-flow > header::before,

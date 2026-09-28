@@ -7,8 +7,8 @@
 .venue-dossier-hero-copy { position: relative; z-index: 2; min-width: 0; }
 .venue-dossier-hero-copy nav a { color: #bcebee; font: 750 .85rem/1.3 ui-monospace, monospace; text-transform: uppercase; letter-spacing: .07em; }
 .venue-dossier-overline { margin: 2.5rem 0 1.2rem; color: var(--dossier-yellow); font: 850 .8rem/1.35 ui-monospace, monospace; letter-spacing: .18em; text-transform: uppercase; }
-.hsdj-venue-dossier .venue-dossier-hero h1 { max-width: 16ch; font-size: clamp(2.8rem, 5vw, 5.6rem) !important; line-height: .98; overflow-wrap: anywhere; }
-#main-content .hsdj-venue-dossier .venue-dossier-hero-copy > p:not(.venue-dossier-overline) { max-width: 38rem; margin: 1.7rem 0; padding: 1rem 1.2rem; background: #03090ddc; border-left: 7px solid var(--dossier-pink); color: #fff !important; font-size: clamp(1.05rem, 1.4vw, 1.25rem); font-weight: 700; line-height: 1.55; }
+#main-content .hsdj-venue-dossier .venue-dossier-hero .venue-dossier-heading { display: block; width: 100%; max-width: min(100%, 42rem); }
+.venue-dossier-heading img { display: block; width: 100%; height: auto; }
 .venue-dossier-hero-copy > a { color: var(--dossier-yellow); font-weight: 900; text-transform: uppercase; }
 .venue-dossier-stage-plot { position: relative; z-index: 2; aspect-ratio: 1; max-width: 520px; padding: 8%; border: 4px solid #59e9ed; transform: rotate(5deg); box-shadow: 15px 16px 0 #1356ff; }
 .venue-dossier-plot-room { display: flex; align-items: center; justify-content: space-around; gap: 1rem; height: 100%; border: 3px dashed #ffffff99; clip-path: polygon(0 0, 100% 0, 95% 95%, 10% 100%); }
@@ -25,7 +25,7 @@
 .venue-dossier-local .venue-dossier-spread-label { color: var(--dossier-cyan); }
 .venue-dossier-spread-label p { margin: .6rem 0 0; }
 .venue-dossier-knob { flex: 0 0 auto; width: 2rem; height: 2rem; border-radius: 50%; border: 5px solid currentColor; background: #091217; box-shadow: 0 0 0 5px #091217, 0 0 0 7px currentColor; }
-.venue-dossier-spread-copy { padding-left: clamp(1.5rem, 3vw, 3rem); border-left: 4px solid currentColor; }
+.venue-dossier-spread-copy { min-width: 0; padding-left: clamp(1.5rem, 3vw, 3rem); border-left: 4px solid currentColor; }
 .venue-dossier-setting .venue-dossier-spread-copy { border-color: var(--dossier-yellow); }
 .venue-dossier-sound .venue-dossier-spread-copy { border-color: var(--dossier-pink); }
 .venue-dossier-local .venue-dossier-spread-copy { border-color: var(--dossier-cyan); }
@@ -36,7 +36,10 @@
 .venue-dossier-outro .venue-dossier-overline { margin-top: 0; color: #14556a; }
 .hsdj-venue-dossier .venue-dossier-outro h2 { max-width: 15ch !important; margin: 0; color: #081419; font-size: clamp(2.7rem, 5.5vw, 6rem) !important; line-height: .95; text-transform: uppercase; }
 .venue-dossier-outro > p:not(.venue-dossier-overline) { max-width: 43rem; color: #081419 !important; font-size: 1.2rem; font-weight: 700; line-height: 1.6; }
-.venue-dossier-outro a { display: inline-block; padding: 1rem 1.4rem; color: #fff; background: #081419; font-weight: 900; text-transform: uppercase; box-shadow: 8px 8px 0 #1457ff; }
+.venue-dossier-outro .venue-dossier-date-cue { display: inline-flex; align-items: center; gap: .8rem; min-height: 78px; padding: .4rem 1.4rem .4rem .45rem; border: 2px solid #081419; color: #fff; background: #081419; font-weight: 900; text-transform: uppercase; box-shadow: 8px 8px 0 #1457ff; }
+.venue-dossier-date-cue img { width: 3.8rem; height: 3.8rem; object-fit: contain; filter: drop-shadow(0 0 8px #ffe02090); }
+.venue-dossier-date-cue:focus-visible { outline: 4px solid #1153ff; outline-offset: 6px; }
+.venue-dossier-date-cue:hover img { transform: rotate(6deg); }
 @media (max-width: 900px) {
   #main-content .hsdj-venue-dossier .venue-dossier-hero { grid-template-columns: 1fr; min-height: 0; padding: 7.5rem 1.4rem 3rem; }
   .venue-dossier-stage-plot { max-width: 330px; justify-self: end; opacity: .85; }
@@ -45,7 +48,6 @@
   #main-content .hsdj-venue-dossier .venue-dossier-outro { padding: 5rem 1.4rem; }
 }
 @media (max-width: 600px) {
-  .hsdj-venue-dossier .venue-dossier-hero h1 { font-size: clamp(2.5rem, 10vw, 4.3rem) !important; }
   .venue-dossier-stage-plot { width: 70%; }
   .venue-dossier-plot-room span { width: 3.5rem; height: 3.5rem; font-size: .48rem; }
 }
