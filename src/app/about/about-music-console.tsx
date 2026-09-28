@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 const channels = [
@@ -10,6 +11,7 @@ const channels = [
     detail: "Ceremony, entrance and first-dance choices are yours. Send me a long dance-party playlist too. I'll use it as a map, not a rigid running order.",
     screen: "INPUT / YOUR FAVOURITES",
     color: "cyan",
+    pad: "/images/hsdj-redesign/controls/pads/cyan.png",
   },
   {
     id: "curveball",
@@ -18,6 +20,7 @@ const channels = [
     detail: "I love the moment a rock track nobody expected makes the room look up. If your crowd reacts, I follow it. If it doesn't, I move on.",
     screen: "INPUT / SURPRISE",
     color: "pink",
+    pad: "/images/hsdj-redesign/controls/pads/red.png",
   },
   {
     id: "range",
@@ -26,6 +29,7 @@ const channels = [
     detail: "Club nights, private parties and weddings have pushed me far beyond a standard wedding rotation. I prepare broadly so I can stay with the music your people actually love.",
     screen: "INPUT / OPEN FORMAT",
     color: "yellow",
+    pad: "/images/hsdj-redesign/controls/pads/yellow.png",
   },
   {
     id: "handoff",
@@ -34,6 +38,7 @@ const channels = [
     detail: "I bring everyone in during the last formal dance. When the first party track lands, the floor is already full.",
     screen: "OUTPUT / FULL FLOOR",
     color: "purple",
+    pad: "/images/hsdj-redesign/controls/pads/purple.png",
   },
 ] as const;
 
@@ -57,8 +62,8 @@ export function AboutMusicConsole() {
               aria-pressed={activeId === channel.id}
               onClick={() => setActiveId(channel.id)}
             >
+              <Image className="about-console-pad" src={channel.pad} alt="" width={101} height={101} sizes="110px" />
               <span className="about-console-channel-name">{channel.name}</span>
-              <span className="about-console-channel-light" aria-hidden="true" />
             </button>
           ))}
         </div>

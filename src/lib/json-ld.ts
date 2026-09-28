@@ -49,6 +49,27 @@ export function organizationJsonLd(): Record<string, unknown> {
   };
 }
 
+/** About-page entity tying Patrick to the organization without inventing profiles or awards. */
+export function aboutPageJsonLd(): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${SITE_ORIGIN}/about#webpage`,
+    url: `${SITE_ORIGIN}/about`,
+    name: "Meet Patrick | Howe Sound Wedding DJ",
+    description: "Meet Patrick Mallan, the Squamish-based wedding DJ who plans, mixes and performs every Howe Sound DJ wedding.",
+    isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${SITE_ORIGIN}/#patrick-mallan`,
+      name: "Patrick Mallan",
+      jobTitle: "Wedding DJ",
+      worksFor: { "@id": `${SITE_ORIGIN}/#organization` },
+      homeLocation: { "@type": "Place", name: "Squamish, British Columbia" },
+    },
+  };
+}
+
 export function vancouverWeddingDjBreadcrumbJsonLd(): Record<string, unknown> {
   return {
     "@context": "https://schema.org",
