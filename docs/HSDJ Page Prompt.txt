@@ -15,6 +15,16 @@ SUCCESS STANDARD
 
 The page must be better in measured production behaviour, not merely cleaner in source code or higher in a synthetic score. Preserve deliberate visual richness while eliminating browser work, downloads, markup, and code that do not contribute to the experience. A change is not an optimization if it causes missing content, delayed accessibility, broken navigation, visual degradation, or a less trustworthy experience.
 
+DESIGN GOVERNANCE
+
+Before judging, changing, or approving visual design, read and follow the current governing documents completely:
+
+- `docs/branding/HSDJ_CREATIVE_CONSTITUTION_V1_1.md`
+- `docs/branding/HSDJ_ANTI_TEMPLATE_DESIGN_EXECUTION_PROTOCOL_V1.md`
+- `design-research/deconstructed-hardware-design-system-v1/HSDJ_DECONSTRUCTED_HARDWARE_DESIGN_SYSTEM_V1.md`
+
+Treat those documents as acceptance criteria, not optional inspiration. Existing page code is not authority when it conflicts with them. In particular, audit every visible branded primary and secondary action against the sitewide action-control law: it must be an integrated, functionally matched DJ/audio gear control with plain-language semantics, keyboard access, a visible focus state, and a practical tap target. A generic pill, rounded rectangle, outline button, or card-shaped CTA is a design defect even when it is visually polished. Use the explicit exception process in the governing documents when functional or accessibility needs genuinely require a conventional control.
+
 AUDIT THE COMPLETE PAGE
 
 Inspect the page itself and every shared component, stylesheet, asset, font, script, animation, layout, navigation element, and dependency it causes the browser to load.

@@ -117,6 +117,25 @@ test("featured review controls remain keyboard-operable and clearly labelled", a
   expect(tapTargets.every((height) => height >= 44)).toBe(true);
 });
 
+test("the closing date action is an integrated physical CUE control", async ({ page }) => {
+  await page.goto("/reviews");
+  const dateControl = page.getByRole("link", { name: "Check your date" });
+  await dateControl.scrollIntoViewIfNeeded();
+  await expect(dateControl).toHaveAttribute("data-physical-control", "cue");
+  await expect(dateControl.locator('img[src*="cue-round"]')).toBeVisible();
+  await expect(dateControl).toHaveAttribute("href", "/contact#availability");
+  const dimensions = await dateControl.evaluate((link) => {
+    const linkRect = link.getBoundingClientRect();
+    const imageRect = link.querySelector("img")!.getBoundingClientRect();
+    return {
+      linkHeight: linkRect.height,
+      imageInside: imageRect.left >= linkRect.left && imageRect.right <= linkRect.right && imageRect.top >= linkRect.top && imageRect.bottom <= linkRect.bottom,
+    };
+  });
+  expect(dimensions.linkHeight).toBeGreaterThanOrEqual(44);
+  expect(dimensions.imageInside).toBe(true);
+});
+
 test("client-side navigation into Reviews remains clean", async ({ page }) => {
   const consoleErrors: string[] = [];
   const pageErrors: string[] = [];

@@ -158,6 +158,7 @@ The following are forbidden without explicit, recorded authorization from Patric
 - Fake mixer panels
 - Equal-width navigation items used for neatness
 - Generic sticky CTA bars
+- Generic pills, rounded rectangles, outline buttons, or card-shaped CTAs used for branded primary or secondary actions instead of a functionally matched DJ/audio control
 - Giant number plus small-label metric blocks
 - Decorative `01 / 02 / 03` numbering
 - Arbitrary monospaced type

@@ -382,31 +382,90 @@
 .outro p { max-width: 37rem; margin: 1.2rem 0 0; color: #d9e1e2; font-size: 1.12rem; font-weight: 650; line-height: 1.45; }
 .outroLink {
   position: relative;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  place-items: center;
+  grid-template-rows: auto 1fr auto;
+  gap: .7rem;
   min-width: 0;
   min-height: calc(100% - 4rem);
   margin: 2rem;
-  padding: 3.1rem 1.6rem 2.4rem;
-  color: #ffe86a;
-  background: linear-gradient(160deg, #20272b, #080b0d 48%, #15191b);
-  border: 2px solid #ffdf20;
-  border-radius: 6px;
-  box-shadow: 0 0 0 5px #080c0e, 0 0 0 7px #69757a, 0 7px 0 #b78f00, inset 0 1px #ffffff42, inset 0 -8px 18px #000b, 0 0 22px #ffdf2047;
-  font-size: clamp(1.2rem, 1.9vw, 1.7rem);
-  font-weight: 950;
-  letter-spacing: .04em;
-  text-shadow: 0 0 8px #ffe86aaa;
+  padding: 1.1rem 1rem 1.25rem;
+  color: #f8f1df;
+  background:
+    radial-gradient(circle at 10px 10px, #858e93 0 1px, #050708 2px 4px, transparent 5px),
+    radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), #858e93 0 1px, #050708 2px 4px, transparent 5px),
+    repeating-linear-gradient(90deg, #ffffff06 0 1px, transparent 1px 7px),
+    linear-gradient(155deg, #171e22, #050809 58%, #11171a);
+  border: 1px solid #68767d;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 #ffffff3d, inset 0 -4px 0 #020303, 0 7px 0 #030506, 0 14px 25px #0008;
   text-decoration: none;
+  isolation: isolate;
+}
+.outroLink::before {
+  position: absolute;
+  inset: .45rem;
+  z-index: -1;
+  content: "";
+  border: 1px solid #ffffff20;
+  background: linear-gradient(135deg, #22c9d70c, transparent 42% 68%, #194cff12);
+  pointer-events: none;
+}
+.outroLink::after {
+  position: absolute;
+  right: .65rem;
+  bottom: .65rem;
+  left: .65rem;
+  height: 3px;
+  content: "";
+  background: linear-gradient(90deg, var(--cyan), var(--yellow) 38%, #ff3f7e 67%, var(--blue));
+  box-shadow: 0 0 7px #22c9d75c;
+  pointer-events: none;
+}
+.outroControlHeader {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: #a9b5ba;
+  font: 800 .58rem/1 var(--font-geist-mono), monospace;
+  letter-spacing: .13em;
   text-transform: uppercase;
 }
-.outroLink::before { position: absolute; top: 1.15rem; left: 1.35rem; width: .7rem; height: .7rem; content: ""; border-radius: 50%; background: #47f38c; box-shadow: 0 0 0 3px #080c0e, 0 0 0 4px #47f38c, 0 0 12px #47f38c; }
-.outroLink::after { position: absolute; right: 1.35rem; bottom: 1rem; left: 1.35rem; height: 4px; content: ""; background: linear-gradient(90deg, var(--cyan), var(--yellow) 38%, #ff3f7e 67%, var(--blue)); box-shadow: 0 0 8px #22c9d78c; }
-.outroLink span { color: var(--cyan); font-size: 2rem; text-shadow: 0 0 9px #22c9d7; }
+.outroControlHeader > span:last-child { color: #43f082; text-shadow: 0 0 7px #43f08280; }
+.outroControlFace {
+  position: relative;
+  display: grid;
+  width: clamp(8.5rem, 11vw, 10rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle, #050607 0 54%, #20292d 55% 60%, #050708 61% 67%, transparent 68%);
+  box-shadow: inset 0 0 18px #000, 0 0 22px #ffbd2440;
+}
+.outroCueButton {
+  width: 100%;
+  height: auto;
+  filter: saturate(1.18) drop-shadow(0 8px 7px #000b) drop-shadow(0 0 7px #ffbd2460);
+  transition: transform 140ms ease, filter 140ms ease;
+}
+.outroControlLabel {
+  display: grid;
+  width: min(100%, 13rem);
+  padding: .65rem .8rem .72rem;
+  border: 1px solid #68757a;
+  border-left: 4px solid var(--yellow);
+  color: #f8f1df;
+  background: #080c0ed9;
+  box-shadow: inset 0 1px #ffffff21, 0 4px 0 #020303;
+  text-align: left;
+  text-transform: uppercase;
+}
+.outroControlLabel small { margin-bottom: .25rem; color: #a9b5ba; font: 800 .53rem/1 var(--font-geist-mono), monospace; letter-spacing: .14em; }
+.outroControlLabel strong { font-size: clamp(1rem, 1.4vw, 1.25rem); font-weight: 950; letter-spacing: .025em; line-height: 1.05; }
+.outroLink:hover .outroCueButton,
+.outroLink:focus-visible .outroCueButton { filter: saturate(1.35) brightness(1.08) drop-shadow(0 4px 4px #000c) drop-shadow(0 0 11px #ffbd2490); transform: translateY(3px) scale(.985); }
 .outroLink:hover,
-.outroLink:focus-visible { color: #fff6ba; border-color: #fff6ba; outline: 3px solid var(--cyan); outline-offset: 6px; }
+.outroLink:focus-visible { border-color: #fff6ba; outline: 3px solid var(--cyan); outline-offset: 6px; }
 
 @media (max-width: 1050px) {
   .hero { min-height: 660px; }
@@ -460,8 +519,10 @@
   .waveBanner { margin-bottom: 1.5rem; }
   .outroDeck { display: block; }
   .outroCopy { padding: 2rem 1.5rem; }
-  .outroLink { min-height: 7rem; margin: 0 1.25rem 1.5rem; padding: 2.8rem 1.35rem 2rem; }
-  .outroLink::before { top: 1rem; left: 1.35rem; }
+  .outroLink { min-height: 13rem; margin: 0 1.25rem 1.5rem; padding: 1rem 1rem 1.25rem; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: 1rem; }
+  .outroControlHeader { grid-column: 1 / -1; }
+  .outroControlFace { width: clamp(7.25rem, 32vw, 9rem); }
+  .outroControlLabel { width: 100%; }
 }
 
 @media (max-width: 420px) {
@@ -477,6 +538,7 @@
 @media (prefers-reduced-motion: reduce) {
   .firstCopy, .peopleQuotes .quote, .dayPhoto, .dayQuotes .quote, .floorQuotes .quote, .outroDeck { transform: none; }
   .waveTrack { animation: none; transform: none; will-change: auto; }
+  .outroCueButton { transition: none; }
 }
 
 /* Featured reviews: a physical deck with a selectable CDJ-inspired display. */

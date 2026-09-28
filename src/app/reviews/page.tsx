@@ -242,7 +242,31 @@ export default function ReviewsPage() {
             <h2 id="reviews-outro-heading">Now let&apos;s talk about yours.</h2>
             <p>If you like what these couples had to say, see whether your date is open. Then we can talk music and the kind of night you want to make.</p>
           </div>
-          <Link href="/contact#availability" prefetch={false} className={styles.outroLink}>Check your date <span aria-hidden="true">↗</span></Link>
+          <Link
+            href="/contact#availability"
+            prefetch={false}
+            className={styles.outroLink}
+            aria-label="Check your date"
+            data-physical-control="cue"
+          >
+            <span className={styles.outroControlHeader} aria-hidden="true">
+              <span>HSDJ / DATE CUE</span>
+              <span>CH 02</span>
+            </span>
+            <span className={styles.outroControlFace} aria-hidden="true">
+              <Image
+                src="/images/hsdj-redesign/controls/buttons/cue-round.png"
+                alt=""
+                width={160}
+                height={160}
+                className={styles.outroCueButton}
+              />
+            </span>
+            <span className={styles.outroControlLabel} aria-hidden="true">
+              <small>Load your date</small>
+              <strong>Check your date</strong>
+            </span>
+          </Link>
         </div>
       </section>
     </main>

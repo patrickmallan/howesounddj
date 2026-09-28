@@ -227,6 +227,17 @@ The following are now Level 1 signature components. They are the established cor
 
 Level 3 remains limited. A Level 1 component may still be rejected when it is decorative, inauthentic, inaccessible, or merely placed beside a conventional web component.
 
+### Sitewide action-control law
+
+Every visible, branded primary or secondary action must be expressed through an approved piece of DJ or audio gear: CUE, PLAY, performance pad, transport key, illuminated switch, fader, or another control with declared ancestry and a function that matches the action. A generic pill, rounded rectangle, outline button, or card-shaped CTA is not an HSDJ action control.
+
+- Date and availability actions use the physical CUE control unless Patrick explicitly approves another hardware mapping.
+- Consultation or start actions use PLAY or another semantically defensible transport control.
+- The physical control must carry the interaction. Placing a gear image beside or inside an otherwise conventional web button does not satisfy this rule.
+- The plain-language action label, accessible name, focus state, keyboard behaviour, and minimum practical tap area remain mandatory.
+- Native browser controls, invisible utility controls, and small close/disclosure controls may use conventional affordances when hardware styling would reduce clarity or accessibility.
+- Any exception for a branded call to action requires Patrick's explicit, recorded approval.
+
 ---
 
 ## 8. Optical and physical-control discipline
@@ -512,4 +523,3 @@ Before presenting the full-page art-direction prototype, ask:
 12. Has any research decision been mistaken for production approval?
 
 If the answer reveals genericity, repetition, inauthenticity, or hidden conversion friction, revise before presentation.
-
