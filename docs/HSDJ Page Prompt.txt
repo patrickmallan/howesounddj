@@ -1,0 +1,140 @@
+Atlas, act as Howe Sound Wedding DJ’s senior website designer, senior Next.js performance engineer, technical SEO expert, and quality-assurance lead.
+
+Perform a complete TIER S forensic audit and optimization pass on:
+
+PAGE: Reviews
+ROUTE: https://www.howesounddj.com/reviews
+
+Treat this as an implementation task, not merely a written review. Diagnose the page, make every safe and worthwhile improvement you find, verify the finished result, and push the completed work to Git.
+
+PRIMARY OBJECTIVE
+
+Make this individual page as fast, efficient, stable, responsive, accessible, search-friendly, and technically clean as it can reasonably be without sacrificing its existing visual identity, artwork, personality, interactions, content, or HSDJ brand vision.
+
+SUCCESS STANDARD
+
+The page must be better in measured production behaviour, not merely cleaner in source code or higher in a synthetic score. Preserve deliberate visual richness while eliminating browser work, downloads, markup, and code that do not contribute to the experience. A change is not an optimization if it causes missing content, delayed accessibility, broken navigation, visual degradation, or a less trustworthy experience.
+
+AUDIT THE COMPLETE PAGE
+
+Inspect the page itself and every shared component, stylesheet, asset, font, script, animation, layout, navigation element, and dependency it causes the browser to load.
+
+Investigate:
+
+- Initial page-load weight and critical rendering path.
+- Core Web Vitals and their causes: the actual LCP element and discovery timing, layout-shift sources, and interaction responsiveness rather than scores alone.
+- The direct-entry document, embedded RSC payload, route-specific client bundles, shared bundles, CSS, fonts, images, and third-party requests.
+- Mobile and desktop resource delivery.
+- Images loaded too early, at the wrong size, or at unnecessarily high quality.
+- Incorrect preload, priority, fetch-priority, prefetch, lazy-loading, or responsive-image settings.
+- Unrelated routes or assets being downloaded before they are needed.
+- Production-only Next.js route prefetching triggered by initially visible links, hidden navigation, opening menus, scrolling through card grids, or reaching the footer.
+- Oversized images, duplicate artwork, unused formats, and wasteful background images.
+- Excessive HTML, DOM nodes, SVG elements, or repeated markup.
+- Large server-rendered HTML or RSC payloads caused by repeated SVG identifiers, data attributes, duplicated semantic content, serialized props, or decorative markup.
+- Unnecessary client components, hydration, browser-side JavaScript, effects, observers, state, or event listeners.
+- Work that can safely remain on the server.
+- Animations that continue running off-screen.
+- Expensive filters, shadows, blending, compositing, clipping, layout recalculation, or paint work.
+- Unnecessary `will-change`, forced GPU layers, timers, loops, or recurring browser tasks.
+- Hidden elements that still consume resources.
+- Performance techniques such as `content-visibility`, containment, virtualization, or clipping that make meaningful off-screen content disappear from the accessibility tree, find-in-page, printing, screenshots, or crawlers.
+- Duplicate CSS, overridden rules, global styles fighting page-specific styles, and unused page code.
+- Layout shifts, horizontal overflow, clipped or truncated text, broken wrapping, and undersized tap targets.
+- Problems at narrow mobile widths, ordinary phones, tablets, laptops, and large desktop screens.
+- Broken links, controls, disclosures, forms, interactions, and keyboard behavior.
+- Console errors, hydration warnings, failed requests, and malformed HTML.
+- Accessibility issues affecting headings, landmarks, labels, contrast, focus, keyboard use, reduced motion, and semantic structure.
+- Whether all meaningful content is available to assistive technology before a sighted user manually scrolls it into view.
+- Technical SEO issues involving metadata, canonical URLs, heading hierarchy, crawlable links, structured content, image alternatives, and meaningful page copy.
+- Duplicate or unnecessary dependencies and code paths.
+- Existing tests that are weak, stale, missing, or failing.
+
+BASELINE AND MEASUREMENT METHOD
+
+- Confirm and record the starting Git branch, commit, and worktree status before editing. Do not absorb or overwrite unrelated user work.
+- Record any pre-existing build, lint, type, test, console, or network failures so they are not misreported as regressions or silently folded into unrelated work.
+- Build and serve the existing page in production mode before changing it whenever practical.
+- Use fresh browser contexts or cold caches for comparable mobile and desktop measurements.
+- Measure a direct page entry, a natural full-page scroll, and important interaction states separately. Do not treat “load complete at the top” as the whole page cost.
+- Record the actual URLs requested so aggregate byte totals cannot hide unwanted route prefetches or duplicate assets.
+- Include the navigation document in page-weight measurements. The Resource Timing resource list does not include the main document, so inspect the navigation entry and/or built HTML separately.
+- Distinguish raw built size, compressed or transferred bytes, decoded bytes, request count, and DOM size. Label each measurement clearly rather than combining unlike values.
+- Inspect built HTML, RSC files, route chunks, and CSS output when generated markup or client/server boundaries may be a bottleneck.
+- Measure layout shift, long tasks, and scroll-frame behaviour where supported. Record the test environment and avoid presenting localhost timing as universal real-user performance.
+- Compare like with like. Use the same viewport, cache state, production build, scroll path, and wait conditions before and after.
+
+WORKING RULES
+
+- Read the repository’s AGENTS.md instructions first.
+- Because this project uses a newer version of Next.js, read the relevant local Next.js documentation before changing framework-sensitive code.
+- Establish a production baseline before optimizing wherever practical.
+- Measure the page in a production build, not only development mode.
+- Test mobile and desktop separately.
+- Test both direct entry and client-side navigation when App Router behaviour, hydration, route transitions, or shared controllers are involved.
+- Preserve the page’s design language and the visual work already approved.
+- Do not flatten, sterilize, or remove distinctive artwork merely to improve a score.
+- Prefer removing hidden waste over removing visible quality.
+- Preserve the artwork itself while removing unused SVG attributes, debug identifiers, repeated data, unnecessary serialization, forced compositing, or invisible layers that do not affect its appearance.
+- Replace expensive visual implementations with lighter equivalents only when the finished appearance remains faithful to the original vision.
+- Do not change copy, layout, or branding unless it fixes a real usability, SEO, accessibility, responsiveness, or performance problem.
+- Do not make unrelated site-wide redesigns.
+- You may improve a shared component when it directly creates waste or failure on this page, but verify that the shared change remains safe elsewhere.
+- For a shared-component change, test the audited page plus representative routes that use the same component. Do not assume a successful build proves visual or behavioural safety.
+- Preserve user work and unrelated existing changes.
+- Do not accept an optimization solely because a one-shot full-page screenshot or automated score passes. Exercise the page through ordinary scrolling and interaction, then inspect the real rendered result.
+- Do not use `content-visibility`, virtualization, lazy mounting, `display: none`, or overflow clipping on meaningful copy or navigation unless you verify that the complete content remains accessible, searchable, printable, and visually reliable.
+- Avoid flaky or score-chasing changes. Prefer durable reductions in bytes, requests, hydration, DOM work, layout, paint, and recurring tasks.
+- Do not stop after identifying problems. Implement the fixes.
+- Do not perform a separate Vercel deployment or monitor Vercel. This repository automatically deploys when Git is pushed.
+
+REQUIRED VERIFICATION
+
+After making improvements:
+
+- Run linting.
+- Run TypeScript checking.
+- Run the production build.
+- Run relevant existing tests.
+- Add focused regression tests for important problems uncovered during the audit.
+- Run the new regression tests against a production server, not only a development server.
+- Test at a minimum of 320px, 390px, 768px, and 1440px widths.
+- Confirm there is no hidden horizontal overflow.
+- Confirm important text is genuinely inside the viewport rather than merely clipped by `overflow: hidden`.
+- Confirm headings, labels, containers, and artwork remain visually correct.
+- Confirm all meaningful off-screen content is present in the accessibility tree without first scrolling it into existence.
+- Confirm focus indicators are visible, controls work by keyboard, and primary mobile tap targets are at least 44px where practical.
+- Confirm reduced-motion users do not receive essential information only through animation and that recurring animation stops or pauses when appropriate.
+- Confirm all page interactions still work.
+- Verify internal links resolve, external destinations remain current where practical, and links that open new tabs communicate that behaviour accessibly.
+- Measure initial and post-scroll delivered resources and scrolling/rendering performance on mobile and desktop.
+- Confirm scrolling does not silently fetch unrelated routes, route CSS, route JavaScript, or heavy assets unless there is a deliberate and defensible user benefit.
+- Check for console errors, failed requests, and hydration warnings.
+- Visually inspect the finished page in production mode through normal scrolling as well as screenshots. If an optimization causes blank regions in a full-page capture, printing, the accessibility tree, or find-in-page, investigate rather than dismissing it as a tooling quirk.
+- Inspect the server-rendered HTML and structured data to confirm important content and crawlable links do not depend on client-side JavaScript.
+- Compare meaningful before-and-after measurements whenever possible.
+- Add reasonable, non-flaky performance budgets or regression protection when doing so will prevent the same problem from returning. Prefer budgets for unwanted route requests, request counts, layout shift, long-task duration, overflow, and markup regressions over brittle millisecond-only thresholds.
+- Review the final Git diff and status. Include only intentional source, test, and asset changes; do not commit generated builds, temporary traces, screenshots, browser profiles, test reports, or local audit artifacts unless they are deliberately part of the project.
+- Stop temporary production servers and clean up disposable audit output after verification without removing pre-existing user files.
+
+DELIVERY
+
+Once the page passes verification:
+
+1. Confirm the final diff contains only the intended page optimization and its necessary shared-component or regression-test changes.
+2. Commit the completed work with a clear commit message.
+3. Push it to the current Git branch.
+4. Do not run a separate Vercel deployment.
+5. Report:
+   - The most important bottlenecks found.
+   - The improvements implemented.
+   - Before-and-after measurements.
+   - Measurement conditions and whether figures represent raw, transferred, compressed, or decoded size.
+   - Mobile and desktop verification results.
+   - Tests and checks completed.
+   - Any pre-existing failure that remains, clearly separated from failures introduced by this work.
+   - The Git commit pushed.
+   - Any remaining limitation that could not be safely improved without sacrificing the page’s approved vision.
+   - Any optimization considered but rejected because it harmed accessibility, reliability, SEO, or the approved visual experience.
+
+Continue until the page is genuinely optimized and verified. Do not provide a generic checklist or stop at recommendations.
