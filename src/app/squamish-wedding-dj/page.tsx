@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { preload } from "react-dom";
 import { HeroSignalCopy } from "@/components/hero-signal-copy";
-import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { squamishWeddingDjBreadcrumbJsonLd } from "@/lib/json-ld";
 import "./squamish-afterparty.css";
@@ -20,20 +18,39 @@ export const metadata: Metadata = {
 };
 
 export default function SquamishWeddingDjPage() {
-  preload("/images/hsdj-redesign/new-editorial/squamish-night-collage-v3-optimized.webp", {
-    as: "image",
-    fetchPriority: "high",
-  });
-
   return (
     <main className="hsdj-interior hsdj-squamish-afterparty min-h-screen text-white">
       <JsonLd data={squamishWeddingDjBreadcrumbJsonLd()} />
 
       <section className="sq-hero" aria-labelledby="sq-hero-title">
+        <Image
+          className="sq-hero-art"
+          src="/images/hsdj-redesign/new-editorial/squamish-night-collage-v3-optimized.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          preload
+          aria-hidden="true"
+        />
         <div className="sq-hero-copy">
-          <MeterMatrixHeading id="sq-hero-title" text="Your Squamish wedding, without the standard wedding-DJ playlist." />
+          <h1 id="sq-hero-title" className="sq-hero-title">
+            <span className="sq-visually-hidden">Your Squamish wedding, without the standard wedding-DJ playlist.</span>
+            <Image
+              src="/images/squamish/squamish-hero-fixture-v1.svg"
+              alt=""
+              width={1098}
+              height={356}
+              unoptimized
+              loading="eager"
+              aria-hidden="true"
+            />
+          </h1>
           <HeroSignalCopy tone="pink">Wedding is the event format, not the genre. I build the music around what you love, then pay attention to what your people actually do when it plays.</HeroSignalCopy>
-          <a href="#sq-place">Feel this place <span aria-hidden="true">↓</span></a>
+          <a className="sq-gear-link sq-gear-link--hero" href="#sq-place">
+            <Image src="/images/hsdj-redesign/controls/pads/cyan.png" alt="" width={128} height={128} aria-hidden="true" />
+            <span>Feel this place</span>
+            <span className="sq-gear-arrow" aria-hidden="true">↓</span>
+          </a>
         </div>
       </section>
 
@@ -63,7 +80,7 @@ export default function SquamishWeddingDjPage() {
             <p>That means I am not discovering the Sea-to-Sky corridor on your wedding day. I know the landscape is more than a backdrop: weather can turn, outdoor sound can travel, and the right room changes everything.</p>
             <p>I plan for the celebration you are actually having here. <strong>Practical local attention, then music that feels as alive as the place.</strong> No imported, one-size-fits-all wedding script.</p>
           </div>
-          <Link href="/vancouver-wedding-dj">Planning from Vancouver? Follow that route <span aria-hidden="true">↗</span></Link>
+          <Link href="/vancouver-wedding-dj" prefetch={false}>Planning from Vancouver? Follow that route <span aria-hidden="true">↗</span></Link>
         </div>
         <div className="sq-local-type" aria-hidden="true"><span>SEA</span><span>TO</span><span>SKY</span></div>
       </section>
@@ -83,7 +100,7 @@ export default function SquamishWeddingDjPage() {
         </div>
         <div className="sq-music-foot">
           <p>Different sounds. One room moving together.</p>
-          <Link href="/guides/how-to-keep-a-wedding-dance-floor-packed">How I build a dance floor <span aria-hidden="true">↗</span></Link>
+          <Link href="/guides/how-to-keep-a-wedding-dance-floor-packed" prefetch={false}>How I build a dance floor <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
 
@@ -92,14 +109,22 @@ export default function SquamishWeddingDjPage() {
         <div>
           <h2 id="sq-venue-title">The room changes the record.</h2>
           <p className="sq-venue-copy"><span>A brewery.</span><span>A ranch.</span><span>A mountaintop.</span><strong>Each asks something different of the sound.</strong> If you are choosing a setting, the venue route is where those differences belong.</p>
-          <Link href="/venues">Explore the Sea-to-Sky venue route <span aria-hidden="true">↗</span></Link>
+          <Link className="sq-gear-link sq-gear-link--venue" href="/venues" prefetch={false}>
+            <Image src="/images/hsdj-redesign/controls/pads/cyan.png" alt="" width={128} height={128} aria-hidden="true" />
+            <span>Explore the Sea-to-Sky venue route</span>
+            <span className="sq-gear-arrow" aria-hidden="true">↗</span>
+          </Link>
         </div>
       </section>
 
       <section className="sq-outro" aria-labelledby="sq-outro-title">
         <h2 id="sq-outro-title">Got a date? Let&apos;s see where this goes.</h2>
         <p className="sq-outro-copy"><span>The calendar answers right away.</span><strong>If I am open, book a consult and tell me about the music, your people, and the kind of night you want.</strong></p>
-        <Link href="/contact">Check your date <span aria-hidden="true">↗</span></Link>
+        <Link className="sq-gear-link sq-gear-link--date" href="/contact" prefetch={false}>
+          <Image src="/images/hsdj-redesign/controls/buttons/cue-round.png" alt="" width={160} height={160} aria-hidden="true" />
+          <span>Check your date</span>
+          <span className="sq-gear-arrow" aria-hidden="true">↗</span>
+        </Link>
       </section>
     </main>
   );
