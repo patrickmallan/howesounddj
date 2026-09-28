@@ -1,14 +1,43 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { GuidesTurntable } from "./guides-turntable";
 import { HeroSignalCopy } from "@/components/hero-signal-copy";
-import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { guidesHubBreadcrumbJsonLd } from "@/lib/json-ld";
 import "./guides-deck.css";
 
 const description =
   "How to choose a wedding DJ and how to keep a Sea-to-Sky dance floor moving, from Howe Sound DJ in Squamish.";
+
+const guideTitle = "Good parties are made on purpose.";
+
+type HardwareLinkProps = {
+  eyebrow: string;
+  href: string;
+  label: string;
+  mode?: "play" | "hot-cue";
+};
+
+function HardwareLink({ eyebrow, href, label, mode = "play" }: HardwareLinkProps) {
+  const control = mode === "play"
+    ? "/images/hsdj-redesign/controls/buttons/play-pause-round.png"
+    : "/images/hsdj-redesign/controls/buttons/hot-cue-mode.png";
+  const dimensions = mode === "play" ? { width: 130, height: 130 } : { width: 94, height: 26 };
+
+  return (
+    <Link className={`guides-deck-hardware-link guides-deck-hardware-link--${mode}`} href={href} prefetch={false} data-physical-control={mode}>
+      <span className="guides-deck-hardware-face" aria-hidden="true">
+        <Image src={control} alt="" {...dimensions} sizes={mode === "play" ? "72px" : "94px"} />
+      </span>
+      <span className="guides-deck-hardware-copy">
+        <small>{eyebrow}</small>
+        <strong>{label}</strong>
+      </span>
+      <span className="guides-deck-hardware-arrow" aria-hidden="true">↗</span>
+    </Link>
+  );
+}
 
 export const metadata: Metadata = {
   title: "Wedding Planning Guides",
@@ -27,11 +56,21 @@ export default function GuidesHubPage() {
       </div>
       <section className="guides-deck-hero" aria-labelledby="guides-deck-title">
         <div className="guides-deck-hero-copy">
-          <MeterMatrixHeading id="guides-deck-title" text="Good parties are made on purpose." lines={["Good parties", "are made", "on purpose."]} />
+          <h1 id="guides-deck-title" className="guides-deck-title" aria-label={guideTitle}>
+            <span aria-hidden="true">Good parties</span>
+            <span aria-hidden="true">are made</span>
+            <span aria-hidden="true">on purpose.</span>
+          </h1>
           <HeroSignalCopy>Two questions behind a night people remember: who do you trust with the music, and how do you get everyone onto the floor?</HeroSignalCopy>
           <nav className="guides-deck-hero-routes" aria-label="Choose a planning question">
-            <a href="#guide-one">Build the dance floor <span aria-hidden="true">↘</span></a>
-            <a href="#guide-two">Choose your DJ <span aria-hidden="true">↘</span></a>
+            <a href="#guide-one" data-physical-control="beat-jump">
+              <span className="guides-deck-jump-face" aria-hidden="true"><Image src="/images/hsdj-redesign/controls/buttons/beat-jump-mode.png" alt="" width={94} height={26} sizes="94px" /></span>
+              <strong>Build the dance floor</strong><span aria-hidden="true">↘</span>
+            </a>
+            <a href="#guide-two" data-physical-control="beat-jump">
+              <span className="guides-deck-jump-face" aria-hidden="true"><Image src="/images/hsdj-redesign/controls/buttons/beat-jump-mode.png" alt="" width={94} height={26} sizes="94px" /></span>
+              <strong>Choose your DJ</strong><span aria-hidden="true">↘</span>
+            </a>
           </nav>
         </div>
       </section>
@@ -48,32 +87,26 @@ export default function GuidesHubPage() {
         <div className="guides-deck-feature-copy">
           <h2 id="guides-floor-title">How to keep a wedding dance floor packed.</h2>
           <p>Why the first song after dinner matters, why familiar music earns trust, and why a mountain wedding needs its own kind of pacing.</p>
-          <Link href="/guides/how-to-keep-a-wedding-dance-floor-packed">Read the floor guide <span aria-hidden="true">↗</span></Link>
+          <HardwareLink eyebrow="Press play" href="/guides/how-to-keep-a-wedding-dance-floor-packed" label="Read the floor guide" />
         </div>
       </section>
 
       <section id="guide-two" className="guides-deck-feature guides-deck-choice" aria-labelledby="guides-choice-title">
         <div className="guides-deck-choice-art">
-          <div className="guides-deck-turntable" role="img" aria-label="A black vinyl record labelled Gala, Freed from Desire, spinning on a professional turntable">
-            <Image className="guides-deck-turntable-base" src="/images/hsdj-redesign/new-editorial/guides-turntable-deck-v1.webp" alt="" fill sizes="(max-width: 900px) 90vw, 44vw" />
-            <div className="guides-deck-record">
-              <Image src="/images/hsdj-redesign/new-editorial/guides-vinyl-record-v1.webp" alt="" fill sizes="(max-width: 900px) 65vw, 32vw" />
-              <span className="guides-deck-record-label"><strong>GALA</strong><small>FREED FROM DESIRE<br />33⅓ RPM · 12″</small></span>
-            </div>
-          </div>
+          <GuidesTurntable />
           <p className="guides-deck-track-title">Gala / Freed from Desire</p>
         </div>
         <div className="guides-deck-feature-copy">
           <h2 id="guides-choice-title">How to choose the DJ who gets your wedding.</h2>
           <p>Ceremony sound. Speeches. Requests. The songs you love and the ones you never want to hear. Here&apos;s what to ask before you book.</p>
-          <Link href="/guides/how-to-choose-a-wedding-dj-in-squamish">Read the choosing guide <span aria-hidden="true">↗</span></Link>
+          <HardwareLink eyebrow="Press play" href="/guides/how-to-choose-a-wedding-dj-in-squamish" label="Read the choosing guide" />
         </div>
       </section>
 
       <nav className="guides-deck-exit" aria-label="More ways to explore">
         <p>Want to picture a particular room?</p>
-        <Link href="/venues">Follow the venue route <span aria-hidden="true">↗</span></Link>
-        <Link href="/faq">Or ask the practical questions <span aria-hidden="true">↗</span></Link>
+        <HardwareLink eyebrow="Hot cue" href="/venues" label="Follow the venue route" mode="hot-cue" />
+        <HardwareLink eyebrow="Hot cue" href="/faq" label="Ask the practical questions" mode="hot-cue" />
       </nav>
     </main>
   );

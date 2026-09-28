@@ -7,10 +7,19 @@
 .guides-deck-hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, #080b10 6%, #080b10e8 34%, #080b1070 60%, #080b1000 84%); }
 .guides-deck-hero-copy { position: relative; z-index: 1; width: min(100%, 660px); }
 .hsdj-guides-deck .guides-deck-hero h1 { width: min(100%, 650px); max-width: none; margin: 0; }
+.guides-deck-title { display: grid; gap: .02em; color: #f7f3e9; font-size: clamp(3.35rem, 6.25vw, 6.4rem); filter: none !important; }
+.guides-deck-title span { display: block; width: fit-content; font-palette: --hsdj-club-light; }
+.guides-deck-title span:nth-child(2) { justify-self: center; font-palette: --hsdj-signal-light; }
+.guides-deck-title span:nth-child(3) { justify-self: end; font-palette: --hsdj-after-dark; }
 #main-content .hsdj-guides-deck .guides-deck-hero h1 + p { max-width: 35rem; margin: 1.6rem 0 1.8rem; padding: 0 !important; border: 0 !important; background: none !important; box-shadow: none !important; clip-path: none !important; color: #fff !important; font-size: clamp(1.1rem, 1.5vw, 1.35rem); font-weight: 750; line-height: 1.52; text-wrap: pretty; }
-.guides-deck-hero-routes { display: flex; flex-wrap: wrap; gap: .9rem; }
-.guides-deck-hero-routes a, .guides-deck-feature-copy > a { display: inline-flex; align-items: center; gap: 1.3rem; padding: .85rem 1.1rem; background: #ffe027; color: #071019; font-weight: 900; text-transform: uppercase; letter-spacing: .035em; box-shadow: 6px 6px 0 #1457ff; }
-.guides-deck-hero-routes a:nth-child(2) { background: #75edf1; box-shadow: 6px 6px 0 #ff3481; transform: rotate(2deg); }
+.guides-deck-hero-routes { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+.guides-deck-hero-routes a { display: grid; width: 10.5rem; min-height: 5.1rem; grid-template-columns: 1fr auto; grid-template-rows: 2rem auto; align-items: center; gap: .15rem .4rem; color: #f7fbff; text-decoration: none; text-transform: uppercase; }
+.guides-deck-jump-face { grid-column: 1 / -1; display: block; width: 7.25rem; height: 2rem; filter: drop-shadow(0 0 9px #23dff3a6); transition: filter .18s ease, transform .18s ease; }
+.guides-deck-jump-face img { width: 100%; height: 100%; object-fit: fill; }
+.guides-deck-hero-routes a strong { font: 900 .75rem/1.05 var(--font-geist-mono), monospace; letter-spacing: .02em; }
+.guides-deck-hero-routes a > span:last-child { color: #54eff5; font-weight: 950; }
+.guides-deck-hero-routes a:hover .guides-deck-jump-face, .guides-deck-hero-routes a:focus-visible .guides-deck-jump-face { filter: brightness(1.18) drop-shadow(0 0 13px #23dff3); transform: translateY(2px); }
+.guides-deck-hero-routes a:focus-visible, .guides-deck-hardware-link:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
 #main-content .hsdj-guides-deck .guides-deck-feature { position: relative; z-index: 1; min-height: 680px; padding: 5rem max(5vw, calc((100vw - 78rem) / 2)); display: grid; grid-template-columns: minmax(0, .87fr) minmax(0, 1.13fr); gap: clamp(2rem, 6vw, 7rem); align-items: center; background: transparent !important; }
 #main-content .hsdj-guides-deck .guides-deck-floor { background: linear-gradient(0deg, #080b10 0%, #080b1000 22%) !important; }
 .guides-deck-floor .guides-deck-feature-copy::before { content: ""; position: absolute; z-index: -1; inset: -5rem -5rem; background: radial-gradient(ellipse, #080b10f2 0%, #080b10cc 45%, transparent 75%); pointer-events: none; }
@@ -32,10 +41,18 @@
 .guides-deck-record-label strong { font-size: clamp(.55rem, 1vw, .9rem); letter-spacing: .18em; }
 .guides-deck-record-label small { margin-top: .25rem; font-size: clamp(.35rem, .6vw, .55rem); font-weight: 800; letter-spacing: .03em; }
 .guides-deck-track-title { position: relative; margin: -1rem 0 0; color: #ffdd47 !important; font-size: 1rem; font-weight: 800; text-align: center; }
-.guides-deck-choice .guides-deck-feature-copy > a { box-shadow: 6px 6px 0 #ff4087; }
+.guides-deck-hardware-link { --hardware-accent: #50eef3; display: inline-grid; width: fit-content; min-height: 4.75rem; grid-template-columns: 4.75rem minmax(8rem, auto) 1rem; align-items: center; gap: .7rem; color: #f7fbff; text-decoration: none; text-transform: uppercase; }
+.guides-deck-hardware-face { display: grid; width: 4.75rem; height: 4.75rem; place-items: center; filter: drop-shadow(0 0 8px color-mix(in srgb, var(--hardware-accent) 70%, transparent)); transition: filter .18s ease, transform .18s ease; }
+.guides-deck-hardware-face img { width: 100%; height: 100%; object-fit: contain; }
+.guides-deck-hardware-copy { display: grid; gap: .18rem; }
+.guides-deck-hardware-copy small { color: #8ea6af; font: 800 .58rem/1 var(--font-geist-mono), monospace; letter-spacing: .12em; }
+.guides-deck-hardware-copy strong { color: #f7fbff; font: 950 .84rem/1.08 var(--font-geist-sans), sans-serif; }
+.guides-deck-hardware-arrow { color: var(--hardware-accent); font-weight: 950; }
+.guides-deck-hardware-link--hot-cue { --hardware-accent: #ffe027; min-height: 3.6rem; grid-template-columns: 6.6rem minmax(9rem, auto) 1rem; }
+.guides-deck-hardware-link--hot-cue .guides-deck-hardware-face { width: 6.6rem; height: 2.2rem; }
+.guides-deck-hardware-link:hover .guides-deck-hardware-face, .guides-deck-hardware-link:focus-visible .guides-deck-hardware-face { filter: brightness(1.15) drop-shadow(0 0 13px var(--hardware-accent)); transform: translateY(2px); }
 .guides-deck-exit { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; padding: 2.2rem max(5vw, calc((100vw - 78rem) / 2)); background: #080b10; }
 .guides-deck-exit p { margin: 0 2rem 0 0; color: #fff; font-weight: 900; font-size: 1.2rem; }
-.guides-deck-exit a { color: #ffe027; font-weight: 800; }
 @media (max-width: 900px) {
   #main-content .hsdj-guides-deck .guides-deck-hero { min-height: 580px; padding: 8rem 1.5rem 3rem; }
   .guides-deck-world { width: 100vw; height: 1500px; opacity: .8; }
@@ -59,11 +76,11 @@
   .guides-deck-record-label strong { font-size: .5rem; }
   .guides-deck-record-label small { font-size: .32rem; }
   .guides-deck-hero-routes { gap: .7rem; }
-  .guides-deck-hero-routes a { font-size: .8rem; padding: .75rem; }
+  .guides-deck-hero-routes a { width: 9.3rem; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .guides-deck-record { animation: guides-vinyl-spin 1.8s linear infinite; }
+  .guides-deck-record { animation: guides-vinyl-spin 1.8s linear infinite paused; }
+  .guides-deck-turntable[data-motion-active] .guides-deck-record { animation-play-state: running; }
   .guides-deck-turntable:hover .guides-deck-record { animation-play-state: paused; }
-  .guides-deck-hero-routes a:hover, .guides-deck-feature-copy > a:hover { translate: 3px -3px; }
 }
 @keyframes guides-vinyl-spin { to { rotate: 360deg; } }
