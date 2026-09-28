@@ -44,7 +44,13 @@ function fitBackplateToRenderedLines(heading: HTMLHeadingElement) {
     + Number.parseFloat(style.borderLeftWidth)
     + Number.parseFloat(style.borderRightWidth);
   const naturalWidth = headingRect.width / scale;
-  const fittedWidth = Math.min(naturalWidth, Math.ceil(widestLine + chrome + 2));
+  const parentRight = heading.parentElement?.getBoundingClientRect().right ?? innerWidth;
+  const availableWidth = Math.max(0, Math.min(parentRight, innerWidth) - Math.max(0, headingRect.left));
+  const fittedWidth = Math.min(
+    naturalWidth,
+    Math.ceil(widestLine + chrome + 2),
+    availableWidth / scale,
+  );
   heading.style.setProperty("width", `${fittedWidth}px`, "important");
 }
 
@@ -91,6 +97,7 @@ function wrapHeadingLetters(heading: HTMLHeadingElement) {
 
 export function HeadingLetterFlashController() {
   useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const observed = new Set<HTMLHeadingElement>();
     const visible = new Set<HTMLHeadingElement>();
     const running = new Map<HTMLHeadingElement, () => void>();
@@ -113,6 +120,10 @@ export function HeadingLetterFlashController() {
       if (running.has(heading) || document.hidden) return;
       wrapHeadingLetters(heading);
       scheduleBackplateFit(heading);
+      if (reducedMotion.matches) {
+        heading.dataset.letterFlash = "paused";
+        return;
+      }
       const letters = [...heading.querySelectorAll<HTMLElement>(`.${styles.character}`)];
       if (!letters.length) return;
 
@@ -208,8 +219,16 @@ export function HeadingLetterFlashController() {
         fitBackplateToRenderedLines(heading);
       }), 120);
     };
+    const onMotionPreferenceChange = () => {
+      if (reducedMotion.matches) {
+        visible.forEach(stopSequence);
+        return;
+      }
+      visible.forEach(startSequence);
+    };
     document.addEventListener("visibilitychange", onVisibilityChange);
     window.addEventListener("resize", onResize, { passive: true });
+    reducedMotion.addEventListener("change", onMotionPreferenceChange);
 
     return () => {
       window.clearTimeout(resizeTimer);
@@ -222,6 +241,7 @@ export function HeadingLetterFlashController() {
       mutation.disconnect();
       document.removeEventListener("visibilitychange", onVisibilityChange);
       window.removeEventListener("resize", onResize);
+      reducedMotion.removeEventListener("change", onMotionPreferenceChange);
     };
   }, []);
 

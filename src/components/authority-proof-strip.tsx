@@ -41,7 +41,7 @@ export function AuthorityProofStrip({ heading = "What couples describe", classNa
           </h2>
           <p className="mt-3 text-sm leading-7 text-white/50">
             Language below is from real couple feedback on the{" "}
-            <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+            <Link href="/reviews" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               reviews page
             </Link>
             .

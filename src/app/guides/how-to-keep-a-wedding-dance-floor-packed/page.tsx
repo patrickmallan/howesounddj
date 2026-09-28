@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
 import "../article-liner-notes.css";
-import { HeroSignalCopy } from "@/components/hero-signal-copy";
-import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
-import type { ReactNode } from "react";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
 import { ImageSlot } from "@/components/image-slot";
-import { SectionReveal } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { JsonLd } from "@/components/json-ld";
 import { guideArticleBreadcrumbJsonLd, guideArticleJsonLd } from "@/lib/json-ld";
+import { GuideArticleBlock as ProseBlock, GuideArticleHeader } from "../guide-article-elements";
 
 const ARTICLE_SLUG = "how-to-keep-a-wedding-dance-floor-packed";
 const ARTICLE_TITLE = "How to Keep a Wedding Dance Floor Packed at a Sea-to-Sky Wedding";
@@ -38,24 +35,6 @@ export const metadata: Metadata = {
   alternates: { canonical: `/guides/${ARTICLE_SLUG}` },
 };
 
-function ProseBlock({
-  eyebrow,
-  title,
-  children,
-}: {
-  eyebrow: string;
-  title: string;
-  children: ReactNode;
-}) {
-  return (
-    <section className="mx-auto max-w-3xl px-6 py-14 lg:px-8">
-      <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">{eyebrow}</div>
-      <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">{title}</h2>
-      <div className="mt-6 space-y-4 text-lg leading-8 text-white/70">{children}</div>
-    </section>
-  );
-}
-
 export default function GuideDanceFloorPackedPage() {
   return (
     <main className="hsdj-interior hsdj-editorial-page hsdj-guide-dance min-h-screen bg-neutral-950 text-white">
@@ -70,38 +49,17 @@ export default function GuideDanceFloorPackedPage() {
       />
 
       <article className="hsdj-interior-flow">
-        <header className="relative overflow-hidden border-b border-white/10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.12),transparent_55%)]" />
-          <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
-            <nav className="text-sm text-white/45" aria-label="Breadcrumb">
-              <Link href="/" className="transition hover:text-white/70">
-                Home
-              </Link>
-              <span className="mx-2 text-white/25" aria-hidden>
-                /
-              </span>
-              <Link href="/guides" className="transition hover:text-white/70">
-                Planning guides
-              </Link>
-              <span className="mx-2 text-white/25" aria-hidden>
-                /
-              </span>
-              <span className="text-white/65">Dance floor energy</span>
-            </nav>
-            <p className="mt-8 text-sm text-white/45">
-              <time dateTime={ARTICLE_DATE}>May 8, 2026</time>
-              <span className="mx-2 text-white/25" aria-hidden>
-                ·
-              </span>
-              Howe Sound DJ
-            </p>
-            <MeterMatrixHeading text={ARTICLE_TITLE} className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl" />
-            <HeroSignalCopy className="mt-6 max-w-3xl text-lg leading-8 text-white/70" tone="green">
-              A packed dance floor is not luck and it is not only volume. In Sea-to-Sky weddings, the setting already does emotional work: mountains, forest, farm fields, or a lodge at elevation. Your
-              reception music has to earn the room in that context, with pacing that respects the day you actually planned.
-            </HeroSignalCopy>
-          </div>
-        </header>
+        <GuideArticleHeader
+          breadcrumbLabel="Dance floor energy"
+          date={ARTICLE_DATE}
+          dateLabel="May 8, 2026"
+          title={ARTICLE_TITLE}
+          titleLines={["How to keep a", "wedding dance floor", "packed at a", "Sea-to-Sky wedding"]}
+          tone="green"
+        >
+          A packed dance floor is not luck and it is not only volume. In Sea-to-Sky weddings, the setting already does emotional work: mountains, forest, farm fields, or a lodge at elevation. Your
+          reception music has to earn the room in that context, with pacing that respects the day you actually planned.
+        </GuideArticleHeader>
 
         <ProseBlock eyebrow="Foundation" title="Packed dance floors start before dancing begins">
           <p>
@@ -110,46 +68,44 @@ export default function GuideDanceFloorPackedPage() {
           </p>
           <p>
             This is why Howe Sound DJ treats{" "}
-            <Link href="/weddings" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+            <Link href="/weddings" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               ceremony through reception
             </Link>{" "}
             as one arc. The dance section is the payoff, not a reset button.
           </p>
         </ProseBlock>
 
-        <SectionReveal as="div" className="border-y border-white/10 bg-white/[0.03]">
-          <ProseBlock eyebrow="Place" title="Why Sea-to-Sky weddings require atmosphere-first music planning">
+        <ProseBlock eyebrow="Place" title="Why Sea-to-Sky weddings require atmosphere-first music planning">
             <p>
               Mountain and corridor weddings often include travel, weather, elevation, and a crowd that knows each other well. The room may be intimate, or visually stunning, or both. Sound that fights
               the setting feels cheap. Sound that supports it feels inevitable.
             </p>
             <p>
               Atmosphere-first planning means asking what the venue is already saying to guests before the first beat drops. A{" "}
-              <Link href="/venues/sea-to-sky-gondola" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              <Link href="/venues/sea-to-sky-gondola" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 dramatic viewpoint
               </Link>{" "}
               carries different energy than a{" "}
-              <Link href="/venues/sunwolf" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              <Link href="/venues/sunwolf" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 Brackendale riverside resort
               </Link>{" "}
               or a forest sanctuary. At a riverside setting, the floor often peaks when the arc is concentrated: trust through dinner, lift when the room is ready, and resist dragging the energy past its natural end. The playlist still has to be yours, but the pacing should match how guests actually move through that place.
             </p>
             <p>
               For venue-specific planning questions, the{" "}
-              <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              <Link href="/venues" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 wedding venue guides
               </Link>{" "}
               are a practical companion to this article.
             </p>
             <p>
               For editorial proof alongside guides, see{" "}
-              <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              <Link href="/stories" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 Featured Weddings &amp; Dance Floor Stories
               </Link>
               .
             </p>
-          </ProseBlock>
-        </SectionReveal>
+        </ProseBlock>
 
         <section className="border-y border-white/10 bg-neutral-950">
           <div className="mx-auto max-w-3xl px-6 pt-14 lg:px-8">
@@ -203,21 +159,19 @@ export default function GuideDanceFloorPackedPage() {
           </div>
         </section>
 
-        <SectionReveal as="div" className="border-y border-white/10 bg-white/[0.03]">
-          <ProseBlock eyebrow="Arc" title="Ceremony, cocktails, dinner, speeches, and dance floor are one emotional arc">
+        <ProseBlock eyebrow="Arc" title="Ceremony, cocktails, dinner, speeches, and dance floor are one emotional arc">
             <p>
               When couples split the day into disconnected vendors and disconnected vibes, guests feel the seams. A cohesive arc means dinner music supports conversation, speeches are heard cleanly, and
               the shift into dancing feels like a natural next page, not a hard cut into a different event.
             </p>
             <p>
               Practically, that means timeline conversations matter as much as &quot;banger&quot; lists. If you want help shaping that arc,{" "}
-              <Link href="/packages" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              <Link href="/packages" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 wedding DJ packages
               </Link>{" "}
               spell out how planning connects to the day-of support.
             </p>
-          </ProseBlock>
-        </SectionReveal>
+        </ProseBlock>
 
         <ProseBlock eyebrow="Myth" title="Why &quot;bangers only&quot; still needs timing">
           <p>
@@ -229,8 +183,7 @@ export default function GuideDanceFloorPackedPage() {
           </p>
         </ProseBlock>
 
-        <SectionReveal as="div" className="border-y border-white/10 bg-white/[0.03]">
-          <ProseBlock eyebrow="Partnership" title="How couples can help create the right conditions">
+        <ProseBlock eyebrow="Partnership" title="How couples can help create the right conditions">
             <p>
               Share the honest age mix, the songs that matter to your history, and the moments you are willing to protect, even if they are not &quot;cool.&quot; Name the emotional temperature you
               want: elegant, wild, tender, rowdy, or a believable blend.
@@ -238,8 +191,7 @@ export default function GuideDanceFloorPackedPage() {
             <p>
               If you are early in planning, say so. If you already know your venue, bring it. Couples who communicate clearly get a soundtrack that feels personal without feeling random.
             </p>
-          </ProseBlock>
-        </SectionReveal>
+        </ProseBlock>
 
         <ProseBlock eyebrow="Hiring" title="What to ask your DJ before booking">
           <ul className="list-disc space-y-3 pl-6 text-white/75">
@@ -251,17 +203,14 @@ export default function GuideDanceFloorPackedPage() {
           </ul>
           <p className="mt-6">
             If the answers feel template-driven, keep looking. If they sound like practical expertise grounded in real weddings, you have a clearer picture of how that DJ works.{" "}
-            <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+            <Link href="/reviews" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Wedding DJ reviews
             </Link>{" "}
             are one place to see how that shows up after the fact.
           </p>
         </ProseBlock>
 
-        <SectionReveal
-          as="section"
-          className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent"
-        >
+        <section className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent">
           <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
             <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
               <div className="mx-auto w-full max-w-3xl">
@@ -274,7 +223,7 @@ export default function GuideDanceFloorPackedPage() {
                   <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
                   <p className="text-sm text-white/45">
                     Prefer to message first? Use{" "}
-                    <Link href="/contact" className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                    <Link href="/contact" prefetch={false} className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                       contact
                     </Link>
                     .
@@ -283,7 +232,7 @@ export default function GuideDanceFloorPackedPage() {
               </div>
             </div>
           </div>
-        </SectionReveal>
+        </section>
       </article>
     </main>
   );

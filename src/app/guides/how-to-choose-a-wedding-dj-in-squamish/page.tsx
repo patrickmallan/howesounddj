@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
-import { HeroSignalCopy } from "@/components/hero-signal-copy";
-import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
-import type { ReactNode } from "react";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
 import { AuthorityProofStrip } from "@/components/authority-proof-strip";
-import { SectionReveal } from "@/components/motion";
 import { JsonLd } from "@/components/json-ld";
 import { guideArticleBreadcrumbJsonLd, guideArticleJsonLd } from "@/lib/json-ld";
+import { GuideArticleBlock as Block, GuideArticleHeader } from "../guide-article-elements";
 import "../article-liner-notes.css";
 
 const ARTICLE_SLUG = "how-to-choose-a-wedding-dj-in-squamish";
@@ -37,16 +34,6 @@ export const metadata: Metadata = {
   alternates: { canonical: `/guides/${ARTICLE_SLUG}` },
 };
 
-function Block({ eyebrow, title, children }: { eyebrow: string; title: string; children: ReactNode }) {
-  return (
-    <section className="mx-auto max-w-3xl px-6 py-14 lg:px-8">
-      <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">{eyebrow}</div>
-      <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">{title}</h2>
-      <div className="mt-6 space-y-4 text-lg leading-8 text-white/70">{children}</div>
-    </section>
-  );
-}
-
 export default function GuideChooseWeddingDjSquamishPage() {
   return (
     <main className="hsdj-interior hsdj-editorial-page hsdj-guide-choose min-h-screen bg-neutral-950 text-white">
@@ -61,38 +48,17 @@ export default function GuideChooseWeddingDjSquamishPage() {
       />
 
       <article className="hsdj-interior-flow">
-        <header className="relative overflow-hidden border-b border-white/10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.12),transparent_55%)]" />
-          <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
-            <nav className="text-sm text-white/45" aria-label="Breadcrumb">
-              <Link href="/" className="transition hover:text-white/70">
-                Home
-              </Link>
-              <span className="mx-2 text-white/25" aria-hidden>
-                /
-              </span>
-              <Link href="/guides" className="transition hover:text-white/70">
-                Planning guides
-              </Link>
-              <span className="mx-2 text-white/25" aria-hidden>
-                /
-              </span>
-              <span className="text-white/65">Choose a DJ in Squamish</span>
-            </nav>
-            <p className="mt-8 text-sm text-white/45">
-              <time dateTime={ARTICLE_DATE}>May 8, 2026</time>
-              <span className="mx-2 text-white/25" aria-hidden>
-                ·
-              </span>
-              Howe Sound DJ
-            </p>
-            <MeterMatrixHeading text={ARTICLE_TITLE} className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl" />
-            <HeroSignalCopy className="mt-6 max-w-3xl text-lg leading-8 text-white/70" tone="yellow">
-              Choosing a wedding DJ is not only about songs. It is about trust, timing, sound, guest momentum, and whether the person in front of you understands the atmosphere you want for a Squamish or
-              Sea-to-Sky celebration.
-            </HeroSignalCopy>
-          </div>
-        </header>
+        <GuideArticleHeader
+          breadcrumbLabel="Choose a DJ in Squamish"
+          date={ARTICLE_DATE}
+          dateLabel="May 8, 2026"
+          title={ARTICLE_TITLE}
+          titleLines={["How to choose a", "wedding DJ in", "Squamish"]}
+          tone="yellow"
+        >
+          Choosing a wedding DJ is not only about songs. It is about trust, timing, sound, guest momentum, and whether the person in front of you understands the atmosphere you want for a Squamish or
+          Sea-to-Sky celebration.
+        </GuideArticleHeader>
 
         <Block eyebrow="Place" title="Look for someone who understands the venue, not just the playlist">
           <p>
@@ -101,7 +67,7 @@ export default function GuideChooseWeddingDjSquamishPage() {
           </p>
           <p>
             Use the{" "}
-            <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+            <Link href="/venues" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               venue guides
             </Link>{" "}
             as a conversation starter. If your shortlist DJ cannot discuss flow in plain language, keep interviewing.
@@ -122,8 +88,7 @@ export default function GuideChooseWeddingDjSquamishPage() {
           </p>
         </Block>
 
-        <SectionReveal as="div" className="border-y border-white/10 bg-white/[0.03]">
-          <Block eyebrow="Guests" title="Ask how they read a mixed-age room">
+        <Block eyebrow="Guests" title="Ask how they read a mixed-age room">
             <p>
               Sea-to-Sky weddings often bring families, old friends, and a travel-weary crowd into the same space. Room-reading means watching how those groups respond, not only playing what charts
               suggest.
@@ -132,14 +97,14 @@ export default function GuideChooseWeddingDjSquamishPage() {
               For how energy builds without isolating anyone, read{" "}
               <Link
                 href="/guides/how-to-keep-a-wedding-dance-floor-packed"
+                prefetch={false}
                 className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
               >
                 How to Keep a Wedding Dance Floor Packed at a Sea-to-Sky Wedding
               </Link>{" "}
               and the Roomflow Method described there.
             </p>
-          </Block>
-        </SectionReveal>
+        </Block>
 
         <Block eyebrow="Taste" title="Ask how they protect your taste without losing your guests">
           <p>
@@ -154,19 +119,18 @@ export default function GuideChooseWeddingDjSquamishPage() {
           </p>
           <p>
             Services and tiers are outlined on the{" "}
-            <Link href="/weddings" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+            <Link href="/weddings" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               weddings
             </Link>{" "}
             and{" "}
-            <Link href="/packages" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+            <Link href="/packages" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               packages
             </Link>{" "}
             pages as a baseline for what “planning” can include.
           </p>
         </Block>
 
-        <SectionReveal as="div" className="border-y border-white/10 bg-white/[0.03]">
-          <Block eyebrow="Signals" title="Red flags">
+        <Block eyebrow="Signals" title="Red flags">
             <ul className="list-disc space-y-3 pl-6 text-white/75">
               <li>Vague planning process with no timeline touchpoints.</li>
               <li>No clear sound plan for ceremony or speeches.</li>
@@ -174,8 +138,7 @@ export default function GuideChooseWeddingDjSquamishPage() {
               <li>No discussion of timing, transitions, or guest momentum.</li>
               <li>Overemphasis on gear brands instead of how the day will feel.</li>
             </ul>
-          </Block>
-        </SectionReveal>
+        </Block>
 
         <Block eyebrow="Howe Sound DJ" title="How Howe Sound DJ approaches it">
           <p>
@@ -189,17 +152,14 @@ export default function GuideChooseWeddingDjSquamishPage() {
           </p>
           <p>
             For editorial dance-floor context beyond this checklist, see{" "}
-            <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+            <Link href="/stories" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Featured Weddings &amp; Dance Floor Stories
             </Link>
             .
           </p>
         </Block>
 
-        <SectionReveal
-          as="section"
-          className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent"
-        >
+        <section className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent">
           <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
             <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
               <div className="mx-auto w-full max-w-3xl">
@@ -212,7 +172,7 @@ export default function GuideChooseWeddingDjSquamishPage() {
                   <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
                   <p className="text-sm text-white/45">
                     More proof in couples&apos; words:{" "}
-                    <Link href="/reviews" className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                    <Link href="/reviews" prefetch={false} className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                       reviews
                     </Link>
                     .
@@ -221,7 +181,7 @@ export default function GuideChooseWeddingDjSquamishPage() {
               </div>
             </div>
           </div>
-        </SectionReveal>
+        </section>
       </article>
     </main>
   );
