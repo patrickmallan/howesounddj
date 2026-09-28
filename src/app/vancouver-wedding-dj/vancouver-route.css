@@ -19,42 +19,36 @@
   display: block;
   width: min(72vw, 1024px);
   aspect-ratio: 2 / 3;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent),
     linear-gradient(to bottom, transparent, #000 6%, #000 94%, transparent);
   mask-composite: intersect;
 }
 
+.vancouver-route-river-panel img { object-fit: fill; }
+
 .vancouver-route-river-panel-1 {
   top: 0;
   left: 4vw;
-  background-image: url('/images/hsdj-redesign/new-editorial/vancouver-party-remnants-artscape-v1.webp');
 }
 
 .vancouver-route-river-panel-2 {
   top: 22%;
   right: 4vw;
-  background-image: url('/images/hsdj-redesign/new-editorial/vancouver-party-remnants-right-to-left-v2.webp');
 }
 
 .vancouver-route-river-panel-3 {
   top: 44%;
   left: 4vw;
-  background-image: url('/images/hsdj-redesign/new-editorial/vancouver-party-remnants-left-to-right-v2.webp');
 }
 
 .vancouver-route-river-panel-4 {
   top: 66%;
   right: 4vw;
-  background-image: url('/images/hsdj-redesign/new-editorial/vancouver-party-remnants-right-to-left-v3.webp');
 }
 
 .vancouver-route-river-panel-5 {
   top: 88%;
   left: 4vw;
-  background-image: url('/images/hsdj-redesign/new-editorial/vancouver-party-remnants-left-to-right-v3.webp');
 }
 
 .vancouver-route-river-panel-6,
@@ -74,12 +68,16 @@
   align-items: center;
   min-height: 38rem;
   padding: 3.5rem max(5vw, calc((100vw - 80rem) / 2)) 3.75rem;
-  background: #0a0a0d url('/images/hsdj-redesign/new-editorial/vancouver-hero-afterparty-collage-v1.webp') center center / cover no-repeat;
+  overflow: hidden;
+  background: #0a0a0d;
 }
+
+.vancouver-route-hero-art { z-index: 0; object-fit: cover; object-position: center; }
 
 .vancouver-route-hero::before {
   content: '';
   position: absolute;
+  z-index: 1;
   inset: 0;
   pointer-events: none;
   background: linear-gradient(90deg, #090e15e5 0 16%, #090e15a6 38%, #090e1530 60%, transparent 78%);
@@ -91,18 +89,9 @@
   width: min(100%, 42rem);
 }
 
-.vancouver-route-hero h1 { margin: 0 0 1.5rem; }
-
-.vancouver-route-hero-copy > p {
-  max-width: 38rem;
-  margin: 1.5rem 0 2rem;
-  padding: .9rem 0 .9rem 1.25rem;
-  border-left: 6px solid #ff428b;
-  background: linear-gradient(90deg, #090e15ed, #090e158a 78%, transparent);
-  font-size: clamp(1.08rem, 1.5vw, 1.32rem);
-  font-weight: 730;
-  line-height: 1.5;
-}
+.vancouver-route-title { width: 100%; aspect-ratio: 83.25 / 26.7; margin: 0 0 1.5rem; }
+.vancouver-route-title img { display: block; width: 100%; height: auto; }
+.vancouver-visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 .vancouver-route-hero-actions {
   display: flex;
@@ -111,20 +100,26 @@
   gap: 1.6rem;
 }
 
-.vancouver-route-hero-actions a:first-child,
-.vancouver-route-finish-action {
-  display: inline-flex;
+.vancouver-date-control {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: .9rem 1.2rem;
-  background: #ffe12a;
-  color: #0b1016;
+  min-height: 4.5rem;
+  padding: .45rem 1rem .45rem .45rem;
+  border: 2px solid #526069;
+  color: #fff;
+  background: linear-gradient(180deg, #172229, #071017);
+  box-shadow: 0 0 0 4px #020608, 7px 7px 0 #205aff;
   font-weight: 950;
+  letter-spacing: .035em;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 7px 7px 0 #205aff;
 }
+
+.vancouver-date-control > img { width: 4.25rem; height: 4.25rem; margin: -.25rem .45rem -.25rem -.2rem; object-fit: contain; }
+.vancouver-date-control-arrow { margin-left: clamp(.8rem, 3vw, 2rem); color: #54e7ee; font-size: 1.5rem; line-height: 1; }
+.vancouver-date-control:focus-visible { outline: 4px solid #ffe12a; outline-offset: 6px; }
 
 .vancouver-route-hero-actions a:last-child {
   color: #fff;
@@ -358,6 +353,7 @@
 }
 
 @media (max-width: 640px) {
+  .vancouver-date-control { width: min(100%, 32rem); }
   .vancouver-route-river-panel {
     width: 100vw;
     left: 0;
@@ -369,34 +365,17 @@
   .vancouver-route-river-panel-3 { top: 22%; }
   .vancouver-route-river-panel-4 { top: 33%; }
   .vancouver-route-river-panel-5 { top: 44%; }
-  .vancouver-route-river-panel-6 {
-    display: block;
-    top: 55%;
-    background-image: url('/images/hsdj-redesign/new-editorial/vancouver-party-remnants-right-to-left-v2.webp');
-  }
-  .vancouver-route-river-panel-7 {
-    display: block;
-    top: 66%;
-    background-image: url('/images/hsdj-redesign/new-editorial/vancouver-party-remnants-left-to-right-v2.webp');
-  }
-  .vancouver-route-river-panel-8 {
-    display: block;
-    top: 77%;
-    background-image: url('/images/hsdj-redesign/new-editorial/vancouver-party-remnants-right-to-left-v3.webp');
-  }
-  .vancouver-route-river-panel-9 {
-    display: block;
-    top: 88%;
-    background-image: url('/images/hsdj-redesign/new-editorial/vancouver-party-remnants-left-to-right-v3.webp');
-  }
+  .vancouver-route-river-panel-6 { display: block; top: 55%; }
+  .vancouver-route-river-panel-7 { display: block; top: 66%; }
+  .vancouver-route-river-panel-8 { display: block; top: 77%; }
+  .vancouver-route-river-panel-9 { display: block; top: 88%; }
 
   .vancouver-route-hero {
     min-height: 32rem;
     padding-block: 3rem;
-    background-position: 60% center;
   }
+  .vancouver-route-hero-art { object-position: 60% center; }
   .vancouver-route-hero::before { background: linear-gradient(0deg, #090e15ef 0, #090e15ca 48%, #090e1580 100%); }
-  .vancouver-route-hero-copy > p { margin-top: 1.1rem; }
   .vancouver-route-hero-actions { align-items: flex-start; flex-direction: column; gap: 1.4rem; }
 
   .vancouver-route-plan { min-height: 50rem; padding-block: 3.5rem; }
@@ -423,6 +402,11 @@
   .vancouver-route-mix-art-pink { animation: vancouver-route-signal 7s linear infinite; }
   .vancouver-route-mix-art-cyan { animation: vancouver-route-signal 8s linear infinite reverse; }
   .vancouver-route-local-light { animation: vancouver-route-lights 18s ease-in-out infinite alternate; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .vancouver-date-control { transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
+  .vancouver-date-control:hover { border-color: #54e7ee; box-shadow: 0 0 0 4px #020608, 10px 10px 0 #205aff; transform: translate(-2px, -2px); }
 }
 
 @keyframes vancouver-route-signal {

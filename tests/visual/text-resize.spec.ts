@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-for (const route of ["/", "/weddings", "/packages", "/reviews", "/faq", "/contact", "/squamish-wedding-dj"]) {
+for (const route of ["/", "/weddings", "/packages", "/reviews", "/faq", "/contact", "/squamish-wedding-dj", "/vancouver-wedding-dj"]) {
   test(`${route} has no page-level horizontal scroll with 200% text at 320px`, async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 900 });
     await page.goto(route);
