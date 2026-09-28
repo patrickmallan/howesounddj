@@ -30,7 +30,7 @@ test("reduced motion keeps the montage as a still image", async ({ page }) => {
   expect(requests).toHaveLength(0);
 });
 
-test("FAQ cassette artwork waits until the final call to action is near", async ({ page }) => {
+test("FAQ finale stays server-rendered and avoids the shared cassette payload", async ({ page }) => {
   const cassetteRequests: string[] = [];
   page.on("request", (request) => {
     if (request.url().includes("cassette-chassis-skin") || request.url().includes("cassette-bay-skin")) {
@@ -39,11 +39,11 @@ test("FAQ cassette artwork waits until the final call to action is near", async 
   });
 
   await page.goto("/faq", { waitUntil: "domcontentloaded" });
-  await page.waitForTimeout(1000);
-  expect(cassetteRequests).toHaveLength(0);
-
   const finale = page.locator(".faq-mixer-finale-actions");
   await finale.scrollIntoViewIfNeeded();
-  await expect.poll(() => cassetteRequests.length).toBeGreaterThan(0);
-  await expect(finale.locator("a")).toHaveCount(2);
+  await page.waitForTimeout(500);
+
+  expect(cassetteRequests).toHaveLength(0);
+  await expect(finale.locator("a[data-physical-control='cue']")).toHaveCount(1);
+  await expect(finale.locator("a[data-physical-control='cue'] img")).toBeVisible();
 });

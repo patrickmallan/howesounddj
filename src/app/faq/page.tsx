@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { HeroSignalCopy } from "@/components/hero-signal-copy";
-import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import Link from "next/link";
-import CTADuo from "@/components/cta-duo";
 import { SectionReveal } from "@/components/motion";
 import { JsonLd } from "@/components/json-ld";
 import { faqPageJsonLd } from "@/lib/json-ld";
@@ -36,13 +34,32 @@ type FaqGroup = {
   items: FaqItem[];
 };
 
+function FaqFixtureHeading() {
+  return (
+    <h1 className="faq-fixture-heading">
+      <span className="sr-only">Questions couples actually ask.</span>
+      <Image
+        src="/images/faq/questions-couples-actually-ask-fixture-v1.svg"
+        alt=""
+        aria-hidden="true"
+        width={986}
+        height={179}
+        sizes="(max-width: 900px) calc(100vw - 2rem), 57rem"
+        priority
+      />
+    </h1>
+  );
+}
+
 function FaqAccordion({ items }: { items: FaqItem[] }) {
   return (
     <div className="faq-mixer-questions">
       {items.map((item, index) => (
         <details key={item.q} className="faq-mixer-question">
           <summary>
-            <span className="faq-mixer-question-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+            <span className="faq-mixer-question-index" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </span>
             <span className="faq-mixer-question-text">{item.q}</span>
             <span className="faq-mixer-question-toggle" aria-hidden="true" />
           </summary>
@@ -106,7 +123,7 @@ export default function FaqPage() {
     {
       id: "ceremony",
       eyebrow: "Vows to last song",
-        title: "From the vows to the last song",
+      title: "From the vows to the last song",
       intro:
         "The microphones, the meal and the dance floor all belong to the same day. I treat them that way.",
       items: [
@@ -127,7 +144,7 @@ export default function FaqPage() {
     {
       id: "travel",
       eyebrow: "The place",
-        title: "Here in Squamish",
+      title: "Here in Squamish",
       intro:
         "I live here. I know the roads, the rooms and how quickly a mountain-day timeline can change.",
       items: [
@@ -148,7 +165,7 @@ export default function FaqPage() {
     {
       id: "enhancements",
       eyebrow: "Make it yours",
-        title: "The little things that make it yours",
+      title: "The little things that make it yours",
       intro:
         "Grand entrances, shorter first dances, a sudden conga line. Tell me the idea; we will see how to make it work.",
       items: [
@@ -178,12 +195,24 @@ export default function FaqPage() {
         <div className="faq-mixer-hero-inner">
           <div className="faq-mixer-hero-copy">
             <div className="faq-mixer-hero-label">THE QUESTIONS BEFORE THE PARTY</div>
-            <MeterMatrixHeading text="Questions couples actually ask." className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl" />
+            <FaqFixtureHeading />
             <HeroSignalCopy className="faq-mixer-hero-lede" tone="yellow">
               Music, microphones, timing, the odd &quot;what if&quot;: here&apos;s what people ask me before we get together.
             </HeroSignalCopy>
             <nav className="faq-mixer-selector" aria-label="Jump to a question channel">
-              {groups.map((group, index) => <a key={group.id} href={`#${group.id}`}><span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>{group.eyebrow}</a>)}
+              {groups.map((group, index) => (
+                <a key={group.id} href={`#${group.id}`} data-physical-control="performance-pad">
+                  <Image
+                    src="/images/hsdj-redesign/controls/pads/cyan.png"
+                    alt=""
+                    width={101}
+                    height={101}
+                    sizes="112px"
+                  />
+                  <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{group.eyebrow}</strong>
+                </a>
+              ))}
             </nav>
           </div>
         </div>
@@ -208,17 +237,31 @@ export default function FaqPage() {
                       More on keeping the floor moving:{" "}
                       <Link
                         href="/guides/how-to-keep-a-wedding-dance-floor-packed"
+                        prefetch={false}
                       >
                         Dance floor guide
                       </Link>
                     </p>
                     <p>
-                      Want to see it in action? <Link href="/stories">Wedding stories</Link>
+                      Want to see it in action?{" "}
+                      <Link href="/stories" prefetch={false}>
+                        Wedding stories
+                      </Link>
                     </p>
                   </div>
                 ) : null}
                 {group.id === "travel" ? (
-                  <div className="faq-mixer-channel-links"><p>Planning a local wedding? <Link href="/guides/how-to-choose-a-wedding-dj-in-squamish">Squamish DJ guide</Link></p></div>
+                  <div className="faq-mixer-channel-links">
+                    <p>
+                      Planning a local wedding?{" "}
+                      <Link
+                        href="/guides/how-to-choose-a-wedding-dj-in-squamish"
+                        prefetch={false}
+                      >
+                        Squamish DJ guide
+                      </Link>
+                    </p>
+                  </div>
                 ) : null}
               </div>
               <div className="faq-mixer-channel-list">
@@ -235,13 +278,28 @@ export default function FaqPage() {
             <div className="faq-mixer-finale-label">NO PERFECT PLAN REQUIRED</div>
             <h2>Got a date? Start there.</h2>
             <p>Check if I&apos;m open. Then we can talk music, the room, and what you want the night to feel like. You decide what happens next.</p>
-            <p>Already chosen the place? <Link href="/venues">Take a look at the venue notes.</Link></p>
+            <p>
+              Already chosen the place?{" "}
+              <Link href="/venues" prefetch={false}>
+                Take a look at the venue notes.
+              </Link>
+            </p>
           </div>
           <div className="faq-mixer-finale-actions">
             <span>YOUR NEXT MOVE</span>
-            <div>
-              <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
-            </div>
+            <Link
+              className="faq-mixer-cue"
+              href="/contact#availability"
+              prefetch={false}
+              data-physical-control="cue"
+            >
+              <Image src="/images/hsdj-redesign/controls/buttons/cue-round.png" alt="" width={130} height={130} sizes="96px" />
+              <span>
+                <small>Cue the next step</small>
+                <strong>Check your date</strong>
+              </span>
+              <b aria-hidden="true">↗</b>
+            </Link>
           </div>
         </div>
       </SectionReveal>
