@@ -43,7 +43,7 @@ export default async function HoweSoundDJHomepage() {
       <JsonLd data={websiteJsonLd()} />
 
       <section className={`${styles.chapter} ${styles.arrival}`} aria-labelledby="home-arrival-heading">
-        <div className={styles.arrivalArt} aria-hidden="true"><Image src="/images/hsdj-redesign/hero/approved-ch00-collage-v3.png" alt="" fill loading="eager" fetchPriority="high" sizes="100vw" /></div>
+        <div className={styles.arrivalArt} aria-hidden="true"><Image src="/images/hsdj-redesign/hero/sea-to-sky-lifted-kiss-hero-v1.webp" alt="" fill loading="eager" fetchPriority="high" sizes="100vw" /></div>
         <LivingVUMeter className={styles.arrivalVu} />
         <div data-testid="home-hero-inner" className={styles.arrivalCopy}>
           <p className={styles.machineLabel}>Squamish wedding DJ / local by design</p>
