@@ -37,7 +37,7 @@
 #main-content .hsdj-story-detail-page .hsdj-interior-flow > header::before { content: 'AFTER THE SET  /  FIELD NOTES'; background: #fe3484; }
 #main-content .hsdj-editorial-page .hsdj-interior-flow > header > div[class*="max-w"] { width: 100%; padding-block: clamp(7rem, 12vw, 11rem) clamp(3rem, 6vw, 5rem); }
 #main-content .hsdj-editorial-page .hsdj-interior-flow > header h1 { max-width: 100%; color: #fff; text-shadow: 0 2px 15px #000; }
-#main-content .hsdj-editorial-page .hsdj-guide-article-title {
+#main-content .hsdj-editorial-page :is(.hsdj-guide-article-title, .hsdj-story-article-title) {
   width: fit-content;
   max-width: min(100%, 19ch);
   color: #fff8e8;
@@ -47,10 +47,10 @@
   text-wrap: balance;
   filter: drop-shadow(0 0 .07em #7899ff7a);
 }
-#main-content .hsdj-editorial-page .hsdj-guide-article-title > span { display: block; }
-#main-content .hsdj-editorial-page .hsdj-guide-article-title > span:nth-child(3n + 1) { font-palette: --hsdj-signal-light; }
-#main-content .hsdj-editorial-page .hsdj-guide-article-title > span:nth-child(3n + 2) { font-palette: --hsdj-club-light; }
-#main-content .hsdj-editorial-page .hsdj-guide-article-title > span:nth-child(3n) { font-palette: --hsdj-after-dark; }
+#main-content .hsdj-editorial-page :is(.hsdj-guide-article-title, .hsdj-story-article-title) > span { display: block; }
+#main-content .hsdj-editorial-page :is(.hsdj-guide-article-title, .hsdj-story-article-title) > span:nth-child(3n + 1) { font-palette: --hsdj-signal-light; }
+#main-content .hsdj-editorial-page :is(.hsdj-guide-article-title, .hsdj-story-article-title) > span:nth-child(3n + 2) { font-palette: --hsdj-club-light; }
+#main-content .hsdj-editorial-page :is(.hsdj-guide-article-title, .hsdj-story-article-title) > span:nth-child(3n) { font-palette: --hsdj-after-dark; }
 #main-content .hsdj-editorial-page .hsdj-interior-flow > header h1 + p { max-width: 42rem; padding: 1rem 1.3rem; border-left: 6px solid #ffde25; background: #080d12e8; color: #fff; box-shadow: 10px 10px 0 #1756ff88; }
 #main-content .hsdj-story-detail-page .hsdj-interior-flow > header h1 + p { border-left-color: #ff3986; }
 #main-content .hsdj-editorial-page .hsdj-interior-flow > section {
@@ -90,13 +90,13 @@
 #main-content .hsdj-story-detail-page .hsdj-interior-flow > div:has(img) img { filter: saturate(1.15) contrast(1.08); }
 @media (max-width: 700px) {
   #main-content .hsdj-editorial-page .hsdj-interior-flow > header { min-height: 0; background-position: center, 63% center; }
-  #main-content .hsdj-guide-dance .hsdj-interior-flow > header {
+  #main-content :is(.hsdj-guide-dance, .hsdj-story-floor) .hsdj-interior-flow > header {
     background-image: linear-gradient(90deg, #080d12 3%, #080d12e3 47%, #080d126a), url('/images/brand-editorial/hsdj-packed-dance-floor-editorial-mobile.webp') !important;
   }
   #main-content .hsdj-editorial-page .hsdj-interior-flow > header::before { inset: .75rem .75rem auto auto; font-size: .53rem; }
   #main-content .hsdj-editorial-page .hsdj-interior-flow > header > div[class*="max-w"] { padding-top: 6.5rem; padding-bottom: 2.5rem; }
   #main-content .hsdj-editorial-page .hsdj-interior-flow > section > div[class*="max-w"] { margin-inline: auto; }
-  #main-content .hsdj-editorial-page .hsdj-guide-article-title {
+  #main-content .hsdj-editorial-page :is(.hsdj-guide-article-title, .hsdj-story-article-title) {
     max-width: 100% !important;
     font-size: clamp(2.45rem, 11vw, 4.2rem) !important;
     line-height: .9 !important;

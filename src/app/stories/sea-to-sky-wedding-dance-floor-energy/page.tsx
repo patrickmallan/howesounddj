@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import { HeroSignalCopy } from "@/components/hero-signal-copy";
-import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
-import type { ReactNode } from "react";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
 import { ImageSlot } from "@/components/image-slot";
-import { SectionReveal } from "@/components/motion";
 import { SITE_IMAGE_ALT, SITE_IMAGES } from "@/config/site-images";
 import { JsonLd } from "@/components/json-ld";
 import { storyArticleBreadcrumbJsonLd, storyArticleJsonLd } from "@/lib/json-ld";
+import { StoryArticleBlock as Block, StoryArticleHeader } from "../story-article-elements";
 import "../../guides/article-liner-notes.css";
 
 const STORY_SLUG = "sea-to-sky-wedding-dance-floor-energy";
@@ -38,16 +35,6 @@ export const metadata: Metadata = {
   alternates: { canonical: `/stories/${STORY_SLUG}` },
 };
 
-function Block({ eyebrow, title, children }: { eyebrow: string; title: string; children: ReactNode }) {
-  return (
-    <section className="mx-auto max-w-3xl px-6 py-12 lg:px-8">
-      <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">{eyebrow}</div>
-      <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">{title}</h2>
-      <div className="mt-6 space-y-4 text-lg leading-8 text-white/70">{children}</div>
-    </section>
-  );
-}
-
 export default function StorySeaToSkyDanceFloorEnergyPage() {
   return (
     <main className="hsdj-interior hsdj-editorial-page hsdj-story-detail-page hsdj-story-floor min-h-screen bg-neutral-950 text-white">
@@ -62,39 +49,18 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
       />
 
       <article className="hsdj-interior-flow">
-        <header className="relative overflow-hidden border-b border-white/10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.12),transparent_55%)]" />
-          <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
-            <nav className="text-sm text-white/45" aria-label="Breadcrumb">
-              <Link href="/" className="transition hover:text-white/70">
-                Home
-              </Link>
-              <span className="mx-2 text-white/25" aria-hidden>
-                /
-              </span>
-              <Link href="/stories" className="transition hover:text-white/70">
-                Stories
-              </Link>
-              <span className="mx-2 text-white/25" aria-hidden>
-                /
-              </span>
-              <span className="text-white/65">Dance floor energy</span>
-            </nav>
-            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/90">Editorial / proof</p>
-            <p className="mt-3 text-sm text-white/45">
-              <time dateTime={STORY_DATE}>May 8, 2026</time>
-              <span className="mx-2 text-white/25" aria-hidden>
-                ·
-              </span>
-              Howe Sound DJ
-            </p>
-            <MeterMatrixHeading text={STORY_TITLE} className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl" />
-            <HeroSignalCopy className="mt-6 max-w-3xl text-lg leading-8 text-white/70" tone="pink">
-              This is not a recap of one specific wedding. It is an observational editorial about how Patrick opens a Sea-to-Sky dance floor: he invites the whole room into the final formal dance,
-              so the party begins together rather than waiting for one brave guest to step out first.
-            </HeroSignalCopy>
-          </div>
-        </header>
+        <StoryArticleHeader
+          breadcrumbLabel="Dance floor energy"
+          date={STORY_DATE}
+          dateLabel="May 8, 2026"
+          eyebrow="Editorial / proof"
+          title={STORY_TITLE}
+          titleLines={["What a Packed", "Sea-to-Sky Wedding", "Dance Floor Feels Like"]}
+          tone="pink"
+        >
+          This is not a recap of one specific wedding. It is an observational editorial about how Patrick opens a Sea-to-Sky dance floor: he invites the whole room into the final formal dance,
+          so the party begins together rather than waiting for one brave guest to step out first.
+        </StoryArticleHeader>
 
         <div className="border-b border-white/10 bg-neutral-950">
           <div className="mx-auto max-w-4xl px-6 py-12 lg:px-8 lg:py-16">
@@ -107,7 +73,6 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
               sizes="(max-width: 1024px) 100vw, 56rem"
               imageClassName="object-[center_45%]"
               premiumPhotoTreatment
-              priority
             >
               <span className="block text-white/60">Atmosphere-first reception energy, designed to feel elegant before it feels loud.</span>
               <span className="mt-2 block text-xs text-white/40">
@@ -127,11 +92,10 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
           </p>
         </Block>
 
-        <SectionReveal as="div" className="border-y border-white/10 bg-white/[0.03]">
-          <Block eyebrow="Bridge" title="How this connects to reviews and imagery">
+        <Block eyebrow="Bridge" title="How this connects to reviews and imagery">
             <p>
               Named couple feedback on the{" "}
-              <Link href="/reviews" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              <Link href="/reviews" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 reviews page
               </Link>{" "}
               describes packed floors, clear communication, and seamless ceremony-through-reception flow. Those lines are real voices, not marketing adjectives.
@@ -140,14 +104,14 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
               Site photography shows celebration energy in a general, respectful way. As more licensed, couple-approved imagery becomes available, this stories hub will host specific moments without
               fabricating names or venues.
             </p>
-          </Block>
-        </SectionReveal>
+        </Block>
 
         <Block eyebrow="Method" title="Roomflow Method, in plain language">
           <p>
             The{" "}
             <Link
               href="/guides/how-to-keep-a-wedding-dance-floor-packed"
+              prefetch={false}
               className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
             >
               Roomflow Method
@@ -157,32 +121,31 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
           </p>
         </Block>
 
-        <SectionReveal as="div" className="border-y border-white/10 bg-white/[0.03]">
-          <Block eyebrow="Arc" title="The Atmosphere Arc on the floor">
+        <Block eyebrow="Arc" title="The Atmosphere Arc on the floor">
             <p>
               The{" "}
               <strong className="text-white/90">Atmosphere Arc</strong> treats ceremony, cocktails, dinner, speeches, and dancing as one experience. When the arc is coherent, the dance section does not
               need tricks. It needs continuity: guests recognize the night as theirs, so they stay.
             </p>
-          </Block>
-        </SectionReveal>
+        </Block>
 
         <Block eyebrow="Services" title="How the services connect">
           <p>
             If you want the full scope of ceremony-through-reception support, start with{" "}
-            <Link href="/weddings" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+            <Link href="/weddings" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               wedding DJ services
             </Link>{" "}
             and then reach out when you are ready to talk dates and venues.
           </p>
           <p>
             Named Sea-to-Sky settings live in the{" "}
-            <Link href="/venues" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+            <Link href="/venues" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               venue guides
             </Link>
             .             For an editorial read on how elevation and light shape reception pacing at the{" "}
             <Link
               href="/stories/what-a-sea-to-sky-gondola-dance-floor-feels-like"
+              prefetch={false}
               className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
             >
               Sea to Sky Gondola
@@ -190,26 +153,24 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
             , see the companion story. For focused riverside pacing at{" "}
             <Link
               href="/stories/what-a-sunwolf-riverside-wedding-reception-feels-like"
+              prefetch={false}
               className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
             >
               Sunwolf Riverside Resort
             </Link>
             , see the Brackendale editorial. Squamish-first commercial context sits in the{" "}
-            <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+            <Link href="/squamish-wedding-dj" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Squamish wedding DJ
             </Link>{" "}
             pillar. More Squamish wedding stories live in the{" "}
-            <Link href="/stories" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+            <Link href="/stories" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               stories hub
             </Link>
             .
           </p>
         </Block>
 
-        <SectionReveal
-          as="section"
-          className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent"
-        >
+        <section className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent">
           <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
             <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
               <div className="mx-auto w-full max-w-3xl">
@@ -221,7 +182,7 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
                 <div className="mt-8 max-w-xl space-y-4">
                   <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
                   <p className="text-sm text-white/45">
-                    <Link href="/contact" className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                    <Link href="/contact" prefetch={false} className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                       Contact
                     </Link>{" "}
                     for details-first questions.
@@ -230,7 +191,7 @@ export default function StorySeaToSkyDanceFloorEnergyPage() {
               </div>
             </div>
           </div>
-        </SectionReveal>
+        </section>
       </article>
     </main>
   );

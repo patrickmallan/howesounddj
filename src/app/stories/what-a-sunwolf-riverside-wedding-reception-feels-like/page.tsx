@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
 import "../../guides/article-liner-notes.css";
-import { HeroSignalCopy } from "@/components/hero-signal-copy";
-import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
-import type { ReactNode } from "react";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
 import { ImageSlot } from "@/components/image-slot";
-import { SectionReveal } from "@/components/motion";
 import { JsonLd } from "@/components/json-ld";
 import { storyArticleBreadcrumbJsonLd, storyArticleJsonLd } from "@/lib/json-ld";
+import { StoryArticleBlock as Block, StoryArticleHeader } from "../story-article-elements";
 
 const STORY_SLUG = "what-a-sunwolf-riverside-wedding-reception-feels-like";
 const STORY_TITLE = "What a Sunwolf Riverside Wedding Reception Feels Like";
@@ -37,16 +34,6 @@ export const metadata: Metadata = {
   alternates: { canonical: `/stories/${STORY_SLUG}` },
 };
 
-function Block({ eyebrow, title, children }: { eyebrow: string; title: string; children: ReactNode }) {
-  return (
-    <section className="mx-auto max-w-3xl px-6 py-12 lg:px-8">
-      <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">{eyebrow}</div>
-      <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">{title}</h2>
-      <div className="mt-6 space-y-4 text-lg leading-8 text-white/70">{children}</div>
-    </section>
-  );
-}
-
 export default function StorySunwolfRiversideReceptionPage() {
   return (
     <main className="hsdj-interior hsdj-editorial-page hsdj-story-detail-page hsdj-story-sunwolf min-h-screen bg-neutral-950 text-white">
@@ -61,49 +48,31 @@ export default function StorySunwolfRiversideReceptionPage() {
       />
 
       <article className="hsdj-interior-flow">
-        <header className="relative overflow-hidden border-b border-white/10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(253,224,71,0.12),transparent_55%)]" />
-          <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
-            <nav className="text-sm text-white/45" aria-label="Breadcrumb">
-              <Link href="/" className="transition hover:text-white/70">
-                Home
-              </Link>
-              <span className="mx-2 text-white/25" aria-hidden>
-                /
-              </span>
-              <Link href="/stories" className="transition hover:text-white/70">
-                Stories
-              </Link>
-              <span className="mx-2 text-white/25" aria-hidden>
-                /
-              </span>
-              <span className="text-white/65">Sunwolf riverside</span>
-            </nav>
-            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/90">Editorial / atmosphere</p>
-            <p className="mt-3 text-sm text-white/45">
-              <time dateTime={STORY_DATE}>May 23, 2026</time>
-              <span className="mx-2 text-white/25" aria-hidden>
-                ·
-              </span>
-              Howe Sound DJ
-            </p>
-            <MeterMatrixHeading text={STORY_TITLE} className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl" />
-            <HeroSignalCopy className="mt-6 max-w-3xl text-lg leading-8 text-white/70" tone="green">
-              This is not a recap of a named wedding. It is an observational piece about a pattern that shows up often in Squamish: receptions that feel complete because the emotional arc was shaped with
-              care, not because the clock was pushed as late as possible.
-            </HeroSignalCopy>
+        <StoryArticleHeader
+          breadcrumbLabel="Sunwolf riverside"
+          date={STORY_DATE}
+          dateLabel="May 23, 2026"
+          eyebrow="Editorial / atmosphere"
+          title={STORY_TITLE}
+          titleLines={["What a Sunwolf", "Riverside Wedding", "Reception Feels Like"]}
+          tone="green"
+          after={(
             <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/50">
               For planning specifics tied to the property, start with the{" "}
               <Link
                 href="/venues/sunwolf"
+                prefetch={false}
                 className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
               >
                 Sunwolf Riverside Resort venue guide
               </Link>
               .
             </p>
-          </div>
-        </header>
+          )}
+        >
+          This is not a recap of a named wedding. It is an observational piece about a pattern that shows up often in Squamish: receptions that feel complete because the emotional arc was shaped with
+          care, not because the clock was pushed as late as possible.
+        </StoryArticleHeader>
 
         <div className="border-b border-white/10 bg-neutral-950">
           <div className="mx-auto max-w-4xl px-6 py-12 lg:px-8 lg:py-16">
@@ -116,7 +85,6 @@ export default function StorySunwolfRiversideReceptionPage() {
               sizes="(max-width: 1024px) 100vw, 56rem"
               imageClassName="object-[center_42%]"
               premiumPhotoTreatment
-              priority
             >
               <span className="block text-white/60">Wedding reception at Sunwolf Riverside Resort in Brackendale, Squamish.</span>
             </ImageSlot>
@@ -134,8 +102,7 @@ export default function StorySunwolfRiversideReceptionPage() {
           </p>
         </Block>
 
-        <SectionReveal as="div" className="border-y border-white/10 bg-white/[0.03]">
-          <Block eyebrow="Setting" title="What the riverside does before the first dance">
+        <Block eyebrow="Setting" title="What the riverside does before the first dance">
             <p>
               Sunwolf Riverside Resort sits in Brackendale with the river and lodge character already doing emotional work. Guests often arrive softer than they would at a downtown ballroom: more
               connected to daylight, more willing to stand outside, more settled into conversation before anyone asks them to perform celebration.
@@ -144,8 +111,7 @@ export default function StorySunwolfRiversideReceptionPage() {
               That grounding is an asset. It also sets expectations. The reception should not fight the ease that brought people there. Music and hosting work best when they honor the transition from
               open air and river light into an evening that still feels human, not like the day was reset to “party mode” on a timer.
             </p>
-          </Block>
-        </SectionReveal>
+        </Block>
 
         <Block eyebrow="Arc" title="Recognition before intensity">
           <p>
@@ -156,6 +122,7 @@ export default function StorySunwolfRiversideReceptionPage() {
             That is the same discipline described in the{" "}
             <Link
               href="/guides/how-to-keep-a-wedding-dance-floor-packed"
+              prefetch={false}
               className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
             >
               Roomflow Method
@@ -165,8 +132,7 @@ export default function StorySunwolfRiversideReceptionPage() {
           </p>
         </Block>
 
-        <SectionReveal as="div" className="border-y border-white/10 bg-white/[0.03]">
-          <Block eyebrow="Focus" title="Why a concentrated celebration can feel fuller than a marathon">
+        <Block eyebrow="Focus" title="Why a concentrated celebration can feel fuller than a marathon">
             <p>
               When dancing is treated as a concentrated chapter rather than an open-ended push, energy compresses. People stay present. The peak lands while guests still have something left to give. Ending
               while the room still feels alive is different from stopping early; it is stopping at the right emotional altitude.
@@ -175,8 +141,7 @@ export default function StorySunwolfRiversideReceptionPage() {
               That is not an argument against high energy. It is an argument for high energy with intention. A focused reception can still be loud, sweaty, and joyful. It simply refuses to borrow
               tomorrow’s exhaustion to pay for tonight’s volume.
             </p>
-          </Block>
-        </SectionReveal>
+        </Block>
 
         <Block eyebrow="Reading" title="What good room-reading looks like in practice">
           <p>
@@ -189,28 +154,27 @@ export default function StorySunwolfRiversideReceptionPage() {
           </p>
         </Block>
 
-        <SectionReveal as="div" className="border-y border-white/10 bg-white/[0.03]">
-          <Block eyebrow="Corridor" title="Squamish rhythm and venue familiarity">
+        <Block eyebrow="Corridor" title="Squamish rhythm and venue familiarity">
             <p>
               Brackendale sits on the same weekend map as the rest of Squamish work: corridor traffic, mixed local and travel guests, weather and light that can nudge timelines without announcing it on
               the run-of-show. A DJ who plans in this lane is not discovering those realities on your clock.
             </p>
             <p>
               The{" "}
-              <Link href="/squamish-wedding-dj" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+              <Link href="/squamish-wedding-dj" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                 Squamish-rooted planning lens
               </Link>{" "}
               is one way to name that posture. For contrast with ridge-line elevation and faster light changes, the companion read on{" "}
               <Link
                 href="/stories/what-a-sea-to-sky-gondola-dance-floor-feels-like"
+                prefetch={false}
                 className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
               >
                 Sea to Sky Gondola atmosphere
               </Link>{" "}
               explores a different environmental cue set. Riverside receptions reward patience with intimacy; mountaintop receptions reward patience with awe.
             </p>
-          </Block>
-        </SectionReveal>
+        </Block>
 
         <Block eyebrow="Memory" title="Coherence beats duration">
           <p>
@@ -225,16 +189,17 @@ export default function StorySunwolfRiversideReceptionPage() {
 
         <Block eyebrow="Related" title="Planning links that pair with this read">
           <p>
-            <Link href="/venues/sunwolf" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+            <Link href="/venues/sunwolf" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               Sunwolf Riverside Resort
             </Link>
             : named-setting flow and pacing questions.{" "}
-            <Link href="/guides/how-to-choose-a-wedding-dj-in-squamish" className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+            <Link href="/guides/how-to-choose-a-wedding-dj-in-squamish" prefetch={false} className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
               How to Choose a Wedding DJ in Squamish
             </Link>
             : decision support without hype.{" "}
             <Link
               href="/stories/sea-to-sky-wedding-dance-floor-energy"
+              prefetch={false}
               className="font-medium text-amber-200/90 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100"
             >
               High-energy corridor dance floors
@@ -243,10 +208,7 @@ export default function StorySunwolfRiversideReceptionPage() {
           </p>
         </Block>
 
-        <SectionReveal
-          as="section"
-          className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent"
-        >
+        <section className="border-t border-white/10 bg-gradient-to-b from-amber-300/10 to-transparent">
           <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
             <div className="atmosphere-grain rounded-[2rem] border border-white/10 bg-neutral-950/80 p-8 lg:p-12">
               <div className="mx-auto w-full max-w-3xl">
@@ -259,7 +221,7 @@ export default function StorySunwolfRiversideReceptionPage() {
                 <div className="mt-8 max-w-xl space-y-4">
                   <CTADuo bookSurface="page_cta" checkSurface="page_cta" />
                   <p className="text-sm text-white/45">
-                    <Link href="/stories" className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
+                    <Link href="/stories" prefetch={false} className="font-medium text-amber-200/85 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100">
                       Back to Stories
                     </Link>
                   </p>
@@ -267,7 +229,7 @@ export default function StorySunwolfRiversideReceptionPage() {
               </div>
             </div>
           </div>
-        </SectionReveal>
+        </section>
       </article>
     </main>
   );
