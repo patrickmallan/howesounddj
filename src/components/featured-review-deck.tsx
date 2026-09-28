@@ -6,7 +6,8 @@ import styles from "@/app/reviews/reviews-page.module.css";
 
 const cueColors = ["#ffe044", "#24d2e9", "#ff7442", "#fc4a8e", "#5dd7a0", "#7d8bff", "#e88af7", "#ffaf4b"];
 
-function MandalaRing({ count, inner, outer, width, colors, offset = 0 }: {
+function MandalaRing({ id, count, inner, outer, width, colors, offset = 0 }: {
+  id: string;
   count: number;
   inner: number;
   outer: number;
@@ -14,32 +15,44 @@ function MandalaRing({ count, inner, outer, width, colors, offset = 0 }: {
   colors: readonly string[];
   offset?: number;
 }) {
-  return Array.from({ length: count }, (_, index) => (
-    <g key={index} transform={`rotate(${(index * 360) / count + offset} 250 250)`}>
-      <path
-        d={`M250 ${250 - inner} L${250 - width} ${250 - outer + 22} L250 ${250 - outer} L${250 + width} ${250 - outer + 22} Z`}
-        fill={colors[index % colors.length]}
-        stroke="#080b11"
-        strokeWidth="1.5"
-      />
-      <path
-        d={`M250 ${250 - outer} L${250 - width} ${250 - outer + 22} L250 ${250 - inner} Z`}
-        fill="#fff"
-        opacity=".13"
-      />
-    </g>
-  ));
+  return (
+    <>
+      <defs>
+        <g id={id}>
+          <path
+            d={`M250 ${250 - inner} L${250 - width} ${250 - outer + 22} L250 ${250 - outer} L${250 + width} ${250 - outer + 22} Z`}
+            fill="currentColor"
+            stroke="#080b11"
+            strokeWidth="1.5"
+          />
+          <path
+            d={`M250 ${250 - outer} L${250 - width} ${250 - outer + 22} L250 ${250 - inner} Z`}
+            fill="#fff"
+            opacity=".13"
+          />
+        </g>
+      </defs>
+      {Array.from({ length: count }, (_, index) => (
+        <use
+          key={index}
+          href={`#${id}`}
+          transform={`rotate(${(index * 360) / count + offset} 250 250)`}
+          style={{ color: colors[index % colors.length] }}
+        />
+      ))}
+    </>
+  );
 }
 
 function VinylMandala() {
   return (
     <svg className={styles.recordMandala} viewBox="0 0 500 500" focusable="false" aria-hidden="true">
       <circle cx="250" cy="250" r="232" fill="#0a0d14" />
-      <MandalaRing count={24} inner={157} outer={243} width={22} offset={7.5} colors={["#f23bea", "#8e1cc0", "#df56ec", "#ae24c6"]} />
-      <MandalaRing count={32} inner={145} outer={230} width={29} colors={["#8718a2", "#bc2dc4", "#631484", "#e047c4"]} />
-      <MandalaRing count={40} inner={116} outer={190} width={20} offset={4.5} colors={["#f236a4", "#ff6ac2", "#a917a0", "#e12f89"]} />
-      <MandalaRing count={36} inner={80} outer={147} width={19} colors={["#ffe541", "#f4bb2e", "#ffef75", "#d48b1d"]} />
-      <MandalaRing count={48} inner={48} outer={103} width={12} offset={3.75} colors={["#53f5be", "#1bd2b5", "#2ab9ec", "#95f06c"]} />
+      <MandalaRing id="hsdj-vinyl-outer" count={24} inner={157} outer={243} width={22} offset={7.5} colors={["#f23bea", "#8e1cc0", "#df56ec", "#ae24c6"]} />
+      <MandalaRing id="hsdj-vinyl-mid-outer" count={32} inner={145} outer={230} width={29} colors={["#8718a2", "#bc2dc4", "#631484", "#e047c4"]} />
+      <MandalaRing id="hsdj-vinyl-mid" count={40} inner={116} outer={190} width={20} offset={4.5} colors={["#f236a4", "#ff6ac2", "#a917a0", "#e12f89"]} />
+      <MandalaRing id="hsdj-vinyl-mid-inner" count={36} inner={80} outer={147} width={19} colors={["#ffe541", "#f4bb2e", "#ffef75", "#d48b1d"]} />
+      <MandalaRing id="hsdj-vinyl-inner" count={48} inner={48} outer={103} width={12} offset={3.75} colors={["#53f5be", "#1bd2b5", "#2ab9ec", "#95f06c"]} />
       <circle cx="250" cy="250" r="50" fill="none" stroke="#123846" strokeWidth="7" />
       <circle cx="250" cy="250" r="43" fill="none" stroke="#40d7e9" strokeWidth="3" strokeDasharray="3 3" />
     </svg>
@@ -99,7 +112,7 @@ export function FeaturedReviewDeck({ reviews }: { reviews: readonly DeckReview[]
               <blockquote>{selected.quote}</blockquote>
               <figcaption><span className={styles.bylineKnob} aria-hidden="true" /><span>{selected.reviewerName}</span>{selected.venue ? <small>{selected.venue}</small> : null}</figcaption>
             </figure>
-            {selected.sourceHref ? <a className={styles.reviewSource} href={selected.sourceHref} target="_blank" rel="noopener noreferrer">Read on Google <span aria-hidden="true">↗</span></a> : null}
+            {selected.sourceHref ? <a className={styles.reviewSource} href={selected.sourceHref} target="_blank" rel="noopener noreferrer">Read on Google<span className="sr-only"> (opens in a new tab)</span> <span aria-hidden="true">↗</span></a> : null}
           </div>
         </div>
         <div className={styles.cuePanel}>

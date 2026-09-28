@@ -79,8 +79,8 @@ function ReviewQuote({ item, className = "" }: { item: CanonicalReview; classNam
 
 function wavePath(seed: number, scale: number) {
   const energy = [0.88, 0.57, 0.3, 0.74, 1, 0.46, 0.23, 0.67, 0.95, 0.88];
-  const samples = Array.from({ length: 321 }, (_, index) => {
-    const position = index % 320;
+  const samples = Array.from({ length: 161 }, (_, index) => {
+    const position = (index * 2) % 320;
     const phrase = Math.floor(position / 32);
     const beat = position % 32;
     const contour = energy[phrase] + (energy[(phrase + 1) % energy.length] - energy[phrase]) * (beat / 32);
@@ -88,38 +88,60 @@ function wavePath(seed: number, scale: number) {
     const kick = beat < 3 ? 12 - beat * 4 : 0;
     return Math.min(37, Math.round((5 + transient + kick) * contour * scale));
   });
-  const upper = samples.map((height, index) => `L${index * 5} ${40 - height}`).join(" ");
-  const lower = samples.map((height, index) => `L${index * 5} ${40 + height}`).reverse().join(" ");
+  const upper = samples.map((height, index) => `L${index * 10} ${40 - height}`).join(" ");
+  const lower = samples.map((height, index) => `L${index * 10} ${40 + height}`).reverse().join(" ");
   return `M0 40 ${upper} ${lower} Z`;
 }
+
+const waveDecks = [
+  {
+    key: "a",
+    label: "A",
+    body: wavePath(7, 1),
+    core: wavePath(10, .31),
+    colors: ["#f33a55", "#ff753e", "#ffbc3f", "#4bd7c6", "#f8425d", "#ff973d", "#54c9d8", "#ec4b70", "#e8c243", "#f33a55"],
+  },
+  {
+    key: "b",
+    label: "B",
+    body: wavePath(14, 1),
+    core: wavePath(17, .31),
+    colors: ["#25c8ed", "#4e88ff", "#9d70f6", "#53dec2", "#2bbbea", "#637dff", "#4de4c8", "#9d70f6", "#44a3ed", "#25c8ed"],
+  },
+] as const;
 
 function WaveformBanner() {
   return (
     <div className={styles.waveBanner} aria-hidden="true">
+      <svg className={styles.waveDefinitions} focusable="false">
+        <defs>
+          {waveDecks.map((deck) => (
+            <g key={deck.key}>
+              <linearGradient id={`hsdj-wave-${deck.key}`} gradientUnits="userSpaceOnUse" x1="0" x2="1600">
+                {deck.colors.map((color, index) => <stop key={color} offset={`${(index / 9) * 100}%`} stopColor={color} />)}
+              </linearGradient>
+              <path id={`hsdj-wave-${deck.key}-body`} d={deck.body} />
+              <path id={`hsdj-wave-${deck.key}-core`} d={deck.core} />
+            </g>
+          ))}
+        </defs>
+      </svg>
       <div className={styles.waveBannerHeader}><span>HOWE SOUND DJ / DANCE FLOOR</span><span>THE ROOM IN MOTION</span></div>
-      {[1, 2].map((deck) => (
-        <div className={`${styles.waveDeck} ${deck === 1 ? styles.waveDeckA : styles.waveDeckB}`} key={deck}>
-          <span className={styles.waveDeckLabel}>DECK {deck === 1 ? "A" : "B"}</span>
+      {waveDecks.map((deck, deckIndex) => (
+        <div className={`${styles.waveDeck} ${deckIndex === 0 ? styles.waveDeckA : styles.waveDeckB}`} key={deck.key}>
+          <span className={styles.waveDeckLabel}>DECK {deck.label}</span>
           <div className={styles.waveViewport}>
             <div className={styles.waveTrack}>
               {[0, 1].map((copy) => (
                 <svg key={copy} viewBox="0 0 1600 80" preserveAspectRatio="none" focusable="false">
-                  <defs>
-                    <linearGradient id={`hsdj-wave-${deck}-${copy}`} gradientUnits="userSpaceOnUse" x1="0" x2="1600">
-                      {(deck === 1
-                        ? ["#f33a55", "#ff753e", "#ffbc3f", "#4bd7c6", "#f8425d", "#ff973d", "#54c9d8", "#ec4b70", "#e8c243", "#f33a55"]
-                        : ["#25c8ed", "#4e88ff", "#9d70f6", "#53dec2", "#2bbbea", "#637dff", "#4de4c8", "#9d70f6", "#44a3ed", "#25c8ed"]
-                      ).map((color, index) => <stop key={index} offset={`${(index / 9) * 100}%`} stopColor={color} />)}
-                    </linearGradient>
-                  </defs>
-                  <path className={styles.waveBody} fill={`url(#hsdj-wave-${deck}-${copy})`} d={wavePath(deck * 7, 1)} />
-                  <path className={styles.waveCore} d={wavePath(deck * 7 + 3, .31)} />
+                  <use className={styles.waveBody} fill={`url(#hsdj-wave-${deck.key})`} href={`#hsdj-wave-${deck.key}-body`} />
+                  <use className={styles.waveCore} href={`#hsdj-wave-${deck.key}-core`} />
                   <path className={styles.waveThread} d="M0 40H1600" />
                 </svg>
               ))}
             </div>
           </div>
-          <span className={styles.waveDeckEnd}>{deck === 1 ? "A" : "B"} / HSDJ</span>
+          <span className={styles.waveDeckEnd}>{deck.label} / HSDJ</span>
         </div>
       ))}
       <span className={styles.wavePlayhead} />
@@ -220,7 +242,7 @@ export default function ReviewsPage() {
             <h2 id="reviews-outro-heading">Now let&apos;s talk about yours.</h2>
             <p>If you like what these couples had to say, see whether your date is open. Then we can talk music and the kind of night you want to make.</p>
           </div>
-          <Link href="/contact#availability" className={styles.outroLink}>Check your date <span aria-hidden="true">↗</span></Link>
+          <Link href="/contact#availability" prefetch={false} className={styles.outroLink}>Check your date <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
     </main>

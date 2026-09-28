@@ -338,6 +338,7 @@
 .waveTrack { display: flex; width: 200vw; height: 100%; animation: waveform-travel 17s linear infinite; transform: translate3d(0, 0, 0); backface-visibility: hidden; will-change: transform; contain: paint; }
 .waveDeckB .waveTrack { animation-duration: 20s; }
 .waveTrack svg { width: 100vw; height: 100%; flex: none; }
+.waveDefinitions { position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none; }
 .waveBody { opacity: .95; }
 .waveCore { fill: var(--wave-inner); opacity: .75; }
 .waveThread { fill: none; stroke: #fff; stroke-width: 1.2; opacity: .88; }
@@ -475,8 +476,7 @@
 @keyframes waveform-travel { to { transform: translate3d(-100vw, 0, 0); } }
 @media (prefers-reduced-motion: reduce) {
   .firstCopy, .peopleQuotes .quote, .dayPhoto, .dayQuotes .quote, .floorQuotes .quote, .outroDeck { transform: none; }
-  .waveTrack { animation-duration: 48s; }
-  .waveDeckB .waveTrack { animation-duration: 56s; }
+  .waveTrack { animation: none; transform: none; will-change: auto; }
 }
 
 /* Featured reviews: a physical deck with a selectable CDJ-inspired display. */
@@ -661,5 +661,5 @@
   .recordLabel strong { font-size: clamp(.4rem, 2vw, .68rem); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .recordArt { animation-duration: 14s; }
+  .recordArt { animation: none; will-change: auto; }
 }
