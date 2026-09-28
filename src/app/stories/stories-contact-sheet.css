@@ -6,7 +6,11 @@
 .contact-sheet-hero > img { object-fit: cover; object-position: center; }
 .contact-sheet-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #0b0a1288 0%, #0b0a1250 46%, #0b0a1200 100%), linear-gradient(0deg, #0b0a1299, transparent 45%); }
 .contact-sheet-hero-copy { position: relative; z-index: 2; width: min(100%, 34rem); }
-.hsdj-contact-sheet .contact-sheet-hero h1 { max-width: 100%; line-height: .93; }
+.hsdj-contact-sheet .contact-sheet-title { display: grid; width: fit-content; max-width: 100%; margin: 0; color: #f6f0e7; font-family: "HSDJ Meter Matrix V6", var(--font-geist-mono), monospace; font-size: clamp(3.3rem, 6.7vw, 6.7rem); font-weight: 400; line-height: .77; letter-spacing: -.055em; text-transform: uppercase; text-rendering: geometricPrecision; }
+.contact-sheet-title span { display: block; width: fit-content; }
+.contact-sheet-title span:nth-child(1) { color: #edf2ff; }
+.contact-sheet-title span:nth-child(2) { color: #ffb52f; }
+.contact-sheet-title span:nth-child(3) { color: #55e7ef; }
 #main-content .hsdj-contact-sheet .contact-sheet-hero-copy > p:last-child { max-width: 42rem; padding: 1.3rem; margin: 2rem 0 0; border-left: 8px solid #ff4c91; background: #0c0b13ec; color: #fff !important; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 750; line-height: 1.55; }
 .contact-sheet-hero-mark { position: absolute; z-index: 2; right: 4%; top: 27%; max-width: 8ch; padding: 1.1rem 1.35rem; color: #090f17; background: #ff4d91; font: 1000 clamp(1.7rem, 3.4vw, 3.5rem)/.87 system-ui, sans-serif; text-align: left; text-transform: uppercase; transform: rotate(8deg); box-shadow: 12px 12px 0 #ffe11b; }
 .contact-sheet-hero-mark span { color: #ffe11b; }
@@ -86,9 +90,16 @@
 .contact-sheet-caption { position: relative; z-index: 3; margin-left: -3.5rem; padding: clamp(2rem, 4vw, 4rem); background: #ff4d91; color: #090c12; transform: rotate(1deg); box-shadow: 13px 14px 0 #ffe11b; }
 .contact-sheet-frame:nth-child(3) .contact-sheet-caption { background: #53e6ee; box-shadow: 13px 14px 0 #ff4d91; }
 .hsdj-contact-sheet .contact-sheet-caption h3 { margin: 0; font-size: clamp(2rem, 3.5vw, 4.1rem) !important; line-height: .96; text-transform: uppercase; }
-.contact-sheet-caption h3 a { color: #090c12; text-decoration: none; }
 .contact-sheet-caption .contact-sheet-summary { margin: 1.3rem 0; color: #090c12 !important; font-size: clamp(1rem, 1.2vw, 1.2rem); line-height: 1.5; font-weight: 700; }
-.contact-sheet-caption > a:last-child { display: inline-block; border-bottom: 3px solid currentColor; padding-bottom: .3rem; color: #090c12; font-weight: 950; text-transform: uppercase; }
+.contact-sheet-hardware-link { --hardware-accent: #ffe11b; display: inline-grid; width: fit-content; min-height: 4.4rem; grid-template-columns: 4.4rem minmax(7rem, auto) 1rem; align-items: center; gap: .65rem; color: #090c12; text-decoration: none; text-transform: uppercase; }
+.contact-sheet-hardware-face { display: grid; width: 4.4rem; height: 4.4rem; place-items: center; filter: drop-shadow(0 0 8px color-mix(in srgb, var(--hardware-accent) 72%, transparent)); transition: filter .18s ease, transform .18s ease; }
+.contact-sheet-hardware-face img { width: 100%; height: 100%; object-fit: contain; }
+.contact-sheet-hardware-link strong { color: currentColor; font-size: .83rem; font-weight: 950; line-height: 1.1; }
+.contact-sheet-hardware-arrow { color: #090c12; font-weight: 950; }
+.contact-sheet-hardware-link:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+.contact-sheet-hardware-link:hover .contact-sheet-hardware-face, .contact-sheet-hardware-link:focus-visible .contact-sheet-hardware-face { filter: brightness(1.12) drop-shadow(0 0 13px var(--hardware-accent)); transform: translateY(2px); }
+.contact-sheet-hardware-link--hot-cue { --hardware-accent: #2eeff6; min-height: 3.6rem; grid-template-columns: 6.6rem minmax(8rem, auto) 1rem; }
+.contact-sheet-hardware-link--hot-cue .contact-sheet-hardware-face { width: 6.6rem; height: 2.2rem; }
 #main-content .hsdj-contact-sheet .contact-sheet-real-reels { position: relative; display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); padding: clamp(4rem, 6vw, 6rem) max(5vw, calc((100vw - 80rem)/2)); background: #142430 !important; }
 .contact-sheet-real-reels-heading { max-width: 25rem; }
 .hsdj-contact-sheet .contact-sheet-real-reels-heading h2 { max-width: 12ch !important; margin: 0; font-size: clamp(2.2rem, 3.4vw, 3.7rem) !important; line-height: .96; text-transform: uppercase; }
@@ -98,7 +109,7 @@
 .contact-sheet-reel figcaption { margin-top: .7rem; color: #cbe1e6; font: 700 .78rem/1.4 ui-monospace, monospace; }
 .contact-sheet-exit { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem 3rem; padding: 2.5rem max(5vw, calc((100vw - 80rem)/2)); background: #ffe11b; color: #090c12; }
 .contact-sheet-exit p { margin: 0 auto 0 0; font-size: clamp(1.3rem, 2vw, 2rem); font-weight: 950; text-transform: uppercase; }
-.contact-sheet-exit a { color: #090c12; font-weight: 900; text-transform: uppercase; text-decoration: underline; text-decoration-thickness: 3px; }
+.contact-sheet-exit .contact-sheet-hardware-link { color: #090c12; }
 @media (max-width: 900px) {
   #main-content .hsdj-contact-sheet .contact-sheet-hero { min-height: 620px; padding: 8rem 1.4rem 3rem; }
   .contact-sheet-hero-mark { display: none; }
@@ -134,6 +145,7 @@
 }
 @media (max-width: 600px) {
   .contact-sheet-hero-copy { width: min(100%, 30rem); }
+  .hsdj-contact-sheet .contact-sheet-title { font-size: clamp(3rem, 17vw, 5.35rem); line-height: .78; }
   .contact-sheet-frame:nth-child(n) .contact-sheet-photo { min-height: 250px; }
   .contact-sheet-frame:nth-child(n) .contact-sheet-caption { padding: 1.5rem; }
   .contact-sheet-night-notes-scatter { height: 325rem; max-width: 23rem; }
@@ -160,9 +172,12 @@
   .contact-sheet-night-note p, .contact-sheet-night-note:nth-child(n) p { font-size: clamp(1.2rem, 5.2vw, 1.55rem); }
   .contact-sheet-reel { transform: none; }
   .contact-sheet-exit { display: block; padding: 2rem 1.4rem; }
-  .contact-sheet-exit a { display: block; margin-top: 1rem; }
+  .contact-sheet-exit .contact-sheet-hardware-link { margin-top: 1rem; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .contact-sheet-photo img { transition: transform .7s ease; }
   .contact-sheet-frame:hover .contact-sheet-photo img { transform: scale(1.035); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-sheet-hardware-face { transition: none; }
 }

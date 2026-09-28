@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { HeroSignalCopy } from "@/components/hero-signal-copy";
-import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { storiesHubBreadcrumbJsonLd } from "@/lib/json-ld";
 import { StoriesQuietLoop } from "./stories-quiet-loop";
@@ -10,6 +9,35 @@ import "./stories-contact-sheet.css";
 
 const description = "Sea-to-Sky dance floor stories about the moments, pacing, and music that turn a wedding room into a party.";
 const title = "Sea-to-Sky Dance Floor Stories | Packed Mountain Receptions";
+const heroTitle = "What the room felt like.";
+
+type StoriesHardwareLinkProps = {
+  href: string;
+  label: string;
+  mode?: "play" | "hot-cue";
+};
+
+function StoriesHardwareLink({ href, label, mode = "play" }: StoriesHardwareLinkProps) {
+  const control = mode === "play"
+    ? "/images/hsdj-redesign/controls/buttons/play-pause-round.png"
+    : "/images/hsdj-redesign/controls/buttons/hot-cue-mode.png";
+  const dimensions = mode === "play" ? { width: 130, height: 130 } : { width: 94, height: 26 };
+
+  return (
+    <Link
+      className={`contact-sheet-hardware-link contact-sheet-hardware-link--${mode}`}
+      href={href}
+      prefetch={false}
+      data-physical-control={mode}
+    >
+      <span className="contact-sheet-hardware-face" aria-hidden="true">
+        <Image src={control} alt="" {...dimensions} sizes={mode === "play" ? "68px" : "94px"} />
+      </span>
+      <strong>{label}</strong>
+      <span className="contact-sheet-hardware-arrow" aria-hidden="true">↗</span>
+    </Link>
+  );
+}
 
 export const metadata: Metadata = {
   title,
@@ -143,7 +171,11 @@ export default function StoriesHubPage() {
       <section className="contact-sheet-hero" aria-labelledby="contact-sheet-title">
         <Image src="/images/hsdj-redesign/new-editorial/stories-after-set-collage-v1.webp" alt="Editorial collage of mountain wedding dance-floor moments, DJ equipment and string lights" fill sizes="100vw" priority />
         <div className="contact-sheet-hero-copy">
-          <MeterMatrixHeading id="contact-sheet-title" text="What the room felt like." lines={["What the", "room felt", "like."]} />
+          <h1 id="contact-sheet-title" className="contact-sheet-title" aria-label={heroTitle}>
+            <span aria-hidden="true">What the</span>
+            <span aria-hidden="true">room felt</span>
+            <span aria-hidden="true">like.</span>
+          </h1>
           <HeroSignalCopy tone="pink">There is a point when guests stop watching the dance floor and become it. These are stories about the music, timing, and people that get a room there.</HeroSignalCopy>
         </div>
         <div className="contact-sheet-hero-mark" aria-hidden="true">THE NIGHT<br />WENT OFF<span>.</span></div>
@@ -157,7 +189,7 @@ export default function StoriesHubPage() {
         <div className="contact-sheet-night-notes-scatter">
           {diaryNotes.map((note) => (
             <article className={`contact-sheet-night-note contact-sheet-night-note--${note.shape}`} key={`${note.image}-${note.text}`}>
-              <Image src={note.image} alt="" fill sizes="(max-width: 600px) 90vw, 24rem" />
+              <Image src={note.image} alt="" fill loading="lazy" fetchPriority="low" sizes="(max-width: 600px) 21rem, 24rem" />
               <p>{note.text}</p>
             </article>
           ))}
@@ -172,12 +204,12 @@ export default function StoriesHubPage() {
           {stories.map((story) => (
             <article key={story.slug} className="contact-sheet-frame">
               <div className="contact-sheet-photo">
-                <Image src={story.image} alt={story.alt} fill sizes="(max-width: 800px) 100vw, 65vw" />
+                <Image src={story.image} alt={story.alt} fill loading="eager" fetchPriority="low" sizes="(max-width: 800px) 100vw, 65vw" />
               </div>
               <div className="contact-sheet-caption">
-                <h3><Link href={`/stories/${story.slug}`}>{story.title}</Link></h3>
+                <h3>{story.title}</h3>
                 <p className="contact-sheet-summary">{story.description}</p>
-                <Link href={`/stories/${story.slug}`}>Enter this story <span aria-hidden="true">↗</span></Link>
+                <StoriesHardwareLink href={`/stories/${story.slug}`} label="Enter this story" />
               </div>
             </article>
           ))}
@@ -194,8 +226,8 @@ export default function StoriesHubPage() {
 
       <nav className="contact-sheet-exit" aria-label="More ways to explore">
         <p>The people say it better.</p>
-        <Link href="/reviews">Hear from couples <span aria-hidden="true">↗</span></Link>
-        <Link href="/guides">Get into the planning <span aria-hidden="true">↗</span></Link>
+        <StoriesHardwareLink href="/reviews" label="Hear from couples" mode="hot-cue" />
+        <StoriesHardwareLink href="/guides" label="Get into the planning" mode="hot-cue" />
       </nav>
     </main>
   );
