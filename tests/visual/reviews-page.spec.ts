@@ -71,6 +71,25 @@ for (const width of [320, 390, 768, 1440]) {
   });
 }
 
+for (const width of [320, 390, 768, 1440, 1920, 2560]) {
+  test(`reviews hero artwork covers its complete frame at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });
+    await page.goto("/reviews");
+    const coverage = await page.locator("main section").first().evaluate((hero) => {
+      const heroRect = hero.getBoundingClientRect();
+      const imageRect = hero.querySelector("picture img")!.getBoundingClientRect();
+      return {
+        hero: { left: heroRect.left, right: heroRect.right, top: heroRect.top, bottom: heroRect.bottom },
+        image: { left: imageRect.left, right: imageRect.right, top: imageRect.top, bottom: imageRect.bottom },
+      };
+    });
+    expect(coverage.image.left).toBeLessThanOrEqual(coverage.hero.left + 1);
+    expect(coverage.image.right).toBeGreaterThanOrEqual(coverage.hero.right - 1);
+    expect(coverage.image.top).toBeLessThanOrEqual(coverage.hero.top + 1);
+    expect(coverage.image.bottom).toBeGreaterThanOrEqual(coverage.hero.bottom - 1);
+  });
+}
+
 test("reviews motion stops when reduced motion is requested", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/reviews");

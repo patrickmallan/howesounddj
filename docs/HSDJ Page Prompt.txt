@@ -41,7 +41,9 @@ Investigate:
 - Performance techniques such as `content-visibility`, containment, virtualization, or clipping that make meaningful off-screen content disappear from the accessibility tree, find-in-page, printing, screenshots, or crawlers.
 - Duplicate CSS, overridden rules, global styles fighting page-specific styles, and unused page code.
 - Layout shifts, horizontal overflow, clipped or truncated text, broken wrapping, and undersized tap targets.
-- Problems at narrow mobile widths, ordinary phones, tablets, laptops, and large desktop screens.
+- Problems at narrow mobile widths, ordinary phones, tablets, laptops, large desktop screens, ultrawide screens, and browser windows wider than the source artwork.
+- Responsive composition failures that technically avoid overflow but leave unintended dead space, collapse artwork into one side of the viewport, expose an empty background, or stop using the available canvas at wider breakpoints.
+- Hero and full-bleed artwork whose rendered media box does not actually cover its intended container because intrinsic image dimensions, missing width or height rules, `object-fit`, `background-size`, `max-width`, or source switching behaves differently at large widths.
 - Broken links, controls, disclosures, forms, interactions, and keyboard behavior.
 - Console errors, hydration warnings, failed requests, and malformed HTML.
 - Accessibility issues affecting headings, landmarks, labels, contrast, focus, keyboard use, reduced motion, and semantic structure.
@@ -98,10 +100,12 @@ After making improvements:
 - Run relevant existing tests.
 - Add focused regression tests for important problems uncovered during the audit.
 - Run the new regression tests against a production server, not only a development server.
-- Test at a minimum of 320px, 390px, 768px, and 1440px widths.
+- Test at a minimum of 320px, 390px, 768px, 1440px, and 1920px widths. Also test 2560px whenever the page contains full-bleed heroes, wide artwork, edge-to-edge backgrounds, horizontal motion, or desktop-specific composition.
 - Confirm there is no hidden horizontal overflow.
 - Confirm important text is genuinely inside the viewport rather than merely clipped by `overflow: hidden`.
 - Confirm headings, labels, containers, and artwork remain visually correct.
+- Do not treat “no overflow” as proof that a responsive layout passes. At every required width, inspect whether the composition uses the intended canvas, major content remains visually balanced, and no unexplained empty half-screen or dead zone appears.
+- For every hero, full-bleed section, background image, and absolutely positioned artwork layer, compare the rendered media bounds with the intended container bounds. Confirm the media genuinely covers or fills that container at mobile, standard desktop, and wide desktop sizes rather than relying on intrinsic asset dimensions.
 - Confirm all meaningful off-screen content is present in the accessibility tree without first scrolling it into existence.
 - Confirm focus indicators are visible, controls work by keyboard, and primary mobile tap targets are at least 44px where practical.
 - Confirm reduced-motion users do not receive essential information only through animation and that recurring animation stops or pauses when appropriate.
@@ -110,7 +114,7 @@ After making improvements:
 - Measure initial and post-scroll delivered resources and scrolling/rendering performance on mobile and desktop.
 - Confirm scrolling does not silently fetch unrelated routes, route CSS, route JavaScript, or heavy assets unless there is a deliberate and defensible user benefit.
 - Check for console errors, failed requests, and hydration warnings.
-- Visually inspect the finished page in production mode through normal scrolling as well as screenshots. If an optimization causes blank regions in a full-page capture, printing, the accessibility tree, or find-in-page, investigate rather than dismissing it as a tooling quirk.
+- Visually inspect the finished page in production mode through normal scrolling as well as screenshots. Capture and inspect the initial above-the-fold viewport at mobile, standard desktop, and wide desktop sizes—not only a reduced browser window or a full-page screenshot—plus representative middle and bottom states. If an optimization causes blank regions, unintended dead space, one-sided composition, or missing artwork in a viewport capture, full-page capture, printing, the accessibility tree, or find-in-page, investigate rather than dismissing it as a tooling quirk.
 - Inspect the server-rendered HTML and structured data to confirm important content and crawlable links do not depend on client-side JavaScript.
 - Compare meaningful before-and-after measurements whenever possible.
 - Add reasonable, non-flaky performance budgets or regression protection when doing so will prevent the same problem from returning. Prefer budgets for unwanted route requests, request counts, layout shift, long-task duration, overflow, and markup regressions over brittle millisecond-only thresholds.
