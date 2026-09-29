@@ -7,7 +7,6 @@ type AmbientDanceMontageProps = {
   fingerprintClassName: string;
   logoClassName: string;
   posterSrc?: string;
-  showLockup?: boolean;
   videoSrc?: string;
 };
 
@@ -15,7 +14,6 @@ export function AmbientDanceMontage({
   fingerprintClassName,
   logoClassName,
   posterSrc = "/images/home/hsdj-hero-montage-poster-v1.jpg",
-  showLockup = true,
   videoSrc = "/videos/hsdj-hero-montage-web-v1.mp4",
 }: AmbientDanceMontageProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -88,26 +86,13 @@ export function AmbientDanceMontage({
         <source type="video/mp4" />
       </video>
       <div className={logoClassName} aria-hidden="true">
-        {showLockup ? (
-          <Image
-            src="/images/logo/lockups/hsdj-sasquatch-video-overlay-v14.webp"
-            alt=""
-            width={1600}
-            height={900}
-            sizes="(max-width: 700px) 100vw, 1240px"
-            data-video-overlay-lockup
-          />
-        ) : (
-          <>
-            <span data-video-overlay-mountains>
-              <Image src="/images/logo/elements/hsdj-mountain-backdrop-v3-transparent.png" alt="" fill sizes="100vw" />
-            </span>
-            <span data-video-overlay-sasquatch>
-              <Image src="/images/logo/characters/hsdj-sasquatch-patrick-pose-v1-transparent.png" alt="" fill sizes="70vw" />
-            </span>
-            <span data-video-overlay-title><b>Howe Sound</b><i>Wedding DJ</i></span>
-          </>
-        )}
+        <span data-video-overlay-mountains>
+          <Image src="/images/logo/elements/hsdj-mountain-backdrop-v5.svg" alt="" fill sizes="(max-width: 700px) 100vw, 1240px" />
+        </span>
+        <span data-video-overlay-sasquatch>
+          <Image src="/images/logo/characters/hsdj-sasquatch-patrick-pose-v1-transparent.png" alt="" fill sizes="(max-width: 700px) 70vw, 850px" />
+        </span>
+        <span data-video-overlay-title><b>Howe Sound</b><i>Wedding DJ</i></span>
         <span className={fingerprintClassName}>
           <Image
             src="/images/logo/elements/hsdj-fingerprint-disc-v1.png"

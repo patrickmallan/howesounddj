@@ -71,7 +71,7 @@ const STAGES = [
 ] as const;
 
 export function NightMixFader() {
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(0);
   const spectrumRef = useRef<HTMLDivElement>(null);
   const stage = STAGES[active];
   const customProperties = {

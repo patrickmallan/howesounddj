@@ -98,10 +98,16 @@
 .playbackVideo { position: relative; z-index: 12; width: min(91vw, 1240px); padding: .75rem; overflow: hidden; background: #080808; border-top: 8px solid var(--red); border-left: 8px solid var(--yellow); box-shadow: -14px 14px 0 var(--blue); transform: rotate(.25deg); }
 .playbackVideo video { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
 .playbackVideoLogo { position: absolute; z-index: 2; inset: .75rem; display: grid; place-items: center; overflow: hidden; background: rgb(0 0 0 / 5%); pointer-events: none; }
-.playbackVideoLogo > img { position: relative; z-index: 1; width: 100%; max-width: none; height: 100%; object-fit: contain; opacity: .6; filter: drop-shadow(0 3px 3px rgb(0 0 0 / 55%)); }
 .playbackVideoLogo [data-video-overlay-mountains],
 .playbackVideoLogo [data-video-overlay-sasquatch],
-.playbackVideoLogo [data-video-overlay-title] { display: none; }
+.playbackVideoLogo [data-video-overlay-title] { position: absolute; display: block; pointer-events: none; }
+.playbackVideoLogo [data-video-overlay-mountains] { z-index: 1; inset: 0; opacity: .65; }
+.playbackVideoLogo [data-video-overlay-mountains] img { object-fit: cover; object-position: center bottom; }
+.playbackVideoLogo [data-video-overlay-sasquatch] { z-index: 2; bottom: -12%; left: 17%; width: 66%; height: 94%; opacity: .8; filter: drop-shadow(0 8px 14px #000a); }
+.playbackVideoLogo [data-video-overlay-sasquatch] img { object-fit: contain; object-position: center bottom; }
+.playbackVideoLogo [data-video-overlay-title] { z-index: 3; top: 4%; right: 3%; left: 3%; color: #fff4dc; font-family: var(--display); text-align: center; text-transform: uppercase; }
+.playbackVideoLogo [data-video-overlay-title] b { display: block; font-palette: --hsdj-club-light; font-size: clamp(3rem, 7.8vw, 7rem); font-style: normal; line-height: .85; letter-spacing: .015em; filter: drop-shadow(-1px 0 0 #050506) drop-shadow(1px 0 0 #050506) drop-shadow(0 -1px 0 #050506) drop-shadow(0 1px 0 #050506) drop-shadow(0 0 .08em rgb(255 60 172 / 72%)); }
+.playbackVideoLogo [data-video-overlay-title] i { display: block; margin-top: .5rem; color: #fff8e8; font: 950 clamp(1rem, 2.5vw, 2.1rem)/1 var(--technical); letter-spacing: .24em; text-shadow: -1px -1px 0 #050506, 1px -1px 0 #050506, -1px 1px 0 #050506, 1px 1px 0 #050506, 0 0 10px rgb(255 226 168 / 64%); }
 .playbackFingerprint { position: absolute; z-index: 0; top: 2.78%; left: 5.5%; width: 14.0625%; aspect-ratio: 225 / 238; overflow: hidden; background: #050608; border: 1px solid rgb(244 239 228 / 32%); border-radius: 50%; box-shadow: 0 5px 12px rgb(0 0 0 / 70%); }
 .playbackFingerprint img { width: 100%; height: 100%; object-fit: fill; opacity: .92; }
 
@@ -294,7 +300,6 @@
   .playbackVideo video { min-height: 390px; aspect-ratio: 4 / 5; object-position: 52% center; filter: saturate(1.18) contrast(1.04) brightness(.82); }
   .playbackVideoLogo { inset: .3rem; display: block; background: linear-gradient(110deg, #071a362e, transparent 46%, #7d172f2b), linear-gradient(0deg, #02040a70 0, transparent 32%); backdrop-filter: blur(.4px) saturate(1.08); }
   .playbackVideoLogo::before { position: absolute; inset: 0; content: ""; opacity: .3; background: repeating-linear-gradient(0deg, #ffffff14 0 1px, transparent 1px 5px); mix-blend-mode: overlay; }
-  .playbackVideoLogo > img[data-video-overlay-lockup] { display: none; }
   .playbackVideoLogo [data-video-overlay-mountains],
   .playbackVideoLogo [data-video-overlay-sasquatch],
   .playbackVideoLogo [data-video-overlay-title] { position: absolute; display: block; pointer-events: none; }
