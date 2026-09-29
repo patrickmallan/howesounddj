@@ -431,7 +431,7 @@ export function SiteHeader() {
   return (
     <header
       ref={headerRef}
-      className="hsdj-site-header sticky top-0 z-50 border-b border-white/10 bg-neutral-950/95"
+      className={`${narrowHeaderStyles.speakerHeader} hsdj-site-header sticky top-0 z-50 border-b border-white/10`}
     >
       <div className={`${narrowHeaderStyles.headerInner} relative z-[70] mx-auto flex max-w-[90rem] items-center justify-between gap-2 px-4 py-2 sm:gap-3 sm:px-6 lg:px-8`}>
         <Link
