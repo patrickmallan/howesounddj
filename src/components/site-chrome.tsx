@@ -255,12 +255,17 @@ function DesktopDropdown({
         id={panelId}
         role="menu"
         aria-label={group.label}
-        className={`absolute left-0 top-full z-[80] mt-3 w-[19rem] rounded-xl border border-white/10 bg-neutral-950/95 p-2 shadow-xl shadow-black/40 backdrop-blur transition duration-150 ${
+        style={{ "--channel-color": navPadGlowByLabel[group.label] } as CSSProperties}
+        className={`${narrowHeaderStyles.desktopChannelPanel} absolute left-0 top-full z-[80] mt-3 transition duration-150 ${
           isOpen
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-1 opacity-0"
         }`}
       >
+        <div className={narrowHeaderStyles.desktopChannelHeader} aria-hidden="true">
+          <span>{group.label} channels</span>
+          <span className={narrowHeaderStyles.desktopChannelLive}>Live</span>
+        </div>
         {group.children.map((child) => {
           const childActive = isActiveNavHref(pathname, child.href);
           return (
@@ -271,16 +276,16 @@ function DesktopDropdown({
               role="menuitem"
               aria-current={childActive ? "page" : undefined}
               onClick={onTrustNavClick(child.href, onRequestClose)}
-              className={`block rounded-lg px-3 py-2.5 text-left transition hover:bg-white/5 ${
-                childActive ? "text-amber-300" : "text-white/90"
-              }`}
+              className={`${narrowHeaderStyles.desktopChannelLink} ${childActive ? narrowHeaderStyles.desktopChannelLinkActive : ""}`}
             >
-              <div className="text-sm font-medium leading-snug">{child.label}</div>
-              {child.description ? (
-                <div className="mt-0.5 text-xs leading-snug text-white/55">
-                  {child.description}
-                </div>
-              ) : null}
+              <span className={narrowHeaderStyles.desktopChannelLight} aria-hidden="true" />
+              <span className={narrowHeaderStyles.desktopChannelCopy}>
+                <strong>{child.label}</strong>
+                {child.description ? (
+                  <small>{child.description}</small>
+                ) : null}
+              </span>
+              <span className={narrowHeaderStyles.desktopChannelArrow} aria-hidden="true">↗</span>
             </Link>
           );
         })}

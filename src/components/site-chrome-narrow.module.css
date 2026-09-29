@@ -7,6 +7,126 @@
 .mobileSummary::-webkit-details-marker { display: none; }
 .mobileAccordion[open] .mobileChevron { transform: rotate(180deg); }
 
+.desktopChannelPanel {
+  width: 21.5rem;
+  max-width: calc(100vw - 2rem);
+  padding: .65rem;
+  border: 1px solid #5a666d;
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at 8px 8px, #929ba2 0 1px, #030507 2px 4px, transparent 5px),
+    radial-gradient(circle at calc(100% - 8px) calc(100% - 8px), #929ba2 0 1px, #030507 2px 4px, transparent 5px),
+    repeating-linear-gradient(90deg, #ffffff05 0 1px, transparent 1px 5px),
+    linear-gradient(155deg, #20262a, #090d10 42%, #12191d);
+  box-shadow: inset 0 1px 0 #ffffff3a, inset 0 -3px 0 #000, 0 0 0 3px #040607, 7px 8px 0 #194cff, 0 16px 28px #000d;
+  isolation: isolate;
+}
+
+.desktopChannelPanel::before {
+  position: absolute;
+  inset: 0 .65rem auto;
+  height: 3px;
+  content: "";
+  background: var(--channel-color);
+  box-shadow: 0 0 10px var(--channel-color);
+  pointer-events: none;
+}
+
+.desktopChannelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .45rem .5rem .55rem;
+  color: #b9c8cb;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: .61rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.desktopChannelLive {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  color: #80f1a8;
+}
+
+.desktopChannelLive::before {
+  width: .36rem;
+  height: .36rem;
+  border-radius: 50%;
+  background: #45ef68;
+  box-shadow: 0 0 7px #45ef68;
+  content: "";
+}
+
+.desktopChannelLink {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1rem minmax(0, 1fr) 1rem;
+  min-height: 4rem;
+  align-items: center;
+  gap: .7rem;
+  margin-top: .36rem;
+  padding: .58rem .75rem;
+  border: 1px solid #48555c;
+  border-left: 3px solid var(--channel-color);
+  border-radius: 4px;
+  color: #f5f7f4;
+  background: linear-gradient(165deg, #18242a, #0b1115 54%, #10191c);
+  box-shadow: inset 0 1px 0 #ffffff1f, inset 0 -3px 0 #020506, 0 3px 0 #030607;
+  text-align: left;
+  transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+.desktopChannelLink:hover,
+.desktopChannelLink:focus-visible,
+.desktopChannelLinkActive {
+  border-color: var(--channel-color);
+  background: linear-gradient(165deg, color-mix(in srgb, var(--channel-color) 16%, #18242a), #0b1115 60%);
+  box-shadow: inset 0 1px 0 #ffffff37, inset 0 0 13px color-mix(in srgb, var(--channel-color) 18%, transparent), 0 3px 0 #030607, 0 0 9px color-mix(in srgb, var(--channel-color) 38%, transparent);
+}
+
+.desktopChannelLink:hover,
+.desktopChannelLink:focus-visible { transform: translateX(2px); }
+
+.desktopChannelLink:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.desktopChannelLight {
+  width: .76rem;
+  height: .76rem;
+  border: 2px solid #090f11;
+  border-radius: 50%;
+  background: var(--channel-color);
+  box-shadow: 0 0 0 1px #9ca8ab, 0 0 8px var(--channel-color);
+}
+
+.desktopChannelCopy { display: grid; min-width: 0; gap: .22rem; }
+.desktopChannelCopy strong {
+  color: #f7faf8;
+  font-size: .82rem;
+  font-weight: 900;
+  letter-spacing: .065em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+.desktopChannelCopy small {
+  color: #bac8c9;
+  font-size: .68rem;
+  line-height: 1.35;
+}
+.desktopChannelArrow {
+  color: var(--channel-color);
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-shadow: 0 0 6px var(--channel-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desktopChannelLink { transition: none; }
+}
+
 /* Scale the complete desktop deck together so it balances the large logo card. */
 @media (min-width: 1280px) {
   .headerInner :global(.hsdj-header-controller) {
