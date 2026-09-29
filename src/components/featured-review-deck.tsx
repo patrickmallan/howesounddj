@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ReviewMotionRegion } from "./review-motion-region";
 import type { DeckReview } from "@/config/review-deck";
 import styles from "@/app/reviews/reviews-page.module.css";
 
@@ -80,7 +81,7 @@ export function FeaturedReviewDeck({ reviews }: { reviews: readonly DeckReview[]
   const selectNext = () => setActive((current) => (current + 1) % reviews.length);
 
   return (
-    <div className={styles.deckBody}>
+    <ReviewMotionRegion className={styles.deckBody}>
       <div className={styles.platterBay}>
         <div className={styles.platterRail}><span>HOWE SOUND DJ</span><span className={styles.deckSerial}>HSDJ • 001</span></div>
         <div className={styles.platterHousing}>
@@ -133,6 +134,6 @@ export function FeaturedReviewDeck({ reviews }: { reviews: readonly DeckReview[]
           </div>
         </div>
       </div>
-    </div>
+    </ReviewMotionRegion>
   );
 }

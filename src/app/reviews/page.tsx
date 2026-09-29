@@ -4,6 +4,7 @@ import Link from "next/link";
 import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { FeaturedReviewDeck } from "@/components/featured-review-deck";
+import { ReviewMotionRegion } from "@/components/review-motion-region";
 import { CANONICAL_REVIEWS, type CanonicalReview } from "@/config/reviews";
 import { makeFeaturedDeckReviews } from "@/config/review-deck";
 import styles from "./reviews-page.module.css";
@@ -112,7 +113,7 @@ const waveDecks = [
 
 function WaveformBanner() {
   return (
-    <div className={styles.waveBanner} aria-hidden="true">
+    <ReviewMotionRegion className={styles.waveBanner} decorative>
       <svg className={styles.waveDefinitions} focusable="false">
         <defs>
           {waveDecks.map((deck) => (
@@ -145,7 +146,7 @@ function WaveformBanner() {
         </div>
       ))}
       <span className={styles.wavePlayhead} />
-    </div>
+    </ReviewMotionRegion>
   );
 }
 

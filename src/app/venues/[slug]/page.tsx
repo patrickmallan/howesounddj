@@ -8,6 +8,7 @@ import { JsonLd } from "@/components/json-ld";
 import { getVenueBySlug, getAllVenueSlugs } from "@/config/venue-pages";
 import { venueDetailBreadcrumbJsonLd, venueWeddingDjServiceJsonLd } from "@/lib/json-ld";
 import { VENUE_HEADING_ART } from "@/config/venue-heading-art";
+import { VenueFlowDiagram } from "@/components/venue-flow-diagram";
 import "./venue-dossier.css";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -66,10 +67,7 @@ export default async function VenueDetailPage({ params }: Props) {
           <HeroSignalCopy tone="green">{venue.shortSummary}</HeroSignalCopy>
           <a href={venue.officialUrl} target="_blank" rel="noopener noreferrer">Visit the official venue site <span className="sr-only">(opens in a new tab)</span> ↗</a>
         </div>
-        <div className="venue-dossier-stage-plot" aria-hidden="true">
-          <div className="venue-dossier-plot-room"><span>CEREMONY</span><span>SPEECHES</span><span>DANCE FLOOR</span></div>
-          <div className="venue-dossier-plot-pulse" />
-        </div>
+        <VenueFlowDiagram slug={venue.slug} name={venue.name} />
       </section>
 
       <section className="venue-dossier-spread venue-dossier-setting" aria-labelledby="venue-dossier-setting-title">
