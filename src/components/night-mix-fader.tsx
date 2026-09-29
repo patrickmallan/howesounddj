@@ -16,7 +16,7 @@ const STAGES = [
     spectrum: { energy: .22, low: .12, mid: .72, high: .18 },
     image: "/images/hsdj-redesign/wedding-story/night-stage-ceremony-v1.webp",
     alt: "An outdoor mountain wedding ceremony seen through the seated guests",
-    imagePosition: "center 45%",
+    imagePosition: "center 5%",
     accent: "#75f4ff",
     wash: "#0739b8",
   },
@@ -46,13 +46,13 @@ const STAGES = [
   },
   {
     title: "First dance",
-    word: "THIS ONE\nMATTERS",
+    word: "HAVE FUN\nWITH THIS ONE",
     line: "Your version starts clean and plays as long as you want it to. If you have had enough of the spotlight, give me the nod.",
     bpm: 76,
     spectrum: { energy: .58, low: .52, mid: .68, high: .4 },
     image: "/images/hsdj-redesign/wedding-story/night-stage-first-dance-v1.webp",
     alt: "A newlywed couple sharing their first dance while family and friends watch",
-    imagePosition: "center 44%",
+    imagePosition: "center 5%",
     accent: "#ff72c8",
     wash: "#7e1458",
   },
@@ -62,9 +62,9 @@ const STAGES = [
     line: "I watch what lands, follow the room, and choose the next track to keep the energy moving.",
     bpm: 128,
     spectrum: { energy: .94, low: .96, mid: .78, high: .84 },
-    image: "/images/hsdj-redesign/wedding-story/night-stage-open-floor-v1.webp",
-    alt: "A packed wedding dance floor with guests laughing and dancing in different ways",
-    imagePosition: "center 42%",
+    image: "/images/brand-editorial/hsdj-packed-dance-floor-editorial.webp",
+    alt: "A packed wedding dance floor with guests raising their hands under warm string lights",
+    imagePosition: "center 15%",
     accent: "#45ef68",
     wash: "#0b6f47",
   },
@@ -217,7 +217,7 @@ export function NightMixFader() {
         </div>
         <div className={styles.sceneCopy} aria-live="polite">
           <p className={styles.stageName}>{stage.title}</p>
-          <strong className={styles.stageWord} data-testid="night-scene-heading">{stage.word}</strong>
+          <strong className={`${styles.stageWord} ${active === 3 ? styles.firstDanceWord : ""}`} data-testid="night-scene-heading">{stage.word}</strong>
           <p className={styles.stageLine} data-testid="night-scene-description">{stage.line}</p>
         </div>
       </div>

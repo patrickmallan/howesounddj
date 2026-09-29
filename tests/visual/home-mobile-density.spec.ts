@@ -35,7 +35,7 @@ for (const width of [320, 390, 430]) {
     expect(measurements.dateDeck.top - measurements.dateCopy.bottom).toBeLessThan(60);
 
     await page.getByRole("button", { name: /04 first dance/i }).click();
-    await expect(page.getByText("THIS ONE MATTERS", { exact: true }).last()).toBeVisible();
+    await expect(page.getByText("HAVE FUN WITH THIS ONE", { exact: true }).last()).toBeVisible();
     await expect(page.getByText("First dance", { exact: true }).last()).toBeVisible();
   });
 }

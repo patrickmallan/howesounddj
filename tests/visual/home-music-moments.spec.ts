@@ -40,3 +40,29 @@ test("desktop video overlay uses the live mobile-style display lettering", async
   await expect(frame.locator("[data-video-overlay-mountains] img")).toHaveAttribute("src", /hsdj-mountain-backdrop-v5\.svg/);
   expect(await title.locator("b").evaluate((element) => getComputedStyle(element).fontFamily)).toContain("HSDJ Meter Matrix");
 });
+
+for (const width of [390, 1440]) {
+  test(`wedding moments keep faces framed and first dance feels inviting at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+
+    for (const [button, heading, position] of [
+      [/01 ceremony/i, "HEARD", "5%"],
+      [/04 first dance/i, "HAVE FUN WITH THIS ONE", "5%"],
+      [/05 open floor/i, "NOW WE GO", "15%"],
+    ] as const) {
+      await page.getByRole("button", { name: button }).click();
+      const scene = page.getByTestId("night-scene");
+      await expect(page.getByTestId("night-scene-heading")).toHaveText(heading);
+      expect(await scene.locator("img").evaluate((image) => getComputedStyle(image).objectPosition)).toMatch(new RegExp(`(?:50%|center) ${position}`));
+    }
+
+    const firstDance = page.getByRole("button", { name: /04 first dance/i });
+    await firstDance.click();
+    const headline = await page.getByTestId("night-scene-heading").boundingBox();
+    const description = await page.getByTestId("night-scene-description").boundingBox();
+    expect(headline).not.toBeNull();
+    expect(description).not.toBeNull();
+    expect(headline!.y + headline!.height).toBeLessThanOrEqual(description!.y + 1);
+  });
+}

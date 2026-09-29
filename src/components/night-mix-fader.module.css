@@ -35,6 +35,7 @@
 .sceneCopy { position: absolute; z-index: 5; top: 9%; bottom: 15%; left: 5%; display: flex; width: min(47%, 630px); flex-direction: column; align-items: flex-start; }
 .stageName { margin: .35rem 0 .3rem; color: var(--stage-accent); font: 900 .78rem/1 var(--font-geist-mono), monospace; letter-spacing: .16em; text-transform: uppercase; }
 .stageWord { display: inline-block; width: max-content; max-width: 100%; margin-left: -.025em; padding: .16em .2em .2em; align-self: flex-start; border: 1px solid #ffffff24; border-left: 6px solid var(--stage-accent); color: #f7f2e8; background: linear-gradient(104deg, #020405f8, #080a0de8 86%, #080a0db8); box-shadow: 7px 8px 0 #0008, inset 0 1px 0 #ffffff0d; font: 950 clamp(3rem, 5.2vw, 5.8rem)/1.02 var(--display), Impact, sans-serif; font-palette: --hsdj-paper-light; letter-spacing: .035em; white-space: pre-line; text-shadow: none; text-wrap: balance; filter: drop-shadow(0 0 .055em color-mix(in srgb, var(--stage-accent) 42%, transparent)); animation: word-arrive 420ms cubic-bezier(.16,.84,.26,1) both; }
+.firstDanceWord { font-size: clamp(2.5rem, 4.3vw, 4.9rem); }
 .stageLine { position: relative; width: fit-content; max-width: 590px; margin: 1.2rem 0 0; padding: .92rem 1.15rem 1.28rem; overflow: hidden; border: 0; color: #fff8e8; background: linear-gradient(96deg, #050709f5 0 30%, #10151de8 70%, #050709f5); box-shadow: none; font-size: clamp(.9rem, 1.2vw, 1.12rem); font-weight: 800; line-height: 1.45; text-shadow: 0 2px 5px #000; clip-path: polygon(0 8%, 97% 0, 100% 82%, 0 100%); isolation: isolate; }
 .stageLine::after { position: absolute; right: 5%; bottom: .16rem; left: 12%; height: 4px; content: ""; background: #ef2727; clip-path: polygon(0 30%, 70% 0, 100% 45%, 62% 100%, 8% 72%); }
 .signalField { position: absolute; z-index: 4; right: 3%; bottom: 10%; display: flex; width: 43%; height: 31%; padding: 1.7rem 0 1.15rem; align-items: stretch; justify-content: flex-end; gap: clamp(2px, .22vw, 4px); overflow: visible; border: 0; background: transparent; box-shadow: none; filter: drop-shadow(0 5px 5px #000b); }
@@ -71,6 +72,7 @@
   .sceneCopy { top: 4%; right: 5%; bottom: 12%; left: 5%; width: auto; }
   .stageName { margin-bottom: .2rem; font-size: .62rem; }
   .stageWord { width: max-content; max-width: calc(100% - 1rem); padding: .12em .22em .16em; border-left-width: 4px; font-size: clamp(1.55rem, 7vw, 2.05rem); line-height: 1; }
+  .firstDanceWord { font-size: clamp(1.3rem, 5.8vw, 1.65rem); }
   .stageLine { max-width: 100%; margin-top: auto; padding: .65rem .75rem .82rem; font-size: .72rem; line-height: 1.34; }
   .signalField { display: none; }
   .controlSurface { width: 95%; margin-top: -1.45rem; padding: .72rem .65rem .65rem; }
