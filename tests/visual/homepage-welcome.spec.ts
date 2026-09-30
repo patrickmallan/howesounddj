@@ -28,7 +28,12 @@ for (const width of [320, 390, 768, 1440]) {
       await expect(welcomeMeter).toBeHidden();
     }
     await expect(welcome.locator("img")).toHaveCount(2);
-    await expect(welcome.getByRole("img", { name: /^Imagined wedding artwork/ })).toHaveAttribute("src", /welcome-pink-cake-party-scenes-v4/);
+    await expect(welcome.getByRole("img", { name: /^Imagined wedding artwork/ })).toHaveAttribute("src", /welcome-pink-cake-party-scenes-v5/);
+    await expect(welcome.locator('figcaption')).toHaveCount(0);
+    const photoStyle = await welcome.locator('figure img').evaluate(el => getComputedStyle(el).maskImage);
+    expect(photoStyle).toContain('linear-gradient');
+    const frame = await welcome.locator('figure').evaluate(el => ({ shadow: getComputedStyle(el).boxShadow, border: getComputedStyle(el).borderTopWidth }));
+    expect(frame).toEqual({ shadow: 'none', border: '0px' });
     expect(await welcome.locator('p').evaluateAll(nodes => new Set(nodes.map(node => getComputedStyle(node).fontSize)).size)).toBe(1);
     const artBounds = await welcome.locator('figure img').boundingBox();
     expect(Math.abs(artBounds!.width - artBounds!.height)).toBeLessThan(1);

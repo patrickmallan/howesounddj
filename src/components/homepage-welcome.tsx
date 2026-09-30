@@ -10,8 +10,7 @@ export function HomepageWelcome() {
         <div className={styles.album}>
           <LivingVUMeter className={styles.mobileMeter} />
           <figure className={styles.sleeve}>
-            <Image src="/images/hsdj-redesign/new-editorial/welcome-pink-cake-party-scenes-v4.webp" alt="Imagined wedding artwork: a couple and DJ atop a pink wedding cake, with guests dancing, playing limbo and sharing a shot ski on the tiers below" width={1254} height={1254} sizes="(max-width: 700px) calc(100vw - 96px), (max-width: 1000px) 660px, 660px" />
-            <figcaption>Wedding daydream · AI artwork</figcaption>
+            <Image src="/images/hsdj-redesign/new-editorial/welcome-pink-cake-party-scenes-v5.webp" alt="Imagined wedding artwork: a couple and DJ atop a pink wedding cake, guests dancing and playing games below, and a laughing guest dangling from the lowest ledge" width={1254} height={1254} sizes="(max-width: 700px) calc(100vw - 96px), (max-width: 1000px) 660px, 660px" />
           </figure>
         </div>
         <div className={styles.notes}>
