@@ -15,24 +15,6 @@
 }
 
 .chapter { position: relative; min-height: 900px; overflow: hidden; isolation: isolate; }
-.welcome { position: relative; isolation: isolate; padding: clamp(2.5rem, 4vw, 4rem) max(1.25rem, 5vw); background: radial-gradient(ellipse at 0 50%, #0a626b88, transparent 65%), radial-gradient(ellipse at 100% 100%, #70203d66, transparent 60%), #080d12; border-block: 1px solid #58e9ee50; }
-.welcome::before { position: absolute; z-index: -1; inset: 0; content: ""; pointer-events: none; opacity: .3; background: repeating-radial-gradient(circle at 100% 30%, transparent 0 23px, #58e9ee35 24px 25px, transparent 26px 42px); }
-.welcomeInner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.75rem clamp(2rem, 4vw, 4rem); max-width: 1280px; margin-inline: auto; align-items: center; }
-.welcomeLabel { grid-column: 1 / -1; width: fit-content; max-width: 100%; margin: 0; padding: .65rem 1rem; color: #080d12; background: #58e9ee; box-shadow: 6px 6px 0 #0847ff; font: 900 clamp(1rem, 1.7vw, 1.5rem)/1.25 var(--font-geist-sans), sans-serif; text-transform: uppercase; }
-.welcomeLabel span { display: block; margin-bottom: .25rem; font: 800 .65rem/1.2 var(--font-geist-mono), monospace; letter-spacing: .18em; }
-.welcome h2 { width: fit-content; max-width: 100%; margin: 0; padding: .25em .3em; border-left: 5px solid #ff4e8c; background: #030608; box-shadow: 8px 8px 0 #0847ff; font: 800 clamp(1.3rem, 2.9vw, 2.65rem)/1.12 var(--display); text-transform: uppercase; }
-.welcomeCopy { min-width: 0; }
-.welcomeCopy p { max-width: 42ch; margin: 0 0 1rem; color: #f4f1e8; font-size: clamp(1.1rem, 1.5vw, 1.35rem); font-weight: 600; line-height: 1.55; }
-.welcomeCopy .welcomeLead { font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-weight: 850; line-height: 1.25; }
-.welcomeLead em { padding-inline: .1em; background: linear-gradient(transparent 82%, #ff4e8c 82%); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-.welcomeCopy .welcomeInvite { margin: 1.5rem 0 0; padding-left: 1rem; border-left: 3px solid #ff4e8c; font-size: clamp(1rem, 1.2vw, 1.1rem); font-weight: 400; }
-.welcomeInvite span { display: block; margin-top: .35rem; color: #58e9ee; font-weight: 800; }
-.welcomeCopy strong { color: #58e9ee; }
-.welcomeCopy em { color: #ffe000; font-style: normal; font-weight: 700; }
-@media (max-width: 700px) {
-  .welcomeInner { grid-template-columns: minmax(0, 1fr); gap: 1.35rem; }
-  .welcome h2 { font-size: clamp(1.2rem, 5.8vw, 2rem); }
-}
 .tapeLabel, .machineLabel { position: relative; width: fit-content; margin: 0; padding: .62rem .9rem .58rem 1.1rem; border: 1px solid #ffffff54; color: #fff8e8; background: linear-gradient(104deg, #111419f5, #07090cf2); box-shadow: 7px 6px 0 #0847ff80; font: 900 clamp(.78rem, .85vw, .9rem)/1.15 var(--technical); letter-spacing: .12em; text-transform: uppercase; transform: rotate(-.6deg); }
 .tapeLabel::before, .machineLabel::before { position: absolute; top: 0; bottom: 0; left: 0; width: .42rem; content: ""; background: linear-gradient(var(--yellow) 0 48%, var(--red) 48% 74%, var(--blue) 74%); }
 

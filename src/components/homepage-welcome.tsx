@@ -1,0 +1,25 @@
+import Image from "next/image";
+import styles from "./homepage-welcome.module.css";
+
+export function HomepageWelcome() {
+  return (
+    <section className={styles.welcome} aria-labelledby="welcome-heading">
+      <div className={styles.inner}>
+        <div className={styles.album}>
+          <div className={styles.vinyl} aria-hidden="true"><Image src="/images/hsdj-redesign/new-editorial/guides-vinyl-record-v1.webp" alt="" fill sizes="(max-width: 700px) 70vw, 40vw" /></div>
+          <div className={styles.sleeve}>
+            <div className={styles.photo}><Image src="/images/hsdj-redesign/wedding-story/cocktail-toast.jpg" alt="A bride celebrating with friends under colourful dance-floor lights" fill sizes="(max-width: 700px) 75vw, 35vw" /></div>
+            <span className={styles.sleeveLabel} aria-hidden="true">HSDJ / SQUAMISH, BC</span>
+            <h2 id="welcome-heading" className="hsdj-meter--paper">Beautiful place.<br /> Your people.<br /> My kind of night.</h2>
+          </div>
+        </div>
+        <div className={styles.notes}>
+          <p className={styles.label}>Welcome to <strong>Howe Sound<br />Wedding DJ</strong></p>
+          <p className={styles.lead}>I believe I’ve got one of the <em>best gigs on the planet.</em></p>
+          <p>Celebrating with couples in <strong>Squamish</strong>, surrounded by mountains, water, and their favourite people.</p>
+          <p className={styles.invite}>Have a look around. Get a feel for the music, the places, and the celebrations. <span>I’d love to meet you.</span></p>
+        </div>
+      </div>
+    </section>
+  );
+}

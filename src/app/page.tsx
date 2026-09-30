@@ -5,6 +5,7 @@ import { DeferredArt } from "@/components/deferred-art";
 import { EncoreCassetteDeck } from "@/components/encore-cassette-deck";
 import { HardwareListMarker } from "@/components/hardware-list-marker";
 import { HomepageHeroHeadline } from "@/components/homepage-hero-headline";
+import { HomepageWelcome } from "@/components/homepage-welcome";
 import { JsonLd } from "@/components/json-ld";
 import { LivingVUMeter } from "@/components/living-vu-meter";
 import { NightMixFader } from "@/components/night-mix-fader";
@@ -51,17 +52,7 @@ export default async function HoweSoundDJHomepage() {
         </div>
       </section>
 
-      <section className={styles.welcome} aria-labelledby="welcome-heading">
-        <div className={styles.welcomeInner}>
-          <p className={styles.welcomeLabel}><span>Welcome to</span> Howe Sound Wedding DJ</p>
-          <h2 id="welcome-heading" className="hsdj-meter--paper">Beautiful place.<br /> Your people.<br /> My kind of night.</h2>
-          <div className={styles.welcomeCopy}>
-            <p className={styles.welcomeLead}>I believe I’ve got one of the <em>best gigs on the planet.</em></p>
-            <p>Celebrating with couples in <strong>Squamish</strong>, surrounded by mountains, water, and <em>their favourite people.</em></p>
-            <p className={styles.welcomeInvite}>Have a look around. Get a feel for the music, the places, and the celebrations. <span>I’d love to meet you.</span></p>
-          </div>
-        </div>
-      </section>
+      <HomepageWelcome />
 
       <section className={`${styles.chapter} ${styles.build}`} id="night" aria-labelledby="build-heading">
         <DeferredArt className={styles.buildDeck} desktopSrc="/images/hsdj-redesign/wedding-story/night-section-art-v1-optimized.webp" mobileSrc="/images/hsdj-redesign/wedding-story/night-section-art-mobile-v1-optimized.webp" />
