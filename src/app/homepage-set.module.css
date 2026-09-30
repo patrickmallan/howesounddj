@@ -246,12 +246,12 @@
   /* Keep the full opening message inside the usable iPhone viewport. Safari's
      controls reduce the first-screen canvas considerably, so a fixed 740px
      hero leaves the headline and meter hidden behind the bottom toolbar. */
-  .arrival { min-height: clamp(520px, calc(100svh - 126px), 680px); }
+  .arrival { min-height: clamp(460px, calc(100svh - 186px), 620px); }
   .arrivalYellow { display: none; }
-  .arrivalArt { inset: 0 0 27%; clip-path: none; -webkit-mask-image: linear-gradient(180deg, #000 0 69%, transparent 100%); mask-image: linear-gradient(180deg, #000 0 69%, transparent 100%); }
+  .arrivalArt { inset: 0 0 19%; clip-path: none; -webkit-mask-image: linear-gradient(180deg, #000 0 69%, transparent 100%); mask-image: linear-gradient(180deg, #000 0 69%, transparent 100%); }
   .arrivalArt img { object-position: center 46%; transform: none; }
   .arrivalArt::after { background: linear-gradient(0deg, #070708ba 0%, transparent 40%), linear-gradient(90deg, #03040582 0%, transparent 7% 93%, #03040582 100%); }
-  .arrivalCopy { min-height: inherit; padding: 0 1rem clamp(4rem, 10svh, 5.25rem) 5.55rem; justify-content: flex-end; }
+  .arrivalCopy { min-height: inherit; padding: 0 1rem 1.25rem 5.55rem; justify-content: flex-end; }
   .heroHeadline { max-width: 100%; transform: none; }
   .heroHeadline h1 { margin-top: .8rem; font-size: clamp(2.05rem, 9.4vw, 2.95rem); line-height: .94; text-shadow: 2px 2px 0 var(--red), -1px -1px 0 var(--blue); }
   .heroHeadline h1 + p { margin-top: .65rem; padding: .62rem .85rem .68rem .72rem; font-size: .8rem; line-height: 1.25; }

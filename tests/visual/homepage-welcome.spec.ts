@@ -20,9 +20,16 @@ for (const width of [320, 390, 768, 1440]) {
       await expect(heroMeter).toBeHidden();
       await expect(welcomeMeter).toBeVisible();
       const meterBounds = await welcomeMeter.boundingBox();
-      const headingBounds = await welcome.locator('figure img').boundingBox();
+      const headingBounds = await welcome.locator('h2').boundingBox();
       expect(meterBounds!.x).toBeGreaterThanOrEqual(0);
-      expect(meterBounds!.x + meterBounds!.width).toBeLessThanOrEqual(headingBounds!.x);
+      expect(meterBounds!.x).toBeGreaterThanOrEqual(headingBounds!.x + headingBounds!.width);
+      expect(meterBounds!.x + meterBounds!.width).toBeLessThanOrEqual(width);
+      const cake = await welcome.locator('figure img').boundingBox();
+      expect(meterBounds!.y).toBeGreaterThan(cake!.y + cake!.height);
+      const hero = page.locator('section[aria-labelledby="home-arrival-heading"]');
+      const gap = await hero.evaluate(el => el.getBoundingClientRect().bottom - el.querySelector('h1 + p')!.getBoundingClientRect().bottom);
+      expect(gap).toBeLessThan(32);
+      await hero.screenshot({ path: `/tmp/home-hero-spacing-${width}.png`, style: 'header { visibility: hidden !important; }' });
     } else {
       await expect(heroMeter).toBeVisible();
       await expect(welcomeMeter).toBeHidden();
