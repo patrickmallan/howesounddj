@@ -5,8 +5,9 @@ for (const width of [320, 390, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
     const welcome = page.locator('section[aria-labelledby="welcome-heading"]');
-    await expect(welcome).toContainText("I’m Patrick, and I believe");
-    await expect(welcome.getByRole("link", { name: "Check your date" })).toHaveAttribute("href", "/contact#availability");
+    await expect(welcome).toContainText("I believe I’ve got one of the");
+    await expect(welcome).not.toContainText("I’m Patrick");
+    await expect(welcome.getByRole("link")).toHaveCount(0);
     expect(await welcome.evaluate(el => el.previousElementSibling?.getAttribute("aria-labelledby"))).toBe("home-arrival-heading");
     expect(await welcome.evaluate(el => el.nextElementSibling?.id)).toBe("night");
     await welcome.scrollIntoViewIfNeeded();
