@@ -140,7 +140,7 @@ export function LivingVUMeter({ className = "", label = "MASTER", peak = false }
     }, { rootMargin: "100px" });
     const isNearViewport = () => {
       const bounds = meter.getBoundingClientRect();
-      return bounds.bottom >= -100 && bounds.top <= window.innerHeight + 100;
+      return meter.getClientRects().length > 0 && bounds.height > 0 && bounds.bottom >= -100 && bounds.top <= window.innerHeight + 100;
     };
     const onVisibilityChange = () => {
       if (document.hidden) stop();

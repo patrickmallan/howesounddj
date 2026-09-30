@@ -1,6 +1,7 @@
 .welcome { position: relative; padding: clamp(2.5rem, 5vw, 5rem) max(1.25rem, 5vw); background: #111416; }
 .inner { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; gap: clamp(1.5rem, 4vw, 4rem); max-width: 1280px; margin: auto; }
 .album { position: relative; padding: 1rem 19% 1rem 0; min-width: 0; }
+.mobileMeter { display: none !important; }
 .vinyl { position: absolute; width: 88%; aspect-ratio: 1; top: 50%; right: 0; transform: translateY(-50%); }
 .vinyl img { object-fit: contain; }
 .sleeve { position: relative; padding-top: 82%; background: #052f39; border: 6px solid #ede4d0; box-shadow: 0 12px 25px #0008; }
@@ -20,7 +21,9 @@
 .invite span { display: block; margin-top: .4rem; font-weight: 800; }
 @media (max-width: 700px) {
   .inner { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  .album { margin-bottom: -.5rem; z-index: 1; }
+  .album { margin-bottom: -.5rem; z-index: 1; padding-left: 3.5rem; padding-right: 12%; }
+  .mobileMeter { display: flex !important; position: absolute !important; top: 1rem; bottom: 1rem; left: -.7rem; width: 3.7rem; min-height: 0; height: auto; }
+  .vinyl { width: 72%; }
   :global(#main-content) .sleeve h2:not(:global(.sr-only)) { max-width: 100% !important; font-size: clamp(.75rem, 3.3vw, 1.3rem) !important; }
   .notes { padding-top: 2rem; }
 }
