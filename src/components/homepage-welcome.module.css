@@ -1,101 +1,57 @@
 .welcome {
   position: relative;
-  padding: clamp(2rem, 5vw, 5rem) max(1rem, 4vw);
-  background: radial-gradient(ellipse at 20% 30%, #84324f 0, transparent 55%), linear-gradient(120deg, #28121f, #4b1834 55%, #211124);
+  isolation: isolate;
+  padding: clamp(3rem, 7vw, 7rem) max(1rem, 5vw);
+  background: #090b0d;
 }
+.backdrop { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.backdrop img { object-fit: cover; }
 .inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
   align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
   max-width: 1280px;
   margin: auto;
-  background: #391527;
-  box-shadow: 0 18px 40px #18061380;
-  border-block: 1px solid #dfb37c;
 }
-.album { position: relative; min-width: 0; align-self: center; }
+.album { position: relative; min-width: 0; }
 .mobileMeter { display: none !important; }
-.sleeve { margin: 0; }
+.sleeve { position: relative; margin: 0; background: #090d10; box-shadow: 7px 8px 0 #1345ed; border-top: 5px solid #f3418a; }
 .sleeve img { display: block; width: 100%; height: auto; aspect-ratio: 1; }
-.sleeve figcaption { padding: .65rem 1rem; color: #efc5d3; font: 500 .7rem/1.4 var(--font-geist-sans), sans-serif; letter-spacing: .04em; }
+.sleeve figcaption { padding: .65rem 1rem; color: #e5cfd9; font: 500 .7rem/1.4 var(--font-geist-sans), sans-serif; letter-spacing: .04em; }
 .notes {
-  position: relative;
-  isolation: isolate;
   min-width: 0;
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(2rem, 3.5vw, 3.5rem);
-  color: #fff0e6;
-  font-family: Georgia, 'Times New Roman', serif;
-  background:
-    repeating-linear-gradient(100deg, transparent 0 24px, #ffe1d504 25px, transparent 27px 48px),
-    radial-gradient(ellipse at 50% 0%, #a34568 0, transparent 65%),
-    linear-gradient(115deg, #581e38, #742c4a 48%, #47172f);
+  padding: clamp(1.25rem, 2.4vw, 2.5rem);
+  color: #fff4e6;
+  font-family: var(--font-geist-sans), sans-serif;
+  background: #080c10eb;
+  border-left: 3px solid #ef4087;
 }
-/* Pearl piping and gold edge belong to the cake's material language, not a
-   second text overlay. No extra image, font request or animation is needed. */
-.notes::before {
-  content: '';
-  pointer-events: none;
-  position: absolute;
-  inset: 12px;
-  z-index: -1;
-  border: 1px solid #dca77f;
-  border-radius: 48% 48% 4px 4px / 32px 32px 4px 4px;
-  box-shadow: inset 0 0 0 4px #49162a, inset 0 0 0 5px #e9b8a950;
-}
-.notes::after {
-  content: '';
-  pointer-events: none;
-  position: absolute;
-  inset: auto 28px 21px;
-  height: 7px;
-  background: radial-gradient(circle, #fff4df 0 1px, #dca77f 2px, transparent 3px) 50% 50% / 14px 7px repeat-x;
-}
-/* Scope the wedding lettering against the global mobile billboard rules. */
+/* Wedding letterforms printed into the same black/cobalt/pink poster world.
+   This local heading must not inherit the global mobile billboard geometry. */
 :global(#main-content) .welcome .notes h2:not(:global(.sr-only)) {
   display: block; width: auto; max-width: none !important;
-  margin: 0 0 1.65rem; padding: 0 0 1.4rem;
-  border: 0; border-bottom: 1px solid #e8b88970;
+  margin: 0 0 1.5rem; padding: 0 0 1.4rem;
+  border: 0; border-bottom: 2px solid #f3418a;
   background: none; box-shadow: none; color: #fff0e6 !important;
   font-family: Georgia, 'Times New Roman', serif !important;
   font-size: clamp(2rem, 3.1vw, 2.9rem) !important;
   font-weight: 400 !important; line-height: 1.08 !important;
   letter-spacing: -.025em !important; text-transform: none; text-wrap: pretty;
-  text-shadow: none !important; filter: none !important; text-align: center;
+  text-shadow: none !important; filter: none !important;
 }
-.welcomeLine { display: block; font-style: italic; margin-bottom: .2em; color: #ffd2e1; }
-.gildedTitle {
-  display: block;
-  font-weight: 700;
-  color: #ffe6b7;
-  /* Fine raised edges suggest piped icing and gold leaf, without fuzzy glow. */
-  text-shadow: 0 1px 0 #bd7d50, 0 2px 0 #642337;
-}
-@supports (background-clip: text) {
-  .gildedTitle {
-    background: linear-gradient(175deg, #fff5dc 10%, #fbdba4 38%, #fff6e5 49%, #e8b978 53%, #ffe4bd 76%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: none;
-    filter: drop-shadow(0 1px 0 #ad6e55);
-  }
-}
-.notes p { margin: 0 0 1.15em; font-size: clamp(1.125rem, 1.4vw, 1.25rem); line-height: 1.6; text-wrap: pretty; }
+.welcomeLine { display: block; font-style: italic; margin-bottom: .2em; color: #ff9bc6; }
+.gildedTitle { display: block; font-weight: 700; color: #fff1db; text-shadow: 2px 2px 0 #76334e; }
+.notes p { margin: 0 0 1.15em; font-size: clamp(1rem, 1.3vw, 1.125rem); line-height: 1.65; text-wrap: pretty; }
 .notes p:last-child { margin-bottom: 0; }
-.notes strong { font-weight: 700; color: #ffe0ab; }
+.notes strong { font-weight: 750; color: #fff1db; }
 @media (max-width: 1000px) {
-  .inner { grid-template-columns: minmax(0, 1fr); max-width: 680px; }
-  .notes { padding: 3rem clamp(1.75rem, 5vw, 3.5rem); }
+  .inner { grid-template-columns: minmax(0, 1fr); max-width: 680px; gap: 1.5rem; }
+  .notes { padding: 1.75rem clamp(1.25rem, 5vw, 3rem); }
+  .backdrop img { object-position: 70% center; }
 }
 @media (max-width: 700px) {
-  .album { padding: 0 0 0 3.75rem; }
+  .album { padding-left: 3.75rem; padding-right: 7px; }
   .mobileMeter { display: flex !important; position: absolute !important; top: 5px; bottom: 2.5rem; left: .1rem; width: 3.4rem; min-height: 0; height: auto; }
-  .sleeve figcaption { padding-inline: 0; font-size: .65rem; }
-}
-@media (forced-colors: active) {
-  .gildedTitle { background: none; color: CanvasText; filter: none; }
+  .sleeve figcaption { padding-inline: .5rem; font-size: .65rem; }
 }

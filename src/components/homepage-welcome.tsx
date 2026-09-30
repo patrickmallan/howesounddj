@@ -5,6 +5,7 @@ import styles from "./homepage-welcome.module.css";
 export function HomepageWelcome() {
   return (
     <section className={styles.welcome} aria-labelledby="welcome-heading">
+      <div className={styles.backdrop} aria-hidden="true"><Image src="/images/hsdj-redesign/new-editorial/welcome-wedding-poster-backdrop-v1.webp" alt="" fill sizes="100vw" /></div>
       <div className={styles.inner}>
         <div className={styles.album}>
           <LivingVUMeter className={styles.mobileMeter} />

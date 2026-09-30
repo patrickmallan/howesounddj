@@ -20,17 +20,17 @@ for (const width of [320, 390, 768, 1440]) {
       await expect(heroMeter).toBeHidden();
       await expect(welcomeMeter).toBeVisible();
       const meterBounds = await welcomeMeter.boundingBox();
-      const headingBounds = await welcome.locator('img').boundingBox();
+      const headingBounds = await welcome.locator('figure img').boundingBox();
       expect(meterBounds!.x).toBeGreaterThanOrEqual(0);
       expect(meterBounds!.x + meterBounds!.width).toBeLessThanOrEqual(headingBounds!.x);
     } else {
       await expect(heroMeter).toBeVisible();
       await expect(welcomeMeter).toBeHidden();
     }
-    await expect(welcome.locator("img")).toHaveCount(1);
+    await expect(welcome.locator("img")).toHaveCount(2);
     await expect(welcome.getByRole("img", { name: /^Imagined wedding artwork/ })).toHaveAttribute("src", /welcome-pink-cake-party-scenes-v4/);
     expect(await welcome.locator('p').evaluateAll(nodes => new Set(nodes.map(node => getComputedStyle(node).fontSize)).size)).toBe(1);
-    const artBounds = await welcome.locator('img').boundingBox();
+    const artBounds = await welcome.locator('figure img').boundingBox();
     expect(Math.abs(artBounds!.width - artBounds!.height)).toBeLessThan(1);
     await expect.poll(() => welcome.locator("img").evaluateAll(images => images.every(image => (image as HTMLImageElement).naturalWidth > 0))).toBe(true);
     // Isolate the complete spread; sticky navigation otherwise covers the art
@@ -41,5 +41,7 @@ for (const width of [320, 390, 768, 1440]) {
       const bounds = node.getBoundingClientRect();
       return bounds.left >= 0 && bounds.right <= innerWidth && node.scrollWidth <= node.clientWidth + 1;
     }))).toBe(true);
+    await welcome.evaluate(el => window.scrollTo(0, window.scrollY + el.getBoundingClientRect().bottom - 350));
+    await page.screenshot({ path: `/tmp/home-welcome-transition-${width}.png`, style: 'header:not([class*="buildHeading"]) { visibility: hidden !important; }' });
   });
 }

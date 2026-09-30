@@ -1,0 +1,8 @@
+Welcome backdrop v1 — built-in image generation tool.
+Style reference: public/images/hsdj-redesign/wedding-story/night-section-art-v1-optimized.webp
+Asset: public/images/hsdj-redesign/new-editorial/welcome-wedding-poster-backdrop-v1.webp
+Decorative fictional collage; approved cake v4 remains unchanged.
+Purpose: connect the welcome to the next section's torn-paper, black/cobalt DJ-poster atmosphere without duplicating its artwork.
+
+Prompt:
+Use case: stylized-concept. Create a new wide 16:9 website background, using the provided image ONLY as material/style reference. It must feel like a sister artwork to this distressed wedding DJ gig-poster collage, not a copy. Black scratched printed paper dominates 75% of the composition with large quiet central negative space for a separate cake image and readable HTML text. At the extreme edges, tactile torn cobalt blue poster fragments, black vinyl record grooves, hot pink overprinted rose petals and small ivory lace-paper fragments collide with gritty photocopied mountain silhouettes. Wedding exuberance interpreted through alternative music poster art, not a wedding invitation. Real paper fibres, ripped edges, ink wear, screenprinted halftones, restrained acid yellow marks, no smooth ambient gradients. Keep all bright busy objects within outer 15% border, central 70% very dark charcoal with fine subtle worn paper texture. Bottom edge charcoal with a few cobalt scraps to transition into reference section. No people, no cake, no readable text, no lettering, no logos, no frames, no satin or burgundy or gold invitation styling. Rich authored physical collage, sophisticated and energetic, pink belongs to wedding celebration while cobalt and black belong to established site.
