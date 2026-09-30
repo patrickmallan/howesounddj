@@ -49,7 +49,7 @@
 }
 .welcomeLine { display: block; font-style: italic; margin-bottom: .2em; color: #ff9bc6; }
 .gildedTitle { display: block; font-weight: 700; color: #fff1db; text-shadow: 2px 2px 0 #76334e; }
-.notes p { margin: 0 0 1.15em; font-size: clamp(1rem, 1.3vw, 1.125rem); line-height: 1.65; text-wrap: pretty; }
+.notes p { margin: 0 0 1.15em; font-size: clamp(1rem, 1.3vw, 1.125rem); font-weight: 750; line-height: 1.65; text-wrap: pretty; }
 .notes p:last-child { margin-bottom: 0; }
 .notes strong { font-weight: 750; color: #fff1db; }
 @media (max-width: 1000px) {
