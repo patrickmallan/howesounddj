@@ -15,6 +15,23 @@
 }
 
 .chapter { position: relative; min-height: 900px; overflow: hidden; isolation: isolate; }
+.welcome { position: relative; padding: clamp(2.5rem, 5vw, 5rem) max(1.25rem, 5vw); background: #080d12; }
+.welcomeInner { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1fr); gap: 1.5rem clamp(2rem, 5vw, 5rem); max-width: 1200px; margin-inline: auto; align-items: start; }
+.welcomeLabel { grid-column: 1 / -1; margin: 0; color: #58e9ee; font: 800 .75rem/1.5 var(--font-geist-mono), monospace; letter-spacing: .1em; text-transform: uppercase; }
+.welcome h2 { width: fit-content; max-width: 100%; margin: 0; padding: .25em .3em; border-left: 5px solid #58e9ee; background: #030608; box-shadow: 6px 6px 0 #0847ff; font: 800 clamp(1.3rem, 2.6vw, 2.3rem)/1.12 var(--display); text-transform: uppercase; }
+.welcomeCopy { min-width: 0; }
+.welcomeCopy p { max-width: 48ch; margin: 0 0 1rem; color: #f4f1e8; font-size: clamp(1.05rem, 1.3vw, 1.18rem); line-height: 1.65; }
+.welcomeCopy strong { color: #58e9ee; }
+.welcomeCopy em { color: #ffe000; font-style: normal; font-weight: 700; }
+.welcomeCue { display: inline-flex; align-items: center; gap: .75rem; max-width: 100%; margin-top: .25rem; padding: .35rem 1rem .35rem .35rem; border: 1px solid #6e858c; color: #fff; background: linear-gradient(#1b272d, #060d12); box-shadow: 3px 3px 0 #0847ff, inset 0 0 0 3px #04090c; font: 800 .85rem/1.3 var(--font-geist-sans), sans-serif; text-transform: uppercase; }
+.welcomeCue img { flex: 0 0 auto; width: 3.5rem; height: 3.5rem; }
+.welcomeCue > span:last-child { color: #58e9ee; font-size: 1.4rem; }
+.welcomeCue:hover { border-color: #ffe000; }
+.welcomeCue:focus-visible { outline: 3px solid #ffe000; outline-offset: 5px; }
+@media (max-width: 700px) {
+  .welcomeInner { grid-template-columns: minmax(0, 1fr); gap: 1.35rem; }
+  .welcome h2 { font-size: clamp(1.2rem, 5.8vw, 2rem); }
+}
 .tapeLabel, .machineLabel { position: relative; width: fit-content; margin: 0; padding: .62rem .9rem .58rem 1.1rem; border: 1px solid #ffffff54; color: #fff8e8; background: linear-gradient(104deg, #111419f5, #07090cf2); box-shadow: 7px 6px 0 #0847ff80; font: 900 clamp(.78rem, .85vw, .9rem)/1.15 var(--technical); letter-spacing: .12em; text-transform: uppercase; transform: rotate(-.6deg); }
 .tapeLabel::before, .machineLabel::before { position: absolute; top: 0; bottom: 0; left: 0; width: .42rem; content: ""; background: linear-gradient(var(--yellow) 0 48%, var(--red) 48% 74%, var(--blue) 74%); }
 

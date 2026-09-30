@@ -51,6 +51,21 @@ export default async function HoweSoundDJHomepage() {
         </div>
       </section>
 
+      <section className={styles.welcome} aria-labelledby="welcome-heading">
+        <div className={styles.welcomeInner}>
+          <p className={styles.welcomeLabel}>Welcome to Howe Sound Wedding DJ</p>
+          <h2 id="welcome-heading" className="hsdj-meter--paper">Beautiful place.<br />Your people.<br />My kind of night.</h2>
+          <div className={styles.welcomeCopy}>
+            <p>I’m Patrick, and I believe I’ve got one of the best gigs on the planet: celebrating with couples in <strong>Squamish</strong>, surrounded by mountains, water, and <em>their favourite people.</em></p>
+            <p>Have a look around, get a feel for how I work, and check whether your date is open. I’d love to meet you.</p>
+            <Link href="/contact#availability" prefetch={false} className={styles.welcomeCue}>
+              <Image src="/images/hsdj-redesign/controls/buttons/cue-round.png" alt="" width={64} height={64} />
+              <span>Check your date</span><span aria-hidden="true">↗</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className={`${styles.chapter} ${styles.build}`} id="night" aria-labelledby="build-heading">
         <DeferredArt className={styles.buildDeck} desktopSrc="/images/hsdj-redesign/wedding-story/night-section-art-v1-optimized.webp" mobileSrc="/images/hsdj-redesign/wedding-story/night-section-art-mobile-v1-optimized.webp" />
         <header className={styles.buildHeading}><p>From ceremony to dance floor</p><h2 id="build-heading" className="hsdj-meter--paper"><span>The music changes</span>{" "}<strong>throughout the day.</strong></h2></header>
