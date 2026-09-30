@@ -8,18 +8,16 @@ export function HomepageWelcome() {
       <div className={styles.inner}>
         <div className={styles.album}>
           <LivingVUMeter className={styles.mobileMeter} />
-          <div className={styles.vinyl} aria-hidden="true"><Image src="/images/hsdj-redesign/new-editorial/guides-vinyl-record-v1.webp" alt="" fill sizes="(max-width: 700px) 70vw, 40vw" /></div>
-          <div className={styles.sleeve}>
-            <div className={styles.photo}><Image src="/images/hsdj-redesign/new-editorial/welcome-castle-wedding-daydream-v1.webp" alt="Imagined wedding artwork: newlyweds and black-tie guests dancing beneath crystal chandeliers in a grand castle ballroom" fill sizes="(max-width: 700px) 75vw, 35vw" /></div>
-            <span className={styles.sleeveLabel}>WEDDING DAYDREAM / AI ARTWORK</span>
-            <h2 id="welcome-heading" className="hsdj-meter--paper">Beautiful place.<br /> Your people.<br /> My kind of night.</h2>
-          </div>
+          <figure className={styles.sleeve}>
+            <Image src="/images/hsdj-redesign/new-editorial/welcome-pink-cake-party-scenes-v4.webp" alt="Imagined wedding artwork: a couple and DJ atop a pink wedding cake, with guests dancing, playing limbo and sharing a shot ski on the tiers below" width={1254} height={1254} sizes="(max-width: 700px) calc(100vw - 96px), (max-width: 1000px) 660px, 660px" />
+            <figcaption>Wedding daydream · AI artwork</figcaption>
+          </figure>
         </div>
         <div className={styles.notes}>
-          <p className={styles.label}>Welcome to <strong>Howe Sound<br />Wedding DJ</strong></p>
-          <p className={styles.lead}>I believe I’ve got one of the <em>best gigs on the planet.</em></p>
-          <p>Celebrating with couples in <strong>Squamish</strong>, surrounded by mountains, water, and their favourite people.</p>
-          <p className={styles.invite}>Have a look around. Get a feel for the music, the places, and the celebrations. <span>I’d love to meet you.</span></p>
+          <h2 id="welcome-heading"><span className={styles.welcomeLine}>Welcome to</span><span className={styles.gildedTitle}>Howe Sound<br />Wedding DJ</span></h2>
+          <p>Your musical taste comes first. Because if I can get you on the dance floor, then I can get everyone on the dance floor.</p>
+          <p><strong>I’ve got one of the best gigs on the planet.</strong> Celebrating with couples in <strong>Squamish</strong>, surrounded by mountains, water, and their favourite people.</p>
+          <p>Have a look around. Get a feel for the music, the places, and the celebrations. <strong>I’d love to meet you.</strong></p>
         </div>
       </div>
     </section>
