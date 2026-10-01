@@ -28,6 +28,39 @@ for (const width of [320, 390, 768, 1440]) {
   });
 }
 
+for (const width of [320, 390, 768, 1440, 1800]) {
+  test(`open floor rail continues and first dance copy clears the controls at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    const fader = page.getByTestId("night-fader");
+    await fader.getByRole("button", { name: /04 first dance/i }).click();
+    const heading = page.getByTestId("night-scene-heading");
+    const description = page.getByTestId("night-scene-description");
+    const controls = page.getByTestId("night-fader-controls");
+    const rail = page.getByTestId("night-fader-rail");
+    const openFloor = fader.getByRole("button", { name: /05 open floor/i });
+
+    const [headingBox, descriptionBox, controlsBox, railBox, openFloorBox] = await Promise.all([
+      heading.boundingBox(), description.boundingBox(), controls.boundingBox(), rail.boundingBox(), openFloor.boundingBox(),
+    ]);
+    expect(headingBox).not.toBeNull();
+    expect(descriptionBox).not.toBeNull();
+    expect(controlsBox).not.toBeNull();
+    expect(railBox).not.toBeNull();
+    expect(openFloorBox).not.toBeNull();
+    expect(descriptionBox!.y).toBeGreaterThanOrEqual(headingBox!.y + headingBox!.height);
+    expect(descriptionBox!.y + descriptionBox!.height).toBeLessThanOrEqual(controlsBox!.y - 2);
+    const textBottom = await description.evaluate((element) => {
+      const range = document.createRange();
+      range.selectNodeContents(element);
+      return range.getBoundingClientRect().bottom;
+    });
+    expect(textBottom).toBeLessThanOrEqual(descriptionBox!.y + descriptionBox!.height - 2);
+    expect(railBox!.x + railBox!.width).toBeGreaterThan(openFloorBox!.x + openFloorBox!.width - 20);
+    expect(await heading.evaluate((element) => element.scrollWidth <= element.clientWidth + 1)).toBe(true);
+  });
+}
+
 for (const width of [320, 390, 768, 1440]) {
   test(`night fader marks align with all five labels at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });

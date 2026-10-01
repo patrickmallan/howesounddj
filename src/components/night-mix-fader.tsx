@@ -277,17 +277,17 @@ export function NightMixFader() {
           {Array.from({ length: SPECTRUM_BANDS }, (_, index) => <i key={index} />)}
           <div className={styles.frequencyScale}><span>60</span><span>250</span><span>1K</span><span>4K</span><span>12K</span></div>
         </div>
-        <div className={styles.sceneCopy} aria-live={manualSelection ? "polite" : "off"}>
+        <div className={`${styles.sceneCopy} ${active === 3 ? styles.firstDanceCopy : ""}`} aria-live={manualSelection ? "polite" : "off"}>
           <p className={styles.stageName}>{stage.title}</p>
           <strong className={`${styles.stageWord} ${active === 3 ? styles.firstDanceWord : ""}`} data-testid="night-scene-heading">{stage.word}</strong>
           <p className={styles.stageLine} data-testid="night-scene-description">{stage.line}</p>
         </div>
       </div>
 
-      <div className={styles.controlSurface}>
+      <div className={styles.controlSurface} data-testid="night-fader-controls">
         <p className={styles.instruction}>Move through the night <span className={styles.desktopInstruction}>The scene changes with the room.</span><span className={styles.mobileInstruction}>Slide or tap a moment.</span></p>
         <div className={styles.fader}>
-          <div className={styles.rail} aria-hidden="true" />
+          <div className={styles.rail} data-testid="night-fader-rail" aria-hidden="true" />
           <div className={styles.ticks} aria-hidden="true">
             {STAGES.map((item) => <i data-testid="night-fader-tick" key={item.title} />)}
           </div>
