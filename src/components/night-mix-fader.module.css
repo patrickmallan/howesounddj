@@ -45,18 +45,21 @@
 .signalField i::after { position: absolute; right: 0; bottom: calc(1.15rem + var(--peak-level) * 100%); left: 0; height: 2px; content: ""; background: #fff; box-shadow: 0 0 5px #fff, 0 0 7px var(--stage-accent); transition: bottom 55ms linear; }
 .frequencyScale { position: absolute; right: 0; bottom: 0; left: 0; display: flex; justify-content: space-between; color: #d7d9db; font: 800 .42rem/1 var(--font-geist-mono), monospace; letter-spacing: .08em; text-shadow: 0 2px 4px #000; }
 
-.controlSurface { position: relative; z-index: 8; width: 91%; margin: -4.25rem auto 0; padding: 1.05rem 1.8rem 1.2rem; border: 1px solid #656a70; background: linear-gradient(102deg, #08090af7, #1b1e22f4 45%, #070809fa), url('/images/hsdj-redesign/deck-surfaces/djm-a9-topdown-optimized.webp') center 72% / cover; box-shadow: -10px 11px 0 #ef2727; transform: rotate(-.35deg); }
+.controlSurface { --label-pad: .4rem; position: relative; z-index: 8; width: 91%; margin: -4.25rem auto 0; padding: 1.05rem 1.8rem 1.2rem; border: 1px solid #656a70; background: linear-gradient(102deg, #08090af7, #1b1e22f4 45%, #070809fa), url('/images/hsdj-redesign/deck-surfaces/djm-a9-topdown-optimized.webp') center 72% / cover; box-shadow: -10px 11px 0 #ef2727; transform: rotate(-.35deg); }
 .instruction { margin: 0 0 .45rem; color: white; font: 900 .7rem/1 var(--font-geist-mono), monospace; letter-spacing: .14em; text-transform: uppercase; }
 .instruction span { margin-left: .8rem; color: var(--stage-accent); }
 .mobileInstruction { display: none; }
-.fader { position: relative; height: 72px; margin: 0 1.8rem; }
-.rail { position: absolute; top: 50%; right: 0; left: 0; height: 14px; border: 1px solid #73777c; background: linear-gradient(#050505, #303337 45%, #050505 54%, #17191b); box-shadow: inset 0 2px 5px #000, 0 0 0 9px #090a0b; transform: translateY(-50%); }
-.rail::after { position: absolute; inset: -21px 0; content: ""; opacity: .68; background: repeating-linear-gradient(90deg, #d6d6d6 0 2px, transparent 2px calc(25% - 1px), #d6d6d6 calc(25% - 1px) calc(25% + 1px)); }
-.cap { position: absolute; z-index: 3; top: 50%; left: var(--fader-stop); width: 94px; height: auto; filter: drop-shadow(0 8px 7px #000) drop-shadow(0 0 7px var(--stage-accent)); transform: translate(-50%, -50%); transition: left 300ms cubic-bezier(.22,1,.36,1), filter 250ms ease; }
-.fader input { position: absolute; z-index: 5; inset: 0; width: 100%; height: 100%; cursor: ew-resize; opacity: 0; }
+.fader { position: relative; height: 72px; }
+.rail { position: absolute; top: 50%; left: var(--label-pad); width: 80%; height: 14px; border: 1px solid #73777c; background: linear-gradient(#050505, #303337 45%, #050505 54%, #17191b); box-shadow: inset 0 2px 5px #000, 0 0 0 9px #090a0b; transform: translateY(-50%); }
+.ticks { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(5, 1fr); pointer-events: none; }
+.ticks i { position: relative; }
+.ticks i::after { position: absolute; top: 18%; bottom: 18%; left: var(--label-pad); width: 3px; content: ""; background: #e1e3e3; box-shadow: 0 0 5px #000; }
+.cap { position: absolute; z-index: 3; top: 50%; left: calc(var(--label-pad) + var(--fader-stop)); width: 94px; height: auto; filter: drop-shadow(0 8px 7px #000) drop-shadow(0 0 7px var(--stage-accent)); transform: translate(-50%, -50%); transition: left 300ms cubic-bezier(.22,1,.36,1), filter 250ms ease; }
+.fader input { position: absolute; z-index: 5; top: 0; left: calc(var(--label-pad) - 8px); width: calc(80% + 16px); height: 100%; cursor: ew-resize; opacity: 0; }
 .fader:focus-within .rail { box-shadow: inset 0 2px 5px #000, 0 0 0 9px #090a0b, 0 0 0 12px var(--stage-accent); }
-.stages { display: grid; grid-template-columns: repeat(5, 1fr); gap: .42rem; }
+.stages { display: grid; grid-template-columns: repeat(5, 1fr); }
 .stages button { min-width: 0; padding: .62rem .4rem .55rem; border: 0; border-top: 4px solid #41454a; color: #a9aaac; background: #08090a9c; cursor: pointer; text-align: left; text-transform: uppercase; transition: color 160ms ease, border-color 160ms ease, background 160ms ease, transform 160ms ease; }
+.stages button:not(:last-child) { margin-right: .42rem; }
 .stages button span { display: block; margin-bottom: .35rem; font: 900 .55rem/1 var(--font-geist-mono), monospace; letter-spacing: .12em; }
 .stages button b { display: block; overflow-wrap: anywhere; font: 900 clamp(.66rem, 1vw, .85rem)/1 var(--technical), Arial, sans-serif; }
 .stages button:hover, .stages button:focus-visible, .stages .active { border-color: var(--stage-accent); color: white; background: linear-gradient(90deg, color-mix(in srgb, var(--stage-accent) 22%, transparent), transparent); outline: none; transform: translateY(-2px); }
@@ -75,14 +78,14 @@
   .firstDanceWord { font-size: clamp(1.3rem, 5.8vw, 1.65rem); }
   .stageLine { max-width: 100%; margin-top: auto; padding: .65rem .75rem .82rem; font-size: .72rem; line-height: 1.34; }
   .signalField { display: none; }
-  .controlSurface { width: 95%; margin-top: -1.45rem; padding: .72rem .65rem .65rem; }
+  .controlSurface { --label-pad: .15rem; width: 95%; margin-top: -1.45rem; padding: .72rem .65rem .65rem; }
   .instruction { padding-inline: .3rem; line-height: 1.35; }
   .instruction span { display: block; margin: .25rem 0 0; }
   .instruction .desktopInstruction { display: none; }
   .instruction .mobileInstruction { display: block; margin-left: 0; font-size: .62rem; letter-spacing: .04em; text-transform: none; }
-  .fader { height: 56px; margin: 0 .8rem; }
+  .fader { height: 56px; }
   .cap { width: 70px; }
-  .stages { gap: .12rem; }
+  .stages button:not(:last-child) { margin-right: .12rem; }
   .stages button { padding-inline: .15rem; }
   .stages button span { font-size: .46rem; }
   .stages button b { font-size: .5rem; }

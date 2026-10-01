@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-for (const width of [320, 390, 1440]) {
+for (const width of [320, 390, 768, 1440]) {
   test(`home music story opens on ceremony and keeps its heading in view at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
@@ -26,6 +26,73 @@ for (const width of [320, 390, 1440]) {
     await page.getByRole("button", { name: /01 ceremony/i }).click();
     await expect(page.getByTestId("night-scene-heading")).toHaveText("HEARD");
   });
+}
+
+for (const width of [320, 390, 768, 1440]) {
+  test(`night fader marks align with all five labels at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    const fader = page.getByTestId("night-fader");
+    await fader.scrollIntoViewIfNeeded();
+    const ticks = fader.getByTestId("night-fader-tick");
+    const buttons = fader.getByRole("button");
+    await expect(ticks).toHaveCount(5);
+    for (let index = 0; index < 5; index++) {
+      const markerX = await ticks.nth(index).evaluate((tick) => {
+        const bounds = tick.getBoundingClientRect();
+        return bounds.left + parseFloat(getComputedStyle(tick, "::after").left);
+      });
+      const label = await buttons.nth(index).locator("b").boundingBox();
+      expect(label).not.toBeNull();
+      expect(Math.abs(markerX - label!.x)).toBeLessThan(3);
+    }
+  });
+}
+
+test("night fader advances in view, then gives manual selection more time", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  const fader = page.getByTestId("night-fader");
+  await fader.scrollIntoViewIfNeeded();
+  await expect(page.getByTestId("night-scene-heading")).toHaveText("HEARD");
+  await expect(page.getByTestId("night-scene-heading")).toHaveText("EASE IN", { timeout: 7000 });
+  await fader.getByRole("button", { name: /03 dinner/i }).click();
+  await expect(page.getByTestId("night-scene-heading")).toHaveText(/DON'T\s+RUSH IT/);
+  await page.waitForTimeout(6500);
+  await expect(page.getByTestId("night-scene-heading")).toHaveText(/DON'T\s+RUSH IT/);
+});
+
+test("night fader stays on ceremony with reduced motion until operated", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/");
+  const fader = page.getByTestId("night-fader");
+  await fader.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(4800);
+  await expect(page.getByTestId("night-scene-heading")).toHaveText("HEARD");
+  const slider = fader.getByRole("slider");
+  await slider.focus();
+  await slider.press("ArrowRight");
+  await expect(page.getByTestId("night-scene-heading")).toHaveText("EASE IN");
+});
+
+for (const width of [320, 390, 1440]) {
+test(`the fader rail selects the stage beneath each dash at ${width}px`, async ({ page }) => {
+  await page.setViewportSize({ width, height: 900 });
+  await page.goto("/");
+  const fader = page.getByTestId("night-fader");
+  await fader.scrollIntoViewIfNeeded();
+  const ticks = fader.getByTestId("night-fader-tick");
+  const slider = fader.getByRole("slider");
+  for (let index = 0; index < 5; index++) {
+    const point = await ticks.nth(index).evaluate((tick) => {
+      const bounds = tick.getBoundingClientRect();
+      return { x: bounds.left + parseFloat(getComputedStyle(tick, "::after").left), y: bounds.top + bounds.height / 2 };
+    });
+    await page.mouse.click(point.x, point.y);
+    await expect(slider).toHaveValue(String(index));
+  }
+});
 }
 
 test("desktop video overlay uses the live mobile-style display lettering", async ({ page }) => {

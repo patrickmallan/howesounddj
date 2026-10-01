@@ -6,6 +6,9 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./night-mix-fader.module.css";
 
 const SPECTRUM_BANDS = 44;
+const FIRST_ADVANCE_MS = 4000;
+const AUTO_ADVANCE_MS = 5500;
+const AFTER_INTERACTION_MS = 12000;
 
 const STAGES = [
   {
@@ -72,14 +75,73 @@ const STAGES = [
 
 export function NightMixFader() {
   const [active, setActive] = useState(0);
+  const [manualSelection, setManualSelection] = useState(false);
+  const consoleRef = useRef<HTMLDivElement>(null);
   const spectrumRef = useRef<HTMLDivElement>(null);
+  const hasInteractedRef = useRef(false);
+  const scheduleAdvanceRef = useRef<((delay: number) => void) | null>(null);
   const stage = STAGES[active];
   const customProperties = {
-    "--fader-stop": `${active * 25}%`,
+    "--fader-stop": `${active * 20}%`,
     "--stage-accent": stage.accent,
     "--stage-wash": stage.wash,
     "--image-position": stage.imagePosition,
   } as CSSProperties;
+
+  useEffect(() => {
+    const consoleElement = consoleRef.current;
+    if (!consoleElement) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let visible = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const clear = () => {
+      if (timer) clearTimeout(timer);
+      timer = undefined;
+    };
+    const schedule = (delay: number) => {
+      clear();
+      if (!visible || document.hidden || reducedMotion.matches) return;
+      timer = setTimeout(() => {
+        setManualSelection(false);
+        setActive((previous) => (previous + 1) % STAGES.length);
+        schedule(hasInteractedRef.current ? AFTER_INTERACTION_MS : AUTO_ADVANCE_MS);
+      }, delay);
+    };
+    scheduleAdvanceRef.current = schedule;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting && entry.intersectionRatio >= .3;
+      if (visible) schedule(hasInteractedRef.current ? AFTER_INTERACTION_MS : FIRST_ADVANCE_MS);
+      else clear();
+    }, { threshold: [.3] });
+    const onVisibilityChange = () => {
+      if (document.hidden) clear();
+      else if (visible) schedule(hasInteractedRef.current ? AFTER_INTERACTION_MS : FIRST_ADVANCE_MS);
+    };
+    const onMotionChange = () => {
+      if (reducedMotion.matches) clear();
+      else if (visible) schedule(hasInteractedRef.current ? AFTER_INTERACTION_MS : FIRST_ADVANCE_MS);
+    };
+
+    observer.observe(consoleElement);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    reducedMotion.addEventListener("change", onMotionChange);
+    return () => {
+      clear();
+      scheduleAdvanceRef.current = null;
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      reducedMotion.removeEventListener("change", onMotionChange);
+    };
+  }, []);
+
+  const selectStage = (index: number) => {
+    hasInteractedRef.current = true;
+    setManualSelection(true);
+    setActive(index);
+    scheduleAdvanceRef.current?.(AFTER_INTERACTION_MS);
+  };
 
   useEffect(() => {
     const spectrum = spectrumRef.current;
@@ -201,7 +263,7 @@ export function NightMixFader() {
   }, [active, stage.bpm, stage.spectrum]);
 
   return (
-    <div className={styles.console} style={customProperties}>
+    <div className={styles.console} data-testid="night-fader" ref={consoleRef} style={customProperties}>
       <div className={styles.scene} data-testid="night-scene" key={stage.title}>
         <Image
           src={stage.image}
@@ -215,7 +277,7 @@ export function NightMixFader() {
           {Array.from({ length: SPECTRUM_BANDS }, (_, index) => <i key={index} />)}
           <div className={styles.frequencyScale}><span>60</span><span>250</span><span>1K</span><span>4K</span><span>12K</span></div>
         </div>
-        <div className={styles.sceneCopy} aria-live="polite">
+        <div className={styles.sceneCopy} aria-live={manualSelection ? "polite" : "off"}>
           <p className={styles.stageName}>{stage.title}</p>
           <strong className={`${styles.stageWord} ${active === 3 ? styles.firstDanceWord : ""}`} data-testid="night-scene-heading">{stage.word}</strong>
           <p className={styles.stageLine} data-testid="night-scene-description">{stage.line}</p>
@@ -226,12 +288,15 @@ export function NightMixFader() {
         <p className={styles.instruction}>Move through the night <span className={styles.desktopInstruction}>The scene changes with the room.</span><span className={styles.mobileInstruction}>Slide or tap a moment.</span></p>
         <div className={styles.fader}>
           <div className={styles.rail} aria-hidden="true" />
+          <div className={styles.ticks} aria-hidden="true">
+            {STAGES.map((item) => <i data-testid="night-fader-tick" key={item.title} />)}
+          </div>
           <Image className={styles.cap} src="/images/hsdj-redesign/controls/faders/crossfader-cap.png" alt="" width={116} height={66} />
           <input
             aria-label="Explore how the music changes through the wedding night"
             max={4}
             min={0}
-            onChange={(event) => setActive(Number(event.currentTarget.value))}
+            onChange={(event) => selectStage(Number(event.currentTarget.value))}
             step={1}
             type="range"
             value={active}
@@ -239,7 +304,7 @@ export function NightMixFader() {
         </div>
         <div className={styles.stages}>
           {STAGES.map((item, index) => (
-            <button className={index === active ? styles.active : undefined} key={item.title} onClick={() => setActive(index)} type="button">
+            <button className={index === active ? styles.active : undefined} key={item.title} onClick={() => selectStage(index)} type="button">
               <span>0{index + 1}</span><b>{item.title}</b>
             </button>
           ))}
