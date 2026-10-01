@@ -13,7 +13,7 @@ const AFTER_INTERACTION_MS = 12000;
 const STAGES = [
   {
     title: "Ceremony",
-    word: "HEARD",
+    word: "CLEAR &\nAUDIBLE",
     line: "Clear microphones, the right songs, and every cue handled. You stay in the moment while I take care of the sound.",
     bpm: 72,
     spectrum: { energy: .22, low: .12, mid: .72, high: .18 },
@@ -25,8 +25,8 @@ const STAGES = [
   },
   {
     title: "Cocktails",
-    word: "EASE IN",
-    line: "Good records, easy volume. Enough lift for a drink, never enough to shout over.",
+    word: "VIBE BEGINS",
+    line: "Great records to get you in the celebration mood.",
     bpm: 104,
     spectrum: { energy: .44, low: .4, mid: .52, high: .34 },
     image: "/images/hsdj-redesign/wedding-story/night-stage-cocktails-v1.webp",
@@ -37,7 +37,7 @@ const STAGES = [
   },
   {
     title: "Dinner",
-    word: "DON'T\nRUSH IT",
+    word: "KEEP THE\nFEET TAPPING",
     line: "Dinner still gets good music. The volume stays comfortable, requests are welcome, and the speech mic is ready.",
     bpm: 92,
     spectrum: { energy: .34, low: .3, mid: .46, high: .2 },
@@ -61,7 +61,7 @@ const STAGES = [
   },
   {
     title: "Open floor",
-    word: "NOW WE GO",
+    word: "NOW LET'S\nDANCE",
     line: "I watch what lands, follow the room, and choose the next track to keep the energy moving.",
     bpm: 128,
     spectrum: { energy: .94, low: .96, mid: .78, high: .84 },

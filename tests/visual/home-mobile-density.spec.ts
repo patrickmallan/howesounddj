@@ -181,7 +181,7 @@ test("the crossfader keeps its changing scene visible beside the mobile control"
   await expect(scene).toBeVisible();
   await fader.fill("4");
   await expect(scene.getByText("Open floor", { exact: true })).toBeVisible();
-  await expect(scene.getByText("NOW WE GO", { exact: true })).toBeVisible();
+  await expect(scene.getByText("NOW LET'S DANCE", { exact: true })).toBeVisible();
 
   const geometry = await page.evaluate(() => {
     const control = document.querySelector('[aria-label="Explore how the music changes through the wedding night"]')?.getBoundingClientRect();

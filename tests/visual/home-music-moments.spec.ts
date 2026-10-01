@@ -18,13 +18,13 @@ for (const width of [320, 390, 768, 1440]) {
       expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width + 1);
     }
 
-    await expect(page.getByTestId("night-scene-heading")).toHaveText("HEARD");
+    await expect(page.getByTestId("night-scene-heading")).toHaveText(/CLEAR &\s+AUDIBLE/);
     await expect(page.getByRole("slider", { name: /music changes through the wedding night/i })).toHaveValue("0");
     await expect(page.getByRole("button", { name: /01 ceremony/i })).toHaveClass(/active/);
     await page.getByRole("button", { name: /03 dinner/i }).click();
-    await expect(page.getByTestId("night-scene-heading")).toHaveText(/DON'T\s+RUSH IT/);
+    await expect(page.getByTestId("night-scene-heading")).toHaveText(/KEEP THE\s+FEET TAPPING/);
     await page.getByRole("button", { name: /01 ceremony/i }).click();
-    await expect(page.getByTestId("night-scene-heading")).toHaveText("HEARD");
+    await expect(page.getByTestId("night-scene-heading")).toHaveText(/CLEAR &\s+AUDIBLE/);
   });
 }
 
@@ -61,6 +61,38 @@ for (const width of [320, 390, 768, 1440, 1800]) {
   });
 }
 
+for (const width of [320, 390, 768, 1440, 1800]) {
+  test(`all night-scene headlines and descriptions fit at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    const fader = page.getByTestId("night-fader");
+    const controls = page.getByTestId("night-fader-controls");
+    for (const [button, heading] of [
+      [/01 ceremony/i, /CLEAR &\s+AUDIBLE/],
+      [/02 cocktails/i, /VIBE BEGINS/],
+      [/03 dinner/i, /KEEP THE\s+FEET TAPPING/],
+      [/04 first dance/i, /HAVE FUN\s+WITH THIS ONE/],
+      [/05 open floor/i, /NOW LET'S\s+DANCE/],
+    ] as const) {
+      await fader.getByRole("button", { name: button }).click();
+      const title = page.getByTestId("night-scene-heading");
+      const description = page.getByTestId("night-scene-description");
+      await expect(title).toHaveText(heading);
+      expect(await title.evaluate((element) => element.scrollWidth <= element.clientWidth + 1)).toBe(true);
+      const [titleBox, descriptionBox, controlsBox] = await Promise.all([
+        title.boundingBox(), description.boundingBox(), controls.boundingBox(),
+      ]);
+      expect(titleBox).not.toBeNull();
+      expect(descriptionBox).not.toBeNull();
+      expect(controlsBox).not.toBeNull();
+      expect(descriptionBox!.y).toBeGreaterThanOrEqual(titleBox!.y + titleBox!.height);
+      expect(descriptionBox!.y + descriptionBox!.height).toBeLessThanOrEqual(controlsBox!.y - 2);
+    }
+    await fader.getByRole("button", { name: /02 cocktails/i }).click();
+    await expect(page.getByTestId("night-scene-description")).toHaveText("Great records to get you in the celebration mood.");
+  });
+}
+
 for (const width of [320, 390, 768, 1440]) {
   test(`night fader marks align with all five labels at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
@@ -87,12 +119,12 @@ test("night fader advances in view, then gives manual selection more time", asyn
   await page.goto("/");
   const fader = page.getByTestId("night-fader");
   await fader.scrollIntoViewIfNeeded();
-  await expect(page.getByTestId("night-scene-heading")).toHaveText("HEARD");
-  await expect(page.getByTestId("night-scene-heading")).toHaveText("EASE IN", { timeout: 7000 });
+  await expect(page.getByTestId("night-scene-heading")).toHaveText(/CLEAR &\s+AUDIBLE/);
+  await expect(page.getByTestId("night-scene-heading")).toHaveText("VIBE BEGINS", { timeout: 7000 });
   await fader.getByRole("button", { name: /03 dinner/i }).click();
-  await expect(page.getByTestId("night-scene-heading")).toHaveText(/DON'T\s+RUSH IT/);
+  await expect(page.getByTestId("night-scene-heading")).toHaveText(/KEEP THE\s+FEET TAPPING/);
   await page.waitForTimeout(6500);
-  await expect(page.getByTestId("night-scene-heading")).toHaveText(/DON'T\s+RUSH IT/);
+  await expect(page.getByTestId("night-scene-heading")).toHaveText(/KEEP THE\s+FEET TAPPING/);
 });
 
 test("night fader stays on ceremony with reduced motion until operated", async ({ page }) => {
@@ -102,11 +134,11 @@ test("night fader stays on ceremony with reduced motion until operated", async (
   const fader = page.getByTestId("night-fader");
   await fader.scrollIntoViewIfNeeded();
   await page.waitForTimeout(4800);
-  await expect(page.getByTestId("night-scene-heading")).toHaveText("HEARD");
+  await expect(page.getByTestId("night-scene-heading")).toHaveText(/CLEAR &\s+AUDIBLE/);
   const slider = fader.getByRole("slider");
   await slider.focus();
   await slider.press("ArrowRight");
-  await expect(page.getByTestId("night-scene-heading")).toHaveText("EASE IN");
+  await expect(page.getByTestId("night-scene-heading")).toHaveText("VIBE BEGINS");
 });
 
 for (const width of [320, 390, 1440]) {
@@ -147,9 +179,9 @@ for (const width of [390, 1440]) {
     await page.goto("/");
 
     for (const [button, heading, position] of [
-      [/01 ceremony/i, "HEARD", "5%"],
+      [/01 ceremony/i, "CLEAR & AUDIBLE", "5%"],
       [/04 first dance/i, "HAVE FUN WITH THIS ONE", "5%"],
-      [/05 open floor/i, "NOW WE GO", "15%"],
+      [/05 open floor/i, "NOW LET'S DANCE", "15%"],
     ] as const) {
       await page.getByRole("button", { name: button }).click();
       const scene = page.getByTestId("night-scene");
