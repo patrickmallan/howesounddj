@@ -170,7 +170,22 @@ test("desktop video overlay uses the live mobile-style display lettering", async
   await expect(title).toContainText("Howe SoundWedding DJ");
   await expect(frame.locator("[data-video-overlay-lockup]")).toHaveCount(0);
   await expect(frame.locator("[data-video-overlay-mountains] img")).toHaveAttribute("src", /hsdj-mountain-backdrop-v5\.svg/);
-  expect(await title.locator("b").evaluate((element) => getComputedStyle(element).fontFamily)).toContain("HSDJ Meter Matrix");
+  const sign = title.locator("b");
+  const treatment = await sign.evaluate((element) => {
+    const style = getComputedStyle(element);
+    const background = style.backgroundColor.match(/[\d.]+/g)?.map(Number) ?? [];
+    return {
+      fontFamily: style.fontFamily,
+      fontPalette: style.fontPalette,
+      background,
+      fits: element.scrollWidth <= element.clientWidth + 1,
+    };
+  });
+  expect(treatment.fontFamily).toContain("HSDJ Meter Matrix");
+  expect(treatment.fontPalette).toBe("--hsdj-paper-light");
+  expect(treatment.background.slice(0, 3)).toEqual([3, 7, 13]);
+  expect(treatment.background[3]).toBeGreaterThan(0.9);
+  expect(treatment.fits).toBe(true);
 });
 
 for (const width of [390, 1440]) {
