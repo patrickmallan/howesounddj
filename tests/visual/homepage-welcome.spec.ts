@@ -38,13 +38,15 @@ for (const width of [320, 390, 768, 1440]) {
     await expect(welcome.getByRole("img", { name: /^Imagined wedding artwork/ })).toHaveAttribute("src", /welcome-pink-cake-party-scenes-v5/);
     await expect(welcome.locator('figcaption')).toHaveCount(0);
     const photoStyle = await welcome.locator('figure img').evaluate(el => getComputedStyle(el).maskImage);
-    expect(photoStyle).toContain('linear-gradient');
+    if (width <= 700) expect(photoStyle).toBe('none');
+    else expect(photoStyle).toContain('linear-gradient');
     const frame = await welcome.locator('figure').evaluate(el => ({ shadow: getComputedStyle(el).boxShadow, border: getComputedStyle(el).borderTopWidth }));
     expect(frame).toEqual({ shadow: 'none', border: '0px' });
     expect(await welcome.locator('p').evaluateAll(nodes => new Set(nodes.map(node => getComputedStyle(node).fontSize)).size)).toBe(1);
     const artBounds = await welcome.locator('figure img').boundingBox();
     expect(Math.abs(artBounds!.width - artBounds!.height)).toBeLessThan(1);
-    await expect.poll(() => welcome.locator("img").evaluateAll(images => images.every(image => (image as HTMLImageElement).naturalWidth > 0))).toBe(true);
+    const visibleArtwork = width <= 700 ? welcome.locator("figure img") : welcome.locator("img");
+    await expect.poll(() => visibleArtwork.evaluateAll(images => images.every(image => (image as HTMLImageElement).naturalWidth > 0))).toBe(true);
     // Isolate the complete spread; sticky navigation otherwise covers the art
     // when Playwright centers a tall section for its element screenshot.
     await welcome.screenshot({ path: `/tmp/home-welcome-${width}.png`, style: 'header { visibility: hidden !important; }' });

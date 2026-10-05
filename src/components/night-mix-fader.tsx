@@ -2,13 +2,28 @@
 
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { DJ_LIGHTS_EVENT, djLightsEnabled, setDjLightsEnabled } from "@/lib/dj-lights";
 import styles from "./night-mix-fader.module.css";
 
 const SPECTRUM_BANDS = 44;
 const FIRST_ADVANCE_MS = 4000;
 const AUTO_ADVANCE_MS = 5500;
 const AFTER_INTERACTION_MS = 12000;
+
+function subscribeMotionPreference(onChange: () => void) {
+  const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  preference.addEventListener("change", onChange);
+  return () => preference.removeEventListener("change", onChange);
+}
+
+function subscribeDjLights(onChange: () => void) {
+  window.addEventListener(DJ_LIGHTS_EVENT, onChange);
+  return () => window.removeEventListener(DJ_LIGHTS_EVENT, onChange);
+}
+
+const getReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const getServerPreference = () => false;
 
 const STAGES = [
   {
@@ -76,6 +91,8 @@ const STAGES = [
 export function NightMixFader() {
   const [active, setActive] = useState(0);
   const [manualSelection, setManualSelection] = useState(false);
+  const prefersReducedMotion = useSyncExternalStore(subscribeMotionPreference, getReducedMotion, getServerPreference);
+  const lightsEnabled = useSyncExternalStore(subscribeDjLights, djLightsEnabled, getServerPreference);
   const consoleRef = useRef<HTMLDivElement>(null);
   const spectrumRef = useRef<HTMLDivElement>(null);
   const hasInteractedRef = useRef(false);
@@ -92,7 +109,6 @@ export function NightMixFader() {
     const consoleElement = consoleRef.current;
     if (!consoleElement) return;
 
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let visible = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
     const clear = () => {
@@ -101,7 +117,7 @@ export function NightMixFader() {
     };
     const schedule = (delay: number) => {
       clear();
-      if (!visible || document.hidden || reducedMotion.matches) return;
+      if (!visible || document.hidden) return;
       timer = setTimeout(() => {
         setManualSelection(false);
         setActive((previous) => (previous + 1) % STAGES.length);
@@ -119,20 +135,13 @@ export function NightMixFader() {
       if (document.hidden) clear();
       else if (visible) schedule(hasInteractedRef.current ? AFTER_INTERACTION_MS : FIRST_ADVANCE_MS);
     };
-    const onMotionChange = () => {
-      if (reducedMotion.matches) clear();
-      else if (visible) schedule(hasInteractedRef.current ? AFTER_INTERACTION_MS : FIRST_ADVANCE_MS);
-    };
-
     observer.observe(consoleElement);
     document.addEventListener("visibilitychange", onVisibilityChange);
-    reducedMotion.addEventListener("change", onMotionChange);
     return () => {
       clear();
       scheduleAdvanceRef.current = null;
       observer.disconnect();
       document.removeEventListener("visibilitychange", onVisibilityChange);
-      reducedMotion.removeEventListener("change", onMotionChange);
     };
   }, []);
 
@@ -285,7 +294,19 @@ export function NightMixFader() {
       </div>
 
       <div className={styles.controlSurface} data-testid="night-fader-controls">
-        <p className={styles.instruction}>Move through the night <span className={styles.desktopInstruction}>The scene changes with the room.</span><span className={styles.mobileInstruction}>Slide or tap a moment.</span></p>
+        <p className={styles.instruction}>Move through the night <span className={styles.desktopInstruction}>The scene changes with the room.</span><span className={styles.mobileInstruction}>Auto-mixes. Slide or tap a moment.</span></p>
+        {prefersReducedMotion && (
+          <div className={styles.djLightsCue}>
+            <span>Your phone has motion effects off.</span>
+            <button
+              aria-pressed={lightsEnabled}
+              onClick={() => setDjLightsEnabled(!lightsEnabled)}
+              type="button"
+            >
+              DJ lights {lightsEnabled ? "on" : "off"} · {lightsEnabled ? "turn off" : "turn on"}
+            </button>
+          </div>
+        )}
         <div className={styles.fader}>
           <div className={styles.rail} data-testid="night-fader-rail" aria-hidden="true" />
           <div className={styles.ticks} aria-hidden="true">

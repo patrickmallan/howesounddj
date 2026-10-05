@@ -127,18 +127,19 @@ test("night fader advances in view, then gives manual selection more time", asyn
   await expect(page.getByTestId("night-scene-heading")).toHaveText(/KEEP THE\s+FEET TAPPING/);
 });
 
-test("night fader stays on ceremony with reduced motion until operated", async ({ page }) => {
+test("night fader advances without sliding animation on reduced-motion devices", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 390, height: 900 });
   await page.goto("/");
   const fader = page.getByTestId("night-fader");
   await fader.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(4800);
   await expect(page.getByTestId("night-scene-heading")).toHaveText(/CLEAR &\s+AUDIBLE/);
+  await expect(page.getByTestId("night-scene-heading")).toHaveText("VIBE BEGINS", { timeout: 7000 });
+  await expect(fader.locator("img[class*='sceneImage']")).toHaveCSS("animation-name", "none");
   const slider = fader.getByRole("slider");
   await slider.focus();
   await slider.press("ArrowRight");
-  await expect(page.getByTestId("night-scene-heading")).toHaveText("VIBE BEGINS");
+  await expect(page.getByTestId("night-scene-heading")).toHaveText(/KEEP THE\s+FEET TAPPING/);
 });
 
 for (const width of [320, 390, 1440]) {

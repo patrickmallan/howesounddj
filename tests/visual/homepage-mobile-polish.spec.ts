@@ -55,3 +55,33 @@ test("mobile H2 letters visibly flash when motion is allowed", async ({ page }) 
     { timeout: 4_000, intervals: [50, 50, 50, 50, 100] },
   ).toBeGreaterThanOrEqual(2);
 });
+
+test("reduced-motion phones still auto-advance the fader and can opt into DJ lights", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+
+  const heading = page.locator("#build-heading");
+  await heading.scrollIntoViewIfNeeded();
+  await expect(heading).toHaveAttribute("data-letter-flash", "paused");
+
+  const fader = page.getByTestId("night-fader");
+  await fader.scrollIntoViewIfNeeded();
+  const sceneTitle = page.getByTestId("night-scene-heading");
+  await expect(sceneTitle).toHaveText(/CLEAR &\s*AUDIBLE/);
+  await expect(sceneTitle).toHaveText("VIBE BEGINS", { timeout: 7_000 });
+
+  await page.getByRole("button", { name: /DJ lights off.*turn on/i }).click();
+  await heading.scrollIntoViewIfNeeded();
+  await expect(heading).toHaveAttribute("data-letter-flash", "running");
+  await expect.poll(
+    () => heading.locator('span[class*="_off__"]').count(),
+    { timeout: 4_000, intervals: [50, 50, 50, 50, 100] },
+  ).toBeGreaterThanOrEqual(2);
+
+  await page.reload();
+  await heading.scrollIntoViewIfNeeded();
+  await expect(heading).toHaveAttribute("data-letter-flash", "running");
+  await page.getByRole("button", { name: /DJ lights on.*turn off/i }).click();
+  await expect(heading).toHaveAttribute("data-letter-flash", "paused");
+});

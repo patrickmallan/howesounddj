@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { DJ_LIGHTS_EVENT, djLightsEnabled } from "@/lib/dj-lights";
 import styles from "./heading-letter-flash-controller.module.css";
 
 const HEADING_SELECTOR = "main h2:not(.sr-only):not(.no-letter-flash)";
@@ -100,6 +101,7 @@ function wrapHeadingLetters(heading: HTMLHeadingElement) {
 export function HeadingLetterFlashController() {
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let lightsOptedIn = djLightsEnabled();
     const observed = new Set<HTMLHeadingElement>();
     const visible = new Set<HTMLHeadingElement>();
     const running = new Map<HTMLHeadingElement, () => void>();
@@ -122,7 +124,7 @@ export function HeadingLetterFlashController() {
       if (running.has(heading) || document.hidden) return;
       wrapHeadingLetters(heading);
       scheduleBackplateFit(heading);
-      if (reducedMotion.matches) {
+      if (reducedMotion.matches && !lightsOptedIn) {
         heading.dataset.letterFlash = "paused";
         return;
       }
@@ -231,15 +233,20 @@ export function HeadingLetterFlashController() {
       }), 120);
     };
     const onMotionPreferenceChange = () => {
-      if (reducedMotion.matches) {
+      if (reducedMotion.matches && !lightsOptedIn) {
         visible.forEach(stopSequence);
         return;
       }
       visible.forEach(startSequence);
     };
+    const onDjLightsChange = (event: Event) => {
+      lightsOptedIn = (event as CustomEvent<boolean>).detail;
+      onMotionPreferenceChange();
+    };
     document.addEventListener("visibilitychange", onVisibilityChange);
     window.addEventListener("resize", onResize, { passive: true });
     reducedMotion.addEventListener("change", onMotionPreferenceChange);
+    window.addEventListener(DJ_LIGHTS_EVENT, onDjLightsChange);
 
     return () => {
       window.clearTimeout(resizeTimer);
@@ -253,6 +260,7 @@ export function HeadingLetterFlashController() {
       document.removeEventListener("visibilitychange", onVisibilityChange);
       window.removeEventListener("resize", onResize);
       reducedMotion.removeEventListener("change", onMotionPreferenceChange);
+      window.removeEventListener(DJ_LIGHTS_EVENT, onDjLightsChange);
     };
   }, []);
 
