@@ -29,7 +29,6 @@
   isolation: isolate;
   min-height: 660px;
   overflow: hidden;
-  border-bottom: 4px solid var(--blue);
   background: #080b11;
 }
 
@@ -117,28 +116,7 @@
   padding-inline: clamp(1.25rem, 5vw, 5rem);
 }
 
-.journeyInner { padding-top: 4.5rem; padding-bottom: 5rem; }
-
-.signalLead {
-  position: absolute;
-  top: 0;
-  left: clamp(1.25rem, 5vw, 5rem);
-  width: 250px;
-  height: 8px;
-  background: var(--yellow);
-}
-
-.signalLead::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 22px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--yellow);
-  transform: translateY(-50%);
-}
+.journeyInner { padding-top: 3.5rem; padding-bottom: 5rem; }
 
 .sectionLabel { position: relative; z-index: 3; margin: 0; color: var(--yellow); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important; font-size: clamp(0.66rem, 0.9vw, 0.86rem); font-palette: normal; letter-spacing: .19em; line-height: 1.2; scroll-margin-top: 210px; }
 
@@ -468,7 +446,6 @@
   .heroCopy { font-size: .94rem; }
   .heroVisual { width: auto; height: 470px; margin: 0; }
   .journeyInner { padding: 3.8rem 1rem .75rem 2.15rem; }
-  .signalLead { left: 1.1rem; width: 180px; }
   .sectionLabel { font-size: 0.6rem; }
   .signalPath { inset: 5rem auto 2rem 0.65rem; width: 26px; height: calc(100% - 7rem); }
   .desktopSignal { display: none; }

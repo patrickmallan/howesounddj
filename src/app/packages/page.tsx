@@ -191,7 +191,7 @@ export default function PackagesPage() {
           </div>
           <div className={styles.afterHeading}>
             <div className={styles.kicker}>THE NEXT TRACK</div>
-            <h2>One date. One conversation. Your call.</h2>
+            <h2><span>One date.</span>{" "}<span>One convo.</span>{" "}<span>Your call.</span></h2>
             <p>No long form or sales maze. Here is how we get from an open date to a decision.</p>
           </div>
           <div className={styles.afterDeck}>

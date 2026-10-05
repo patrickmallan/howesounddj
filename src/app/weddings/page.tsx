@@ -72,7 +72,6 @@ export default function WeddingsPage() {
 
       <section className={styles.journey} aria-labelledby="wedding-day-heading">
         <div className={styles.journeyInner}>
-          <div className={styles.signalLead} aria-hidden="true" />
           <h2 id="wedding-day-heading" className={styles.sectionLabel}>I&apos;m there long before the dance floor.</h2>
           <svg className={styles.signalPath} viewBox="0 0 1200 1040" preserveAspectRatio="none" aria-hidden="true">
             <path className={styles.desktopSignal} d="M62 28H250V142H570V86H1030V452H520V560H170V922H1060V1035" />
