@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Wedding Venues · Sea-to-Sky & Squamish DJ Planning",
   description,
   openGraph: {
-    images: ["/og-share.jpg"],
+    images: ["/og-cake-party-v2.jpg"],
     title: "Wedding Venues · Sea-to-Sky & Squamish DJ Planning | Howe Sound DJ",
     description,
     url: "/venues",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Wedding Venues · Sea-to-Sky & Squamish DJ Planning | Howe Sound DJ",
     description,
-    images: ["/og-share.jpg"],
+    images: ["/og-cake-party-v2.jpg"],
   },
   alternates: { canonical: "/venues" },
 };

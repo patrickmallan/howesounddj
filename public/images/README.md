@@ -49,7 +49,7 @@ Paths are duplicated in **`SITE_IMAGE_FILES`** in `site-images.ts`.
 3. **Weddings support**: Weddings + Vancouver.
 4. **Patrick portraits**: `homeAboutPreview` + `aboutPortrait`.
 5. **`weddingsCrowd`**: extra weddings-page proof.
-6. **Social share (OG)** : site-wide link previews (`/og-share.jpg` at repo root, `public/og-share.jpg`); not a `SITE_IMAGES` slot.
+6. **Social share (OG)**: site-wide link previews (`/og-cake-party-v2.jpg` from `public/og-cake-party-v2.jpg`); not a `SITE_IMAGES` slot.
 
 ## Shot list → slot
 
@@ -61,7 +61,7 @@ Paths are duplicated in **`SITE_IMAGE_FILES`** in `site-images.ts`.
 | Shot 04 | `weddings/weddings-crowd.webp` → `weddingsCrowd` |
 | Shot 05 | `about/patrick-portrait.webp` → `homeAboutPreview` |
 | Shot 06 | `about/patrick-portrait-bw.webp` → `aboutPortrait` |
-| Shot 07 | `og-share.jpg` (repo root / `public/`) → see **Social share (Open Graph)** below |
+| Shot 07 | `og-cake-party-v2.jpg` (`public/`) → see **Social share (Open Graph)** below |
 
 ## Alt text
 
@@ -69,15 +69,15 @@ Edit **`SITE_IMAGE_ALT`** in `site-images.ts` when the picture’s content chang
 
 ## Social share (Open Graph)
 
-**Current behavior:** The site uses the raster **`/og-share.jpg`** (`public/og-share.jpg`, 1200×630), wired in **`src/app/layout.tsx`** (`openGraph.images` and `twitter.images`). **`SITE_SOCIAL_IMAGE_FILES.ogShare`** in **`src/config/site-images.ts`** matches that path. The vector **`/og-default.svg`** remains available (e.g. Vancouver page metadata override).
+**Current behavior:** The site uses **`/og-cake-party-v2.jpg`** (`public/og-cake-party-v2.jpg`, 1200×630), a wide adaptation of the homepage's imagined pink wedding-cake party artwork. It retains the entire cake and the laughing guest hanging from its bottom tier. It is wired into Open Graph and Twitter metadata across the site. **`SITE_SOCIAL_IMAGE_FILES.ogShare`** in **`src/config/site-images.ts`** matches that path. Earlier share-image versions remain in the repository but are not used by current metadata.
 
 **When you replace the share image:**
 
 1. Export **1200×630** (or same aspect), **sRGB**, JPG or PNG, ideally under ~500 KB for snappy loads.
-2. Replace **`public/og-share.jpg`** in place (keep the same filename) **or** save under a new name and update **`openGraph.images`**, **`twitter.images`**, and **`SITE_SOCIAL_IMAGE_FILES.ogShare`** together.
+2. Save under a new versioned name and update **`openGraph.images`**, **`twitter.images`**, and **`SITE_SOCIAL_IMAGE_FILES.ogShare`** together. A fresh URL helps sharing services refresh their cached preview.
 3. Set **`width` / `height`** in **`layout.tsx`** to match the file if dimensions change.
 4. Redeploy. Refresh cached previews with [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) if needed.
 
-**Also check:** `src/lib/json-ld.ts` references a default OG URL for structured data : update that string if you want JSON-LD to match the same raster asset.
+The image is imagined artwork, not documentary photography of a specific couple or venue. Keep that distinction in social-image descriptions.
 
 More detail: **`docs/LAUNCH_CHECKLIST.md`** §8.

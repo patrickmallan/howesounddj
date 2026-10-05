@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "Check your wedding date with Howe Sound DJ. If Patrick is available, book a complimentary consultation right away.",
   openGraph: {
-    images: ["/og-share.jpg"],
+    images: ["/og-cake-party-v2.jpg"],
     title: "Contact | Howe Sound DJ",
     description:
       "Check your wedding date with Howe Sound DJ. If Patrick is available, book a complimentary consultation right away.",

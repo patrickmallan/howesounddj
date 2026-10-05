@@ -71,10 +71,10 @@ Run after every production deploy that touches **`/contact`**, **`/api/availabil
 ## 7. Images and Open Graph
 
 - **Page photography:** `public/images/` + `src/config/site-images.ts` — see **`public/images/README.md`** for slot priority and aspect ratios.
-- **Social share (OG):** Default is `public/og-default.svg` (vector, safe everywhere). For richer previews:
+- **Social share (OG):** Current preview is `public/og-cake-party-v2.jpg`, a wide adaptation of the homepage's imagined wedding-cake party artwork that keeps the whole cake in view. To replace it:
   1. Export a **1200×630** JPG or PNG (sRGB, under ~500 KB if possible).
-  2. Save as e.g. `public/images/social/og-share.jpg`.
-  3. In **`src/app/layout.tsx`**, set **`openGraph.images`** and **`twitter.images`** to `/images/social/og-share.jpg` (and update `width` / `height` if not 1200×630).
+  2. Save under a fresh versioned filename, e.g. `public/og-cake-party-v3.jpg`, so sharing services see a new image URL.
+  3. Update the Open Graph and Twitter image paths across page metadata, plus `SITE_SOCIAL_IMAGE_FILES.ogShare` (and update `width` / `height` in `layout.tsx` if not 1200×630).
   4. Redeploy; use [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) if you need to refresh cached previews.
 
 ## 8. Wix redirect / cutover

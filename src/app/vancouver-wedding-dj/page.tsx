@@ -13,8 +13,8 @@ const description = "Live in Vancouver and getting married in Squamish? Plan the
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
-  openGraph: { title, description, url: "/vancouver-wedding-dj", type: "website", images: ["/og-share.jpg"] },
-  twitter: { card: "summary_large_image", title, description, images: ["/og-share.jpg"] },
+  openGraph: { title, description, url: "/vancouver-wedding-dj", type: "website", images: ["/og-cake-party-v2.jpg"] },
+  twitter: { card: "summary_large_image", title, description, images: ["/og-cake-party-v2.jpg"] },
   alternates: { canonical: "/vancouver-wedding-dj" },
 };
 

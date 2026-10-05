@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: STORY_TITLE,
   description: metaDesc,
   openGraph: {
-    images: ["/og-share.jpg"],
+    images: ["/og-cake-party-v2.jpg"],
     title: `${STORY_TITLE} | Howe Sound DJ`,
     description: metaDesc,
     url: `/stories/${STORY_SLUG}`,
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${STORY_TITLE} | Howe Sound DJ`,
     description: metaDesc,
-    images: ["/og-share.jpg"],
+    images: ["/og-cake-party-v2.jpg"],
   },
   alternates: { canonical: `/stories/${STORY_SLUG}` },
 };

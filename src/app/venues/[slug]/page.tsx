@@ -25,8 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description: venue.metaDescription,
-    openGraph: { title: `${title} | Howe Sound DJ`, description: venue.metaDescription, url: `/venues/${venue.slug}`, type: "article", images: ["/og-share.jpg"] },
-    twitter: { card: "summary_large_image", title: `${title} | Howe Sound DJ`, description: venue.metaDescription, images: ["/og-share.jpg"] },
+    openGraph: { title: `${title} | Howe Sound DJ`, description: venue.metaDescription, url: `/venues/${venue.slug}`, type: "article", images: ["/og-cake-party-v2.jpg"] },
+    twitter: { card: "summary_large_image", title: `${title} | Howe Sound DJ`, description: venue.metaDescription, images: ["/og-cake-party-v2.jpg"] },
     alternates: { canonical: `/venues/${venue.slug}` },
   };
 }

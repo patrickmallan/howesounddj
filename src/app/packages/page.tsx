@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: packagesTitle,
   description: packagesDesc,
   openGraph: {
-    images: ["/og-share.jpg"],
+    images: ["/og-cake-party-v2.jpg"],
     title: packagesTitle,
     description:
       "Straightforward Squamish wedding DJ options, from ceremony audio to the last song, with honest advice about what your day actually needs.",

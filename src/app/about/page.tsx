@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: { absolute: "Meet Patrick | Squamish Wedding DJ | Howe Sound DJ" },
   description: "Meet Patrick Mallan: Squamish-based wedding DJ, audio-school graduate and the person who plans, mixes and shows up for your Sea-to-Sky wedding.",
   openGraph: {
-    images: ["/og-share.jpg"],
+    images: ["/og-cake-party-v2.jpg"],
     title: "Meet Patrick | Howe Sound Wedding DJ",
     description: "The person, music brain and real wedding nights behind Howe Sound DJ.",
     url: "/about",

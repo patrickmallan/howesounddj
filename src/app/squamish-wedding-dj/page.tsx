@@ -12,8 +12,8 @@ const title = "Squamish Wedding DJ | Open-Format, Locally Rooted";
 export const metadata: Metadata = {
   title,
   description,
-  openGraph: { title, description, url: "/squamish-wedding-dj", type: "website", images: ["/og-share.jpg"] },
-  twitter: { card: "summary_large_image", title, description, images: ["/og-share.jpg"] },
+  openGraph: { title, description, url: "/squamish-wedding-dj", type: "website", images: ["/og-cake-party-v2.jpg"] },
+  twitter: { card: "summary_large_image", title, description, images: ["/og-cake-party-v2.jpg"] },
   alternates: { canonical: "/squamish-wedding-dj" },
 };
 

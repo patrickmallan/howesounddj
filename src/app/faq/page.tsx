@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Wedding DJ FAQ for Howe Sound DJ: music and playlists, planning and consultation, ceremony and reception support, travel, venues, and optional enhancements.",
   openGraph: {
-    images: ["/og-share.jpg"],
+    images: ["/og-cake-party-v2.jpg"],
     title: "FAQ | Howe Sound DJ",
     description:
       "Straight answers on personalized music, timelines, MC support, Sea-to-Sky coverage, and what makes the experience different.",

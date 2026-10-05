@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: { absolute: pageTitle },
   description: pageDescription,
   openGraph: {
-    images: ["/og-share.jpg"],
+    images: ["/og-cake-party-v2.jpg"],
     title: pageTitle,
     description: pageDescription,
     url: "/whistler-wedding-dj",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
-    images: ["/og-share.jpg"],
+    images: ["/og-cake-party-v2.jpg"],
   },
   alternates: { canonical: "/whistler-wedding-dj" },
 };

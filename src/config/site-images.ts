@@ -69,14 +69,9 @@ export const SITE_IMAGE_FILES: Record<SiteImageKey, string> = {
     "/images/brand-editorial/hsdj-hero-crowd-behind-mountains-editorial.webp",
 };
 
-/**
- * Recommended social / meta assets (not page slots). Add the file, then point
- * `openGraph.images` and `twitter.images` in `src/app/layout.tsx` here, the site ships with
- * `/og-default.svg` until you swap.
- */
-/** Matches `openGraph.images` / `twitter.images` in `src/app/layout.tsx`, file lives at `public/og-share.jpg`. */
+/** Social preview asset shared by Open Graph and Twitter metadata across the site. */
 export const SITE_SOCIAL_IMAGE_FILES = {
-  ogShare: "/og-share.jpg",
+  ogShare: "/og-cake-party-v2.jpg",
 } as const;
 
 /**

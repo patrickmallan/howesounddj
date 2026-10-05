@@ -13,7 +13,7 @@ const weddingsDesc =
 export const metadata: Metadata = {
   title: weddingsTitle,
   description: weddingsDesc,
-  openGraph: { title: weddingsTitle, description: weddingsDesc, url: "/weddings", images: ["/og-share.jpg"] },
+  openGraph: { title: weddingsTitle, description: weddingsDesc, url: "/weddings", images: ["/og-cake-party-v2.jpg"] },
   alternates: { canonical: "/weddings" },
 };
 

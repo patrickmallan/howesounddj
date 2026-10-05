@@ -20,8 +20,8 @@ import styles from "./homepage-set.module.css";
 export const metadata: Metadata = {
   title: { absolute: HOMEPAGE_TITLE },
   description: "Squamish wedding DJ Patrick Mallan handles ceremony sound, planning, speeches, dinner music, and a reception built around your music and your people.",
-  openGraph: { title: HOMEPAGE_TITLE, description: "A Squamish wedding DJ for the whole day, and the kind of dance floor people stay on.", url: `${SITE_ORIGIN}/`, images: ["/og-share.jpg"] },
-  twitter: { card: "summary_large_image", title: HOMEPAGE_TITLE, description: "A Squamish wedding DJ for the whole day, and the kind of dance floor people stay on.", images: ["/og-share.jpg"] },
+  openGraph: { title: HOMEPAGE_TITLE, description: "A Squamish wedding DJ for the whole day, and the kind of dance floor people stay on.", url: `${SITE_ORIGIN}/`, images: ["/og-cake-party-v2.jpg"] },
+  twitter: { card: "summary_large_image", title: HOMEPAGE_TITLE, description: "A Squamish wedding DJ for the whole day, and the kind of dance floor people stay on.", images: ["/og-cake-party-v2.jpg"] },
   alternates: { canonical: `${SITE_ORIGIN}/` },
 };
 

@@ -42,8 +42,8 @@ function HardwareLink({ eyebrow, href, label, mode = "play" }: HardwareLinkProps
 export const metadata: Metadata = {
   title: "Wedding Planning Guides",
   description,
-  openGraph: { title: "Wedding Planning Guides | Howe Sound DJ", description, url: "/guides", type: "website", images: ["/og-share.jpg"] },
-  twitter: { card: "summary_large_image", title: "Wedding Planning Guides | Howe Sound DJ", description, images: ["/og-share.jpg"] },
+  openGraph: { title: "Wedding Planning Guides | Howe Sound DJ", description, url: "/guides", type: "website", images: ["/og-cake-party-v2.jpg"] },
+  twitter: { card: "summary_large_image", title: "Wedding Planning Guides | Howe Sound DJ", description, images: ["/og-cake-party-v2.jpg"] },
   alternates: { canonical: "/guides" },
 };
 

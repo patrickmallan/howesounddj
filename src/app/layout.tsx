@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: "/og-share.jpg",
+        url: "/og-cake-party-v2.jpg",
         width: 1200,
         height: 630,
-        alt: "Howe Sound Wedding DJ dance floor",
+        alt: "Imagined wedding-cake party with a couple and DJ on top, dancing guests, and a laughing guest hanging from the bottom tier",
       },
     ],
   },
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Howe Sound DJ | Squamish Wedding DJ",
     description: siteDescription,
-    images: ["/og-share.jpg"],
+    images: ["/og-cake-party-v2.jpg"],
   },
   robots: {
     index: !isIsolatedPreview(),

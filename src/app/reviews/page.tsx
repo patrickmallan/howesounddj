@@ -35,7 +35,7 @@ const {
 export const metadata: Metadata = {
   title: { absolute: pageTitle },
   description: pageDescription,
-  openGraph: { title: pageTitle, description: pageDescription, url: "/reviews", images: ["/og-share.jpg"] },
+  openGraph: { title: pageTitle, description: pageDescription, url: "/reviews", images: ["/og-cake-party-v2.jpg"] },
   alternates: { canonical: "/reviews" },
 };
 

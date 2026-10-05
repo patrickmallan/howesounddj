@@ -42,8 +42,8 @@ function StoriesHardwareLink({ href, label, mode = "play" }: StoriesHardwareLink
 export const metadata: Metadata = {
   title,
   description,
-  openGraph: { title, description, url: "/stories", type: "website", images: ["/og-share.jpg"] },
-  twitter: { card: "summary_large_image", title, description, images: ["/og-share.jpg"] },
+  openGraph: { title, description, url: "/stories", type: "website", images: ["/og-cake-party-v2.jpg"] },
+  twitter: { card: "summary_large_image", title, description, images: ["/og-cake-party-v2.jpg"] },
   alternates: { canonical: "/stories" },
 };
 
