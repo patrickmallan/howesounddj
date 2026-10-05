@@ -8,6 +8,8 @@ const INITIAL_HOLD_MS = 700;
 const LETTER_OFF_MS = 170;
 const BETWEEN_LETTERS_MS = 55;
 const FULL_HEADING_HOLD_MS = 1450;
+const MOBILE_LETTER_OFF_MS = 270;
+const MOBILE_BETWEEN_LETTERS_MS = 75;
 
 function hasVisibleBackplate(heading: HTMLHeadingElement) {
   const style = window.getComputedStyle(heading);
@@ -129,28 +131,37 @@ export function HeadingLetterFlashController() {
 
       let stopped = false;
       let letterIndex = 0;
-      let timer = 0;
+      const timers = new Set<number>();
+      const schedule = (callback: () => void, delay: number) => {
+        const timer = window.setTimeout(() => {
+          timers.delete(timer);
+          callback();
+        }, delay);
+        timers.add(timer);
+      };
+      const mobile = window.matchMedia("(max-width: 720px)").matches;
       const cueLetter = () => {
         if (stopped) return;
         const letter = letters[letterIndex];
         letter.classList.add(styles.off);
-        timer = window.setTimeout(() => {
+        schedule(() => {
           letter.classList.remove(styles.off);
-          letterIndex += 1;
-          if (letterIndex >= letters.length) {
-            letterIndex = 0;
-            timer = window.setTimeout(cueLetter, FULL_HEADING_HOLD_MS);
-            return;
-          }
-          timer = window.setTimeout(cueLetter, BETWEEN_LETTERS_MS);
-        }, LETTER_OFF_MS);
+        }, mobile ? MOBILE_LETTER_OFF_MS : LETTER_OFF_MS);
+        letterIndex += 1;
+        if (letterIndex >= letters.length) {
+          letterIndex = 0;
+          schedule(cueLetter, (mobile ? MOBILE_LETTER_OFF_MS : LETTER_OFF_MS) + FULL_HEADING_HOLD_MS);
+        } else {
+          schedule(cueLetter, mobile ? MOBILE_BETWEEN_LETTERS_MS : LETTER_OFF_MS + BETWEEN_LETTERS_MS);
+        }
       };
 
       heading.dataset.letterFlash = "running";
-      timer = window.setTimeout(cueLetter, INITIAL_HOLD_MS);
+      schedule(cueLetter, INITIAL_HOLD_MS);
       running.set(heading, () => {
         stopped = true;
-        window.clearTimeout(timer);
+        timers.forEach(window.clearTimeout);
+        timers.clear();
         letters.forEach((letter) => letter.classList.remove(styles.off));
       });
     };

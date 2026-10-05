@@ -27,9 +27,9 @@ export const metadata: Metadata = {
 
 const soundCheck = [
   ["Ceremony", "You say the words. I’ll make sure every seat hears them."],
-  ["Cocktails + dinner", "Good music, easy volume. Nobody has to shout."],
+  ["Cocktails + dinner", "A welcome or a spontaneous toast? The mic is ready, and everyone can hear it."],
   ["Speeches", "You bring the stories. I’ll keep the mic behaving."],
-  ["Dance floor", "When your people are ready, I’m ready too."],
+  ["Dance floor", "For a quick shout-out or the last-song send-off, I’ll bring the mic up clean and keep it brief."],
 ] as const;
 
 export default async function HoweSoundDJHomepage() {

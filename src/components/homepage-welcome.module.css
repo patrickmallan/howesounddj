@@ -58,6 +58,14 @@
   .backdrop img { object-position: 70% center; }
 }
 @media (max-width: 700px) {
-  .notes { position: relative; padding-left: 1rem; padding-right: 3.65rem; }
+  .welcome { padding: 0 0 2rem; background: #090b0d; }
+  .backdrop { display: none; }
+  .inner { max-width: none; gap: 0; }
+  .album, .sleeve { width: 100%; }
+  .sleeve img {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .notes { position: relative; margin: 1rem 1rem 0; padding-left: 1rem; padding-right: 3.65rem; }
   .mobileMeter { display: flex !important; position: absolute !important; top: 1.5rem; bottom: 1.5rem; right: .15rem; left: auto; width: 2.7rem; min-height: 0; max-height: 32rem; height: auto; }
 }
