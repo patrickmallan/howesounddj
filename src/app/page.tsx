@@ -26,10 +26,10 @@ export const metadata: Metadata = {
 };
 
 const soundCheck = [
-  ["Ceremony", "You say the words. I’ll make sure every seat hears them."],
-  ["Cocktails + dinner", "A welcome or a spontaneous toast? The mic is ready, and everyone can hear it."],
-  ["Speeches", "You bring the stories. I’ll keep the mic behaving."],
-  ["Dance floor", "For a quick shout-out or the last-song send-off, I’ll bring the mic up clean and keep it brief."],
+  ["Ceremony", "Quiet vows and a gust of wind can swallow the words. I check mic placement and levels so the back row hears them."],
+  ["Cocktails + dinner", "A toast can start in a noisy room. I have the mic ready and lift the voice above the chatter without blasting anyone."],
+  ["Speeches", "One person whispers, the next holds the mic too close. I ride the levels so both stories come through clearly."],
+  ["Dance floor", "A shout-out can vanish under the track. I dip the music, bring the voice through, then get the beat right back."],
 ] as const;
 
 export default async function HoweSoundDJHomepage() {

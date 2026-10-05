@@ -32,14 +32,41 @@ for (const width of [320, 390]) {
   });
 }
 
-test("mobile microphone cards discuss audibility across the whole day", async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/");
+test("microphone cards use the same failure-and-fix copy on mobile and desktop", async ({ page }) => {
+  const expected = [
+    /quiet vows and a gust of wind.*mic placement and levels/i,
+    /toast can start in a noisy room.*voice above the chatter/i,
+    /one person whispers.*ride the levels/i,
+    /shout-out can vanish under the track.*get the beat right back/i,
+  ];
 
-  const cards = page.locator('#services [role="listitem"]');
-  await expect(cards).toHaveCount(4);
-  await expect(cards.nth(1)).toContainText(/the mic is ready/i);
-  await expect(cards.nth(3)).toContainText(/bring the mic up clean/i);
+  for (const width of [320, 390, 1440]) {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto("/");
+    const cards = page.locator('#services [role="listitem"]');
+    await expect(cards).toHaveCount(4);
+    for (let index = 0; index < expected.length; index += 1) {
+      await expect(cards.nth(index)).toContainText(expected[index]);
+    }
+
+    if (width <= 390) {
+      const first = await cards.nth(0).boundingBox();
+      const second = await cards.nth(1).boundingBox();
+      expect(first).not.toBeNull();
+      expect(second).not.toBeNull();
+      expect(second!.y).toBeGreaterThan(first!.y + first!.height - 1);
+      expect(second!.x).toBeCloseTo(first!.x, 0);
+      const textWidth = await cards.nth(0).locator("div").evaluate((element) => element.getBoundingClientRect().width);
+      expect(textWidth).toBeGreaterThan(first!.width * .85);
+      for (let index = 0; index < expected.length; index += 1) {
+        const knob = await cards.nth(index).locator("span").first().boundingBox();
+        const paragraph = await cards.nth(index).locator("p").boundingBox();
+        expect(knob).not.toBeNull();
+        expect(paragraph).not.toBeNull();
+        expect(paragraph!.y).toBeGreaterThanOrEqual(knob!.y + knob!.height);
+      }
+    }
+  }
 });
 
 test("mobile H2 letters visibly flash when motion is allowed", async ({ page }) => {

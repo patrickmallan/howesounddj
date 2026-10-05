@@ -265,13 +265,14 @@
   .soundCopy > p:last-child { font-size: .93rem; }
   .soundPortrait { position: relative; top: auto; right: auto; width: calc(100% - .2rem); height: auto; aspect-ratio: 4 / 3; margin: -.1rem 0 -.3rem -.1rem; transform: rotate(.7deg); }
   .soundPortrait img { object-position: center 58%; }
-  .soundControls { position: relative; right: auto; bottom: auto; left: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem; padding: .65rem; transform: none; }
+  .soundControls { position: relative; right: auto; bottom: auto; left: auto; grid-template-columns: minmax(0, 1fr); gap: .45rem; padding: .65rem; transform: none; }
   .soundControlsLabel { padding-inline: .35rem 1.2rem; grid-column: 1 / -1; flex-wrap: wrap; gap: .3rem .55rem; }
   .soundControlsLabel::after { min-width: 3.25rem; }
-  .soundControl { padding: .45rem .4rem; grid-template-columns: 2.45rem minmax(0, 1fr); align-items: start; gap: .35rem; }
-  .soundControl > span { width: 2.45rem; height: 2.45rem; }
-  .soundControl h3 { font-size: .66rem; line-height: 1.08; }
-  .soundControl p { margin-top: .18rem; font-size: .61rem; line-height: 1.25; }
+  .soundControl { display: block; min-height: 4.5rem; padding: .65rem .75rem; }
+  .soundControl > span { position: absolute; top: .55rem; right: .65rem; width: 2.3rem; height: 2.3rem; }
+  .soundControl > div { min-width: 0; }
+  .soundControl h3 { display: flex; min-height: 2.3rem; padding-right: 2.6rem; align-items: center; font-size: .77rem; line-height: 1.1; }
+  .soundControl p { margin-top: .25rem; font-size: .76rem; line-height: 1.35; }
 
   .build { padding: 1.85rem .75rem 1.65rem; scroll-margin-top: 160px; }
   .buildDeck img { object-position: center top; }
