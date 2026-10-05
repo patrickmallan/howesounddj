@@ -6,8 +6,8 @@ for (const width of [320, 375, 390, 768, 1440, 2048]) {
     await page.goto("/weddings");
     const hero = page.locator("section[aria-labelledby='weddings-title']");
     await expect(hero.locator("h1")).toContainText("You don't need to build the whole playlist.");
-    const portrait = hero.getByRole("img", { name: /couple sharing a few favourite records/ });
-    await expect(portrait).toHaveAttribute("src", /playlist-to-party-collage-v1/);
+    const portrait = hero.getByRole("img", { name: /couple at home picking a few favourite wedding playlist ideas/ });
+    await expect(portrait).toHaveAttribute("src", /couple-playlist-planning-v4/);
     await expect(hero.locator('[class*="heroRecord"]')).toHaveCount(0);
     await expect.poll(() => portrait.evaluate(image => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
     const headingBox = await hero.locator("h1").boundingBox();

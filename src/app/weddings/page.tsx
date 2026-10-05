@@ -65,7 +65,7 @@ export default function WeddingsPage() {
             <p className={styles.heroCopy}>Tell me the songs you love, the ones you can&apos;t stand, and the tracks already tied to your day. I&apos;ll build from there, take requests seriously, and read the room as the night goes.</p>
           </div>
           <figure className={styles.heroVisual}>
-            <Image src="/images/hsdj-redesign/weddings-overview/playlist-to-party-collage-v1.webp" alt="Collage of a couple sharing a few favourite records at the DJ decks, with a wedding dance floor beyond" fill priority sizes="(max-width: 680px) 100vw, 40vw" className={styles.coverImage} />
+            <Image src="/images/hsdj-redesign/weddings-overview/couple-playlist-planning-v4.webp" alt="A couple at home picking a few favourite wedding playlist ideas together on a laptop" fill priority sizes="(max-width: 680px) 100vw, 40vw" className={styles.coverImage} />
           </figure>
         </div>
       </section>
