@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { DeferredArt } from "@/components/deferred-art";
-import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import styles from "./weddings-overview.module.css";
 
@@ -52,23 +51,22 @@ export default function WeddingsPage() {
   return (
     <main className={styles.page}>
       <section className={styles.hero} aria-labelledby="weddings-title">
-        <div className={styles.heroPortrait} aria-hidden="true">
-          <Image src="/images/about/patrick-live-light-trails-retouched-v1.webp" alt="" fill priority sizes="(max-width: 760px) 68vw, 48vw" className={styles.coverImage} />
-        </div>
-        <div className={styles.heroShade} aria-hidden="true" />
         <div className={styles.heroInner}>
-          <p className={styles.eyebrow}>What you&apos;re actually hiring</p>
-          <div className={styles.heroTitleFrame}>
-            <MeterMatrixHeading
-              id="weddings-title"
-              text="You don't need to build the whole playlist."
-              lines={["You don't need", "to build the", "whole playlist."]}
-              className={styles.heroTitle}
-            />
+          <div className={styles.heroEditorial}>
+            <div className={styles.heroTitleFrame}>
+              <MeterMatrixHeading
+                id="weddings-title"
+                text="You don't need to build the whole playlist."
+                lines={["You don't need", "to build the", "whole playlist."]}
+                className={styles.heroTitle}
+              />
+            </div>
+            <div className={styles.heroRule} aria-hidden="true"><span /><span /><span /></div>
+            <p className={styles.heroCopy}>Tell me the songs you love, the ones you can&apos;t stand, and the tracks already tied to your day. I&apos;ll build from there, take requests seriously, and read the room as the night goes.</p>
           </div>
-          <HeroSignalCopy className={styles.heroCopy} tone="yellow">
-            Tell me the songs you love, the ones you cannot stand, and the tracks already tied to the ceremony. I&apos;ll build from there, take requests seriously, and make the calls as the night goes.
-          </HeroSignalCopy>
+          <figure className={styles.heroVisual}>
+            <Image src="/images/hsdj-redesign/weddings-overview/playlist-to-party-collage-v1.webp" alt="Collage of a couple sharing a few favourite records at the DJ decks, with a wedding dance floor beyond" fill priority sizes="(max-width: 680px) 100vw, 40vw" className={styles.coverImage} />
+          </figure>
         </div>
       </section>
 

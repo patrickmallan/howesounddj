@@ -4,6 +4,16 @@ for (const width of [320, 375, 390, 768, 1440, 2048]) {
   test(`weddings overview keeps its headline and flyer copy readable at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/weddings");
+    const hero = page.locator("section[aria-labelledby='weddings-title']");
+    await expect(hero.locator("h1")).toContainText("You don't need to build the whole playlist.");
+    const portrait = hero.getByRole("img", { name: /couple sharing a few favourite records/ });
+    await expect(portrait).toHaveAttribute("src", /playlist-to-party-collage-v1/);
+    await expect(hero.locator('[class*="heroRecord"]')).toHaveCount(0);
+    await expect.poll(() => portrait.evaluate(image => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+    const headingBox = await hero.locator("h1").boundingBox();
+    const portraitBox = await portrait.boundingBox();
+    if (width <= 900) expect(portraitBox!.y).toBeGreaterThan(headingBox!.y + headingBox!.height);
+    else expect(portraitBox!.x).toBeGreaterThan(headingBox!.x + headingBox!.width);
 
     const measurements = await page.evaluate(() => {
       const heading = document.querySelector("main h1")!;

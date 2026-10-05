@@ -12,7 +12,7 @@ for (const width of [320, 390]) {
     expect(cakeBox).not.toBeNull();
     expect(cakeBox!.x).toBeCloseTo(0, 0);
     expect(cakeBox!.width).toBeCloseTo(width, 0);
-    await expect(welcome.locator('div[class*="backdrop"]')).toBeHidden();
+    await expect(welcome.locator('div[class*="backdrop"]')).toBeVisible();
 
     const sceneTitle = page.getByTestId("night-scene-heading");
     const scene = page.getByTestId("night-scene");

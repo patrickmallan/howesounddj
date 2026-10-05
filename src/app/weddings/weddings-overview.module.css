@@ -27,83 +27,87 @@
 
 .hero {
   isolation: isolate;
-  min-height: clamp(620px, 62vw, 790px);
+  min-height: 660px;
   overflow: hidden;
-  border-bottom: 1px solid rgb(255 255 255 / 8%);
+  border-bottom: 4px solid var(--blue);
+  background: #080b11;
 }
 
-.heroPortrait {
-  position: absolute;
-  z-index: -3;
-  inset: 0 0 0 41%;
-  overflow: hidden;
-  clip-path: polygon(5% 3%, 100% 0, 100% 94%, 23% 89%, 0 68%);
-  mask-image: linear-gradient(90deg, transparent 0 17%, rgb(0 0 0 / 10%) 35%, black 59%);
-}
-
-.coverImage { object-fit: cover; }
-.heroPortrait .coverImage { object-position: 82% 46%; filter: contrast(1.07) saturate(0.92); }
-
-.heroShade {
+.hero::before {
+  content: "";
   position: absolute;
   z-index: -2;
   inset: 0;
-  background: linear-gradient(90deg, #07090a 0 39%, rgb(7 9 10 / 94%) 49%, transparent 77%), linear-gradient(0deg, #07090a 0, transparent 23%);
+  background: url('/images/hsdj-redesign/afterparty/wedding-night-collage-optimized.webp') center / cover;
+  opacity: .68;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(90deg, #080b11ea 0%, #080b11c9 42%, #080b1170 75%, #080b1190), linear-gradient(0deg, #080b11e8, transparent 25%);
 }
 
 .heroInner {
-  width: min(100%, 1440px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.17fr) minmax(0, .83fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  width: min(100%, 1500px);
   margin: 0 auto;
-  padding: clamp(5rem, 8vw, 8rem) clamp(1.25rem, 5vw, 5rem) 4rem;
+  padding: clamp(3.5rem, 6vw, 6rem) clamp(1.25rem, 5vw, 5rem);
 }
 
-.eyebrow, .sectionLabel, .stageLabel {
+.sectionLabel, .stageLabel {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-weight: 900;
   letter-spacing: 0.19em;
   text-transform: uppercase;
 }
 
-.eyebrow { margin: 0 0 2rem; color: var(--cyan); font-size: clamp(0.67rem, 0.9vw, 0.88rem); }
+.heroEditorial { position: relative; min-width: 0; padding: 1.4rem 0 1.4rem 1.8rem; border-left: 3px solid var(--cyan); }
 
-.heroTitleFrame { width: min(820px, 64vw); }
-
-.heroTitle {
-  margin: 0;
-  padding: .13em .16em .18em;
-  border: 1px solid rgb(255 255 255 / 12%);
-  border-left: 6px solid var(--cyan);
-  background: linear-gradient(105deg, rgb(2 5 7 / 97%), rgb(7 10 12 / 91%) 78%, rgb(7 10 12 / 72%));
-  box-shadow: 10px 12px 0 rgb(0 0 0 / 32%), inset 0 1px 0 rgb(255 255 255 / 5%);
-  font-family: var(--font-display), Impact, sans-serif;
-  font-size: clamp(3.2rem, 5.25vw, 5.5rem);
-  font-weight: 900;
-  letter-spacing: -0.055em;
-  line-height: 0.82;
-  text-transform: uppercase;
-  font-palette: --hsdj-club-light;
+.heroTitleFrame {
+  width: min(100%, 690px);
+  padding: clamp(.55rem, 1.2vw, 1rem);
+  border: 1px solid #f6fbff3b;
+  border-left: 4px solid var(--cyan);
+  background: linear-gradient(105deg, #05080eef, #05080ed9);
+  box-shadow: 9px 10px 0 #0006;
 }
 
-.heroTitle > span, .stageCopy h3 span { display: block; }
+.heroTitle { margin: 0; filter: none !important; }
+.stageCopy h3 span { display: block; }
+
+.heroRule { display: flex; gap: 4px; width: min(310px, 72%); height: 5px; margin: 1.8rem 0 1.7rem; transform: skewX(-20deg); }
+.heroRule span:nth-child(1) { flex: 1; background: var(--green); }
+.heroRule span:nth-child(2) { flex: 2.5; background: var(--cyan); }
+.heroRule span:nth-child(3) { flex: 1.6; background: #f34799; }
 
 .heroCopy {
-  position: relative;
-  width: min(790px, 62vw);
-  margin: 2.35rem 0 0;
-  padding: 1.35rem 1.6rem 1.35rem 2rem;
-  border: 1px solid rgb(255 255 255 / 12%);
-  background: rgb(5 8 9 / 89%);
-  font-size: clamp(1rem, 1.4vw, 1.27rem);
-  font-weight: 760;
+  max-width: 37rem;
+  margin: 0;
+  color: #f5f3ec;
+  font-size: clamp(1.06rem, 1.28vw, 1.22rem);
+  font-weight: 740;
   line-height: 1.55;
 }
 
-.heroCopy::before {
-  content: "";
-  position: absolute;
-  inset: -1px auto -1px -1px;
-  width: 8px;
-  background: var(--yellow);
+.heroVisual {
+  position: relative;
+  height: clamp(500px, 45vw, 620px);
+  margin: 0;
+  overflow: hidden;
+}
+.coverImage {
+  object-fit: cover;
+  object-position: center;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent), linear-gradient(180deg, transparent, #000 5%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent), linear-gradient(180deg, transparent, #000 5%, #000 94%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
 .journeyInner, .truthsInner {
@@ -441,8 +445,9 @@
 @keyframes signalFlow { to { stroke-dashoffset: -112; } }
 
 @media (max-width: 900px) {
-  .heroTitleFrame { width: min(100%, 680px); }
-  .heroCopy { width: 72vw; }
+  .heroInner { grid-template-columns: minmax(0, 1fr); max-width: 720px; }
+  .heroTitleFrame { width: 100%; }
+  .heroVisual { width: min(100%, 550px); height: 560px; margin-inline: auto; }
   .stageGrid { column-gap: 2rem; }
   .stageCopy h3 { font-size: clamp(1.55rem, 3.4vw, 2.3rem); }
   .truthComposition { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .35rem; }
@@ -454,14 +459,14 @@
 
 @media (max-width: 680px) {
   .page::before { position: absolute; opacity: 0.17; background-size: 17px 17px; }
-  .hero { min-height: 720px; }
-  .heroPortrait { inset: 315px -14% auto 0; height: 420px; opacity: 1; clip-path: polygon(5% 5%, 100% 0, 100% 94%, 27% 85%, 0 59%); mask-image: linear-gradient(90deg, transparent 0 9%, black 28%); }
-  .heroPortrait .coverImage { object-position: 100% 45%; transform: scale(1.2); transform-origin: 100% 50%; }
-  .heroShade { background: linear-gradient(180deg, #07090a 0 34%, rgb(7 9 10 / 65%) 52%, transparent 75%), linear-gradient(0deg, #07090a 0, transparent 19%); }
-  .heroInner { padding: 3.1rem 1.25rem 2.5rem; }
-  .eyebrow { max-width: 15rem; margin-bottom: 1.5rem; font-size: 0.61rem; }
-  .heroTitleFrame { width: 100%; }
-  .heroCopy { width: 100%; margin-top: 1.8rem; padding: 1.15rem 1rem 1.15rem 1.4rem; font-size: 0.95rem; }
+  .hero { min-height: 0; }
+  .hero::after { background: linear-gradient(180deg, #080b11eb, #080b11a8 58%, #080b11d9); }
+  .heroInner { gap: 2.5rem; padding: 2.7rem 1.25rem 3.4rem; }
+  .heroEditorial { padding: .5rem 0 .5rem 1rem; }
+  .heroTitleFrame { padding: .5rem; }
+  .heroRule { margin: 1.35rem 0; }
+  .heroCopy { font-size: .94rem; }
+  .heroVisual { width: auto; height: 470px; margin: 0; }
   .journeyInner { padding: 3.8rem 1rem .75rem 2.15rem; }
   .signalLead { left: 1.1rem; width: 180px; }
   .sectionLabel { font-size: 0.6rem; }
