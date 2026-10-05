@@ -161,33 +161,47 @@ test(`the fader rail selects the stage beneath each dash at ${width}px`, async (
 });
 }
 
-test("desktop video overlay uses the live mobile-style display lettering", async ({ page }) => {
-  await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto("/");
-  const frame = page.getByTestId("home-video-proof-inner");
-  await frame.scrollIntoViewIfNeeded();
-  const title = frame.locator("[data-video-overlay-title]");
-  await expect(title).toBeVisible();
-  await expect(title).toContainText("Howe SoundWedding DJ");
-  await expect(frame.locator("[data-video-overlay-lockup]")).toHaveCount(0);
-  await expect(frame.locator("[data-video-overlay-mountains] img")).toHaveAttribute("src", /hsdj-mountain-backdrop-v5\.svg/);
-  const sign = title.locator("b");
-  const treatment = await sign.evaluate((element) => {
-    const style = getComputedStyle(element);
-    const background = style.backgroundColor.match(/[\d.]+/g)?.map(Number) ?? [];
-    return {
-      fontFamily: style.fontFamily,
-      fontPalette: style.fontPalette,
-      background,
-      fits: element.scrollWidth <= element.clientWidth + 1,
-    };
+for (const width of [768, 1024, 1440]) {
+  test(`desktop video title reads as one integrated cinematic lockup at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    const frame = page.getByTestId("home-video-proof-inner");
+    await frame.scrollIntoViewIfNeeded();
+    const title = frame.locator("[data-video-overlay-title]");
+    await expect(title).toBeVisible();
+    await expect(title).toContainText("Howe SoundWedding DJ");
+    await expect(frame.locator("[data-video-overlay-lockup]")).toHaveCount(0);
+    await expect(frame.locator("[data-video-overlay-mountains] img")).toHaveAttribute("src", /hsdj-mountain-backdrop-v5\.svg/);
+    const sign = title.locator("b");
+    const subtitle = title.locator("i");
+    const treatment = await sign.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return {
+        fontFamily: style.fontFamily,
+        fits: element.scrollWidth <= element.clientWidth + 1,
+      };
+    });
+    const mainSize = Number.parseFloat(await sign.evaluate((element) => getComputedStyle(element).fontSize));
+    const subtitleSize = Number.parseFloat(await subtitle.evaluate((element) => getComputedStyle(element).fontSize));
+    const panel = await title.evaluate((element) => getComputedStyle(element).backgroundImage);
+    expect(treatment.fontFamily).toContain("Georgia");
+    expect(await subtitle.evaluate((element) => getComputedStyle(element).fontFamily)).toContain("Georgia");
+    expect(subtitleSize).toBeGreaterThanOrEqual(mainSize * .4);
+    expect(panel).toContain("linear-gradient");
+    expect(treatment.fits).toBe(true);
+    const frameBox = await frame.boundingBox();
+    const titleBox = await title.boundingBox();
+    const signBox = await sign.boundingBox();
+    const subtitleBox = await subtitle.boundingBox();
+    expect(frameBox).not.toBeNull();
+    expect(titleBox).not.toBeNull();
+    expect(signBox).not.toBeNull();
+    expect(subtitleBox).not.toBeNull();
+    expect(titleBox!.x).toBeGreaterThan(frameBox!.x);
+    expect(titleBox!.x + titleBox!.width).toBeLessThan(frameBox!.x + frameBox!.width);
+    expect(subtitleBox!.y - (signBox!.y + signBox!.height)).toBeLessThanOrEqual(12);
   });
-  expect(treatment.fontFamily).toContain("HSDJ Meter Matrix");
-  expect(treatment.fontPalette).toBe("--hsdj-paper-light");
-  expect(treatment.background.slice(0, 3)).toEqual([3, 7, 13]);
-  expect(treatment.background[3]).toBeGreaterThan(0.9);
-  expect(treatment.fits).toBe(true);
-});
+}
 
 for (const width of [390, 1440]) {
   test(`wedding moments keep faces framed and first dance feels inviting at ${width}px`, async ({ page }) => {

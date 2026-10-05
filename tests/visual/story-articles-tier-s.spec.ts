@@ -164,8 +164,8 @@ for (const story of stories) {
       expect(response.ok(), `${href} should resolve`).toBe(true);
     }
 
-    const runningHeadings = await page.locator("main h2[data-letter-flash='running']").count();
-    expect(runningHeadings).toBe(0);
+    await finalHeading.scrollIntoViewIfNeeded();
+    await expect(finalHeading).toHaveAttribute("data-letter-flash", "running");
     const articleJsonLd = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) => (
       scripts.map((script) => JSON.parse(script.textContent ?? "{}"))
         .find((value) => value["@type"] === "Article")

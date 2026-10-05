@@ -103,6 +103,20 @@ test("H2 letter flashing survives client-side route changes", async ({ page }) =
   ).toBeGreaterThan(0);
 });
 
+test("About closing H2 flashes automatically on a reduced-motion phone", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/about");
+
+  const heading = page.locator("#about-close-title");
+  await heading.scrollIntoViewIfNeeded();
+  await expect(heading).toHaveAttribute("data-letter-flash", "running");
+  await expect.poll(
+    () => heading.locator('span[class*="_off__"]').count(),
+    { timeout: 4_000, intervals: [50, 50, 50, 50, 100] },
+  ).toBeGreaterThan(0);
+});
+
 for (const width of [320, 390]) {
   test(`Venues route billboard stays inside its card at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 844 });

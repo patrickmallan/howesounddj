@@ -2,28 +2,13 @@
 
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { DJ_LIGHTS_EVENT, djLightsEnabled, setDjLightsEnabled } from "@/lib/dj-lights";
+import { useEffect, useRef, useState } from "react";
 import styles from "./night-mix-fader.module.css";
 
 const SPECTRUM_BANDS = 44;
 const FIRST_ADVANCE_MS = 4000;
 const AUTO_ADVANCE_MS = 5500;
 const AFTER_INTERACTION_MS = 12000;
-
-function subscribeMotionPreference(onChange: () => void) {
-  const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
-  preference.addEventListener("change", onChange);
-  return () => preference.removeEventListener("change", onChange);
-}
-
-function subscribeDjLights(onChange: () => void) {
-  window.addEventListener(DJ_LIGHTS_EVENT, onChange);
-  return () => window.removeEventListener(DJ_LIGHTS_EVENT, onChange);
-}
-
-const getReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const getServerPreference = () => false;
 
 const STAGES = [
   {
@@ -91,8 +76,6 @@ const STAGES = [
 export function NightMixFader() {
   const [active, setActive] = useState(0);
   const [manualSelection, setManualSelection] = useState(false);
-  const prefersReducedMotion = useSyncExternalStore(subscribeMotionPreference, getReducedMotion, getServerPreference);
-  const lightsEnabled = useSyncExternalStore(subscribeDjLights, djLightsEnabled, getServerPreference);
   const consoleRef = useRef<HTMLDivElement>(null);
   const spectrumRef = useRef<HTMLDivElement>(null);
   const hasInteractedRef = useRef(false);
@@ -295,18 +278,6 @@ export function NightMixFader() {
 
       <div className={styles.controlSurface} data-testid="night-fader-controls">
         <p className={styles.instruction}>Move through the night <span className={styles.desktopInstruction}>The scene changes with the room.</span><span className={styles.mobileInstruction}>Auto-mixes. Slide or tap a moment.</span></p>
-        {prefersReducedMotion && (
-          <div className={styles.djLightsCue}>
-            <span>Your phone has motion effects off.</span>
-            <button
-              aria-pressed={lightsEnabled}
-              onClick={() => setDjLightsEnabled(!lightsEnabled)}
-              type="button"
-            >
-              DJ lights {lightsEnabled ? "on" : "off"} · {lightsEnabled ? "turn off" : "turn on"}
-            </button>
-          </div>
-        )}
         <div className={styles.fader}>
           <div className={styles.rail} data-testid="night-fader-rail" aria-hidden="true" />
           <div className={styles.ticks} aria-hidden="true">

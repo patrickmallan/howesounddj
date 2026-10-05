@@ -99,7 +99,7 @@ export default function AboutPage() {
         <Image className="about-collage-layer" src="/images/about/about-afterparty-analog-art-v1.webp" alt="" fill sizes="100vw" quality={72} />
         <div className="about-close-photo"><Image src="/images/stories/patrick-with-bride-real-dj-v2.webp" alt="Patrick smiling with a bride behind the DJ booth at her wedding" fill sizes="(max-width: 760px) 88vw, (max-width: 1300px) 42vw, 670px" /></div>
         <div className="about-close-copy">
-          <h2 id="about-close-title" className="no-letter-flash"><span>Let&apos;s see if</span><span>we click.</span></h2>
+          <h2 id="about-close-title"><span>Let&apos;s see if</span><span>we click.</span></h2>
           <p>Tell me your date and where the party is. If I&apos;m free, we can talk about the songs you love, the ones you absolutely do not, and what kind of night your people are up for.</p>
           <AboutHardwareLink href="/contact#availability" label="Check your date" eyebrow="Cue your wedding" control="cue" />
         </div>
