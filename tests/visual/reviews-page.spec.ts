@@ -90,7 +90,8 @@ for (const width of [320, 390, 768, 1440, 1920, 2560]) {
   });
 }
 
-test("reviews motion stops when reduced motion is requested", async ({ page }) => {
+test("desktop reviews motion stops when reduced motion is requested", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/reviews");
   const motion = await page.evaluate(() => ({
@@ -98,6 +99,24 @@ test("reviews motion stops when reduced motion is requested", async ({ page }) =
     waveform: getComputedStyle(document.querySelector("[class*=waveTrack]")!).animationName,
   }));
   expect(motion).toEqual({ vinyl: "none", waveform: "none" });
+});
+
+test("desktop reviews show several complete quotes together", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/reviews");
+  const layout = await page.evaluate(() => {
+    const cards = (section: string) => [...document.querySelectorAll<HTMLElement>(`${section} figure[class*=quote]`)].filter((figure) => figure.querySelector("blockquote"));
+    const planning = cards("[id=planning-reviews]").slice(-3);
+    const day = cards("[id=whole-day-reviews]");
+    const floor = cards("[id=dance-floor-reviews]");
+    const rowTop = (element: HTMLElement) => Math.round(element.getBoundingClientRect().top);
+    return {
+      planningSameRow: planning.length === 3 && planning.every((card) => Math.abs(rowTop(card) - rowTop(planning[0])) < 20),
+      dayTwoColumns: day.length === 3 && Math.abs(rowTop(day[0]) - rowTop(day[1])) < 20 && day[0].getBoundingClientRect().right < day[1].getBoundingClientRect().left,
+      floorFeatureNotFullWidth: floor.length === 4 && floor[0].getBoundingClientRect().width < document.querySelector<HTMLElement>("[class*=floorQuotes]")!.getBoundingClientRect().width * .8,
+    };
+  });
+  expect(layout).toEqual({ planningSameRow: true, dayTwoColumns: true, floorFeatureNotFullWidth: true });
 });
 
 test("featured review controls remain keyboard-operable and clearly labelled", async ({ page }) => {

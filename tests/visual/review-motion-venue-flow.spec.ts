@@ -17,8 +17,23 @@ for (const width of [390, 1440]) {
     const waveBefore = await track.evaluate(el => getComputedStyle(el).transform);
     await expect.poll(() => track.evaluate(el => getComputedStyle(el).transform)).not.toBe(waveBefore);
     await page.emulateMedia({ reducedMotion: "reduce" });
-    await expect.poll(() => record.evaluate(el => getComputedStyle(el).animationName)).toBe("none");
-    await expect.poll(() => track.evaluate(el => getComputedStyle(el).animationName)).toBe("none");
+    if (width === 390) {
+      await page.locator('[data-review-motion]').last().scrollIntoViewIfNeeded();
+      await expect.poll(() => track.evaluate(el => getComputedStyle(el).animationName)).toContain("waveform-travel");
+      const reducedWaveBefore = await track.evaluate(el => getComputedStyle(el).transform);
+      await expect.poll(() => track.evaluate(el => getComputedStyle(el).transform)).not.toBe(reducedWaveBefore);
+      await region.scrollIntoViewIfNeeded();
+      await expect.poll(() => record.evaluate(el => getComputedStyle(el).animationName)).toContain("record-turn");
+      const reducedRecordBefore = await record.evaluate(el => getComputedStyle(el).transform);
+      await expect.poll(() => record.evaluate(el => getComputedStyle(el).transform)).not.toBe(reducedRecordBefore);
+      const screenPlayhead = page.locator('[class*=waveformPlayhead]').first();
+      await expect.poll(() => screenPlayhead.evaluate(el => getComputedStyle(el).animationName)).toContain("review-screen-scan");
+      const reducedScanBefore = await screenPlayhead.evaluate(el => getComputedStyle(el).transform);
+      await expect.poll(() => screenPlayhead.evaluate(el => getComputedStyle(el).transform)).not.toBe(reducedScanBefore);
+    } else {
+      await expect.poll(() => record.evaluate(el => getComputedStyle(el).animationName)).toBe("none");
+      await expect.poll(() => track.evaluate(el => getComputedStyle(el).animationName)).toBe("none");
+    }
   });
 }
 
