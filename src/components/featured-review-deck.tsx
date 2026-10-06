@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ReviewMotionRegion } from "./review-motion-region";
 import type { DeckReview } from "@/config/review-deck";
+import { formatReviewMonth } from "@/config/reviews";
 import styles from "@/app/reviews/reviews-page.module.css";
 
 const cueColors = ["#ffe044", "#24d2e9", "#ff7442", "#fc4a8e", "#5dd7a0", "#7d8bff", "#e88af7", "#ffaf4b"];
@@ -111,7 +112,17 @@ export function FeaturedReviewDeck({ reviews }: { reviews: readonly DeckReview[]
             <span className={styles.quoteMark} aria-hidden="true">“</span>
             <figure className={`${styles.quote} ${styles.leadQuote}`}>
               <blockquote>{selected.quote}</blockquote>
-              <figcaption><span className={styles.bylineKnob} aria-hidden="true" /><span>{selected.reviewerName}</span>{selected.venue ? <small>{selected.venue}</small> : null}</figcaption>
+              <figcaption>
+                <span className={styles.bylineKnob} aria-hidden="true" />
+                <span>{selected.reviewerName}</span>
+                {selected.venue || selected.reviewMonth ? (
+                  <small className={styles.reviewMeta}>
+                    {selected.venue ? <span>{selected.venue}</span> : null}
+                    {selected.venue && selected.reviewMonth ? <span aria-hidden="true">·</span> : null}
+                    {selected.reviewMonth ? <time dateTime={selected.reviewMonth}>{formatReviewMonth(selected.reviewMonth)}</time> : null}
+                  </small>
+                ) : null}
+              </figcaption>
             </figure>
             {selected.sourceHref ? <a className={styles.reviewSource} href={selected.sourceHref} target="_blank" rel="noopener noreferrer">Read on Google<span className="sr-only"> (opens in a new tab)</span> <span aria-hidden="true">↗</span></a> : null}
           </div>

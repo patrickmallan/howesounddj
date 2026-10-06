@@ -5,7 +5,7 @@ import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { FeaturedReviewDeck } from "@/components/featured-review-deck";
 import { ReviewMotionRegion } from "@/components/review-motion-region";
-import { CANONICAL_REVIEWS, type CanonicalReview } from "@/config/reviews";
+import { CANONICAL_REVIEWS, formatReviewMonth, type CanonicalReview } from "@/config/reviews";
 import { makeFeaturedDeckReviews } from "@/config/review-deck";
 import styles from "./reviews-page.module.css";
 
@@ -52,17 +52,21 @@ const people = [
   review("wedding-couple-anonymous"),
   review("matthew-bundala"),
   review("natasha-beaudry"),
+  review("nick-milum"),
+  review("sabrina-munroe"),
 ];
 const fullDay = [
   review("danya-karras"),
   review("cassandra-wilding"),
   review("melissa-schweyer"),
+  review("eric-tsoi"),
 ];
 const floor = [
   review("molly-finn"),
   review("vanessa-pocock"),
   review("ellen-selby"),
   review("matias-fontecilla"),
+  review("lauren-stewart"),
 ];
 
 function ReviewQuote({ item, className = "" }: { item: CanonicalReview; className?: string }) {
@@ -72,7 +76,13 @@ function ReviewQuote({ item, className = "" }: { item: CanonicalReview; classNam
       <figcaption>
         <span className={styles.bylineKnob} aria-hidden="true" />
         <span>{item.reviewerName}</span>
-        {item.venue ? <small>{item.venue}</small> : null}
+        {item.venue || item.reviewMonth ? (
+          <small className={styles.reviewMeta}>
+            {item.venue ? <span>{item.venue}</span> : null}
+            {item.venue && item.reviewMonth ? <span aria-hidden="true">·</span> : null}
+            {item.reviewMonth ? <time dateTime={item.reviewMonth}>{formatReviewMonth(item.reviewMonth)}</time> : null}
+          </small>
+        ) : null}
       </figcaption>
     </figure>
   );

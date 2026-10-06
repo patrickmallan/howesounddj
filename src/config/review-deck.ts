@@ -5,6 +5,7 @@ export type DeckReview = {
   reviewerName: string;
   quote: string;
   venue?: string;
+  reviewMonth?: string;
   sourceHref?: string;
 };
 
@@ -18,6 +19,7 @@ export const GOOGLE_DECK_REVIEWS: readonly DeckReview[] = [
     reviewerName: "Danielle Lafontaine",
     quote: "At the same time, he knew how to read the crowd and chose the perfect songs to keep everyone singing, dancing, and having a great time late into the night.",
     venue: "Easter Seals Camp Squamish",
+    reviewMonth: "2026-09",
     sourceHref: googleProfile,
   },
   {
@@ -32,12 +34,14 @@ export const GOOGLE_DECK_REVIEWS: readonly DeckReview[] = [
     reviewerName: "Karly and Alex",
     quote: "He was super helpful leading up to our day, he edited our first dance song for us, gave us some timeline tips for the reception, and went through everything in detail with us to make sure transitions and timing flowed smoothly.",
     venue: "Cheakamus Centre",
+    reviewMonth: "2026-08",
     sourceHref: googleProfile,
   },
   {
     id: "sarah-peebles-google",
     reviewerName: "Sarah Peebles",
     quote: "I had a very specific vision for my wedding music and he went above and beyond to make sure I got exactly what I wanted.",
+    reviewMonth: "2026-08",
     sourceHref: googleProfile,
   },
   {
@@ -52,6 +56,7 @@ export const GOOGLE_DECK_REVIEWS: readonly DeckReview[] = [
     reviewerName: "Laura Cox",
     quote: "He was very accommodating to us and did a great job mixing songs from different languages and backgrounds while still keeping it cohesive and flowing.",
     venue: "Sunwolf Resort",
+    reviewMonth: "2026-06",
     sourceHref: googleProfile,
   },
   {
@@ -69,6 +74,7 @@ export function makeFeaturedDeckReviews(lead: CanonicalReview): readonly DeckRev
       reviewerName: lead.reviewerName,
       quote: lead.quote,
       venue: lead.venue,
+      reviewMonth: lead.reviewMonth,
     },
     ...GOOGLE_DECK_REVIEWS,
   ];

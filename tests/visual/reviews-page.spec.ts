@@ -45,6 +45,9 @@ test("reviews page keeps the full customer words and useful opening navigation",
   await expect(page.locator("figure blockquote")).toHaveCount(CANONICAL_REVIEWS.length);
   for (const review of CANONICAL_REVIEWS) {
     await expect(page.locator("figure blockquote").filter({ hasText: review.quote })).toHaveCount(1);
+    if (review.reviewMonth) {
+      await expect(page.locator("figure").filter({ hasText: review.quote }).locator(`time[datetime="${review.reviewMonth}"]`)).toHaveCount(1);
+    }
   }
 
   await page.getByRole("link", { name: "Start reading" }).click();
@@ -106,17 +109,18 @@ test("desktop reviews show several complete quotes together", async ({ page }) =
   await page.goto("/reviews");
   const layout = await page.evaluate(() => {
     const cards = (section: string) => [...document.querySelectorAll<HTMLElement>(`${section} figure[class*=quote]`)].filter((figure) => figure.querySelector("blockquote"));
-    const planning = cards("[id=planning-reviews]").slice(-3);
+    const planning = cards("[id=planning-reviews]").slice(-5);
     const day = cards("[id=whole-day-reviews]");
     const floor = cards("[id=dance-floor-reviews]");
     const rowTop = (element: HTMLElement) => Math.round(element.getBoundingClientRect().top);
     return {
-      planningSameRow: planning.length === 3 && planning.every((card) => Math.abs(rowTop(card) - rowTop(planning[0])) < 20),
-      dayTwoColumns: day.length === 3 && Math.abs(rowTop(day[0]) - rowTop(day[1])) < 20 && day[0].getBoundingClientRect().right < day[1].getBoundingClientRect().left,
-      floorFeatureNotFullWidth: floor.length === 4 && floor[0].getBoundingClientRect().width < document.querySelector<HTMLElement>("[class*=floorQuotes]")!.getBoundingClientRect().width * .8,
+      planningUsesOpenCells: planning.length === 5 && planning[3].getBoundingClientRect().left > planning[0].getBoundingClientRect().right && Math.abs(rowTop(planning[3]) - rowTop(planning[4])) < 20,
+      dayTwoBalancedRows: day.length === 4 && Math.abs(rowTop(day[0]) - rowTop(day[3])) < 20 && Math.abs(rowTop(day[1]) - rowTop(day[2])) < 20,
+      floorFeatureNotFullWidth: floor.length === 5 && floor[0].getBoundingClientRect().width < document.querySelector<HTMLElement>("[class*=floorQuotes]")!.getBoundingClientRect().width * .8,
+      floorLastCardFillsThirdColumn: floor.length === 5 && floor[4].getBoundingClientRect().left > floor[3].getBoundingClientRect().right,
     };
   });
-  expect(layout).toEqual({ planningSameRow: true, dayTwoColumns: true, floorFeatureNotFullWidth: true });
+  expect(layout).toEqual({ planningUsesOpenCells: true, dayTwoBalancedRows: true, floorFeatureNotFullWidth: true, floorLastCardFillsThirdColumn: true });
 });
 
 test("featured review controls remain keyboard-operable and clearly labelled", async ({ page }) => {

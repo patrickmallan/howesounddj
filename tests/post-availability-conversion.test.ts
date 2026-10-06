@@ -49,10 +49,10 @@ function containsEmDash(text: string): boolean {
 }
 
 describe("review SSOT", () => {
-  it("has 12 unique canonical review IDs", () => {
+  it("has 16 unique canonical review IDs", () => {
     const ids = CANONICAL_REVIEWS.map((review) => review.id);
-    expect(ids).toHaveLength(12);
-    expect(new Set(ids).size).toBe(12);
+    expect(ids).toHaveLength(16);
+    expect(new Set(ids).size).toBe(16);
   });
 
   it("uses valid theme tags only", () => {

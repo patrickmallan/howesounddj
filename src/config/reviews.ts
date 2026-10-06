@@ -30,12 +30,14 @@ export type CanonicalReview = {
   attribution: string;
   /** Governed venue label when authorized in review SSOT (e.g. Sea to Sky Gondola). */
   venue?: string;
+  /** YYYY-MM from the Google review notice; omitted when the posting month is unverified. */
+  reviewMonth?: string;
   /**
    * Patrick-approved editorial excerpt for Availability Success surfaces only.
    * Canonical `quote` remains the full published testimonial.
    */
   availabilitySuccessExcerpt?: string;
-  evidenceStatus: "published_site";
+  evidenceStatus: "published_site" | "google_business_profile";
 };
 
 export const CANONICAL_REVIEWS: readonly CanonicalReview[] = [
@@ -51,6 +53,7 @@ export const CANONICAL_REVIEWS: readonly CanonicalReview[] = [
       "We would get married all over again just so we could hangout and work with Patrick again. He's a talented DJ and a truly caring person.",
     attribution: "Stephen Henry",
     venue: "Sea to Sky Gondola",
+    reviewMonth: "2024-07",
     availabilitySuccessExcerpt:
       "We would get married all over again just so we could hangout and work with Patrick again. He's a talented DJ and a truly caring person.",
     evidenceStatus: "published_site",
@@ -66,6 +69,7 @@ export const CANONICAL_REVIEWS: readonly CanonicalReview[] = [
     fullExcerpt:
       "Patrick kept the party going all night long. If you're thinking about booking him run, don't walk! You will not regret it.",
     attribution: "Molly Finn",
+    reviewMonth: "2025-05",
     evidenceStatus: "published_site",
   },
   {
@@ -104,6 +108,7 @@ export const CANONICAL_REVIEWS: readonly CanonicalReview[] = [
     fullExcerpt:
       "Patrick is incredible. His calm, professional, yet personable communication made our day stress-free.",
     attribution: "Matthew Bundala",
+    reviewMonth: "2024-10",
     evidenceStatus: "published_site",
   },
   {
@@ -115,6 +120,7 @@ export const CANONICAL_REVIEWS: readonly CanonicalReview[] = [
     compactExcerpt: "Patrick kept the dance floor packed and the energy high all night long.",
     fullExcerpt: "Patrick kept the dance floor packed and the energy high all night long.",
     attribution: "Vanessa Pocock",
+    reviewMonth: "2024-09",
     evidenceStatus: "published_site",
   },
   {
@@ -152,6 +158,7 @@ export const CANONICAL_REVIEWS: readonly CanonicalReview[] = [
     fullExcerpt:
       "Patrick was absolutely fantastic! He handled our ceremony, cocktail hour, and reception seamlessly.",
     attribution: "Danya Karras",
+    reviewMonth: "2024-10",
     evidenceStatus: "published_site",
   },
   {
@@ -193,6 +200,64 @@ export const CANONICAL_REVIEWS: readonly CanonicalReview[] = [
     attribution: "Melissa Schweyer",
     evidenceStatus: "published_site",
   },
+  {
+    id: "nick-milum",
+    reviewerName: "Nick Milum",
+    quote:
+      "Patrick was an incredible addition to our wedding. He was accommodating - letting us use his gear Friday night for personal use while he was elsewhere.",
+    sourceSurfaces: ["/reviews"],
+    themes: ["CARE", "PLANNING"],
+    compactExcerpt: "Patrick was an incredible addition to our wedding.",
+    fullExcerpt:
+      "Patrick was an incredible addition to our wedding. He was accommodating - letting us use his gear Friday night for personal use while he was elsewhere.",
+    attribution: "Nick Milum",
+    venue: "Cheekye Ranch",
+    reviewMonth: "2026-08",
+    evidenceStatus: "google_business_profile",
+  },
+  {
+    id: "sabrina-munroe",
+    reviewerName: "Sabrina Munroe",
+    quote:
+      "Patrick was an absolute pleasure to work with! His communication leading up to the event was top notch and he worked with us closely to make sure we had the perfect wedding reception dance party!",
+    sourceSurfaces: ["/reviews"],
+    themes: ["COMMUNICATION", "PLANNING", "DANCE_FLOOR"],
+    compactExcerpt: "His communication leading up to the event was top notch.",
+    fullExcerpt:
+      "Patrick was an absolute pleasure to work with! His communication leading up to the event was top notch and he worked with us closely to make sure we had the perfect wedding reception dance party!",
+    attribution: "Sabrina Munroe",
+    reviewMonth: "2026-09",
+    evidenceStatus: "google_business_profile",
+  },
+  {
+    id: "eric-tsoi",
+    reviewerName: "Eric Tsoi",
+    quote:
+      "Everything from our ceremony procession, to our first dance, guest speeches, and all of the small moments in-between went perfectly.",
+    sourceSurfaces: ["/reviews"],
+    themes: ["FULL_EVENT", "SEAMLESS"],
+    compactExcerpt: "All of the small moments in-between went perfectly.",
+    fullExcerpt:
+      "Everything from our ceremony procession, to our first dance, guest speeches, and all of the small moments in-between went perfectly.",
+    attribution: "Eric Tsoi",
+    venue: "Sea to Sky Gondola",
+    reviewMonth: "2026-04",
+    evidenceStatus: "google_business_profile",
+  },
+  {
+    id: "lauren-stewart",
+    reviewerName: "Lauren Stewart",
+    quote:
+      "If you want your wedding reception to be an absolute party, hire Patrick from Howe Sound Wedding DJ!",
+    sourceSurfaces: ["/reviews"],
+    themes: ["DANCE_FLOOR", "ENERGY"],
+    compactExcerpt: "If you want your wedding reception to be an absolute party, hire Patrick from Howe Sound Wedding DJ!",
+    fullExcerpt:
+      "If you want your wedding reception to be an absolute party, hire Patrick from Howe Sound Wedding DJ!",
+    attribution: "Lauren Stewart",
+    reviewMonth: "2026-09",
+    evidenceStatus: "google_business_profile",
+  },
 ] as const;
 
 export const POST_AVAILABILITY_PROOF_FULL_ID = "stephen-henry" as const;
@@ -200,6 +265,11 @@ export const POST_AVAILABILITY_PROOF_COMPACT_ID = "stephen-henry" as const;
 
 export function getReviewById(id: string): CanonicalReview | undefined {
   return CANONICAL_REVIEWS.find((review) => review.id === id);
+}
+
+export function formatReviewMonth(month: string): string {
+  return new Intl.DateTimeFormat("en-CA", { month: "short", year: "numeric", timeZone: "UTC" })
+    .format(new Date(`${month}-01T00:00:00Z`));
 }
 
 /** Proof quotation for Availability Success : excerpt when governed, else canonical quote. */
