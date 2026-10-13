@@ -101,9 +101,11 @@ export function PostAvailabilitySuccess({
 }: Props) {
   const reduceMotion = useReducedMotion();
   const proofViewTracked = useRef(false);
+  const ctaViewTracked = useRef(false);
   const successViewTracked = useRef(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
+  const proofRef = useRef<HTMLElement>(null);
 
   const formattedDate = formatWeddingDateLong(weddingDate);
   const proofId =
@@ -132,18 +134,55 @@ export function PostAvailabilitySuccess({
     );
     if (journeyId) {
       recordAvailabilityJourneyEvent({ journeyId, eventType: "SUCCESS_VIEWED", pagePath: "/contact", surface, experimentVariant: variant });
-      recordAvailabilityJourneyEvent({ journeyId, eventType: "CONSULT_CTA_DISPLAYED", pagePath: "/contact", surface, experimentVariant: variant });
     }
   }, [journeyId, surface, weddingDate, variant]);
 
   useEffect(() => {
-    if (!proof || proofViewTracked.current) return;
-    proofViewTracked.current = true;
-    trackEvent(
-      ANALYTICS_EVENTS.postAvailabilityProofView,
-      postAvailabilityAnalyticsBase(surface, weddingDate, variant),
-    );
-    if (journeyId) recordAvailabilityJourneyEvent({ journeyId, eventType: "PROOF_VIEWED", pagePath: "/contact", surface, experimentVariant: variant });
+    const cta = ctaRef.current;
+    if (!cta || ctaViewTracked.current) return;
+    const recordView = () => {
+      if (ctaViewTracked.current) return;
+      ctaViewTracked.current = true;
+      if (journeyId) recordAvailabilityJourneyEvent({ journeyId, eventType: "CONSULT_CTA_DISPLAYED", pagePath: "/contact", surface, experimentVariant: variant });
+    };
+    if (typeof IntersectionObserver === "undefined") {
+      if (isElementInitiallyVisible(cta)) recordView();
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry?.isIntersecting && entry.intersectionRatio >= 0.5) {
+        recordView();
+        observer.disconnect();
+      }
+    }, { threshold: 0.5 });
+    observer.observe(cta);
+    return () => observer.disconnect();
+  }, [journeyId, surface, variant]);
+
+  useEffect(() => {
+    const proofElement = proofRef.current;
+    if (!proof || !proofElement || proofViewTracked.current) return;
+    const recordView = () => {
+      if (proofViewTracked.current) return;
+      proofViewTracked.current = true;
+      trackEvent(
+        ANALYTICS_EVENTS.postAvailabilityProofView,
+        postAvailabilityAnalyticsBase(surface, weddingDate, variant),
+      );
+      if (journeyId) recordAvailabilityJourneyEvent({ journeyId, eventType: "PROOF_VIEWED", pagePath: "/contact", surface, experimentVariant: variant });
+    };
+    if (typeof IntersectionObserver === "undefined") {
+      if (isElementInitiallyVisible(proofElement)) recordView();
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry?.isIntersecting && entry.intersectionRatio >= 0.5) {
+        recordView();
+        observer.disconnect();
+      }
+    }, { threshold: 0.5 });
+    observer.observe(proofElement);
+    return () => observer.disconnect();
   }, [journeyId, proof, surface, weddingDate, variant]);
 
   function handleConsultClick() {
@@ -204,7 +243,7 @@ export function PostAvailabilitySuccess({
       ? POST_AVAILABILITY_COMPACT_HEADLINE_CONFIRMATION
       : POST_AVAILABILITY_SUCCESS_HEADLINE_CONFIRMATION;
   const proofBlock = proof && proofQuote ? (
-    <figure className={roleProofGroup()} data-availability-role="proof">
+    <figure ref={proofRef} className={roleProofGroup()} data-availability-role="proof">
       <blockquote className={roleTestimonial()} data-availability-role="testimonial">
         {formatAvailabilityTestimonialQuotation(proofQuote)}
       </blockquote>
