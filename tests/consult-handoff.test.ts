@@ -27,7 +27,7 @@ describe("consult handoff", () => {
     const response = await GET(new Request(`https://www.howesounddj.com/go/consult?jid=${journeyId}&surface=contact_success&month=2028-07`));
     expect(response.status).toBe(302);
     expect(response.headers.get("location")).toContain("utm_term=hsdj_journey_");
-    expect(response.headers.get("location")).toContain("month=2028-07");
+    expect(response.headers.get("location")).not.toContain("month=");
     expect(fixtures.forward).not.toHaveBeenCalled();
     expect(fixtures.afterTasks).toHaveLength(1);
     await fixtures.afterTasks[0]();
@@ -35,6 +35,13 @@ describe("consult handoff", () => {
       kind: "event",
       event: expect.objectContaining({ journeyId, eventType: "CONSULT_CLICKED", surface: "contact_success" }),
     }));
+  });
+
+  it("drops a legacy wedding-month parameter rather than opening Calendly in that month", async () => {
+    const response = await GET(new Request("https://www.howesounddj.com/go/consult?month=2028-07&surface=header_panel"));
+    const target = new URL(response.headers.get("location")!);
+    expect(target.searchParams.has("month")).toBe(false);
+    expect(target.searchParams.get("utm_content")).toBe("header_panel");
   });
 
   it("does not forward a malformed public journey ID", async () => {

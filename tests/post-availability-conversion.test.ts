@@ -425,17 +425,18 @@ describe("formatWeddingDateLong", () => {
 });
 
 describe("post-availability calendly URL", () => {
-  it("carries month and funnel metadata without PII", () => {
+  it("carries journey and surface metadata without moving the booking calendar to the wedding month", () => {
     const url = new URL(
       buildPostAvailabilityCalendlyUrl({
-        weddingDate: "2028-06-15",
         surface: "contact_form",
+        journeyId: "bf7d9412-81d1-42c3-9bb8-852d918a8ec0",
       }),
       "https://www.howesounddj.com",
     );
     expect(url.pathname).toBe("/go/consult");
-    expect(url.searchParams.get("month")).toBe("2028-06");
+    expect(url.searchParams.has("month")).toBe(false);
     expect(url.searchParams.get("surface")).toBe("contact_form");
+    expect(url.searchParams.get("jid")).toBe("bf7d9412-81d1-42c3-9bb8-852d918a8ec0");
   });
 });
 

@@ -16,13 +16,11 @@ export async function GET(request: Request) {
   const journeyId = isJourneyId(requestedJourneyId) ? requestedJourneyId : null;
   const requestedSurface = source.searchParams.get("surface");
   const surface = isJourneySurface(requestedSurface) ? requestedSurface : "post_availability";
-  const month = source.searchParams.get("month")?.slice(0, 7) ?? "";
   if (journeyId) {
     const occurredAt = new Date().toISOString();
     after(() => forwardAvailabilityJourney({ kind: "event", event: { journeyId, eventId: crypto.randomUUID(), eventType: "CONSULT_CLICKED", occurredAt, pagePath: "/contact", surface } }));
   }
   const target = new URL(CONSULT_CALENDLY_URL);
-  if (/^\d{4}-\d{2}$/.test(month)) target.searchParams.set("month", month);
   target.searchParams.set("utm_source", "howesounddj");
   target.searchParams.set("utm_medium", "post_availability");
   target.searchParams.set("utm_campaign", "sound_check");

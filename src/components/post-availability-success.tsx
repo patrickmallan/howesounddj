@@ -110,7 +110,7 @@ export function PostAvailabilitySuccess({
     variant === "full" ? POST_AVAILABILITY_PROOF_FULL_ID : POST_AVAILABILITY_PROOF_COMPACT_ID;
   const proof = getReviewById(proofId);
   const journeyId = getPostAvailabilityContext()?.journeyId;
-  const calendlyUrl = buildPostAvailabilityCalendlyUrl({ weddingDate, surface, journeyId });
+  const calendlyUrl = buildPostAvailabilityCalendlyUrl({ surface, journeyId });
   const proofQuote = proof ? getAvailabilitySuccessProofQuote(proof) : "";
 
   useLayoutEffect(() => {
