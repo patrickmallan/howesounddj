@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const fixtures = vi.hoisted(() => ({
   afterTasks: [] as Array<() => unknown>,
-  forward: vi.fn(async () => true),
+  forward: vi.fn(async (_payload: unknown) => { void _payload; return true; }),
   notify: vi.fn(async () => false),
 }));
 
@@ -34,6 +34,7 @@ describe("availability response handoff", () => {
   beforeEach(() => {
     fixtures.afterTasks.length = 0;
     fixtures.forward.mockClear();
+    fixtures.forward.mockResolvedValue(true);
     fixtures.notify.mockClear();
   });
 
@@ -55,8 +56,25 @@ describe("availability response handoff", () => {
 
     await fixtures.afterTasks[0]();
     expect(fixtures.forward).toHaveBeenCalledWith(expect.objectContaining({
-      kind: "journey",
+      kind: "check",
       journey: expect.objectContaining({ entryPage: "/contact", source: "google", medium: "organic", campaign: null }),
+      event: expect.objectContaining({ eventType: "CHECK_COMPLETED" }),
     }));
+  });
+
+  it("falls back to the prior endpoint until Operations deploys the combined delivery", async () => {
+    fixtures.forward.mockResolvedValueOnce(false).mockResolvedValueOnce(true).mockResolvedValueOnce(true);
+    const response = await POST(new Request("https://www.howesounddj.com/api/availability", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ date: "2028-06-15" }),
+    }));
+    expect(response.status).toBe(200);
+    await fixtures.afterTasks[0]();
+    expect(fixtures.forward).toHaveBeenCalledTimes(3);
+    expect(fixtures.forward.mock.calls[0][0]).toMatchObject({ kind: "check" });
+    expect(fixtures.forward.mock.calls[1][0]).toMatchObject({ kind: "journey" });
+    const initial = fixtures.forward.mock.calls[0][0] as { event: unknown };
+    expect(fixtures.forward.mock.calls[2][0]).toMatchObject({ kind: "event", event: initial.event });
   });
 });

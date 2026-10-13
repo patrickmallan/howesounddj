@@ -108,12 +108,27 @@ export async function POST(request: Request) {
       notificationSent: false,
   };
   after(async () => {
-    const journeyRecorded = await forwardAvailabilityJourney({ kind: "journey", journey });
-    if (!journeyRecorded) console.warn("[availability] journey_not_recorded", { journey_id: journeyId });
-    await forwardAvailabilityJourney({ kind: "event", event: { journeyId, eventId: crypto.randomUUID(), eventType: "CHECK_COMPLETED", occurredAt: evaluated.checkedAt, pagePath: "/contact", surface: "contact_form" } });
+    const checkPayload = {
+      kind: "check",
+      journey,
+      event: { journeyId, eventId: crypto.randomUUID(), eventType: "CHECK_COMPLETED", occurredAt: evaluated.checkedAt, pagePath: "/contact", surface: "contact_form" },
+    };
+    let completionRecorded = await forwardAvailabilityJourney(checkPayload);
+    if (!completionRecorded) {
+      // Operations may still be on the previous release while this site deploys.
+      // Keep the old handoff working until the combined endpoint is available.
+      const journeyRecorded = await forwardAvailabilityJourney({ kind: "journey", journey });
+      if (journeyRecorded) {
+        completionRecorded = await forwardAvailabilityJourney({ kind: "event", event: checkPayload.event });
+      }
+    }
     const notificationSent = await sendAvailabilityCheckNotification(evaluated, journeyId);
+    if (!completionRecorded) completionRecorded = await forwardAvailabilityJourney(checkPayload);
+    if (!completionRecorded) console.warn("[availability] check_completion_not_recorded", { journey_id: journeyId });
     if (notificationSent) {
-      await forwardAvailabilityJourney({ kind: "journey", journey: { ...journey, notificationSent: true } });
+      if (completionRecorded) {
+        await forwardAvailabilityJourney({ kind: "journey", journey: { ...journey, notificationSent: true } });
+      }
     }
   });
 
