@@ -105,6 +105,7 @@ export default function GuidesHubPage() {
 
       <nav className="guides-deck-exit" aria-label="More ways to explore">
         <p>Want to picture a particular room?</p>
+        <HardwareLink eyebrow="Hot cue" href="/guides/sea-to-sky-wedding-dj-cost" label="Compare DJ quotes" mode="hot-cue" />
         <HardwareLink eyebrow="Hot cue" href="/venues" label="Follow the venue route" mode="hot-cue" />
         <HardwareLink eyebrow="Hot cue" href="/faq" label="Ask the practical questions" mode="hot-cue" />
       </nav>

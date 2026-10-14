@@ -70,6 +70,12 @@ export default function PackagesPage() {
               <details><summary><span>04</span>How late?</summary><p>Coverage should match your party, not an arbitrary package limit.</p></details>
             </div>
             <p className={styles.heroPromise}>Give me those four things. I will tell you what makes sense. If you do not need something, it will not be in the quote.</p>
+            <p className="mx-1 mt-3 text-sm font-semibold leading-relaxed text-white/80">
+              Comparing quotes first?{" "}
+              <Link className="text-amber-200 underline underline-offset-4 hover:text-amber-100" href="/guides/sea-to-sky-wedding-dj-cost" prefetch={false}>
+                See what changes a Sea-to-Sky wedding DJ price.
+              </Link>
+            </p>
           </div>
         </div>
       </section>

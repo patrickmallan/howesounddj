@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/guides",
     "/guides/how-to-keep-a-wedding-dance-floor-packed",
     "/guides/how-to-choose-a-wedding-dj-in-squamish",
+    "/guides/sea-to-sky-wedding-dj-cost",
     "/stories",
     "/stories/what-a-sea-to-sky-gondola-dance-floor-feels-like",
     "/stories/what-a-sunwolf-riverside-wedding-reception-feels-like",

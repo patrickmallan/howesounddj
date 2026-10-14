@@ -1,0 +1,21 @@
+# AI visibility — Phase 7 measurement protocol
+
+**Status:** READY FOR REVIEW as of 2026-10-13; no post-publication readout exists. This is a protocol, not a new dashboard or a claim of improvement. It becomes active only if Patrick approves and publishes an implementation.
+
+## Freeze and compare like with like
+
+- Preserve the exact 12 Phase 1 queries and the first-pass observations in [Phase 1](PHASE_1_FIRST_PASS.md). Complete a second independently dated pre-change pass with raw response captures, citations, UTC timestamps, locale, device/interface, and signed-in context before website edits. If a platform or feature is unavailable, mark it unavailable instead of filling a zero.
+- Record the production URL, commit and publication timestamp only after an approved deployment. Re-run the same query protocol at approximately 14, 30, 60 and 90 days. Keep a separate note for changed query wording, platform behavior, personalization or geography; do not blend incompatible runs into one rate.
+- For each answer, separately code **mentioned**, **recommended**, and **first-party URL cited**. Record the exact cited URL and whether a quoted business fact is accurate. A Google AI Overview/AI Mode link impression in Search Console is a separate, aggregate Google metric—not a ChatGPT citation, a click, or a lead.
+
+## Existing operating evidence, in order
+
+1. **Eligibility:** Search Console sitemap and URL Inspection for the published guide and important linked pages; inspect crawl/fetch, index permission, canonical, discovered/crawled/indexed status and dates. Use HSDJ_SEO_Intelligence Tier-S production-crawl PASS only when the **complete inventory** was tested. Its local repair treats empty and partial crawls as missing evidence. Do not treat the 2026-09-02 0/0 report as a live site test.
+2. **Discovery:** Search Console Web page/query impressions, clicks, CTR and position for the exact guide URL and relevant existing landing pages; keep the Google Generative AI features beta view distinct. Check report freshness, low-volume/query anonymization and whether the page was indexed during the measured window. No attribution of one page's movement to the guide without a defensible comparison.
+3. **On-site interest:** Reuse existing GA4 landing-page and journey reports in HSDJ_SEO_Intelligence. Observe guide landings and natural movement to `/packages`, `/weddings` or `/contact`; a page view or CTA click is not an inquiry. Do not add a new event or tracking practice just to make this readout look complete.
+4. **Date-check and consult:** Reuse the existing availability journey ledger in `HSDJ_SEO_Intelligence/src/hsdj_seo/business_intelligence/availability_journeys.py`. Report raw checks, explicitly marked QA checks excluded, incomplete checks lacking `CHECK_COMPLETED`, repeated checks, available-date journeys, consult clicks, Calendly opens, and scheduled consults as separate counts. Its current model has no person-level identity, so checks are not distinct couples. Never classify a missing completion event as an abandoned lead.
+5. **Business outcome:** The canonical lead/Operations record determines consult completed, decision pending, booked or lost. The HSI lead ledger's `CONSULT_SCHEDULED` is not a held consult; `BOOKED` requires a booked timestamp. Preserve unknown source/loss reasons as unknown. Do not infer that an AI answer generated a booking unless an evidence-backed individual journey supports it, and avoid publishing private lead information.
+
+## Readout and action rule
+
+At each interval, state the sample and time window, source freshness, test exclusions, missing data, and a one-sentence limitation for every business metric. Give the five outcome levels—eligibility, information quality, discovery, AI visibility, and business value—separately, not a composite score. Maintain, revise, or retire public price examples based first on source currency and reader usefulness. With few checks, missing consult outcomes, or an unindexed page, the correct conclusion may be **too early to tell**. Do not call a change causal merely because a mention, impression, click or inquiry followed publication.
