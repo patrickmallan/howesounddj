@@ -1,0 +1,33 @@
+# AI visibility — Phase 3 official public-price ledger
+
+**Status:** IN PROGRESS. Read from provider-owned public pages on 2026-10-13 and rechecked live in-browser on 2026-10-14; no private Howe Sound DJ price, quote, contract, or customer record was used. Amounts below are the providers' advertised examples, **not HSDJ prices and not a regional average**. A `$` sign appears on these pages; the pages inspected did not clearly label currency code, so **CAD is plausible but not independently confirmed from the price text**. Verify again before public use; promotional prices can change without notice.
+
+## Official examples and comparability
+
+### Coast Mountain DJs — [official pricing](https://www.coastmountaindjs.com/pricing/)
+
+- **VERIFIED 2026-10-13:** “Six Hour Wedding Package” **$1,990**, advertised as six hours of DJ service, consult, two speakers, setup/teardown, intelligent lighting, wireless microphone, speech monitoring, and music requests. “Ceremony Sound” **$500** is a separate item, described as cue/play ceremony music, arrival/post-ceremony music, speaker setup and optional lavalier microphone. “Cocktail Music” is listed separately at **$120/hour**. “Extra DJ Time” **$350/hour**; “Extra Speaker Setup” **$250**; selected lighting extras from **$50**.
+- **Market relevance:** Its own site serves Pemberton, Whistler and Squamish. **Comparison limit:** A six-hour DJ package is not necessarily ceremony-through-last-song coverage; ceremony and cocktail support are separate listed items. Whether MC work, travel, tax, or specific load-in costs are included is not clearly stated in the inspected price text. Price effective date and expiry are not stated. Do not add all extras into a supposed “typical wedding” without a real event scope.
+
+### Trax DJ Services / Whistler DJs — [official packages](https://www.whistlerdjs.com/packages)
+
+- **VERIFIED 2026-10-13:** The page prominently advertises “$200 off our 6hr Wedding Package just **$1,495**” and marks a six-hour **Dinner & Dance** package **“SALE $1,495”**, including a cordless microphone. It separately lists an eight-hour **Ceremony, Cocktails, Dinner & Dance** package at **$1,995**, with a second ceremony sound system. Additional six-hour tiers shown are **Silver $1,795**, **Gold $2,195**, and **Platinum $2,395**, with varying lighting/booth/subwoofer inclusions. “Extra DJ Time” **$250/hour** and ceremony-music add-on **$400** also appear.
+- **Market relevance:** Official site says it serves Whistler, Squamish, and Pemberton. **Comparison limit:** The $1,495 figure is explicitly a promotion with no observed expiration date; it is a different scope from the eight-hour ceremony-inclusive package. Package/add-on tables contain some internally inconsistent extra prices, so do not rely on those extra figures without direct vendor confirmation. MC, travel, tax, and exact load-in specifics are not clearly stated in the inspected text. Currency code is not explicitly labelled.
+
+### Dreamline DJ — [official Whistler wedding-DJ page](https://www.dreamlinedj.ca/whistler-wedding-dj)
+
+- **VERIFIED 2026-10-13:** “Dream Package starts at **$1,799**” and the provider says its **average investment is $2,200**. It presents custom proposals and a Whistler offering. The latter is **their own claimed average**, not a Sea-to-Sky market average.
+- **Comparison limit:** The inspected page does not detail the same hours or ceremony/reception/lighting inclusions beside the two figures, so this is **not** a like-for-like comparator with Coast Mountain or Trax. The site mentions travel charges beyond 50 km from Vancouver, but its Whistler-package travel terms, tax, MC, and exact inclusions were not verified in the inspected page. Price effective date and currency code are not explicit.
+
+### Pemberton DJ — [legacy pricing page](https://www.pembertondj.com/prices)
+
+- **VERIFIED as legacy, not current independent comparator:** The page displays older wedding and ceremony prices but prominently points visitors to “updated pricing” on [Coast Mountain DJs' current pricing page](https://www.coastmountaindjs.com/pricing/). Do **not** count this as a fourth provider or use its amounts in a current regional range. The relationship between brands should be confirmed with the provider if publicly describing their history.
+
+## Interpretation and editorial guardrails
+
+**Live source recheck, 2026-10-14:** [Trax's official page](https://www.whistlerdjs.com/packages) still showed its `SALE $1495` six-hour dinner-and-dance package and `$1995` eight-hour ceremony/cocktails/dinner/dancing package with a second ceremony system. [Coast Mountain's official page](https://www.coastmountaindjs.com/pricing/) still showed `$1990` for six hours and ceremony sound separately at `$500`. Neither inspected price line clearly specified a currency code, offer end date, tax, or event-specific travel terms. This recheck supports updating the **draft's** visible source date, not publishing it without approval. Recheck once more immediately before any approved release.
+
+- **VERIFIED:** There are at least two current official providers with different stated scopes: Trax's **promotional six-hour dinner/dance $1,495**, Trax's **eight-hour ceremony-to-dance $1,995**, and Coast Mountain's **six-hour $1,990 wedding package with ceremony listed separately at $500**. Dreamline offers a starting price, but its scope was not comparable on the inspected page. These are **selected advertised examples**, not a sample representative enough to calculate a market average or HSDJ benchmark.
+- **SUPPORTED HYPOTHESIS:** Public competitor price/inclusion text is useful for answering a regional cost question. This does not establish that any search/AI platform selected these providers *because* of those pages.
+- **RECOMMENDATION / OWNER DIRECTION, 2026-10-13:** The highest-value editorial treatment is a **cost-driver and comparison guide** rather than “Howe Sound DJ costs $X” or a falsely precise region-wide range. Patrick approved the approach of two named, linked public competitor examples with dates and caveats, not the exact amounts or public copy. Before publication, recheck each official offer and show provider, retrieval date, exact scope, promotion/starting status, currency limitation and explicit unknowns. Keep the owner-approved HSDJ statement: personalized written quotes based on the specific day.
+- **Revalidation owner/date:** Assign a named site owner and review public examples within 90 days after publication, and immediately before any refresh; remove or update figures if pages change. No publication has been approved.

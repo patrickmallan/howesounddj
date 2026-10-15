@@ -15,6 +15,13 @@ const guides = [
     initialBudget: 1_075_000,
     totalBudget: 1_375_000,
   },
+  {
+    route: "/guides/sea-to-sky-wedding-dj-cost",
+    title: "What Does a Wedding DJ Cost in the Sea-to-Sky?",
+    lastHeading: "Check your date. Then let's talk through the day.",
+    initialBudget: 750_000,
+    totalBudget: 1_050_000,
+  },
 ] as const;
 
 async function delivery(page: Page) {
@@ -161,7 +168,7 @@ for (const guide of guides) {
   });
 }
 
-test("Both guide articles survive App Router navigation from the guides deck", async ({ page }) => {
+test("Guide articles survive App Router navigation from the guides deck", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/guides");
   for (const guide of guides) {

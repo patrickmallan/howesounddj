@@ -150,7 +150,7 @@ export default function FaqPage() {
       items: [
         {
           q: "Where do you DJ weddings?",
-          a: "I focus on weddings held in Squamish. You can plan from anywhere; what matters is where the celebration takes place. Travel is quoted separately when it applies."
+          a: "I'm based in Squamish, and that's where I focus my wedding work. I also book weddings in Whistler and Pemberton. If you live in Vancouver and are getting married in Squamish, we can plan the music and timing while you're at home. Travel and the sound setup depend on the venue and are clear in your quote."
         },
         {
           q: "Do you know our venue already?",
@@ -259,6 +259,12 @@ export default function FaqPage() {
                         prefetch={false}
                       >
                         Squamish DJ guide
+                      </Link>
+                    </p>
+                    <p>
+                      Comparing wedding DJ quotes?{" "}
+                      <Link href="/guides/sea-to-sky-wedding-dj-cost" prefetch={false}>
+                        Read the Sea-to-Sky cost guide
                       </Link>
                     </p>
                   </div>

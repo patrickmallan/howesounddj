@@ -1,0 +1,45 @@
+# AI visibility — Phase 5 local implementation specification
+
+**Status:** LOCAL REVIEW DRAFT IMPLEMENTED; Patrick asked to proceed with the narrow publication package on 2026-10-14, but **nothing is deployed**. The [different-day Phase 1 observation](PHASE_1_SECOND_PASS.md) covers all 12 frozen questions. A later paired P1 full-text [Google](PHASE_1_RAW_P1_GOOGLE_20261014.md) / [ChatGPT](PHASE_1_RAW_P1_CHATGPT_20261014.md) capture demonstrates a durable method, but does not supply the missing full answers for the earlier run. The October 13 same-day pricing spot check was exploratory, not the second baseline. No production deployment, crawler policy, Search Console setting, redirect, or HSDJ rate was changed.
+
+## Decision architecture
+
+1. **Squamish-first footprint:** Patrick confirmed on 2026-10-13 that HSDJ is based in and focused on Squamish, while Whistler/Pemberton weddings are bookable. Correct the existing FAQ's Squamish-only implication. Avoid promising travel/inclusions not in an individual quote.
+2. **Vancouver is a planning-origin audience:** `src/app/vancouver-wedding-dj/page.tsx` already targets Vancouver residents marrying in Squamish. Keep one canonical page for that job. It should explain why hiring a Squamish-based DJ is useful to a Vancouver couple; it should not claim HSDJ seeks weddings *held* in Vancouver. GSC baseline is 221 Web impressions, one click and 12 Google generative-AI feature impressions in 2026-07-12 to 2026-10-11. Those are distinct metrics, not proof of inquiry demand.
+3. **Whistler/Pemberton:** Patrick explicitly chose to keep the current Whistler-to-Squamish redirect despite the Whistler-result/destination mismatch. Do not change it in this implementation. No distinct Pemberton route is established; do not add a thin location page. A broad `areaServed` schema change is not a substitute for clear visible copy.
+4. **Regional cost research:** The [Phase 4 guide draft](PHASE_4_EDITORIAL_DECISION.md) is the only proposed new page, with a distinct comparison job and no HSDJ prices. Patrick approved the approach of two named, linked third-party public-price examples; they still need publication-day source checks, exact-copy approval and a maintenance owner.
+
+## Local reviewable implementation and remaining gates
+
+| Area | Candidate path | Change to prepare locally | Gate |
+| --- | --- | --- | --- |
+| Service-area answer | `src/app/faq/page.tsx` | Replace the `Where do you DJ weddings?` answer with Squamish-first, Whistler/Pemberton-bookable wording; retain individualized travel terms. Review matching FAQ JSON-LD generated from visible text. | Patrick reviews exact wording. |
+| Vancouver audience | `src/app/vancouver-wedding-dj/page.tsx` and, only if needed, `src/app/vancouver-wedding-dj/vancouver-route.css` | Audit extractable on-page answer, headline and CTA clarity before proposing a narrowly targeted text improvement. Existing route, metadata, and links already serve the concept; **no duplicate route**. | Demonstrate a real reader-usefulness improvement, not a keyword-count change. |
+| Cost guide | Existing `src/app/guides/` conventions, route file and sitemap only after approval | Build the source-linked, date-stamped guide from Phase 4 with visible HTML text, correct canonical/metadata and internal links from packages/FAQ. | Final prices, scope, currency caveats, exact-copy review and publication sign-off. |
+| Venue crawl lag | Venue/story routes and internal links only if read-only comparator inspection finds a concrete issue | Fix the smallest confirmed discoverability or content defect; otherwise monitor. | Evidence of cause; do not bulk-request indexing. |
+
+Local work now includes the FAQ service-area answer, a source-linked cost guide using the existing editorial template, and internal links from FAQ/packages/guides plus a sitemap entry. Installed Next.js page, metadata, CSS, and sitemap guides were read before editing. Typecheck, 154 unit tests, a production build, and lint on the changed guide route and linked pages pass after the October 14 source-check-date edit. The current build also passed 31 targeted browser checks for guide articles and the guides hub, including 320/390/768/1440 px containment, metadata, links, and reduced-motion behavior. This is **not** a release. The unrelated modified `tests/about-internal-link-promotion.test.ts` remains untouched. The narrow package was approved to proceed, but the connected Vercel account returned a 403 for the existing project's `patrickmallans-projects` scope. That permission gap and a clean release boundary prevent a safe publication claim. The draft's October 13 article/structured-data publication date must be set to the actual release date, not silently carried into production.
+
+## Acceptance and verification
+
+- The second search/AI pass has exact frozen queries, conditions, mostly exact per-run UTC times, results and citations in its observation log. A later, same-day third P1 observation now has durable full answer text for both surfaces, but **the 12-question pass itself is not fully raw-captured**. Retain that limitation and collect comparable pre-publication evidence before claiming a reproducible baseline or pre/post change.
+- Public service copy passes the simple reading test: *Squamish is home base; Whistler/Pemberton may be booked; Vancouver residents planning a Squamish wedding can work with a DJ already local to the venue.* No page implies HSDJ has a Vancouver base.
+- Existing availability check and consult paths remain intact. Do not introduce a new form or event name for this visibility project. Keep completed date checks, consults and bookings separate in HSDJ_SEO_Intelligence/Operations.
+- Any guide has first-party, visible text; public third-party figures are directly linked, clearly dated and scoped, not represented as HSDJ quotes or a market average. No HSDJ confidential price or unsupported schema is exposed.
+- Locally review diff, typecheck/build, links, canonical/metadata, semantic headings, mobile rendering, and FAQ visible text versus generated structured data. After *approved* publication, check live route/redirect/robots/sitemap and key user journeys, then measure at 14/30/60/90 days as the brief defines.
+
+## Rollback and approval
+
+Keep changes as a reviewable local diff/commit so an individual content route or FAQ statement can be reverted without touching the booking flow. Patrick asked to proceed with the narrow guide-and-FAQ package, but did **not** authorize redirect restoration, crawler-policy changes, confidential-rate disclosure, or inclusion of unrelated working-tree edits. Publication remains pending a clean deployment boundary, connected deploy path, release-date update, and live verification.
+
+## Release decision packet for Patrick
+
+**Proposed public scope:** one new Sea-to-Sky wedding DJ cost-comparison guide; the corrected `Where do you DJ weddings?` FAQ answer; and the existing-template internal links/sitemap entry that make the guide discoverable. No price list for HSDJ, new tracking event, crawler-policy change, Whistler redirect change, or new Vancouver/Whistler/Pemberton landing page.
+
+**Copy to approve:** the rendered guide route at `src/app/guides/sea-to-sky-wedding-dj-cost/page.tsx` and the FAQ answer at `src/app/faq/page.tsx`. The two competitors and their dated advertised examples are named and linked, with an explicit warning that their amounts are not HSDJ rates or a regional average. The published article date and Article metadata must be updated together to the actual release date.
+
+**Known tradeoffs:** Linking named competitors may send a reader to them, but provides transparent primary-source evidence. The old Whistler search URL still redirects to the Squamish page by Patrick's choice. The AI-search passes are directional and lack durable full-answer exports, so post-publication changes cannot honestly be called causal or scored as a rigorous pre/post experiment.
+
+**Architect recommendation:** Once Patrick approves the exact public copy, publish this narrow reader-useful scope after the release-day source/date checks. Do not hold publication solely to repeat all 12 stochastic AI answers again: the frozen query log plus targeted full-text pricing and service-fit captures are enough to explain the editorial choice, while the historical raw-capture gap remains disclosed. Measurement should focus on usefulness and qualified inquiries as well as search visibility; no AI citation increase is promised.
+
+**Final release checks before deployment:** verify both official package pages and all displayed amounts/scopes; verify no new private HSDJ price or universal inclusion claim; set publication date; run typecheck/tests/build/lint and mobile/CTA smoke checks; inspect the exact diff and deploy only the approved files. The source check and automated checks passed on October 14; recheck any time-sensitive item on release day. Then verify production route, canonical, sitemap, robots, FAQ copy, source links, mobile layout, and availability-to-consult path, recording commit and timestamp in Phase 6.

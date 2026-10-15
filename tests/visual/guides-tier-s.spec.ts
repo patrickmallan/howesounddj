@@ -120,7 +120,7 @@ for (const width of [320, 390, 768, 1440]) {
     });
 
     expect(audit.h1Count).toBe(1);
-    expect(audit.controlCount).toBe(6);
+    expect(audit.controlCount).toBe(7);
     expect(audit.documentWidth).toBeLessThanOrEqual(audit.viewportWidth + 1);
     expect(audit.outOfBounds).toEqual([]);
     expect(audit.undersizedControls).toEqual([]);
