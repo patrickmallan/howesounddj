@@ -6,10 +6,10 @@ import { guideArticleBreadcrumbJsonLd, guideArticleJsonLd } from "@/lib/json-ld"
 import { GuideArticleBlock as Block, GuideArticleHeader } from "../guide-article-elements";
 import "../article-liner-notes.css";
 
-// Editorial draft. Recheck third-party offers and get publication approval before deployment.
+// Recheck third-party offers before each publication and update the visible date with the metadata.
 const ARTICLE_SLUG = "sea-to-sky-wedding-dj-cost";
 const ARTICLE_TITLE = "What Does a Wedding DJ Cost in the Sea-to-Sky?";
-const ARTICLE_DATE = "2026-10-13";
+const ARTICLE_DATE = "2026-10-14";
 const description =
   "Compare Sea-to-Sky wedding DJ quotes without confusing dinner-and-dance coverage with ceremony-to-last-song sound. Dated public examples and the details that change a quote.";
 
@@ -52,7 +52,7 @@ export default function SeaToSkyWeddingDjCostPage() {
         <GuideArticleHeader
           breadcrumbLabel="Wedding DJ costs"
           date={ARTICLE_DATE}
-          dateLabel="October 13, 2026"
+          dateLabel="October 14, 2026"
           title={ARTICLE_TITLE}
           titleLines={["What does a", "wedding DJ cost", "in the Sea-to-Sky?"]}
           tone="yellow"
