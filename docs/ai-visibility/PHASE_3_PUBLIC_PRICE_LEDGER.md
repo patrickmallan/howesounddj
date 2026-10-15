@@ -1,6 +1,6 @@
 # AI visibility — Phase 3 official public-price ledger
 
-**Status:** IN PROGRESS. Read from provider-owned public pages on 2026-10-13; no private Howe Sound DJ price, quote, contract, or customer record was used. Amounts below are the providers' advertised examples, **not HSDJ prices and not a regional average**. A `$` sign appears on these pages; the pages inspected did not clearly label currency code, so **CAD is plausible but not independently confirmed from the price text**. Verify again before public use; promotional prices can change without notice.
+**Status:** IN PROGRESS. Read from provider-owned public pages on 2026-10-13 and rechecked live in-browser on 2026-10-14; no private Howe Sound DJ price, quote, contract, or customer record was used. Amounts below are the providers' advertised examples, **not HSDJ prices and not a regional average**. A `$` sign appears on these pages; the pages inspected did not clearly label currency code, so **CAD is plausible but not independently confirmed from the price text**. Verify again before public use; promotional prices can change without notice.
 
 ## Official examples and comparability
 
@@ -24,6 +24,8 @@
 - **VERIFIED as legacy, not current independent comparator:** The page displays older wedding and ceremony prices but prominently points visitors to “updated pricing” on [Coast Mountain DJs' current pricing page](https://www.coastmountaindjs.com/pricing/). Do **not** count this as a fourth provider or use its amounts in a current regional range. The relationship between brands should be confirmed with the provider if publicly describing their history.
 
 ## Interpretation and editorial guardrails
+
+**Live source recheck, 2026-10-14:** [Trax's official page](https://www.whistlerdjs.com/packages) still showed its `SALE $1495` six-hour dinner-and-dance package and `$1995` eight-hour ceremony/cocktails/dinner/dancing package with a second ceremony system. [Coast Mountain's official page](https://www.coastmountaindjs.com/pricing/) still showed `$1990` for six hours and ceremony sound separately at `$500`. Neither inspected price line clearly specified a currency code, offer end date, tax, or event-specific travel terms. This recheck supports updating the **draft's** visible source date, not publishing it without approval. Recheck once more immediately before any approved release.
 
 - **VERIFIED:** There are at least two current official providers with different stated scopes: Trax's **promotional six-hour dinner/dance $1,495**, Trax's **eight-hour ceremony-to-dance $1,995**, and Coast Mountain's **six-hour $1,990 wedding package with ceremony listed separately at $500**. Dreamline offers a starting price, but its scope was not comparable on the inspected page. These are **selected advertised examples**, not a sample representative enough to calculate a market average or HSDJ benchmark.
 - **SUPPORTED HYPOTHESIS:** Public competitor price/inclusion text is useful for answering a regional cost question. This does not establish that any search/AI platform selected these providers *because* of those pages.

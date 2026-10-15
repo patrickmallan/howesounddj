@@ -1,10 +1,10 @@
 # AI visibility — Phase 7 measurement protocol
 
-**Status:** READY FOR REVIEW as of 2026-10-13; no post-publication readout exists. This is a protocol, not a new dashboard or a claim of improvement. It becomes active only if Patrick approves and publishes an implementation.
+**Status:** READY FOR REVIEW, updated 2026-10-14; no post-publication readout exists. This is a protocol, not a new dashboard or a claim of improvement. It becomes active only if Patrick approves and publishes an implementation.
 
 ## Freeze and compare like with like
 
-- Preserve the exact 12 Phase 1 queries and the first-pass observations in [Phase 1](PHASE_1_FIRST_PASS.md). Complete a second independently dated pre-change pass with raw response captures, citations, UTC timestamps, locale, device/interface, and signed-in context before website edits. If a platform or feature is unavailable, mark it unavailable instead of filling a zero.
+- Preserve the exact 12 Phase 1 queries and the [first-pass](PHASE_1_FIRST_PASS.md) and [different-day second-pass](PHASE_1_SECOND_PASS.md) observations. The second pass was completed before publication, but it lacks durable full-response captures; do not relabel its summaries as raw evidence. The paired third P1 observation has [Google](PHASE_1_RAW_P1_GOOGLE_20261014.md) and [ChatGPT](PHASE_1_RAW_P1_CHATGPT_20261014.md) full-text captures with source links, and a [ChatGPT R1 capture](PHASE_1_RAW_R1_CHATGPT_20261014.md) preserves the service-fit contrast. Use this method for post-publication samples, retaining UTC timestamps, citations, locale, device/interface, and signed-in context. If a platform or feature is unavailable, mark it unavailable instead of filling a zero. Compare the raw-captured questions more confidently than summary-only historical questions; never present the old 12-query pass as a precise quantitative baseline.
 - Record the production URL, commit and publication timestamp only after an approved deployment. Re-run the same query protocol at approximately 14, 30, 60 and 90 days. Keep a separate note for changed query wording, platform behavior, personalization or geography; do not blend incompatible runs into one rate.
 - For each answer, separately code **mentioned**, **recommended**, and **first-party URL cited**. Record the exact cited URL and whether a quoted business fact is accurate. A Google AI Overview/AI Mode link impression in Search Console is a separate, aggregate Google metric—not a ChatGPT citation, a click, or a lead.
 

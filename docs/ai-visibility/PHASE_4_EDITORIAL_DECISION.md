@@ -1,6 +1,6 @@
 # AI visibility — Phase 4 editorial decision and review draft
 
-**Status:** LOCAL CODE DRAFT / **NOT APPROVED FOR PUBLICATION** as of 2026-10-13. This is review copy, not live site text. Patrick has confirmed the service footprint: Squamish-first; Whistler/Pemberton weddings bookable; Vancouver residents marrying in Squamish are a priority audience. He approved the *approach* of naming/linking two publicly priced competitors with dates and caveats, and chose to keep the existing Whistler redirect. A local guide route and FAQ correction are now prepared. Complete the second independent Phase 1 search pass, final source verification, exact-copy review, and Patrick's publication approval before deploying.
+**Status:** NARROW GUIDE-AND-FAQ PACKAGE APPROVED TO PROCEED on 2026-10-14; **not yet published**. Patrick has confirmed the service footprint: Squamish-first; Whistler/Pemberton weddings bookable; Vancouver residents marrying in Squamish are a priority audience. He approved the *approach* of naming/linking two publicly priced competitors with dates and caveats, chose to keep the existing Whistler redirect, and then asked to proceed with the proposed publication package. The local guide route and FAQ correction are prepared. The [different-day second query pass](PHASE_1_SECOND_PASS.md) and official-price rechecks are recorded; historical raw-response gaps remain disclosed. A clean deploy boundary, connected deployment capability, and publication-date update remain before release.
 
 ## Decision: a narrow research guide, not a rate card
 
@@ -8,7 +8,7 @@
 
 **Why now:** The first-pass ChatGPT Search price answers omitted HSDJ from answer text while service-fit answers recommended it; `/packages` gives quote factors but not a direct comparison framework; official public competitor pages supply comparable *examples* with crucial scope differences. These are reasons to improve usefulness, **not proof of a retrieval algorithm or future citation gain**. The page would be useful even if no AI system cites it.
 
-**Public comparison stance — approach approved 2026-10-13:** Give carefully dated, source-linked examples as examples, not a “market range.” Patrick accepted the tradeoff of two named, linked competitor prices. This is **not** approval of stale amounts, exact article copy, or publication. Recheck the official offers immediately before release; if either cannot be verified, omit that example rather than substitute an unattributed figure.
+**Public comparison stance — approach approved 2026-10-13; proposed package advanced 2026-10-14:** Give carefully dated, source-linked examples as examples, not a “market range.” Patrick accepted the tradeoff of two named, linked competitor prices and asked to proceed with this narrow package. Recheck the official offers immediately before release; if either cannot be verified, omit that example rather than substitute an unattributed figure.
 
 ## Proposed information architecture
 
@@ -33,7 +33,7 @@
 >
 > ## Published examples, with the fine print
 >
-> These are **other providers' publicly advertised examples, checked 13 October 2026**. They are not Howe Sound DJ prices, quotes, or a Sea-to-Sky average. Their pages show `$` amounts but do not clearly state a currency code beside the prices; confirm currency, tax, travel and the full scope with each provider before treating any figure as a final cost.
+> These are **other providers' publicly advertised examples, checked 14 October 2026**. They are not Howe Sound DJ prices, quotes, or a Sea-to-Sky average. Their pages show `$` amounts but do not clearly state a currency code beside the prices; confirm currency, tax, travel and the full scope with each provider before treating any figure as a final cost.
 >
 > - [Trax DJ Services](https://www.whistlerdjs.com/packages) advertises a **promotional $1,495** six-hour dinner-and-dance wedding package. Its eight-hour package including ceremony, cocktails, dinner and dance is shown at **$1,995**. Those two figures do not buy the same coverage; the sale end date was not stated on the page we checked.
 > - [Coast Mountain DJs](https://www.coastmountaindjs.com/pricing/) advertises a **$1,990** six-hour wedding package and lists **ceremony sound separately at $500**. Cocktail music and extra DJ time are also listed separately. Check the full quote before comparing its six hours with another provider's ceremony-through-reception package.
@@ -54,7 +54,7 @@
 >
 > At Howe Sound Wedding DJ, I put together a written quote around **your** day rather than posting a one-size-fits-all wedding rate. Tell me the date, venue, ceremony and reception plan, and how long you want the music to run. I'll help work out the sound the day needs and make the coverage clear. [See how my wedding coverage works](/packages), or [check your date](/contact#availability) to start the conversation.
 
-**Draft caveats to resolve:** `/contact#availability` is the existing availability form anchor in source; verify it live before publication. Patrick confirmed the service geography on 2026-10-13, but must review the exact public wording. Confirm that ceremony microphones, separate sound zones, lighting, travel, and staffing are described as **questions/quote factors**, not universal HSDJ inclusions. The copy avoids promising an HSDJ price and makes no market-average claim. Recheck both official competitor pages and currency at publication.
+**Release caveats:** The live `/contact#availability` destination was checked 2026-10-14 and shows the date form under the `availability` anchor; do not submit a test date as part of this content review. Ceremony microphones, separate sound zones, lighting, travel, and staffing are described as **questions/quote factors**, not universal HSDJ inclusions. The copy avoids promising an HSDJ price and makes no market-average claim. Recheck both official competitor pages and currency at publication.
 
 ## Maintenance and measurement
 
@@ -64,13 +64,13 @@
 
 ## Proposed FAQ correction, separate from the guide
 
-Current live `Where do you DJ weddings?` copy reads as Squamish-only. Based on Patrick's 2026-10-13 clarification, the smallest public answer to review after the second baseline is:
+Current live `Where do you DJ weddings?` copy reads as Squamish-only. Based on Patrick's 2026-10-13 clarification and the completed different-day query pass, the smallest public answer to review is:
 
 > I'm based in Squamish, and that's where I focus my wedding work. I also book weddings in Whistler and Pemberton. If you live in Vancouver and are getting married in Squamish, we can plan the music and timing while you're at home. Travel and the sound setup depend on the venue and are clear in your quote.
 
-This is **draft copy**, not a universal travel or package commitment. It keeps the booking location distinct from a couple's home city. The existing Vancouver-planning page should remain the dedicated answer for that audience; no second page is proposed.
+This copy is not a universal travel or package commitment. It keeps the booking location distinct from a couple's home city. The existing Vancouver-planning page should remain the dedicated answer for that audience; no second page is proposed.
 
-## Approval questions, not tasks for the research phase
+## Release gates
 
-1. The third-party-example approach is approved; confirm publication-day amounts, inclusions, currency limitations and links before using the figures.
-2. Approve the exact final copy, route, site links, and publication scope only after the second baseline run and source recheck. **No implied publication approval from the approach decision.**
+1. The third-party-example approach and narrow package are approved to proceed; confirm publication-day amounts, inclusions, currency limitations and links before using the figures.
+2. The second-date query pass and October 14 source recheck are complete, but full-answer captures remain an evidence limitation. Recheck source offers again at release and update the draft article date to its actual publication date. Isolate this scope from unrelated working-tree changes before deploying.
