@@ -52,24 +52,50 @@
 .hsdj-faq-mixer .faq-mixer-channel,
 .hsdj-faq-mixer .faq-mixer-finale { content-visibility: visible; contain-intrinsic-size: none; }
 #main-content .hsdj-faq-mixer .faq-mixer-channel {
-  --faq-accent: #4de4ed; position: relative; scroll-margin-top: 11rem;
-  padding: clamp(2.7rem, 4vw, 4.5rem) max(5vw, calc((100vw - 84rem) / 2)) !important;
-  border: 0 !important; color: #fff; background: #091823 !important;
+  --faq-accent: #4de4ed;
+  --faq-art: url("/images/hsdj-redesign/faq/faq-night-collage-v1.webp");
+  --faq-wash: linear-gradient(90deg, #06131ee0 0%, #06131ec4 48%, #06131ea6 100%);
+  position: relative; scroll-margin-top: 11rem;
+  padding: clamp(2.35rem, 3.4vw, 3.5rem) max(5vw, calc((100vw - 84rem) / 2)) !important;
+  border: 0 !important; color: #fff; background-color: #091823 !important;
+  background-image: var(--faq-wash), var(--faq-art) !important;
+  background-position: center, center !important;
+  background-size: cover, cover !important;
 }
-#main-content .hsdj-faq-mixer .faq-mixer-channel-2 { --faq-accent: #fa3e82; --hsdj-h2-palette: --hsdj-ink-on-light; color: #081016; background: #ffe021 !important; }
-#main-content .hsdj-faq-mixer .faq-mixer-channel-3 { --faq-accent: #ffe021; background: #101820 !important; }
-#main-content .hsdj-faq-mixer .faq-mixer-channel-4 { --faq-accent: #ffe021; --hsdj-h2-palette: --hsdj-ink-on-light; color: #081016; background: #52dbe7 !important; }
-#main-content .hsdj-faq-mixer .faq-mixer-channel-5 { --faq-accent: #e65aa1; background: #171324 !important; }
+#main-content .hsdj-faq-mixer .faq-mixer-channel-2 {
+  --faq-accent: #fa72a4;
+  --faq-art: url("/images/hsdj-redesign/faq/faq-moments-collage-v1.webp");
+  --faq-wash: linear-gradient(270deg, #13101ddf 0%, #13101dc1 55%, #13101d9a 100%);
+}
+#main-content .hsdj-faq-mixer .faq-mixer-channel-3 {
+  --faq-accent: #ffe021;
+  --faq-art: url("/images/hsdj-redesign/faq/faq-moments-collage-v1.webp");
+  --faq-wash: linear-gradient(90deg, #101822e0 0%, #101822c7 50%, #1018229d 100%);
+  background-position: center, right center !important;
+}
+#main-content .hsdj-faq-mixer .faq-mixer-channel-4 {
+  --faq-accent: #66e6ee;
+  --faq-wash: linear-gradient(270deg, #061924e0 0%, #061924be 55%, #0619249e 100%);
+  background-position: center, left center !important;
+}
+#main-content .hsdj-faq-mixer .faq-mixer-channel-5 {
+  --faq-accent: #f071b0;
+  --faq-wash: linear-gradient(90deg, #171324e0 0%, #171324c4 50%, #1713249e 100%);
+}
 .faq-mixer-channel::after { position: absolute; right: 0; bottom: 0; left: 0; height: 6px; content: ""; background: var(--faq-accent); }
-.faq-mixer-channel-inner { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: clamp(2rem, 5vw, 5.5rem); align-items: start; width: min(100%, 84rem); margin: 0 auto; }
+#main-content .hsdj-faq-mixer .faq-mixer-channel-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: clamp(1.8rem, 3vw, 3.5rem); align-items: start; width: min(100%, 84rem); margin: 0 auto; }
 .faq-mixer-channel:nth-child(even) .faq-mixer-channel-copy { grid-column: 2; grid-row: 1; }
 .faq-mixer-channel:nth-child(even) .faq-mixer-channel-list { grid-column: 1; grid-row: 1; }
 .faq-mixer-channel-copy { padding-top: .4rem; }
 .faq-mixer-channel-topline { display: flex; align-items: center; gap: .9rem; color: var(--faq-accent); }
-.faq-mixer-channel-2 .faq-mixer-channel-topline, .faq-mixer-channel-4 .faq-mixer-channel-topline { color: #091016; }
+.faq-mixer-channel-2 .faq-mixer-channel-topline, .faq-mixer-channel-4 .faq-mixer-channel-topline { color: var(--faq-accent); }
 .faq-mixer-channel-dial { width: 3.5rem; height: 3.5rem; font-size: 1rem; }
-#main-content .hsdj-faq-mixer .faq-mixer-channel h2 { width: 100%; max-width: 13ch !important; margin: 1.1rem 0 1rem; color: inherit; font-size: clamp(2.7rem, 4.4vw, 5rem) !important; line-height: .9; text-shadow: 4px 4px 0 color-mix(in srgb, var(--faq-accent) 78%, transparent); }
-#main-content .hsdj-faq-mixer .faq-mixer-channel-2 h2, #main-content .hsdj-faq-mixer .faq-mixer-channel-4 h2 { text-shadow: 3px 3px 0 #fff8; }
+#main-content .hsdj-faq-mixer .faq-mixer-channel h2 {
+  width: 100%; max-width: none !important; margin: .9rem 0 .9rem; color: #fff;
+  font-size: clamp(2.1rem, 3vw, 3.35rem) !important;
+  letter-spacing: .012em !important; line-height: 1.07 !important;
+  overflow-wrap: normal; word-break: normal; hyphens: none;
+}
 .faq-mixer-channel-intro { max-width: 37rem; margin: 0; color: inherit !important; font-size: clamp(1.05rem, 1.35vw, 1.3rem); font-weight: 730; line-height: 1.5; }
 .faq-mixer-channel-links { margin-top: 1.4rem; padding-left: 1rem; border-left: 5px solid var(--faq-accent); }
 .faq-mixer-channel-links p { margin: .5rem 0; color: inherit !important; font-size: .96rem; line-height: 1.5; }
@@ -89,7 +115,13 @@
 .faq-mixer-answer { padding: .1rem 1.25rem 1.15rem 4.15rem; border-top: 1px solid #6ca7b35e; }
 .faq-mixer-answer p { max-width: 45rem; margin: .9rem 0 0; color: #eaf6f7 !important; font-size: clamp(.94rem, 1.07vw, 1.08rem); line-height: 1.6; }
 
-#main-content .hsdj-faq-mixer .faq-mixer-finale { --hsdj-h2-palette: --hsdj-ink-on-light; padding: clamp(3rem, 5vw, 5rem) max(5vw, calc((100vw - 84rem) / 2)) !important; color: #081015; background: #ffe021 !important; }
+#main-content .hsdj-faq-mixer .faq-mixer-finale {
+  --hsdj-h2-palette: --hsdj-ink-on-light;
+  padding: clamp(2.7rem, 4vw, 4rem) max(5vw, calc((100vw - 84rem) / 2)) !important;
+  color: #081015; background-color: #ffe021 !important;
+  background-image: linear-gradient(90deg, #ffe021f0 0%, #ffe021d8 56%, #ffe021b0 100%), url("/images/hsdj-redesign/faq/faq-moments-collage-v1.webp") !important;
+  background-position: center !important; background-size: cover !important;
+}
 .faq-mixer-finale-inner { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(18rem, .9fr); align-items: center; gap: clamp(2rem, 5vw, 6rem); width: min(100%, 84rem); margin: 0 auto; }
 .faq-mixer-finale-label { width: fit-content; padding: .65rem .85rem; color: #ffe021; background: #071015; }
 #main-content .hsdj-faq-mixer .faq-mixer-finale h2 { width: 100%; max-width: 12ch !important; margin: 1rem 0; color: #081015; font-size: clamp(3rem, 5.3vw, 5.8rem) !important; line-height: .9; text-shadow: 4px 4px 0 #e65aa1; }
@@ -113,9 +145,10 @@
   #main-content .hsdj-faq-mixer .faq-mixer-hero { padding: 3rem 1.4rem 3.5rem; }
   .faq-mixer-hero > img { object-position: 62% center; }
   .faq-mixer-hero::after { background: linear-gradient(0deg, rgb(5 10 15 / 75%) 0 38%, rgb(5 10 15 / 22%) 80%); }
-  #main-content .hsdj-faq-mixer .faq-mixer-channel { padding: 3rem 1.4rem !important; }
-  .faq-mixer-channel-inner { display: block; }
-  .faq-mixer-channel-list { margin-top: 1.75rem; }
+  #main-content .hsdj-faq-mixer .faq-mixer-channel { padding: 2.6rem 1.4rem !important; background-size: cover, auto 18rem !important; background-position: center, right top !important; background-repeat: no-repeat !important; }
+  #main-content .hsdj-faq-mixer .faq-mixer-channel:nth-child(even) { background-position: center, left top !important; }
+  #main-content .hsdj-faq-mixer .faq-mixer-channel-inner { display: block; }
+  .faq-mixer-channel-list { margin-top: 1.5rem; }
   #main-content .hsdj-faq-mixer .faq-mixer-finale { padding: 3.5rem 1.4rem !important; }
   .faq-mixer-finale-inner { grid-template-columns: 1fr; }
   .faq-mixer-finale-copy { min-width: 0; }
@@ -127,9 +160,9 @@
   .faq-mixer-selector { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .35rem; margin-top: 1.25rem; }
   .faq-mixer-selector a { min-height: 5.5rem; padding: .4rem; font-size: .58rem; }
   .faq-mixer-selector a span { top: .45rem; right: .45rem; width: 1.35rem; height: 1.35rem; font-size: .48rem; }
-  #main-content .hsdj-faq-mixer .faq-mixer-channel { scroll-margin-top: 8.5rem; padding: 2.3rem 1rem !important; }
+  #main-content .hsdj-faq-mixer .faq-mixer-channel { scroll-margin-top: 8.5rem; padding: 2.1rem 1rem !important; }
   .faq-mixer-channel-dial { width: 3rem; height: 3rem; }
-  #main-content .hsdj-faq-mixer .faq-mixer-channel h2 { font-size: clamp(1.75rem, 8.5vw, 2.25rem) !important; }
+  #main-content .hsdj-faq-mixer .faq-mixer-channel h2 { font-size: clamp(1.75rem, 7.5vw, 2.25rem) !important; }
   .faq-mixer-channel-list { padding: .5rem; }
   #main-content .hsdj-faq-mixer .faq-mixer-question summary { grid-template-columns: 2.1rem minmax(0, 1fr) 1.55rem; gap: .5rem; padding: .65rem; font-size: .9rem; }
   .faq-mixer-question-index { width: 2.05rem; height: 2.05rem; font-size: .58rem; }

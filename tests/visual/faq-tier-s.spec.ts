@@ -44,6 +44,37 @@ test("FAQ keeps every answer searchable, semantic, and inside the viewport", asy
   }
 });
 
+test("desktop FAQ headings read as phrases and the illustrated channels stay compact", async ({ page, request }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/faq", { waitUntil: "domcontentloaded" });
+  await page.evaluate(() => document.fonts.ready);
+
+  const channels = await page.locator(".faq-mixer-channel").evaluateAll((sections) =>
+    sections.map((section) => {
+      const heading = section.querySelector("h2")!;
+      const lineHeight = Number.parseFloat(getComputedStyle(heading).lineHeight);
+      return {
+        title: heading.textContent?.trim(),
+        headingLines: heading.getBoundingClientRect().height / lineHeight,
+        sectionHeight: section.getBoundingClientRect().height,
+        art: getComputedStyle(section).backgroundImage,
+      };
+    }),
+  );
+
+  expect(channels).toHaveLength(5);
+  for (const channel of channels) {
+    expect(channel.headingLines, `${channel.title} wraps too narrowly`).toBeLessThanOrEqual(3.2);
+    expect(channel.sectionHeight, `${channel.title} leaves excessive empty space`).toBeLessThan(520);
+    expect(channel.art).toContain("/images/hsdj-redesign/faq/");
+  }
+
+  for (const asset of ["faq-night-collage-v1.webp", "faq-moments-collage-v1.webp"]) {
+    const response = await request.get(`/images/hsdj-redesign/faq/${asset}`);
+    expect(response.ok(), `${asset} should load`).toBe(true);
+  }
+});
+
 test("FAQ controls are real gear, keyboard-operable, and do not prefetch unrelated routes", async ({ page }) => {
   const unrelatedRequests: string[] = [];
   const cassetteRequests: string[] = [];
