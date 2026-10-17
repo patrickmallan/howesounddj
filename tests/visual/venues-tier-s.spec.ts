@@ -205,6 +205,27 @@ for (const width of [320, 390, 768, 1440]) {
   });
 }
 
+test("Venues hero and route artwork hold the intended hierarchy", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/venues");
+
+  const hero = await page.locator(".venue-journey-hero").boundingBox();
+  const heading = await page.locator(".venue-journey-hero h1").boundingBox();
+  expect(hero).not.toBeNull();
+  expect(heading).not.toBeNull();
+  expect(heading!.y - hero!.y).toBeLessThan(150);
+  await expect(page.locator(".venue-route-art")).toHaveCount(13);
+  await expect(page.locator(".venue-route-art").first()).toBeVisible();
+  await expect(page.locator(".venue-journey-hero-image")).toHaveAttribute("src", /packages-ceremony-clue-v3/);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(page.locator(".venue-route-art").first()).toBeHidden();
+  const links = await page.locator(".venue-route-actions").first().locator("a").evaluateAll((elements) => (
+    elements.map((element) => element.getBoundingClientRect().y)
+  ));
+  expect(Math.abs(links[0] - links[1])).toBeLessThan(2);
+});
+
 test("Venues directory retains crawlable structured data and working navigation", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/venues");
