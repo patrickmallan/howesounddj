@@ -98,7 +98,8 @@ test("Squamish sections carry wedding-and-DJ artwork beyond the murals", async (
     const background = await page.locator(selector).evaluate((element) => getComputedStyle(element).backgroundImage);
     expect(background).toContain(asset);
   }
-  await expect(page.locator(".sq-venue-art img")).toHaveCount(1);
+  await expect(page.locator(".sq-place-after")).toContainText("I'm here for the music.");
+  await expect(page.locator(".sq-venue-art img")).toHaveCount(3);
 });
 
 test("Squamish's artwork meets the next scene without empty bands", async ({ page }) => {
@@ -153,4 +154,13 @@ test("Squamish desktop keeps its hero and section hierarchy in proportion", asyn
   await venueHeading.scrollIntoViewIfNeeded();
   await expect(venueHeading).toHaveCSS("background-color", "rgb(7, 16, 23)");
   await expect(venueHeading).toHaveCSS("color", "rgb(255, 255, 255)");
+
+  const [venueCopyBox, venueArtBox] = await Promise.all([
+    page.locator(".sq-venue > div:last-child").boundingBox(),
+    page.locator(".sq-venue-art").boundingBox(),
+  ]);
+  expect(venueCopyBox).not.toBeNull();
+  expect(venueArtBox).not.toBeNull();
+  expect(venueArtBox!.width / venueCopyBox!.width).toBeGreaterThan(0.8);
+  expect(venueArtBox!.height).toBeGreaterThan(400);
 });

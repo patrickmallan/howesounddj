@@ -67,8 +67,8 @@ export default function SquamishWeddingDjPage() {
           <Image src="/images/hsdj-redesign/new-editorial/squamish-night-signal-v1.webp" alt="Editorial collage of a Squamish mountain ceremony, dinner lights, DJ equipment and a wedding dance floor" fill sizes="100vw" />
         </div>
         <div className="sq-place-after">
-          <strong>Come for the setting.<br />Stay for the feeling.</strong>
-          <p className="sq-field-note">Guests can make a whole trip of it. Then the day narrows to one room, your favourite people, and a party that could only be yours. <strong>That contrast is what I love about playing weddings here.</strong></p>
+          <strong>The view&apos;s covered.<span>I&apos;m here for the music.</span></strong>
+          <p className="sq-field-note">I make sure the vows and speeches are heard, build the music around what you actually love, and keep watching the room once the dancing starts.</p>
         </div>
       </section>
 
@@ -109,8 +109,16 @@ export default function SquamishWeddingDjPage() {
       </section>
 
       <section className="sq-venue" aria-labelledby="sq-venue-title">
-        <div className="sq-venue-art" aria-hidden="true">
-          <Image src="/images/venues/sea-to-sky-gondola-portrait-v1.webp" alt="" fill sizes="(max-width: 900px) 100vw, 40vw" />
+        <div className="sq-venue-art">
+          <div className="sq-venue-shot sq-venue-shot--gondola">
+            <Image src="/images/venues/sea-to-sky-gondola-portrait-v1.webp" alt="Wedding couple on a mountain suspension bridge" fill sizes="(max-width: 900px) 100vw, 45vw" />
+          </div>
+          <div className="sq-venue-shot">
+            <Image src="/images/venues/howe-sound-brewing-portrait-v1.webp" alt="Warmly lit wedding reception room at a brewery" fill sizes="(max-width: 900px) 50vw, 22vw" />
+          </div>
+          <div className="sq-venue-shot">
+            <Image src="/images/venues/cheekye-ranch-portrait-v1.webp" alt="Ranch wedding tent beneath the Squamish mountains" fill sizes="(max-width: 900px) 50vw, 22vw" />
+          </div>
         </div>
         <div>
           <h2 id="sq-venue-title">The room changes the record.</h2>

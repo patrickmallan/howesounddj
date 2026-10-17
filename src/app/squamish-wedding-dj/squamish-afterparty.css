@@ -86,19 +86,18 @@
 .sq-place-art { position: relative; height: clamp(360px,54vw,780px); overflow: hidden; clip-path: polygon(0 3%,100% 0,100% 96%,0 100%); }
 .sq-place-art img { object-fit: cover; }
 .sq-place-after { position: relative; display: flex; align-items: center; gap: 4rem; min-height: clamp(470px,39vw,660px); padding: clamp(4rem,7vw,8rem) max(5vw,calc((100vw - 80rem)/2)); background: linear-gradient(90deg,#080e16d6 0%,#080e1680 37%,#080e164d 60%,#080e16b8 100%),url('/images/squamish/squamish-setting-to-party-v1.webp') center 57% / cover; }
-.sq-place-after > strong { position: relative; z-index: 1; flex: 1.1; color: #ffe12b; font: 1000 clamp(3rem,5.5vw,6rem)/.86 Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif; text-shadow: 0 3px 14px #000; text-transform: uppercase; transform: rotate(-3deg); }
-.sq-place-after p { flex: .9; max-width: 37rem; margin: 0; color: #fff; font-size: clamp(1.15rem,1.55vw,1.4rem); line-height: 1.6; }
+.sq-place-after > strong { position: relative; z-index: 1; flex: 1.1; color: #fff; font: 1000 clamp(2.8rem,4.65vw,5.4rem)/.94 Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif; text-shadow: 0 3px 14px #000; text-transform: uppercase; }
+.sq-place-after > strong span { display: block; margin-top: .18em; color: #64e9ee; }
+.sq-place-after p { flex: .9; max-width: 37rem; margin: 0; color: #f4f9f9; font-size: clamp(1.15rem,1.55vw,1.4rem); line-height: 1.6; }
 .sq-field-note {
   padding: clamp(1.35rem,2.5vw,2.15rem) !important;
-  border-top: 6px solid #55e5ee;
-  color: #0a1117 !important;
-  background: #f6d92f;
-  box-shadow: 11px 12px 0 #1455ff;
-  clip-path: polygon(1% 2%,100% 0,98% 100%,0 94%);
-  font-weight: 760;
-  transform: rotate(1deg);
+  border: 1px solid #78e7ef66;
+  border-left: 6px solid #55e5ee;
+  color: #f4f9f9 !important;
+  background: linear-gradient(110deg,#07131ce8,#10232cdd);
+  box-shadow: 9px 10px 0 #1455ff70;
+  font-weight: 700;
 }
-.sq-field-note strong { display: block; margin-top: .75rem; color: #0a1117; font: inherit; font-weight: 950; text-transform: none; transform: none; }
 
 #main-content .hsdj-squamish-afterparty .sq-local { min-height: 0; padding: clamp(5rem,9vw,9rem) max(5vw,calc((100vw - 80rem)/2)); padding-block: clamp(5rem,9vw,9rem) !important; overflow: hidden; background: linear-gradient(90deg,#08141de8 0%,#08141dcf 37%,#08141d58 75%),url('/images/squamish/squamish-local-night-v1.webp') center / cover !important; }
 .sq-local-copy { position: relative; z-index: 1; max-width: 46rem; }
@@ -143,10 +142,14 @@
 .sq-music-foot p { max-width: 36rem; margin: 0; color: #ffe02a; font: 1000 clamp(2.2rem,3.8vw,4.5rem)/.95 Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif; text-shadow: 0 3px 12px #000; text-transform: uppercase; }
 .sq-music-foot-copy > span { display: block; max-width: 34rem; margin-top: 1.15rem; color: #fff; font-size: clamp(1.05rem,1.4vw,1.25rem); font-weight: 750; line-height: 1.45; }
 
-#main-content .hsdj-squamish-afterparty .sq-venue { display: grid; grid-template-columns: minmax(10rem,.42fr) minmax(0,1fr); align-items: center; gap: clamp(2rem,5vw,6rem); padding: clamp(5rem,8vw,8rem) max(5vw,calc((100vw - 80rem)/2)); background: #40dce5 !important; color: #091117; }
+#main-content .hsdj-squamish-afterparty .sq-venue { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1fr); align-items: center; gap: clamp(2rem,5vw,6rem); padding: clamp(5rem,8vw,8rem) max(5vw,calc((100vw - 80rem)/2)); background: #40dce5 !important; color: #091117; }
 .sq-venue > div:last-child { width: min(100%,52rem); }
-.sq-venue-art { position: relative; width: 100%; aspect-ratio: 960 / 457; overflow: hidden; border: 6px solid #081017; box-shadow: -12px 12px 0 #1455ff,0 24px 45px #0810177d; transform: rotate(-3deg); }
-.sq-venue-art img { object-fit: cover; }
+.sq-venue-art { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-template-rows: 1.1fr 1fr; gap: .85rem; width: 100%; height: clamp(430px,39vw,610px); }
+.sq-venue-shot { position: relative; min-width: 0; overflow: hidden; border: 5px solid #081017; background: #071017; box-shadow: -7px 8px 0 #1455ff,0 14px 25px #08101746; }
+.sq-venue-shot--gondola { grid-column: 1 / -1; box-shadow: -9px 9px 0 #1455ff,0 18px 30px #08101760; }
+.sq-venue-shot:nth-child(2) { box-shadow: -7px 8px 0 #ff438c,0 14px 25px #08101746; }
+.sq-venue-shot:nth-child(3) { box-shadow: -7px 8px 0 #ffe02a,0 14px 25px #08101746; }
+.sq-venue-shot img { object-fit: cover; }
 #main-content .hsdj-squamish-afterparty .sq-venue h2 { width: fit-content; max-width: 13ch !important; padding: .2em .24em .24em; border: 1px solid #ffffff2e; border-left: 7px solid #ffe02a; color: #fff; background: #071017; box-shadow: 9px 10px 0 #1455ff; }
 .sq-venue p { max-width: 43rem; margin: 1.6rem 0; color: #091117; font-size: clamp(1.1rem,1.7vw,1.4rem); font-weight: 750; line-height: 1.55; }
 .sq-venue-copy { padding: 1.2rem 1.35rem 1.35rem !important; color: #f7f2e8 !important; background: #081017; box-shadow: 9px 10px 0 #ff438c; clip-path: polygon(0 0,100% 3%,98% 100%,1% 95%); }
@@ -167,7 +170,7 @@
 @media (hover:hover) and (pointer:fine) {
   .sq-place-copy > span,.sq-place-copy > strong,.sq-field-note,.sq-local-notes p,.sq-music-copy > span,.sq-venue-copy,.sq-outro-copy > * { transition: transform 180ms ease,filter 180ms ease,box-shadow 180ms ease; }
   .sq-place-copy > span:hover,.sq-place-copy > strong:hover,.sq-local-notes p:hover,.sq-music-copy > span:hover,.sq-outro-copy > *:hover { filter: brightness(1.08); transform: translateX(.35rem); }
-  .sq-field-note:hover,.sq-venue-copy:hover { filter: brightness(1.04); transform: translateY(-.25rem) rotate(0); }
+  .sq-field-note:hover,.sq-venue-copy:hover { filter: brightness(1.04); transform: translateY(-.25rem); }
   .sq-gear-link { transition: transform 160ms ease,filter 160ms ease,box-shadow 160ms ease; }
   .sq-gear-link:hover { transform: translateY(3px); filter: brightness(1.15); box-shadow: inset 0 1px 0 #ffffff6b,inset 0 -3px 0 #000b,0 0 0 4px #020608,0 3px 0 var(--sq-link-glow),0 9px 18px #0009,0 0 30px color-mix(in srgb,var(--sq-link-glow) 45%,transparent); }
 }
@@ -207,14 +210,16 @@
   #main-content .hsdj-squamish-afterparty .sq-local { min-height: 0; padding: 5rem 1.4rem; padding-block: 5rem !important; }
   .sq-music-foot { grid-template-columns: 1fr; min-height: 0; padding: 3rem 1.4rem 4rem; }
   #main-content .hsdj-squamish-afterparty .sq-venue { grid-template-columns: 1fr; padding: 5rem 1.4rem; }
-  .sq-venue-art { width: min(100%,35rem); margin: 0 auto 1rem; }
+  .sq-venue-art { width: min(100%,35rem); height: clamp(350px,68vw,500px); margin: 0 auto 1rem; }
   #main-content .hsdj-squamish-afterparty .sq-outro { padding: 6rem 1.4rem; }
 }
 @media (max-width: 600px) {
   .sq-gear-link { width: min(100%,32rem); }
   .sq-place-copy > span { max-width: calc(100vw - 3.2rem); }
   .sq-place-copy > strong { margin-right: .4rem; }
-  .sq-field-note { margin-right: .5rem !important; transform: rotate(.5deg); }
+  .sq-field-note { margin-right: .5rem !important; }
+  .sq-venue-art { height: 370px; gap: .55rem; }
+  .sq-venue-shot { border-width: 4px; }
   .sq-local-notes p { padding: 1rem 1rem 1.1rem 1.2rem; }
   .sq-local-notes p:nth-child(2) { margin-left: .55rem; }
   .sq-venue-copy { padding: 1rem 1rem 1.15rem !important; }
