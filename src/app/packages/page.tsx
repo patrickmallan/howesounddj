@@ -99,7 +99,7 @@ export default function PackagesPage() {
 
         <div className={`${styles.scene} ${styles.weddingScene}`} id="complete-wedding">
           <div className={styles.collageWindow} role="img" aria-label="A wedding day moving from a mountain ceremony through dinner and dancing">
-            <Image src="/images/hsdj-redesign/packages/packages-ceremony-clue-v2.webp" alt="" fill loading="lazy" sizes="(max-width: 820px) 100vw, 70vw" />
+            <Image src="/images/hsdj-redesign/packages/packages-ceremony-clue-v3.webp" alt="" fill loading="lazy" sizes="(max-width: 820px) 100vw, 70vw" />
           </div>
           <div className={styles.weddingCopy}>
             <div className={styles.kicker}>THE ONE MOST COUPLES NEED</div>

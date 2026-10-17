@@ -37,8 +37,8 @@ export default function VenuesHubPage() {
       <JsonLd data={venuesHubItemListJsonLd(ACTIVE_VENUE_PAGES)} />
       <section className="venue-journey-hero" aria-labelledby="venue-journey-title">
         <Image
-          src="/images/hsdj-redesign/packages/packages-ceremony-clue-v2.webp"
-          alt="Wedding guests looking toward a mountain ceremony"
+          src="/images/hsdj-redesign/packages/packages-ceremony-clue-v3.webp"
+          alt="A couple smiling at each other during their mountain wedding ceremony"
           fill
           sizes="100vw"
           className="venue-journey-hero-image"
@@ -81,11 +81,18 @@ export default function VenuesHubPage() {
                 <h3><Link href={`/venues/${venue.slug}`} prefetch={false}>{venue.name}</Link></h3>
                 <p>{venue.shortSummary}</p>
                 <div className="venue-route-actions">
-                  <Link href={`/venues/${venue.slug}`} prefetch={false}>Step into this venue <span aria-hidden="true">↗</span></Link>
+                  <Link href={`/venues/${venue.slug}`} prefetch={false}>Explore venue <span aria-hidden="true">↗</span></Link>
                   <a href={venue.officialUrl} target="_blank" rel="noopener noreferrer">Official venue site <span className="sr-only">(opens in a new tab)</span></a>
                 </div>
               </div>
-              {index % 3 === 1 ? <span className="venue-route-scratch" aria-hidden="true" /> : null}
+              <div className="venue-route-art" aria-hidden="true">
+                <span className="venue-route-art-index">SIDE {String(index + 1).padStart(2, "0")} / THE SETTING</span>
+                <div className="venue-route-art-lettering">
+                  <span className="venue-route-art-prompt">THE ROOM?</span>
+                  <span className="venue-route-art-name">{venue.name}</span>
+                </div>
+                <span className="venue-route-art-footer">HOWE SOUND DJ <span>✦</span> SEA TO SKY</span>
+              </div>
             </li>
           ))}
         </ol>
