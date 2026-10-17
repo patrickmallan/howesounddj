@@ -216,6 +216,14 @@ test("Venues hero and route artwork hold the intended hierarchy", async ({ page 
   expect(heading!.y - hero!.y).toBeLessThan(150);
   await expect(page.locator(".venue-route-art")).toHaveCount(13);
   await expect(page.locator(".venue-route-art").first()).toBeVisible();
+  const portraits = await page.locator(".venue-route-art").evaluateAll((elements) => elements.map((element) => ({
+    text: element.textContent?.trim(),
+    image: getComputedStyle(element).backgroundImage,
+    position: getComputedStyle(element).backgroundPosition,
+  })));
+  expect(portraits.every((portrait) => portrait.text === "")).toBe(true);
+  expect(portraits.every((portrait) => portrait.image.includes("venue-portraits-atlas-v1.webp"))).toBe(true);
+  expect(new Set(portraits.map((portrait) => portrait.position)).size).toBe(13);
   await expect(page.locator(".venue-journey-hero-image")).toHaveAttribute("src", /packages-ceremony-clue-v3/);
 
   await page.setViewportSize({ width: 390, height: 844 });

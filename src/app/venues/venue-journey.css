@@ -35,16 +35,9 @@
 .venue-route-stop:nth-child(odd) .venue-route-stop-content { grid-column: 1; padding-right: clamp(2rem, 5vw, 5rem); text-align: right; }
 .venue-route-stop:nth-child(even) .venue-route-art { grid-column: 1; grid-row: 1; margin-right: clamp(2rem, 5vw, 5rem); }
 .venue-route-stop:nth-child(odd) .venue-route-art { grid-column: 2; grid-row: 1; margin-left: clamp(2rem, 5vw, 5rem); }
-.venue-route-art { position: relative; align-self: start; display: flex; flex-direction: column; justify-content: space-between; min-height: 13rem; max-width: 29rem; padding: 1rem 1.2rem; overflow: hidden; border: 1px solid #72f2f271; border-left: 4px solid var(--route-cyan); background: radial-gradient(circle at 82% 16%, #1c4651 0, transparent 42%), repeating-linear-gradient(0deg, #0d1d23 0 2px, #10232a 2px 4px); box-shadow: 8px 8px 0 #1255ff, inset 0 0 0 5px #071215; transform: rotate(-1.2deg); }
-.venue-route-stop:nth-child(3n + 2) .venue-route-art { border-left-color: var(--route-pink); box-shadow: 8px 8px 0 #a41d63, inset 0 0 0 5px #071215; transform: rotate(1.1deg); }
-.venue-route-stop:nth-child(3n) .venue-route-art { border-left-color: var(--route-yellow); box-shadow: 8px 8px 0 #c58612, inset 0 0 0 5px #071215; }
-.venue-route-art-index, .venue-route-art-footer { color: #a6d7db; font: 700 .62rem/1.3 ui-monospace, SFMono-Regular, monospace; letter-spacing: .18em; }
-.venue-route-art-footer { display: flex; justify-content: space-between; color: #dce8e8; }
-.venue-route-art-footer span { color: var(--route-yellow); }
-.venue-route-art-lettering { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .15rem; flex: 1; margin: 1rem 0; text-align: center; }
-.venue-route-art-prompt, .venue-route-art-name { display: block; max-width: 100%; font-family: var(--font-display), var(--font-geist-sans), sans-serif; font-weight: 800; font-synthesis: none; line-height: 1.08; text-wrap: balance; }
-.venue-route-art-prompt { color: #f8f2f0; font-palette: --hsdj-club-light; font-size: clamp(1.3rem, 2.4vw, 2.15rem); letter-spacing: .04em; }
-.venue-route-art-name { color: var(--route-yellow); font-palette: --hsdj-signal-light; font-size: clamp(1.35rem, 2.7vw, 2.45rem); letter-spacing: .02em; overflow-wrap: anywhere; filter: drop-shadow(0 0 9px #ffd21c42); }
+.venue-route-art { position: relative; align-self: start; width: auto; aspect-ratio: 960 / 457; max-width: 29rem; overflow: hidden; border: 1px solid #72f2f271; border-left: 4px solid var(--route-cyan); background-color: #10232a; background-image: url('/images/venues/venue-portraits-atlas-v1.webp'); background-size: 400% 400%; background-repeat: no-repeat; box-shadow: 8px 8px 0 #1255ff; transform: rotate(-1.2deg); }
+.venue-route-stop:nth-child(3n + 2) .venue-route-art { border-left-color: var(--route-pink); box-shadow: 8px 8px 0 #a41d63; transform: rotate(1.1deg); }
+.venue-route-stop:nth-child(3n) .venue-route-art { border-left-color: var(--route-yellow); box-shadow: 8px 8px 0 #c58612; }
 .venue-route-spindle { position: absolute; z-index: 2; top: 1.4rem; left: 50%; width: 2.2rem; height: 2.2rem; transform: translateX(-50%); border-radius: 50%; border: 5px solid var(--route-yellow); background: #071215; box-shadow: 0 0 0 7px #071215, 0 0 0 9px var(--route-yellow); }
 .venue-route-stop:nth-child(3n + 2) .venue-route-spindle { border-color: var(--route-pink); box-shadow: 0 0 0 7px #071215, 0 0 0 9px var(--route-pink); }
 .venue-route-stop:nth-child(3n) .venue-route-spindle { border-color: var(--route-cyan); box-shadow: 0 0 0 7px #071215, 0 0 0 9px var(--route-cyan); }

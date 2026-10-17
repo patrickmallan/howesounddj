@@ -66,7 +66,7 @@ export default function VenuesHubPage() {
           <div>
             <p className="venue-route-overline">The corridor, venue by venue</p>
             <h2 id="venue-route-title">Find your room. Hear the possibilities.</h2>
-            <p>Each stop opens a guide to the sound, transitions, and guest flow worth thinking through there.</p>
+            <p>Each stop opens a guide to the sound, transitions, and guest flow worth thinking through there. The portraits are artistic interpretations of the venues, not event photos.</p>
           </div>
         </div>
         <ol className="venue-route-list">
@@ -85,14 +85,13 @@ export default function VenuesHubPage() {
                   <a href={venue.officialUrl} target="_blank" rel="noopener noreferrer">Official venue site <span className="sr-only">(opens in a new tab)</span></a>
                 </div>
               </div>
-              <div className="venue-route-art" aria-hidden="true">
-                <span className="venue-route-art-index">SIDE {String(index + 1).padStart(2, "0")} / THE SETTING</span>
-                <div className="venue-route-art-lettering">
-                  <span className="venue-route-art-prompt">THE ROOM?</span>
-                  <span className="venue-route-art-name">{venue.name}</span>
-                </div>
-                <span className="venue-route-art-footer">HOWE SOUND DJ <span>✦</span> SEA TO SKY</span>
-              </div>
+              <div
+                className="venue-route-art"
+                aria-hidden="true"
+                style={{
+                  backgroundPosition: `${(index % 4) * 100 / 3}% ${Math.floor(index / 4) * 100 / 3}%`,
+                }}
+              />
             </li>
           ))}
         </ol>
