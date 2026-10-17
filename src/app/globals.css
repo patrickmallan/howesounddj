@@ -99,15 +99,15 @@ body {
   background-size: 8rem 100%;
 }
 
-/* H1s carry the LED identity. H2s use the regular display hierarchy by default;
-   the matrix alphabet is reserved for explicit dark-stage light boards. */
-:where(main h1:not(.sr-only)) {
+/* Brand hierarchy: H1s are individual bulb fixtures; H2s are the square-cell
+   billboard alphabet. The client controller flashes individual H2 letters. */
+#main-content main h2:not(.sr-only) {
   font-family: var(--font-display), var(--font-geist-sans), sans-serif !important;
   font-palette: --hsdj-paper-light;
   font-synthesis: none;
   font-weight: 800;
-  letter-spacing: .045em !important;
-  line-height: 1.04 !important;
+  letter-spacing: .035em;
+  line-height: 1.08;
   text-transform: uppercase;
   text-shadow: none !important;
 }
@@ -130,14 +130,6 @@ body {
 .hsdj-meter--after-dark { font-palette: --hsdj-after-dark; filter: drop-shadow(0 0 .055em rgb(82 237 126 / 34%)); }
 .hsdj-meter--cold { font-palette: --hsdj-cold-booth; filter: none; }
 .hsdj-meter--paper { font-palette: --hsdj-paper-light; filter: none; }
-
-/* H1s use the independent-cell matrix component. The heading remains a stable
-   positioning and glow surface while each square controls its own colour. */
-:where(main h1:not(.sr-only)) {
-  position: relative;
-  isolation: isolate;
-  filter: drop-shadow(0 0 .035em rgb(255 255 255 / 22%));
-}
 
 /* Controller-native site chrome: real photographed controls, plain-language labels. */
 .hsdj-site-header {

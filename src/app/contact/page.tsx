@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactAvailabilityForm } from "@/components/contact-availability-form";
 import { ContactMessageDrawer } from "@/components/contact-message-drawer";
 import { ResponsiveAmbientDanceMontage } from "@/components/responsive-ambient-dance-montage";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import styles from "./contact-page.module.css";
 
 /** Turnstile's public site key is captured by each production build. */
@@ -40,10 +41,7 @@ export default function ContactPage() {
         <div className={styles.stageInner}>
           <header className={styles.intro}>
             <p className={styles.eyebrow}>Contact / Squamish + Sea-to-Sky</p>
-            <h1 id="contact-title" className={styles.title}>
-              <span>Have a</span>{" "}
-              <span>Wedding date?</span>
-            </h1>
+            <MeterMatrixHeading id="contact-title" className={styles.title} text="Have a wedding date?" lines={["Have a", "wedding date?"]} />
             <p className={styles.lede}>
               Check it here. If I&apos;m free, you can book a consult right away.
             </p>

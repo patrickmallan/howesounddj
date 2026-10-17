@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { guideArticleBreadcrumbJsonLd, guideArticleJsonLd } from "@/lib/json-ld";
 import "./cost-guide.css";
@@ -77,12 +78,11 @@ export default function SeaToSkyWeddingDjCostPage() {
               <span>Wedding DJ costs</span>
             </nav>
             <p className="cost-guide-date"><time dateTime={ARTICLE_DATE}>October 14, 2026</time><span aria-hidden="true">·</span> Howe Sound DJ</p>
-            <h1>
-              <span>What does a</span>
-              <span>wedding DJ</span>
-              <span>cost in the</span>
-              <span>Sea-to-Sky?</span>
-            </h1>
+            <MeterMatrixHeading
+              className="cost-guide-title"
+              text={ARTICLE_TITLE}
+              lines={["What does a", "wedding DJ cost", "in the Sea-to-Sky?"]}
+            />
             <p className="cost-guide-dek">There isn&apos;t one honest sticker price for every wedding up here. A six-hour dinner-and-dance booking and a day that needs ceremony sound, speeches, music in another space, and a late finish are different jobs. When you see a number, start with what it covers.</p>
           </div>
         </header>

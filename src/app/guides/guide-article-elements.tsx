@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { HeroSignalCopy } from "@/components/hero-signal-copy";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 
 type GuideArticleHeaderProps = {
   breadcrumbLabel: string;
@@ -47,9 +48,7 @@ export function GuideArticleHeader({
           </span>
           Howe Sound DJ
         </p>
-        <h1 className="hsdj-guide-article-title mt-4 max-w-4xl" aria-label={title}>
-          {titleLines.map((line) => <span key={line}>{line}</span>)}
-        </h1>
+        <MeterMatrixHeading className="hsdj-guide-article-title mt-4 max-w-4xl" text={title} lines={titleLines} />
         <HeroSignalCopy className="mt-6 max-w-3xl text-lg leading-8 text-white/70" tone={tone}>
           {children}
         </HeroSignalCopy>

@@ -34,21 +34,22 @@
   background: #080c10eb;
   border-left: 3px solid #ef4087;
 }
-/* Wedding letterforms printed into the same black/cobalt/pink poster world.
-   This local heading must not inherit the global mobile billboard geometry. */
+/* The welcome card keeps its poster framing while sharing the site-wide
+   square-cell H2 alphabet and automatic per-letter cue. */
 :global(#main-content) .welcome .notes h2:not(:global(.sr-only)) {
   display: block; width: auto; max-width: none !important;
   margin: 0 0 1.5rem; padding: 0 0 1.4rem;
   border: 0; border-bottom: 2px solid #f3418a;
   background: none; box-shadow: none; color: #fff0e6 !important;
-  font-family: Georgia, 'Times New Roman', serif !important;
-  font-size: clamp(2rem, 3.1vw, 2.9rem) !important;
-  font-weight: 400 !important; line-height: 1.08 !important;
-  letter-spacing: -.025em !important; text-transform: none; text-wrap: pretty;
+  font-family: var(--font-display), var(--font-geist-sans), sans-serif !important;
+  font-palette: --hsdj-paper-light;
+  font-size: clamp(1.55rem, 3vw, 2.8rem) !important;
+  font-weight: 800 !important; line-height: 1.14 !important;
+  letter-spacing: .025em !important; text-transform: uppercase; text-wrap: pretty;
   text-shadow: none !important; filter: none !important;
 }
-.welcomeLine { display: block; font-style: italic; margin-bottom: .2em; color: #ff9bc6; }
-.gildedTitle { display: block; font-weight: 700; color: #fff1db; text-shadow: 2px 2px 0 #76334e; }
+.welcomeLine { display: block; margin-bottom: .3em; }
+.gildedTitle { display: block; }
 .notes p { margin: 0 0 1.15em; font-size: clamp(1rem, 1.3vw, 1.125rem); font-weight: 750; line-height: 1.65; text-wrap: pretty; }
 .notes p:last-child { margin-bottom: 0; }
 .notes strong { font-weight: 750; color: #fff1db; }

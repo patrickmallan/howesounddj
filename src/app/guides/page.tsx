@@ -4,6 +4,7 @@ import Link from "next/link";
 import { GuidesTurntable } from "./guides-turntable";
 import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { JsonLd } from "@/components/json-ld";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { guidesHubBreadcrumbJsonLd } from "@/lib/json-ld";
 import "./guides-deck.css";
 
@@ -56,11 +57,7 @@ export default function GuidesHubPage() {
       </div>
       <section className="guides-deck-hero" aria-labelledby="guides-deck-title">
         <div className="guides-deck-hero-copy">
-          <h1 id="guides-deck-title" className="guides-deck-title" aria-label={guideTitle}>
-            <span aria-hidden="true">Good parties</span>
-            <span aria-hidden="true">are made</span>
-            <span aria-hidden="true">on purpose.</span>
-          </h1>
+          <MeterMatrixHeading id="guides-deck-title" className="guides-deck-title" text={guideTitle} lines={["Good parties", "are made", "on purpose."]} />
           <HeroSignalCopy>Two questions behind a night people remember: who do you trust with the music, and how do you get everyone onto the floor?</HeroSignalCopy>
           <nav className="guides-deck-hero-routes" aria-label="Choose a planning question">
             <a href="#guide-one" data-physical-control="beat-jump">

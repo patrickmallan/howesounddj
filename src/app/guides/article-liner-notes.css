@@ -38,19 +38,10 @@
 #main-content .hsdj-editorial-page .hsdj-interior-flow > header > div[class*="max-w"] { width: 100%; padding-block: clamp(7rem, 12vw, 11rem) clamp(3rem, 6vw, 5rem); }
 #main-content .hsdj-editorial-page .hsdj-interior-flow > header h1 { max-width: 100%; color: #fff; text-shadow: 0 2px 15px #000; }
 #main-content .hsdj-editorial-page :is(.hsdj-guide-article-title, .hsdj-story-article-title) {
-  width: fit-content;
-  max-width: min(100%, 19ch);
-  color: #fff8e8;
-  font: 800 clamp(3rem, 6.2vw, 6.75rem)/.88 var(--font-display), Impact, sans-serif !important;
-  font-synthesis: none;
-  letter-spacing: .015em !important;
-  text-wrap: balance;
-  filter: drop-shadow(0 0 .07em #7899ff7a);
+  width: min(100%, 920px) !important;
+  max-width: 100%;
+  filter: drop-shadow(0 5px 12px #0009);
 }
-#main-content .hsdj-editorial-page :is(.hsdj-guide-article-title, .hsdj-story-article-title) > span { display: block; }
-#main-content .hsdj-editorial-page :is(.hsdj-guide-article-title, .hsdj-story-article-title) > span:nth-child(3n + 1) { font-palette: --hsdj-signal-light; }
-#main-content .hsdj-editorial-page :is(.hsdj-guide-article-title, .hsdj-story-article-title) > span:nth-child(3n + 2) { font-palette: --hsdj-club-light; }
-#main-content .hsdj-editorial-page :is(.hsdj-guide-article-title, .hsdj-story-article-title) > span:nth-child(3n) { font-palette: --hsdj-after-dark; }
 #main-content .hsdj-editorial-page .hsdj-interior-flow > header h1 + p { max-width: 42rem; padding: 1rem 1.3rem; border-left: 6px solid #ffde25; background: #080d12e8; color: #fff; box-shadow: 10px 10px 0 #1756ff88; }
 #main-content .hsdj-story-detail-page .hsdj-interior-flow > header h1 + p { border-left-color: #ff3986; }
 #main-content .hsdj-editorial-page .hsdj-interior-flow > section {
@@ -98,11 +89,10 @@
   #main-content .hsdj-editorial-page .hsdj-interior-flow > section > div[class*="max-w"] { margin-inline: auto; }
   #main-content .hsdj-editorial-page :is(.hsdj-guide-article-title, .hsdj-story-article-title) {
     max-width: 100% !important;
-    font-size: clamp(2.45rem, 11vw, 4.2rem) !important;
-    line-height: .9 !important;
   }
   #main-content .hsdj-editorial-page .hsdj-interior-flow > section h2 {
-    max-width: min(16ch, 100%) !important;
+    max-width: 100% !important;
+    font-size: clamp(1.5rem, 7.6vw, 1.7rem) !important;
     overflow-wrap: anywhere;
   }
 }

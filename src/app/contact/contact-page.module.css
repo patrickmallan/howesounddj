@@ -120,20 +120,10 @@
 
 .title {
   margin: 0;
-  font-family: var(--font-display), Impact, sans-serif;
-  font-size: clamp(4rem, 6.8vw, 6.45rem);
-  font-weight: 900;
-  letter-spacing: -0.055em;
-  line-height: 0.84;
-  text-transform: uppercase;
-  text-shadow: 7px 7px 0 #124ee8;
-  font-palette: --hsdj-cold-booth;
-  text-wrap: balance;
+  width: min(100%, 800px) !important;
+  filter: drop-shadow(0 4px 12px #000a);
 }
 
-.title > span {
-  display: block;
-}
 
 .lede {
   width: min(31rem, 90%);
@@ -187,12 +177,6 @@
   .eyebrow {
     margin-bottom: 2.2rem;
     font-size: 0.64rem;
-  }
-
-  .title {
-    font-size: clamp(3.25rem, 13.2vw, 4.25rem);
-    line-height: 0.88;
-    text-shadow: 4px 4px 0 #124ee8;
   }
 
   .lede {

@@ -71,20 +71,11 @@
 }
 
 .cost-guide-hero h1 {
-  width: min(100%, 760px);
-  max-width: none;
+  width: min(100%, 820px) !important;
+  max-width: 100%;
   margin: 0;
-  color: var(--cost-paper);
-  font-size: clamp(2.7rem, 4.55vw, 5.15rem);
-  font-palette: --hsdj-paper-light;
-  font-weight: 800;
-  letter-spacing: .012em !important;
-  line-height: 1.06 !important;
-  text-wrap: balance;
-  filter: drop-shadow(0 3px 14px #000b);
+  filter: drop-shadow(0 5px 13px #000b);
 }
-
-.cost-guide-hero h1 span { display: block; }
 
 .cost-guide-dek {
   width: min(100%, 42rem);
@@ -184,11 +175,10 @@
   max-width: 16ch;
   margin: 0;
   color: #fffaf0;
-  font-family: var(--font-geist-sans), Arial, sans-serif;
-  font-size: clamp(2.15rem, 3.45vw, 3.7rem);
-  font-weight: 950;
-  letter-spacing: -.052em;
-  line-height: .99;
+  font-size: clamp(2rem, 3.1vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: .035em;
+  line-height: 1.04;
   text-transform: uppercase;
   text-wrap: balance;
 }
