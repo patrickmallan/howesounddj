@@ -13,7 +13,8 @@ for (const width of [320, 390, 768, 1440]) {
     await expect(page.locator("main h1")).toHaveCount(1);
     await expect(page.locator("main h2")).toHaveCount(4);
     await expect(page.locator("main")).toContainText("One less drive up the Sea-to-Sky");
-    await expect(page.locator("main")).toContainText("That's the useful part of hiring local.");
+    await expect(page.locator("main")).toContainText("I live in the town where you're celebrating.");
+    await expect(page.locator(".vancouver-route-compare")).toContainText("Which spaces get sound?");
     await expect(page.locator("main")).toContainText("For Vancouver couples celebrating in Squamish.");
 
     for (const selector of ["main h1", "main h2", ".vancouver-date-control"]) {
@@ -29,6 +30,21 @@ for (const width of [320, 390, 768, 1440]) {
     expect(errors).toEqual([]);
   });
 }
+
+test("Vancouver desktop story stays compact enough to scan", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(route);
+
+  const sections = page.locator(".vancouver-route-plan, .vancouver-route-local, .vancouver-route-proof, .vancouver-route-finish");
+  const dimensions = await sections.evaluateAll((elements) => elements.map((element) => {
+    const heading = element.querySelector("h2");
+    return { height: element.getBoundingClientRect().height, headingSize: heading ? parseFloat(getComputedStyle(heading).fontSize) : 0 };
+  }));
+
+  expect(dimensions).toHaveLength(4);
+  expect(dimensions.reduce((total, section) => total + section.height, 0)).toBeLessThan(2_300);
+  expect(dimensions.every((section) => section.headingSize <= 65)).toBe(true);
+});
 
 test("Vancouver route ships compact semantic HTML and structured search signals", async ({ request }) => {
   const response = await request.get(route);

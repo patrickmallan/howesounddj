@@ -56,6 +56,22 @@ for (const width of [390, 1440]) {
   });
 }
 
+test("package card H2s give dark matrix letters breathing room on desktop", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/packages");
+
+  for (const selector of ['[class*="weddingCopy"] h2', '[class*="ticketBody"] h2']) {
+    const heading = page.locator(selector);
+    await expect(heading).toHaveCSS("font-palette", "--hsdj-ink-on-light");
+    const typography = await heading.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return { size: parseFloat(style.fontSize), spacing: parseFloat(style.letterSpacing) };
+    });
+    expect(typography.size).toBeLessThanOrEqual(56);
+    expect(typography.spacing).toBeGreaterThan(5);
+  }
+});
+
 test("cost guide H2 flashes individual letters automatically on mobile", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/guides/sea-to-sky-wedding-dj-cost");
