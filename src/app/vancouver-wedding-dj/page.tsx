@@ -96,7 +96,7 @@ export default function VancouverWeddingDjPage() {
         </div>
         <div className="vancouver-route-plan-copy">
           <h2 id="vancouver-route-plan-title">Make the music decisions from home.</h2>
-          <p>Start with a conversation. Tell me what you love, what you absolutely do not want to hear, and which moments need a particular song. We can work through those choices and the timing while you&apos;re in Vancouver.</p>
+          <p>Tell me your must-plays, hard noes, and the moments that need a particular song. We can build the plan together while you&apos;re still in Vancouver.</p>
         </div>
         <p className="vancouver-route-plan-aside">One less drive up the Sea-to-Sky just to talk songs.</p>
       </section>
@@ -105,14 +105,23 @@ export default function VancouverWeddingDjPage() {
         <div className="vancouver-route-local-light" aria-hidden="true" />
         <div className="vancouver-route-local-copy">
           <h2 id="vancouver-route-local-title">The wedding is here. So am I.</h2>
-          <p>When we talk about the ceremony space, speeches, and where the dancing will happen, we&apos;re planning for your Squamish venue. I live in the town where you&apos;re getting married. That&apos;s the useful part of hiring local.</p>
-          <p>Still choosing the room? <Link href="/venues" prefetch={false}>Explore Squamish wedding venues</Link> before we talk through its sound and layout.</p>
+          <p>We&apos;ll plan around your actual Squamish venue: where guests hear the vows, where speeches happen, and how the party moves between spaces. I live in the town where you&apos;re celebrating.</p>
+          <div className="vancouver-route-compare">
+            <p className="vancouver-route-compare-label">COMPARE THE WHOLE JOB</p>
+            <ul>
+              <li><strong>Who&apos;s your DJ?</strong><span>You plan directly with me, the person behind the booth on your day.</span></li>
+              <li><strong>Which spaces get sound?</strong><span>Ask what covers the ceremony, cocktails, dinner, speeches, and dancing.</span></li>
+              <li><strong>What&apos;s in the quote?</strong><span>Check setup, room moves, travel, and extra time before comparing totals.</span></li>
+            </ul>
+            <Link href="/packages" prefetch={false}>See what I cover <span aria-hidden="true">↗</span></Link>
+          </div>
+          <p>Still choosing the room? <Link href="/venues" prefetch={false}>Explore Squamish wedding venues.</Link></p>
         </div>
       </section>
 
       {localReview && (
         <section className="vancouver-route-proof" aria-labelledby="vancouver-route-proof-title">
-          <h2 id="vancouver-route-proof-title">A couple said it better.</h2>
+          <h2 id="vancouver-route-proof-title">A couple&apos;s take.</h2>
           <blockquote>
             <p>“{localReview.quote}”</p>
             <footer>{localReview.attribution}</footer>

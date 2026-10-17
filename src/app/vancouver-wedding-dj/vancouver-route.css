@@ -130,8 +130,8 @@
 }
 
 .vancouver-route-plan {
-  min-height: 67rem;
-  padding: 8rem max(5vw, calc((100vw - 80rem) / 2));
+  min-height: 36rem;
+  padding: 5rem max(5vw, calc((100vw - 80rem) / 2));
 }
 
 .vancouver-route-plan::before,
@@ -145,10 +145,10 @@
 
 .vancouver-route-mix-art {
   position: absolute;
-  top: 1rem;
+  top: -3rem;
   right: -7%;
   left: -7%;
-  height: 43rem;
+  height: 29rem;
   overflow: hidden;
   pointer-events: none;
 }
@@ -189,18 +189,19 @@
 .vancouver-route-plan-copy {
   position: relative;
   z-index: 2;
-  max-width: 42rem;
-  margin: 22rem 0 0 12%;
+  max-width: 48rem;
+  margin: 8rem 0 0 9%;
 }
 
 .vancouver-route-plan h2,
 .vancouver-route-local h2,
 .vancouver-route-finish h2 {
-  margin: 0 0 1.4rem;
-  font: 1000 clamp(3.6rem, 7vw, 7.5rem) / .86 Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  letter-spacing: -.02em;
+  margin: 0 0 1.1rem;
+  font-size: clamp(2.6rem, 3.7vw, 4rem);
+  line-height: 1.06;
+  letter-spacing: .045em;
   text-transform: uppercase;
-  text-shadow: 5px 6px 0 #101010;
+  text-shadow: 0 2px 12px #101010;
 }
 
 .vancouver-route-plan h2 { color: #ffe12a; }
@@ -210,9 +211,9 @@
 .vancouver-route-finish-copy > p:not(.vancouver-route-finish-qualifier) {
   max-width: 38rem;
   margin: 0;
-  font-size: clamp(1.14rem, 1.7vw, 1.55rem);
+  font-size: clamp(1.03rem, 1.16vw, 1.25rem);
   font-weight: 720;
-  line-height: 1.5;
+  line-height: 1.55;
   text-shadow: 0 2px 7px #000, 0 0 16px #000;
 }
 
@@ -220,11 +221,11 @@
   position: absolute;
   z-index: 2;
   right: 8%;
-  bottom: 12rem;
+  bottom: 4rem;
   max-width: 22rem;
   margin: 0;
   color: #ffe12a;
-  font: italic 900 clamp(1.35rem, 2vw, 2.2rem) / 1.18 Arial, sans-serif;
+  font: italic 900 clamp(1.15rem, 1.5vw, 1.55rem) / 1.18 Arial, sans-serif;
   text-shadow: 4px 4px 0 #101010, 0 0 15px #101010;
   transform: rotate(5deg);
 }
@@ -232,8 +233,9 @@
 .vancouver-route-local {
   display: flex;
   align-items: center;
-  min-height: 59rem;
-  padding: 8rem max(5vw, calc((100vw - 80rem) / 2));
+  min-height: 40rem;
+  padding: 4.5rem max(5vw, calc((100vw - 80rem) / 2));
+  background: linear-gradient(90deg, transparent 24%, #07111991 48%, #071119cb 100%);
 }
 
 .vancouver-route-local-light {
@@ -252,12 +254,32 @@
 .vancouver-route-local-copy {
   position: relative;
   z-index: 2;
-  max-width: 38rem;
+  max-width: 42rem;
   margin-left: auto;
 }
 
-.vancouver-route-local h2 { color: #ffe12a; }
-.vancouver-route-local-copy p + p { margin-top: 1.4rem; }
+.vancouver-route-local h2 { width: fit-content; padding: .45rem .6rem; color: #ffe12a; background: #071119e8; box-shadow: 5px 6px 0 #205aff; }
+.vancouver-route-local-copy > p + p { margin-top: 1rem; }
+
+.vancouver-route-compare {
+  margin: 1.35rem 0;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid #61dfe78a;
+  border-left: 5px solid #54e7ee;
+  background: #06131be8;
+  box-shadow: 6px 7px 0 #205aff;
+}
+.vancouver-route-compare .vancouver-route-compare-label {
+  margin: 0 0 .75rem;
+  color: #54e7ee;
+  font: 850 .72rem/1.25 ui-monospace, monospace;
+  letter-spacing: .1em;
+}
+.vancouver-route-compare ul { display: grid; gap: .55rem; margin: 0 0 .8rem; padding: 0; list-style: none; }
+.vancouver-route-compare li { display: grid; grid-template-columns: 9.5rem 1fr; gap: .75rem; font-size: .94rem; line-height: 1.4; }
+.vancouver-route-compare li strong { color: #ffe12a; }
+.vancouver-route-compare li span { color: #f1f8f8; }
+.vancouver-route-compare > a { color: #54e7ee; font-weight: 800; text-underline-offset: 4px; }
 
 .vancouver-route-local-copy a,
 .vancouver-route-proof > a {
@@ -268,8 +290,8 @@
 }
 
 .vancouver-route-proof {
-  min-height: 54rem;
-  padding: 9rem max(5vw, calc((100vw - 80rem) / 2));
+  min-height: 28rem;
+  padding: 4rem max(5vw, calc((100vw - 80rem) / 2));
 }
 
 .vancouver-route-proof::before {
@@ -279,9 +301,10 @@
 .vancouver-route-proof h2 {
   width: max-content;
   max-width: 100%;
-  margin: 0 0 3rem;
+  margin: 0 0 1.5rem;
   color: #4ee1e8;
-  font: 1000 clamp(2rem, 4vw, 4.5rem) / .95 Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: clamp(2rem, 3vw, 3.5rem);
+  line-height: 1.06;
   text-transform: uppercase;
   transform: rotate(-3deg);
   text-shadow: 4px 5px 0 #101010;
@@ -289,16 +312,16 @@
 
 .vancouver-route-proof blockquote {
   position: relative;
-  max-width: 76rem;
-  margin: 0 0 2.5rem auto;
+  max-width: 68rem;
+  margin: 0 0 1.25rem auto;
 }
 
 .vancouver-route-proof blockquote p {
   margin: 0;
-  font-size: clamp(2.5rem, 5vw, 5.3rem);
+  font-size: clamp(1.6rem, 2.5vw, 2.6rem);
   font-weight: 950;
-  line-height: 1.06;
-  letter-spacing: -.045em;
+  line-height: 1.2;
+  letter-spacing: -.02em;
   text-shadow: 0 3px 6px #000, 0 0 25px #000;
 }
 
@@ -310,8 +333,13 @@
 }
 
 .vancouver-route-proof > a {
+  position: relative;
+  z-index: 1;
   display: inline-block;
   margin-left: 52%;
+  padding: .5rem .7rem;
+  border-left: 4px solid #54e7ee;
+  background: #06131bea;
   font-size: clamp(1rem, 1.35vw, 1.3rem);
   text-shadow: 0 2px 6px #000;
 }
@@ -319,12 +347,15 @@
 .vancouver-route-finish {
   display: flex;
   align-items: center;
-  min-height: 41rem;
-  padding: 6rem max(5vw, calc((100vw - 80rem) / 2));
+  min-height: 28rem;
+  padding: 4rem max(5vw, calc((100vw - 80rem) / 2));
 }
 
 .vancouver-route-finish-copy {
-  max-width: 64rem;
+  max-width: 50rem;
+  padding: 1.5rem 1.7rem;
+  border-left: 5px solid #54e7ee;
+  background: linear-gradient(90deg, #061018ed, #061018d1 78%, #0610186b);
 }
 
 .vancouver-route-finish h2 { color: #ffe12a; }
@@ -378,24 +409,26 @@
   .vancouver-route-hero::before { background: linear-gradient(0deg, #090e15ef 0, #090e15ca 48%, #090e1580 100%); }
   .vancouver-route-hero-actions { align-items: flex-start; flex-direction: column; gap: 1.4rem; }
 
-  .vancouver-route-plan { min-height: 50rem; padding-block: 3.5rem; }
-  .vancouver-route-mix-art { top: 0; right: -18%; left: -18%; height: 24rem; }
-  .vancouver-route-plan-copy { margin: 15rem 0 0; }
+  .vancouver-route-plan { min-height: 37rem; padding-block: 3.5rem; }
+  .vancouver-route-mix-art { top: 0; right: -18%; left: -18%; height: 20rem; }
+  .vancouver-route-plan-copy { margin: 12rem 0 0; }
   .vancouver-route-plan h2,
   .vancouver-route-local h2,
-  .vancouver-route-finish h2 { font-size: clamp(3.5rem, 14vw, 5rem); }
-  .vancouver-route-plan-aside { right: 7%; bottom: 8rem; max-width: 16rem; font-size: 1.4rem; }
+  .vancouver-route-finish h2 { font-size: clamp(2.4rem, 10vw, 3.4rem); }
+  .vancouver-route-plan-aside { position: relative; right: auto; bottom: auto; max-width: 18rem; margin: 1.5rem 0 0 auto; font-size: 1.1rem; }
 
-  .vancouver-route-local { min-height: 45rem; align-items: end; padding-block: 3rem 4rem; }
+  .vancouver-route-local { min-height: 38rem; align-items: end; padding-block: 3rem 4rem; background: linear-gradient(0deg, #071119bd, #07111975); }
   .vancouver-route-local-light { top: 2%; bottom: 30%; left: -55%; width: 150%; }
   .vancouver-route-local-copy { margin: 0; }
+  .vancouver-route-compare li { grid-template-columns: 1fr; gap: .1rem; }
 
-  .vancouver-route-proof { min-height: 43rem; padding-block: 4rem; }
-  .vancouver-route-proof h2 { max-width: 15rem; font-size: 2.7rem; }
-  .vancouver-route-proof blockquote p { font-size: clamp(2.25rem, 9.5vw, 3.4rem); }
+  .vancouver-route-proof { min-height: 30rem; padding-block: 3rem; }
+  .vancouver-route-proof h2 { max-width: 15rem; font-size: 2.4rem; }
+  .vancouver-route-proof blockquote p { font-size: clamp(1.55rem, 6.5vw, 2.3rem); }
   .vancouver-route-proof > a { margin-left: 0; }
 
-  .vancouver-route-finish { min-height: 30rem; padding-block: 3.5rem; }
+  .vancouver-route-finish { min-height: 25rem; padding-block: 3rem; }
+  .vancouver-route-finish-copy { padding: 1rem; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
