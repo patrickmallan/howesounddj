@@ -32,7 +32,7 @@
 .hsdj-venue-dossier .venue-dossier-spread h2 { max-width: 16ch !important; margin: 0 0 1.8rem; font-size: clamp(2.5rem, 4.5vw, 5rem) !important; line-height: .95; text-transform: uppercase; }
 .venue-dossier-spread-copy p { max-width: 47rem; margin: 0 0 1.2rem; color: #f1f8f8 !important; font-size: clamp(1.05rem, 1.25vw, 1.25rem); line-height: 1.68; }
 .venue-dossier-spread-copy a { color: var(--dossier-yellow); font-weight: 850; }
-#main-content .hsdj-venue-dossier .venue-dossier-outro { padding: clamp(5rem, 9vw, 9rem) max(5vw, calc((100vw - 80rem)/2)); background: var(--dossier-yellow) !important; color: #081419; }
+#main-content .hsdj-venue-dossier .venue-dossier-outro { --hsdj-h2-palette: --hsdj-ink-on-light; padding: clamp(5rem, 9vw, 9rem) max(5vw, calc((100vw - 80rem)/2)); background: var(--dossier-yellow) !important; color: #081419; }
 .venue-dossier-outro .venue-dossier-overline { margin-top: 0; color: #14556a; }
 .hsdj-venue-dossier .venue-dossier-outro h2 { max-width: 15ch !important; margin: 0; color: #081419; font-size: clamp(2.7rem, 5.5vw, 6rem) !important; line-height: .95; text-transform: uppercase; }
 .venue-dossier-outro > p:not(.venue-dossier-overline) { max-width: 43rem; color: #081419 !important; font-size: 1.2rem; font-weight: 700; line-height: 1.6; }

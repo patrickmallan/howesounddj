@@ -44,7 +44,7 @@
 .about-story-photo img { object-fit: cover; object-position: center; filter: contrast(1.08) saturate(1.13); }
 .about-story-photo figcaption { width: max-content; max-width: 100%; margin: .75rem 0 0 auto; padding: .5rem .7rem; border: 1px solid #d1dbe286; color: #f2f6f7; background: #0a1119ed; font: 800 .8rem/1.1 ui-monospace, monospace; text-transform: uppercase; letter-spacing: .04em; }
 
-#main-content .hsdj-backstage .about-console-section { padding: clamp(6rem, 9vw, 9rem) max(5vw, calc((100vw - 82rem)/2)); background: #ffdf28 !important; color: #08121b; }
+#main-content .hsdj-backstage .about-console-section { --hsdj-h2-palette: --hsdj-ink-on-light; padding: clamp(6rem, 9vw, 9rem) max(5vw, calc((100vw - 82rem)/2)); background: #ffdf28 !important; color: #08121b; }
 .about-console-section .about-eyebrow { color: #093859 !important; }
 .about-console-heading { max-width: 58rem; }
 .hsdj-backstage .about-console-heading h2 { margin: 0; color: #07101b !important; font: 1000 clamp(3.2rem, 5.8vw, 6.7rem)/.88 Impact, "Arial Narrow", sans-serif !important; }

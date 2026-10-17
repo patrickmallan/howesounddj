@@ -52,7 +52,7 @@
 .venue-route-actions a:first-child { color: var(--route-yellow); font-weight: 900; text-transform: uppercase; }
 .venue-route-actions a:last-child { color: #a7c3c6; font-size: .85rem; }
 .venue-route-scratch { position: absolute; top: 15%; right: 3%; width: 18%; height: 4rem; opacity: .35; background: repeating-linear-gradient(105deg, transparent 0 8px, var(--route-pink) 9px 12px, transparent 13px 24px); transform: rotate(-12deg); pointer-events: none; }
-#main-content .hsdj-venue-journey .venue-journey-outro { padding: clamp(5rem, 10vw, 10rem) max(6vw, calc((100vw - 78rem) / 2)); background: var(--route-yellow) !important; color: #071215; clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%); }
+#main-content .hsdj-venue-journey .venue-journey-outro { --hsdj-h2-palette: --hsdj-ink-on-light; padding: clamp(5rem, 10vw, 10rem) max(6vw, calc((100vw - 78rem) / 2)); background: var(--route-yellow) !important; color: #071215; clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%); }
 .venue-journey-outro .venue-route-overline { color: #123c48; }
 .venue-journey-outro h2 { color: #071215; }
 .venue-journey-outro p:not(.venue-route-overline) { color: #071215 !important; font-weight: 700; }
