@@ -57,7 +57,7 @@
 .sq-gear-link--date > img { width: 4.25rem; height: 4.25rem; margin: -.45rem .1rem -.45rem -.4rem; object-fit: contain; }
 .sq-gear-link:focus-visible { outline: 4px solid #ffe02a; outline-offset: 6px; }
 
-#main-content .hsdj-squamish-afterparty .sq-place { padding-top: clamp(5rem,8vw,9rem); background: #0c111a !important; }
+#main-content .hsdj-squamish-afterparty .sq-place { padding-block: clamp(5rem,8vw,9rem) 0 !important; background: #0c111a !important; }
 .sq-place-intro { display: flex; align-items: center; gap: clamp(2rem,5vw,7rem); padding: 0 max(5vw,calc((100vw - 80rem)/2)) clamp(3rem,5vw,6rem); }
 #main-content .hsdj-squamish-afterparty .sq-place h2 { flex: 1.15; max-width: 13ch !important; color: #fff; }
 .sq-place-intro p { flex: .85; max-width: 35rem; margin: 0 0 .35rem; color: #f1f2f4; font-size: clamp(1.15rem,1.7vw,1.55rem); font-weight: 600; line-height: 1.55; }
@@ -100,7 +100,7 @@
 }
 .sq-field-note strong { display: block; margin-top: .75rem; color: #0a1117; font: inherit; font-weight: 950; text-transform: none; transform: none; }
 
-#main-content .hsdj-squamish-afterparty .sq-local { min-height: 0; padding: clamp(5rem,9vw,9rem) max(5vw,calc((100vw - 80rem)/2)); overflow: hidden; background: linear-gradient(90deg,#08141de8 0%,#08141dcf 37%,#08141d58 75%),url('/images/squamish/squamish-local-night-v1.webp') center / cover !important; }
+#main-content .hsdj-squamish-afterparty .sq-local { min-height: 0; padding: clamp(5rem,9vw,9rem) max(5vw,calc((100vw - 80rem)/2)); padding-block: clamp(5rem,9vw,9rem) !important; overflow: hidden; background: linear-gradient(90deg,#08141de8 0%,#08141dcf 37%,#08141d58 75%),url('/images/squamish/squamish-local-night-v1.webp') center / cover !important; }
 .sq-local-copy { position: relative; z-index: 1; max-width: 46rem; }
 #main-content .hsdj-squamish-afterparty .sq-local h2 { max-width: 12ch !important; color: #fff; }
 .sq-local-notes { display: grid; gap: .85rem; max-width: 42rem; margin: 1.8rem 0; }
@@ -121,8 +121,8 @@
 .sq-local-notes strong { color: #ffe02a; font-weight: 900; }
 .sq-local-copy > a { display: inline-block; max-width: 35rem; margin-top: 1rem; color: #ffe12a; font-weight: 900; text-transform: uppercase; text-decoration-thickness: 3px; text-underline-offset: .35rem; }
 
-#main-content .hsdj-squamish-afterparty .sq-music { padding: clamp(5rem,9vw,9rem) 0 clamp(4rem,6vw,7rem); background: #11141c !important; }
-.sq-music-intro { display: flex; align-items: center; gap: clamp(2rem,5vw,7rem); padding: 0 max(5vw,calc((100vw - 80rem)/2)) clamp(3rem,5vw,6rem); }
+#main-content .hsdj-squamish-afterparty .sq-music { padding-block: 0 !important; background: #11141c !important; }
+.sq-music-intro { display: flex; align-items: center; gap: clamp(2rem,5vw,7rem); min-height: clamp(500px,42vw,690px); padding: clamp(4rem,7vw,7rem) max(5vw,calc((100vw - 80rem)/2)); background: linear-gradient(90deg,#0b1119f5 0%,#0b1119e8 36%,#0b1119ad 67%,#0b11196b 100%),url('/images/squamish/squamish-mix-intro-v1.webp') center 56% / cover; }
 #main-content .hsdj-squamish-afterparty .sq-music h2 { flex: 1.1; max-width: 15ch !important; color: #fff; }
 .sq-music-intro p { flex: .9; max-width: 38rem; margin: 0 0 .35rem; color: #f1f3f4; font-size: clamp(1.1rem,1.6vw,1.45rem); line-height: 1.55; }
 .sq-music-copy { display: grid; gap: .75rem; }
@@ -134,11 +134,11 @@
 .sq-music-copy > strong span:nth-child(5) { background: #55ed7f; }
 .sq-music-copy > span { padding-left: .8rem; border-left: 3px solid #ffffff3d; }
 .sq-music-copy > span:last-child { color: #ffe02a; border-left-color: #ff438c; font-weight: 850; }
-.sq-music-art { position: relative; height: clamp(390px,46vw,760px); overflow: hidden; background: #11141c; clip-path: polygon(0 0,100% 3%,100% 100%,0 97%); }
+.sq-music-art { position: relative; height: clamp(390px,46vw,760px); overflow: hidden; background: #11141c; }
 .sq-music-art img { object-fit: cover; }
 .sq-music-playhead { position: absolute; z-index: 2; top: 2%; bottom: 2%; left: 42%; width: 3px; background: #fff; box-shadow: 0 0 0 1px #1222,0 0 20px 3px #6beefa,0 0 60px 10px #6beefa80; pointer-events: none; }
 .sq-music-playhead::after { content: ''; position: absolute; top: 0; left: -7px; width: 17px; height: 17px; background: #ffe02a; transform: rotate(45deg); }
-.sq-music-foot { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: clamp(2rem,5vw,6rem); min-height: clamp(310px,25vw,430px); padding: clamp(3rem,5vw,5rem) max(5vw,calc((100vw - 80rem)/2)); background: linear-gradient(90deg,#080e16ed 0%,#080e16b5 48%,#080e16d9 100%),url('/images/hsdj-redesign/new-editorial/squamish-genre-mural-v1.webp') center 73% / cover; }
+.sq-music-foot { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: clamp(2rem,5vw,6rem); min-height: clamp(310px,25vw,430px); padding: clamp(3rem,5vw,5rem) max(5vw,calc((100vw - 80rem)/2)); background: linear-gradient(90deg,#080e16ed 0%,#080e16b3 52%,#080e1673 100%),url('/images/squamish/squamish-one-room-v1.webp') center 62% / cover; }
 .sq-music-foot-copy { max-width: 39rem; }
 .sq-music-foot p { max-width: 36rem; margin: 0; color: #ffe02a; font: 1000 clamp(2.2rem,3.8vw,4.5rem)/.95 Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif; text-shadow: 0 3px 12px #000; text-transform: uppercase; }
 .sq-music-foot-copy > span { display: block; max-width: 34rem; margin-top: 1.15rem; color: #fff; font-size: clamp(1.05rem,1.4vw,1.25rem); font-weight: 750; line-height: 1.45; }
@@ -199,11 +199,12 @@
   #main-content .hsdj-squamish-afterparty .sq-hero { min-height: 0; padding: 8rem 1.4rem 3rem; }
   .sq-hero-art { object-position: 65% center; }
   .sq-hero::after { background: linear-gradient(0deg,#071017f0 0 30%,#07101770 100%); }
-  .sq-place-intro,.sq-music-intro { display: block; padding: 0 1.4rem 1.75rem; }
+  .sq-place-intro { display: block; padding: 0 1.4rem 1.75rem; }
+  .sq-music-intro { display: block; min-height: 0; padding: 4rem 1.4rem 4.5rem; background-position: 62% center; }
   .sq-place-intro p,.sq-music-intro p { margin-top: 1rem; }
   .sq-place-after { display: block; padding: 2.5rem 1.4rem 3rem; }
   .sq-place-after p { margin-top: 1.25rem; }
-  #main-content .hsdj-squamish-afterparty .sq-local { min-height: 0; padding: 5rem 1.4rem; }
+  #main-content .hsdj-squamish-afterparty .sq-local { min-height: 0; padding: 5rem 1.4rem; padding-block: 5rem !important; }
   .sq-music-foot { grid-template-columns: 1fr; min-height: 0; padding: 3rem 1.4rem 4rem; }
   #main-content .hsdj-squamish-afterparty .sq-venue { grid-template-columns: 1fr; padding: 5rem 1.4rem; }
   .sq-venue-art { width: min(100%,35rem); margin: 0 auto 1rem; }

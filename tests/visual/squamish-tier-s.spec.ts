@@ -92,12 +92,31 @@ test("Squamish sections carry wedding-and-DJ artwork beyond the murals", async (
   for (const [selector, asset] of [
     [".sq-place-after", "squamish-setting-to-party-v1.webp"],
     [".sq-local", "squamish-local-night-v1.webp"],
-    [".sq-music-foot", "squamish-genre-mural-v1.webp"],
+    [".sq-music-intro", "squamish-mix-intro-v1.webp"],
+    [".sq-music-foot", "squamish-one-room-v1.webp"],
   ]) {
     const background = await page.locator(selector).evaluate((element) => getComputedStyle(element).backgroundImage);
     expect(background).toContain(asset);
   }
   await expect(page.locator(".sq-venue-art img")).toHaveCount(1);
+});
+
+test("Squamish's artwork meets the next scene without empty bands", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(route);
+
+  for (const [previous, next] of [
+    [".sq-place-after", ".sq-local"],
+    [".sq-music-intro", ".sq-music-art"],
+    [".sq-music-art", ".sq-music-foot"],
+    [".sq-music-foot", ".sq-venue"],
+  ]) {
+    const first = await page.locator(previous).boundingBox();
+    const second = await page.locator(next).boundingBox();
+    expect(first).not.toBeNull();
+    expect(second).not.toBeNull();
+    expect(Math.abs(first!.y + first!.height - second!.y)).toBeLessThanOrEqual(1);
+  }
 });
 
 test("Squamish desktop keeps its hero and section hierarchy in proportion", async ({ page }) => {
