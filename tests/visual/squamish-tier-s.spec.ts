@@ -66,23 +66,38 @@ test("Squamish reading does not prefetch unrelated routes", async ({ page }) => 
   }
 });
 
-test("Squamish actions use accessible DJ-gear controls", async ({ page }) => {
+test("Squamish actions use consistent, accessible illuminated controls", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(route);
 
   const controls = page.locator(".sq-gear-link");
-  await expect(controls).toHaveCount(3);
+  await expect(controls).toHaveCount(4);
   for (const control of await controls.all()) {
-    await expect(control.locator("img")).toHaveCount(1);
     const box = await control.boundingBox();
     expect(box).not.toBeNull();
     expect(box!.height).toBeGreaterThanOrEqual(44);
   }
+  await expect(page.locator(".sq-gear-link--hero img, .sq-gear-link--venue img, .sq-gear-link--floor img")).toHaveCount(0);
+  await expect(page.locator(".sq-gear-link--date img")).toHaveCount(1);
+  await expect(page.locator(".sq-music-foot .sq-gear-link")).toHaveAttribute("href", "/guides/how-to-keep-a-wedding-dance-floor-packed");
 
   await page.locator(".sq-gear-link--hero").focus();
   await expect(page.locator(".sq-gear-link--hero")).toHaveCSS("outline-style", "solid");
   await page.locator(".sq-gear-link--hero").click();
   await expect(page).toHaveURL(/#sq-place$/);
+});
+
+test("Squamish sections carry wedding-and-DJ artwork beyond the murals", async ({ page }) => {
+  await page.goto(route);
+  for (const [selector, asset] of [
+    [".sq-place-after", "squamish-setting-to-party-v1.webp"],
+    [".sq-local", "squamish-local-night-v1.webp"],
+    [".sq-music-foot", "squamish-genre-mural-v1.webp"],
+  ]) {
+    const background = await page.locator(selector).evaluate((element) => getComputedStyle(element).backgroundImage);
+    expect(background).toContain(asset);
+  }
+  await expect(page.locator(".sq-venue-art img")).toHaveCount(1);
 });
 
 test("Squamish desktop keeps its hero and section hierarchy in proportion", async ({ page }) => {

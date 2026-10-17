@@ -47,7 +47,6 @@ export default function SquamishWeddingDjPage() {
           </h1>
           <HeroSignalCopy tone="pink">Wedding is the event format, not the genre. I build the music around what you love, then pay attention to what your people actually do when it plays.</HeroSignalCopy>
           <a className="sq-gear-link sq-gear-link--hero" href="#sq-place">
-            <Image src="/images/hsdj-redesign/controls/pads/cyan.png" alt="" width={128} height={128} aria-hidden="true" />
             <span>Feel this place</span>
             <span className="sq-gear-arrow" aria-hidden="true">↓</span>
           </a>
@@ -82,7 +81,6 @@ export default function SquamishWeddingDjPage() {
           </div>
           <Link href="/vancouver-wedding-dj" prefetch={false}>Planning from Vancouver? Follow that route <span aria-hidden="true">↗</span></Link>
         </div>
-        <div className="sq-local-type" aria-hidden="true"><span>SEA</span><span>TO</span><span>SKY</span></div>
       </section>
 
       <section className="sq-music" aria-labelledby="sq-music-title">
@@ -99,18 +97,25 @@ export default function SquamishWeddingDjPage() {
           <span className="sq-music-playhead" aria-hidden="true" />
         </div>
         <div className="sq-music-foot">
-          <p>Different sounds. One room moving together.</p>
-          <Link href="/guides/how-to-keep-a-wedding-dance-floor-packed" prefetch={false}>How I build a dance floor <span aria-hidden="true">↗</span></Link>
+          <div className="sq-music-foot-copy">
+            <p>Different sounds. One room moving together.</p>
+            <span>Your must-plays start the map. I make the turns with the room.</span>
+          </div>
+          <Link className="sq-gear-link sq-gear-link--floor" href="/guides/how-to-keep-a-wedding-dance-floor-packed" prefetch={false}>
+            <span>How I build a dance floor</span>
+            <span className="sq-gear-arrow" aria-hidden="true">↗</span>
+          </Link>
         </div>
       </section>
 
       <section className="sq-venue" aria-labelledby="sq-venue-title">
-        <div className="sq-venue-arrow" aria-hidden="true">↘</div>
+        <div className="sq-venue-art" aria-hidden="true">
+          <Image src="/images/venues/sea-to-sky-gondola-portrait-v1.webp" alt="" fill sizes="(max-width: 900px) 100vw, 40vw" />
+        </div>
         <div>
           <h2 id="sq-venue-title">The room changes the record.</h2>
           <p className="sq-venue-copy"><span>A brewery.</span><span>A ranch.</span><span>A mountaintop.</span><strong>Each asks something different of the sound.</strong> If you are choosing a setting, the venue route is where those differences belong.</p>
           <Link className="sq-gear-link sq-gear-link--venue" href="/venues" prefetch={false}>
-            <Image src="/images/hsdj-redesign/controls/pads/cyan.png" alt="" width={128} height={128} aria-hidden="true" />
             <span>Explore the Sea-to-Sky venue route</span>
             <span className="sq-gear-arrow" aria-hidden="true">↗</span>
           </Link>
