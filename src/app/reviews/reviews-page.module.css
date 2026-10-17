@@ -277,6 +277,7 @@
 .peopleQuotes .peopleFeature .bylineKnob { background: #101413; color: #101413; }
 
 .dayScene {
+  --hsdj-h2-palette: --hsdj-ink-on-light;
   position: relative;
   padding-top: clamp(2.5rem, 4vw, 4rem);
   padding-bottom: clamp(2.5rem, 4vw, 4rem);

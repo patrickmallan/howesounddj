@@ -56,9 +56,9 @@
   padding: clamp(2.7rem, 4vw, 4.5rem) max(5vw, calc((100vw - 84rem) / 2)) !important;
   border: 0 !important; color: #fff; background: #091823 !important;
 }
-#main-content .hsdj-faq-mixer .faq-mixer-channel-2 { --faq-accent: #fa3e82; color: #081016; background: #ffe021 !important; }
+#main-content .hsdj-faq-mixer .faq-mixer-channel-2 { --faq-accent: #fa3e82; --hsdj-h2-palette: --hsdj-ink-on-light; color: #081016; background: #ffe021 !important; }
 #main-content .hsdj-faq-mixer .faq-mixer-channel-3 { --faq-accent: #ffe021; background: #101820 !important; }
-#main-content .hsdj-faq-mixer .faq-mixer-channel-4 { --faq-accent: #ffe021; color: #081016; background: #52dbe7 !important; }
+#main-content .hsdj-faq-mixer .faq-mixer-channel-4 { --faq-accent: #ffe021; --hsdj-h2-palette: --hsdj-ink-on-light; color: #081016; background: #52dbe7 !important; }
 #main-content .hsdj-faq-mixer .faq-mixer-channel-5 { --faq-accent: #e65aa1; background: #171324 !important; }
 .faq-mixer-channel::after { position: absolute; right: 0; bottom: 0; left: 0; height: 6px; content: ""; background: var(--faq-accent); }
 .faq-mixer-channel-inner { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: clamp(2rem, 5vw, 5.5rem); align-items: start; width: min(100%, 84rem); margin: 0 auto; }
@@ -89,7 +89,7 @@
 .faq-mixer-answer { padding: .1rem 1.25rem 1.15rem 4.15rem; border-top: 1px solid #6ca7b35e; }
 .faq-mixer-answer p { max-width: 45rem; margin: .9rem 0 0; color: #eaf6f7 !important; font-size: clamp(.94rem, 1.07vw, 1.08rem); line-height: 1.6; }
 
-#main-content .hsdj-faq-mixer .faq-mixer-finale { padding: clamp(3rem, 5vw, 5rem) max(5vw, calc((100vw - 84rem) / 2)) !important; color: #081015; background: #ffe021 !important; }
+#main-content .hsdj-faq-mixer .faq-mixer-finale { --hsdj-h2-palette: --hsdj-ink-on-light; padding: clamp(3rem, 5vw, 5rem) max(5vw, calc((100vw - 84rem) / 2)) !important; color: #081015; background: #ffe021 !important; }
 .faq-mixer-finale-inner { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(18rem, .9fr); align-items: center; gap: clamp(2rem, 5vw, 6rem); width: min(100%, 84rem); margin: 0 auto; }
 .faq-mixer-finale-label { width: fit-content; padding: .65rem .85rem; color: #ffe021; background: #071015; }
 #main-content .hsdj-faq-mixer .faq-mixer-finale h2 { width: 100%; max-width: 12ch !important; margin: 1rem 0; color: #081015; font-size: clamp(3rem, 5.3vw, 5.8rem) !important; line-height: .9; text-shadow: 4px 4px 0 #e65aa1; }

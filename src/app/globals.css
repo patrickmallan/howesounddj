@@ -73,6 +73,16 @@
   base-palette: 7;
 }
 
+/* On bright cards the unlit cells should recede, leaving dark letterforms.
+   A translucent off-cell works on cream, peach, cyan, and yellow surfaces. */
+@font-palette-values --hsdj-ink-on-light {
+  font-family: "HSDJ Meter Matrix V6";
+  base-palette: 6;
+  override-colors:
+    0 #00000012,
+    1 #07171d;
+}
+
 :root {
   --background: #0a0a0a;
   --foreground: #fafafa;
@@ -103,7 +113,7 @@ body {
    billboard alphabet. The client controller flashes individual H2 letters. */
 #main-content main h2:not(.sr-only) {
   font-family: var(--font-display), var(--font-geist-sans), sans-serif !important;
-  font-palette: --hsdj-paper-light;
+  font-palette: var(--hsdj-h2-palette, --hsdj-paper-light);
   font-synthesis: none;
   font-weight: 800;
   letter-spacing: .035em;
@@ -126,10 +136,10 @@ body {
   text-shadow: none !important;
 }
 
-.hsdj-meter--signal { font-palette: --hsdj-signal-light; filter: drop-shadow(0 0 .055em rgb(255 219 5 / 38%)); }
-.hsdj-meter--after-dark { font-palette: --hsdj-after-dark; filter: drop-shadow(0 0 .055em rgb(82 237 126 / 34%)); }
-.hsdj-meter--cold { font-palette: --hsdj-cold-booth; filter: none; }
-.hsdj-meter--paper { font-palette: --hsdj-paper-light; filter: none; }
+.hsdj-meter--signal { --hsdj-h2-palette: --hsdj-signal-light; filter: drop-shadow(0 0 .055em rgb(255 219 5 / 38%)); }
+.hsdj-meter--after-dark { --hsdj-h2-palette: --hsdj-after-dark; filter: drop-shadow(0 0 .055em rgb(82 237 126 / 34%)); }
+.hsdj-meter--cold { --hsdj-h2-palette: --hsdj-cold-booth; filter: none; }
+.hsdj-meter--paper { --hsdj-h2-palette: --hsdj-paper-light; filter: none; }
 
 /* Controller-native site chrome: real photographed controls, plain-language labels. */
 .hsdj-site-header {
