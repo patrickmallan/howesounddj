@@ -16,7 +16,6 @@
 #main-content .hsdj-venue-journey .venue-journey-lede { max-width: 42rem; margin-top: 2rem; padding: 1rem 1.3rem; border-left: 7px solid var(--route-cyan); color: #fff !important; background: #050b0de8; font-size: clamp(1.05rem, 1.6vw, 1.4rem); font-weight: 700; line-height: 1.55; }
 .venue-journey-cue { display: inline-flex; gap: 2rem; align-items: center; margin-top: 2rem; padding: .8rem 1.1rem; background: var(--route-yellow); color: #071215; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; box-shadow: 7px 7px 0 #1357ff; }
 .venue-journey-cue span { font-size: 1.5em; }
-.venue-journey-side-note { position: absolute; right: 2.5vw; bottom: 8%; max-width: 18rem; color: #fff; font: 900 .85rem/1.2 ui-monospace, monospace; letter-spacing: .19em; text-align: right; text-shadow: 1px 2px 3px #000; }
 #main-content .hsdj-venue-journey .venue-route-section { padding: clamp(4rem, 6vw, 6rem) max(5vw, calc((100vw - 78rem) / 2)); background: #071215 !important; }
 .venue-route-intro { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 1.5rem; max-width: 65rem; margin-bottom: clamp(3rem, 5vw, 4.5rem); }
 .venue-route-led { width: 2.4rem; height: 2.4rem; border: 6px solid var(--route-yellow); border-radius: 50%; background: #10161c; box-shadow: 0 0 0 7px #071215, 0 0 0 9px var(--route-yellow), 0 0 2rem var(--route-yellow); }
@@ -73,7 +72,6 @@
   .venue-journey-hero-image { object-position: 63% center; }
   .venue-journey-hero::after { background: linear-gradient(90deg, #050b0de8, #050b0d8c), linear-gradient(0deg, #050b0d, transparent 70%); }
   .hsdj-venue-journey .venue-journey-hero h1 { font-size: clamp(2.8rem, 11vw, 4.5rem) !important; }
-  .venue-journey-side-note { display: none; }
   #main-content .hsdj-venue-journey .venue-route-section { padding: 5rem 1.4rem; }
   .venue-route-intro { grid-template-columns: 1.6rem minmax(0, 1fr); gap: 1rem; }
   #main-content .hsdj-venue-journey .venue-route-intro h2 { width: 100%; max-width: 100% !important; font-size: clamp(1.35rem, 7vw, 2rem) !important; }

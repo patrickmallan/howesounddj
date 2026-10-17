@@ -224,7 +224,8 @@ test("Venues hero and route artwork hold the intended hierarchy", async ({ page 
   expect(portraits.every((portrait) => portrait.text === "")).toBe(true);
   expect(portraits.every((portrait) => portrait.image.includes("venue-portraits-atlas-v1.webp"))).toBe(true);
   expect(new Set(portraits.map((portrait) => portrait.position)).size).toBe(13);
-  await expect(page.locator(".venue-journey-hero-image")).toHaveAttribute("src", /packages-ceremony-clue-v3/);
+  await expect(page.locator(".venue-journey-hero-image")).toHaveAttribute("src", /venue-hero-ceremony-to-party-v1/);
+  await expect(page.getByText("THE SETTING IS PART OF THE SET")).toHaveCount(0);
 
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(page.locator(".venue-route-art").first()).toBeHidden();

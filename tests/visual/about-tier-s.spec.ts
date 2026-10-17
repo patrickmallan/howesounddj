@@ -67,23 +67,11 @@ test("About music console uses performance pads and updates accessibly", async (
   }
 });
 
-test("About hero motion pauses off-screen and honors reduced motion", async ({ browser }) => {
-  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
-  const page = await context.newPage();
+test("About hero uses Patrick's real photo without the dancing cutout", async ({ page }) => {
   await page.goto("/about");
-  const video = page.locator(".about-hero-groove-media").filter({ has: page.locator("source") });
-  await expect(video).toHaveCount(1);
-  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(false);
-  await page.locator(".about-close").scrollIntoViewIfNeeded();
-  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
-  await context.close();
-
-  const reduced = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
-  const reducedPage = await reduced.newPage();
-  await reducedPage.goto("/about");
-  await expect(reducedPage.locator(".about-hero-portrait video")).toHaveCount(0);
-  await expect(reducedPage.locator(".about-hero-portrait img")).toHaveCount(1);
-  await reduced.close();
+  await expect(page.locator(".about-hero-atmosphere")).toHaveAttribute("src", /patrick-live-light-trails-retouched-v1/);
+  await expect(page.locator(".about-hero-portrait, .about-hero video")).toHaveCount(0);
+  await expect(page.getByText("The Shoulder Shuffle")).toHaveCount(0);
 });
 
 test("About server document carries canonical metadata and structured identity", async ({ request }) => {

@@ -23,10 +23,6 @@
 .about-hardware-link:hover, .about-hardware-link:focus-visible { border-color: var(--hardware-accent); transform: translateY(-2px); box-shadow: inset 0 0 0 3px #050a0e, 6px 8px 0 #02060a, 0 0 18px color-mix(in srgb, var(--hardware-accent) 30%, transparent); }
 .about-hardware-link:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 .about-hardware-link:hover .about-hardware-link__control img { transform: rotate(5deg) scale(1.04); }
-.about-hero-portrait { position: absolute; z-index: 3; right: 5%; bottom: 0; width: min(46vw, 680px); pointer-events: none; animation: about-portrait-entrance 1.1s cubic-bezier(.2,.8,.2,1) both; }
-.about-hero-groove-media { position: relative; z-index: 2; display: block; width: 100%; height: auto; max-height: min(790px, 88svh); object-fit: contain; object-position: bottom; filter: drop-shadow(24px 18px 0 #06081195); }
-.about-hero-portrait[data-motion-active] .about-hero-groove-media { animation: about-portrait-bob 5.2s ease-in-out infinite; }
-.about-portrait-tag { position: absolute; z-index: 3; right: 4%; bottom: 15%; width: max-content; max-width: 92%; padding: .7rem .9rem; border: 1px solid #9ac8cb; color: #f4fdff; background: #0b171e; font: 900 clamp(.9rem, 1.25vw, 1.18rem)/1.05 system-ui, sans-serif; letter-spacing: .035em; text-transform: uppercase; white-space: nowrap; transform: rotate(3deg); box-shadow: 5px 5px 0 #03080c; }
 
 #main-content .hsdj-backstage .about-story { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1.13fr) minmax(0, .87fr); column-gap: clamp(2rem, 5vw, 6rem); align-items: center; min-height: 0; padding: clamp(5rem, 8vw, 8rem) max(5vw, calc((100vw - 82rem)/2)); background: linear-gradient(90deg, #071019e8, #07101979 72%), #0d1422 !important; }
 .about-collage-layer { z-index: -1; object-fit: cover; opacity: .72; filter: saturate(.92) contrast(1.06); }
@@ -94,23 +90,17 @@
 .about-close h2 span:last-child { color: #75f4ed; text-shadow: 4px 5px 0 #1558f5; }
 .about-close-copy > p { max-width: 31rem; margin: 0 0 2rem; padding: 0 0 0 1.15rem; border-left: 4px solid #ffe42b; color: #f0fcff !important; font-size: clamp(1.12rem, 1.4vw, 1.4rem); font-weight: 650; line-height: 1.55; }
 
-@keyframes about-portrait-entrance { from { opacity: 0; transform: translate(8vw, 3rem) rotate(8deg); } to { opacity: 1; transform: translate(0, 0) rotate(-2deg); } }
-@keyframes about-portrait-bob { 0%, 100% { transform: translate(0, 0) rotate(-2deg); } 50% { transform: translate(-1.2rem, -.8rem) rotate(1deg); } }
 @media (max-width: 1000px) {
-  .about-hero-portrait { right: 2%; width: 49vw; }
   .about-hero-copy { width: 58%; }
   #main-content .hsdj-backstage .about-story { column-gap: 2rem; }
 }
 @media (max-width: 760px) {
-  #main-content .hsdj-backstage .about-hero { display: block; min-height: 820px; padding: 8rem 1.35rem 18rem; }
-  .about-hero-atmosphere { object-position: 86% center; transform: translateY(240px); }
-  .about-hero::after { background: linear-gradient(0deg, #080c17 0, #080c1766 45%, #080c17f2 85%); }
+  #main-content .hsdj-backstage .about-hero { display: block; min-height: 1120px; padding: 8rem 1.35rem 21rem; }
+  .about-hero-atmosphere { object-position: 72% center; transform: translateY(370px); }
+  .about-hero::after { background: linear-gradient(0deg, #080c17 0, #080c1714 22%, #080c17f2 82%); }
   .about-hero-copy { width: min(100%, 37rem); transform: none; }
   .hsdj-backstage .about-hero h1 { font-size: clamp(3.8rem, 13vw, 6rem) !important; }
   .about-hero-intro { max-width: 35rem; }
-  .about-hero-portrait { width: min(72vw, 400px); right: 4%; bottom: 0; }
-  .about-hero-groove-media { max-height: 420px; }
-  .about-portrait-tag { right: 2%; bottom: 15%; font-size: .78rem; }
   #main-content .hsdj-backstage .about-story { grid-template-columns: 1fr; padding: 5.5rem 1.35rem 4rem; }
   .about-story-track { margin-top: 1.25rem; }
   .about-story-photo { grid-column: 1; grid-row: auto; width: min(90%, 420px); margin: 3rem auto 0; }
@@ -130,11 +120,9 @@
   .hsdj-backstage .about-close h2 { font-size: clamp(4.2rem, 12vw, 6.5rem) !important; }
 }
 @media (max-width: 440px) {
-  #main-content .hsdj-backstage .about-hero { min-height: 760px; padding-top: 5rem; padding-bottom: 15rem; }
+  #main-content .hsdj-backstage .about-hero { min-height: 1120px; padding-top: 5rem; padding-bottom: 21rem; }
   .about-hero-actions { align-items: flex-start; }
   .about-hero-actions { display: grid; grid-template-columns: 1fr; width: min(100%, 20rem); }
-  .about-hero-portrait { width: 72vw; }
-  .about-hero-groove-media { max-height: 370px; }
   .about-story-photo { width: 100%; }
   .hsdj-backstage .about-close h2 { font-size: clamp(3.5rem, 12vw, 5rem) !important; }
   .about-console-controls { grid-template-columns: repeat(2, 1fr); gap: .5rem; }
@@ -142,7 +130,5 @@
   .about-quote { padding: 1.4rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .about-hero-portrait { animation: none; }
   .about-hardware-link, .about-hardware-link__control img, .about-console-controls button, .about-console-pad { transition: none; }
-  .about-hero-portrait[data-motion-active] .about-hero-groove-media { animation: none; }
 }

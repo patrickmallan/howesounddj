@@ -5,7 +5,6 @@ import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { aboutPageJsonLd } from "@/lib/json-ld";
 import { AboutHardwareLink } from "./about-hardware-link";
-import { AboutHeroGroove } from "./about-hero-groove";
 import { AboutMusicConsole } from "./about-music-console";
 import "./about-backstage.css";
 
@@ -53,10 +52,6 @@ export default function AboutPage() {
             <AboutHardwareLink href="#about-story" label="Meet the human" eyebrow="Play the story" control="play" />
             <AboutHardwareLink href="/contact#availability" label="Check your date" eyebrow="Cue your wedding" control="cue" />
           </div>
-        </div>
-        <div className="about-hero-portrait">
-          <AboutHeroGroove />
-          <span className="about-portrait-tag">The Shoulder Shuffle</span>
         </div>
       </section>
 

@@ -37,8 +37,8 @@ export default function VenuesHubPage() {
       <JsonLd data={venuesHubItemListJsonLd(ACTIVE_VENUE_PAGES)} />
       <section className="venue-journey-hero" aria-labelledby="venue-journey-title">
         <Image
-          src="/images/hsdj-redesign/packages/packages-ceremony-clue-v3.webp"
-          alt="A couple smiling at each other during their mountain wedding ceremony"
+          src="/images/venues/venue-hero-ceremony-to-party-v1.webp"
+          alt="A mountain wedding ceremony flowing into a DJ-led reception through a torn-paper collage"
           fill
           sizes="100vw"
           className="venue-journey-hero-image"
@@ -57,7 +57,6 @@ export default function VenuesHubPage() {
           </HeroSignalCopy>
           <a className="venue-journey-cue" href="#venue-route">Follow the venue route <span aria-hidden="true">↓</span></a>
         </div>
-        <div className="venue-journey-side-note" aria-hidden="true">THE SETTING IS PART OF THE SET</div>
       </section>
 
       <section id="venue-route" className="venue-route-section" aria-labelledby="venue-route-title">
