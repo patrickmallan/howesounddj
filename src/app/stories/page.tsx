@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { JsonLd } from "@/components/json-ld";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { storiesHubBreadcrumbJsonLd } from "@/lib/json-ld";
 import { StoriesQuietLoop } from "./stories-quiet-loop";
 import "./stories-contact-sheet.css";
@@ -171,11 +172,7 @@ export default function StoriesHubPage() {
       <section className="contact-sheet-hero" aria-labelledby="contact-sheet-title">
         <Image src="/images/hsdj-redesign/new-editorial/stories-after-set-collage-v1.webp" alt="Editorial collage of mountain wedding dance-floor moments, DJ equipment and string lights" fill sizes="100vw" priority />
         <div className="contact-sheet-hero-copy">
-          <h1 id="contact-sheet-title" className="contact-sheet-title" aria-label={heroTitle}>
-            <span aria-hidden="true">What the</span>
-            <span aria-hidden="true">room felt</span>
-            <span aria-hidden="true">like.</span>
-          </h1>
+          <MeterMatrixHeading id="contact-sheet-title" className="contact-sheet-title" text={heroTitle} lines={["What the", "room felt", "like."]} />
           <HeroSignalCopy tone="pink">There is a point when guests stop watching the dance floor and become it. These are stories about the music, timing, and people that get a room there.</HeroSignalCopy>
         </div>
         <div className="contact-sheet-hero-mark" aria-hidden="true">THE NIGHT<br />WENT OFF<span>.</span></div>

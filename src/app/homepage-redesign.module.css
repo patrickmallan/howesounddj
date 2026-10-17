@@ -79,21 +79,11 @@
 }
 
 .arrivalCopy h1 {
-  max-width: 710px;
-  width: fit-content;
-  padding: 0.09em 0.14em 0.13em;
-  color: white;
-  background: rgba(7, 7, 7, 0.94);
-  font-size: clamp(3.15rem, 7.5vw, 7.8rem);
-  font-weight: 900;
-  letter-spacing: -0.065em;
-  line-height: 0.82;
-  text-wrap: balance;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-  text-shadow: 5px 4px 0 var(--red), -5px -3px 0 var(--cobalt);
-  transform: rotate(-0.65deg);
+  width: 100% !important;
+  max-width: 100%;
+  margin: 0;
 }
+.heroHeadline { width: min(100%, 710px); padding: 1rem; background: linear-gradient(90deg, #05080de8, #05080d76 77%, transparent); }
 
 .arrivalCopy h1 + p {
   max-width: 38rem;
@@ -277,10 +267,6 @@
     max-width: min(43vw, 34rem);
   }
 
-  .arrivalCopy h1 {
-    font-size: clamp(3.15rem, 4.6vw, 4.4rem);
-  }
-
   .home :global(.max-w-2xl) {
     max-width: min(42vw, 39rem);
   }
@@ -333,11 +319,7 @@
     padding: 8.3rem 2.35rem 2rem 1.2rem;
   }
 
-  .arrivalCopy h1 {
-    max-width: 12ch;
-    font-size: clamp(2.65rem, 13.5vw, 5.2rem);
-    line-height: 0.86;
-  }
+  .heroHeadline { padding: .5rem; }
 }
 
 @media (max-width: 700px) {

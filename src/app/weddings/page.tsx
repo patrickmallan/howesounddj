@@ -96,8 +96,8 @@ export default function WeddingsPage() {
 
       <section className={styles.truths} aria-labelledby="truths-heading">
         <div className={styles.truthsInner}>
-          <h2 id="truths-heading" className={styles.sectionLabel}>Wedding tidbits</h2>
-          <p className={styles.truthsIntro}>The good stuff usually starts when you stop following a wedding template.</p>
+          <p className={styles.sectionLabel}>Wedding tidbits</p>
+          <h2 id="truths-heading" className={styles.truthsIntro}>The good stuff usually starts when you stop following a wedding template.</h2>
           <div className={styles.truthComposition}>
             <article className={styles.playlistNote}>
               <p>Five hours of Spotify isn&apos;t too much.</p>

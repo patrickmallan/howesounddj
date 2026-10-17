@@ -13,6 +13,7 @@ const ROUTES = [
   "/venues",
   "/venues/sea-to-sky-gondola",
   "/guides",
+  "/guides/sea-to-sky-wedding-dj-cost",
   "/guides/how-to-choose-a-wedding-dj-in-squamish",
   "/guides/how-to-keep-a-wedding-dance-floor-packed",
   "/stories",

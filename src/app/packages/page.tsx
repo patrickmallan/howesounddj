@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
 import { SectionReveal } from "@/components/motion";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import styles from "./packages-page.module.css";
 
 const packagesTitle = "Squamish Wedding DJ Packages | Your Music, Your Night";
@@ -53,10 +54,7 @@ export default function PackagesPage() {
         <div className={styles.heroGrid} aria-hidden="true" />
         <div className={styles.heroInner}>
           <div className={styles.eyebrow}>PACKAGES / SQUAMISH, BC</div>
-          <h1 className={styles.heroHeading}>
-            <span>Tell me what kind of</span>{" "}
-            <span>day you are having.</span>
-          </h1>
+          <MeterMatrixHeading className={styles.heroHeading} text="Tell me what kind of day you are having." lines={["Tell me what", "kind of day", "you are having."]} />
           <div className={styles.heroNote}>
             <div className={styles.heroNoteTop}>
               <span>NO PACKAGE HOMEWORK</span>

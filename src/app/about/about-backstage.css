@@ -7,8 +7,7 @@
 .about-hero-atmosphere { z-index: -3; object-fit: cover; object-position: center 46%; opacity: .9; filter: saturate(1.2) contrast(1.08); transform: translateX(-7%) scale(1.12); }
 .about-hero::after { content: ""; position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, #070a17f5 0 36%, #080c18b8 53%, #0a0c1533 67%, #0a0c156b 100%), linear-gradient(0deg, #090d17 0%, transparent 28%); }
 .about-hero-copy { position: relative; z-index: 4; width: min(53%, 42rem); transform: translateY(-4rem); }
-.hsdj-backstage .about-hero h1 { max-width: 10ch; margin: 0; color: #fff !important; font: 1000 clamp(4.2rem, 6.8vw, 7rem)/.86 Impact, "Arial Narrow", sans-serif !important; letter-spacing: -.025em; text-shadow: 6px 7px 0 #060a13; }
-.about-hero h1 span { display: block; color: var(--about-yellow); }
+.hsdj-backstage .about-hero h1 { width: 100% !important; max-width: 100%; margin: 0; filter: drop-shadow(0 5px 12px #000a); }
 #main-content .hsdj-backstage .about-hero-intro { max-width: 38rem; margin: 1.8rem 0 0; padding: 1.1rem 1.35rem; border-left: .5rem solid var(--about-pink); background: #09101df0; color: #fff !important; font-size: clamp(1.05rem, 1.45vw, 1.38rem); font-weight: 750; line-height: 1.55; }
 .about-hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 1.6rem; }
 .about-hardware-link { --hardware-accent: var(--about-yellow); position: relative; display: inline-grid; grid-template-columns: 4.7rem auto 1rem; align-items: center; gap: .75rem; min-height: 5.25rem; padding: .25rem .8rem .25rem .25rem; border: 1px solid #6f8390; color: #f6fbff; background: linear-gradient(180deg, #17212ae8, #080d12f5); box-shadow: inset 0 0 0 3px #050a0e, 5px 6px 0 #02060a; text-decoration: none; text-transform: uppercase; transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease; }

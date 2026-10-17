@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { HeroSignalCopy } from "@/components/hero-signal-copy";
+import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { aboutPageJsonLd } from "@/lib/json-ld";
 import { AboutHardwareLink } from "./about-hardware-link";
@@ -46,7 +47,7 @@ export default function AboutPage() {
         <Image className="about-hero-atmosphere" src="/images/about/patrick-live-light-trails-retouched-v1.webp" alt="" fill sizes="100vw" priority />
         <div className="about-hero-copy">
           <p className="about-eyebrow">Howe Sound Wedding DJ / Squamish, BC</p>
-          <h1 id="about-title">Hi. I&apos;m <span>Patrick.</span></h1>
+          <MeterMatrixHeading id="about-title" text="Hi. I'm Patrick." lines={["Hi. I'm", "Patrick."]} />
           <HeroSignalCopy className="about-hero-intro" tone="pink">I&apos;m the person you&apos;ll plan the music with and the one behind the decks on your wedding day. I love a reason to celebrate. What better reason than your wedding? You&apos;ll notice my attention to the finer details before I play a single song.</HeroSignalCopy>
           <div className="about-hero-actions">
             <AboutHardwareLink href="#about-story" label="Meet the human" eyebrow="Play the story" control="play" />

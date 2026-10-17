@@ -6,11 +6,7 @@
 .contact-sheet-hero > img { object-fit: cover; object-position: center; }
 .contact-sheet-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #0b0a1288 0%, #0b0a1250 46%, #0b0a1200 100%), linear-gradient(0deg, #0b0a1299, transparent 45%); }
 .contact-sheet-hero-copy { position: relative; z-index: 2; width: min(100%, 34rem); }
-.hsdj-contact-sheet .contact-sheet-title { display: grid; width: fit-content; max-width: 100%; margin: 0; color: #f6f0e7; font-family: "HSDJ Meter Matrix V6", var(--font-geist-mono), monospace; font-size: clamp(3.3rem, 6.7vw, 6.7rem); font-weight: 400; line-height: .77; letter-spacing: -.055em; text-transform: uppercase; text-rendering: geometricPrecision; }
-.contact-sheet-title span { display: block; width: fit-content; }
-.contact-sheet-title span:nth-child(1) { color: #edf2ff; }
-.contact-sheet-title span:nth-child(2) { color: #ffb52f; }
-.contact-sheet-title span:nth-child(3) { color: #55e7ef; }
+.hsdj-contact-sheet .contact-sheet-title { display: block; width: min(100%, 34rem) !important; max-width: 100%; margin: 0; filter: drop-shadow(0 4px 12px #0009); }
 #main-content .hsdj-contact-sheet .contact-sheet-hero-copy > p:last-child { max-width: 42rem; padding: 1.3rem; margin: 2rem 0 0; border-left: 8px solid #ff4c91; background: #0c0b13ec; color: #fff !important; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 750; line-height: 1.55; }
 .contact-sheet-hero-mark { position: absolute; z-index: 2; right: 4%; top: 27%; max-width: 8ch; padding: 1.1rem 1.35rem; color: #090f17; background: #ff4d91; font: 1000 clamp(1.7rem, 3.4vw, 3.5rem)/.87 system-ui, sans-serif; text-align: left; text-transform: uppercase; transform: rotate(8deg); box-shadow: 12px 12px 0 #ffe11b; }
 .contact-sheet-hero-mark span { color: #ffe11b; }
@@ -145,7 +141,7 @@
 }
 @media (max-width: 600px) {
   .contact-sheet-hero-copy { width: min(100%, 30rem); }
-  .hsdj-contact-sheet .contact-sheet-title { font-size: clamp(3rem, 17vw, 5.35rem); line-height: .78; }
+  .hsdj-contact-sheet .contact-sheet-title { width: min(100%, 30rem) !important; }
   .contact-sheet-frame:nth-child(n) .contact-sheet-photo { min-height: 250px; }
   .contact-sheet-frame:nth-child(n) .contact-sheet-caption { padding: 1.5rem; }
   .contact-sheet-night-notes-scatter { height: 325rem; max-width: 23rem; }
