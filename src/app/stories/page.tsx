@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { HeroSignalCopy } from "@/components/hero-signal-copy";
@@ -165,7 +166,45 @@ const diaryNotes = [
   },
 ] as const;
 
-const backgroundNotes = Array.from({ length: 108 }, (_, index) => index);
+const notePapers = [
+  "/images/stories/diary-notes/cream-stained-v1.webp",
+  "/images/stories/diary-notes/blush-guestbook-v1.webp",
+  "/images/stories/diary-notes/cocktail-napkin-v1.webp",
+  "/images/stories/diary-notes/pocket-diary-v1.webp",
+  "/images/stories/diary-notes/coffee-coaster-v1.webp",
+  "/images/stories/diary-notes/yellow-pad-v1.webp",
+  "/images/stories/diary-notes/envelope-v1.webp",
+] as const;
+
+const noteScribbles = [
+  "one more song", "everyone came in", "shoes by the booth", "that chorus", "after dinner",
+  "the whole room", "keep this one", "Auntie was first", "hands up", "last dance?",
+  "ask for ABBA", "we stayed late", "sing it again", "the photos!", "11:48 pm",
+  "couldn't stop", "play it louder", "Dad knew every word", "all of us", "remember this",
+  "back to the floor", "best night", "the cake survived", "one more, please",
+] as const;
+
+const backgroundNotes = Array.from({ length: 126 }, (_, index) => {
+  const desktopRow = Math.floor(index / 9);
+  const tabletRow = Math.floor(index / 4);
+  const mobileRow = Math.floor(index / 2);
+  const jitter = (multiplier: number, range: number) => (index * multiplier % range) - range / 2;
+  return {
+    text: noteScribbles[(index * 7 + Math.floor(index / 5)) % noteScribbles.length],
+    style: {
+      "--pile-x": `${-10 + (index % 9) * 13.2 + jitter(17, 9)}%`,
+      "--pile-y": `${-2 + desktopRow * 7.7 + jitter(13, 5)}%`,
+      "--pile-tablet-x": `${-11 + (index % 4) * 31 + jitter(11, 10)}%`,
+      "--pile-tablet-y": `${-2 + tabletRow * 3.3 + jitter(17, 3)}%`,
+      "--pile-mobile-x": `${-26 + (index % 2) * 65 + jitter(7, 11)}%`,
+      "--pile-mobile-y": `${-1 + mobileRow * 1.65 + jitter(19, 1.8)}%`,
+      "--pile-turn": `${jitter(23, 33)}deg`,
+      "--pile-size": `${19 + (index * 3 % 7)}%`,
+      backgroundImage: `url('${notePapers[(index * 5 + Math.floor(index / 7)) % notePapers.length]}')`,
+      zIndex: index % 9,
+    } as CSSProperties,
+  };
+});
 
 export default function StoriesHubPage() {
   return (
@@ -182,7 +221,7 @@ export default function StoriesHubPage() {
 
       <section className="contact-sheet-night-notes" aria-labelledby="contact-sheet-night-notes-title">
         <div className="contact-sheet-note-field" aria-hidden="true">
-          {backgroundNotes.map((index) => <span key={index} />)}
+          {backgroundNotes.map((note, index) => <span className="contact-sheet-background-note" key={index} style={note.style}><span>{note.text}</span></span>)}
         </div>
         <div className="contact-sheet-night-notes-intro">
           <h2 id="contact-sheet-night-notes-title">If the dance floor kept a diary...</h2>
