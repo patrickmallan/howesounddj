@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { ControllerButtonFace } from "@/components/controller-button-face";
 import { JsonLd } from "@/components/json-ld";
 import { getVenueBySlug, getAllVenueSlugs } from "@/config/venue-pages";
 import { venueDetailBreadcrumbJsonLd, venueWeddingDjServiceJsonLd } from "@/lib/json-ld";
 import { VENUE_HEADING_ART } from "@/config/venue-heading-art";
-import { VenueFlowDiagram } from "@/components/venue-flow-diagram";
+import { VENUE_EDITORIAL } from "@/config/venue-editorial";
 import "./venue-dossier.css";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -22,7 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const venue = getVenueBySlug(slug);
   if (!venue) return {};
-  const title = `Wedding DJ for ${venue.name} · ${venue.locationLabel}`;
+  const title = venue.slug === "capilano-university-squamish-campus"
+    ? `Event DJ planning for ${venue.name} · ${venue.locationLabel}`
+    : `Wedding DJ for ${venue.name} · ${venue.locationLabel}`;
   return {
     title,
     description: venue.metaDescription,
@@ -37,23 +38,28 @@ export default async function VenueDetailPage({ params }: Props) {
   const venue = getVenueBySlug(slug);
   if (!venue) notFound();
   const headingArt = VENUE_HEADING_ART[venue.slug as keyof typeof VENUE_HEADING_ART];
+  const editorial = VENUE_EDITORIAL[venue.slug];
+  if (!editorial) notFound();
 
   return (
-    <main className="hsdj-interior hsdj-venue-detail-page hsdj-venue-dossier min-h-screen text-white">
+    <main className="hsdj-venue-detail-page hsdj-venue-dossier min-h-screen text-white" data-tone={editorial.tone} data-layout={editorial.layout}>
       <JsonLd data={venueDetailBreadcrumbJsonLd(venue.name, venue.slug)} />
-      <JsonLd data={venueWeddingDjServiceJsonLd({
+      {venue.slug !== "capilano-university-squamish-campus" ? <JsonLd data={venueWeddingDjServiceJsonLd({
         slug: venue.slug,
         venueName: venue.name,
         locationLabel: venue.locationLabel,
         description: `Wedding DJ planning for ${venue.name} in ${venue.locationLabel}, including ceremony sound, reception music, and the flow of the day.`,
-      })} />
+      })} /> : null}
 
       <section className="venue-dossier-hero" aria-labelledby="venue-dossier-title">
+        <div className="venue-dossier-hero-art" aria-hidden="true">
+          <Image src={editorial.portrait} alt="" fill sizes="(max-width: 760px) 100vw, 65vw" priority />
+        </div>
         <div className="venue-dossier-hero-copy">
-          <nav aria-label="Breadcrumb"><Link href="/venues" prefetch={false}>← Back to the venue route</Link></nav>
+          <nav aria-label="Breadcrumb"><Link href="/venues" prefetch={false}>← All venues</Link></nav>
           <p className="venue-dossier-overline">{venue.locationLabel} / {venue.venueType}</p>
           <h1 id="venue-dossier-title" className="venue-dossier-heading">
-            <span className="sr-only">The room: {venue.name}.</span>
+            <span className="sr-only">{venue.name}</span>
             <Image
               src={headingArt.src}
               alt=""
@@ -65,42 +71,51 @@ export default async function VenueDetailPage({ params }: Props) {
               fetchPriority="high"
             />
           </h1>
-          <HeroSignalCopy tone="green">{venue.shortSummary}</HeroSignalCopy>
-          <a href={venue.officialUrl} target="_blank" rel="noopener noreferrer">Visit the official venue site <span className="sr-only">(opens in a new tab)</span> ↗</a>
+          <p className="venue-dossier-hero-intro">{editorial.intro}</p>
+          {editorial.bookingNote ? <p className="venue-dossier-booking-note">{editorial.bookingNote}</p> : null}
+          <a className="venue-dossier-source-link" href={editorial.sources[0].url} target="_blank" rel="noopener noreferrer">See the venue&apos;s details ↗</a>
         </div>
-        <VenueFlowDiagram slug={venue.slug} name={venue.name} />
+        <p className="venue-dossier-art-caption">Venue-inspired editorial artwork · not venue photography</p>
       </section>
 
-      <section className="venue-dossier-spread venue-dossier-setting" aria-labelledby="venue-dossier-setting-title">
-        <div className="venue-dossier-spread-label"><span className="venue-dossier-knob" aria-hidden="true" /><p>The setting</p></div>
-        <div className="venue-dossier-spread-copy">
-          <h2 id="venue-dossier-setting-title">What this room brings to the day.</h2>
-          {venue.whyFit.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+      <section className="venue-dossier-details" aria-labelledby="venue-dossier-details-title">
+        <div className="venue-dossier-section-lead">
+          <p className="venue-dossier-section-number">01 / The place</p>
+          <h2 id="venue-dossier-details-title" className="hsdj-meter--paper">{editorial.headline}</h2>
+          <p>These are the details that would shape my plan for this venue, not just the view in the photos.</p>
         </div>
+        <ol className="venue-dossier-facts">
+          {editorial.facts.map((fact, index) => <li key={fact.label}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div><h3>{fact.label}</h3><p>{fact.detail}</p></div>
+          </li>)}
+        </ol>
+        <p className="venue-dossier-research-note">Venue information checked against {editorial.sources.map((source, index) => <span key={source.url}>{index > 0 ? " and " : ""}<a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a></span>)}. Confirm current packages, access and rules directly with the venue.</p>
       </section>
 
-      <section className="venue-dossier-spread venue-dossier-sound" aria-labelledby="venue-dossier-sound-title">
-        <div className="venue-dossier-spread-label"><span className="venue-dossier-knob" aria-hidden="true" /><p>The sound</p></div>
-        <div className="venue-dossier-spread-copy">
-          <h2 id="venue-dossier-sound-title">Where music and timing meet.</h2>
-          {venue.planningFocus.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+      <section className="venue-dossier-plan" aria-labelledby="venue-dossier-plan-title">
+        <div className="venue-dossier-plan-heading">
+          <p className="venue-dossier-section-number">02 / Behind the decks</p>
+          <h2 id="venue-dossier-plan-title" className="hsdj-meter--paper">{editorial.djHeadline}</h2>
+          <p>Here&apos;s where I&apos;d start the conversation about sound and the night itself.</p>
         </div>
-      </section>
-
-      <section className="venue-dossier-spread venue-dossier-local" aria-labelledby="venue-dossier-local-title">
-        <div className="venue-dossier-spread-label"><span className="venue-dossier-knob" aria-hidden="true" /><p>The local read</p></div>
-        <div className="venue-dossier-spread-copy">
-          <h2 id="venue-dossier-local-title">What I&apos;d keep in mind here.</h2>
-          {venue.localExpertise.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+        <ol className="venue-dossier-cues">
+          {editorial.djNotes.map((note, index) => <li key={note.cue}>
+            <span className="venue-dossier-cue-index">0{index + 1}</span>
+            <h3>{note.cue}</h3>
+            <p>{note.detail}</p>
+          </li>)}
+        </ol>
+        <div className="venue-dossier-story-link">
           {venue.slug === "sea-to-sky-gondola" ? <Link href="/stories/what-a-sea-to-sky-gondola-dance-floor-feels-like" prefetch={false}>See the Gondola dance-floor story ↗</Link> : null}
           {venue.slug === "sunwolf" ? <Link href="/stories/what-a-sunwolf-riverside-wedding-reception-feels-like" prefetch={false}>See the Sunwolf reception story ↗</Link> : null}
         </div>
       </section>
 
       <section className="venue-dossier-outro" aria-labelledby="venue-dossier-outro-title">
-        <p className="venue-dossier-overline">Your date, this room, your music</p>
-        <h2 id="venue-dossier-outro-title">The next cue is yours.</h2>
-        <p>Check your date. If I&apos;m available, we can talk about what you want this venue to feel like from the first guest to the last song.</p>
+        <p className="venue-dossier-overline">{venue.name} / your people / your music</p>
+        <h2 id="venue-dossier-outro-title" className="hsdj-meter--signal">Now let&apos;s talk about your date.</h2>
+        <p>Tell me what you&apos;ve booked or what you&apos;re still figuring out. If I&apos;m free, we can work through how the music fits this particular place.</p>
         <CheckAvailabilityTrackedLink href="/contact#availability" surface="venue_page_cta" className="hsdj-controller-button hsdj-controller-button--cue venue-dossier-date-cue">
           <ControllerButtonFace eyebrow="Load your date" label="Check your date" control="cue" />
         </CheckAvailabilityTrackedLink>

@@ -1,50 +1,127 @@
-.hsdj-venue-dossier { --dossier-cyan: #58e9ee; --dossier-yellow: #ffe020; --dossier-pink: #ff4e8c; background: #081419; }
-#main-content .hsdj-venue-dossier::before, #main-content .hsdj-venue-dossier::after,
+.hsdj-venue-dossier {
+  --venue-accent: #5be9ee;
+  --venue-ink: #071217;
+  --venue-paper: #f4eddb;
+  background: var(--venue-ink);
+  color: #fff;
+  overflow: clip;
+}
+.hsdj-venue-dossier[data-tone="pink"] { --venue-accent: #ff70a6; }
+.hsdj-venue-dossier[data-tone="amber"] { --venue-accent: #ffd05d; }
+.hsdj-venue-dossier[data-tone="green"] { --venue-accent: #8ee7b0; }
+#main-content .hsdj-venue-dossier::before,
+#main-content .hsdj-venue-dossier::after,
 #main-content .hsdj-venue-dossier > section::before { display: none; }
 #main-content .hsdj-venue-dossier > section { border: 0; }
-#main-content .hsdj-venue-dossier .venue-dossier-hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, .6fr); gap: clamp(2rem, 5vw, 6rem); align-items: center; min-height: 760px; padding: clamp(10rem, 14vw, 15rem) max(5vw, calc((100vw - 80rem)/2)) 6rem; overflow: hidden; background: #081419 !important; }
-.venue-dossier-hero::after { content: ""; position: absolute; inset: 0; opacity: .18; pointer-events: none; background: repeating-linear-gradient(90deg, transparent 0 71px, #6ce9ed 72px 73px), repeating-linear-gradient(0deg, transparent 0 71px, #6ce9ed 72px 73px); mask-image: linear-gradient(90deg, transparent, #000); }
-.venue-dossier-hero-copy { position: relative; z-index: 2; min-width: 0; }
-.venue-dossier-hero-copy nav a { color: #bcebee; font: 750 .85rem/1.3 ui-monospace, monospace; text-transform: uppercase; letter-spacing: .07em; }
-.venue-dossier-overline { margin: 2.5rem 0 1.2rem; color: var(--dossier-yellow); font: 850 .8rem/1.35 ui-monospace, monospace; letter-spacing: .18em; text-transform: uppercase; }
-#main-content .hsdj-venue-dossier .venue-dossier-hero .venue-dossier-heading { display: block; width: 100%; max-width: min(100%, 42rem); }
-.venue-dossier-heading img { display: block; width: 100%; height: auto; }
-.venue-dossier-hero-copy > a { color: var(--dossier-yellow); font-weight: 900; text-transform: uppercase; }
-.venue-dossier-stage-plot { position: relative; z-index: 2; aspect-ratio: 1; max-width: 520px; padding: 8%; border: 4px solid #59e9ed; transform: rotate(5deg); box-shadow: 15px 16px 0 #1356ff; }
-.venue-dossier-plot-room { display: flex; align-items: center; justify-content: space-around; gap: 1rem; height: 100%; border: 3px dashed #ffffff99; clip-path: polygon(0 0, 100% 0, 95% 95%, 10% 100%); }
-.venue-dossier-plot-room span { display: grid; place-items: center; width: 5.5rem; height: 5.5rem; border-radius: 50%; border: 3px solid var(--dossier-yellow); color: #fff; font: 800 .66rem/1.2 ui-monospace, monospace; text-align: center; background: #0c1922; box-shadow: 0 0 18px #ffe02080; }
-.venue-dossier-plot-room span:nth-child(2) { transform: translateY(-3rem); border-color: var(--dossier-pink); box-shadow: 0 0 18px #ff4e8c80; }
-.venue-dossier-plot-room span:nth-child(3) { transform: translateY(2rem); border-color: var(--dossier-cyan); box-shadow: 0 0 18px #58e9ee80; }
-.venue-dossier-plot-pulse { position: absolute; left: 10%; right: 10%; bottom: 15%; height: 10px; background: repeating-linear-gradient(90deg, var(--dossier-pink) 0 5px, transparent 5px 13px, var(--dossier-cyan) 13px 20px, transparent 20px 30px); transform: rotate(-8deg); }
-#main-content .hsdj-venue-dossier .venue-dossier-spread { display: grid; grid-template-columns: minmax(0, .4fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 6rem); padding: clamp(5rem, 8vw, 8rem) max(5vw, calc((100vw - 80rem)/2)); }
-#main-content .hsdj-venue-dossier .venue-dossier-setting { background: #142734 !important; }
-#main-content .hsdj-venue-dossier .venue-dossier-sound { background: #30172c !important; }
-#main-content .hsdj-venue-dossier .venue-dossier-local { background: #092d35 !important; }
-.venue-dossier-spread-label { display: flex; align-items: flex-start; gap: 1rem; color: var(--dossier-yellow); font: 900 .8rem/1.4 ui-monospace, monospace; letter-spacing: .16em; text-transform: uppercase; }
-.venue-dossier-sound .venue-dossier-spread-label { color: var(--dossier-pink); }
-.venue-dossier-local .venue-dossier-spread-label { color: var(--dossier-cyan); }
-.venue-dossier-spread-label p { margin: .6rem 0 0; }
-.venue-dossier-knob { flex: 0 0 auto; width: 2rem; height: 2rem; border-radius: 50%; border: 5px solid currentColor; background: #091217; box-shadow: 0 0 0 5px #091217, 0 0 0 7px currentColor; }
-.venue-dossier-spread-copy { min-width: 0; padding-left: clamp(1.5rem, 3vw, 3rem); border-left: 4px solid currentColor; }
-.venue-dossier-setting .venue-dossier-spread-copy { border-color: var(--dossier-yellow); }
-.venue-dossier-sound .venue-dossier-spread-copy { border-color: var(--dossier-pink); }
-.venue-dossier-local .venue-dossier-spread-copy { border-color: var(--dossier-cyan); }
-.hsdj-venue-dossier .venue-dossier-spread h2 { max-width: 16ch !important; margin: 0 0 1.8rem; font-size: clamp(2.5rem, 4.5vw, 5rem) !important; line-height: .95; text-transform: uppercase; }
-.venue-dossier-spread-copy p { max-width: 47rem; margin: 0 0 1.2rem; color: #f1f8f8 !important; font-size: clamp(1.05rem, 1.25vw, 1.25rem); line-height: 1.68; }
-.venue-dossier-spread-copy a { color: var(--dossier-yellow); font-weight: 850; }
-#main-content .hsdj-venue-dossier .venue-dossier-outro { --hsdj-h2-palette: --hsdj-ink-on-light; padding: clamp(5rem, 9vw, 9rem) max(5vw, calc((100vw - 80rem)/2)); background: var(--dossier-yellow) !important; color: #081419; }
-.venue-dossier-outro .venue-dossier-overline { margin-top: 0; color: #14556a; }
-.hsdj-venue-dossier .venue-dossier-outro h2 { max-width: 15ch !important; margin: 0; color: #081419; font-size: clamp(2.7rem, 5.5vw, 6rem) !important; line-height: .95; text-transform: uppercase; }
-.venue-dossier-outro > p:not(.venue-dossier-overline) { max-width: 43rem; color: #081419 !important; font-size: 1.2rem; font-weight: 700; line-height: 1.6; }
-.venue-dossier-outro .venue-dossier-date-cue { min-width: min(100%, 15rem); }
-@media (max-width: 900px) {
-  #main-content .hsdj-venue-dossier .venue-dossier-hero { grid-template-columns: 1fr; min-height: 0; padding: 7.5rem 1.4rem 3rem; }
-  .venue-dossier-stage-plot { max-width: 330px; justify-self: end; opacity: .85; }
-  #main-content .hsdj-venue-dossier .venue-dossier-spread { grid-template-columns: 1fr; gap: 1.5rem; padding: 5rem 1.4rem; }
-  .venue-dossier-spread-copy { padding-left: 1.3rem; }
-  #main-content .hsdj-venue-dossier .venue-dossier-outro { padding: 5rem 1.4rem; }
+
+#main-content .hsdj-venue-dossier .venue-dossier-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: min(760px, 80vw);
+  padding: clamp(5rem, 8vw, 8rem) max(5vw, calc((100vw - 82rem) / 2));
+  isolation: isolate;
+  background: #071217;
 }
-@media (max-width: 600px) {
-  .venue-dossier-stage-plot { width: 70%; }
-  .venue-dossier-plot-room span { width: 3.5rem; height: 3.5rem; font-size: .48rem; }
+.venue-dossier-hero-art { position: absolute; inset: 0 0 0 38%; z-index: -2; overflow: hidden; }
+.venue-dossier-hero-art img { object-fit: cover; object-position: center; }
+.venue-dossier-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #071217 4%, #071217f5 27%, #071217c9 48%, #07121729 77%), linear-gradient(0deg, #07121790, transparent 36%);
+  pointer-events: none;
+}
+.hsdj-venue-dossier[data-layout="panorama"] .venue-dossier-hero-art { left: 28%; }
+.hsdj-venue-dossier[data-layout="split"] .venue-dossier-hero-art { left: 48%; }
+.hsdj-venue-dossier[data-layout="framed"] .venue-dossier-hero-art {
+  inset: clamp(3rem, 5vw, 5rem) max(5vw, calc((100vw - 82rem) / 2)) clamp(3rem, 5vw, 5rem) 55%;
+  border: 2px solid var(--venue-accent);
+  box-shadow: 18px 18px 0 #113449, 0 16px 45px #0009;
+  transform: rotate(2deg);
+}
+.hsdj-venue-dossier[data-layout="framed"] .venue-dossier-hero::after { background: linear-gradient(90deg, #071217 10%, #071217f0 40%, #07121733 70%); }
+.venue-dossier-hero-copy { position: relative; z-index: 1; width: min(100%, 48rem); padding: 1rem 0; }
+.venue-dossier-hero-copy nav a { color: var(--venue-accent); font: 800 .78rem/1.4 ui-monospace, monospace; letter-spacing: .11em; text-transform: uppercase; }
+.venue-dossier-overline,
+.venue-dossier-section-number { color: var(--venue-accent); font: 900 .74rem/1.5 ui-monospace, monospace; letter-spacing: .16em; text-transform: uppercase; }
+.venue-dossier-hero .venue-dossier-overline { margin: 2.7rem 0 1rem; }
+#main-content .hsdj-venue-dossier .venue-dossier-heading { display: block; max-width: min(100%, 46rem); margin: 0; }
+.venue-dossier-heading img { display: block; width: 100%; max-height: 360px; height: auto; object-fit: contain; object-position: left center; }
+.venue-dossier-hero-intro { max-width: 42rem; margin: 1.8rem 0 0; padding: 1rem 1.25rem; border-left: 4px solid var(--venue-accent); background: #071217db; color: #f7fbfb; font-size: clamp(1.08rem, 1.35vw, 1.32rem); font-weight: 650; line-height: 1.48; }
+.venue-dossier-booking-note { max-width: 42rem; margin: 1rem 0; padding: .8rem 1rem; border: 1px solid #ffd05d; background: #261d11eb; color: #fff0c8; font-size: .98rem; line-height: 1.5; }
+.venue-dossier-source-link { display: inline-flex; align-items: center; margin-top: 1.2rem; padding: .72rem 1rem; border: 1px solid var(--venue-accent); background: #071217e8; color: var(--venue-accent); font: 900 .74rem/1.3 ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; box-shadow: 4px 4px 0 #0009; transition: background .2s, color .2s; }
+.venue-dossier-source-link:hover { background: var(--venue-accent); color: var(--venue-ink); }
+.venue-dossier-art-caption { position: absolute; right: 2rem; bottom: 1rem; max-width: 15rem; margin: 0; color: #eef6f3; font: 650 .65rem/1.35 ui-monospace, monospace; text-align: right; text-shadow: 1px 1px 4px #000; }
+
+#main-content .hsdj-venue-dossier .venue-dossier-details {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 6rem);
+  padding: clamp(4.5rem, 8vw, 8rem) max(5vw, calc((100vw - 82rem) / 2));
+  background: #102631;
+}
+.venue-dossier-section-lead { max-width: 38rem; }
+.venue-dossier-section-lead .venue-dossier-section-number { margin: 0 0 1.5rem; }
+#main-content .hsdj-venue-dossier .venue-dossier-details h2,
+#main-content .hsdj-venue-dossier .venue-dossier-plan h2 { max-width: 17ch; margin: 0 0 1.4rem; font-size: clamp(2.2rem, 4.1vw, 4.6rem); line-height: 1.13; text-transform: uppercase; overflow-wrap: normal; }
+.venue-dossier-section-lead > p:last-child { max-width: 29rem; margin: 0; color: #d0e2e5; font-size: 1.1rem; line-height: 1.6; }
+.venue-dossier-facts { display: grid; gap: .8rem; align-content: center; padding: 0; margin: 0; list-style: none; }
+.venue-dossier-facts li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1.3rem; padding: 1.4rem 1.5rem; background: #071820; border: 1px solid #79a0a452; border-left: 5px solid var(--venue-accent); box-shadow: 7px 7px 0 #041116; }
+.venue-dossier-facts li > span { color: var(--venue-accent); font: 900 1.45rem/1 ui-monospace, monospace; }
+.venue-dossier-facts h3 { margin: 0 0 .4rem; color: #fff; font-size: 1.12rem; font-weight: 900; text-transform: uppercase; letter-spacing: .035em; }
+.venue-dossier-facts p { margin: 0; color: #d4e4e5; font-size: 1rem; line-height: 1.5; }
+.venue-dossier-research-note { grid-column: 1 / -1; margin: .5rem 0 0; padding-top: 1.2rem; border-top: 1px solid #7aa4aa66; color: #b6cbcf; font-size: .85rem; line-height: 1.5; }
+.venue-dossier-research-note a { color: var(--venue-accent); text-decoration: underline; text-underline-offset: .2em; }
+
+#main-content .hsdj-venue-dossier .venue-dossier-plan { padding: clamp(4.5rem, 8vw, 8rem) max(5vw, calc((100vw - 82rem) / 2)); background: var(--venue-paper); color: var(--venue-ink); }
+.venue-dossier-plan-heading { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(15rem, .8fr); gap: 2rem; align-items: end; }
+.venue-dossier-plan-heading .venue-dossier-section-number { grid-column: 1 / -1; margin: 0 0 -1rem; color: #a53c63; }
+#main-content .hsdj-venue-dossier .venue-dossier-plan h2 { max-width: 18ch; margin: 0; color: var(--venue-ink); }
+.venue-dossier-plan-heading > p:last-child { max-width: 24rem; margin: 0 0 .3rem; color: #34434a; font-size: 1.14rem; line-height: 1.55; }
+.venue-dossier-cues { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 3rem 0 0; padding: 0; list-style: none; }
+.venue-dossier-cues li { min-height: 18rem; padding: 1.5rem; background: #0b2029; border-top: 7px solid var(--venue-accent); color: white; box-shadow: 8px 8px 0 #c5bfae; }
+.venue-dossier-cue-index { display: block; margin-bottom: 2.6rem; color: var(--venue-accent); font: 900 .9rem/1 ui-monospace, monospace; }
+.venue-dossier-cues h3 { margin: 0 0 .7rem; color: #fff; font-size: clamp(1.25rem, 1.8vw, 1.65rem); font-weight: 900; line-height: 1.12; text-transform: uppercase; }
+.venue-dossier-cues p { margin: 0; color: #d6e5e7; font-size: 1rem; line-height: 1.55; }
+.venue-dossier-story-link { min-height: 1.5rem; margin-top: 2rem; }
+.venue-dossier-story-link a { color: #073a4b; font-weight: 900; text-decoration: underline; text-underline-offset: .25em; }
+
+#main-content .hsdj-venue-dossier .venue-dossier-outro { padding: clamp(4.5rem, 8vw, 8rem) max(5vw, calc((100vw - 82rem) / 2)); background: #ffe021; color: var(--venue-ink); }
+.venue-dossier-outro .venue-dossier-overline { margin: 0 0 1.2rem; color: #14556a; }
+#main-content .hsdj-venue-dossier .venue-dossier-outro h2 { max-width: 15ch; margin: 0; color: var(--venue-ink); font-size: clamp(2.5rem, 5vw, 5.8rem); line-height: 1.12; text-transform: uppercase; }
+.venue-dossier-outro > p:not(.venue-dossier-overline) { max-width: 43rem; margin: 1.5rem 0 2rem; color: var(--venue-ink); font-size: 1.2rem; font-weight: 700; line-height: 1.55; }
+.venue-dossier-date-cue { min-width: min(100%, 16rem); }
+
+@media (max-width: 900px) {
+  #main-content .hsdj-venue-dossier .venue-dossier-hero { min-height: 690px; padding: 4rem 1.5rem; }
+  .venue-dossier-hero-art { left: 15%; opacity: .83; }
+  .hsdj-venue-dossier[data-layout="split"] .venue-dossier-hero-art { left: 25%; }
+  .hsdj-venue-dossier[data-layout="framed"] .venue-dossier-hero-art { inset: 2rem 1.5rem 2rem 38%; }
+  .venue-dossier-hero::after { background: linear-gradient(90deg, #071217 1%, #071217e8 45%, #0712177a 100%); }
+  #main-content .hsdj-venue-dossier .venue-dossier-details { grid-template-columns: 1fr; gap: 2.5rem; padding: 5rem 1.5rem; }
+  .venue-dossier-research-note { grid-column: 1; }
+  #main-content .hsdj-venue-dossier .venue-dossier-plan, #main-content .hsdj-venue-dossier .venue-dossier-outro { padding: 5rem 1.5rem; }
+  .venue-dossier-cues { gap: .7rem; }
+  .venue-dossier-cues li { padding: 1.2rem; }
+}
+@media (max-width: 650px) {
+  #main-content .hsdj-venue-dossier .venue-dossier-hero { min-height: 700px; align-items: flex-end; padding: 8rem 1.2rem 5rem; }
+  .venue-dossier-hero-art,
+  .hsdj-venue-dossier[data-layout="panorama"] .venue-dossier-hero-art,
+  .hsdj-venue-dossier[data-layout="split"] .venue-dossier-hero-art,
+  .hsdj-venue-dossier[data-layout="framed"] .venue-dossier-hero-art { inset: 0; transform: none; border: 0; box-shadow: none; opacity: .8; }
+  .venue-dossier-hero::after,
+  .hsdj-venue-dossier[data-layout="framed"] .venue-dossier-hero::after { background: linear-gradient(0deg, #071217 2%, #071217f2 41%, #0712177a 73%, #07121745 100%); }
+  .venue-dossier-hero .venue-dossier-overline { margin-top: 1.5rem; }
+  .venue-dossier-heading img { max-height: 245px; }
+  .venue-dossier-hero-intro { margin-top: 1rem; padding: .8rem 1rem; }
+  .venue-dossier-art-caption { right: 1rem; top: 1rem; bottom: auto; font-size: .57rem; }
+  .venue-dossier-plan-heading { grid-template-columns: 1fr; gap: 1rem; }
+  .venue-dossier-plan-heading .venue-dossier-section-number { grid-column: 1; margin: 0; }
+  .venue-dossier-cues { grid-template-columns: 1fr; margin-top: 2rem; }
+  .venue-dossier-cues li { min-height: 0; }
+  .venue-dossier-cue-index { margin-bottom: 1.5rem; }
+  .venue-dossier-facts li { grid-template-columns: 2rem 1fr; gap: .8rem; padding: 1.1rem; }
 }

@@ -86,11 +86,11 @@ export const VENUE_PAGES: readonly VenuePage[] = [
     locationLabel: "Near Squamish, BC",
     area: "squamish",
     venueType: "Farm & pastoral venue",
-    cardDescription: "Intimate farm venue near Squamish with pastoral space and an easygoing country celebration feel.",
+    cardDescription: "Rustic Squamish-area setting currently inviting elopement and micro-wedding inquiries.",
     shortSummary:
-      "Pastoral space near Squamish where an easygoing daytime feel can turn into a full reception without losing the relaxed farm character.",
+      "Sitka currently welcomes elopement and micro-wedding inquiries rather than full-size wedding bookings. Confirm your format with the venue before planning sound.",
     metaDescription:
-      "Sitka Farms wedding DJ: Sea-to-Sky sound planning and personalized reception music near Squamish. Howe Sound DJ focuses on flow, pacing, and a dance floor that matches your guests.",
+      "Sitka Farms micro-wedding DJ planning near Squamish: intimate ceremony sound and music shaped to your approved format. Confirm current booking options with the venue.",
     whyFit: [
       "Farm venues often blend intimacy with a bigger guest list: the setting feels gentle, but the party still needs a real plan for speeches, dinner energy, and when to open dancing.",
       "The best nights match the setting’s warmth without treating the music like an afterthought.",
@@ -185,8 +185,7 @@ export const VENUE_PAGES: readonly VenuePage[] = [
   {
     slug: "glacier-valley-farm",
     name: "Glacier Valley Farm",
-    /** Public presence; verify periodically, Facebook is the active page for this venue today. */
-    officialUrl: "https://www.facebook.com/glaciervalleyfarm/",
+    officialUrl: "https://www.eaglevalleyretreat.com/special-occasions/",
     locationLabel: "Squamish Valley, BC",
     area: "squamish",
     venueType: "Farm & outdoor-friendly venue",
