@@ -46,7 +46,7 @@ export default function AboutPage() {
         <Image className="about-hero-atmosphere" src="/images/about/patrick-live-light-trails-retouched-v1.webp" alt="" fill sizes="100vw" priority />
         <div className="about-hero-copy">
           <p className="about-eyebrow">Howe Sound Wedding DJ / Squamish, BC</p>
-          <MeterMatrixHeading id="about-title" text="Hi. I'm Patrick." lines={["Hi. I'm", "Patrick."]} />
+          <MeterMatrixHeading id="about-title" text="Meet your wedding DJ." lines={["Meet your", "wedding DJ."]} />
           <HeroSignalCopy className="about-hero-intro" tone="pink">I&apos;m the person you&apos;ll plan the music with and the one behind the decks on your wedding day. I love a reason to celebrate. What better reason than your wedding? You&apos;ll notice my attention to the finer details before I play a single song.</HeroSignalCopy>
           <div className="about-hero-actions">
             <AboutHardwareLink href="#about-story" label="Meet the human" eyebrow="Play the story" control="play" />

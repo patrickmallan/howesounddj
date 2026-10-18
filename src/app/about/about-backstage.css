@@ -87,7 +87,6 @@
 .about-close-copy { position: relative; z-index: 2; width: min(100%, 37rem); padding: 2rem 0; }
 .hsdj-backstage .about-close h2 { display: block; max-width: 12ch; margin: 0 0 1.5rem; color: #fff !important; font: 1000 clamp(4.2rem, 6vw, 7.3rem)/.9 Impact, "Arial Narrow", sans-serif !important; letter-spacing: -.015em; text-shadow: 4px 5px 0 #060c14; }
 .about-close h2 > span { display: block; }
-.about-close h2 > span:last-child { color: #75f4ed; text-shadow: 4px 5px 0 #1558f5; }
 .about-close-copy > p { max-width: 31rem; margin: 0 0 2rem; padding: 0 0 0 1.15rem; border-left: 4px solid #ffe42b; color: #f0fcff !important; font-size: clamp(1.12rem, 1.4vw, 1.4rem); font-weight: 650; line-height: 1.55; }
 
 @media (max-width: 1000px) {
