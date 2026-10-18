@@ -5,6 +5,7 @@ export type VenueEditorial = {
   tone: "cyan" | "pink" | "amber" | "green";
   layout: "split" | "panorama" | "framed";
   portrait: string;
+  storyArt: string;
   headline: string;
   intro: string;
   facts: readonly { label: string; detail: string }[];
@@ -16,7 +17,7 @@ export type VenueEditorial = {
 
 export const VENUE_EDITORIAL: Record<string, VenueEditorial> = {
   "sea-to-sky-gondola": {
-    tone: "cyan", layout: "panorama", portrait: "/images/venues/sea-to-sky-gondola-portrait-v1.webp",
+    tone: "cyan", layout: "panorama", portrait: "/images/venues/sea-to-sky-gondola-portrait-v1.webp", storyArt: "/images/venues/sea-to-sky-gondola-story-art-v1.webp",
     headline: "The ride up is part of the entrance.",
     intro: "Guests arrive by gondola, then choose a lookout, covered deck or the Summit Lodge for the next chapter. That movement is the story here; the music should follow it.",
     facts: [
@@ -33,7 +34,7 @@ export const VENUE_EDITORIAL: Record<string, VenueEditorial> = {
     sources: [{ label: "Ceremony and reception locations", url: "https://www.seatoskygondola.com/groups-weddings/weddings/venue/" }, { label: "A real Gondola wedding", url: "https://www.seatoskygondola.com/blog/a-ms-wedding-at-sea-to-sky-gondola/" }],
   },
   "cheekye-ranch": {
-    tone: "amber", layout: "split", portrait: "/images/venues/cheekye-ranch-portrait-v1.webp",
+    tone: "amber", layout: "split", portrait: "/images/venues/cheekye-ranch-portrait-v1.webp", storyArt: "/images/venues/cheekye-ranch-story-art-v1.webp",
     headline: "A ranch weekend, not a ballroom shift.",
     intro: "Cheekye's wedding package stretches across two nights beside the Cheakamus River. Guests can settle into the yurts and grounds before the wedding day asks them to gather under the tent.",
     facts: [
@@ -50,7 +51,7 @@ export const VENUE_EDITORIAL: Record<string, VenueEditorial> = {
     sources: [{ label: "Cheekye Ranch weddings", url: "https://www.cheekyeranch.com/weddings" }],
   },
   "sitka-farms": {
-    tone: "pink", layout: "framed", portrait: "/images/venues/sitka-farms-portrait-v1.webp",
+    tone: "pink", layout: "framed", portrait: "/images/venues/sitka-farms-portrait-v1.webp", storyArt: "/images/venues/sitka-farms-story-art-v1.webp",
     headline: "Small by choice, not short on feeling.",
     intro: "Sitka describes itself as rustic, romantic and laid-back. Its current site is taking inquiries for elopements and micro weddings only, so this page is about making a smaller gathering sound intimate and intentional.",
     facts: [
@@ -68,7 +69,7 @@ export const VENUE_EDITORIAL: Record<string, VenueEditorial> = {
     bookingNote: "Sitka currently says full-size weddings are not being booked for 2026–27. Confirm your format with the venue before planning reception sound.",
   },
   sunwolf: {
-    tone: "green", layout: "panorama", portrait: "/images/venues/sunwolf-portrait-v1.webp",
+    tone: "green", layout: "panorama", portrait: "/images/venues/sunwolf-portrait-v1.webp", storyArt: "/images/venues/sunwolf-story-art-v1.webp",
     headline: "Forest air first. A proper party later.",
     intro: "Sunwolf is an outdoor riverside wedding site with cabins and Fergie's catering. Its two-night format gives guests time to settle in before the tent becomes the centre of the evening.",
     facts: [
@@ -85,7 +86,7 @@ export const VENUE_EDITORIAL: Record<string, VenueEditorial> = {
     sources: [{ label: "Sunwolf weddings and FAQ", url: "https://sunwolf.net/weddings/" }],
   },
   "squamish-valley-golf-club": {
-    tone: "cyan", layout: "split", portrait: "/images/venues/squamish-valley-golf-club-portrait-v1.webp",
+    tone: "cyan", layout: "split", portrait: "/images/venues/squamish-valley-golf-club-portrait-v1.webp", storyArt: "/images/venues/squamish-valley-golf-club-story-art-v1.webp",
     headline: "The late ceremony changes the tempo.",
     intro: "The golf club's clubhouse, water and mountain views give this wedding a polished frame. In peak season, ceremonies are listed for after 4 p.m., so the move into dinner deserves a deliberate pace.",
     facts: [
@@ -102,7 +103,7 @@ export const VENUE_EDITORIAL: Record<string, VenueEditorial> = {
     sources: [{ label: "Squamish Valley Golf Club weddings", url: "https://squamishvalleygolf.com/weddings-events/" }],
   },
   "cheakamus-centre": {
-    tone: "green", layout: "framed", portrait: "/images/venues/cheakamus-centre-portrait-v1.webp",
+    tone: "green", layout: "framed", portrait: "/images/venues/cheakamus-centre-portrait-v1.webp", storyArt: "/images/venues/cheakamus-centre-story-art-v1.webp",
     headline: "A forest campus with more than one scene.",
     intro: "Cheakamus Centre sits in a 165-hectare ecological preserve in Paradise Valley. Its wedding offering includes indoor and outdoor settings, local seasonal food and on-site accommodation options.",
     facts: [
@@ -119,7 +120,7 @@ export const VENUE_EDITORIAL: Record<string, VenueEditorial> = {
     sources: [{ label: "Cheakamus Centre weddings", url: "https://cheakamuscentre.ca/rentals/weddings" }, { label: "2027 wedding information", url: "https://cheakamuscentre.ca/assets/docs/2027-Wedding-Package---Cheakamus-Centre.pdf" }],
   },
   "glacier-valley-farm": {
-    tone: "amber", layout: "panorama", portrait: "/images/venues/glacier-valley-farm-portrait-v1.webp",
+    tone: "amber", layout: "panorama", portrait: "/images/venues/glacier-valley-farm-portrait-v1.webp", storyArt: "/images/venues/glacier-valley-farm-story-art-v1.webp",
     headline: "Choose your backdrop: forest or glacier.",
     intro: "Glacier Valley Farm's current wedding page offers a forest ceremony area or an open field facing the Tantalus range and glacier, with lodge, barn and accommodation options across its packages.",
     facts: [
@@ -136,7 +137,7 @@ export const VENUE_EDITORIAL: Record<string, VenueEditorial> = {
     sources: [{ label: "Glacier Valley Farm weddings", url: "https://www.eaglevalleyretreat.com/special-occasions/" }],
   },
   "howe-sound-brewing": {
-    tone: "pink", layout: "framed", portrait: "/images/venues/howe-sound-brewing-portrait-v1.webp",
+    tone: "pink", layout: "framed", portrait: "/images/venues/howe-sound-brewing-portrait-v1.webp", storyArt: "/images/venues/howe-sound-brewing-story-art-v1.webp",
     headline: "The Chief outside. Your people inside.",
     intro: "At Squamish's original craft brewery, the Firebread event room has its own bar, natural light and an uninterrupted view of the Chief and Mamquam Mountain. It is a very different reception from a remote ranch weekend.",
     facts: [
@@ -153,7 +154,7 @@ export const VENUE_EDITORIAL: Record<string, VenueEditorial> = {
     sources: [{ label: "Howe Sound Brewing weddings and events", url: "https://www.howesound.com/squamish-weddings-private-events" }],
   },
   "house-of-lager-brewing-company": {
-    tone: "cyan", layout: "panorama", portrait: "/images/venues/house-of-lager-brewing-company-portrait-v1.webp",
+    tone: "cyan", layout: "panorama", portrait: "/images/venues/house-of-lager-brewing-company-portrait-v1.webp", storyArt: "/images/venues/house-of-lager-brewing-company-story-art-v1.webp",
     headline: "A waterfront wedding with a local pulse.",
     intro: "House of Lager describes a Squamish oceanfront wedding with Howe Sound as the backdrop, locally inspired food, crafted drinks and flexible space for either a small gathering or a lively reception.",
     facts: [
@@ -170,7 +171,7 @@ export const VENUE_EDITORIAL: Record<string, VenueEditorial> = {
     sources: [{ label: "House of Lager weddings", url: "https://www.houseoflagerbrewing.com/weddings" }],
   },
   "evans-lake": {
-    tone: "green", layout: "split", portrait: "/images/venues/evans-lake-portrait-v1.webp",
+    tone: "green", layout: "split", portrait: "/images/venues/evans-lake-portrait-v1.webp", storyArt: "/images/venues/evans-lake-story-art-v1.webp",
     headline: "A whole weekend around a lake.",
     intro: "Evans Lake is a forest camp wedding, not a one-room event. Guests can move from the canopy to the swim dock, lakeside field and recreation hall across an exclusive-use weekend.",
     facts: [
@@ -187,7 +188,7 @@ export const VENUE_EDITORIAL: Record<string, VenueEditorial> = {
     sources: [{ label: "Evans Lake weddings", url: "https://evanslake.com/venue-booking/weddings/" }],
   },
   "brackendale-art-gallery": {
-    tone: "pink", layout: "framed", portrait: "/images/venues/brackendale-art-gallery-portrait-v1.webp",
+    tone: "pink", layout: "framed", portrait: "/images/venues/brackendale-art-gallery-portrait-v1.webp", storyArt: "/images/venues/brackendale-art-gallery-story-art-v1.webp",
     headline: "The art is already in the room.",
     intro: "The BAG is a handmade Brackendale arts venue with a Main Stage, gallery, rooftop patio and gardens. The reception can feel like a live show without losing the closeness of a wedding.",
     facts: [
@@ -204,7 +205,7 @@ export const VENUE_EDITORIAL: Record<string, VenueEditorial> = {
     sources: [{ label: "Weddings at the BAG", url: "https://brackendaleartgallery.com/weddings-the-bag/" }, { label: "The Main Stage", url: "https://brackendaleartgallery.com/the-main-stage/" }],
   },
   "railway-museum-of-british-columbia": {
-    tone: "amber", layout: "split", portrait: "/images/venues/railway-museum-of-british-columbia-portrait-v1.webp",
+    tone: "amber", layout: "split", portrait: "/images/venues/railway-museum-of-british-columbia-portrait-v1.webp", storyArt: "/images/venues/railway-museum-of-british-columbia-story-art-v1.webp",
     headline: "A roundhouse with a headliner built in.",
     intro: "The CN Roundhouse is a large, character-filled event space where the Royal Hudson 2860 locomotive is part of the backdrop. Indoor and outdoor ceremony options give the day more than one scale.",
     facts: [
@@ -221,7 +222,7 @@ export const VENUE_EDITORIAL: Record<string, VenueEditorial> = {
     sources: [{ label: "Railway Museum facility rental", url: "https://www.wcra.org/facility-rental/" }],
   },
   "capilano-university-squamish-campus": {
-    tone: "cyan", layout: "framed", portrait: "/images/venues/capilano-university-squamish-campus-portrait-v1.webp",
+    tone: "cyan", layout: "framed", portrait: "/images/venues/capilano-university-squamish-campus-portrait-v1.webp", storyArt: "/images/venues/capilano-university-squamish-campus-story-art-v1.webp",
     headline: "First, confirm the room can host your day.",
     intro: "CapU advertises external event-space bookings at its Squamish campus, but does not present it as a dedicated wedding venue. This is a planning possibility, not a confirmed wedding package.",
     facts: [

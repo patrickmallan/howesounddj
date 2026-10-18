@@ -57,9 +57,9 @@
   display: block;
   padding: clamp(4.5rem, 6vw, 6rem) max(5vw, calc((100vw - 82rem) / 2));
   background-color: #102631;
-  background-image: linear-gradient(90deg, #102631fa 0%, #102631ee 42%, #102631aa 75%, #10263185), var(--venue-art);
+  background-image: linear-gradient(90deg, #102631fa 0%, #102631ee 42%, #102631aa 75%, #10263185), var(--venue-story-art);
   background-size: cover;
-  background-position: center, center 42%;
+  background-position: center, 62% 18%;
 }
 .venue-dossier-section-lead { width: 100%; min-width: 0; }
 /* Keep the site's matrix billboard alphabet, with enough line height and
@@ -95,7 +95,7 @@
 .venue-dossier-research-note { margin: 2rem 0 0; padding-top: 1.2rem; border-top: 1px solid #7aa4aa66; color: #b6cbcf; font-size: .85rem; line-height: 1.5; }
 .venue-dossier-research-note a { color: var(--venue-accent); text-decoration: underline; text-underline-offset: .2em; }
 
-#main-content .hsdj-venue-dossier .venue-dossier-plan { padding: clamp(4.5rem, 6vw, 6rem) max(5vw, calc((100vw - 82rem) / 2)); background-color: #f4eddb; background-image: linear-gradient(90deg, #f4eddbfc 0%, #f4eddbf2 43%, #f4eddbcd 74%, #f4eddb9e), var(--venue-art); background-size: cover; background-position: center, center 72%; color: var(--venue-ink); }
+#main-content .hsdj-venue-dossier .venue-dossier-plan { padding: clamp(4.5rem, 6vw, 6rem) max(5vw, calc((100vw - 82rem) / 2)); background-color: #f4eddb; background-image: linear-gradient(90deg, #f4eddbfc 0%, #f4eddbf2 43%, #f4eddbcd 74%, #f4eddb9e), var(--venue-story-art); background-size: cover; background-position: center, 78% 55%; color: var(--venue-ink); }
 .venue-dossier-plan-heading { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(15rem, .8fr); gap: 1.4rem 2rem; align-items: end; }
 #main-content main.hsdj-venue-dossier .venue-dossier-plan h2 { color: var(--venue-ink) !important; font-palette: --hsdj-ink-on-light; }
 .venue-dossier-plan-heading > p:last-child { max-width: 24rem; margin: 0 0 .3rem; color: #34434a; font-size: 1.14rem; line-height: 1.55; }
@@ -106,7 +106,7 @@
 .venue-dossier-story-link { min-height: 1.5rem; margin-top: 2rem; }
 .venue-dossier-story-link a { color: #073a4b; font-weight: 900; text-decoration: underline; text-underline-offset: .25em; }
 
-#main-content .hsdj-venue-dossier .venue-dossier-outro { padding: clamp(4.5rem, 8vw, 8rem) max(5vw, calc((100vw - 82rem) / 2)); background-color: #ffe021; background-image: linear-gradient(90deg, #ffe021fc 0%, #ffe021f0 42%, #ffe021b3 76%, #ffe02180), var(--venue-art); background-size: cover; background-position: center, center 85%; color: var(--venue-ink); }
+#main-content .hsdj-venue-dossier .venue-dossier-outro { padding: clamp(4.5rem, 8vw, 8rem) max(5vw, calc((100vw - 82rem) / 2)); background-color: #ffe021; background-image: linear-gradient(90deg, #ffe021fc 0%, #ffe021f0 42%, #ffe021b3 76%, #ffe02180), var(--venue-story-art); background-size: cover; background-position: center, 100% 88%; color: var(--venue-ink); }
 #main-content main.hsdj-venue-dossier .venue-dossier-outro h2 { max-width: 19ch !important; color: var(--venue-ink) !important; font-palette: --hsdj-ink-on-light; font-size: clamp(2.3rem, 4vw, 4.5rem) !important; }
 .venue-dossier-outro > p { max-width: 43rem; margin: 1.5rem 0 2rem; color: var(--venue-ink); font-size: 1.2rem; font-weight: 700; line-height: 1.55; }
 .venue-dossier-date-cue { min-width: min(100%, 16rem); }

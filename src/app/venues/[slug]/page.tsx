@@ -43,7 +43,7 @@ export default async function VenueDetailPage({ params }: Props) {
   if (!editorial) notFound();
 
   return (
-    <main className="hsdj-venue-dossier min-h-screen text-white" data-tone={editorial.tone} data-layout={editorial.layout} style={{ "--venue-art": `url("${editorial.portrait}")` } as CSSProperties}>
+    <main className="hsdj-venue-dossier min-h-screen text-white" data-tone={editorial.tone} data-layout={editorial.layout} style={{ "--venue-story-art": `url("${editorial.storyArt}")` } as CSSProperties}>
       <JsonLd data={venueDetailBreadcrumbJsonLd(venue.name, venue.slug)} />
       {venue.slug !== "capilano-university-squamish-campus" ? <JsonLd data={venueWeddingDjServiceJsonLd({
         slug: venue.slug,

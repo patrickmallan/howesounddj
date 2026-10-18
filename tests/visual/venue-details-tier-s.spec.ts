@@ -1,4 +1,6 @@
 import { expect, test } from "@playwright/test";
+import { existsSync, statSync } from "node:fs";
+import { join } from "node:path";
 import { ACTIVE_VENUE_PAGES } from "../../src/config/venue-pages";
 import { VENUE_EDITORIAL } from "../../src/config/venue-editorial";
 import { VENUE_HEADING_ART } from "../../src/config/venue-heading-art";
@@ -9,6 +11,15 @@ test("Every active venue has heading art and researched editorial content", () =
   const slugs = ACTIVE_VENUE_PAGES.map((venue) => venue.slug).sort();
   expect(Object.keys(VENUE_HEADING_ART).sort()).toEqual(slugs);
   expect(Object.keys(VENUE_EDITORIAL).sort()).toEqual(slugs);
+  const storyArt = ACTIVE_VENUE_PAGES.map((venue) => VENUE_EDITORIAL[venue.slug].storyArt);
+  expect(new Set(storyArt).size).toBe(slugs.length);
+  for (const venue of ACTIVE_VENUE_PAGES) {
+    const art = VENUE_EDITORIAL[venue.slug];
+    expect(art.storyArt).not.toBe(art.portrait);
+    const artPath = join(process.cwd(), "public", art.storyArt.replace(/^\//, ""));
+    expect(existsSync(artPath)).toBe(true);
+    expect(statSync(artPath).size).toBeLessThan(400_000);
+  }
 });
 
 for (const venue of ACTIVE_VENUE_PAGES) {
@@ -63,7 +74,8 @@ for (const venue of ACTIVE_VENUE_PAGES) {
         expect(heading.width).toBeGreaterThan(width < 800 ? 200 : 500);
       }
       for (const background of layout.venueBackgrounds) {
-        expect(background).toContain(VENUE_EDITORIAL[venue.slug].portrait);
+        expect(background).toContain(VENUE_EDITORIAL[venue.slug].storyArt);
+        expect(background).not.toContain(VENUE_EDITORIAL[venue.slug].portrait);
       }
     });
   }
