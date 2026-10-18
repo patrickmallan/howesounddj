@@ -31,12 +31,14 @@ export const bookConsultOutlineButtonClassName =
 
 type Props = {
   surface: BookConsultSurface;
-  /** Appended after mandatory primary pill classes (width, sizing, grid cell stretch, etc.). */
+  /** Use the shared compact hardware treatment instead of the default pill. */
+  visualStyle?: "pill" | "controller";
+  /** Appended after the selected base style (width, sizing, grid cell stretch, etc.). */
   className?: string;
   children?: ReactNode;
 };
 
-export function BookConsultTrackedLink({ surface, className, children }: Props) {
+export function BookConsultTrackedLink({ surface, visualStyle = "pill", className, children }: Props) {
   function handleClick() {
     trackEvent(
       ANALYTICS_EVENTS.bookConsultClick,
@@ -47,7 +49,7 @@ export function BookConsultTrackedLink({ surface, className, children }: Props) 
     );
   }
 
-  const merged = [BOOK_CONSULT_PRIMARY_PILL_BASE, "motion-interactive", className].filter(Boolean).join(" ");
+  const merged = [visualStyle === "pill" ? BOOK_CONSULT_PRIMARY_PILL_BASE : "", "motion-interactive", className].filter(Boolean).join(" ");
 
   return (
     <a

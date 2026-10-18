@@ -10,19 +10,7 @@
 .hsdj-backstage .about-hero h1 { width: 100% !important; max-width: 100%; margin: 0; filter: drop-shadow(0 5px 12px #000a); }
 #main-content .hsdj-backstage .about-hero-intro { max-width: 38rem; margin: 1.8rem 0 0; padding: 1.1rem 1.35rem; border-left: .5rem solid var(--about-pink); background: #09101df0; color: #fff !important; font-size: clamp(1.05rem, 1.45vw, 1.38rem); font-weight: 750; line-height: 1.55; }
 .about-hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 1.6rem; }
-.about-hardware-link { --hardware-accent: var(--about-yellow); position: relative; display: inline-grid; grid-template-columns: 4.7rem auto 1rem; align-items: center; gap: .75rem; min-height: 5.25rem; padding: .25rem .8rem .25rem .25rem; border: 1px solid #6f8390; color: #f6fbff; background: linear-gradient(180deg, #17212ae8, #080d12f5); box-shadow: inset 0 0 0 3px #050a0e, 5px 6px 0 #02060a; text-decoration: none; text-transform: uppercase; transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease; }
-.about-hardware-link--cue { --hardware-accent: var(--about-yellow); }
-.about-hardware-link--play { --hardware-accent: var(--about-cyan); }
-.about-hardware-link--pad { --hardware-accent: #ff713f; }
-.about-hardware-link__control { display: grid; place-items: center; width: 4.7rem; height: 4.7rem; }
-.about-hardware-link__control img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 8px color-mix(in srgb, var(--hardware-accent) 65%, transparent)); transition: transform .18s ease; }
-.about-hardware-link__copy { display: grid; gap: .12rem; }
-.about-hardware-link__copy span { color: #9eb1bc; font: 800 .58rem/1.2 ui-monospace, monospace; letter-spacing: .12em; }
-.about-hardware-link__copy strong { color: #fff; font: 950 .86rem/1.08 system-ui, sans-serif; }
-.about-hardware-link__arrow { color: var(--hardware-accent); font-weight: 950; }
-.about-hardware-link:hover, .about-hardware-link:focus-visible { border-color: var(--hardware-accent); transform: translateY(-2px); box-shadow: inset 0 0 0 3px #050a0e, 6px 8px 0 #02060a, 0 0 18px color-mix(in srgb, var(--hardware-accent) 30%, transparent); }
-.about-hardware-link:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
-.about-hardware-link:hover .about-hardware-link__control img { transform: rotate(5deg) scale(1.04); }
+.about-hardware-link { min-width: min(100%, 14.5rem); }
 
 #main-content .hsdj-backstage .about-story { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1.13fr) minmax(0, .87fr); column-gap: clamp(2rem, 5vw, 6rem); align-items: center; min-height: 0; padding: clamp(5rem, 8vw, 8rem) max(5vw, calc((100vw - 82rem)/2)); background: linear-gradient(90deg, #071019e8, #07101979 72%), #0d1422 !important; }
 .about-collage-layer { z-index: -1; object-fit: cover; opacity: .72; filter: saturate(.92) contrast(1.06); }
@@ -134,5 +122,5 @@
   .about-quote { padding: 1.4rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .about-hardware-link, .about-hardware-link__control img, .about-console-controls button, .about-console-pad { transition: none; }
+  .about-hardware-link, .about-console-controls button, .about-console-pad { transition: none; }
 }

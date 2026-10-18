@@ -2,12 +2,11 @@
 
 import {
   BookConsultTrackedLink,
-  bookConsultOutlineButtonClassName,
 } from "@/components/book-consult-tracked-link";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import { ControllerButtonFace } from "@/components/controller-button-face";
 
-const trioChildLayout =
-  "inline-flex min-h-[44px] min-w-0 w-full flex-1 items-center justify-center text-center md:flex-1 md:w-0";
+const trioChildLayout = "hsdj-controller-button min-w-0 w-full flex-1 md:w-0";
 
 /**
  * Contact “Start here” + bottom finale: Book a Consult (primary), Check Availability (outline), Send a Message (outline).
@@ -16,17 +15,21 @@ const trioChildLayout =
 export function ContactPageCtaTrio() {
   return (
     <div className="flex w-full flex-col gap-3 md:flex-row md:flex-nowrap">
-      <BookConsultTrackedLink surface="contact_page_primary" className={trioChildLayout} />
+      <BookConsultTrackedLink surface="contact_page_primary" visualStyle="controller" className={`${trioChildLayout} hsdj-controller-button--play`}>
+        <ControllerButtonFace eyebrow="Press play to" label="Book a consult" control="play" />
+      </BookConsultTrackedLink>
       <CheckAvailabilityTrackedLink
         href="/contact#availability"
         surface="page_cta"
-        className={`${bookConsultOutlineButtonClassName} ${trioChildLayout}`}
-      />
+        className={`${trioChildLayout} hsdj-controller-button--cue`}
+      >
+        <ControllerButtonFace eyebrow="Load your date" label="Check your date" control="cue" />
+      </CheckAvailabilityTrackedLink>
       <a
         href="#send-message"
-        className={`${bookConsultOutlineButtonClassName} ${trioChildLayout}`}
+        className={`${trioChildLayout} hsdj-controller-button--message`}
       >
-        Send a Message
+        <ControllerButtonFace eyebrow="Drop me a line" label="Send a message" control="message" />
       </a>
     </div>
   );

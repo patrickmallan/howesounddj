@@ -24,7 +24,7 @@ import {
   POST_AVAILABILITY_PROOF_COMPACT_ID,
   POST_AVAILABILITY_PROOF_FULL_ID,
 } from "@/config/reviews";
-import { bookConsultPrimaryButtonClassName } from "@/components/book-consult-tracked-link";
+import { ControllerButtonFace } from "@/components/controller-button-face";
 import {
   roleActionFooter,
   roleAttributionName,
@@ -45,7 +45,6 @@ import { formatWeddingDateLong } from "@/lib/format-wedding-date";
 import { ANALYTICS_EVENTS, consultClickEventParams, trackEvent } from "@/lib/analytics";
 import { buildPostAvailabilityCalendlyUrl } from "@/lib/post-availability-calendly";
 import { postAvailabilityAnalyticsBase } from "@/lib/post-availability-analytics";
-import { CTA_PILL_FLEX_CENTER } from "@/lib/cta-alignment";
 import { recordAvailabilityJourneyEvent } from "@/lib/availability-journey-client";
 import { getPostAvailabilityContext } from "@/lib/post-availability-context";
 
@@ -77,15 +76,13 @@ function isElementInitiallyVisible(element: HTMLElement): boolean {
 }
 
 const compactCtaClassName = [
-  bookConsultPrimaryButtonClassName,
-  CTA_PILL_FLEX_CENTER,
-  "w-full whitespace-nowrap px-4 py-3 text-sm font-semibold sm:text-base",
+  "hsdj-controller-button hsdj-controller-button--play",
+  "w-full",
 ].join(" ");
 
 const fullCtaClassName = [
-  bookConsultPrimaryButtonClassName,
-  CTA_PILL_FLEX_CENTER,
-  "w-full max-w-md leading-snug px-5 py-3.5 sm:py-3",
+  "hsdj-controller-button hsdj-controller-button--play",
+  "w-full max-w-md",
 ].join(" ");
 
 const supportingNarrative = roleSupportingNarrative();
@@ -331,7 +328,7 @@ export function PostAvailabilitySuccess({
             data-availability-role="primary-cta"
             onClick={handleConsultClick}
           >
-            {ctaLabel}
+            <ControllerButtonFace eyebrow="Press play to" label={ctaLabel} control="play" />
           </a>
         </div>
         {variant === "full" && onInquiryFallback ? (

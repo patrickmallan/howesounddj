@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { HeroSignalCopy } from "@/components/hero-signal-copy";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
+import { ControllerButtonFace } from "@/components/controller-button-face";
 import { JsonLd } from "@/components/json-ld";
 import { getVenueBySlug, getAllVenueSlugs } from "@/config/venue-pages";
 import { venueDetailBreadcrumbJsonLd, venueWeddingDjServiceJsonLd } from "@/lib/json-ld";
@@ -100,9 +101,8 @@ export default async function VenueDetailPage({ params }: Props) {
         <p className="venue-dossier-overline">Your date, this room, your music</p>
         <h2 id="venue-dossier-outro-title">The next cue is yours.</h2>
         <p>Check your date. If I&apos;m available, we can talk about what you want this venue to feel like from the first guest to the last song.</p>
-        <CheckAvailabilityTrackedLink href="/contact#availability" surface="venue_page_cta" className="venue-dossier-date-cue">
-          <Image src="/images/hsdj-redesign/controls/buttons/cue-round.png" alt="" width={80} height={80} />
-          <span>Check your date <span aria-hidden="true">↗</span></span>
+        <CheckAvailabilityTrackedLink href="/contact#availability" surface="venue_page_cta" className="hsdj-controller-button hsdj-controller-button--cue venue-dossier-date-cue">
+          <ControllerButtonFace eyebrow="Load your date" label="Check your date" control="cue" />
         </CheckAvailabilityTrackedLink>
       </section>
     </main>

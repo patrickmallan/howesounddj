@@ -1,0 +1,55 @@
+/* Compact actions use one CSS-drawn pad face, with no additional image requests. */
+.hsdj-controller-button {
+  --control-accent: #ffe42b;
+  position: relative;
+  display: inline-flex !important;
+  min-width: 0;
+  min-height: 78px;
+  padding: 5px !important;
+  align-items: stretch;
+  border: 1px solid #72808b !important;
+  border-radius: 10px !important;
+  color: #fff !important;
+  background: linear-gradient(160deg, #29333a, #080d12 48%, #171e25) !important;
+  box-shadow: inset 0 1px 0 #ffffff69, inset 0 -3px 0 #020508, 0 5px 0 #02060a, 0 10px 18px #0009 !important;
+  text-align: left;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+.hsdj-controller-button--play { --control-accent: #67f6ed; }
+.hsdj-controller-button--cue { --control-accent: #ffe42b; }
+.hsdj-controller-button--message { --control-accent: #ff68a0; }
+.hsdj-controller-button__face {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 66px;
+  padding: .55rem .75rem;
+  align-items: center;
+  gap: .65rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--control-accent) 68%, #30424e 32%);
+  border-radius: 6px;
+  background: radial-gradient(ellipse at 11% 45%, color-mix(in srgb, var(--control-accent) 35%, transparent), transparent 66%), linear-gradient(165deg, #1c2d37, #08111b 68%);
+  box-shadow: inset 0 1px 0 #ffffff61, inset 0 -4px 0 color-mix(in srgb, var(--control-accent) 65%, #071017 35%), inset 0 0 14px color-mix(in srgb, var(--control-accent) 24%, transparent), 0 0 8px color-mix(in srgb, var(--control-accent) 40%, transparent);
+}
+.hsdj-controller-button__face::after { position: absolute; inset: 3px; content: ""; border: 1px solid #ffffff18; border-radius: 3px; pointer-events: none; }
+.hsdj-controller-button__indicator { display: grid; width: 2.35rem; height: 2.35rem; flex: 0 0 auto; place-items: center; border: 1px solid color-mix(in srgb, var(--control-accent) 80%, white 20%); border-radius: 5px; color: #06131a; background: linear-gradient(150deg, color-mix(in srgb, var(--control-accent) 78%, white 22%), color-mix(in srgb, var(--control-accent) 75%, #0a1922 25%)); box-shadow: inset 0 2px 0 #ffffffa1, inset 0 -3px 0 #0005, 0 3px 0 #050a0c, 0 0 13px var(--control-accent); font: 950 1rem/1 system-ui, sans-serif; }
+.hsdj-controller-button__copy { display: grid; min-width: 0; gap: .2rem; }
+.hsdj-controller-button__copy small { color: color-mix(in srgb, var(--control-accent) 65%, white 35%); font: 850 .55rem/1.15 ui-monospace, monospace; letter-spacing: .1em; }
+.hsdj-controller-button__copy strong { color: #fff; font: 950 clamp(.8rem, 1vw, .95rem)/1.12 system-ui, sans-serif; letter-spacing: .015em; text-shadow: 0 2px 2px #000b; }
+.hsdj-controller-button:hover, .hsdj-controller-button:focus-visible { transform: translateY(-2px); box-shadow: inset 0 1px 0 #ffffff80, inset 0 -3px 0 #020508, 0 7px 0 #02060a, 0 14px 24px #000a, 0 0 16px color-mix(in srgb, var(--control-accent) 48%, transparent) !important; }
+.hsdj-controller-button:active { transform: translateY(3px); box-shadow: inset 0 1px 0 #ffffff40, 0 2px 0 #02060a, 0 5px 9px #0009 !important; }
+.hsdj-controller-button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.hsdj-controller-button.hsdj-controller-button--play[data-availability-role="primary-cta"] { padding: 5px !important; border: 1px solid #72808b !important; border-radius: 10px !important; color: #fff !important; background: linear-gradient(160deg, #29333a, #080d12 48%, #171e25) !important; box-shadow: inset 0 1px 0 #ffffff69, inset 0 -3px 0 #020508, 0 5px 0 #02060a, 0 10px 18px #0009 !important; clip-path: none !important; text-shadow: none !important; }
+.hsdj-controller-button[data-availability-role="primary-cta"] .hsdj-controller-button__copy strong { color: #fff; }
+
+/* Selected route illuminates the entire pad, not its surrounding link box. */
+.hsdj-nav-pad:focus:not(:focus-visible) { outline: none; }
+.hsdj-nav-pad:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+@media (min-width: 1280px) {
+  .hsdj-nav-pad.is-active::before { border-color: color-mix(in srgb, var(--pad-glow) 70%, white 30%); background: linear-gradient(155deg, color-mix(in srgb, var(--pad-glow) 86%, white 14%), color-mix(in srgb, var(--pad-glow) 62%, #12171c 38%) 68%, color-mix(in srgb, var(--pad-glow) 42%, #080a0c 58%)); box-shadow: inset 0 2px 0 #ffffff9c, inset 0 -4px 6px #0008, 0 6px 0 color-mix(in srgb, var(--pad-glow) 70%, black 30%), 0 0 18px var(--pad-glow), 0 0 30px color-mix(in srgb, var(--pad-glow) 50%, transparent); }
+  .hsdj-nav-pad.is-active .hsdj-nav-pad__label { color: #070d13; -webkit-text-stroke: 0; text-shadow: 0 1px 0 #ffffff80; }
+}
+@media (prefers-reduced-motion: reduce) { .hsdj-controller-button { transition: none; } }

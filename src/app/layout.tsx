@@ -10,6 +10,7 @@ import { SITE_PUBLIC_NAME, SITE_SHORT_NAME } from "@/config/site-brand";
 import { organizationJsonLd } from "@/lib/json-ld";
 import { isIsolatedPreview } from "@/lib/is-isolated-preview";
 import "./globals.css";
+import "./controller-buttons.css";
 
 const siteDescription =
   "Versatile Squamish wedding DJ for ceremony sound, dinner music, speeches, and dance floors that go well beyond the usual wedding playlist.";
