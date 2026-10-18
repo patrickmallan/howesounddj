@@ -88,7 +88,7 @@ export default function AboutPage() {
             </blockquote>
           ))}
         </div>
-        <AboutHardwareLink href="/reviews" label="Hear more from couples" eyebrow="Load the reviews" control="pad" />
+        <AboutHardwareLink href="/reviews" label="Hear more from couples" eyebrow="Load the reviews" control="play" />
       </section>
 
       <section className="about-close" aria-labelledby="about-close-title">

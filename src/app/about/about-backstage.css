@@ -69,7 +69,8 @@
 #main-content .hsdj-backstage .about-proof { position: relative; isolation: isolate; padding: clamp(6rem, 9vw, 10rem) max(5vw, calc((100vw - 82rem)/2)); background: #0b0e1a !important; }
 .about-proof .about-collage-layer { object-position: center 64%; opacity: .5; }
 .about-proof-heading { position: relative; z-index: 2; max-width: 50rem; }
-.hsdj-backstage .about-proof h2 { margin: 0; color: #fff !important; font: 1000 clamp(3.2rem, 5.6vw, 6rem)/.88 Impact, "Arial Narrow", sans-serif !important; }
+.hsdj-backstage .about-proof h2 { margin: 0; color: #fff !important; font: 1000 clamp(3.2rem, 5.6vw, 6rem)/1.2 Impact, "Arial Narrow", sans-serif !important; }
+#main-content .hsdj-backstage .about-proof h2 { line-height: 1.2 !important; }
 .about-quote-cloud { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(12, 1fr); gap: 0; align-items: start; margin: 4rem 0 2rem; }
 .about-quote { position: relative; padding: clamp(1.4rem, 2.7vw, 2.7rem); margin: 0; color: #07101b; box-shadow: 13px 16px 0 #000b; }
 .about-quote::before { content: "“"; position: absolute; top: -.8rem; left: .5rem; color: #0b142035; font: 1000 7rem/1 Georgia, serif; }
