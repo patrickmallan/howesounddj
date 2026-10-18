@@ -13,6 +13,15 @@ const description =
 
 const guideTitle = "Good parties are made on purpose.";
 
+const danceFloorPhotos = [
+  { src: "/images/brand-editorial/hsdj-packed-dance-floor-editorial.webp", alt: "Guests fill a wedding dance floor with their hands raised" },
+  { src: "/images/hsdj-redesign/wedding-story/read-room-dancefloor-overhead-v1.webp", alt: "A mountain wedding dance floor seen from above" },
+  { src: "/images/hsdj-redesign/wedding-story/night-stage-open-floor-v1.webp", alt: "Wedding guests singing and dancing together" },
+  { src: "/images/hsdj-redesign/weddings-overview/celebration-joy-art-v2-960.webp", alt: "A couple laughing together in a lively wedding crowd" },
+  { src: "/images/brand-editorial/hsdj-hero-crowd-behind-mountains-editorial.webp", alt: "A packed wedding crowd celebrating in front of the mountains" },
+  { src: "/images/brand-editorial/hsdj-premium-dj-crowd-editorial.webp", alt: "Guests dancing together in a black-and-white wedding scene" },
+];
+
 type HardwareLinkProps = {
   eyebrow?: string;
   href: string;
@@ -65,11 +74,9 @@ export default function GuidesHubPage() {
           <HeroSignalCopy>Two questions behind a night people remember: who do you trust with the music, and how do you get everyone onto the floor?</HeroSignalCopy>
           <nav className="guides-deck-hero-routes" aria-label="Choose a planning question">
             <a href="#guide-one" data-physical-control="beat-jump">
-              <span className="guides-deck-jump-face" aria-hidden="true"><Image src="/images/hsdj-redesign/controls/buttons/beat-jump-mode.png" alt="" width={94} height={26} sizes="94px" /></span>
               <strong>Build the dance floor</strong><span aria-hidden="true">↘</span>
             </a>
             <a href="#guide-two" data-physical-control="beat-jump">
-              <span className="guides-deck-jump-face" aria-hidden="true"><Image src="/images/hsdj-redesign/controls/buttons/beat-jump-mode.png" alt="" width={94} height={26} sizes="94px" /></span>
               <strong>Choose your DJ</strong><span aria-hidden="true">↘</span>
             </a>
           </nav>
@@ -78,12 +85,11 @@ export default function GuidesHubPage() {
 
       <section id="guide-one" className="guides-deck-feature guides-deck-floor" aria-labelledby="guides-floor-title">
         <div className="guides-deck-floor-gallery">
-          <div className="guides-deck-floor-photo guides-deck-floor-photo--main">
-            <Image src="/images/brand-editorial/hsdj-packed-dance-floor-editorial.webp" alt="Wedding guests crowd the dance floor with their hands raised" fill sizes="(max-width: 900px) 100vw, 50vw" />
-          </div>
-          <div className="guides-deck-floor-photo guides-deck-floor-photo--detail">
-            <Image src="/images/hsdj-redesign/wedding-story/read-room-dancefloor-overhead-v1.webp" alt="An overhead view of guests dancing at a mountain wedding" fill sizes="(max-width: 900px) 55vw, 23vw" />
-          </div>
+          {danceFloorPhotos.map((photo, index) => (
+            <div className={`guides-deck-floor-photo guides-deck-floor-photo--${index + 1}`} key={photo.src}>
+              <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 900px) 55vw, 30vw" />
+            </div>
+          ))}
         </div>
         <div className="guides-deck-feature-copy">
           <h2 id="guides-floor-title">How to keep a wedding dance floor packed.</h2>
