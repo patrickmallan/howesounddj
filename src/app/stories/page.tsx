@@ -283,8 +283,8 @@ export default function StoriesHubPage() {
 
       <section className="contact-sheet-real-reels" aria-labelledby="contact-sheet-real-reels-title">
         <div className="contact-sheet-real-reels-heading">
-          <h2 id="contact-sheet-real-reels-title">I don&apos;t DJ from a script.</h2>
-          <p>I&apos;m watching who&apos;s moving, who&apos;s still pretending they won&apos;t, and when it&apos;s time to turn the room up. That&apos;s how I pick the next track.</p>
+          <h2 id="contact-sheet-real-reels-title">This is the fun part.</h2>
+          <p>The speeches are done, the formalities are over, and I get to find out what your friends and family actually dance to. Sometimes the best song of the night wasn&apos;t on anybody&apos;s list.</p>
         </div>
         <StoriesQuietLoop />
       </section>
