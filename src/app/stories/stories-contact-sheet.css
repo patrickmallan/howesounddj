@@ -188,3 +188,112 @@
 @media (prefers-reduced-motion: reduce) {
   .contact-sheet-hardware-face { transition: none; }
 }
+
+/* A dense stack of complete, imagined memories. The two layers use clean paper
+   edges so the stories, rather than torn-paper decoration, carry the collage. */
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes {
+  padding: clamp(2.5rem, 4vw, 4rem) max(1.5rem, calc((100vw - 88rem) / 2)) clamp(2rem, 3vw, 3rem);
+  background: #e8ddcc !important;
+}
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes > .contact-sheet-night-notes-intro {
+  width: min(100%, 40rem);
+  max-width: 40rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: linear-gradient(140deg, #fffaf0 0%, #f4ecd9 78%, #ece0cb 100%);
+  border-radius: 2px;
+  box-shadow: 0 14px 21px #4c3c3247, inset 0 1px 0 #fff;
+  filter: none;
+  transform: rotate(-1.2deg);
+}
+.contact-sheet-night-notes-intro::after,
+.contact-sheet-background-note::after,
+.contact-sheet-night-note::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, transparent 76%, #7866540b 86%, transparent 94%);
+}
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes h2 {
+  font-size: clamp(2.45rem, 4.3vw, 4.4rem) !important;
+  line-height: 1.03;
+}
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes > .contact-sheet-night-notes-scatter {
+  display: block;
+  width: 100%;
+  max-width: 88rem;
+  height: 64rem;
+  margin: .4rem auto 0;
+}
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes .contact-sheet-night-note:nth-child(n) {
+  position: absolute;
+  display: block;
+  left: var(--feature-x);
+  top: var(--feature-y);
+  width: 23.5%;
+  min-height: 11.5rem;
+  aspect-ratio: auto;
+  padding: 1.15rem 1.1rem;
+  background: linear-gradient(145deg, #fffaf0, #f0e8d8);
+  border-radius: 2px;
+  box-shadow: 0 8px 13px #4c3c3259, inset 0 1px 0 #fff;
+  filter: none;
+  transform: translate(-.35rem, -.35rem) rotate(-2.4deg);
+}
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes .contact-sheet-night-note:nth-child(4n + 2) { background: linear-gradient(145deg, #ffe9ea, #efcfd4); transform: translate(.4rem, .5rem) rotate(2.5deg); }
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes .contact-sheet-night-note:nth-child(4n + 3) { background: linear-gradient(145deg, #f8f7f1, #e5e1d7); transform: translate(-.2rem, .15rem) rotate(-1.6deg); }
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes .contact-sheet-night-note:nth-child(4n) { background: linear-gradient(145deg, #fff4be, #eadf9d); transform: translate(.55rem, -.35rem) rotate(2deg); }
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes .contact-sheet-night-note:nth-child(7n) { transform: translate(-.5rem, .35rem) rotate(-3.2deg); }
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes .contact-sheet-night-note:nth-child(5n)::after { background: linear-gradient(158deg, transparent 57%, #765a5030 59%, #ffffff77 60%, transparent 63%), radial-gradient(ellipse at 80% 88%, #92736723, transparent 36%); }
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes .contact-sheet-night-note p,
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes .contact-sheet-night-note:nth-child(n) p {
+  max-width: 100%;
+  color: #26313b !important;
+  font: 650 clamp(1.02rem, 1.2vw, 1.2rem)/1.22 "Bradley Hand", "Noteworthy", cursive;
+  letter-spacing: -.025em;
+  mix-blend-mode: normal;
+  overflow-wrap: break-word;
+}
+.contact-sheet-background-note {
+  display: block;
+  left: var(--pile-x);
+  top: var(--pile-y);
+  width: 25%;
+  aspect-ratio: .94;
+  padding: 1.55rem;
+  background: linear-gradient(145deg, #fff9ed, #e9ddc9);
+  border-radius: 2px;
+  box-shadow: 0 6px 11px #4c3c3242, inset 0 1px 0 #fff;
+  filter: none;
+  transform: rotate(var(--pile-turn));
+}
+.contact-sheet-background-note:nth-child(4n + 2) { background: linear-gradient(145deg, #fff0f0, #ecd3d4); }
+.contact-sheet-background-note:nth-child(4n + 3) { background: linear-gradient(145deg, #fdfcf7, #e6e2d9); }
+.contact-sheet-background-note:nth-child(4n) { background: linear-gradient(145deg, #fff7c9, #e9dfa8); }
+.contact-sheet-background-note:nth-child(7n) { box-shadow: 0 8px 12px #4c3c3245, inset 0 0 24px #9b7a6b12; }
+.contact-sheet-background-note > span,
+.contact-sheet-background-note:nth-child(n) > span {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  color: #39404aa8;
+  font: 600 clamp(.86rem, 1.1vw, 1.06rem)/1.28 "Bradley Hand", "Noteworthy", cursive;
+  text-align: left;
+  transform: none;
+  overflow-wrap: break-word;
+}
+@media (max-width: 900px) {
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes > .contact-sheet-night-notes-scatter { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .4rem; height: auto; max-width: 46rem; }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes .contact-sheet-night-note:nth-child(n) { position: relative; left: auto; top: auto; width: 100%; min-height: 14rem; }
+  .contact-sheet-background-note { left: var(--pile-tablet-x); top: var(--pile-tablet-y); width: 40%; }
+}
+@media (max-width: 600px) {
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes { padding: 2rem .9rem; }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes > .contact-sheet-night-notes-intro { padding: 1.5rem; }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes > .contact-sheet-night-notes-scatter { grid-template-columns: minmax(0, 1fr); gap: .35rem; max-width: 23rem; margin-top: .55rem; }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes .contact-sheet-night-note:nth-child(n) { min-height: 9rem; padding: 1.2rem 1.35rem; }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes .contact-sheet-night-note:nth-child(n) p { font-size: clamp(1.12rem, 4.4vw, 1.3rem); }
+  .contact-sheet-background-note { left: var(--pile-mobile-x); top: var(--pile-mobile-y); width: 76%; padding: 1.2rem; }
+  .contact-sheet-background-note:nth-child(n) > span { font-size: .87rem; }
+}

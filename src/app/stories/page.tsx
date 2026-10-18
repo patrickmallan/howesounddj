@@ -166,42 +166,54 @@ const diaryNotes = [
   },
 ] as const;
 
-const notePapers = [
-  "/images/stories/diary-notes/cream-stained-v1.webp",
-  "/images/stories/diary-notes/blush-guestbook-v1.webp",
-  "/images/stories/diary-notes/cocktail-napkin-v1.webp",
-  "/images/stories/diary-notes/pocket-diary-v1.webp",
-  "/images/stories/diary-notes/coffee-coaster-v1.webp",
-  "/images/stories/diary-notes/yellow-pad-v1.webp",
-  "/images/stories/diary-notes/envelope-v1.webp",
+const backgroundStories = [
+  "The flower girl borrowed the microphone, announced she was seven, and introduced the couple like they were headlining a festival.",
+  "The groom's dad knew every word of the rap verse. His children are still asking where he learned it.",
+  "Someone changed into ski boots for the last hour. Nobody remembers seeing skis anywhere near the wedding.",
+  "The ring bearer slept under a table until his favourite song came on. He danced one chorus and went back to bed.",
+  "The officiant arrived at the dance floor in running shoes. Apparently she had been waiting all evening for this part.",
+  "The bride's cousin made a grand entrance carrying two slices of cake and lost neither. We applauded the engineering.",
+  "A guest tried to teach the whole room a line dance. By the second verse, the teacher was following everyone else.",
+  "The first person to request the Spice Girls was the grandfather. He also knew the choreography better than we did.",
+  "Someone caught the bouquet while holding a drink. The drink survived; their expression in the photo did not.",
+  "The couple promised they would leave early. At closing, they were the ones asking if there was time for one more.",
+  "A tiny nephew took over the circle, spun once, and bowed. The adults gave him an encore he did not request.",
+  "The best man's speech mentioned a childhood band. By midnight the entire band had reunited on the dance floor.",
+  "We found the groom's tie on a speaker the next morning. Nobody could explain how it had got up there.",
+  "The cake-cutting song became a singalong. We were still holding the knife when the chorus came round again.",
+  "The quietest table at dinner turned into the loudest corner of the floor. Their waiter came over to watch.",
+  "Auntie packed sensible flats. She took them off after one song and danced the rest of the night barefoot.",
+  "The bride's brother tried a cartwheel in his suit. It was not elegant, but the landing got a standing ovation.",
+  "Someone taught the DJ a move during the break. It was retired immediately, which only made everyone try it.",
+  "The newlyweds vanished for ten minutes. We found them at the back of the room teaching Grandma a two-step.",
+  "The photographer put down the camera for the final song. The couple's parents pulled her into the circle.",
+  "A guest requested a song for his wife, then realised she was already dancing to it with three other people.",
+  "The groom's mum started a train through the tables. By the time it reached the door, the groom was the caboose.",
+  "The wedding party practised a polished entrance. Their first attempt went in three directions and was much better.",
+  "Someone yelled that they could do a lift. The room wisely voted for a spin instead, and it was perfect.",
+  "A little girl gave every dancer a score out of ten. She gave the bride eleven and refused to explain the maths.",
+  "The sunset photos ran late. The couple came back to find their grandparents holding down the dance floor.",
+  "A cousin arrived with a disposable camera. Every photo on it is of people laughing too hard to pose.",
+  "The first slow song ended, but nobody let go. We had to start the next track around a room full of hugs.",
+  "Someone's jacket went missing. It was eventually found on the back of a chair with four handwritten song requests inside.",
+  "The groom's sister knew the chorus in another language. By the end, half the room was singing her version.",
 ] as const;
 
-const noteScribbles = [
-  "one more song", "everyone came in", "shoes by the booth", "that chorus", "after dinner",
-  "the whole room", "keep this one", "Auntie was first", "hands up", "last dance?",
-  "ask for ABBA", "we stayed late", "sing it again", "the photos!", "11:48 pm",
-  "couldn't stop", "play it louder", "Dad knew every word", "all of us", "remember this",
-  "back to the floor", "best night", "the cake survived", "one more, please",
-] as const;
-
-const backgroundNotes = Array.from({ length: 126 }, (_, index) => {
-  const desktopRow = Math.floor(index / 9);
-  const tabletRow = Math.floor(index / 4);
+const backgroundNotes = backgroundStories.map((text, index) => {
+  const desktopRow = Math.floor(index / 5);
+  const tabletRow = Math.floor(index / 3);
   const mobileRow = Math.floor(index / 2);
   const jitter = (multiplier: number, range: number) => (index * multiplier % range) - range / 2;
   return {
-    text: noteScribbles[(index * 7 + Math.floor(index / 5)) % noteScribbles.length],
+    text,
     style: {
-      "--pile-x": `${-10 + (index % 9) * 13.2 + jitter(17, 9)}%`,
-      "--pile-y": `${-2 + desktopRow * 7.7 + jitter(13, 5)}%`,
-      "--pile-tablet-x": `${-11 + (index % 4) * 31 + jitter(11, 10)}%`,
-      "--pile-tablet-y": `${-2 + tabletRow * 3.3 + jitter(17, 3)}%`,
-      "--pile-mobile-x": `${-26 + (index % 2) * 65 + jitter(7, 11)}%`,
-      "--pile-mobile-y": `${-1 + mobileRow * 1.65 + jitter(19, 1.8)}%`,
-      "--pile-turn": `${jitter(23, 33)}deg`,
-      "--pile-size": `${19 + (index * 3 % 7)}%`,
-      backgroundImage: `url('${notePapers[(index * 5 + Math.floor(index / 7)) % notePapers.length]}')`,
-      zIndex: index % 9,
+      "--pile-x": `${-7 + (index % 5) * 21 + jitter(17, 11)}%`,
+      "--pile-y": `${-2 + desktopRow * 18 + jitter(13, 5)}%`,
+      "--pile-tablet-x": `${-11 + (index % 3) * 35 + jitter(11, 9)}%`,
+      "--pile-tablet-y": `${-2 + tabletRow * 10.2 + jitter(17, 3)}%`,
+      "--pile-mobile-x": `${-20 + (index % 2) * 66 + jitter(7, 8)}%`,
+      "--pile-mobile-y": `${-1 + mobileRow * 6.8 + jitter(19, 2)}%`,
+      "--pile-turn": `${jitter(23, 11)}deg`,
     } as CSSProperties,
   };
 });
@@ -221,16 +233,22 @@ export default function StoriesHubPage() {
 
       <section className="contact-sheet-night-notes" aria-labelledby="contact-sheet-night-notes-title">
         <div className="contact-sheet-note-field" aria-hidden="true">
-          {backgroundNotes.map((note, index) => <span className="contact-sheet-background-note" key={index} style={note.style}><span>{note.text}</span></span>)}
+          {backgroundNotes.map((note) => <span className="contact-sheet-background-note" key={note.text} style={note.style}><span>{note.text}</span></span>)}
         </div>
         <div className="contact-sheet-night-notes-intro">
           <h2 id="contact-sheet-night-notes-title">If the dance floor kept a diary...</h2>
-          <p>Imagine the diary entries three weeks later. Nobody is writing about the chair covers; the group chat is still losing it over moments like these.</p>
+          <p>Imagined diary entries from the nights nobody stops talking about. The chair covers never make the group chat. These moments do.</p>
         </div>
         <div className="contact-sheet-night-notes-scatter">
-          {diaryNotes.map((note) => (
-            <article className={`contact-sheet-night-note contact-sheet-night-note--${note.shape}`} key={`${note.image}-${note.text}`}>
-              <Image src={note.image} alt="" fill loading="lazy" fetchPriority="low" sizes="(max-width: 600px) 21rem, 24rem" />
+          {diaryNotes.map((note, index) => (
+            <article
+              className={`contact-sheet-night-note contact-sheet-night-note--${note.shape}`}
+              key={`${note.image}-${note.text}`}
+              style={{
+                "--feature-x": `${1 + (index < 16 ? index % 4 : (index - 16) * 2) * 25 + ((index * 7 % 3) - 1) * .35}%`,
+                "--feature-y": `${Math.floor(index / 4) * 19.8 + ((index * 11 % 3) - 1) * .6}%`,
+              } as CSSProperties}
+            >
               <p>{note.text}</p>
             </article>
           ))}
