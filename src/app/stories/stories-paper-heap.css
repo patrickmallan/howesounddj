@@ -9,14 +9,15 @@
   background: url("/images/stories/diary-notes/paper-heap-underlay.webp") center top / 100% auto repeat-y;
 }
 
-.contact-sheet-background-note {
-  display: block;
+.contact-sheet-background-note:nth-child(n) {
+  display: flex;
+  align-items: center;
   left: var(--pile-x);
   top: var(--pile-y);
   width: clamp(18rem, 29vw, 29rem);
-  min-height: clamp(14rem, 19vw, 19rem);
+  min-height: clamp(13rem, 15vw, 16rem);
   aspect-ratio: auto;
-  padding: 2.4rem 2.3rem;
+  padding: 1.7rem 1.9rem;
   border-radius: 1px 5px 3px 2px;
   background: linear-gradient(145deg, #fff8e9, #e8d9bf);
   box-shadow: 2px 12px 15px #493b3352, inset 0 0 30px #97745512;
@@ -59,10 +60,13 @@
   display: block;
   width: 100%;
   color: #384255c7;
-  font: 500 clamp(.9rem, 1.12vw, 1.12rem)/1.28 "Bradley Hand", "Segoe Print", cursive;
+  font: 500 1.65rem/1.24 "Bradley Hand", "Segoe Print", cursive;
   text-align: left;
   transform: none;
+  overflow-wrap: break-word;
 }
+.contact-sheet-background-note[data-length="brief"] > span { font-size: 1.82rem; }
+.contact-sheet-background-note[data-length="long"] > span { font-size: 1.48rem; }
 .contact-sheet-background-note:nth-child(5n + 2) > span {
   color: #59404dbf;
   font-family: "Noteworthy", "Bradley Hand", cursive;
@@ -129,6 +133,17 @@
   text-wrap: pretty;
   mix-blend-mode: multiply;
 }
+#main-content .hsdj-contact-sheet .contact-sheet-night-note[data-length="brief"] {
+  width: clamp(14rem, 21%, 19rem);
+}
+#main-content .hsdj-contact-sheet .contact-sheet-night-note[data-length="brief"] p {
+  font-size: clamp(1.62rem, 1.9vw, 1.9rem);
+  line-height: 1.22;
+}
+#main-content .hsdj-contact-sheet .contact-sheet-night-note[data-length="medium"] p {
+  font-size: clamp(1.4rem, 1.65vw, 1.65rem);
+  line-height: 1.24;
+}
 .contact-sheet-night-note:nth-child(3n + 2) p { letter-spacing: -.04em; }
 .contact-sheet-night-note:nth-child(4n + 1) p { font-weight: 500; }
 .contact-sheet-night-note:nth-child(7) { z-index: 2; }
@@ -148,14 +163,19 @@
     max-width: 46rem;
   }
   #main-content .hsdj-contact-sheet .contact-sheet-night-note:nth-child(n) { width: 48%; }
-  .contact-sheet-background-note {
+  .contact-sheet-background-note:nth-child(n) {
     left: var(--pile-tablet-x);
     top: var(--pile-tablet-y);
     width: 48%;
-    min-height: 11rem;
-    padding: 1.5rem;
+    min-height: 10rem;
+    padding: 1.25rem;
   }
-  .contact-sheet-background-note:nth-child(n) > span { font-size: clamp(.75rem, 1.7vw, 1rem); }
+  .contact-sheet-background-note:nth-child(n) > span { font-size: 1.2rem; }
+  .contact-sheet-background-note[data-length="brief"] > span { font-size: 1.32rem; }
+  .contact-sheet-background-note[data-length="long"] > span { font-size: 1.08rem; }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-note[data-length="brief"] { width: 44%; }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-note[data-length="brief"] p { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-note[data-length="medium"] p { font-size: clamp(1.16rem, 2.25vw, 1.38rem); }
 }
 
 @media (max-width: 600px) {
@@ -189,12 +209,17 @@
   .contact-sheet-night-note:nth-child(n) p {
     font-size: clamp(1.12rem, 4.6vw, 1.45rem);
   }
-  .contact-sheet-background-note {
+  #main-content .hsdj-contact-sheet .contact-sheet-night-note[data-length="brief"] { width: min(76%, 20rem); }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-note[data-length="brief"] p { font-size: clamp(1.34rem, 5vw, 1.58rem); }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-note[data-length="medium"] p { font-size: clamp(1.18rem, 4.6vw, 1.42rem); }
+  .contact-sheet-background-note:nth-child(n) {
     left: var(--pile-mobile-x);
     top: var(--pile-mobile-y);
     width: 88%;
-    min-height: 15rem;
-    padding: 1.5rem;
+    min-height: 10.5rem;
+    padding: 1.15rem 1.25rem;
   }
-  .contact-sheet-background-note:nth-child(n) > span { font-size: .84rem; }
+  .contact-sheet-background-note:nth-child(n) > span { font-size: 1.35rem; }
+  .contact-sheet-background-note[data-length="brief"] > span { font-size: 1.48rem; }
+  .contact-sheet-background-note[data-length="long"] > span { font-size: 1.2rem; }
 }

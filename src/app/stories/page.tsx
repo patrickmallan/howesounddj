@@ -213,6 +213,7 @@ const backgroundNotes = backgroundStories.map((text, index) => {
   const [x, y, turn] = backgroundPlacement[index];
   return {
     text,
+    length: text.length < 100 ? "brief" : text.length < 130 ? "medium" : "long",
     style: {
       "--pile-x": `${x}%`,
       "--pile-y": `${y}%`,
@@ -240,7 +241,7 @@ export default function StoriesHubPage() {
 
       <section className="contact-sheet-night-notes" aria-labelledby="contact-sheet-night-notes-title">
         <div className="contact-sheet-note-field" aria-hidden="true">
-          {backgroundNotes.map((note) => <span className="contact-sheet-background-note" key={note.text} style={note.style}><span>{note.text}</span></span>)}
+          {backgroundNotes.map((note) => <span className="contact-sheet-background-note" data-length={note.length} key={note.text} style={note.style}><span>{note.text}</span></span>)}
         </div>
         <div className="contact-sheet-night-notes-intro">
           <h2 id="contact-sheet-night-notes-title">If the dance floor kept a diary...</h2>
@@ -250,6 +251,7 @@ export default function StoriesHubPage() {
           {diaryNotes.map((note) => (
             <article
               className={`contact-sheet-night-note contact-sheet-night-note--${note.shape}`}
+              data-length={note.text.length < 80 ? "brief" : note.text.length < 120 ? "medium" : "long"}
               key={`${note.image}-${note.text}`}
             >
               <Image src={note.image} alt="" fill sizes="(max-width: 600px) 85vw, (max-width: 900px) 48vw, 27vw" />
