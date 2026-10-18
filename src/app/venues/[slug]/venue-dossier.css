@@ -1,7 +1,6 @@
 .hsdj-venue-dossier {
   --venue-accent: #5be9ee;
   --venue-ink: #071217;
-  --venue-paper: #f4eddb;
   background: var(--venue-ink);
   color: #fff;
   overflow: clip;
@@ -46,8 +45,7 @@
 .hsdj-venue-dossier[data-layout="split"] .venue-dossier-hero-copy,
 .hsdj-venue-dossier[data-layout="framed"] .venue-dossier-hero-copy { width: min(100%, 40rem); }
 .venue-dossier-hero-copy nav a { color: var(--venue-accent); font: 800 .78rem/1.4 ui-monospace, monospace; letter-spacing: .11em; text-transform: uppercase; }
-.venue-dossier-overline,
-.venue-dossier-section-number { color: var(--venue-accent); font: 900 .74rem/1.5 ui-monospace, monospace; letter-spacing: .16em; text-transform: uppercase; }
+.venue-dossier-overline { color: var(--venue-accent); font: 900 .74rem/1.5 ui-monospace, monospace; letter-spacing: .16em; text-transform: uppercase; }
 .venue-dossier-hero .venue-dossier-overline { margin: 2.7rem 0 1rem; }
 #main-content .hsdj-venue-dossier .venue-dossier-heading { display: block; max-width: min(100%, 46rem); margin: 0; }
 .venue-dossier-heading img { display: block; width: 100%; max-height: 360px; height: auto; object-fit: contain; object-position: left center; }
@@ -55,64 +53,62 @@
 .venue-dossier-booking-note { max-width: 42rem; margin: 1rem 0; padding: .8rem 1rem; border: 1px solid #ffd05d; background: #261d11eb; color: #fff0c8; font-size: .98rem; line-height: 1.5; }
 .venue-dossier-source-link { display: inline-flex; align-items: center; margin-top: 1.2rem; padding: .72rem 1rem; border: 1px solid var(--venue-accent); background: #071217e8; color: var(--venue-accent); font: 900 .74rem/1.3 ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; box-shadow: 4px 4px 0 #0009; transition: background .2s, color .2s; }
 .venue-dossier-source-link:hover { background: var(--venue-accent); color: var(--venue-ink); }
-.venue-dossier-art-caption { position: absolute; right: 2rem; bottom: 1rem; max-width: 15rem; margin: 0; color: #eef6f3; font: 650 .65rem/1.35 ui-monospace, monospace; text-align: right; text-shadow: 1px 1px 4px #000; }
-
 #main-content .hsdj-venue-dossier .venue-dossier-details {
   display: block;
   padding: clamp(4.5rem, 6vw, 6rem) max(5vw, calc((100vw - 82rem) / 2));
-  background: #102631;
+  background-color: #102631;
+  background-image: linear-gradient(90deg, #102631fa 0%, #102631ee 42%, #102631aa 75%, #10263185), var(--venue-art);
+  background-size: cover;
+  background-position: center, center 42%;
 }
 .venue-dossier-section-lead { width: 100%; min-width: 0; }
-.venue-dossier-section-lead .venue-dossier-section-number { margin: 0 0 1.2rem; }
-/* This page has its own display hierarchy. The global matrix-letter H2 and
-   legacy venue-column rules make long venue headlines collide at wide sizes. */
+/* Keep the site's matrix billboard alphabet, with enough line height and
+   full-width wrapping for long venue-specific headlines. */
 #main-content main.hsdj-venue-dossier :is(.venue-dossier-details, .venue-dossier-plan, .venue-dossier-outro) h2 {
   display: block;
   box-sizing: border-box;
   width: auto;
-  max-width: 22ch !important;
+  max-width: 28ch !important;
   margin: 0;
   padding: 0 !important;
   border: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
   filter: none;
-  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
-  font-size: clamp(2.6rem, 4vw, 4.25rem) !important;
-  font-weight: 900 !important;
-  letter-spacing: -.035em !important;
-  line-height: 1.1 !important;
-  text-wrap: pretty;
+  font-family: var(--font-display), var(--font-geist-sans), sans-serif !important;
+  font-palette: --hsdj-paper-light;
+  font-synthesis: none;
+  font-size: clamp(2.1rem, 3.6vw, 4rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: .025em !important;
+  line-height: 1.36 !important;
+  text-wrap: balance;
   text-transform: uppercase;
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
 }
 #main-content main.hsdj-venue-dossier .venue-dossier-details h2 { color: #fff !important; }
 .venue-dossier-section-lead > p:last-child { max-width: 43rem; margin: 1.2rem 0 0; color: #d0e2e5; font-size: 1.1rem; line-height: 1.6; }
 .venue-dossier-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: stretch; padding: 0; margin: 3.2rem 0 0; list-style: none; }
-.venue-dossier-facts li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1.3rem; padding: 1.4rem 1.5rem; background: #071820; border: 1px solid #79a0a452; border-left: 5px solid var(--venue-accent); box-shadow: 7px 7px 0 #041116; }
-.venue-dossier-facts li > span { color: var(--venue-accent); font: 900 1.45rem/1 ui-monospace, monospace; }
+.venue-dossier-facts li { padding: 1.4rem 1.5rem; background: #071820ee; border: 1px solid #79a0a452; border-left: 5px solid var(--venue-accent); box-shadow: 7px 7px 0 #041116; }
 .venue-dossier-facts h3 { margin: 0 0 .4rem; color: #fff; font-size: 1.12rem; font-weight: 900; text-transform: uppercase; letter-spacing: .035em; }
 .venue-dossier-facts p { margin: 0; color: #d4e4e5; font-size: 1rem; line-height: 1.5; }
 .venue-dossier-research-note { margin: 2rem 0 0; padding-top: 1.2rem; border-top: 1px solid #7aa4aa66; color: #b6cbcf; font-size: .85rem; line-height: 1.5; }
 .venue-dossier-research-note a { color: var(--venue-accent); text-decoration: underline; text-underline-offset: .2em; }
 
-#main-content .hsdj-venue-dossier .venue-dossier-plan { padding: clamp(4.5rem, 6vw, 6rem) max(5vw, calc((100vw - 82rem) / 2)); background: var(--venue-paper); color: var(--venue-ink); }
+#main-content .hsdj-venue-dossier .venue-dossier-plan { padding: clamp(4.5rem, 6vw, 6rem) max(5vw, calc((100vw - 82rem) / 2)); background-color: #f4eddb; background-image: linear-gradient(90deg, #f4eddbfc 0%, #f4eddbf2 43%, #f4eddbcd 74%, #f4eddb9e), var(--venue-art); background-size: cover; background-position: center, center 72%; color: var(--venue-ink); }
 .venue-dossier-plan-heading { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(15rem, .8fr); gap: 1.4rem 2rem; align-items: end; }
-.venue-dossier-plan-heading .venue-dossier-section-number { grid-column: 1 / -1; margin: 0; color: #a53c63; }
-#main-content main.hsdj-venue-dossier .venue-dossier-plan h2 { color: var(--venue-ink) !important; }
+#main-content main.hsdj-venue-dossier .venue-dossier-plan h2 { color: var(--venue-ink) !important; font-palette: --hsdj-ink-on-light; }
 .venue-dossier-plan-heading > p:last-child { max-width: 24rem; margin: 0 0 .3rem; color: #34434a; font-size: 1.14rem; line-height: 1.55; }
 .venue-dossier-cues { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 3rem 0 0; padding: 0; list-style: none; }
-.venue-dossier-cues li { min-height: 14rem; padding: 1.5rem; background: #0b2029; border-top: 7px solid var(--venue-accent); color: white; box-shadow: 8px 8px 0 #c5bfae; }
-.venue-dossier-cue-index { display: block; margin-bottom: 1.5rem; color: var(--venue-accent); font: 900 .9rem/1 ui-monospace, monospace; }
+.venue-dossier-cues li { min-height: 14rem; padding: 1.5rem; background: #0b2029f0; border-top: 7px solid var(--venue-accent); color: white; box-shadow: 8px 8px 0 #c5bfae; }
 .venue-dossier-cues h3 { margin: 0 0 .7rem; color: #fff; font-size: clamp(1.25rem, 1.8vw, 1.65rem); font-weight: 900; line-height: 1.12; text-transform: uppercase; }
 .venue-dossier-cues p { margin: 0; color: #d6e5e7; font-size: 1rem; line-height: 1.55; }
 .venue-dossier-story-link { min-height: 1.5rem; margin-top: 2rem; }
 .venue-dossier-story-link a { color: #073a4b; font-weight: 900; text-decoration: underline; text-underline-offset: .25em; }
 
-#main-content .hsdj-venue-dossier .venue-dossier-outro { padding: clamp(4.5rem, 8vw, 8rem) max(5vw, calc((100vw - 82rem) / 2)); background: #ffe021; color: var(--venue-ink); }
-.venue-dossier-outro .venue-dossier-overline { margin: 0 0 1.2rem; color: #14556a; }
-#main-content main.hsdj-venue-dossier .venue-dossier-outro h2 { max-width: 18ch !important; color: var(--venue-ink) !important; font-size: clamp(2.8rem, 5vw, 5rem) !important; }
-.venue-dossier-outro > p:not(.venue-dossier-overline) { max-width: 43rem; margin: 1.5rem 0 2rem; color: var(--venue-ink); font-size: 1.2rem; font-weight: 700; line-height: 1.55; }
+#main-content .hsdj-venue-dossier .venue-dossier-outro { padding: clamp(4.5rem, 8vw, 8rem) max(5vw, calc((100vw - 82rem) / 2)); background-color: #ffe021; background-image: linear-gradient(90deg, #ffe021fc 0%, #ffe021f0 42%, #ffe021b3 76%, #ffe02180), var(--venue-art); background-size: cover; background-position: center, center 85%; color: var(--venue-ink); }
+#main-content main.hsdj-venue-dossier .venue-dossier-outro h2 { max-width: 19ch !important; color: var(--venue-ink) !important; font-palette: --hsdj-ink-on-light; font-size: clamp(2.3rem, 4vw, 4.5rem) !important; }
+.venue-dossier-outro > p { max-width: 43rem; margin: 1.5rem 0 2rem; color: var(--venue-ink); font-size: 1.2rem; font-weight: 700; line-height: 1.55; }
 .venue-dossier-date-cue { min-width: min(100%, 16rem); }
 
 @media (max-width: 900px) {
@@ -138,12 +134,9 @@
   .venue-dossier-hero .venue-dossier-overline { margin-top: 1.5rem; }
   .venue-dossier-heading img { max-height: 245px; }
   .venue-dossier-hero-intro { margin-top: 1rem; padding: .8rem 1rem; }
-  .venue-dossier-art-caption { right: 1rem; top: 1rem; bottom: auto; font-size: .57rem; }
   .venue-dossier-plan-heading { grid-template-columns: 1fr; gap: 1rem; }
-  .venue-dossier-plan-heading .venue-dossier-section-number { grid-column: 1; margin: 0; }
-  #main-content main.hsdj-venue-dossier :is(.venue-dossier-details, .venue-dossier-plan, .venue-dossier-outro) h2 { max-width: 100% !important; font-size: clamp(2.15rem, 9vw, 3rem) !important; line-height: 1.12 !important; }
+  #main-content main.hsdj-venue-dossier :is(.venue-dossier-details, .venue-dossier-plan, .venue-dossier-outro) h2 { max-width: 100% !important; font-size: clamp(1.9rem, 7vw, 2.8rem) !important; line-height: 1.42 !important; }
   .venue-dossier-cues { grid-template-columns: 1fr; margin-top: 2rem; }
   .venue-dossier-cues li { min-height: 0; }
-  .venue-dossier-cue-index { margin-bottom: 1.5rem; }
-  .venue-dossier-facts li { grid-template-columns: 2rem 1fr; gap: .8rem; padding: 1.1rem; }
+  .venue-dossier-facts li { padding: 1.1rem; }
 }

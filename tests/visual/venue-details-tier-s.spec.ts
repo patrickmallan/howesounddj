@@ -24,6 +24,7 @@ for (const venue of ACTIVE_VENUE_PAGES) {
       await expect(page.locator(".venue-dossier-cues li")).toHaveCount(3);
       await expect(page.locator(".venue-dossier-research-note a").first()).toHaveAttribute("href", VENUE_EDITORIAL[venue.slug].sources[0].url);
       await expect(page.locator(".venue-dossier-date-cue")).toHaveAttribute("href", "/contact#availability");
+      await expect(page.locator(".venue-dossier-art-caption, .venue-dossier-section-number, .venue-dossier-cue-index")).toHaveCount(0);
 
       const layout = await page.evaluate(() => {
         const box = (selector: string) => document.querySelector(selector)?.getBoundingClientRect();
@@ -46,6 +47,7 @@ for (const venue of ACTIVE_VENUE_PAGES) {
               width: heading.getBoundingClientRect().width,
             };
           }),
+          venueBackgrounds: [".venue-dossier-details", ".venue-dossier-plan", ".venue-dossier-outro"].map((selector) => getComputedStyle(document.querySelector(selector)!).backgroundImage),
           cardOverflow: cards.some((card) => card.scrollWidth > card.clientWidth + 1),
         };
       });
@@ -56,9 +58,12 @@ for (const venue of ACTIVE_VENUE_PAGES) {
       expect(layout.cardOverflow).toBe(false);
       expect(layout.headings).toHaveLength(3);
       for (const heading of layout.headings) {
-        expect(heading.font).toContain("Geist");
-        expect(heading.lineRatio).toBeGreaterThanOrEqual(1.08);
+        expect(heading.font).toContain("HSDJ Meter Matrix V6");
+        expect(heading.lineRatio).toBeGreaterThanOrEqual(1.3);
         expect(heading.width).toBeGreaterThan(width < 800 ? 200 : 500);
+      }
+      for (const background of layout.venueBackgrounds) {
+        expect(background).toContain(VENUE_EDITORIAL[venue.slug].portrait);
       }
     });
   }
