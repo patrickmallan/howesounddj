@@ -8,6 +8,7 @@ import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { storiesHubBreadcrumbJsonLd } from "@/lib/json-ld";
 import { StoriesQuietLoop } from "./stories-quiet-loop";
 import "./stories-contact-sheet.css";
+import "./stories-paper-heap.css";
 
 const description = "Sea-to-Sky dance floor stories about the moments, pacing, and music that turn a wedding room into a party.";
 const title = "Sea-to-Sky Dance Floor Stories | Packed Mountain Receptions";
@@ -199,21 +200,27 @@ const backgroundStories = [
   "The groom's sister knew the chorus in another language. By the end, half the room was singing her version.",
 ] as const;
 
+const backgroundPlacement = [
+  [-9, -1, -8], [16, 2, 7], [41, -3, -4], [69, 1, 8], [87, -2, -11],
+  [2, 13, 9], [28, 19, -7], [53, 13, 6], [79, 17, -5], [-12, 29, 6],
+  [15, 28, -10], [43, 33, 8], [71, 29, -8], [89, 37, 5], [1, 44, -5],
+  [26, 48, 11], [54, 44, -6], [77, 50, 9], [-10, 59, -10], [16, 63, 5],
+  [44, 59, -8], [69, 65, 8], [87, 61, -4], [0, 78, 7], [26, 75, -9],
+  [51, 81, 6], [78, 76, -8], [-8, 91, 4], [30, 91, -7], [67, 91, 9],
+] as const;
+
 const backgroundNotes = backgroundStories.map((text, index) => {
-  const desktopRow = Math.floor(index / 5);
-  const tabletRow = Math.floor(index / 3);
-  const mobileRow = Math.floor(index / 2);
-  const jitter = (multiplier: number, range: number) => (index * multiplier % range) - range / 2;
+  const [x, y, turn] = backgroundPlacement[index];
   return {
     text,
     style: {
-      "--pile-x": `${-7 + (index % 5) * 21 + jitter(17, 11)}%`,
-      "--pile-y": `${-2 + desktopRow * 18 + jitter(13, 5)}%`,
-      "--pile-tablet-x": `${-11 + (index % 3) * 35 + jitter(11, 9)}%`,
-      "--pile-tablet-y": `${-2 + tabletRow * 10.2 + jitter(17, 3)}%`,
-      "--pile-mobile-x": `${-20 + (index % 2) * 66 + jitter(7, 8)}%`,
-      "--pile-mobile-y": `${-1 + mobileRow * 6.8 + jitter(19, 2)}%`,
-      "--pile-turn": `${jitter(23, 11)}deg`,
+      "--pile-x": `${x}%`,
+      "--pile-y": `${y}%`,
+      "--pile-tablet-x": `${-14 + (index % 3) * 40 + (index * 11 % 15)}%`,
+      "--pile-tablet-y": `${Math.floor(index / 3) * 10.3 - 2 + (index * 7 % 5)}%`,
+      "--pile-mobile-x": `${-22 + (index % 2) * 69 + (index * 7 % 10)}%`,
+      "--pile-mobile-y": `${Math.floor(index / 2) * 6.6 - 1 + (index * 13 % 3)}%`,
+      "--pile-turn": `${turn}deg`,
     } as CSSProperties,
   };
 });
@@ -240,15 +247,12 @@ export default function StoriesHubPage() {
           <p>Imagined diary entries from the nights nobody stops talking about. The chair covers never make the group chat. These moments do.</p>
         </div>
         <div className="contact-sheet-night-notes-scatter">
-          {diaryNotes.map((note, index) => (
+          {diaryNotes.map((note) => (
             <article
               className={`contact-sheet-night-note contact-sheet-night-note--${note.shape}`}
               key={`${note.image}-${note.text}`}
-              style={{
-                "--feature-x": `${1 + (index < 16 ? index % 4 : (index - 16) * 2) * 25 + ((index * 7 % 3) - 1) * .35}%`,
-                "--feature-y": `${Math.floor(index / 4) * 19.8 + ((index * 11 % 3) - 1) * .6}%`,
-              } as CSSProperties}
             >
+              <Image src={note.image} alt="" fill sizes="(max-width: 600px) 85vw, (max-width: 900px) 48vw, 27vw" />
               <p>{note.text}</p>
             </article>
           ))}

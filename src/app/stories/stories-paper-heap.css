@@ -1,0 +1,200 @@
+/* A found-paper collage: the backdrop supplies depth, while every readable
+   memory remains selectable page text on its own piece of paper. */
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes {
+  padding: clamp(3rem, 5vw, 5rem) max(2vw, calc((100vw - 94rem) / 2)) clamp(2rem, 4vw, 4rem);
+  background: #d9c8ae !important;
+}
+
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes > .contact-sheet-note-field {
+  background: url("/images/stories/diary-notes/paper-heap-underlay.webp") center top / 100% auto repeat-y;
+}
+
+.contact-sheet-background-note {
+  display: block;
+  left: var(--pile-x);
+  top: var(--pile-y);
+  width: clamp(18rem, 29vw, 29rem);
+  min-height: clamp(14rem, 19vw, 19rem);
+  aspect-ratio: auto;
+  padding: 2.4rem 2.3rem;
+  border-radius: 1px 5px 3px 2px;
+  background: linear-gradient(145deg, #fff8e9, #e8d9bf);
+  box-shadow: 2px 12px 15px #493b3352, inset 0 0 30px #97745512;
+  filter: none;
+  transform: rotate(var(--pile-turn));
+}
+.contact-sheet-background-note::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 85% 77%, #84654d18, transparent 30%), linear-gradient(137deg, transparent 68%, #786c6020 69%, #fff6 70%, transparent 72%);
+}
+
+.contact-sheet-background-note:nth-child(6n + 2) {
+  background: linear-gradient(130deg, #fbe4e5, #e4c6c8);
+  border-radius: 0 8px 2px 5px;
+}
+.contact-sheet-background-note:nth-child(6n + 3) {
+  background: repeating-linear-gradient(0deg, transparent 0 27px, #6c8bb444 28px 29px), linear-gradient(100deg, #fffdfa, #eee8dd);
+  border-left: 2px solid #cb7c8170;
+}
+.contact-sheet-background-note:nth-child(6n + 4) {
+  background: linear-gradient(125deg, #d7ae8e, #b99072);
+  border-radius: 7px 2px 8px 1px;
+}
+.contact-sheet-background-note:nth-child(6n + 5) {
+  background: repeating-linear-gradient(0deg, transparent 0 25px, #6d89a947 26px 27px), linear-gradient(145deg, #fff2b2, #e8d994);
+  border-left: 2px solid #dc7b8370;
+}
+.contact-sheet-background-note:nth-child(6n) {
+  background: linear-gradient(155deg, #f8f6f0, #dcd9d0);
+  border-radius: 2px 3px 9px 2px;
+}
+.contact-sheet-background-note:nth-child(7n) {
+  clip-path: polygon(0 1%, 17% 0, 36% 1%, 58% 0, 81% 2%, 100% 0, 99% 28%, 100% 53%, 99% 80%, 100% 99%, 78% 100%, 53% 99%, 34% 100%, 9% 99%, 0 100%);
+}
+.contact-sheet-background-note > span,
+.contact-sheet-background-note:nth-child(n) > span {
+  display: block;
+  width: 100%;
+  color: #384255c7;
+  font: 500 clamp(.9rem, 1.12vw, 1.12rem)/1.28 "Bradley Hand", "Segoe Print", cursive;
+  text-align: left;
+  transform: none;
+}
+.contact-sheet-background-note:nth-child(5n + 2) > span {
+  color: #59404dbf;
+  font-family: "Noteworthy", "Bradley Hand", cursive;
+}
+.contact-sheet-background-note:nth-child(6n + 3) > span {
+  color: #23517cc2;
+  font-family: "Chalkboard SE", "Segoe Print", cursive;
+}
+.contact-sheet-background-note:nth-child(6n + 4) > span {
+  color: #392c2acc;
+  font-family: "Marker Felt", "Bradley Hand", cursive;
+}
+.contact-sheet-background-note:nth-child(7n + 1) > span {
+  color: #75415ac2;
+  font-family: "Segoe Print", "Bradley Hand", cursive;
+}
+
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes > .contact-sheet-night-notes-intro {
+  width: min(100%, 47rem);
+  margin-left: clamp(0rem, 4vw, 4rem);
+  padding: clamp(2.5rem, 4vw, 4rem);
+  background: url("/images/stories/diary-notes/cream-stained-v1.webp") center / 100% 100% no-repeat;
+  transform: rotate(-4deg);
+  filter: drop-shadow(2px 16px 15px #493b3370);
+}
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes h2 {
+  font-size: clamp(2.5rem, 4.5vw, 4.7rem) !important;
+  line-height: .96;
+}
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes > .contact-sheet-night-notes-scatter {
+  display: block;
+  width: 100%;
+  height: 112rem;
+  max-width: 90rem;
+  margin: 1rem auto 0;
+}
+
+#main-content .hsdj-contact-sheet .contact-sheet-night-note:nth-child(n) {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: clamp(15rem, 25%, 23rem);
+  min-height: 0;
+  padding: 2.7rem 2.5rem;
+  background: transparent;
+  box-shadow: none;
+  filter: drop-shadow(3px 16px 12px #46382f69);
+  transform: rotate(var(--note-turn)) translateY(var(--note-shift));
+}
+#main-content .hsdj-contact-sheet .contact-sheet-night-note--square:nth-child(n) { padding: 2.6rem; }
+#main-content .hsdj-contact-sheet .contact-sheet-night-note--envelope:nth-child(n) { padding: 4rem 2.2rem 1.3rem; }
+.contact-sheet-night-note > img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+.contact-sheet-night-note p {
+  position: relative;
+  z-index: 1;
+  color: var(--ink) !important;
+  text-wrap: pretty;
+  mix-blend-mode: multiply;
+}
+.contact-sheet-night-note:nth-child(3n + 2) p { letter-spacing: -.04em; }
+.contact-sheet-night-note:nth-child(4n + 1) p { font-weight: 500; }
+.contact-sheet-night-note:nth-child(7) { z-index: 2; }
+.contact-sheet-night-note:nth-child(11) { z-index: 3; }
+.contact-sheet-night-note:nth-child(16) { z-index: 2; }
+
+@media (max-width: 900px) {
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes {
+    padding: 3rem 1.2rem;
+  }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes > .contact-sheet-night-notes-intro {
+    margin-left: 0;
+  }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes > .contact-sheet-night-notes-scatter {
+    display: block;
+    height: 202rem;
+    max-width: 46rem;
+  }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-note:nth-child(n) { width: 48%; }
+  .contact-sheet-background-note {
+    left: var(--pile-tablet-x);
+    top: var(--pile-tablet-y);
+    width: 48%;
+    min-height: 11rem;
+    padding: 1.5rem;
+  }
+  .contact-sheet-background-note:nth-child(n) > span { font-size: clamp(.75rem, 1.7vw, 1rem); }
+}
+
+@media (max-width: 600px) {
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes {
+    padding: 2.4rem .5rem 2rem;
+  }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes > .contact-sheet-note-field {
+    background-size: 170vw auto;
+  }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes > .contact-sheet-night-notes-intro {
+    width: 96%;
+    padding: 2.4rem 2rem;
+    transform: rotate(-2deg);
+  }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes h2 {
+    font-size: clamp(2.25rem, 10vw, 3.25rem) !important;
+  }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-notes > .contact-sheet-night-notes-scatter {
+    display: block;
+    max-width: 23rem;
+    height: 330rem;
+    margin-top: .5rem;
+  }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-note:nth-child(n) {
+    width: min(80%, 21rem);
+    padding: 2.3rem;
+  }
+  #main-content .hsdj-contact-sheet .contact-sheet-night-note--envelope:nth-child(n) {
+    padding: 4.1rem 2rem 1.2rem;
+  }
+  .contact-sheet-night-note:nth-child(n) p {
+    font-size: clamp(1.12rem, 4.6vw, 1.45rem);
+  }
+  .contact-sheet-background-note {
+    left: var(--pile-mobile-x);
+    top: var(--pile-mobile-y);
+    width: 88%;
+    min-height: 15rem;
+    padding: 1.5rem;
+  }
+  .contact-sheet-background-note:nth-child(n) > span { font-size: .84rem; }
+}
