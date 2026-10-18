@@ -42,7 +42,7 @@ export default async function VenueDetailPage({ params }: Props) {
   if (!editorial) notFound();
 
   return (
-    <main className="hsdj-venue-detail-page hsdj-venue-dossier min-h-screen text-white" data-tone={editorial.tone} data-layout={editorial.layout}>
+    <main className="hsdj-venue-dossier min-h-screen text-white" data-tone={editorial.tone} data-layout={editorial.layout}>
       <JsonLd data={venueDetailBreadcrumbJsonLd(venue.name, venue.slug)} />
       {venue.slug !== "capilano-university-squamish-campus" ? <JsonLd data={venueWeddingDjServiceJsonLd({
         slug: venue.slug,
@@ -81,7 +81,7 @@ export default async function VenueDetailPage({ params }: Props) {
       <section className="venue-dossier-details" aria-labelledby="venue-dossier-details-title">
         <div className="venue-dossier-section-lead">
           <p className="venue-dossier-section-number">01 / The place</p>
-          <h2 id="venue-dossier-details-title" className="hsdj-meter--paper">{editorial.headline}</h2>
+          <h2 id="venue-dossier-details-title">{editorial.headline}</h2>
           <p>These are the details that would shape my plan for this venue, not just the view in the photos.</p>
         </div>
         <ol className="venue-dossier-facts">
@@ -96,7 +96,7 @@ export default async function VenueDetailPage({ params }: Props) {
       <section className="venue-dossier-plan" aria-labelledby="venue-dossier-plan-title">
         <div className="venue-dossier-plan-heading">
           <p className="venue-dossier-section-number">02 / Behind the decks</p>
-          <h2 id="venue-dossier-plan-title" className="hsdj-meter--paper">{editorial.djHeadline}</h2>
+          <h2 id="venue-dossier-plan-title">{editorial.djHeadline}</h2>
           <p>Here&apos;s where I&apos;d start the conversation about sound and the night itself.</p>
         </div>
         <ol className="venue-dossier-cues">
@@ -114,7 +114,7 @@ export default async function VenueDetailPage({ params }: Props) {
 
       <section className="venue-dossier-outro" aria-labelledby="venue-dossier-outro-title">
         <p className="venue-dossier-overline">{venue.name} / your people / your music</p>
-        <h2 id="venue-dossier-outro-title" className="hsdj-meter--signal">Now let&apos;s talk about your date.</h2>
+        <h2 id="venue-dossier-outro-title">Now let&apos;s talk about your date.</h2>
         <p>Tell me what you&apos;ve booked or what you&apos;re still figuring out. If I&apos;m free, we can work through how the music fits this particular place.</p>
         <CheckAvailabilityTrackedLink href="/contact#availability" surface="venue_page_cta" className="hsdj-controller-button hsdj-controller-button--cue venue-dossier-date-cue">
           <ControllerButtonFace eyebrow="Load your date" label="Check your date" control="cue" />
