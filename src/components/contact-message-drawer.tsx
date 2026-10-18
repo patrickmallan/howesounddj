@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+import styles from "./contact-message-drawer.module.css";
 
 const ContactSecondaryInquiryForm = dynamic(() =>
   import("@/components/contact-secondary-inquiry-form").then(
@@ -39,7 +40,7 @@ export function ContactMessageDrawer({ turnstileSiteKey }: { turnstileSiteKey: s
             aria-expanded={open}
             aria-controls="contact-message-form"
             onClick={() => setOpen((value) => !value)}
-            className="mt-6 inline-flex min-h-12 items-center justify-center border-2 border-cyan-300 bg-cyan-300 px-6 py-3 text-sm font-black uppercase tracking-[0.08em] !text-[#070909] transition hover:bg-transparent hover:!text-cyan-200 sm:mt-0"
+            className={`${styles.messagePad} mt-6 sm:mt-0`}
           >
             {open ? "Close message" : "Write a message"}
           </button>

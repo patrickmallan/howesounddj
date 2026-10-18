@@ -167,17 +167,17 @@ type DesktopDropdownProps = {
   isOpen: boolean;
   onRequestOpen: () => void;
   onRequestClose: () => void;
-  onToggle: () => void;
+  onClickOpen: () => void;
 };
 
-/** Desktop dropdown trigger + panel. Hover/focus opens, click toggles, Escape closes and restores focus to trigger. */
+/** Desktop dropdown trigger + panel. Hover, focus, and click open; Escape closes. */
 function DesktopDropdown({
   group,
   pathname,
   isOpen,
   onRequestOpen,
   onRequestClose,
-  onToggle,
+  onClickOpen,
 }: DesktopDropdownProps) {
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const panelId = useId();
@@ -185,6 +185,7 @@ function DesktopDropdown({
 
   const hoverOpenTimer = useRef<number | null>(null);
   const hoverCloseTimer = useRef<number | null>(null);
+  const suppressFocusOpen = useRef(false);
 
   const clearTimers = useCallback(() => {
     if (hoverOpenTimer.current !== null) {
@@ -211,10 +212,6 @@ function DesktopDropdown({
     hoverCloseTimer.current = window.setTimeout(onRequestClose, 140);
   }, [clearTimers, onRequestClose]);
 
-  const triggerColor = active
-    ? "text-amber-300 hover:text-amber-200"
-    : "text-white/80 hover:text-white";
-
   return (
     <div
       className="relative"
@@ -223,8 +220,11 @@ function DesktopDropdown({
       onKeyDown={(event) => {
         if (event.key === "Escape" && isOpen) {
           event.preventDefault();
+          clearTimers();
           onRequestClose();
+          suppressFocusOpen.current = true;
           triggerRef.current?.focus();
+          suppressFocusOpen.current = false;
         }
       }}
     >
@@ -234,9 +234,9 @@ function DesktopDropdown({
         aria-haspopup="menu"
         aria-expanded={isOpen}
         aria-controls={panelId}
-        onClick={onToggle}
-        onFocus={onRequestOpen}
-        className={`hsdj-nav-pad outline-none transition focus-visible:text-white ${triggerColor}`}
+        onClick={onClickOpen}
+        onFocus={() => { if (!suppressFocusOpen.current) onRequestOpen(); }}
+        className={`hsdj-nav-pad outline-none transition focus-visible:text-white ${active || isOpen ? "is-active" : ""}`}
       >
         <Image src={navPadByLabel[group.label]} alt="" width={76} height={76} />
         <span className="hsdj-nav-pad__label">{group.label}</span>
@@ -256,6 +256,7 @@ function DesktopDropdown({
         role="menu"
         aria-label={group.label}
         style={{ "--channel-color": navPadGlowByLabel[group.label] } as CSSProperties}
+        inert={!isOpen}
         className={`${narrowHeaderStyles.desktopChannelPanel} absolute left-0 top-full z-[80] mt-3 transition duration-150 ${
           isOpen
             ? "pointer-events-auto translate-y-0 opacity-100"
@@ -431,7 +432,7 @@ export function SiteHeader() {
   return (
     <header
       ref={headerRef}
-      className={`${narrowHeaderStyles.speakerHeader} hsdj-site-header sticky top-0 z-50 border-b border-white/10`}
+      className={`${narrowHeaderStyles.speakerHeader} hsdj-site-header sticky top-0 z-50`}
     >
       <div className={`${narrowHeaderStyles.headerInner} relative z-[70] mx-auto flex max-w-[90rem] items-center justify-between gap-2 px-4 py-2 sm:gap-3 sm:px-6 lg:px-8`}>
         <Link
@@ -466,9 +467,7 @@ export function SiteHeader() {
                     onRequestClose={() => {
                       setOpenMenuLabel((current) => (current === item.label ? null : current));
                     }}
-                    onToggle={() => {
-                      setOpenMenuLabel((current) => (current === item.label ? null : item.label));
-                    }}
+                    onClickOpen={() => setOpenMenuLabel(item.label)}
                   />
                 );
               }

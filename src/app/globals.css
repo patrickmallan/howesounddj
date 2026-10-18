@@ -143,8 +143,8 @@ body {
 
 /* Controller-native site chrome: real photographed controls, plain-language labels. */
 .hsdj-site-header {
-  border-bottom: 5px solid var(--hsdj-signal);
-  box-shadow: 0 8px 0 rgba(25, 76, 255, 0.7);
+  border-bottom: 2px solid #53636a;
+  box-shadow: inset 0 -1px 0 #0b1216, 0 3px 0 #090e11, 0 8px 18px #0009;
   backface-visibility: hidden;
 }
 
@@ -979,10 +979,10 @@ body {
   .hsdj-nav-pad__label::after { display: none; }
   .hsdj-nav-pad:hover .hsdj-nav-pad__label,
   .hsdj-nav-pad:focus-visible .hsdj-nav-pad__label,
-  .hsdj-nav-pad.is-active .hsdj-nav-pad__label { color: white; border: 0; background: transparent; box-shadow: none; text-shadow: 0 1px 1px #000d, 0 0 7px var(--pad-glow); }
+  .hsdj-nav-pad.is-active .hsdj-nav-pad__label { color: #fff; border: 0; background: transparent; box-shadow: none; text-shadow: 0 1px 1px #000d, 0 0 9px var(--pad-glow); }
   .hsdj-nav-pad:hover::before,
   .hsdj-nav-pad:focus-visible::before,
-  .hsdj-nav-pad.is-active::before { filter: saturate(1.15) brightness(1.08); transform: translateY(-4px); }
+  .hsdj-nav-pad.is-active::before { background: radial-gradient(ellipse at 50% 72%, color-mix(in srgb, var(--pad-glow) 72%, #111 28%), color-mix(in srgb, var(--pad-glow) 30%, #15191c 70%) 58%, #171a1d 100%); box-shadow: inset 0 1px 0 #ffffff6b, inset 0 0 16px color-mix(in srgb, var(--pad-glow) 75%, transparent), 0 6px 0 color-mix(in srgb, var(--pad-glow) 72%, black 28%), 0 0 20px color-mix(in srgb, var(--pad-glow) 62%, transparent); filter: saturate(1.2) brightness(1.12); transform: translateY(-4px); }
   .hsdj-nav-pad:active::before { box-shadow: inset 0 2px 0 #ffffff28, inset 2px 0 0 #ffffff12, inset -2px 0 0 #0008, inset 0 -3px 4px #000b, 0 2px 0 color-mix(in srgb, var(--pad-glow) 68%, black 32%), 0 4px 4px #000b, 0 0 12px color-mix(in srgb, var(--pad-glow) 55%, transparent); transform: translateY(2px); }
   .hsdj-nav-pad:active .hsdj-nav-pad__label { transform: translateY(0); }
   .hsdj-nav-pad__deck-open { right: .5rem; bottom: .32rem; width: 13px; height: 13px; color: #aeb4b9; opacity: .85; }
@@ -1536,7 +1536,7 @@ body {
 
 @media (max-width: 767px) {
   body { background-size: 4rem 100%; }
-  .hsdj-site-header { box-shadow: 0 4px 0 rgba(25, 76, 255, 0.75); }
+  .hsdj-site-header { box-shadow: inset 0 -1px 0 #0b1216, 0 3px 0 #090e11, 0 6px 13px #0009; }
   :where(main section[id], main [data-testid]) { scroll-margin-top: 8.25rem; }
   .hsdj-wordmark { width: 11.25rem; height: auto; box-shadow: 3px 3px 0 var(--hsdj-red), -2px 2px 0 var(--hsdj-signal); }
   .hsdj-control-duo { gap: 0.35rem; }

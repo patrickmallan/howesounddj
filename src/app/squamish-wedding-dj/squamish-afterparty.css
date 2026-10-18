@@ -27,6 +27,11 @@
 .sq-hero-copy { position: relative; z-index: 2; flex: 0 1 66rem; width: 100%; max-width: 66rem; }
 #main-content .hsdj-squamish-afterparty .sq-hero-title { width: 100%; max-width: 66rem; aspect-ratio: 109.75 / 35.55; margin: .9rem 0 1.5rem; }
 .sq-hero-title img { display: block; width: 100%; height: auto; }
+@media (min-width: 901px) {
+  #main-content .hsdj-squamish-afterparty .sq-hero { padding-left: clamp(3rem,4.25vw,5rem); }
+  .sq-hero-copy { flex-basis: 60rem; max-width: 60rem; }
+  #main-content .hsdj-squamish-afterparty .sq-hero-title { max-width: 60rem; }
+}
 .sq-visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .sq-gear-link {
   --sq-link-glow: #55e5ee;
