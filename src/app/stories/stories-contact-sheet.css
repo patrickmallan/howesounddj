@@ -10,12 +10,23 @@
 #main-content .hsdj-contact-sheet .contact-sheet-hero-copy > p:last-child { max-width: 42rem; padding: 1.3rem; margin: 2rem 0 0; border-left: 8px solid #ff4c91; background: #0c0b13ec; color: #fff !important; font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 750; line-height: 1.55; }
 .contact-sheet-hero-mark { position: absolute; z-index: 2; right: 4%; top: 27%; max-width: 8ch; padding: 1.1rem 1.35rem; color: #090f17; background: #ff4d91; font: 1000 clamp(1.7rem, 3.4vw, 3.5rem)/.87 system-ui, sans-serif; text-align: left; text-transform: uppercase; transform: rotate(8deg); box-shadow: 12px 12px 0 #ffe11b; }
 .contact-sheet-hero-mark span { color: #ffe11b; }
-#main-content .hsdj-contact-sheet .contact-sheet-night-notes { position: relative; overflow: hidden; padding: clamp(5rem, 8vw, 8rem) max(4vw, calc((100vw - 92rem)/2)) clamp(5rem, 8vw, 8rem); background: linear-gradient(#070b14aa, #070b1477), url('/images/stories/diary-notes/afterparty-floor-v1.webp') center center / cover no-repeat, #100c0d !important; }
-.contact-sheet-night-notes-intro { position: relative; z-index: 1; max-width: 58rem; }
-.hsdj-contact-sheet .contact-sheet-night-notes h2 { max-width: 15ch !important; margin: 0; font-size: clamp(2.7rem, 5.5vw, 6rem) !important; line-height: .91; text-transform: uppercase; }
-.contact-sheet-night-notes-intro p { max-width: 42rem; margin: 1.5rem 0 0; color: #f7f0eb !important; font-size: clamp(1.02rem, 1.25vw, 1.23rem); line-height: 1.5; }
-.contact-sheet-night-notes-scatter { position: relative; z-index: 1; max-width: 90rem; height: 112rem; margin: clamp(3rem, 5vw, 5rem) auto 0; }
-.contact-sheet-night-note { --note-turn: -9deg; --note-shift: 0rem; --ink: #202a36; position: absolute; display: grid; place-items: center; width: clamp(16rem, 25%, 23rem); aspect-ratio: .88; margin: 0 !important; padding: 2.8rem 2.7rem; color: var(--ink) !important; transform: rotate(var(--note-turn)) translateY(var(--note-shift)); filter: drop-shadow(0 22px 18px #000a); }
+#main-content .hsdj-contact-sheet .contact-sheet-night-notes { position: relative; overflow: hidden; padding: clamp(5rem, 8vw, 8rem) max(4vw, calc((100vw - 92rem)/2)) clamp(5rem, 8vw, 8rem); background: #dfd2b9 !important; }
+.contact-sheet-note-field { position: absolute; z-index: 0; inset: -6rem -4rem; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: 9.5rem; overflow: hidden; pointer-events: none; }
+.contact-sheet-note-field span { display: block; width: 140%; aspect-ratio: .82; background-position: center; background-repeat: no-repeat; background-size: 100% 100%; filter: drop-shadow(0 5px 8px #59473955); transform: translate(-10%, -5%) rotate(-11deg); }
+.contact-sheet-note-field span:nth-child(6n + 1) { background-image: url('/images/stories/diary-notes/cream-stained-v1.webp'); transform: translate(-16%, -12%) rotate(-15deg); }
+.contact-sheet-note-field span:nth-child(6n + 2) { background-image: url('/images/stories/diary-notes/blush-guestbook-v1.webp'); transform: translate(3%, 9%) rotate(12deg); }
+.contact-sheet-note-field span:nth-child(6n + 3) { background-image: url('/images/stories/diary-notes/cocktail-napkin-v1.webp'); transform: translate(-8%, -2%) rotate(-6deg); }
+.contact-sheet-note-field span:nth-child(6n + 4) { background-image: url('/images/stories/diary-notes/yellow-pad-v1.webp'); transform: translate(8%, 10%) rotate(17deg); }
+.contact-sheet-note-field span:nth-child(6n + 5) { background-image: url('/images/stories/diary-notes/coffee-coaster-v1.webp'); transform: translate(-14%, 2%) rotate(7deg); }
+.contact-sheet-note-field span:nth-child(6n) { background-image: url('/images/stories/diary-notes/pocket-diary-v1.webp'); transform: translate(5%, -7%) rotate(-13deg); }
+.contact-sheet-note-field span:nth-child(4n) { width: 155%; }
+.contact-sheet-note-field span:nth-child(7n) { transform: translate(14%, 16%) rotate(22deg); }
+.contact-sheet-note-field span:nth-child(11n) { transform: translate(-21%, -14%) rotate(-19deg); }
+.contact-sheet-night-notes-intro { position: relative; z-index: 2; max-width: 58rem; padding: clamp(2rem, 4vw, 3.4rem); background: url('/images/stories/diary-notes/cream-stained-v1.webp') center / 100% 100% no-repeat; filter: drop-shadow(0 12px 15px #59473955); }
+.hsdj-contact-sheet .contact-sheet-night-notes h2 { max-width: 15ch !important; margin: 0; color: #19202b !important; font-size: clamp(2.7rem, 5.5vw, 6rem) !important; line-height: .91; text-transform: uppercase; }
+.contact-sheet-night-notes-intro p { max-width: 42rem; margin: 1.5rem 0 0; color: #29313b !important; font-size: clamp(1.02rem, 1.25vw, 1.23rem); line-height: 1.5; }
+.contact-sheet-night-notes-scatter { position: relative; z-index: 2; max-width: 90rem; height: 112rem; margin: clamp(3rem, 5vw, 5rem) auto 0; }
+.contact-sheet-night-note { --note-turn: -9deg; --note-shift: 0rem; --ink: #202a36; position: absolute; display: grid; place-items: center; width: clamp(16rem, 25%, 23rem); aspect-ratio: .88; margin: 0 !important; padding: 2.8rem 2.7rem; color: var(--ink) !important; transform: rotate(var(--note-turn)) translateY(var(--note-shift)); filter: drop-shadow(0 14px 14px #59473977); }
 .contact-sheet-night-note--square { aspect-ratio: 1; padding: 2.6rem; }
 .contact-sheet-night-note--envelope { aspect-ratio: 1.35; padding: 4.1rem 2.2rem 1.3rem; }
 .contact-sheet-night-note > img { z-index: 0; width: 100%; height: 100%; object-fit: fill; }
@@ -69,9 +80,9 @@
 .contact-sheet-night-note:nth-child(13) { left: 8%; top: 52%; width: 28%; }
 .contact-sheet-night-note:nth-child(14) { left: 35%; top: 57%; }
 .contact-sheet-night-note:nth-child(15) { left: 62%; top: 51%; }
-.contact-sheet-night-note:nth-child(16) { left: 2%; top: 69%; }
-.contact-sheet-night-note:nth-child(17) { left: 27%; top: 73%; }
-.contact-sheet-night-note:nth-child(18) { left: 53%; top: 68%; }
+.contact-sheet-night-note:nth-child(16) { left: 2%; top: 76%; }
+.contact-sheet-night-note:nth-child(17) { left: 27%; top: 80%; }
+.contact-sheet-night-note:nth-child(18) { left: 53%; top: 75%; }
 #main-content .hsdj-contact-sheet .contact-sheet-sequence { padding: clamp(4rem, 5vw, 6rem) max(4vw, calc((100vw - 86rem)/2)); background: #0c0b13 !important; }
 .contact-sheet-sequence-heading { max-width: 56rem; margin-bottom: 3.5rem; }
 .hsdj-contact-sheet .contact-sheet-sequence-heading h2 { max-width: 15ch !important; margin: 0; font-size: clamp(2.6rem, 5vw, 5.6rem) !important; line-height: .95; text-transform: uppercase; }
@@ -102,7 +113,6 @@
 .contact-sheet-real-reels-heading p { max-width: 23rem; margin: 1rem 0 0; color: #f2eff4 !important; font-size: clamp(1rem, 1.15vw, 1.2rem); line-height: 1.5; }
 .contact-sheet-reel { position: relative; margin: 0; transform: rotate(1deg); }
 .contact-sheet-reel video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #080910; clip-path: polygon(0 0, 100% 0, 100% 96%, 97% 100%, 0 100%); }
-.contact-sheet-reel figcaption { margin-top: .7rem; color: #cbe1e6; font: 700 .78rem/1.4 ui-monospace, monospace; }
 .contact-sheet-exit { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem 3rem; padding: 2.5rem max(5vw, calc((100vw - 80rem)/2)); background: #ffe11b; color: #090c12; }
 .contact-sheet-exit p { margin: 0 auto 0 0; font-size: clamp(1.3rem, 2vw, 2rem); font-weight: 950; text-transform: uppercase; }
 .contact-sheet-exit .contact-sheet-hardware-link { color: #090c12; }
@@ -118,6 +128,7 @@
   #main-content .hsdj-contact-sheet .contact-sheet-real-reels { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.4rem; }
   #main-content .hsdj-contact-sheet .contact-sheet-night-notes { padding: 5rem 1.4rem; }
   .contact-sheet-night-notes-scatter { height: 202rem; max-width: 46rem; }
+  .contact-sheet-note-field { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .contact-sheet-night-note:nth-child(n) { width: 48%; }
   .contact-sheet-night-note:nth-child(n) p { font-size: clamp(1.1rem, 2.6vw, 1.3rem); }
   .contact-sheet-night-note:nth-child(1) { left: 1%; top: 0; }
@@ -145,6 +156,8 @@
   .contact-sheet-frame:nth-child(n) .contact-sheet-photo { min-height: 250px; }
   .contact-sheet-frame:nth-child(n) .contact-sheet-caption { padding: 1.5rem; }
   .contact-sheet-night-notes-scatter { height: 325rem; max-width: 23rem; }
+  .contact-sheet-note-field { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact-sheet-night-notes-intro { padding: 2.5rem 1.5rem; }
   .contact-sheet-night-note:nth-child(n) { width: min(80%, 21rem); padding: 2.4rem; }
   .contact-sheet-night-note--envelope:nth-child(n) { padding: 4.1rem 2rem 1.2rem; }
   .contact-sheet-night-note:nth-child(1) { left: 0; top: 0; }

@@ -55,7 +55,6 @@ export function StoriesQuietLoop() {
         <source src="/videos/stories/patrick-behind-the-booth-loop-v1.mp4" type="video/mp4" />
         Your browser does not support video playback.
       </video>
-      <figcaption>Real footage from a wedding night. Silent edit.</figcaption>
     </figure>
   );
 }

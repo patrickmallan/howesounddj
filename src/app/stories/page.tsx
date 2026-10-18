@@ -165,6 +165,8 @@ const diaryNotes = [
   },
 ] as const;
 
+const backgroundNotes = Array.from({ length: 108 }, (_, index) => index);
+
 export default function StoriesHubPage() {
   return (
     <main className="hsdj-interior hsdj-stories-page hsdj-contact-sheet min-h-screen text-white">
@@ -179,6 +181,9 @@ export default function StoriesHubPage() {
       </section>
 
       <section className="contact-sheet-night-notes" aria-labelledby="contact-sheet-night-notes-title">
+        <div className="contact-sheet-note-field" aria-hidden="true">
+          {backgroundNotes.map((index) => <span key={index} />)}
+        </div>
         <div className="contact-sheet-night-notes-intro">
           <h2 id="contact-sheet-night-notes-title">If the dance floor kept a diary...</h2>
           <p>Imagine the diary entries three weeks later. Nobody is writing about the chair covers; the group chat is still losing it over moments like these.</p>
@@ -215,8 +220,8 @@ export default function StoriesHubPage() {
 
       <section className="contact-sheet-real-reels" aria-labelledby="contact-sheet-real-reels-title">
         <div className="contact-sheet-real-reels-heading">
-          <h2 id="contact-sheet-real-reels-title">From the booth, for real.</h2>
-          <p>A quick look at Patrick working the room. No staged gear shot.</p>
+          <h2 id="contact-sheet-real-reels-title">I don&apos;t DJ from a script.</h2>
+          <p>I&apos;m watching who&apos;s moving, who&apos;s still pretending they won&apos;t, and when it&apos;s time to turn the room up. That&apos;s how I pick the next track.</p>
         </div>
         <StoriesQuietLoop />
       </section>
