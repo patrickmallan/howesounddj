@@ -59,7 +59,12 @@ export default function AboutPage() {
         <Image className="about-collage-layer" src="/images/about/about-afterparty-analog-art-v1.webp" alt="" fill sizes="100vw" quality={72} />
         <div className="about-story-lead">
           <h2 id="about-story-title">A curator of the best music for your celebration is my passion.</h2>
-          <p>I studied audio at the Ontario Institute of Audio Recording Technology. More than 15 years working in music and live events taught me something school couldn&apos;t: the room gets a vote.</p>
+          <p>I studied audio at the Ontario Institute of Audio Recording Technology. More than 15 years working in music and live events taught me a few things school couldn&apos;t:</p>
+          <ul className="about-story-lessons" aria-label="What experience has taught me">
+            <li>The dance floor drives the party. My job is to keep people on it.</li>
+            <li>Requests are welcome. I play them when they fit your music and the moment.</li>
+            <li>Timing matters more than a perfect setlist. If a song isn&apos;t landing, I move.</li>
+          </ul>
         </div>
         <ul className="about-story-track" aria-label="Patrick's background">
           <li className="about-story-stop"><span>Audio training means I notice what happens between the speakers and the back row, not just what leaves my mixer.</span></li>
