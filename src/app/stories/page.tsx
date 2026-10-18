@@ -236,7 +236,7 @@ export default function StoriesHubPage() {
           <MeterMatrixHeading id="contact-sheet-title" className="contact-sheet-title" text={heroTitle} lines={["What the", "room felt", "like."]} />
           <HeroSignalCopy tone="pink">There is a point when guests stop watching the dance floor and become it. These are stories about the music, timing, and people that get a room there.</HeroSignalCopy>
         </div>
-        <div className="contact-sheet-hero-mark" aria-hidden="true">THE NIGHT<br />WENT OFF<span>.</span></div>
+          <div className="contact-sheet-hero-mark" aria-hidden="true">THE NIGHT<br />WENT OFF</div>
       </section>
 
       <section className="contact-sheet-night-notes" aria-labelledby="contact-sheet-night-notes-title">
