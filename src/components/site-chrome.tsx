@@ -6,6 +6,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { SITE_PUBLIC_NAME } from "@/config/site-brand";
+import { FOOTER_HEADING_ART } from "@/config/footer-heading-art";
 import CTADuo from "@/components/cta-duo";
 import { CheckAvailabilityTrackedLink } from "@/components/check-availability-tracked-link";
 import { DeferredArt } from "@/components/deferred-art";
@@ -683,7 +684,14 @@ export function SiteFooter() {
       <div className="hsdj-site-footer__inner mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm lg:px-8">
         <div className="hsdj-site-footer__brand">
           <span className="hsdj-site-footer__eyebrow">Squamish, BC</span>
-          <div className="hsdj-site-footer__name">Howe Sound<br />Wedding DJ</div>
+          <Image
+            className="hsdj-site-footer__name"
+            src={FOOTER_HEADING_ART.src}
+            alt="Howe Sound Wedding DJ"
+            width={FOOTER_HEADING_ART.width * 20}
+            height={FOOTER_HEADING_ART.height * 20}
+            unoptimized
+          />
           <p>Your music. Your people. One very good night.</p>
         </div>
         <nav className="hsdj-site-footer__signal-path" aria-label="Footer navigation">
