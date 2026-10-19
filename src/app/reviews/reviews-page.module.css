@@ -8,7 +8,6 @@
   background: var(--ink);
   overflow: clip;
 }
-
 .hero {
   position: relative;
   display: flex;
@@ -330,9 +329,11 @@
   position: absolute;
   z-index: -1;
   inset: 0;
-  background: linear-gradient(90deg, #080b12ef, #080b12a6 55%, #080b12ce), linear-gradient(0deg, #080b12 0, transparent 35% 70%, #080b12), url('/images/hsdj-redesign/wedding-story/read-room-dancefloor-overhead-v1.webp') center/cover no-repeat;
+  background: #080b12;
 }
-.floorLight::after { position: absolute; inset: 0; content: ""; opacity: .42; background: repeating-conic-gradient(from 216deg at 89% 5%, transparent 0deg 8deg, #4c82ec22 9deg 10deg, transparent 11deg 23deg); pointer-events: none; }
+.floorLight img { object-fit: cover; object-position: center; }
+.floorLight::before { position: absolute; z-index: 1; inset: 0; content: ""; background: linear-gradient(90deg, #080b12ef, #080b12a6 55%, #080b12ce), linear-gradient(0deg, #080b12 0, transparent 35% 70%, #080b12); pointer-events: none; }
+.floorLight::after { position: absolute; z-index: 2; inset: 0; content: ""; opacity: .42; background: repeating-conic-gradient(from 216deg at 89% 5%, transparent 0deg 8deg, #4c82ec22 9deg 10deg, transparent 11deg 23deg); pointer-events: none; }
 .floorHeading { position: relative; max-width: 890px; margin-bottom: clamp(3rem, 6vw, 6rem); }
 .floorHeading .sceneLabel { color: var(--yellow); }
 .floorHeading h2 { color: #fff; }
@@ -787,13 +788,4 @@
   .floorQuotes .quote:nth-child(4) { margin-top: 0; }
   .floorQuotes .quote:nth-child(5) { border-color: #55d5a6; border-left-color: #30d6aa; background: linear-gradient(145deg, #0b302c, #091b20); box-shadow: 9px 10px 0 #169e89; transform: rotate(.7deg); }
   .floorQuotes .quote blockquote { font-size: clamp(1.12rem, 1.4vw, 1.5rem); line-height: 1.37; }
-}
-
-/* Keep the signature mobile deck moving even when iOS Reduce Motion is enabled. */
-@media (max-width: 720px) and (prefers-reduced-motion: reduce) {
-  .recordArt { animation: record-turn 6s linear infinite; }
-  .waveTrack { animation: waveform-travel 24s linear infinite; }
-  .waveDeckB .waveTrack { animation-duration: 28s; }
-  .waveformPlayhead { left: 0; animation: review-screen-scan 8s linear infinite; }
-  .recordArt, .waveTrack, .waveformPlayhead { animation-play-state: paused; }
 }

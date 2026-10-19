@@ -9,7 +9,6 @@ const signalRoutes = [
   "/stories",
   "/vancouver-wedding-dj",
   "/venues",
-  "/weddings",
   "/whistler-wedding-dj",
 ] as const;
 
@@ -34,12 +33,12 @@ for (const width of [320, 390, 768, 1440]) {
   test(`Wedding Tidbits is compact and content-width at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });
     await page.goto("/weddings");
-    const heading = page.getByRole("heading", { name: "Wedding tidbits" });
-    const section = page.locator("section").filter({ has: heading });
-    const [headingBox, sectionBox] = await Promise.all([heading.boundingBox(), section.boundingBox()]);
-    expect(headingBox).not.toBeNull();
+    const label = page.getByText("Wedding tidbits", { exact: true });
+    const section = page.locator("section").filter({ has: label });
+    const [labelBox, sectionBox] = await Promise.all([label.boundingBox(), section.boundingBox()]);
+    expect(labelBox).not.toBeNull();
     expect(sectionBox).not.toBeNull();
-    expect(headingBox!.width).toBeLessThan(sectionBox!.width * 0.72);
-    expect(headingBox!.y - sectionBox!.y).toBeLessThanOrEqual(width <= 768 ? 32 : 48);
+    expect(labelBox!.width).toBeLessThan(sectionBox!.width * 0.72);
+    expect(labelBox!.y - sectionBox!.y).toBeLessThanOrEqual(width <= 768 ? 32 : 48);
   });
 }

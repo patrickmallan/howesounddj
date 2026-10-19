@@ -45,7 +45,9 @@ test("About actions use meaningful DJ hardware and do not prefetch other routes"
   const actions = page.locator("main a[data-physical-control]");
   await expect(actions).toHaveCount(4);
   for (const action of await actions.all()) {
-    await expect(action.locator("img")).toHaveCount(1);
+    await expect(action.locator(".hsdj-controller-button__face")).toHaveCount(1);
+    await expect(action.locator(".hsdj-controller-button__indicator")).toHaveCount(1);
+    await expect(action.locator(".hsdj-controller-button__copy strong")).not.toBeEmpty();
     const box = await action.boundingBox();
     expect(box?.height).toBeGreaterThanOrEqual(44);
   }

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import ReactDOM from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import CTADuo from "@/components/cta-duo";
 import { MeterMatrixHeading } from "@/components/meter-matrix-heading";
 import { JsonLd } from "@/components/json-ld";
 import { guideArticleBreadcrumbJsonLd, guideArticleJsonLd } from "@/lib/json-ld";
+import costGuideDayArt from "../../../../public/images/hsdj-redesign/new-editorial/cost-guide-day-story-v1.webp";
 import "./cost-guide.css";
 
 // Recheck third-party offers before each publication and update the visible date with the metadata.
@@ -46,6 +48,17 @@ function CostSection({ eyebrow, title, children, variant }: {
 }) {
   return (
     <section className={`cost-guide-section cost-guide-section--${variant}`}>
+      <div className="cost-guide-section__art" aria-hidden="true">
+        <Image
+          src={costGuideDayArt}
+          alt=""
+          fill
+          sizes="100vw"
+          loading="eager"
+          fetchPriority="low"
+          placeholder="blur"
+        />
+      </div>
       <div className="cost-guide-section__inner">
         <div className="cost-guide-section__heading">
           <p className="cost-guide-eyebrow">{eyebrow}</p>
@@ -58,6 +71,16 @@ function CostSection({ eyebrow, title, children, variant }: {
 }
 
 export default function SeaToSkyWeddingDjCostPage() {
+  ReactDOM.preload("/images/hsdj-redesign/new-editorial/cost-guide-hero-mobile-v1.webp", {
+    as: "image",
+    media: "(max-width: 800px)",
+    fetchPriority: "high",
+  });
+  ReactDOM.preload("/images/hsdj-redesign/new-editorial/cost-guide-hero-desktop-v1.webp", {
+    as: "image",
+    media: "(min-width: 801px)",
+    fetchPriority: "high",
+  });
   return (
     <main className="cost-guide-page">
       <JsonLd data={guideArticleBreadcrumbJsonLd(ARTICLE_TITLE, ARTICLE_SLUG)} />
@@ -98,10 +121,11 @@ export default function SeaToSkyWeddingDjCostPage() {
 
         <figure className="cost-guide-interlude">
           <Image
-            src="/images/hsdj-redesign/new-editorial/cost-guide-day-story-v1.webp"
+            src={costGuideDayArt}
             alt="Sea-to-Sky wedding collage moving from mountain ceremony through a dinner speech to the dance floor"
             fill
             sizes="100vw"
+            placeholder="blur"
           />
           <figcaption>One wedding day. More than one sound moment.</figcaption>
         </figure>
@@ -131,6 +155,17 @@ export default function SeaToSkyWeddingDjCostPage() {
         </CostSection>
 
         <section className="cost-guide-cta">
+          <div className="cost-guide-cta__art" aria-hidden="true">
+            <Image
+              src={costGuideDayArt}
+              alt=""
+              fill
+              sizes="100vw"
+              loading="eager"
+              fetchPriority="low"
+              placeholder="blur"
+            />
+          </div>
           <div className="cost-guide-cta__inner">
             <p className="cost-guide-eyebrow">Your next move</p>
             <h2>Check your date. Then let&apos;s talk through the day.</h2>

@@ -26,6 +26,7 @@ export function LivingVUMeter({ className = "", label = "MASTER", peak = false }
     if (!meter) return;
 
     const channels = Array.from(meter.querySelectorAll<HTMLElement>(".hsdj-vu-channel"));
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const channelSegments = channels.map((channel) => Array.from(channel.querySelectorAll<HTMLElement>(".hsdj-vu-leds i")));
 
     let frame = 0;
@@ -124,7 +125,7 @@ export function LivingVUMeter({ className = "", label = "MASTER", peak = false }
     };
 
     const start = () => {
-      if (running) return;
+      if (running || reducedMotion.matches) return;
       running = true;
       previous = performance.now();
       frame = requestAnimationFrame(animate);
@@ -146,6 +147,10 @@ export function LivingVUMeter({ className = "", label = "MASTER", peak = false }
       if (document.hidden) stop();
       else if (isNearViewport()) start();
     };
+    const onMotionPreferenceChange = () => {
+      if (reducedMotion.matches) stop();
+      else if (!document.hidden && isNearViewport()) start();
+    };
 
     observer.observe(meter);
     // The homepage meter is already visible at hydration time. Start it now
@@ -153,10 +158,12 @@ export function LivingVUMeter({ className = "", label = "MASTER", peak = false }
     // defer until the page scrolls.
     if (!document.hidden && isNearViewport()) start();
     document.addEventListener("visibilitychange", onVisibilityChange);
+    reducedMotion.addEventListener("change", onMotionPreferenceChange);
     return () => {
       stop();
       observer.disconnect();
       document.removeEventListener("visibilitychange", onVisibilityChange);
+      reducedMotion.removeEventListener("change", onMotionPreferenceChange);
     };
   }, []);
 

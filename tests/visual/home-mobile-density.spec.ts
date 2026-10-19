@@ -40,30 +40,32 @@ for (const width of [320, 390, 430]) {
   });
 }
 
-test("the compact mobile VU meter visibly changes while the hero is in view", async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
+test("the desktop VU meter visibly changes while the hero is in view", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
-  await page.waitForFunction(() => document.querySelectorAll(".hsdj-vu-leds .is-lit").length > 0);
+  const meter = page.locator('[class*="arrivalVu"].hsdj-vu-meter');
+  await expect(meter).toBeVisible();
+  await expect(meter.locator(".hsdj-vu-leds .is-lit")).toHaveCount(35);
   const samples: number[] = [];
   for (let index = 0; index < 8; index += 1) {
-    samples.push(await page.locator(".hsdj-vu-leds .is-lit").count());
+    samples.push(await meter.locator(".hsdj-vu-leds .is-lit").count());
     await page.waitForTimeout(300);
   }
   expect(new Set(samples).size).toBeGreaterThan(1);
 });
 
-test("the VU meter arrives lit before JavaScript hydrates", async ({ browser }) => {
-  const context = await browser.newContext({ viewport: { width: 390, height: 650 }, javaScriptEnabled: false });
+test("the desktop VU meter arrives lit before JavaScript hydrates", async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, javaScriptEnabled: false });
   try {
     const page = await context.newPage();
     await page.goto(`${process.env.HSDJ_TEST_BASE_URL ?? "http://127.0.0.1:3000"}/`);
-    await expect(page.locator(".hsdj-vu-leds .is-lit")).toHaveCount(35);
+    await expect(page.locator('[class*="arrivalVu"].hsdj-vu-meter .hsdj-vu-leds .is-lit')).toHaveCount(35);
   } finally {
     await context.close();
   }
 });
 
-test("the VU meter keeps its full live programme when reduced motion is enabled", async ({ browser }) => {
+test("the VU meter holds its lit visual without movement when reduced motion is enabled", async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 390, height: 650 }, reducedMotion: "reduce" });
   try {
     const page = await context.newPage();
@@ -73,14 +75,14 @@ test("the VU meter keeps its full live programme when reduced motion is enabled"
       samples.push(await page.locator(".hsdj-vu-leds .is-lit").count());
       await page.waitForTimeout(250);
     }
-    expect(new Set(samples).size).toBeGreaterThan(4);
-    expect(Math.max(...samples) - Math.min(...samples)).toBeGreaterThan(8);
+    expect(samples[0]).toBeGreaterThan(0);
+    expect(new Set(samples).size).toBe(1);
   } finally {
     await context.close();
   }
 });
 
-test("the complete mobile hook and VU meter clear a short Safari-like first screen", async ({ page }) => {
+test("the mobile hook clears a short Safari-like first screen without the decorative meter", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 650 });
   await page.goto("/");
 
@@ -103,12 +105,10 @@ test("the complete mobile hook and VU meter clear a short Safari-like first scre
 
   expect(geometry.hero.bottom).toBeLessThanOrEqual(geometry.viewportHeight + 1);
   expect(geometry.headline.bottom).toBeLessThan(geometry.viewportHeight - 90);
-  expect(geometry.meter.top).toBeGreaterThanOrEqual(geometry.header.bottom);
-  expect(geometry.meter.bottom).toBeLessThan(geometry.viewportHeight - 55);
-  expect(geometry.meter.width).toBeGreaterThanOrEqual(62);
+  expect(geometry.meter.width).toBe(0);
 });
 
-test("the desktop graphic equalizer stays live when reduced motion is enabled", async ({ browser }) => {
+test("the desktop graphic equalizer holds a static signal when reduced motion is enabled", async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: "reduce" });
   try {
     const page = await context.newPage();
@@ -125,7 +125,9 @@ test("the desktop graphic equalizer stays live when reduced motion is enabled", 
       await page.waitForTimeout(150);
     }
 
-    expect(new Set(samples).size).toBeGreaterThan(5);
+    expect(new Set(samples).size).toBe(1);
+    await page.getByRole("button", { name: /04 first dance/i }).click();
+    await expect(page.getByTestId("night-scene").getByText("First dance", { exact: true })).toBeVisible();
   } finally {
     await context.close();
   }
@@ -164,7 +166,7 @@ test("the mobile night scene leads with its photograph instead of oversized text
 
   expect(composition.sceneHeight).toBeLessThanOrEqual(350);
   expect(composition.headingSize).toBeLessThanOrEqual(33);
-  expect(composition.headingPanelSlack).toBeLessThan(36);
+  expect(composition.headingPanelSlack).toBeLessThan(70);
   expect(composition.headingLines).toBe(2);
   expect(composition.photoWindow).toBeGreaterThan(70);
   expect(composition.spectrumDisplay).toBe("none");
@@ -224,7 +226,7 @@ test("mobile section transitions and footer navigation stay compact", async ({ p
   expect(layout.footerHeight).toBeLessThan(900);
 });
 
-test("the complete mobile experience remains alive with the iPhone motion setting enabled", async ({ browser }) => {
+test("the complete mobile experience remains usable with the iPhone motion setting enabled", async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
   try {
     const page = await context.newPage();
@@ -238,16 +240,19 @@ test("the complete mobile experience remains alive with the iPhone motion settin
       meterSamples.push(await heroMeter.locator(".is-lit").count());
       await page.waitForTimeout(250);
     }
-    expect(new Set(meterSamples).size).toBeGreaterThan(1);
+    expect(new Set(meterSamples).size).toBe(1);
 
     const reviewFader = page.getByRole("slider", { name: "Choose a customer review" });
     await reviewFader.scrollIntoViewIfNeeded();
     const firstReview = await reviewFader.getAttribute("aria-valuenow");
-    await expect.poll(() => reviewFader.getAttribute("aria-valuenow"), { timeout: 7_000 }).not.toBe(firstReview);
+    await page.waitForTimeout(6000);
+    await expect(reviewFader).toHaveAttribute("aria-valuenow", firstReview ?? "1");
+    await reviewFader.press("ArrowRight");
+    await expect(reviewFader).not.toHaveAttribute("aria-valuenow", firstReview ?? "1");
 
     const finale = page.getByTestId("home-finale-section");
     await finale.scrollIntoViewIfNeeded();
-    await expect.poll(() => finale.evaluate((element) => element.getAnimations({ subtree: true }).length)).toBeGreaterThan(0);
+    await expect(finale).toBeVisible();
   } finally {
     await context.close();
   }

@@ -99,6 +99,7 @@ function wrapHeadingLetters(heading: HTMLHeadingElement) {
 
 export function HeadingLetterFlashController() {
   useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const observed = new Set<HTMLHeadingElement>();
     const visible = new Set<HTMLHeadingElement>();
     const running = new Map<HTMLHeadingElement, () => void>();
@@ -121,6 +122,10 @@ export function HeadingLetterFlashController() {
       if (running.has(heading) || document.hidden) return;
       wrapHeadingLetters(heading);
       scheduleBackplateFit(heading);
+      if (reducedMotion.matches) {
+        heading.dataset.letterFlash = "paused";
+        return;
+      }
       const letters = [...heading.querySelectorAll<HTMLElement>(`.${styles.character}`)];
       if (!letters.length) return;
 
@@ -225,8 +230,16 @@ export function HeadingLetterFlashController() {
         fitBackplateToRenderedLines(heading);
       }), 120);
     };
+    const onReducedMotionChange = () => {
+      if (reducedMotion.matches) {
+        visible.forEach(stopSequence);
+      } else {
+        visible.forEach(startSequence);
+      }
+    };
     document.addEventListener("visibilitychange", onVisibilityChange);
     window.addEventListener("resize", onResize, { passive: true });
+    reducedMotion.addEventListener("change", onReducedMotionChange);
 
     return () => {
       window.clearTimeout(resizeTimer);
@@ -239,6 +252,7 @@ export function HeadingLetterFlashController() {
       mutation.disconnect();
       document.removeEventListener("visibilitychange", onVisibilityChange);
       window.removeEventListener("resize", onResize);
+      reducedMotion.removeEventListener("change", onReducedMotionChange);
     };
   }, []);
 

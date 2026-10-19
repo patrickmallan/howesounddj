@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, type MouseEvent } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   POST_AVAILABILITY_COMPACT_CTA_LABEL,
@@ -47,6 +47,7 @@ import { buildPostAvailabilityCalendlyUrl } from "@/lib/post-availability-calend
 import { postAvailabilityAnalyticsBase } from "@/lib/post-availability-analytics";
 import { recordAvailabilityJourneyEvent } from "@/lib/availability-journey-client";
 import { getPostAvailabilityContext } from "@/lib/post-availability-context";
+import { isJourneyPagePath } from "@/lib/availability-journey-event";
 
 export type PostAvailabilitySuccessVariant = "full" | "compact";
 
@@ -130,7 +131,7 @@ export function PostAvailabilitySuccess({
       }),
     );
     if (journeyId) {
-      recordAvailabilityJourneyEvent({ journeyId, eventType: "SUCCESS_VIEWED", pagePath: "/contact", surface, experimentVariant: variant });
+      recordAvailabilityJourneyEvent({ journeyId, eventType: "SUCCESS_VIEWED", pagePath: window.location.pathname, surface, experimentVariant: variant });
     }
   }, [journeyId, surface, weddingDate, variant]);
 
@@ -140,7 +141,7 @@ export function PostAvailabilitySuccess({
     const recordView = () => {
       if (ctaViewTracked.current) return;
       ctaViewTracked.current = true;
-      if (journeyId) recordAvailabilityJourneyEvent({ journeyId, eventType: "CONSULT_CTA_DISPLAYED", pagePath: "/contact", surface, experimentVariant: variant });
+      if (journeyId) recordAvailabilityJourneyEvent({ journeyId, eventType: "CONSULT_CTA_DISPLAYED", pagePath: window.location.pathname, surface, experimentVariant: variant });
     };
     if (typeof IntersectionObserver === "undefined") {
       if (isElementInitiallyVisible(cta)) recordView();
@@ -166,7 +167,7 @@ export function PostAvailabilitySuccess({
         ANALYTICS_EVENTS.postAvailabilityProofView,
         postAvailabilityAnalyticsBase(surface, weddingDate, variant),
       );
-      if (journeyId) recordAvailabilityJourneyEvent({ journeyId, eventType: "PROOF_VIEWED", pagePath: "/contact", surface, experimentVariant: variant });
+      if (journeyId) recordAvailabilityJourneyEvent({ journeyId, eventType: "PROOF_VIEWED", pagePath: window.location.pathname, surface, experimentVariant: variant });
     };
     if (typeof IntersectionObserver === "undefined") {
       if (isElementInitiallyVisible(proofElement)) recordView();
@@ -182,7 +183,11 @@ export function PostAvailabilitySuccess({
     return () => observer.disconnect();
   }, [journeyId, proof, surface, weddingDate, variant]);
 
-  function handleConsultClick() {
+  function handleConsultClick(event: MouseEvent<HTMLAnchorElement>) {
+    const pagePath = window.location.pathname;
+    if (isJourneyPagePath(pagePath)) {
+      event.currentTarget.href = buildPostAvailabilityCalendlyUrl({ surface, journeyId, pagePath });
+    }
     trackEvent(
       ANALYTICS_EVENTS.bookConsultClick,
       consultClickEventParams({
@@ -206,7 +211,7 @@ export function PostAvailabilitySuccess({
       ...postAvailabilityAnalyticsBase(surface, weddingDate, variant),
       surface,
     });
-    if (journeyId) recordAvailabilityJourneyEvent({ journeyId, eventType: "INQUIRY_FALLBACK_CLICKED", pagePath: "/contact", surface });
+    if (journeyId) recordAvailabilityJourneyEvent({ journeyId, eventType: "INQUIRY_FALLBACK_CLICKED", pagePath: window.location.pathname, surface });
     onInquiryFallback?.();
   }
 
@@ -215,7 +220,7 @@ export function PostAvailabilitySuccess({
       ANALYTICS_EVENTS.changeDateClick,
       postAvailabilityAnalyticsBase(surface, weddingDate, variant),
     );
-    if (journeyId) recordAvailabilityJourneyEvent({ journeyId, eventType: "DATE_CHANGED", pagePath: "/contact", surface });
+    if (journeyId) recordAvailabilityJourneyEvent({ journeyId, eventType: "DATE_CHANGED", pagePath: window.location.pathname, surface });
     onEditDate?.();
   }
 

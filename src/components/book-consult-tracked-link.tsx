@@ -1,9 +1,10 @@
 "use client";
 
-import type { ReactNode } from "react";
+import type { MouseEvent, ReactNode } from "react";
 import { ANALYTICS_EVENTS, consultClickEventParams, trackEvent } from "@/lib/analytics";
 import { CTA_PILL_FLEX_CENTER } from "@/lib/cta-alignment";
 import { PUBLIC_SOUND_CHECK_CTA_LABEL } from "@/lib/consult-calendly";
+import { isJourneyPagePath } from "@/lib/availability-journey-event";
 
 export type BookConsultSurface =
   | "hero"
@@ -39,7 +40,11 @@ type Props = {
 };
 
 export function BookConsultTrackedLink({ surface, visualStyle = "pill", className, children }: Props) {
-  function handleClick() {
+  function handleClick(event: MouseEvent<HTMLAnchorElement>) {
+    const pagePath = window.location.pathname;
+    if (isJourneyPagePath(pagePath)) {
+      event.currentTarget.href = `/go/consult?${new URLSearchParams({ surface, page: pagePath })}`;
+    }
     trackEvent(
       ANALYTICS_EVENTS.bookConsultClick,
       consultClickEventParams({
@@ -53,7 +58,7 @@ export function BookConsultTrackedLink({ surface, visualStyle = "pill", classNam
 
   return (
     <a
-      href="/go/consult"
+      href={`/go/consult?${new URLSearchParams({ surface })}`}
       target="_blank"
       rel="noopener noreferrer"
       className={merged}

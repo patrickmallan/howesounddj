@@ -7,3 +7,7 @@
 }
 
 .off { opacity: .04; }
+
+@media (prefers-reduced-motion: reduce) {
+  .character { transition: none; }
+}

@@ -120,14 +120,16 @@ try {
   const critical = ["/", "/faq", "/contact"];
   const selectedRoutes = process.env.HSDJ_PERF_PATHS?.split(",").filter(Boolean) || (mode === "critical" ? critical : routes);
   const selectedProfiles = process.env.HSDJ_PERF_PROFILE ? [process.env.HSDJ_PERF_PROFILE] : Object.keys(profiles);
+  const requestedRuns = process.env.HSDJ_PERF_RUNS ? Number(process.env.HSDJ_PERF_RUNS) : null;
+  if (requestedRuns !== null && (!Number.isInteger(requestedRuns) || requestedRuns < 1 || requestedRuns > 10)) {
+    throw new Error("HSDJ_PERF_RUNS must be an integer from 1 to 10");
+  }
   for (const profile of selectedProfiles) {
     for (const path of selectedRoutes) {
-      console.log(JSON.stringify(await sample(browser, profile, path, 1)));
-    }
-  }
-  for (const path of selectedRoutes.filter((path) => critical.includes(path))) {
-    for (let run = 2; run <= 3; run += 1) {
-      console.log(JSON.stringify(await sample(browser, "mobile", path, run)));
+      const runs = requestedRuns ?? (profile === "mobile" && critical.includes(path) ? 3 : 1);
+      for (let run = 1; run <= runs; run += 1) {
+        console.log(JSON.stringify(await sample(browser, profile, path, run)));
+      }
     }
   }
 } finally {

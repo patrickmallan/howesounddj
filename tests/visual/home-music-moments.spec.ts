@@ -127,17 +127,20 @@ test("night fader advances in view, then gives manual selection more time", asyn
   await expect(page.getByTestId("night-scene-heading")).toHaveText(/KEEP THE\s+FEET TAPPING/);
 });
 
-test("night fader advances without sliding animation on reduced-motion devices", async ({ page }) => {
+test("night fader remains manually usable without automatic motion on reduced-motion devices", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 390, height: 900 });
   await page.goto("/");
   const fader = page.getByTestId("night-fader");
   await fader.scrollIntoViewIfNeeded();
   await expect(page.getByTestId("night-scene-heading")).toHaveText(/CLEAR &\s+AUDIBLE/);
-  await expect(page.getByTestId("night-scene-heading")).toHaveText("VIBE BEGINS", { timeout: 7000 });
+  await page.waitForTimeout(4500);
+  await expect(page.getByTestId("night-scene-heading")).toHaveText(/CLEAR &\s+AUDIBLE/);
   await expect(fader.locator("img[class*='sceneImage']")).toHaveCSS("animation-name", "none");
   const slider = fader.getByRole("slider");
   await slider.focus();
+  await slider.press("ArrowRight");
+  await expect(page.getByTestId("night-scene-heading")).toHaveText("VIBE BEGINS");
   await slider.press("ArrowRight");
   await expect(page.getByTestId("night-scene-heading")).toHaveText(/KEEP THE\s+FEET TAPPING/);
 });

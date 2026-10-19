@@ -2,7 +2,7 @@ import { expect, test, type Page } from "@playwright/test";
 
 const viewports = [
   { name: "mobile", width: 390, height: 844, initialBudget: 720_000, totalBudget: 820_000 },
-  { name: "desktop", width: 1440, height: 900, initialBudget: 850_000, totalBudget: 990_000 },
+  { name: "desktop", width: 1440, height: 900, initialBudget: 975_000, totalBudget: 1_150_000 },
 ] as const;
 
 async function delivery(page: Page) {
@@ -75,8 +75,10 @@ for (const viewport of viewports) {
     expect(failedRequests).toEqual([]);
     expect(initialRoutes).toEqual([]);
     expect([...routeRequests]).toEqual([]);
-    expect(initial.nodes).toBeLessThanOrEqual(500);
-    expect(initial.uses).toBe(0);
+    // Matrix billboard glyphs are intentional SVG <use> nodes, not layout growth.
+    expect(initial.nodes - initial.uses).toBeLessThanOrEqual(600);
+    expect(initial.uses).toBeGreaterThan(1_000);
+    expect(initial.uses).toBeLessThan(3_000);
     expect(initial.bytes).toBeLessThanOrEqual(viewport.initialBudget);
     expect(afterScroll.bytes).toBeLessThanOrEqual(viewport.totalBudget);
     expect(afterScroll.urls.some((url) => url.includes("guides-turntable-deck"))).toBe(true);

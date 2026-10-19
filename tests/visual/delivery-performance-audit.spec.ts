@@ -20,7 +20,9 @@ async function auditHomepage(page: Page): Promise<DeliveryMetrics> {
   // a meaningful readiness signal and can turn this diagnostic into a timeout.
   await page.goto("/", { waitUntil: "domcontentloaded" });
   const sections = await page.locator("main section").all();
-  for (const section of sections) await section.scrollIntoViewIfNeeded();
+  for (const section of sections) {
+    if (await section.isVisible()) await section.scrollIntoViewIfNeeded();
+  }
 
   return page.evaluate(async () => {
     const resources = performance.getEntriesByType("resource") as PerformanceResourceTiming[];

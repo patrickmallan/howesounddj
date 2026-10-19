@@ -24,7 +24,7 @@ describe("consult handoff", () => {
 
   it("returns the booking redirect before Operations telemetry runs", async () => {
     const journeyId = "bf7d9412-81d1-42c3-9bb8-852d918a8ec0";
-    const response = await GET(new Request(`https://www.howesounddj.com/go/consult?jid=${journeyId}&surface=contact_success&month=2028-07`));
+    const response = await GET(new Request(`https://www.howesounddj.com/go/consult?jid=${journeyId}&surface=header_panel&page=%2Fvenues%2Fcheekye-ranch&month=2028-07`));
     expect(response.status).toBe(302);
     expect(response.headers.get("location")).toContain("utm_term=hsdj_journey_");
     expect(response.headers.get("location")).not.toContain("month=");
@@ -33,7 +33,7 @@ describe("consult handoff", () => {
     await fixtures.afterTasks[0]();
     expect(fixtures.forward).toHaveBeenCalledWith(expect.objectContaining({
       kind: "event",
-      event: expect.objectContaining({ journeyId, eventType: "CONSULT_CLICKED", surface: "contact_success" }),
+      event: expect.objectContaining({ journeyId, eventType: "CONSULT_CLICKED", surface: "header_panel", pagePath: "/venues/cheekye-ranch" }),
     }));
   });
 
@@ -42,14 +42,36 @@ describe("consult handoff", () => {
     const target = new URL(response.headers.get("location")!);
     expect(target.searchParams.has("month")).toBe(false);
     expect(target.searchParams.get("utm_content")).toBe("header_panel");
+    expect(target.searchParams.get("utm_medium")).toBe("direct_consult");
   });
 
   it("does not forward a malformed public journey ID", async () => {
     const response = await GET(new Request("https://www.howesounddj.com/go/consult?jid=spam&surface=unsafe%20input"));
     expect(response.status).toBe(302);
     expect(response.headers.get("location")).not.toContain("utm_term");
-    expect(response.headers.get("location")).toContain("utm_content=post_availability");
+    expect(response.headers.get("location")).toContain("utm_content=direct_consult");
     expect(fixtures.afterTasks).toHaveLength(0);
+  });
+
+  it("keeps a direct button and page in the scheduler handoff without sending private query data", async () => {
+    const response = await GET(new Request("https://www.howesounddj.com/go/consult?surface=footer&page=%2Freviews&utm_source=private"));
+    const target = new URL(response.headers.get("location")!);
+    expect(target.searchParams.get("utm_content")).toBe("footer");
+    expect(target.searchParams.get("utm_term")).toBe("hsdj_page_reviews");
+    expect(target.searchParams.get("utm_medium")).toBe("direct_consult");
+    expect(target.searchParams.get("utm_source")).toBe("howesounddj");
+    expect(fixtures.afterTasks).toHaveLength(0);
+  });
+
+  it("rejects an untrusted page path instead of adding it to Calendly or Operations", async () => {
+    const journeyId = "bf7d9412-81d1-42c3-9bb8-852d918a8ec0";
+    const response = await GET(new Request(`https://www.howesounddj.com/go/consult?jid=${journeyId}&surface=header_panel&page=%2Fcontact%3Femail%3Dprivate`));
+    const target = new URL(response.headers.get("location")!);
+    expect(target.searchParams.get("utm_term")).toBe(`hsdj_journey_${journeyId}`);
+    await fixtures.afterTasks[0]();
+    expect(fixtures.forward).toHaveBeenCalledWith(expect.objectContaining({
+      event: expect.objectContaining({ pagePath: undefined }),
+    }));
   });
 
   it("holds every consultation click inside a protected preview", async () => {

@@ -55,7 +55,7 @@ describe("HSDJ-WEB-SCHEDULING-01 Sound Check public cutover", () => {
 
   it("wires principal scheduling CTAs through the controlled handoff", () => {
     const trackedLink = readSource("src/components/book-consult-tracked-link.tsx");
-    expect(trackedLink).toMatch(/href="\/go\/consult"/);
+    expect(trackedLink).toMatch(/href=\{`\/go\/consult\?\$\{new URLSearchParams\(\{ surface \}\)\}`\}/);
     expect(trackedLink).toMatch(/PUBLIC_SOUND_CHECK_CTA_LABEL/);
 
     const handoff = readSource("src/app/go/consult/route.ts");

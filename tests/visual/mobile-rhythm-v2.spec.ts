@@ -1,6 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { mkdirSync } from "node:fs";
-import { join } from "node:path";
 
 const MOBILE_VIEWPORTS = [
   { name: "375x812", width: 375, height: 812 },
@@ -8,17 +6,7 @@ const MOBILE_VIEWPORTS = [
   { name: "430x932", width: 430, height: 932 },
 ] as const;
 
-const SHOT_DIR = join(process.cwd(), "docs/handoff/screenshots/mobile-visual-rhythm-v2");
-
-function ensureShotDir() {
-  mkdirSync(SHOT_DIR, { recursive: true });
-}
-
 test.describe("mobile visual rhythm V2", () => {
-  test.beforeAll(() => {
-    ensureShotDir();
-  });
-
   test.beforeEach(async ({ page }) => {
     // Production CSP upgrades subresources to HTTPS. The local test server is
     // HTTP-only, so proxy those upgraded requests back to the same local origin.
@@ -30,29 +18,31 @@ test.describe("mobile visual rhythm V2", () => {
   });
 
   for (const viewport of MOBILE_VIEWPORTS) {
-    test(`captures transition evidence at ${viewport.name}`, async ({ page }) => {
+    test(`captures transition evidence at ${viewport.name}`, async ({ page }, testInfo) => {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
       await page.goto("/", { waitUntil: "load" });
 
       const sections = await page.locator("main section").all();
-      expect(sections.length).toBe(8);
+      expect(sections.length).toBe(9);
       for (let index = 0; index < sections.length; index += 1) {
+        if (!(await sections[index].isVisible())) continue;
         await sections[index].scrollIntoViewIfNeeded();
         const heading = sections[index].locator("h1, h2").first();
         await expect(heading, `homepage chapter ${index + 1} needs a visible heading`).toBeVisible();
-        await page.screenshot({ path: join(SHOT_DIR, `${viewport.name}-chapter-${index + 1}.png`) });
+        await page.screenshot({ path: testInfo.outputPath(`${viewport.name}-chapter-${index + 1}.png`) });
       }
     });
   }
 
-  test("captures desktop overview at 1440x900", async ({ page }) => {
+  test("captures desktop overview at 1440x900", async ({ page }, testInfo) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("/", { waitUntil: "load" });
     const sections = await page.locator("main section").all();
-    expect(sections.length).toBe(8);
+    expect(sections.length).toBe(9);
     for (let index = 0; index < sections.length; index += 1) {
+      if (!(await sections[index].isVisible())) continue;
       await sections[index].scrollIntoViewIfNeeded();
-      await page.screenshot({ path: join(SHOT_DIR, `1440x900-chapter-${index + 1}.png`) });
+      await page.screenshot({ path: testInfo.outputPath(`1440x900-chapter-${index + 1}.png`) });
     }
   });
 

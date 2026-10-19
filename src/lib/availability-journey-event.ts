@@ -20,6 +20,10 @@ export function isJourneySurface(value: unknown): value is string {
   return typeof value === "string" && TOKEN.test(value);
 }
 
+export function isJourneyPagePath(value: unknown): value is string {
+  return typeof value === "string" && value.length <= 160 && /^\/[a-z0-9/_-]*$/i.test(value);
+}
+
 export type ClientJourneyEvent = {
   journeyId: string;
   eventId: string;
@@ -41,11 +45,7 @@ export function parseClientJourneyEvent(value: unknown): ClientJourneyEvent | nu
   if (typeof input.occurredAt !== "string" || input.occurredAt.length > 32) return null;
   const occurredAt = Date.parse(input.occurredAt);
   if (!Number.isFinite(occurredAt) || Math.abs(Date.now() - occurredAt) > 86_400_000) return null;
-  if (input.pagePath !== undefined && (
-    typeof input.pagePath !== "string" ||
-    input.pagePath.length > 160 ||
-    !/^\/[a-z0-9/_-]*$/i.test(input.pagePath)
-  )) return null;
+  if (input.pagePath !== undefined && !isJourneyPagePath(input.pagePath)) return null;
   if (input.surface !== undefined && !isJourneySurface(input.surface)) return null;
   if (input.experimentVariant !== undefined && (typeof input.experimentVariant !== "string" || !TOKEN.test(input.experimentVariant))) return null;
   return input as ClientJourneyEvent;

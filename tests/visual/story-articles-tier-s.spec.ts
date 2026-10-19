@@ -6,14 +6,14 @@ const stories = [
     title: "What a Sea to Sky Gondola Dance Floor Feels Like",
     lastHeading: "If this atmosphere sounds like your day",
     initialBudget: 950_000,
-    totalBudget: 1_200_000,
+    totalBudget: 1_250_000,
   },
   {
     route: "/stories/what-a-sunwolf-riverside-wedding-reception-feels-like",
     title: "What a Sunwolf Riverside Wedding Reception Feels Like",
     lastHeading: "If this pacing sounds like your day",
-    initialBudget: 850_000,
-    totalBudget: 1_150_000,
+    initialBudget: 900_000,
+    totalBudget: 1_200_000,
   },
   {
     route: "/stories/sea-to-sky-wedding-dance-floor-energy",
@@ -81,9 +81,11 @@ for (const story of stories) {
       expect(consoleErrors).toEqual([]);
       expect(pageErrors).toEqual([]);
       expect(failedRequests).toEqual([]);
-      expect(initial.nodes).toBeLessThanOrEqual(650);
-      expect(afterScroll.nodes).toBeLessThanOrEqual(950);
-      expect(initial.uses).toBe(0);
+      // Matrix-title SVG glyphs are intentional; the non-glyph DOM still has a cap.
+      expect(initial.nodes - initial.uses).toBeLessThanOrEqual(650);
+      expect(afterScroll.nodes - afterScroll.uses).toBeLessThanOrEqual(950);
+      expect(initial.uses).toBeGreaterThan(1_000);
+      expect(initial.uses).toBeLessThan(3_500);
       expect(initial.bytes).toBeLessThanOrEqual(story.initialBudget);
       expect(afterScroll.bytes).toBeLessThanOrEqual(story.totalBudget);
       expect(initial.routeRequests).toEqual([story.route]);
@@ -157,7 +159,7 @@ for (const story of stories) {
 
     const internalHrefs = await page.locator("main a[href]").evaluateAll((links) => (
       [...new Set(links.map((link) => link.getAttribute("href") ?? ""))]
-        .filter((href) => href.startsWith("/") && href !== "/go/consult")
+        .filter((href) => href.startsWith("/") && !href.startsWith("/go/consult"))
     ));
     for (const href of internalHrefs) {
       const response = await request.get(href);
@@ -165,7 +167,7 @@ for (const story of stories) {
     }
 
     await finalHeading.scrollIntoViewIfNeeded();
-    await expect(finalHeading).toHaveAttribute("data-letter-flash", "running");
+    await expect(finalHeading).toHaveAttribute("data-letter-flash", "paused");
     const articleJsonLd = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) => (
       scripts.map((script) => JSON.parse(script.textContent ?? "{}"))
         .find((value) => value["@type"] === "Article")

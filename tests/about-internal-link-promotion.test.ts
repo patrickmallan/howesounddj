@@ -23,7 +23,9 @@ describe("HSDJ page-purpose and conversion ownership", () => {
     const packages = readPage("src/app/packages/page.tsx");
     expect(packages).toMatch(/Complete Wedding/);
     expect(packages).toMatch(/A Great Party/);
-    expect(packages).toMatch(/One date\. One conversation\. Your call\./);
+    expect(packages).toMatch(/One date\./);
+    expect(packages).toMatch(/One convo\./);
+    expect(packages).toMatch(/Your call\./);
     expect(packages).toMatch(/className=\{styles\.signalEnd\}/);
     expect(packages).not.toMatch(/finalSection|finalTape/);
     expect(packages).toMatch(/<CTADuo/);

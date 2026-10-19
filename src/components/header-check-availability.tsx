@@ -49,6 +49,7 @@ export function HeaderCheckAvailability({ onPanelOpen }: Props) {
   const panelId = useId();
   const triggerRef = useRef<HTMLAnchorElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const backdropRef = useRef<HTMLButtonElement>(null);
   const [panelRequested, setPanelRequested] = useState(false);
   const [openForPath, setOpenForPath] = useState<string | null>(null);
   const [desktopPanelPosition, setDesktopPanelPosition] = useState<DesktopPanelPosition | null>(
@@ -126,12 +127,50 @@ export function HeaderCheckAvailability({ onPanelOpen }: Props) {
   }, [open]);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open || !portalReady || !panelRef.current) return;
+
+    const panel = panelRef.current;
+    const backdrop = backdropRef.current;
+    const background = [...document.body.children]
+      .filter((child): child is HTMLElement => child instanceof HTMLElement && child !== panel && child !== backdrop)
+      .map((child) => ({ child, wasInert: child.inert }));
+    background.forEach(({ child }) => { child.inert = true; });
+
+    const focusable = () => [...panel.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    )].filter((element) => element.getClientRects().length > 0);
+
+    const onFocusIn = (event: FocusEvent) => {
+      if (!panel.contains(event.target as Node)) {
+        (focusable()[0] ?? panel).focus();
+      }
+    };
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         e.preventDefault();
         close();
+        return;
+      }
+      if (e.key === "Tab") {
+        const items = focusable();
+        if (!items.length) {
+          e.preventDefault();
+          panel.focus();
+          return;
+        }
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (!panel.contains(document.activeElement)) {
+          e.preventDefault();
+          (e.shiftKey ? last : first).focus();
+        } else if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
 
@@ -143,19 +182,23 @@ export function HeaderCheckAvailability({ onPanelOpen }: Props) {
       close();
     };
 
-    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("keydown", onKeyDown, true);
     window.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("focusin", onFocusIn);
     return () => {
-      window.removeEventListener("keydown", onKeyDown);
+      background.forEach(({ child, wasInert }) => { child.inert = wasInert; });
+      window.removeEventListener("keydown", onKeyDown, true);
       window.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("focusin", onFocusIn);
     };
-  }, [open, close]);
+  }, [open, close, portalReady]);
 
   const overlay =
     open && portalReady
       ? createPortal(
           <>
             <button
+              ref={backdropRef}
               type="button"
               tabIndex={-1}
               aria-hidden
@@ -168,6 +211,7 @@ export function HeaderCheckAvailability({ onPanelOpen }: Props) {
               role="dialog"
               aria-modal="true"
               aria-label="Check wedding date availability"
+              tabIndex={-1}
               className={`${panelBaseClass} ${activeDesktopPanelPosition ? "" : panelMobileClass}`}
               style={
                 activeDesktopPanelPosition

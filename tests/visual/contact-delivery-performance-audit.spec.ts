@@ -93,7 +93,8 @@ for (const viewport of [
     expect(requestedUrls.some((url) => url.includes("challenges.cloudflare.com/turnstile"))).toBe(false);
     expect(requestedUrls.some((url) => url.includes("hsdj-hero-montage-web-v1.mp4"))).toBe(false);
     expect(initial.totalEncodedBytes).toBeLessThanOrEqual(viewport.name === "mobile" ? 800_000 : 1_050_000);
-    expect(delivered.totalEncodedBytes).toBeLessThanOrEqual(viewport.name === "mobile" ? 825_000 : 1_110_000);
+    // Full-scroll delivery includes the intentionally deferred 187 KiB footer collage.
+    expect(delivered.totalEncodedBytes).toBeLessThanOrEqual(viewport.name === "mobile" ? 950_000 : 1_110_000);
     expect(animation.p95FrameMs).toBeLessThanOrEqual(24);
     expect(animation.slowFrameRatio).toBeLessThanOrEqual(.02);
   });

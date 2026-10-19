@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useLayoutEffect, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { WeddingDateFields } from "@/components/wedding-date-fields";
 import {
   AvailabilityCheckingState,
@@ -17,9 +17,9 @@ const ANALYTICS_SURFACE = "header_panel";
 type CheckPhase =
   | { kind: "idle" }
   | { kind: "loading" }
-  | { kind: "available"; message: string }
-  | { kind: "unavailable"; message: string }
-  | { kind: "manual"; message: string };
+  | { kind: "available"; message: string; date: string }
+  | { kind: "unavailable"; message: string; date: string }
+  | { kind: "manual"; message: string; date: string };
 
 type Props = {
   /** Called when the checker mounts so the panel can focus the year field. */
@@ -34,10 +34,17 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
   const dayInputId = `${idPrefix}-day-${uid}`;
 
   const [phase, setPhase] = useState<CheckPhase>({ kind: "idle" });
+  const activeRequest = useRef<AbortController | null>(null);
+
+  const invalidateRequest = () => {
+    activeRequest.current?.abort();
+    activeRequest.current = null;
+  };
 
   const date = useWeddingDateInput({
     yearInputId,
     onSegmentsChange: () => {
+      invalidateRequest();
       setPhase({ kind: "idle" });
       clearPostAvailabilityContext();
     },
@@ -49,6 +56,8 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
     // Focus once when the panel opens.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => () => activeRequest.current?.abort(), []);
 
   useLayoutEffect(() => {
     if (phase.kind === "idle" || phase.kind === "loading") return;
@@ -63,37 +72,45 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
       date.setDateError("Choose a wedding date first.");
       return;
     }
+    const selectedDate = date.weddingDate;
+    invalidateRequest();
+    const request = new AbortController();
+    activeRequest.current = request;
     date.setDateError("");
     setPhase({ kind: "loading" });
-    const outcome = await runAvailabilityCheck(date.weddingDate, ANALYTICS_SURFACE);
+    const outcome = await runAvailabilityCheck(selectedDate, ANALYTICS_SURFACE, request.signal);
+    if (!outcome || request.signal.aborted || activeRequest.current !== request) return;
+    activeRequest.current = null;
     if (outcome.status === "available") {
-      setPhase({ kind: "available", message: outcome.message });
+      setPhase({ kind: "available", message: outcome.message, date: selectedDate });
       return;
     }
     if (outcome.status === "manual" || outcome.status === "error") {
-      setPhase({ kind: "manual", message: outcome.message });
+      setPhase({ kind: "manual", message: outcome.message, date: selectedDate });
       return;
     }
-    setPhase({ kind: "unavailable", message: outcome.message });
+    setPhase({ kind: "unavailable", message: outcome.message, date: selectedDate });
   }
 
   function resetChecker() {
+    invalidateRequest();
     setPhase({ kind: "idle" });
     clearPostAvailabilityContext();
     date.resetSegments();
   }
 
   function handleEditDate() {
+    invalidateRequest();
     setPhase({ kind: "idle" });
     clearPostAvailabilityContext();
     requestAnimationFrame(() => date.focusYear());
   }
 
-  if (phase.kind === "available" && date.weddingDate) {
+  if (phase.kind === "available") {
     return (
       <PostAvailabilitySuccess
         variant="compact"
-        weddingDate={date.weddingDate}
+        weddingDate={phase.date}
         surface={ANALYTICS_SURFACE}
         canonicalStatusMessage={phase.message}
         onEditDate={handleEditDate}
@@ -102,11 +119,11 @@ export function CompactAvailabilityChecker({ onReady, idPrefix = "header-avail" 
     );
   }
 
-  if ((phase.kind === "unavailable" || phase.kind === "manual") && date.weddingDate) {
+  if (phase.kind === "unavailable" || phase.kind === "manual") {
     return (
       <PostAvailabilityOutcome
         kind={phase.kind}
-        weddingDate={date.weddingDate}
+        weddingDate={phase.date}
         canonicalStatusMessage={phase.message}
         onTryAnotherDate={resetChecker}
         className={`hsdj-availability-result hsdj-availability-result--${phase.kind} !rounded-xl !p-5`}

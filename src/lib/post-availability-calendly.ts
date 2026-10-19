@@ -1,6 +1,7 @@
 export type PostAvailabilityCalendlyParams = {
   surface: string;
   journeyId?: string;
+  pagePath?: string;
 };
 
 /**
@@ -10,8 +11,10 @@ export type PostAvailabilityCalendlyParams = {
 export function buildPostAvailabilityCalendlyUrl({
   surface,
   journeyId,
+  pagePath,
 }: PostAvailabilityCalendlyParams): string {
   const params = new URLSearchParams({ surface });
   if (journeyId) params.set("jid", journeyId);
+  if (pagePath) params.set("page", pagePath);
   return `/go/consult?${params.toString()}`;
 }

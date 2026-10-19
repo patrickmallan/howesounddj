@@ -64,14 +64,15 @@ test("Squamish copy scenes remain inside a narrow phone viewport", async ({ page
   }
 });
 
-test("Squamish yellow field note keeps its emphasis readable", async ({ page }) => {
+test("Squamish field note keeps strong light-on-dark contrast", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/squamish-wedding-dj");
 
-  const emphasis = page.locator(".sq-field-note strong");
-  await expect(emphasis).toBeVisible();
-  await expect(emphasis).toHaveCSS("color", "rgb(10, 17, 23)");
-  await expect(emphasis).toHaveCSS("text-transform", "none");
+  const note = page.locator(".sq-field-note");
+  await expect(note).toBeVisible();
+  await expect(note).toContainText("vows and speeches");
+  await expect(note).toHaveCSS("color", "rgb(244, 249, 249)");
+  await expect(note).toHaveCSS("font-weight", "700");
 });
 
 test("Squamish scene headings retain the crisp billboard face", async ({ page }) => {
@@ -103,18 +104,20 @@ test("H2 letter flashing survives client-side route changes", async ({ page }) =
   ).toBeGreaterThan(0);
 });
 
-test("About closing H2 flashes automatically on a reduced-motion phone", async ({ page }) => {
+test("About closing H2 stays fully lit on a reduced-motion phone", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/about");
 
   const heading = page.locator("#about-close-title");
   await heading.scrollIntoViewIfNeeded();
+  await expect(heading).toHaveAttribute("data-letter-flash", "paused");
+  await expect(heading.locator('span[class*="_off__"]')).toHaveCount(0);
+  await page.emulateMedia({ reducedMotion: "no-preference" });
   await expect(heading).toHaveAttribute("data-letter-flash", "running");
-  await expect.poll(
-    () => heading.locator('span[class*="_off__"]').count(),
-    { timeout: 4_000, intervals: [50, 50, 50, 50, 100] },
-  ).toBeGreaterThan(0);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(heading).toHaveAttribute("data-letter-flash", "paused");
+  await expect(heading.locator('span[class*="_off__"]')).toHaveCount(0);
 });
 
 for (const width of [320, 390]) {

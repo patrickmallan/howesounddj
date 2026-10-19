@@ -91,6 +91,7 @@ export function NightMixFader() {
   useEffect(() => {
     const consoleElement = consoleRef.current;
     if (!consoleElement) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     let visible = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
@@ -100,7 +101,7 @@ export function NightMixFader() {
     };
     const schedule = (delay: number) => {
       clear();
-      if (!visible || document.hidden) return;
+      if (!visible || document.hidden || reducedMotion.matches) return;
       timer = setTimeout(() => {
         setManualSelection(false);
         setActive((previous) => (previous + 1) % STAGES.length);
@@ -118,13 +119,19 @@ export function NightMixFader() {
       if (document.hidden) clear();
       else if (visible) schedule(hasInteractedRef.current ? AFTER_INTERACTION_MS : FIRST_ADVANCE_MS);
     };
+    const onMotionPreferenceChange = () => {
+      if (reducedMotion.matches) clear();
+      else if (visible && !document.hidden) schedule(hasInteractedRef.current ? AFTER_INTERACTION_MS : FIRST_ADVANCE_MS);
+    };
     observer.observe(consoleElement);
     document.addEventListener("visibilitychange", onVisibilityChange);
+    reducedMotion.addEventListener("change", onMotionPreferenceChange);
     return () => {
       clear();
       scheduleAdvanceRef.current = null;
       observer.disconnect();
       document.removeEventListener("visibilitychange", onVisibilityChange);
+      reducedMotion.removeEventListener("change", onMotionPreferenceChange);
     };
   }, []);
 
@@ -138,6 +145,7 @@ export function NightMixFader() {
   useEffect(() => {
     const spectrum = spectrumRef.current;
     if (!spectrum) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     const bars = Array.from(spectrum.querySelectorAll<HTMLElement>("i"));
     const current = bars.map(() => .08);
@@ -221,7 +229,7 @@ export function NightMixFader() {
     };
 
     const start = () => {
-      if (running) return;
+      if (running || reducedMotion.matches) return;
       running = true;
       previous = performance.now();
       frame = requestAnimationFrame(animate);
@@ -243,14 +251,20 @@ export function NightMixFader() {
       if (document.hidden) stop();
       else if (isNearViewport()) start();
     };
+    const onMotionPreferenceChange = () => {
+      if (reducedMotion.matches) stop();
+      else if (!document.hidden && isNearViewport()) start();
+    };
 
     observer.observe(spectrum);
     if (!document.hidden && isNearViewport()) start();
     document.addEventListener("visibilitychange", onVisibilityChange);
+    reducedMotion.addEventListener("change", onMotionPreferenceChange);
     return () => {
       stop();
       observer.disconnect();
       document.removeEventListener("visibilitychange", onVisibilityChange);
+      reducedMotion.removeEventListener("change", onMotionPreferenceChange);
     };
   }, [active, stage.bpm, stage.spectrum]);
 
@@ -277,7 +291,7 @@ export function NightMixFader() {
       </div>
 
       <div className={styles.controlSurface} data-testid="night-fader-controls">
-        <p className={styles.instruction}>Move through the night <span className={styles.desktopInstruction}>The scene changes with the room.</span><span className={styles.mobileInstruction}>Auto-mixes. Slide or tap a moment.</span></p>
+        <p className={styles.instruction}>Move through the night <span className={styles.desktopInstruction}>The scene changes with the room.</span><span className={styles.mobileInstruction}>Auto-mixes. Slide or tap a moment.</span><span className={styles.reducedInstruction}>Slide or tap a moment.</span></p>
         <div className={styles.fader}>
           <div className={styles.rail} data-testid="night-fader-rail" aria-hidden="true" />
           <div className={styles.ticks} aria-hidden="true">

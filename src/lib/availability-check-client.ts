@@ -20,6 +20,7 @@ export type AvailabilityCheckOutcome =
 
 const MANUAL_MESSAGE =
   "We couldn't confirm availability automatically. Please contact us directly.";
+const REQUEST_TIMEOUT_MS = 12_000;
 
 function analyticsStatus(
   status: AvailabilityCheckOutcome["status"],
@@ -78,7 +79,9 @@ function trackAvailabilityCompleted(
 export async function runAvailabilityCheck(
   selectedDate: string,
   analyticsSurface: string,
-): Promise<AvailabilityCheckOutcome> {
+  signal?: AbortSignal,
+): Promise<AvailabilityCheckOutcome | null> {
+  if (signal?.aborted) return null;
   const startedAt = typeof performance !== "undefined" ? performance.now() : Date.now();
 
   const previousJourney = getPostAvailabilityContext();
@@ -88,9 +91,16 @@ export async function runAvailabilityCheck(
   clearPostAvailabilityContext();
   trackAvailabilityStarted(analyticsSurface);
 
+  const requestController = new AbortController();
+  const abortForCaller = () => requestController.abort();
+  signal?.addEventListener("abort", abortForCaller, { once: true });
+  if (signal?.aborted) requestController.abort();
+  const timeout = setTimeout(() => requestController.abort(), REQUEST_TIMEOUT_MS);
+
   try {
     const res = await fetch("/api/availability", {
       method: "POST",
+      signal: requestController.signal,
       headers: {
         "Content-Type": "application/json",
         "Cache-Control": "no-store",
@@ -98,6 +108,7 @@ export async function runAvailabilityCheck(
       cache: "no-store",
       body: JSON.stringify({ date: selectedDate, acquisition: acquisitionContext() }),
     });
+    if (signal?.aborted) return null;
 
     const durationMs =
       (typeof performance !== "undefined" ? performance.now() : Date.now()) - startedAt;
@@ -106,9 +117,11 @@ export async function runAvailabilityCheck(
     try {
       data = await res.json();
     } catch {
+      if (signal?.aborted) return null;
       trackAvailabilityCompleted(selectedDate, analyticsSurface, "error", durationMs);
       return { status: "error", message: MANUAL_MESSAGE, date: selectedDate };
     }
+    if (signal?.aborted) return null;
 
     if (typeof data !== "object" || data === null) {
       trackAvailabilityCompleted(selectedDate, analyticsSurface, "error", durationMs);
@@ -148,9 +161,13 @@ export async function runAvailabilityCheck(
     trackAvailabilityCompleted(selectedDate, analyticsSurface, "manual", durationMs);
     return { status: "manual", message, date: selectedDate };
   } catch {
+    if (signal?.aborted) return null;
     const durationMs =
       (typeof performance !== "undefined" ? performance.now() : Date.now()) - startedAt;
     trackAvailabilityCompleted(selectedDate, analyticsSurface, "error", durationMs);
     return { status: "error", message: MANUAL_MESSAGE, date: selectedDate };
+  } finally {
+    clearTimeout(timeout);
+    signal?.removeEventListener("abort", abortForCaller);
   }
 }

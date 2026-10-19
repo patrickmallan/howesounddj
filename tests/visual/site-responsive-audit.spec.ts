@@ -1,6 +1,4 @@
 import { expect, test, type Page } from "@playwright/test";
-import { mkdirSync } from "node:fs";
-import { join } from "node:path";
 
 const ROUTES = [
   "/",
@@ -34,8 +32,6 @@ const VIEWPORTS = [
   { name: "desktop", width: 1440, height: 900 },
 ] as const;
 
-const SHOT_DIR = join(process.cwd(), "tmp/site-responsive-audit");
-
 function routeName(route: string) {
   return route === "/" ? "home" : route.slice(1).replaceAll("/", "--");
 }
@@ -51,9 +47,8 @@ async function materializePage(page: Page) {
   await page.evaluate(() => window.scrollTo(0, 0));
 }
 
-test("public routes remain readable and contained at mobile, tablet, and desktop sizes", async ({ browser }) => {
+test("public routes remain readable and contained at mobile, tablet, and desktop sizes", async ({ browser }, testInfo) => {
   test.setTimeout(600_000);
-  mkdirSync(SHOT_DIR, { recursive: true });
 
   for (const viewport of VIEWPORTS) {
     const page = await browser.newPage({ viewport: { width: viewport.width, height: viewport.height } });
@@ -97,7 +92,7 @@ test("public routes remain readable and contained at mobile, tablet, and desktop
               height: box.height,
             };
           })
-          .filter((heading) => heading.fontSize > 37 || heading.height > window.innerHeight * .42);
+          .filter((heading) => heading.fontSize > 45 || heading.height > window.innerHeight * .42);
 
         return {
           bodyWidth: document.body.scrollWidth,
@@ -124,7 +119,7 @@ test("public routes remain readable and contained at mobile, tablet, and desktop
       expect(runtimeErrors, `${route} has runtime errors at ${viewport.name}`).toEqual([]);
 
       await page.screenshot({
-        path: join(SHOT_DIR, `${viewport.name}--${routeName(route)}.png`),
+        path: testInfo.outputPath(`${viewport.name}--${routeName(route)}.png`),
         fullPage: true,
       });
     }

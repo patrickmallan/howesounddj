@@ -32,7 +32,7 @@ type HardwareLinkProps = {
 function HardwareLink({ eyebrow, href, label, mode = "play" }: HardwareLinkProps) {
   if (mode === "hot-cue") {
     return (
-      <Link className="guides-deck-cue-link" href={href} prefetch={false}>
+      <Link className="guides-deck-cue-link" href={href} prefetch={false} data-physical-control="hot-cue">
         <span>{label}</span>
         <span aria-hidden="true">↗</span>
       </Link>

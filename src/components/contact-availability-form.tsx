@@ -39,9 +39,9 @@ const FORM_ANALYTICS = {
 type AvailabilityPhase =
   | { kind: "idle" }
   | { kind: "checking" }
-  | { kind: "unavailable"; message: string }
-  | { kind: "available"; message: string }
-  | { kind: "manual"; message: string };
+  | { kind: "unavailable"; message: string; date: string }
+  | { kind: "available"; message: string; date: string }
+  | { kind: "manual"; message: string; date: string };
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -62,6 +62,11 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
   );
   const [dateError, setDateError] = useState("");
   const [availability, setAvailability] = useState<AvailabilityPhase>({ kind: "idle" });
+  const activeRequest = useRef<AbortController | null>(null);
+  const invalidateRequest = () => {
+    activeRequest.current?.abort();
+    activeRequest.current = null;
+  };
   const [showInquiry, setShowInquiry] = useState(false);
   const [honeypot, setHoneypot] = useState("");
   const [turnstileReady, setTurnstileReady] = useState(false);
@@ -93,6 +98,8 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
     setTurnstileToken("");
   }, []);
 
+  useLayoutEffect(() => () => activeRequest.current?.abort(), []);
+
   useLayoutEffect(() => {
     if (!showInquiry || !turnstileSiteKeyResolved || !turnstileReady || !turnstileContainerRef.current) return;
     const el = turnstileContainerRef.current;
@@ -117,24 +124,30 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       setDateError("Choose a wedding date first.");
       return;
     }
+    const selectedDate = weddingDate;
+    invalidateRequest();
+    const request = new AbortController();
+    activeRequest.current = request;
     setDateError("");
     setAvailability({ kind: "checking" });
     setShowInquiry(false);
     setFormStatus("idle");
     setFieldErrors({});
 
-    const outcome = await runAvailabilityCheck(weddingDate, FORM_ANALYTICS.surface);
+    const outcome = await runAvailabilityCheck(selectedDate, FORM_ANALYTICS.surface, request.signal);
+    if (!outcome || request.signal.aborted || activeRequest.current !== request) return;
+    activeRequest.current = null;
     if (outcome.status === "available") {
-      setAvailability({ kind: "available", message: outcome.message });
+      setAvailability({ kind: "available", message: outcome.message, date: selectedDate });
       setShowInquiry(false);
       return;
     }
     if (outcome.status === "manual" || outcome.status === "error") {
-      setAvailability({ kind: "manual", message: outcome.message });
+      setAvailability({ kind: "manual", message: outcome.message, date: selectedDate });
       setShowInquiry(false);
       return;
     }
-    setAvailability({ kind: "unavailable", message: outcome.message });
+    setAvailability({ kind: "unavailable", message: outcome.message, date: selectedDate });
   }
 
   function handleInquiryFormFocusCapture(e: React.FocusEvent<HTMLFormElement>) {
@@ -183,7 +196,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
           partnerName,
           email,
           phone,
-          weddingDate,
+          weddingDate: availability.kind === "available" ? availability.date : weddingDate,
           venue,
           guestCount,
           servicesNeeded,
@@ -207,7 +220,11 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         return;
       }
       if (!data.success) {
-        if (data.fieldErrors) setFieldErrors(data.fieldErrors);
+        if (data.fieldErrors) {
+          setFieldErrors(data.fieldErrors);
+          const firstField = ["name", "email", "venue", "message"].find((field) => data.fieldErrors?.[field]);
+          if (firstField) requestAnimationFrame(() => document.getElementById(`inquiry-${firstField}`)?.focus());
+        }
         trackEvent(ANALYTICS_EVENTS.contactFormSubmitError, {
           ...FORM_ANALYTICS,
           status: "error",
@@ -250,12 +267,14 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
   }
 
   function clearDateFields() {
+    invalidateRequest();
     setYearStr("");
     setMonthStr("");
     setDayStr("");
   }
 
   function handleYearChange(e: React.ChangeEvent<HTMLInputElement>) {
+    invalidateRequest();
     const v = digitsOnly(e.target.value, 4);
     setYearStr(v);
     setDateError("");
@@ -269,6 +288,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
   }
 
   function handleMonthChange(e: React.ChangeEvent<HTMLInputElement>) {
+    invalidateRequest();
     const v = digitsOnly(e.target.value, 2);
     setMonthStr(v);
     setDateError("");
@@ -282,6 +302,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
   }
 
   function handleDayChange(e: React.ChangeEvent<HTMLInputElement>) {
+    invalidateRequest();
     const v = digitsOnly(e.target.value, 2);
     setDayStr(v);
     setDateError("");
@@ -290,6 +311,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
   }
 
   function handleEditDate() {
+    invalidateRequest();
     setAvailability({ kind: "idle" });
     clearPostAvailabilityContext();
     setShowInquiry(false);
@@ -313,7 +335,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       {availability.kind === "available" ? (
         <PostAvailabilitySuccess
           variant="full"
-          weddingDate={weddingDate}
+          weddingDate={availability.date}
           surface={FORM_ANALYTICS.surface}
           canonicalStatusMessage={availability.message}
           onInquiryFallback={() => setShowInquiry(true)}
@@ -336,6 +358,8 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
                 autoComplete="off"
                 placeholder="YYYY"
                 aria-label="Year (YYYY)"
+                aria-invalid={Boolean(dateError)}
+                aria-describedby={dateError ? "wedding-date-error" : undefined}
                 value={yearStr}
                 onChange={handleYearChange}
                 maxLength={4}
@@ -350,6 +374,8 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
                 autoComplete="off"
                 placeholder="MM"
                 aria-label="Month (MM)"
+                aria-invalid={Boolean(dateError)}
+                aria-describedby={dateError ? "wedding-date-error" : undefined}
                 value={monthStr}
                 onChange={handleMonthChange}
                 maxLength={2}
@@ -364,6 +390,8 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
                 autoComplete="off"
                 placeholder="DD"
                 aria-label="Day (DD)"
+                aria-invalid={Boolean(dateError)}
+                aria-describedby={dateError ? "wedding-date-error" : undefined}
                 value={dayStr}
                 onChange={handleDayChange}
                 maxLength={2}
@@ -378,7 +406,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               Check your date
             </button>
           </div>
-          {dateError ? <p className={styles.error}>{dateError}</p> : null}
+          {dateError ? <p id="wedding-date-error" className={styles.error} role="alert">{dateError}</p> : null}
           <p className={styles.noDate}>
             No date yet?{" "}
             <a href="#send-message">Send me a message ↗</a>
@@ -389,7 +417,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       {availability.kind === "manual" ? (
         <PostAvailabilityOutcome
           kind="manual"
-          weddingDate={weddingDate}
+          weddingDate={availability.date}
           canonicalStatusMessage={availability.message}
           onTryAnotherDate={() => {
             setAvailability({ kind: "idle" });
@@ -403,7 +431,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
       {availability.kind === "unavailable" ? (
         <PostAvailabilityOutcome
           kind="unavailable"
-          weddingDate={weddingDate}
+          weddingDate={availability.date}
           canonicalStatusMessage={availability.message}
           onTryAnotherDate={() => {
             setAvailability({ kind: "idle" });
@@ -423,7 +451,7 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
         >
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">Your details</div>
           <p className="text-sm text-white/55">
-            Wedding date on file: <span className="font-medium text-white/80">{weddingDate}</span>
+            Wedding date on file: <span className="font-medium text-white/80">{availability.date}</span>
           </p>
 
           <div className="grid gap-5 sm:grid-cols-2">
@@ -433,12 +461,14 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
               </label>
               <input
                 id="inquiry-name"
+                aria-invalid={Boolean(fieldErrors.name)}
+                aria-describedby={fieldErrors.name ? "inquiry-name-error" : undefined}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="mt-2 w-full rounded-xl border border-white/15 bg-neutral-950 px-4 py-3 text-white outline-none focus:border-amber-300/50"
                 autoComplete="name"
               />
-              {fieldErrors.name ? <p className="mt-1 text-sm text-rose-300/90">{fieldErrors.name}</p> : null}
+              {fieldErrors.name ? <p id="inquiry-name-error" className="mt-1 text-sm text-rose-300/90">{fieldErrors.name}</p> : null}
             </div>
             <div>
               <label className="text-sm text-white/70" htmlFor="inquiry-partner">
@@ -459,13 +489,15 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
             </label>
             <input
               id="inquiry-email"
+              aria-invalid={Boolean(fieldErrors.email)}
+              aria-describedby={fieldErrors.email ? "inquiry-email-error" : undefined}
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="mt-2 w-full rounded-xl border border-white/15 bg-neutral-950 px-4 py-3 text-white outline-none focus:border-amber-300/50"
               autoComplete="email"
             />
-            {fieldErrors.email ? <p className="mt-1 text-sm text-rose-300/90">{fieldErrors.email}</p> : null}
+            {fieldErrors.email ? <p id="inquiry-email-error" className="mt-1 text-sm text-rose-300/90">{fieldErrors.email}</p> : null}
           </div>
 
           <div>
@@ -488,11 +520,13 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
             </label>
             <input
               id="inquiry-venue"
+              aria-invalid={Boolean(fieldErrors.venue)}
+              aria-describedby={fieldErrors.venue ? "inquiry-venue-error" : undefined}
               value={venue}
               onChange={(e) => setVenue(e.target.value)}
               className="mt-2 w-full rounded-xl border border-white/15 bg-neutral-950 px-4 py-3 text-white outline-none focus:border-amber-300/50"
             />
-            {fieldErrors.venue ? <p className="mt-1 text-sm text-rose-300/90">{fieldErrors.venue}</p> : null}
+            {fieldErrors.venue ? <p id="inquiry-venue-error" className="mt-1 text-sm text-rose-300/90">{fieldErrors.venue}</p> : null}
           </div>
 
           <div>
@@ -526,12 +560,14 @@ export function ContactAvailabilityForm({ turnstileSiteKey }: { turnstileSiteKey
             </label>
             <textarea
               id="inquiry-message"
+              aria-invalid={Boolean(fieldErrors.message)}
+              aria-describedby={fieldErrors.message ? "inquiry-message-error" : undefined}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               rows={5}
               className="mt-2 w-full resize-y rounded-xl border border-white/15 bg-neutral-950 px-4 py-3 text-white outline-none focus:border-amber-300/50"
             />
-            {fieldErrors.message ? <p className="mt-1 text-sm text-rose-300/90">{fieldErrors.message}</p> : null}
+            {fieldErrors.message ? <p id="inquiry-message-error" className="mt-1 text-sm text-rose-300/90">{fieldErrors.message}</p> : null}
           </div>
 
           <div className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden" aria-hidden>

@@ -49,6 +49,7 @@
 .controlSurface { --label-pad: .4rem; position: relative; z-index: 8; width: 91%; margin: -4.25rem auto 0; padding: 1.05rem 1.8rem 1.2rem; border: 1px solid #656a70; background: linear-gradient(102deg, #08090af7, #1b1e22f4 45%, #070809fa), url('/images/hsdj-redesign/deck-surfaces/djm-a9-topdown-optimized.webp') center 72% / cover; box-shadow: -10px 11px 0 #ef2727; transform: rotate(-.35deg); }
 .instruction { margin: 0 0 .45rem; color: white; font: 900 .7rem/1 var(--font-geist-mono), monospace; letter-spacing: .14em; text-transform: uppercase; }
 .instruction span { margin-left: .8rem; color: var(--stage-accent); }
+.instruction .reducedInstruction { display: none; }
 .mobileInstruction { display: none; }
 .fader { position: relative; height: 72px; }
 .rail { position: absolute; top: 50%; right: var(--label-pad); left: var(--label-pad); height: 14px; border: 1px solid #73777c; background: linear-gradient(#050505, #303337 45%, #050505 54%, #17191b); box-shadow: inset 0 2px 5px #000, 0 0 0 9px #090a0b; transform: translateY(-50%); }
@@ -71,6 +72,13 @@
 @media (prefers-reduced-motion: reduce) {
   .sceneImage, .stageWord { animation: none; }
   .cap, .stages button { transition: none; }
+  .signalField i::before, .signalField i::after { transition: none; }
+  .signalField i:nth-child(4n + 1) { --spectrum-level: .22; --peak-level: .25; }
+  .signalField i:nth-child(4n + 2) { --spectrum-level: .42; --peak-level: .45; }
+  .signalField i:nth-child(4n + 3) { --spectrum-level: .32; --peak-level: .35; }
+  .signalField i:nth-child(4n + 4) { --spectrum-level: .56; --peak-level: .59; }
+  .instruction .mobileInstruction, .instruction .desktopInstruction { display: none; }
+  .instruction .reducedInstruction { display: block; }
 }
 @media (max-width: 700px) {
   .console { width: calc(100vw - 1.5rem); filter: drop-shadow(8px 9px 0 #0847ff); }
@@ -95,4 +103,8 @@
   .stages button { padding-inline: .15rem; }
   .stages button span { font-size: .46rem; }
   .stages button b { font-size: .5rem; }
+}
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+  .instruction .mobileInstruction { display: none; }
+  .instruction .reducedInstruction { display: block; }
 }

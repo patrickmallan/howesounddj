@@ -83,25 +83,26 @@ test("cost guide H2 flashes individual letters automatically on mobile", async (
 });
 
 const brightHeadings = [
-  { route: "/packages", selector: '[class*="weddingCopy"] h2' },
-  { route: "/packages", selector: '[class*="ticketBody"] h2' },
-  { route: "/reviews", selector: '[class*="dayHeader"] h2' },
-  { route: "/about", selector: ".about-console-section h2" },
-  { route: "/faq", selector: ".faq-mixer-channel-2 h2" },
-  { route: "/faq", selector: ".faq-mixer-channel-4 h2" },
-  { route: "/faq", selector: ".faq-mixer-finale h2" },
-  { route: "/venues", selector: ".venue-journey-outro h2" },
-  { route: "/venues/sea-to-sky-gondola", selector: ".venue-dossier-outro h2" },
+  { route: "/packages", selector: '[class*="weddingCopy"] h2', palette: "--hsdj-ink-on-light" },
+  { route: "/packages", selector: '[class*="ticketBody"] h2', palette: "--hsdj-ink-on-light" },
+  { route: "/reviews", selector: '[class*="dayHeader"] h2', palette: "--hsdj-ink-on-light" },
+  { route: "/about", selector: ".about-console-section h2", palette: "--hsdj-ink-on-light" },
+  { route: "/faq", selector: ".faq-mixer-channel-2 h2", palette: "--hsdj-paper-light" },
+  { route: "/faq", selector: ".faq-mixer-channel-4 h2", palette: "--hsdj-paper-light" },
+  { route: "/faq", selector: ".faq-mixer-finale h2", palette: "--hsdj-ink-on-light" },
+  { route: "/venues", selector: ".venue-journey-outro h2", palette: "--hsdj-ink-on-light" },
+  { route: "/venues/sea-to-sky-gondola", selector: ".venue-dossier-outro h2", palette: "--hsdj-ink-on-light" },
 ] as const;
 
 for (const width of [390, 1440]) {
   test(`H2s on bright surfaces keep the appropriate contrast at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
-    for (const { route, selector } of brightHeadings) {
+    for (const { route, selector, palette } of brightHeadings) {
       await page.goto(route);
       const heading = page.locator(selector);
       await expect(heading, `${route} ${selector} should exist`).toHaveCount(1);
-      await expect(heading).toHaveCSS("font-palette", width < 768 ? "--hsdj-paper-light" : "--hsdj-ink-on-light");
+      const expectedPalette = width < 768 && selector !== ".venue-dossier-outro h2" ? "--hsdj-paper-light" : palette;
+      await expect(heading).toHaveCSS("font-palette", expectedPalette);
     }
   });
 }

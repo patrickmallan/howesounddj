@@ -7,13 +7,14 @@ import { FeaturedReviewDeck } from "@/components/featured-review-deck";
 import { ReviewMotionRegion } from "@/components/review-motion-region";
 import { CANONICAL_REVIEWS, formatReviewMonth, type CanonicalReview } from "@/config/reviews";
 import { makeFeaturedDeckReviews } from "@/config/review-deck";
+import danceFloorArt from "../../../public/images/hsdj-redesign/wedding-story/read-room-dancefloor-overhead-v1.webp";
 import styles from "./reviews-page.module.css";
 
 const pageTitle = "Squamish & Sea-to-Sky Wedding DJ Reviews";
 const pageDescription =
   "Read what couples said about planning with Patrick, the full wedding day, and the dance floor with Howe Sound DJ.";
 
-const heroImageCommon = { alt: "", sizes: "100vw", quality: 84 } as const;
+const heroImageCommon = { alt: "", sizes: "100vw", quality: 84, loading: "eager", fetchPriority: "high" } as const;
 const {
   props: { srcSet: desktopHeroSrcSet },
 } = getImageProps({
@@ -29,7 +30,6 @@ const {
   src: "/images/hsdj-redesign/reviews/reviews-hero-love-notes-mobile-v1.webp",
   width: 1024,
   height: 1536,
-  fetchPriority: "high",
 });
 
 export const metadata: Metadata = {
@@ -233,7 +233,17 @@ export default function ReviewsPage() {
       </section>
 
       <section id="dance-floor-reviews" className={styles.floorScene} aria-labelledby="floor-heading">
-        <div className={styles.floorLight} aria-hidden="true" />
+        <div className={styles.floorLight} aria-hidden="true">
+          <Image
+            src={danceFloorArt}
+            alt=""
+            fill
+            sizes="100vw"
+            loading="eager"
+            fetchPriority="low"
+            placeholder="blur"
+          />
+        </div>
         <WaveformBanner />
         <div className={styles.floorHeading}>
           <span className={styles.sceneLabel}>And when the floor opened</span>

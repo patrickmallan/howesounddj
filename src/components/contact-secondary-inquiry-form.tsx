@@ -269,7 +269,11 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
         return;
       }
       if (!data.success) {
-        if (data.fieldErrors) setFieldErrors(data.fieldErrors);
+        if (data.fieldErrors) {
+          setFieldErrors(data.fieldErrors);
+          const firstField = ["name", "email", "message"].find((field) => data.fieldErrors?.[field]);
+          if (firstField) requestAnimationFrame(() => document.getElementById(`secondary-inquiry-${firstField}`)?.focus());
+        }
         trackEvent(ANALYTICS_EVENTS.contactFormSubmitError, {
           ...SECONDARY_ANALYTICS,
           status: "error",
@@ -375,12 +379,14 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
             </label>
             <input
               id="secondary-inquiry-name"
+              aria-invalid={Boolean(fieldErrors.name)}
+              aria-describedby={fieldErrors.name ? "secondary-inquiry-name-error" : undefined}
               value={name}
               onChange={(e) => setName(e.target.value)}
               className={inputClass}
               autoComplete="name"
             />
-            {fieldErrors.name ? <p className="mt-1 text-sm text-rose-300/90">{fieldErrors.name}</p> : null}
+            {fieldErrors.name ? <p id="secondary-inquiry-name-error" className="mt-1 text-sm text-rose-300/90">{fieldErrors.name}</p> : null}
           </div>
           <div>
             <label className="text-sm text-white/60" htmlFor="secondary-inquiry-email">
@@ -388,13 +394,15 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
             </label>
             <input
               id="secondary-inquiry-email"
+              aria-invalid={Boolean(fieldErrors.email)}
+              aria-describedby={fieldErrors.email ? "secondary-inquiry-email-error" : undefined}
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className={inputClass}
               autoComplete="email"
             />
-            {fieldErrors.email ? <p className="mt-1 text-sm text-rose-300/90">{fieldErrors.email}</p> : null}
+            {fieldErrors.email ? <p id="secondary-inquiry-email-error" className="mt-1 text-sm text-rose-300/90">{fieldErrors.email}</p> : null}
           </div>
         </div>
 
@@ -506,13 +514,15 @@ export function ContactSecondaryInquiryForm({ turnstileSiteKey }: { turnstileSit
           </label>
           <textarea
             id="secondary-inquiry-message"
+            aria-invalid={Boolean(fieldErrors.message)}
+            aria-describedby={fieldErrors.message ? "secondary-inquiry-message-error" : undefined}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             rows={4}
             placeholder="Ask anything that would help you decide your next step."
             className={`${inputClass} resize-y placeholder:text-white/25`}
           />
-          {fieldErrors.message ? <p className="mt-1 text-sm text-rose-300/90">{fieldErrors.message}</p> : null}
+          {fieldErrors.message ? <p id="secondary-inquiry-message-error" className="mt-1 text-sm text-rose-300/90">{fieldErrors.message}</p> : null}
         </div>
 
         <div className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden" aria-hidden>

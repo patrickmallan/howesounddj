@@ -34,8 +34,18 @@ export function ReviewDeck({ reviews }: Props) {
 
   useEffect(() => {
     if (paused || userSelected || dragLevel !== null || reviewPairs.length < 2) return;
-    const timer = window.setInterval(() => setActive((current) => (current + 1) % reviewPairs.length), 5600);
-    return () => window.clearInterval(timer);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer: number | undefined;
+    const syncRotation = () => {
+      if (timer !== undefined) window.clearInterval(timer);
+      timer = reducedMotion.matches ? undefined : window.setInterval(() => setActive((current) => (current + 1) % reviewPairs.length), 5600);
+    };
+    syncRotation();
+    reducedMotion.addEventListener("change", syncRotation);
+    return () => {
+      if (timer !== undefined) window.clearInterval(timer);
+      reducedMotion.removeEventListener("change", syncRotation);
+    };
   }, [dragLevel, paused, reviewPairs.length, userSelected]);
 
   if (!activePair?.length) return null;

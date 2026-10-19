@@ -5,22 +5,27 @@ const customHeroCopy = [
   { path: "/about", selector: ".about-hero-intro" },
   { path: "/venues", selector: ".venue-journey-lede" },
   { path: "/venues/sea-to-sky-gondola", selector: ".venue-dossier-hero-copy > p:not(.venue-dossier-overline)" },
-  { path: "/stories", selector: ".contact-sheet-hero-copy > p:last-child" },
+  { path: "/stories", selector: ".contact-sheet-hero-copy .hsdj-hero-signal-copy > p" },
 ];
 
 for (const { path, selector } of customHeroCopy) {
   test(`${path} does not load shared collage beneath its opaque hero copy`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(path, { waitUntil: "domcontentloaded" });
-    const background = await page.locator(selector).evaluate((element) => getComputedStyle(element).backgroundImage);
+    const copy = page.locator(selector);
+    await expect(copy).toHaveCount(1);
+    const background = await copy.evaluate((element) => getComputedStyle(element).backgroundImage);
     expect(background).toBe("none");
   });
 }
 
-test("Packages prioritizes its first-screen collage without duplicate preload links", async ({ page }) => {
+test("Packages does not preload the footer collage before it is in view", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/packages", { waitUntil: "domcontentloaded" });
-  await expect(page.locator('link[rel="preload"][as="image"][href="/images/hsdj-redesign/footer/footer-dj-mixer-collage-v2-optimized.webp"]')).toHaveCount(1);
+  await expect(page.locator('link[rel="preload"][as="image"][href="/images/hsdj-redesign/footer/footer-dj-mixer-collage-v2-optimized.webp"]')).toHaveCount(0);
+  const footerArtwork = page.locator(".hsdj-site-footer__collage");
+  await footerArtwork.scrollIntoViewIfNeeded();
+  await expect(footerArtwork.locator("img")).toHaveAttribute("loading", "lazy");
 });
 
 test("Squamish prioritizes its visible hero collage once", async ({ page }) => {
@@ -46,7 +51,7 @@ test("Packages keeps its later scene art available as visitors scroll", async ({
   await page.goto("/packages", { waitUntil: "domcontentloaded" });
 
   for (const artwork of [
-    "packages-ceremony-clue-v2.webp",
+    "packages-ceremony-clue-v3.webp",
     "packages-dinner-clue-v2.webp",
     "packages-dance-gear-clue-v2.webp",
     "packages-signal-journey-v1.webp",

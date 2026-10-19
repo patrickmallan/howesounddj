@@ -140,8 +140,8 @@ for (const viewport of viewports) {
 
     console.log("WEDDINGS_METRICS", JSON.stringify({
       viewport: viewport.name,
-      initial,
-      afterScroll,
+      initial: { nodes: initial.nodes, resources: initial.resources, totalTransferBytes: initial.totalTransferBytes },
+      afterScroll: { nodes: afterScroll.nodes, resources: afterScroll.resources, totalTransferBytes: afterScroll.totalTransferBytes },
       initialRouteRequests,
       routeRequests: [...routeRequests].sort(),
       rendering,
@@ -155,9 +155,10 @@ for (const viewport of viewports) {
     expect((metrics as { cls: number }).cls).toBeLessThan(.1);
     expect(initialRouteRequests).toEqual([]);
     expect(initial.nodes).toBeLessThanOrEqual(2_600);
-    expect(initial.resources).toBeLessThanOrEqual(28);
-    expect(initial.totalTransferBytes).toBeLessThanOrEqual(viewport.name === "mobile" ? 550_000 : 650_000);
-    expect(afterScroll.totalTransferBytes).toBeLessThanOrEqual(viewport.name === "mobile" ? 800_000 : 950_000);
+    expect(initial.resources).toBeLessThanOrEqual(32);
+    // These bounds include the approved editorial artwork and shared billboard font.
+    expect(initial.totalTransferBytes).toBeLessThanOrEqual(viewport.name === "mobile" ? 825_000 : 950_000);
+    expect(afterScroll.totalTransferBytes).toBeLessThanOrEqual(viewport.name === "mobile" ? 1_100_000 : 1_225_000);
     for (const unrelated of ["/packages", "/reviews", "/venues", "/contact", "/stories"]) {
       expect(routeRequests.has(unrelated), `${unrelated} should wait for intentional navigation`).toBe(false);
     }
@@ -177,9 +178,10 @@ for (const width of [320, 390, 768, 1440]) {
       packageLinkText: document.querySelector('main a[href="/packages"]')?.textContent?.trim(),
     }));
     expect(beforeScroll.h1Count).toBe(1);
-    expect(beforeScroll.headings).toContain("Wedding tidbits");
+    expect(beforeScroll.headings).toContain("The good stuff usually starts when you stop following a wedding template.");
+    await expect(page.getByText("Wedding tidbits", { exact: true })).toBeVisible();
     expect(beforeScroll.packageLinkText).toContain("See packages");
-    expect(accessibilityTree).toContain('heading "Wedding tidbits" [level=2]');
+    expect(accessibilityTree).toContain('heading "The good stuff usually starts when you stop following a wedding template." [level=2]');
     expect(accessibilityTree).toContain('link "See packages"');
 
     await naturalScroll(page);
