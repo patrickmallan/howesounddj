@@ -1,7 +1,9 @@
 .page { --ink:#090b0b; --bone:#56e1ed; --yellow:#ffe000; --pink:#ff3cac; --cyan:#22d8e8; --blue:#0847ff; --red:#ff334b; overflow:hidden; color:#fff; background:var(--ink); }
 .hero { position:relative; min-height:0; isolation:isolate; }
 .page > .hero:first-of-type { min-height:0; }
-.hero::before { position:absolute; inset:0; z-index:-3; content:""; background:#070909; }
+.heroArt { position:absolute; inset:0; z-index:-3; overflow:hidden; background:#070909; }
+.heroArt img { object-fit:cover; object-position:70% 52%; }
+.heroArt::after { position:absolute; inset:0; content:""; background:linear-gradient(90deg,#030405f2 0 8%,#030405df 40%,#030405a8 72%,#030405c9 100%); }
 .heroGrid { position:absolute; inset:0; z-index:-2; opacity:.24; background-image:linear-gradient(#fff1 1px,transparent 1px),linear-gradient(90deg,#fff1 1px,transparent 1px); background-size:42px 42px; mask-image:linear-gradient(90deg,#000,transparent 78%); }
 .heroInner { width:min(1180px,calc(100% - 3rem)); margin:auto; padding:3.5rem 0 2.5rem; }
 .eyebrow,.kicker { width:fit-content; font:800 .76rem/1.2 var(--mono); letter-spacing:.18em; text-transform:uppercase; }

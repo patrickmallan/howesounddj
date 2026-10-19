@@ -19,10 +19,14 @@ for (const { path, selector } of customHeroCopy) {
   });
 }
 
-test("Packages does not preload the footer collage before it is in view", async ({ page }) => {
+test("Packages keeps its mixer-collage hero and defers the footer copy", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/packages", { waitUntil: "domcontentloaded" });
-  await expect(page.locator('link[rel="preload"][as="image"][href="/images/hsdj-redesign/footer/footer-dj-mixer-collage-v2-optimized.webp"]')).toHaveCount(0);
+  const heroArtwork = page.locator("main > section:first-of-type img").first();
+  await expect(heroArtwork).toHaveAttribute("src", /footer-dj-mixer-collage-v2-optimized\.webp/);
+  await expect(heroArtwork).toHaveAttribute("loading", "eager");
+  await expect(heroArtwork).toHaveAttribute("fetchpriority", "high");
+  await expect(heroArtwork).toBeVisible();
   const footerArtwork = page.locator(".hsdj-site-footer__collage");
   await footerArtwork.scrollIntoViewIfNeeded();
   await expect(footerArtwork.locator("img")).toHaveAttribute("loading", "lazy");

@@ -51,6 +51,17 @@ export default function PackagesPage() {
   return (
     <main className={styles.page}>
       <section className={styles.hero}>
+        <div className={styles.heroArt} aria-hidden="true">
+          <Image
+            src="/images/hsdj-redesign/footer/footer-dj-mixer-collage-v2-optimized.webp"
+            alt=""
+            fill
+            sizes="100vw"
+            quality={75}
+            loading="eager"
+            fetchPriority="high"
+          />
+        </div>
         <div className={styles.heroGrid} aria-hidden="true" />
         <div className={styles.heroInner}>
           <div className={styles.eyebrow}>PACKAGES / SQUAMISH, BC</div>
