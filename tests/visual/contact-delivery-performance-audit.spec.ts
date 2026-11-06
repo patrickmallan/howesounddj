@@ -157,3 +157,18 @@ test("keeps the deferred Contact journeys functional", async ({ page }) => {
   await expect(page.getByRole("button", { name: "Close message" })).toBeVisible();
   await expect(page.locator("#contact-message-form form")).toBeVisible();
 });
+
+test("reopens the message form from its link after it was closed", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/contact");
+
+  const messageLink = page.getByRole("link", { name: "Send me a message" });
+  await messageLink.click();
+  await expect(page.locator("#contact-message-form form")).toBeVisible();
+
+  await page.getByRole("button", { name: "Close message" }).click();
+  await expect(page.locator("#contact-message-form")).toHaveCount(0);
+
+  await messageLink.click();
+  await expect(page.locator("#contact-message-form form")).toBeVisible();
+});

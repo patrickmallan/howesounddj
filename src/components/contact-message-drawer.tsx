@@ -17,9 +17,18 @@ export function ContactMessageDrawer({ turnstileSiteKey }: { turnstileSiteKey: s
     const openFromHash = () => {
       if (window.location.hash === "#send-message") setOpen(true);
     };
+    const openFromLink = (event: MouseEvent) => {
+      if (event.target instanceof Element && event.target.closest('a[href="#send-message"]')) {
+        setOpen(true);
+      }
+    };
     openFromHash();
     window.addEventListener("hashchange", openFromHash);
-    return () => window.removeEventListener("hashchange", openFromHash);
+    document.addEventListener("click", openFromLink);
+    return () => {
+      window.removeEventListener("hashchange", openFromHash);
+      document.removeEventListener("click", openFromLink);
+    };
   }, []);
 
   return (
