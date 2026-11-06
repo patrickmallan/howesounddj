@@ -26,7 +26,6 @@ export function LivingVUMeter({ className = "", label = "MASTER", peak = false }
     if (!meter) return;
 
     const channels = Array.from(meter.querySelectorAll<HTMLElement>(".hsdj-vu-channel"));
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const channelSegments = channels.map((channel) => Array.from(channel.querySelectorAll<HTMLElement>(".hsdj-vu-leds i")));
 
     let frame = 0;
@@ -125,7 +124,7 @@ export function LivingVUMeter({ className = "", label = "MASTER", peak = false }
     };
 
     const start = () => {
-      if (running || reducedMotion.matches) return;
+      if (running) return;
       running = true;
       previous = performance.now();
       frame = requestAnimationFrame(animate);
@@ -138,32 +137,25 @@ export function LivingVUMeter({ className = "", label = "MASTER", peak = false }
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !document.hidden) start();
       else stop();
-    }, { rootMargin: "100px" });
-    const isNearViewport = () => {
+    });
+    const isInViewport = () => {
       const bounds = meter.getBoundingClientRect();
-      return meter.getClientRects().length > 0 && bounds.height > 0 && bounds.bottom >= -100 && bounds.top <= window.innerHeight + 100;
+      return meter.getClientRects().length > 0 && bounds.height > 0 && bounds.bottom > 0 && bounds.top < window.innerHeight;
     };
     const onVisibilityChange = () => {
       if (document.hidden) stop();
-      else if (isNearViewport()) start();
+      else if (isInViewport()) start();
     };
-    const onMotionPreferenceChange = () => {
-      if (reducedMotion.matches) stop();
-      else if (!document.hidden && isNearViewport()) start();
-    };
-
     observer.observe(meter);
     // The homepage meter is already visible at hydration time. Start it now
     // rather than depending on an observer callback that older iOS WebKit can
     // defer until the page scrolls.
-    if (!document.hidden && isNearViewport()) start();
+    if (!document.hidden && isInViewport()) start();
     document.addEventListener("visibilitychange", onVisibilityChange);
-    reducedMotion.addEventListener("change", onMotionPreferenceChange);
     return () => {
       stop();
       observer.disconnect();
       document.removeEventListener("visibilitychange", onVisibilityChange);
-      reducedMotion.removeEventListener("change", onMotionPreferenceChange);
     };
   }, []);
 

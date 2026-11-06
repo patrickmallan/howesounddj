@@ -83,7 +83,7 @@ test("mobile H2 letters visibly flash when motion is allowed", async ({ page }) 
   ).toBeGreaterThanOrEqual(2);
 });
 
-test("mobile H2s hold their text and the night fader stays manual with reduced motion", async ({ page }) => {
+test("mobile H2s hold their text while the night fader still auto-mixes with reduced motion", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
@@ -97,12 +97,12 @@ test("mobile H2s hold their text and the night fader stays manual with reduced m
     await expect(heading.locator('span[class*="_off__"]')).toHaveCount(0);
   }
 
+  await page.reload();
   const fader = page.getByTestId("night-fader");
   await fader.scrollIntoViewIfNeeded();
   const sceneTitle = page.getByTestId("night-scene-heading");
   await expect(sceneTitle).toHaveText(/CLEAR &\s*AUDIBLE/);
-  await page.waitForTimeout(4500);
-  await expect(sceneTitle).toHaveText(/CLEAR &\s*AUDIBLE/);
+  await expect(sceneTitle).toHaveText("VIBE BEGINS", { timeout: 7000 });
 
   await page.reload();
   const heading = page.locator("#build-heading");

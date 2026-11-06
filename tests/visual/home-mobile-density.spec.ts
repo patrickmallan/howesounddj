@@ -65,18 +65,28 @@ test("the desktop VU meter arrives lit before JavaScript hydrates", async ({ bro
   }
 });
 
-test("the VU meter holds its lit visual without movement when reduced motion is enabled", async ({ browser }) => {
+test("the mobile VU meter moves in view and stops offscreen even with reduced motion", async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 390, height: 650 }, reducedMotion: "reduce" });
   try {
     const page = await context.newPage();
     await page.goto(`${process.env.HSDJ_TEST_BASE_URL ?? "http://127.0.0.1:3000"}/`);
+    const meter = page.locator('[class*="mobileMeter"].hsdj-vu-meter');
+    await meter.scrollIntoViewIfNeeded();
     const samples: number[] = [];
     for (let index = 0; index < 12; index += 1) {
-      samples.push(await page.locator(".hsdj-vu-leds .is-lit").count());
+      samples.push(await meter.locator(".hsdj-vu-leds .is-lit").count());
       await page.waitForTimeout(250);
     }
     expect(samples[0]).toBeGreaterThan(0);
-    expect(new Set(samples).size).toBe(1);
+    expect(new Set(samples).size).toBeGreaterThan(1);
+    await page.getByTestId("home-finale-section").scrollIntoViewIfNeeded();
+    await page.waitForTimeout(150);
+    const offscreenSamples: number[] = [];
+    for (let index = 0; index < 5; index += 1) {
+      offscreenSamples.push(await meter.locator(".hsdj-vu-leds .is-lit").count());
+      await page.waitForTimeout(250);
+    }
+    expect(new Set(offscreenSamples).size).toBe(1);
   } finally {
     await context.close();
   }
@@ -108,7 +118,7 @@ test("the mobile hook clears a short Safari-like first screen without the decora
   expect(geometry.meter.width).toBe(0);
 });
 
-test("the desktop graphic equalizer holds a static signal when reduced motion is enabled", async ({ browser }) => {
+test("the desktop graphic equalizer runs in view and stops offscreen with reduced motion", async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: "reduce" });
   try {
     const page = await context.newPage();
@@ -125,7 +135,13 @@ test("the desktop graphic equalizer holds a static signal when reduced motion is
       await page.waitForTimeout(150);
     }
 
-    expect(new Set(samples).size).toBe(1);
+    expect(new Set(samples).size).toBeGreaterThan(1);
+    await page.getByTestId("home-finale-section").scrollIntoViewIfNeeded();
+    await page.waitForTimeout(150);
+    const stopped = await spectrum.locator("i").evaluateAll((bars) => bars.map((bar) => (bar as HTMLElement).style.getPropertyValue("--spectrum-level")).join(","));
+    await page.waitForTimeout(350);
+    const later = await spectrum.locator("i").evaluateAll((bars) => bars.map((bar) => (bar as HTMLElement).style.getPropertyValue("--spectrum-level")).join(","));
+    expect(later).toBe(stopped);
     await page.getByRole("button", { name: /04 first dance/i }).click();
     await expect(page.getByTestId("night-scene").getByText("First dance", { exact: true })).toBeVisible();
   } finally {
@@ -234,19 +250,19 @@ test("the complete mobile experience remains usable with the iPhone motion setti
 
     await expect(page.locator('[data-testid="home-video-proof-inner"] video')).toHaveCount(0);
 
-    const heroMeter = page.locator(".hsdj-vu-meter");
+    const heroMeter = page.locator('[class*="mobileMeter"].hsdj-vu-meter');
+    await heroMeter.scrollIntoViewIfNeeded();
     const meterSamples: number[] = [];
     for (let index = 0; index < 6; index += 1) {
       meterSamples.push(await heroMeter.locator(".is-lit").count());
       await page.waitForTimeout(250);
     }
-    expect(new Set(meterSamples).size).toBe(1);
+    expect(new Set(meterSamples).size).toBeGreaterThan(1);
 
     const reviewFader = page.getByRole("slider", { name: "Choose a customer review" });
     await reviewFader.scrollIntoViewIfNeeded();
     const firstReview = await reviewFader.getAttribute("aria-valuenow");
-    await page.waitForTimeout(6000);
-    await expect(reviewFader).toHaveAttribute("aria-valuenow", firstReview ?? "1");
+    await expect(reviewFader).not.toHaveAttribute("aria-valuenow", firstReview ?? "1", { timeout: 7000 });
     await reviewFader.press("ArrowRight");
     await expect(reviewFader).not.toHaveAttribute("aria-valuenow", firstReview ?? "1");
 

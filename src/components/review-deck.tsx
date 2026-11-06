@@ -1,7 +1,7 @@
 "use client";
 
 import type { CSSProperties, KeyboardEvent, PointerEvent as ReactPointerEvent } from "react";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import styles from "./review-deck.module.css";
 
 type ReviewTrack = {
@@ -23,6 +23,8 @@ export function ReviewDeck({ reviews }: Props) {
   const [paused, setPaused] = useState(false);
   const [userSelected, setUserSelected] = useState(false);
   const [dragLevel, setDragLevel] = useState<number | null>(null);
+  const [visible, setVisible] = useState(false);
+  const deckRef = useRef<HTMLDivElement>(null);
   const guideId = useId();
   const reviewPairs = Array.from({ length: Math.ceil(reviews.length / 2) }, (_, index) => reviews.slice(index * 2, index * 2 + 2));
   const last = Math.max(0, reviewPairs.length - 1);
@@ -33,20 +35,33 @@ export function ReviewDeck({ reviews }: Props) {
   const litSegments = Math.round((level / 100) * METER_SEGMENTS);
 
   useEffect(() => {
-    if (paused || userSelected || dragLevel !== null || reviewPairs.length < 2) return;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let timer: number | undefined;
-    const syncRotation = () => {
-      if (timer !== undefined) window.clearInterval(timer);
-      timer = reducedMotion.matches ? undefined : window.setInterval(() => setActive((current) => (current + 1) % reviewPairs.length), 5600);
+    const deck = deckRef.current;
+    if (!deck) return;
+    const isInView = () => {
+      const bounds = deck.getBoundingClientRect();
+      const visibleHeight = Math.max(0, Math.min(bounds.bottom, innerHeight) - Math.max(bounds.top, 0));
+      return bounds.height > 0 && visibleHeight / bounds.height >= 0.15;
     };
-    syncRotation();
-    reducedMotion.addEventListener("change", syncRotation);
+    const updateVisibility = () => {
+      const inView = !document.hidden && isInView();
+      setVisible(inView);
+      if (!inView) setUserSelected(false);
+    };
+    const observer = new IntersectionObserver(updateVisibility, { threshold: [0, 0.15] });
+    observer.observe(deck);
+    updateVisibility();
+    document.addEventListener("visibilitychange", updateVisibility);
     return () => {
-      if (timer !== undefined) window.clearInterval(timer);
-      reducedMotion.removeEventListener("change", syncRotation);
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", updateVisibility);
     };
-  }, [dragLevel, paused, reviewPairs.length, userSelected]);
+  }, []);
+
+  useEffect(() => {
+    if (!visible || paused || userSelected || dragLevel !== null || reviewPairs.length < 2) return;
+    const timer = window.setInterval(() => setActive((current) => (current + 1) % reviewPairs.length), 5600);
+    return () => window.clearInterval(timer);
+  }, [dragLevel, paused, reviewPairs.length, userSelected, visible]);
 
   if (!activePair?.length) return null;
 
@@ -85,7 +100,7 @@ export function ReviewDeck({ reviews }: Props) {
   };
 
   return (
-    <div className={`${styles.deck} ${dragLevel === null ? "" : styles.isDragging}`.trim()} onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
+    <div ref={deckRef} className={`${styles.deck} ${dragLevel === null ? "" : styles.isDragging}`.trim()} onPointerEnter={(event) => { if (event.pointerType !== "touch") setPaused(true); }} onPointerLeave={() => setPaused(false)} onFocusCapture={(event) => { if (event.target instanceof Element && event.target.matches(":focus-visible")) setPaused(true); }} onBlurCapture={() => setPaused(false)}>
       <p className={styles.mobileGuide} id={guideId}>
         <b>Slide the channel fader</b>
         <span>to hear two more couples.</span>
