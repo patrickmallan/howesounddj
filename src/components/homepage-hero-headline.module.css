@@ -4,3 +4,6 @@
   max-width: 100%;
   filter: drop-shadow(0 4px 14px #000b);
 }
+
+.tagline span { display: block; }
+.tagline span + span { color: #ffe89c; }
